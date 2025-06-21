@@ -71,3 +71,33 @@ main > section > *:last-child{
   body:has(.sticky-cta){padding-bottom:120px;}       /* bar height */
 }
 /* ──────────────────────────────────────────────────────────── */
+
+
+/* ────────── HOT-PATCH 21 Jun 2025 ────────── */
+
+/* 1 ▸ Bring back body padding on browsers that LACK :has() (iOS 15/16 Safari, older Chrome) */
+@media (max-width:600px){
+  /* browsers WITHOUT :has() keep the original 120 px bottom padding */
+  @supports not selector(:has(*)){
+    body{padding-bottom:120px !important;}
+  }
+
+  /* browsers WITH :has() use the smarter rule we added earlier */
+  @supports selector(:has(*)){
+    body{padding-bottom:0    !important;}
+    body:has(.sticky-cta){padding-bottom:120px;}
+  }
+}
+
+/* 2 ▸ If your lowest wrapper is .btn-container or .cta-block (not <section>), still apply the rhythm */
+main > .btn-container,
+main > .cta-block,
+main > .disclaimer-wrap{
+  padding-block-end:var(--v-gap) !important;   /* matches section rule */
+}
+
+/* 3 ▸ Kill stray margins that sneak back in */
+main > *:last-child{
+  margin-block-end:0 !important;
+}
+/* ─────────────────────────────────────────── */
