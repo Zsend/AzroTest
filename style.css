@@ -36,68 +36,16 @@
 /* X icon */
 .footer .x-icon{width:1em;height:1em;fill:#00C8E8;vertical-align:-0.125em;}
 
-/* ──────────────────────────────────────────────────────────────
-   VERTICAL-RHYTHM PATCH  ▸ add at the very end of your CSS
-   ───────────────────────────────────────────────────────────── */
 
-/* 1 ▸ ONE source-of-truth gap */
-:root{
-  --v-gap:clamp(3rem,5vw,4.5rem);   /* 48-72 px responsive */
-}
-
-/* 2 ▸ all content sections finish with the same breathing room */
-main > section{
-  padding-block-end:var(--v-gap) !important;
-}
-
-/* 3 ▸ CTA always sits exactly 1 gap below the last paragraph/card
-       …and **zero** gap above the footer                         */
-a[href*="gumroad.com"],
-.btn.cta,                          /* adjust if your class differs */
-button[data-main-cta]{
-  margin-top:var(--v-gap) !important;
-  margin-bottom:0 !important;
-}
-
-/* 4 ▸ strip stray bottom margins so rule #3 is the final word   */
-main > section > *:last-child{
-  margin-block-end:0 !important;
-}
-
-/* 5 ▸ mobile: give the sticky bar clearance **only when it exists**
-       (works in all modern browsers; fallback JS snippet below) */
+:root{ --s:1rem; --font-base:"Inter",system-ui,sans-serif;}
+body{ font-family: var(--font-base); line-height:1.5;}
+section{ padding: calc(var(--s)*4) 0;}
 @media (max-width:600px){
-  body{padding-bottom:0 !important;}                 /* undo old hard-code */
-  body:has(.sticky-cta){padding-bottom:120px;}       /* bar height */
+  section{ padding: calc(var(--s)*2) 0;}
 }
-/* ──────────────────────────────────────────────────────────── */
+.cta-block, .sticky-cta{ margin-top: calc(var(--s)*2);}
+.subscribe{ padding: calc(var(--s)*2) 0; text-align:center;}
+.subscribe form{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px;}
+.subscribe input[type=email]{ padding:0.5rem 1rem; border-radius:4px; border:1px solid #ccc; min-width:240px;}
+.subscribe button{ padding:0.5rem 1.25rem; border-radius:4px; background:#00a7a0; color:#fff; border:none; cursor:pointer; font-weight:600;}
 
-
-/* ────────── HOT-PATCH 21 Jun 2025 ────────── */
-
-/* 1 ▸ Bring back body padding on browsers that LACK :has() (iOS 15/16 Safari, older Chrome) */
-@media (max-width:600px){
-  /* browsers WITHOUT :has() keep the original 120 px bottom padding */
-  @supports not selector(:has(*)){
-    body{padding-bottom:120px !important;}
-  }
-
-  /* browsers WITH :has() use the smarter rule we added earlier */
-  @supports selector(:has(*)){
-    body{padding-bottom:0    !important;}
-    body:has(.sticky-cta){padding-bottom:120px;}
-  }
-}
-
-/* 2 ▸ If your lowest wrapper is .btn-container or .cta-block (not <section>), still apply the rhythm */
-main > .btn-container,
-main > .cta-block,
-main > .disclaimer-wrap{
-  padding-block-end:var(--v-gap) !important;   /* matches section rule */
-}
-
-/* 3 ▸ Kill stray margins that sneak back in */
-main > *:last-child{
-  margin-block-end:0 !important;
-}
-/* ─────────────────────────────────────────── */
