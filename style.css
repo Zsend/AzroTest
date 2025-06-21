@@ -130,6 +130,6 @@ footer{
   outline-offset:2px;
 }
 
-/* Custom bullets for about page */
-.about-item{position:relative;padding-left:1.3rem;margin-block:0.75rem;}
-.about-item::before{content:'\2022';position:absolute;left:0;color:var(--accent,#00A7A0);font-weight:bold;}
+/* About page definition list styling */
+.about-list dt{font-weight:600;margin-block:.75rem .25rem;}
+.about-list dd{margin:0 0 1rem 0;}
