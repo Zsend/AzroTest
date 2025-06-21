@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<style id="header-placeholder">
+/* placeholder to eliminate background flash before header mounts */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:120px; /* approximate header height */
+background:#0e1b4c;
+background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
+z-index:9998;
+pointer-events:none;
+}
+</style>
+
+<style id="critical-header-bg">
+/* critical header background — prevents first‑paint flash */
+.site-header{
+background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
+transition:none !important;
+}
+</style>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AZRO Systems™ · Features</title>
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
+<link as="image" href="coolback.webp" rel="preload"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- in-page styles unchanged -->
+<style>
+    .features-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+      justify-content: center;
+    }
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--text-sub);
+      border-radius: 8px;
+      padding: 24px 26px;
+      text-align: left;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.10);
+      transform: translateY(-4px);
+    }
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-weight: 700;
+      color: var(--text-head);
+      font-size: 1.25rem;
+    }
+    .feature-card p {
+      margin: 0;
+      line-height: 1.55;
+      color: var(--text-body);
+    }
+    @media(max-width: 600px) {
+      .features-wrapper { padding: 0 16px; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+<link href="https://USER.github.io/" rel="canonical"/><meta content="Layers multiple market-cycle analyses across time frames, revealing recurring patterns
+            to anticipate potential tops and bottoms with highe" name="description"/>
+  <meta name="description" content="Explore feature‑rich analytics: dominance metrics, multiperiod alerts, and responsive charts."/>
+<link rel="canonical" href="https://azrosystems.com/features.html" />
+    <script type="module" src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js"></script>
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="favicon-162.png" sizes="162x162" type="image/png">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<a id="main" tabindex="-1"></a>
+<header class="site-header" data-turbo-permanent   style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
+<a href="index.html"><picture><source srcset="logo.avif" type="image/avif"><source srcset="logo.webp" type="image/webp"><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
+<nav class="nav">
+<a href="index.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="pricing.html">PRICING</a>
+<a href="resources.html">RESOURCES</a>
+</nav>
+</header>
+<section class="hero" style="align-items:flex-start;">
+<div class="hero-text features-wrapper">
+<h1>Key Features</h1>
+<div class="features-grid">
+<!-- cards unchanged -->
+<div class="feature-card">
+<h3>Proprietary Multi-Layer Cycle Model</h3>
+<p>
+            Layers multiple market-cycle analyses across time frames, revealing recurring patterns
+            to anticipate potential tops and bottoms with higher confidence.
+          </p>
+</div>
+<div class="feature-card">
+<h3>Clear “MAJOR TOP / BOTTOM” Labels</h3>
+<p>
+            Automatically highlights significant market extremes on your chart, removing ambiguity
+            and spotlighting critical reversal points at a glance.
+          </p>
+</div>
+<div class="feature-card">
+<h3>Auto-Adapts to Market Regimes</h3>
+<p>
+            Dynamically adjusts its sensitivity to trending, ranging, or volatile conditions,
+            maintaining dependable performance in any environment.
+          </p>
+</div>
+<div class="feature-card">
+<h3>Real-Time Smart Alerts</h3>
+<p>
+            Optional push &amp; email notifications trigger when a Major Top or Bottom signal prints,
+            delivering timely market information wherever you are.
+          </p>
+</div></div>
+<p class="disclaimer">
+        Not investment advice. Past results aren’t guarantees. Consult a financial advisor before trading.
+      </p>
+<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu" style="margin-top:40px;margin-bottom:60px;">
+        Buy Now on Gumroad
+      </a>
+</div>
+</section>
+<footer class="footer" data-turbo-permanent>
+    2025 AZRO Systems™ · A brand of Azro Labs LLC · MADE IN THE USA · support@azrosystems.com · <a href="https://x.com/AzroSystems" target="_blank" rel="noopener noreferrer" aria-label="Azro Systems on X"><svg class="x-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"/></svg></a>
+</footer>
+<div class="sticky-cta">
+<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+</div>
+<script defer="" src="script.js"></script>
+</body>
+</html>

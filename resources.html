@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<style id="header-placeholder">
+/* placeholder to eliminate background flash before header mounts */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:120px; /* approximate header height */
+background:#0e1b4c;
+background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
+z-index:9998;
+pointer-events:none;
+}
+</style>
+
+<style id="critical-header-bg">
+/* critical header background — prevents first‑paint flash */
+.site-header{
+background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
+transition:none !important;
+}
+</style>
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AZRO Systems™ · Resources</title>
+<!-- Fonts & pre-loads (unchanged) -->
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
+<link as="image" href="coolback.webp" rel="preload"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- Page-specific styles (unchanged) -->
+<style>
+    .resources-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      justify-items: center;
+      margin-top: 28px;
+    }
+    .resource-card {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 14px;
+      padding: 22px 28px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--text-sub);
+      border-radius: 8px;
+      color: var(--text-head);
+      text-decoration: none;
+      transition: 0.3s ease background, 0.3s ease transform;
+    }
+    .resource-card:hover {
+      background: rgba(255, 255, 255, 0.10);
+      transform: translateY(-4px);
+    }
+    .resource-card svg {
+      flex: none;
+      stroke: currentColor;
+    }
+    .resource-card span {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+    }
+    @media(max-width: 600px) {
+      .hero-text.resources-page { padding: 0 16px; }
+    }
+  </style>
+<link href="https://USER.github.io/" rel="canonical"/><meta content="Landing page" name="description"/>
+  <meta name="description" content="Download PDFs, FAQs, and best‑practice docs for the AZRO Systems trading indicator."/>
+<link rel="canonical" href="https://azrosystems.com/resources.html" />
+    <script type="module" src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js"></script>
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="favicon-162.png" sizes="162x162" type="image/png">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<a id="main" tabindex="-1"></a>
+<header class="site-header" data-turbo-permanent   style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
+<a href="index.html"><picture><source srcset="logo.avif" type="image/avif"><source srcset="logo.webp" type="image/webp"><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
+<nav class="nav">
+<a href="index.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="features.html">FEATURES</a>
+<a href="pricing.html">PRICING</a>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-text resources-page" style="text-align:center;">
+<h1>Resources</h1>
+<!-- ▸ UPDATED GRID -->
+<div class="resources-grid">
+<!-- How It Works – Methodology Overview -->
+<a class="resource-card" href="pdfs/methodology-overview.pdf" rel="noopener" target="_blank">
+<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="13"></line>
+<circle cx="12" cy="16" r="1.2"></circle>
+</svg>
+<span>How It Works – Methodology Overview</span>
+</a>
+<!-- Quick Start Guide -->
+<a class="resource-card" href="pdfs/quick-start-guide.pdf" rel="noopener" target="_blank">
+<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
+<rect height="20" rx="2" width="14" x="3" y="2"></rect>
+<polyline points="17 6 21 6 21 22 7 22 7 17"></polyline>
+<polyline points="7 2 7 6 17 6"></polyline>
+</svg>
+<span>Quick Start Guide</span>
+</a>
+<!-- Frequently Asked Questions -->
+<a class="resource-card" href="pdfs/faq.pdf" rel="noopener" target="_blank">
+<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
+<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+<circle cx="12" cy="10" r="1.5"></circle>
+<path d="M12 13v2"></path>
+</svg>
+<span>Frequently Asked Questions</span>
+</a>
+<!-- Privacy Policy -->
+<a class="resource-card" href="pdfs/privacy-policy.pdf" rel="noopener" target="_blank">
+<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
+<path d="M12 22c4.97 0 9-3.58 9-8V5l-9-3-9 3v9c0 4.42 4.03 8 9 8z"></path>
+<path d="M9 12l2 2 4-4"></path>
+</svg>
+<span>Privacy Policy</span>
+</a>
+<!-- Risk Disclosure -->
+<a class="resource-card" href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">
+<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
+<polygon points="12 2 2 22 22 22 12 2"></polygon>
+<line x1="12" x2="12" y1="8" y2="13"></line>
+<circle cx="12" cy="17" r="1.2"></circle>
+</svg>
+<span>Risk Disclosure</span>
+</a>
+<!-- Terms of Service -->
+<a class="resource-card" href="pdfs/terms-of-service.pdf" rel="noopener" target="_blank">
+<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
+<rect height="18" rx="2" width="18" x="3" y="3"></rect>
+<path d="M8 9h8M8 13h8M8 17h5"></path>
+</svg>
+<span>Terms of Service</span>
+</a>
+</div>
+<div class="btn-container" style="margin:60px 0;">
+<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+</div>
+</div>
+</section>
+<footer class="footer" data-turbo-permanent>
+    2025 AZRO Systems™ · A brand of Azro Labs LLC · MADE IN THE USA · support@azrosystems.com · <a href="https://x.com/AzroSystems" target="_blank" rel="noopener noreferrer" aria-label="Azro Systems on X"><svg class="x-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"/></svg></a>
+</footer>
+<div class="sticky-cta">
+<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+</div>
+<script defer="" src="script.js"></script>
+</body>
+</html>
