@@ -132,4 +132,4 @@ footer{
 
 
 /* Ensure bullets visible in about list */
-.about-list{list-style:disc inside;margin-left:1.25rem;}
+.about-list{list-style:disc;padding-left:1.25rem;margin-block:var(--space-4);} 
