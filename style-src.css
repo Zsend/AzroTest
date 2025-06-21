@@ -305,4 +305,4 @@ p  { font-size: var(--step-0); line-height: 1.6; }
 
 
 /* Ensure bullets visible in about list */
-.about-list{list-style:disc;padding-left:1.25rem;margin-block:var(--space-4);} 
+.about-list{list-style-type:disc!important;list-style-position:outside;padding-left:1.5rem;margin-block:var(--space-4);}  
