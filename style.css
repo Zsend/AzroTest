@@ -36,16 +36,27 @@
 /* X icon */
 .footer .x-icon{width:1em;height:1em;fill:#00C8E8;vertical-align:-0.125em;}
 
+/* ----- Quick wins 2025-06-21 ----- */
+:root {
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
 
-:root{ --s:1rem; --font-base:"Inter",system-ui,sans-serif;}
-body{ font-family: var(--font-base); line-height:1.5;}
-section{ padding: calc(var(--s)*4) 0;}
-@media (max-width:600px){
-  section{ padding: calc(var(--s)*2) 0;}
+  --step-0: clamp(1rem, 0.9rem + 0.6vw, 1.25rem);
+  --step-1: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  --step-2: clamp(1.44rem, 1.2rem + 1.2vw, 1.8rem);
+  --step-3: clamp(1.728rem, 1.44rem + 1.5vw, 2.16rem);
 }
-.cta-block, .sticky-cta{ margin-top: calc(var(--s)*2);}
-.subscribe{ padding: calc(var(--s)*2) 0; text-align:center;}
-.subscribe form{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px;}
-.subscribe input[type=email]{ padding:0.5rem 1rem; border-radius:4px; border:1px solid #ccc; min-width:240px;}
-.subscribe button{ padding:0.5rem 1.25rem; border-radius:4px; background:#00a7a0; color:#fff; border:none; cursor:pointer; font-weight:600;}
 
+.flow > * + * { margin-block-start: var(--space-4); }
+section { padding-block: var(--space-6); }
+
+h1 { font-size: var(--step-3); line-height: 1.1; }
+h2 { font-size: var(--step-2); line-height: 1.2; }
+p  { font-size: var(--step-0); line-height: 1.6; }
+
+.btn:focus-visible { outline: 2px solid #00c7b6; outline-offset: 3px; }
+.btn:hover { transform: translateY(-2px); }

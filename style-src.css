@@ -277,3 +277,28 @@ body::before{
     margin-top: 4rem; /* ~36px, adjust if needed */
   }
 }
+
+/* ----- Quick wins 2025-06-21 ----- */
+:root {
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+
+  --step-0: clamp(1rem, 0.9rem + 0.6vw, 1.25rem);
+  --step-1: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  --step-2: clamp(1.44rem, 1.2rem + 1.2vw, 1.8rem);
+  --step-3: clamp(1.728rem, 1.44rem + 1.5vw, 2.16rem);
+}
+
+.flow > * + * { margin-block-start: var(--space-4); }
+section { padding-block: var(--space-6); }
+
+h1 { font-size: var(--step-3); line-height: 1.1; }
+h2 { font-size: var(--step-2); line-height: 1.2; }
+p  { font-size: var(--step-0); line-height: 1.6; }
+
+.btn:focus-visible { outline: 2px solid #00c7b6; outline-offset: 3px; }
+.btn:hover { transform: translateY(-2px); }
