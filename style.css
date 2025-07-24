@@ -133,3 +133,12 @@ footer{
 /* About page definition list styling */
 .about-list dt{font-weight:600;margin-block:.75rem .25rem;}
 .about-list dd{margin:0 0 1rem 0;}
+
+
+/* === 2025-07-24 Mobile hero padding tweak (assistant) === */
+@media (max-width: 600px){
+  .hero{
+    padding-left:24px;
+    padding-right:24px;
+  }
+}
