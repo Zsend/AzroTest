@@ -144,10 +144,10 @@ footer{
 }
 
 
-/* === 2025‑07‑24 Mobile hero container padding fix === */
+/* === 2025‑07‑24 Mobile hero wide gutter v5 === */
 @media (max-width: 600px){
-  .hero.home-hero{
-    padding-left: clamp(24px, 6vw, 40px) !important;
-    padding-right: clamp(24px, 6vw, 40px) !important;
+  .hero{
+    padding-left: clamp(32px, 8vw, 64px) !important;
+    padding-right: clamp(32px, 8vw, 64px) !important;
   }
 }
