@@ -135,21 +135,16 @@ footer{
 .about-list dd{margin:0 0 1rem 0;}
 
 
-/* === 2025-07-24 Mobile hero padding tweak (assistant) === */
-@media (max-width: 600px){
-  .hero{
-    padding-left:24px;
-    padding-right:24px;
-  }
+
 }
 
 
-
-/* === 2025‑07‑24 Mobile hero headline side‑padding v6 === */
-@media (max-width: 800px){
-  .hero-text h1{
-    padding-left: 6vw !important;
-    padding-right: 6vw !important;
+/* === 2025‑07‑24 Mobile hero centered max‑width fix === */
+@media (max-width: 600px){
+  .hero.home-hero .hero-text{
+    max-width: calc(100% - 64px) !important; /* 32px gutters */
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
