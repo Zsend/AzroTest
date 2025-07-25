@@ -135,20 +135,15 @@ footer{
 .about-list dd{margin:0 0 1rem 0;}
 
 
-/* === 2025-07-24 Mobile hero padding tweak (assistant) === */
-@media (max-width: 600px){
-  .hero{
-    padding-left:24px;
-    padding-right:24px;
-  }
+
 }
 
 
-/* === 2025‑07‑24 Mobile hero headline safe‑padding v3 === */
+/* === 2025‑07‑24 Mobile hero headline margin fix v4 === */
 @media (max-width: 600px){
   .hero-text{
-    /* Give phones at least 32 px of breathing room or honor the notch inset */
-    padding-left: max(32px, env(safe-area-inset-left));
-    padding-right: max(32px, env(safe-area-inset-right));
+    /* Push the headline block in from the viewport edges */
+    margin-left:32px !important;
+    margin-right:32px !important;
   }
 }
