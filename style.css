@@ -142,3 +142,12 @@ footer{
     padding-right:24px;
   }
 }
+
+
+/* === 2025‑07‑24 Mobile hero headline safe‑padding v2 === */
+@media (max-width: 600px){
+  .hero-text{
+    padding-left: clamp(24px,6vw,40px) !important;
+    padding-right: clamp(24px,6vw,40px) !important;
+  }
+}
