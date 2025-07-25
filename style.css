@@ -144,10 +144,11 @@ footer{
 }
 
 
-/* === 2025‑07‑24 Mobile hero headline safe‑padding v2 === */
+/* === 2025‑07‑24 Mobile hero headline safe‑padding v3 === */
 @media (max-width: 600px){
   .hero-text{
-    padding-left: clamp(24px,6vw,40px) !important;
-    padding-right: clamp(24px,6vw,40px) !important;
+    /* Give phones at least 32 px of breathing room or honor the notch inset */
+    padding-left: max(32px, env(safe-area-inset-left));
+    padding-right: max(32px, env(safe-area-inset-right));
   }
 }
