@@ -135,15 +135,19 @@ footer{
 .about-list dd{margin:0 0 1rem 0;}
 
 
-
+/* === 2025-07-24 Mobile hero padding tweak (assistant) === */
+@media (max-width: 600px){
+  .hero{
+    padding-left:24px;
+    padding-right:24px;
+  }
 }
 
 
-/* === 2025‑07‑24 Mobile hero headline margin fix v4 === */
+/* === 2025‑07‑24 Mobile hero container padding fix === */
 @media (max-width: 600px){
-  .hero-text{
-    /* Push the headline block in from the viewport edges */
-    margin-left:32px !important;
-    margin-right:32px !important;
+  .hero.home-hero{
+    padding-left: clamp(24px, 6vw, 40px) !important;
+    padding-right: clamp(24px, 6vw, 40px) !important;
   }
 }
