@@ -144,10 +144,12 @@ footer{
 }
 
 
-/* === 2025‑07‑24 Mobile hero wide gutter v5 === */
-@media (max-width: 600px){
-  .hero{
-    padding-left: clamp(32px, 8vw, 64px) !important;
-    padding-right: clamp(32px, 8vw, 64px) !important;
+
+/* === 2025‑07‑24 Mobile hero headline side‑padding v6 === */
+@media (max-width: 800px){
+  .hero-text h1{
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
   }
 }
+
