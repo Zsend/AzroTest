@@ -306,3 +306,15 @@ p  { font-size: var(--step-0); line-height: 1.6; }
 /* About page definition list styling */
 .about-list dt{font-weight:600;margin-block:.75rem .25rem;}
 .about-list dd{margin:0 0 1rem 0;}
+
+
+/* ───────────────── Responsive hero safety (scoped) ───────────────── */
+@media (max-width: 1100px){
+  .hero{flex-wrap:wrap}
+  .hero .hero-text, .hero .hero-image{max-width:100%}
+}
+@media (max-width: 800px){
+  .hero{padding:40px 16px}
+  .hero .hero-text h1{font-size:clamp(1.9rem, 4.5vw + 0.2rem, 2.6rem);line-height:1.18}
+}
+/* ───────────────── End responsive hero safety ───────────────── */
