@@ -39,6 +39,25 @@ transition:none !important;
 <meta content="630" property="og:image:height"/>
 <!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>The XRP Top/Bottom Detector</title>
+
+<style>
+/* ——— About page readability ——— */
+.about-list{max-width:860px;margin:0 auto;line-height:1.6;}
+.about-list dt{font-weight:700;font-size:1.125rem;margin:.9rem 0 .35rem;}
+.about-list dd{margin:0 0 1.15rem 0;}
+.signals{list-style:none;margin:.4rem 0 0 0;padding:0;}
+.signals li{margin:.85rem 0;}
+.signals .term{display:block;font-weight:700;letter-spacing:.01em;}
+.signals .desc{display:block;opacity:.95;}
+.link-icon{display:inline-flex;vertical-align:baseline;margin-left:.4rem;}
+.link-icon svg{width:16px;height:16px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+@media (min-width: 880px){
+  .about-list{line-height:1.65;}
+  .signals li{display:block;}
+}
+</style>
+
 <!-- Fonts & preloads -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -67,22 +86,31 @@ transition:none !important;
 </header>
 <section class="hero">
 <div class="hero-text" style="text-align:center;">
-<h1>Map the cycle. Cut the noise. Trade what matters.</h1>
+<h1>Map the cycle.<br/>Cut the noise.<br/>Trade what matters.</h1>
 <p>AZRO Systems™ builds future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts.</p>
 <p>The XRP Top/Bottom Detector is live on TradingView. It places buy/sell labels at likely cycle turning points and sends alerts to your device—plus market-wide elevated-risk and top warnings—so you can act with a plan, not emotion, and focus on the moves that matter. Stop guessing the top. Stop missing the bottom.</p>
 <p>Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
 
 <dl class="about-list">
-  <dt>Proven on historical data</dt>
-  <dd>Across a 10-year hypothetical backtest (2015–present), a simple rule—buy MAJOR Bottoms, sell MAJOR Tops—delivered ~9× more total profit than XRP buy-and-hold with ~6× lower max drawdown. The Market-Wide Top Warning historically triggered before severe alt-coin sell-offs and drawdowns, providing practical lead time to de-risk and protect gains. <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" target="_blank" rel="noopener">Methodology Overview (PDF)</a>.</dd>
+  <dt>Proven on historical data 
+    <a class="link-icon" href="https://azrosystems.com/pdfs/methodology-overview.pdf" target="_blank" rel="noopener" aria-label="Open Methodology Overview (PDF)" title="Methodology Overview (PDF)">
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" role="img">
+        <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z" fill="currentColor"/>
+      </svg>
+      <span class="sr-only">Methodology Overview (PDF)</span>
+    </a>
+  </dt>
+  <dd>Across a 10-year hypothetical backtest (2015–present), a simple rule—buy MAJOR Bottoms, sell MAJOR Tops—delivered ~9× more total profit than XRP buy-and-hold with ~6× lower max drawdown. The Market-Wide Top Warning historically triggered before severe alt-coin sell-offs and drawdowns, providing practical lead time to de-risk and protect gains.</dd>
 
   <dt>On-chart labels &amp; instant alerts</dt>
   <dd>
-    <strong>MAJOR TOP / MAJOR BOTTOM (XRP):</strong> Cycle-level confirmations for bigger swings.<br/>
-    <strong>RADAR TOP / RADAR BOTTOM (XRP):</strong> Earlier heads-ups to plan scale-ins/outs and capture mid-cycle moves.<br/>
-    <strong>LIGHT tops &amp; bottoms (XRP):</strong> Stay proactive between major turns—useful for timing and management.<br/>
-    <strong>Elevated Risk (XRP + market-wide):</strong> Persistent caution markers that appear on XRP and other crypto charts—useful for reducing exposure when conditions worsen.<br/>
-    <strong>Market-Wide Top Warning (non-XRP crypto):</strong> Optional overlay that alerts when many coins simultaneously meet top conditions—clear, market-wide caution.
+    <ul class="signals">
+      <li><span class="term">MAJOR TOP / MAJOR BOTTOM (XRP):</span> <span class="desc">Cycle-level confirmations for bigger swings.</span></li>
+      <li><span class="term">RADAR TOP / RADAR BOTTOM (XRP):</span> <span class="desc">Earlier heads-ups to plan scale-ins/outs and capture mid-cycle moves.</span></li>
+      <li><span class="term">LIGHT tops &amp; bottoms (XRP):</span> <span class="desc">Stay proactive between major turns—useful for timing and management.</span></li>
+      <li><span class="term">Elevated Risk (XRP + market-wide):</span> <span class="desc">Persistent caution markers that appear on XRP and other crypto charts—useful for reducing exposure when conditions worsen.</span></li>
+      <li><span class="term">Market-Wide Top Warning (non-XRP crypto):</span> <span class="desc">Optional overlay that alerts when many coins simultaneously meet top conditions—clear, market-wide caution.</span></li>
+    </ul>
   </dd>
 
   <dt>See the cycle, not the headlines</dt>
