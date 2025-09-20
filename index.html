@@ -1,5 +1,6 @@
 <!DOCTYPE html>
- <html lang="en">
+
+<html lang="en">
 <head>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
@@ -16,6 +17,44 @@ background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
 z-index:9998;
 pointer-events:none;
 }
+
+/* ── Responsive hero fix: prevent overlap and preserve layout on mid-width screens ── */
+@media (max-width: 1100px){
+  .home-hero{flex-wrap:wrap;}
+  .home-hero .hero-text{position:static;max-width:720px;margin:20px}
+  .home-hero .hero-image{margin-right:0;margin-left:0;margin-top:10px}
+  .home-hero h1{line-height:1.15}
+}
+@media (max-width: 900px){
+  .home-hero{flex-direction:column;align-items:center;justify-content:center}
+  .home-hero .hero-text{text-align:center;margin:10px 20px;max-width:740px}
+  .home-hero .hero-image{margin:20px auto 0;max-width:780px}
+}
+@media (max-width: 700px){
+  .home-hero h1{font-size:1.9rem}
+}
+
+
+/* ── Responsive hero fix: prevent overlap and preserve layout on mid-width screens ── */
+@media (max-width: 1100px){
+  .hero{flex-wrap:wrap;}
+  .hero .hero-text{position:static}
+  .hero .hero-image{margin-right:0}
+  .home-hero{flex-wrap:wrap;}
+  .home-hero .hero-text{position:static;max-width:720px;margin:20px}
+  .home-hero .hero-image{margin-right:0;margin-left:0;margin-top:10px}
+  .home-hero h1{line-height:1.15}
+}
+@media (max-width: 900px){
+  .hero{flex-direction:column;align-items:center;justify-content:center}
+  .hero .hero-text{text-align:center;margin:10px 20px;max-width:740px}
+  .hero .hero-image{margin:20px auto 0;max-width:780px}
+}
+@media (max-width: 700px){
+  .hero h1{font-size:1.9rem}
+}
+/* end fix */
+
 </style> <style id="critical-header-bg">
 /* critical header background — prevents first‑paint flash */
 .site-header{
@@ -37,40 +76,55 @@ transition:none !important;
 <meta content="https://azrosystems.com/og-card.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The XRP Top/Bottom Detector</title>
 <!-- Fonts & preloads -->
-<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link as="image" href="logo.webp" rel="preload"/>
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link as="image" href="logo.webp" rel="preload">
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="chart.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
 <!-- Page-specific helpers (unchanged) -->
 <style> /* … same inline CSS as before … */ .hero { padding: 60px 40px; display: flex; gap: 60px; justify-content: space-between; align-items: flex-start; } .hero-text { max-width: 640px; height: 560px; padding: 35px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; } .hero-text h1 { font-size: 3.4rem; line-height: 1.06; margin: 0 0 30px; } .hero-text p { font-size: 1.32rem; line-height: 1.55; margin: 0 0 36px; } .hero-text .btn { font-size: 1.15rem; padding: 16px 40px; margin: 0; } @media (max-width: 900px) { .hero { flex-direction: column; align-items: center; padding: 24px 12px 40px; gap: 8px; } .hero-text { height: auto; padding: 0 20px; margin: 0 0 12px !important; } .hero-text h1 { font-size: 3rem; margin: 0 0 16px; } .hero-text p { font-size: 1.2rem; margin-bottom: 16px; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0 !important; box-shadow: none !important; } .chart-note { font-size: 1.2rem; line-height: 1.55; margin: 16px 0 0; } } /* Landscape mobile tweaks (home page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } </style>
-<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systems™The XRP Top/Bottom Detector condenses macro-cycle timing, market-flow dynamics, and momentum-stress analytics into a single" name="description"> <meta content="AZRO Systems — Launch your XRP Top/Bottom Detector: algorithmic insight for crypto traders." name="description">
+<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systems™The XRP Top/Bottom Detector condenses macro-cycle timing, market-flow dynamics, and momentum-stress analytics into a single" name="description"/> <meta content="AZRO Systems — Launch your XRP Top/Bottom Detector: algorithmic insight for crypto traders." name="description"/>
 <link href="https://azrosystems.com/" rel="canonical"/> <script type="application/ld+json"> {"@context": "https://schema.org", "@type": "WebSite", "name": "AZRO Systems", "url": "https://azrosystems.com/"} </script> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</meta></meta></link></link></meta><style id="home-hero-fluid-fix">
-/* Fluid, non-destructive fix for Home hero to prevent overlap and keep spacing consistent */
+</link></link>
+<style id="home-hero-final-fix">
+/* Final: fluid hero that never overlaps and scales typography cleanly */
 .home-hero{
-  /* allow items to wrap naturally when space gets tight */
+  /* Do not rely on viewport-dependent padding to avoid "jumpiness" */
+  padding-top: 120px; /* consistent headroom under fixed header */
   flex-wrap: wrap;
-  gap: 24px; /* consistent spacing between text and image */
+  gap: 24px;               /* consistent space between columns */
+  align-items: center;
 }
 
-/* Give each side a reasonable minimum width so wrapping happens smoothly */
-.home-hero .hero-text{ flex: 1 1 520px; }
-.home-hero .hero-image{ flex: 1 1 520px; }
+/* Text & image columns: fluid basis with sensible minimums so they wrap smoothly */
+.home-hero .hero-text{ flex: 1 1 520px; max-width: 720px; height: auto !important; margin: 0 20px; }
+.home-hero .hero-image{ flex: 1 1 520px; max-width: 640px; margin: 0 20px; }
 
-/* When stacked (narrow screens), remove the extra top offset on the chart image */
+/* Fluid, readable headline at all sizes */
+.home-hero .hero-text > h1{
+  font-size: clamp(3rem, 5.2vw + 0.4rem, 6.2rem);
+  line-height: 1.12; /* extra breathing room prevents line collisions */
+  margin: 0 0 clamp(14px, 1.8vw, 26px);
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* First paragraph spacing stays tight and consistent */
+.home-hero .hero-text > p:first-of-type{ margin-top: 6px; }
+
+/* Remove large top offset on chart image when stacked */
 @media (max-width: 1150px){
-  .home-hero .chart-img{ margin-top: 16px; }
+  .home-hero .chart-img{ margin-top: 12px; }
 }
 
-/* Very small screens: make sure the hero has enough breathing room under fixed header without changing desktop spacing */
+/* Small screens: full-width blocks with stable top rhythm */
 @media (max-width: 900px){
-  .home-hero{ padding-top: 60px; } /* matches base hero padding, keeps look consistent */
+  .home-hero{ padding-top: 120px; } /* keep headroom constant */
   .home-hero .hero-text, .home-hero .hero-image{ max-width: 100%; }
 }
 </style>
@@ -89,10 +143,8 @@ transition:none !important;
 </header>
 <section class="hero home-hero">
 <div class="hero-text">
-<h1>Spot Market Tops and&nbsp;Bottoms<br/>with&nbsp;Confidence.</h1>
-<p>
-<strong>The AZRO Systems™ XRP Top/Bottom Detector</strong> is an invite‑only TradingView® indicator that synthesizes macro‑cycle timing, market flow, and momentum stress into on‑chart alerts that help confirm decisions to buy near bottoms, sell near tops, adjust positions, and validate emerging trends. Default settings are pre‑tuned for XRP—ready to call the next cycle top and bottom.
-</p>
+<h1>Spot Market Tops and Bottoms with Confidence.</h1>
+<p><strong>The AZRO Systems™ XRP Top/Bottom Detector</strong> is an invite-only TradingView® indicator that synthesizes macro-cycle timing, market flow, and momentum stress into on-chart alerts that help confirm decisions to buy near bottoms, sell near tops, adjust positions, and validate emerging trends. Default settings are pre-tuned for XRP—ready to call the next cycle top and bottom.</p>
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <div class="hero-image chart-img">
