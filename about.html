@@ -39,25 +39,6 @@ transition:none !important;
 <meta content="630" property="og:image:height"/>
 <!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>The XRP Top/Bottom Detector</title>
-
-<style>
-/* ——— About page readability ——— */
-.about-list{max-width:860px;margin:0 auto;line-height:1.6;}
-.about-list dt{font-weight:700;font-size:1.125rem;margin:.9rem 0 .35rem;}
-.about-list dd{margin:0 0 1.15rem 0;}
-.signals{list-style:none;margin:.4rem 0 0 0;padding:0;}
-.signals li{margin:.85rem 0;}
-.signals .term{display:block;font-weight:700;letter-spacing:.01em;}
-.signals .desc{display:block;opacity:.95;}
-.link-icon{display:inline-flex;vertical-align:baseline;margin-left:.4rem;}
-.link-icon svg{width:16px;height:16px;}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-@media (min-width: 880px){
-  .about-list{line-height:1.65;}
-  .signals li{display:block;}
-}
-</style>
-
 <!-- Fonts & preloads -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
@@ -71,7 +52,23 @@ transition:none !important;
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description">
 <link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</meta></meta></link></link></meta></head>
+</meta></meta></link></link></meta>
+<!-- Scoped readability styles for About page -->
+<style>
+  .about-scan{max-width:980px;margin:0 auto;text-align:left}
+  .label-list{list-style:none;padding:0;margin:18px auto 0;display:grid;grid-template-columns:1fr;gap:14px}
+  .label-list li{background:rgba(8,15,40,.34);border:1px solid rgba(255,255,255,.085);border-radius:12px;padding:14px 16px;box-shadow:0 1px 1px rgba(0,0,0,.12)}
+  .label-title{display:block;font-weight:700;letter-spacing:.2px}
+  .label-desc{display:block;margin-top:.25rem;opacity:.97;line-height:1.58}
+  @media (min-width:900px){
+    .label-list{grid-template-columns:1fr 1fr;gap:16px}
+  }
+  .pdf-link{display:inline-flex;align-items:center;margin-left:.45rem;vertical-align:baseline;opacity:.9;transition:opacity .15s ease,transform .15s ease}
+  .pdf-link:hover{opacity:1;transform:translateY(-1px)}
+  .pdf-link svg{width:15px;height:15px;fill:currentColor}
+</style>
+
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -92,29 +89,17 @@ transition:none !important;
 <p>Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
 
 <dl class="about-list">
-  <dt>Proven on historical data 
-    <a class="link-icon" href="https://azrosystems.com/pdfs/methodology-overview.pdf" target="_blank" rel="noopener" aria-label="Open Methodology Overview (PDF)" title="Methodology Overview (PDF)">
-      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" role="img">
-        <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z" fill="currentColor"/>
-      </svg>
-      <span class="sr-only">Methodology Overview (PDF)</span>
+  <dt>Proven on historical data</dt>
+  <dd>Across a 10-year hypothetical backtest (2015–present), a simple rule—buy MAJOR Bottoms, sell MAJOR Tops—delivered ~9× more total profit than XRP buy-and-hold with ~6× lower max drawdown. The Market-Wide Top Warning historically triggered before severe alt-coin sell-offs and drawdowns, providing practical lead time to de-risk and protect gains. 
+    <a class="pdf-link" href="https://azrosystems.com/pdfs/methodology-overview.pdf" target="_blank" rel="noopener" title="Methodology Overview (PDF)" aria-label="Methodology Overview (PDF) — opens in a new tab">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"></path><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"></path></svg>
     </a>
-  </dt>
-  <dd>Across a 10-year hypothetical backtest (2015–present), a simple rule—buy MAJOR Bottoms, sell MAJOR Tops—delivered ~9× more total profit than XRP buy-and-hold with ~6× lower max drawdown. The Market-Wide Top Warning historically triggered before severe alt-coin sell-offs and drawdowns, providing practical lead time to de-risk and protect gains.</dd>
-
-  <dt>On-chart labels &amp; instant alerts</dt>
-  <dd>
-    <ul class="signals">
-      <li><span class="term">MAJOR TOP / MAJOR BOTTOM (XRP):</span> <span class="desc">Cycle-level confirmations for bigger swings.</span></li>
-      <li><span class="term">RADAR TOP / RADAR BOTTOM (XRP):</span> <span class="desc">Earlier heads-ups to plan scale-ins/outs and capture mid-cycle moves.</span></li>
-      <li><span class="term">LIGHT tops &amp; bottoms (XRP):</span> <span class="desc">Stay proactive between major turns—useful for timing and management.</span></li>
-      <li><span class="term">Elevated Risk (XRP + market-wide):</span> <span class="desc">Persistent caution markers that appear on XRP and other crypto charts—useful for reducing exposure when conditions worsen.</span></li>
-      <li><span class="term">Market-Wide Top Warning (non-XRP crypto):</span> <span class="desc">Optional overlay that alerts when many coins simultaneously meet top conditions—clear, market-wide caution.</span></li>
-    </ul>
   </dd>
 
+  
+
   <dt>See the cycle, not the headlines</dt>
-  <dd>Multi-factor cycle analytics—macro rotation, asset-share context, and momentum-stress visualization—replace guess-targets and headline chasing. Visualize the cycle, understand risk levels, and evaluate buy/sell zones with data-driven confidence.</dd>
+  <dd>Visualize the cycle, understand risk levels, and evaluate buy/sell zones with data-driven confidence.</dd>
   <dd>TradingView alerts (push/email) fire the moment conditions are met—less screen-watching, more executing a plan.</dd>
   <dd>Additional crypto-asset models are in active development.</dd>
   <dd><em>Built and maintained in the United States.</em></dd>
@@ -141,3 +126,22 @@ transition:none !important;
 <script defer="" src="script.js"></script>
 </body>
 </html>
+
+<dl class="about-list">
+  <dt>On-chart labels &amp; instant alerts</dt>
+  <dd>
+    <ul class="signals">
+      <li><span class="term">MAJOR TOP / MAJOR BOTTOM (XRP):</span> <span class="desc">Cycle-level confirmations for bigger swings.</span></li>
+      <li><span class="term">RADAR TOP / RADAR BOTTOM (XRP):</span> <span class="desc">Earlier heads-ups to plan scale-ins/outs and capture mid-cycle moves.</span></li>
+      <li><span class="term">LIGHT tops &amp; bottoms (XRP):</span> <span class="desc">Stay proactive between major turns—useful for timing and management.</span></li>
+      <li><span class="term">Elevated Risk (XRP + market-wide):</span> <span class="desc">Persistent caution markers that appear on XRP and other crypto charts—useful for reducing exposure when conditions worsen.</span></li>
+      <li><span class="term">Market-Wide Top Warning (non-XRP crypto):</span> <span class="desc">Optional overlay that alerts when many coins simultaneously meet top conditions—clear, market-wide caution.</span></li>
+    </ul>
+  </dd>
+
+  <dd>Replace guess-targets and headline chasing. Visualize the cycle, understand risk levels, and evaluate buy/sell zones with data-driven confidence.</dd>
+  <dd>TradingView alerts (push/email) fire the moment conditions are met—less screen-watching, more executing a plan.</dd>
+  <dd>Additional crypto-asset models are in active development.</dd>
+  <dd><em>Built and maintained in the United States.</em></dd>
+  <dd><em>*Hypothetical results. Backtests have limitations and do not guarantee future performance.</em></dd>
+</dl>
