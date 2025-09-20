@@ -2,21 +2,7 @@
  <html lang="en">
 <head>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
-/* placeholder to eliminate background flash before header mounts */
-body::before{
-content:'';
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:120px; /* approximate header height */
-background:#0e1b4c;
-background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
-z-index:9998;
-pointer-events:none;
-}
-</style> <style id="critical-header-bg">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="critical-header-bg">
 /* critical header background — prevents first‑paint flash */
 .site-header{
 background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
