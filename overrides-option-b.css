@@ -1,0 +1,45 @@
+/* Unified mobile gutter system — Option B (systematic) */
+:root { --gutter: 26px; }
+
+/* Small phones */
+@media (max-width: 600px){
+  /* Apply a single gutter at the container level */
+  section, .hero {
+    padding-left: var(--gutter) !important;
+    padding-right: var(--gutter) !important;
+  }
+
+  /* Remove element-specific paragraph padding so everything aligns */
+  p{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Neutralize hero text inner padding/margins for consistency */
+  .hero .hero-text,
+  .hero.home-hero .hero-text{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Larger phones/small tablets in portrait */
+@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
+  section, .hero {
+    padding-left: var(--gutter) !important;
+    padding-right: var(--gutter) !important;
+  }
+  p{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .hero .hero-text,
+  .hero.home-hero .hero-text{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
