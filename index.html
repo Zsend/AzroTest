@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-
-<html lang="en">
+ <html lang="en">
 <head>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="critical-header-bg">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
+/* placeholder to eliminate background flash before header mounts */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:120px; /* approximate header height */
+background:#0e1b4c;
+background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
+z-index:9998;
+pointer-events:none;
+}
+</style> <style id="critical-header-bg">
 /* critical header background — prevents first‑paint flash */
 .site-header{
 background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
@@ -24,30 +37,38 @@ transition:none !important;
 <meta content="https://azrosystems.com/og-card.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>The XRP Top/Bottom Detector</title>
 <!-- Fonts & preloads -->
-<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
-<link as="image" href="logo.webp" rel="preload">
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="chart.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
 <!-- Page-specific helpers (unchanged) -->
 <style> /* … same inline CSS as before … */ .hero { padding: 60px 40px; display: flex; gap: 60px; justify-content: space-between; align-items: flex-start; } .hero-text { max-width: 640px; height: 560px; padding: 35px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; } .hero-text h1 { font-size: 3.4rem; line-height: 1.06; margin: 0 0 30px; } .hero-text p { font-size: 1.32rem; line-height: 1.55; margin: 0 0 36px; } .hero-text .btn { font-size: 1.15rem; padding: 16px 40px; margin: 0; } @media (max-width: 900px) { .hero { flex-direction: column; align-items: center; padding: 24px 12px 40px; gap: 8px; } .hero-text { height: auto; padding: 0 20px; margin: 0 0 12px !important; } .hero-text h1 { font-size: 3rem; margin: 0 0 16px; } .hero-text p { font-size: 1.2rem; margin-bottom: 16px; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0 !important; box-shadow: none !important; } .chart-note { font-size: 1.2rem; line-height: 1.55; margin: 16px 0 0; } } /* Landscape mobile tweaks (home page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } </style>
-<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systems™The XRP Top/Bottom Detector condenses macro-cycle timing, market-flow dynamics, and momentum-stress analytics into a single" name="description"/> <meta content="AZRO Systems — Launch your XRP Top/Bottom Detector: algorithmic insight for crypto traders." name="description"/>
+<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systems™The XRP Top/Bottom Detector condenses macro-cycle timing, market-flow dynamics, and momentum-stress analytics into a single" name="description"> <meta content="AZRO Systems — Launch your XRP Top/Bottom Detector: algorithmic insight for crypto traders." name="description">
 <link href="https://azrosystems.com/" rel="canonical"/> <script type="application/ld+json"> {"@context": "https://schema.org", "@type": "WebSite", "name": "AZRO Systems", "url": "https://azrosystems.com/"} </script> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</link></link>
-<style id="home-hero-typo-only">
-/* Typography-only tuning: preserves original layout/spacing */
-.home-hero .hero-text > h1{
-  font-size: clamp(3rem, 5.0vw + 0.2rem, 3.4rem); /* small screens readable, desktop capped to original feel */
-  line-height: 1.12;
-  margin: 0 0 24px;
-  hyphens: auto;
-  overflow-wrap: anywhere;
+</meta></meta></link></link></meta><style>
+/* Home hero responsive fix: stack on narrower screens to prevent overlap */
+@media (max-width: 1100px){
+  .home-hero{flex-direction:column;align-items:center}
+  .home-hero .hero-image{margin-top:20px}
 }
+</style>
+<style id="home-hero-safehead">
+/* Keep hero content fully clear of the fixed header at all widths */
+.hero.home-hero{ padding-top: var(--hh-space, 120px); }
+@media (max-width: 1360px){ .hero.home-hero{ --hh-space: 140px; } }
+@media (max-width: 1200px){ .hero.home-hero{ --hh-space: 160px; } }
+@media (max-width: 1080px){ .hero.home-hero{ --hh-space: 176px; } }
+@media (max-width: 980px) { .hero.home-hero{ --hh-space: 160px; } } /* header condenses */
+@media (max-width: 720px) { .hero.home-hero{ --hh-space: 130px; } }
+
+/* Ensure the text column can expand naturally; the original fixed height can cause collisions */
+.hero.home-hero .hero-text{ height:auto !important; }
 </style>
 </head>
 <body>
@@ -65,7 +86,9 @@ transition:none !important;
 <section class="hero home-hero">
 <div class="hero-text">
 <h1>Spot Market Tops and Bottoms<br/>with Confidence.</h1>
-<p>The AZRO Systems™ XRP Top/Bottom Detector is an invite-only TradingView® indicator that synthesizes macro-cycle timing, market flow, and momentum stress into on-chart alerts that help confirm decisions to buy near bottoms, sell near tops, adjust positions, and validate emerging trends. Default settings are pre-tuned for XRP—ready to call the next cycle top and bottom.</p>
+<p>
+<strong>The AZRO Systems™ XRP Top/Bottom Detector</strong> is an invite-only TradingView® indicator that synthesizes macro-cycle timing, market flow, and momentum stress into on-chart alerts that help confirm decisions to buy near bottoms, sell near tops, adjust positions, and validate emerging trends. Default settings are pre-tuned for XRP—ready to call the next cycle top and bottom.
+</p>
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <div class="hero-image chart-img">
