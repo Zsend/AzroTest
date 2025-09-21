@@ -139,5 +139,9 @@ footer{
 @media(orientation:portrait) and (max-width:900px){.hero .hero-text>p{padding-left:0;padding-right:0}}
 
 
-/* Increase mobile gutters for non-home hero (About/Features/Pricing/Resources) */
-@media(max-width:600px){.hero:not(.home-hero){padding-left:20px;padding-right:20px}}
+/* Increase small-phone gutters for non-home hero to 28px */
+@media(max-width:600px){.hero:not(.home-hero){padding-left:28px;padding-right:28px}}
+
+
+/* Nudge portrait medium phones (601–900px) a bit wider without touching Home */
+@media(orientation:portrait) and (min-width:601px) and (max-width:900px){.hero:not(.home-hero){padding-left:24px;padding-right:24px}}
