@@ -145,3 +145,11 @@ footer{
 
 /* Nudge portrait medium phones (601–900px) a bit wider without touching Home */
 @media(orientation:portrait) and (min-width:601px) and (max-width:900px){.hero:not(.home-hero){padding-left:24px;padding-right:24px}}
+
+
+/* Match non-home hero gutters to Home on phones */
+@media(max-width:600px){.hero:not(.home-hero){padding-left:12px;padding-right:12px}}
+@media(orientation:portrait) and (min-width:601px) and (max-width:900px){.hero:not(.home-hero){padding-left:20px;padding-right:20px}}
+
+/* Enforce two-line hero heading layout on narrow screens */
+@media(max-width:900px){.hero .hero-text h1.two-line{line-height:1.1;font-size:clamp(2.1rem,7.8vw,3.2rem)}.hero .hero-text h1.two-line span{display:block;white-space:nowrap}}
