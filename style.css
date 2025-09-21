@@ -133,3 +133,13 @@ footer{
 /* About page definition list styling */
 .about-list dt{font-weight:600;margin-block:.75rem .25rem;}
 .about-list dd{margin:0 0 1rem 0;}
+
+
+/* === Home hero image alignment fix (desktop only) ===
+   Ensure the top of the chart image aligns with the top of the H1.
+   Keep mobile spacing (40px) untouched; on ≥901px restore the intended 4rem. */
+@media (min-width: 901px) {
+  .home-hero .chart-img {
+    margin-top: 4rem;
+  }
+}
