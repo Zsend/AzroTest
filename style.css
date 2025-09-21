@@ -134,12 +134,22 @@ footer{
 .about-list dt{font-weight:600;margin-block:.75rem .25rem;}
 .about-list dd{margin:0 0 1rem 0;}
 
+/* ===== Home hero alignment fix (desktop ≥901px) =====
+   Align the top of the chart image with the top of the H1 without altering other pages.
+   Keeps mobile/tablet behavior unchanged. */
+@media (min-width: 901px) {
+  .home-hero { align-items: flex-start; }
+  .home-hero .chart-img { margin-top: 0; }
+}
 
-/* === Home hero image alignment fix (desktop only) ===
-   Ensure the top of the chart image aligns with the top of the H1.
-   Keep mobile spacing (40px) untouched; on ≥901px restore the intended 4rem. */
+
+/* === Home hero image vertical centering tweak (desktop) ===
+   Moves the chart column slightly lower so the image top sits roughly
+   midway between the H1 top and the Buy button bottom.
+   Uses clamp() so it scales smoothly on wider screens and remains
+   unchanged on mobile/tablet (rule applies only ≥ 901px). */
 @media (min-width: 901px) {
   .home-hero .chart-img {
-    margin-top: 4rem;
+    margin-top: clamp(5.5rem, calc(4rem + 1.25vw), 7.5rem);
   }
 }
