@@ -102,7 +102,26 @@ transition:none !important;
 </div>
 <script defer="" src="script.js"></script>
 
+<style id="mobile-gutter-unifier">
+  :root{ --mobile-gutter: 26px; }
+  /* Unify hero text gutters across pages: loaded last so it wins the cascade */
+  @media (max-width: 900px){
+    .hero .hero-text{ padding-left: var(--mobile-gutter) !important; padding-right: var(--mobile-gutter) !important; }
+    .hero .hero-text > p{ padding-left: 0 !important; padding-right: 0 !important; } /* align paragraphs with H1 */
+  }
+</style>
 
-
+<style id="about-hero-outer-gutter">
+/* Match Home’s outer hero padding on mobile */
+@media (max-width: 900px){
+  .hero{ padding-left: 40px !important; padding-right: 40px !important; }
+}
+</style>
+<style id="about-hero-mobile-tune">
+/* Inner hero-text padding matches Home exactly on mobile */
+@media (max-width: 900px){
+  .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
+}
+</style>
 </body>
 </html>

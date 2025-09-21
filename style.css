@@ -139,37 +139,63 @@ footer{
 @media(orientation:portrait) and (max-width:900px){.hero .hero-text>p{padding-left:0;padding-right:0}}
 
 
-/* Fluid, larger gutters for non-home hero in portrait up to 900px */
-@media(orientation:portrait) and (max-width:900px){.hero:not(.home-hero){padding-left:clamp(32px,8vw,44px);padding-right:clamp(32px,8vw,44px)}}
+/* Strong mobile gutters for non-home hero (About et al) */
+@media(max-width:600px){.hero:not(.home-hero){padding-left:clamp(28px,8vw,40px);padding-right:clamp(28px,8vw,40px)}}
 
 
-/* Two-line heading helper (About) */
-@media (max-width:900px){
+/* Stronger portrait gutters 601–900px for non-home hero */
+@media(orientation:portrait) and (min-width:601px) and (max-width:900px){.hero:not(.home-hero){padding-left:clamp(24px,6.5vw,40px);padding-right:clamp(24px,6.5vw,40px)}}
+
+
+/* Comfortable heading measure & line breaking for non-home hero on small phones */
+
+
+
+/* Balance heading at 601–900px portrait */
+
+
+
+/* === Consistent mobile gutters: make non-home heroes match Home exactly === */
+@media (max-width: 600px) {
+  .hero:not(.home-hero){ padding-left:12px; padding-right:12px; }
+}
+@media (orientation: portrait) and (min-width:601px) and (max-width:900px) {
+  .hero:not(.home-hero){ padding-left:20px; padding-right:20px; }
+}
+
+
+
+/* === Canonical mobile hero gutters (lock to Home values) === */
+@media (max-width: 600px){
+  .hero{ padding-left: 12px !important; padding-right: 12px !important; }
+  .hero .hero-text{ margin-left: 0 !important; margin-right: 0 !important; }
+}
+@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
+  .hero{ padding-left: 20px !important; padding-right: 20px !important; }
+  .hero .hero-text{ margin-left: 0 !important; margin-right: 0 !important; }
+}
+
+/* Keep hero paragraphs aligned with headings (override global p padding) */
+@media (orientation: portrait) and (max-width: 900px){
+  .hero .hero-text > p{ padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+/* Two-line hero heading helper (About) */
+@media (max-width: 900px){
+  .hero .hero-text h1.two-line{ line-height: 1.1; }
   .hero .hero-text h1.two-line span{ display:block; white-space:nowrap; }
 }
 
 
 
-/* FINAL: Make non-Home hero outer gutters match Home exactly on mobile */
-@media (max-width:600px){
-  .hero:not(.home-hero){ padding-left:12px; padding-right:12px; }
-}
-@media (orientation:portrait) and (min-width:601px) and (max-width:900px){
-  .hero:not(.home-hero){ padding-left:20px; padding-right:20px; }
-}
-
-
-/* === Unified mobile hero gutters for ALL pages (Home + About + others) === */
-/* Phones */
-@media (max-width:600px){
-  .hero{ padding-left:12px !important; padding-right:12px !important; }
-  .hero .hero-text{ padding-left:26px !important; padding-right:26px !important; }
-  .hero .hero-text > p{ padding-left:0 !important; padding-right:0 !important; }
-}
-/* Portrait medium phones / small tablets */
-@media (orientation:portrait) and (min-width:601px) and (max-width:900px){
-  .hero{ padding-left:20px !important; padding-right:20px !important; }
-  .hero .hero-text{ padding-left:26px !important; padding-right:26px !important; }
-  .hero .hero-text > p{ padding-left:0 !important; padding-right:0 !important; }
+/* Canonical mobile H1 behavior: remove non-home clamps, match Home */
+@media (max-width:900px){
+  .hero:not(.home-hero) .hero-text h1{
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-wrap: balance;
+    word-break: normal;
+  }
 }
 

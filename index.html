@@ -106,5 +106,15 @@ transition:none !important;
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <script defer="" src="script.js"></script>
+
+<style id="mobile-gutter-unifier">
+  :root{ --mobile-gutter: 26px; }
+  /* Unify hero text gutters across pages: loaded last so it wins the cascade */
+  @media (max-width: 900px){
+    .hero .hero-text{ padding-left: var(--mobile-gutter) !important; padding-right: var(--mobile-gutter) !important; }
+    .hero .hero-text > p{ padding-left: 0 !important; padding-right: 0 !important; } /* align paragraphs with H1 */
+  }
+</style>
+
 </body>
 </html>
