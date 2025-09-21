@@ -135,21 +135,14 @@ footer{
 .about-list dd{margin:0 0 1rem 0;}
 
 
-/* Fix mobile hero paragraph gutters (Home + About only) */
-@media(orientation:portrait) and (max-width:900px){.hero .hero-text>p{padding-left:0;padding-right:0}}
+/* Keep hero paragraphs aligned with headings on mobile (override the global p padding) */
+@media (orientation:portrait) and (max-width:900px){
+  .hero .hero-text > p{ padding-left:0; padding-right:0; }
+}
 
+/* Two-line heading helper (used on About) */
+@media (max-width:900px){
+  .hero .hero-text h1.two-line{ line-height:1.1; }
+  .hero .hero-text h1.two-line span{ display:block; white-space:nowrap; }
+}
 
-/* Increase small-phone gutters for non-home hero to 28px */
-@media(max-width:600px){.hero:not(.home-hero){padding-left:28px;padding-right:28px}}
-
-
-/* Nudge portrait medium phones (601–900px) a bit wider without touching Home */
-@media(orientation:portrait) and (min-width:601px) and (max-width:900px){.hero:not(.home-hero){padding-left:24px;padding-right:24px}}
-
-
-/* Match non-home hero gutters to Home on phones */
-@media(max-width:600px){.hero:not(.home-hero){padding-left:12px;padding-right:12px}}
-@media(orientation:portrait) and (min-width:601px) and (max-width:900px){.hero:not(.home-hero){padding-left:20px;padding-right:20px}}
-
-/* Enforce two-line hero heading layout on narrow screens */
-@media(max-width:900px){.hero .hero-text h1.two-line{line-height:1.1;font-size:clamp(2.1rem,7.8vw,3.2rem)}.hero .hero-text h1.two-line span{display:block;white-space:nowrap}}
