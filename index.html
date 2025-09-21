@@ -48,7 +48,7 @@ transition:none !important;
 <link as="image" href="chart.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
 <!-- Page-specific helpers (unchanged) -->
-<style> /* … same inline CSS as before … */ .hero { padding: 60px 20px; display: flex; gap: 60px; justify-content: space-between; align-items: flex-start; } .hero-text { max-width: 640px; height: 560px; padding: 35px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; } .hero-text h1 { font-size: 3.4rem; line-height: 1.06; margin: 0 0 30px; } .hero-text p { font-size: 1.32rem; line-height: 1.55; margin: 0 0 36px; } .hero-text .btn { font-size: 1.15rem; padding: 16px 40px; margin: 0; } @media (max-width: 900px) { .hero { flex-direction: column; align-items: center; padding: 24px 12px 40px; gap: 8px; } .hero-text { height: auto; padding: 0 20px; margin: 0 0 12px !important; } .hero-text h1 { font-size: 3rem; margin: 0 0 16px; } .hero-text p { font-size: 1.2rem; margin-bottom: 16px; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0 !important; box-shadow: none !important; } .chart-note { font-size: 1.2rem; line-height: 1.55; margin: 16px 0 0; } } /* Landscape mobile tweaks (home page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } </style>
+<style> /* … same inline CSS as before … */ .hero { padding: 60px 20px; display: flex; gap: 60px; justify-content: space-between; align-items: flex-start; } .hero-text { max-width: 640px; height: 560px; padding: 35px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; } .hero-text h1 { font-size: 3.4rem; line-height: 1.06; margin: 0 0 30px; } .hero-text p { font-size: 1.32rem; line-height: 1.55; margin: 0 0 36px; } .hero-text .btn { font-size: 1.15rem; padding: 16px 40px; margin: 0; } @media (max-width: 900px) { .hero { flex-direction: column; align-items: center; padding: 24px 20px 40px; gap: 8px; } .hero-text { height: auto; padding: 0 20px; margin: 0 0 12px !important; } .hero-text h1 { font-size: 3rem; margin: 0 0 16px; } .hero-text p { font-size: 1.2rem; margin-bottom: 16px; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0 !important; box-shadow: none !important; } .chart-note { font-size: 1.2rem; line-height: 1.55; margin: 16px 0 0; } } /* Landscape mobile tweaks (home page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systems™The XRP Top/Bottom Detector condenses macro-cycle timing, market-flow dynamics, and momentum-stress analytics into a single" name="description"> <meta content="AZRO Systems — Launch your XRP Top/Bottom Detector: algorithmic insight for crypto traders." name="description">
 <link href="https://azrosystems.com/" rel="canonical"/> <script type="application/ld+json"> {"@context": "https://schema.org", "@type": "WebSite", "name": "AZRO Systems", "url": "https://azrosystems.com/"} </script> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
 </meta></meta></link></link></meta>
@@ -63,7 +63,7 @@ transition:none !important;
 }
 
 /* Match About's edge spacing and scale smoothly on small/medium screens */
-p0px){
+@media (max-width: 600px){
   .hero.home-hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
   .hero.home-hero .hero-text > h1{
     font-size: clamp(2.6rem, 6.6vw + 0.5rem, 3.2rem) !important;
@@ -75,33 +75,6 @@ p0px){
   .hero.home-hero .hero-text > h1 br{ display: inline; }
 }
 </style>
-
-<style id="match-about-mobile-spacing--strict">
-/* Ensure Home hero text gutters match About exactly on mobile */
-
-/* Base: make sure the section uses 20px horizontal padding (like About) */
-.hero.home-hero{ padding-left:20px !important; padding-right:20px !important; }
-
-/* 601–900px: About uses ONLY paragraph gutters (26px) via global rule.
-   So: container & h1 get no extra padding; paragraphs keep the 26px. */
-@media (min-width:601px) and (max-width:900px){
-  .hero.home-hero .hero-text{ padding-left:0 !important; padding-right:0 !important; margin-left:auto !important; margin-right:auto !important; }
-  .hero.home-hero .hero-text > h1{ padding-left:0 !important; padding-right:0 !important; }
-  /* reinforce paragraph gutters (no double; just ensure presence) */
-  .hero.home-hero .hero-text p{ padding-left:26px !important; padding-right:26px !important; }
-}
-
-/* ≤600px: About adds 26px container padding (affects both h1 + p). */
-@media (max-width:600px){
-  .hero.home-hero .hero-text{ padding-left:26px !important; padding-right:26px !important; }
-  .hero.home-hero .hero-text > h1{
-    padding-left:0 !important; padding-right:0 !important; /* text sits inside the container padding */
-    font-size: clamp(2.6rem, 6.6vw + 0.5rem, 3.2rem) !important;
-    line-height: 1.12 !important;
-  }
-}
-</style>
-
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
