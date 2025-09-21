@@ -133,3 +133,7 @@ footer{
 /* About page definition list styling */
 .about-list dt{font-weight:600;margin-block:.75rem .25rem;}
 .about-list dd{margin:0 0 1rem 0;}
+
+
+/* Fix mobile hero paragraph gutters (Home + About only) */
+@media(orientation:portrait) and (max-width:900px){.hero .hero-text>p{padding-left:0;padding-right:0}}
