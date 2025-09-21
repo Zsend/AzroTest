@@ -137,3 +137,7 @@ footer{
 
 /* Fix mobile hero paragraph gutters (Home + About only) */
 @media(orientation:portrait) and (max-width:900px){.hero .hero-text>p{padding-left:0;padding-right:0}}
+
+
+/* Increase mobile gutters for non-home hero (About/Features/Pricing/Resources) */
+@media(max-width:600px){.hero:not(.home-hero){padding-left:20px;padding-right:20px}}
