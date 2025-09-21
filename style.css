@@ -135,45 +135,25 @@ footer{
 .about-list dd{margin:0 0 1rem 0;}
 
 
-/* === Home hero image alignment fine‑tune (desktop only) ===
-   Move the chart image a touch lower so its top sits roughly centered
-   between the H1 top and the Buy button’s bottom, without affecting mobile. */
+/* === Home hero image alignment fine‑tune (desktop only) === */
 @media (min-width: 901px) {
-  .home-hero .chart-img {
-    margin-top: 5.75rem; /* was 4rem */
-  }
+  .home-hero .chart-img { margin-top: 5.75rem; }
 }
 
+/* === Chart-note centering guard (all breakpoints) === */
+.home-hero .hero-image { display:flex; flex-direction:column; align-items:center; }
+.home-hero .hero-image .chart-note { margin-left:auto !important; margin-right:auto !important; text-align:center !important; }
 
-/* === Chart-note centering guard (all breakpoints) ===
-   Ensures the text under the chart stays horizontally centered
-   when the layout transitions across breakpoints. */
-.home-hero .hero-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.home-hero .hero-image .chart-note {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-}
-
-
-/* === Home hero alignment smoothing (901px–1200px) ===
-   Prevents the brief left-lean when crossing the desktop breakpoint.
-   Keeps items centered while the layout is still stacking vertically,
-   then hands back to the original left alignment on wider screens. */
+/* === Home hero alignment smoothing (901px–1200px) === */
 @media (min-width: 901px) and (max-width: 1200px) {
-  .home-hero {
-    align-items: center !important;
-  }
-  .home-hero .hero-text {
-    left: 0 !important; /* cancel small desktop nudge during this range */
-    text-align: center;
-  }
-  .home-hero .hero-image {
-    margin-right: 0 !important;
-    align-items: center;
-  }
+  .home-hero { align-items:center !important; }
+  .home-hero .hero-text { left:0 !important; text-align:center; }
+  .home-hero .hero-image { margin-right:0 !important; align-items:center; }
+}
+
+/* === Home hero centering band (901px–1439px) === */
+@media (min-width: 901px) and (max-width: 1439px) {
+  .home-hero { align-items:center !important; }
+  .home-hero .hero-text { left:0 !important; text-align:center; }
+  .home-hero .hero-image { margin-right:0 !important; align-items:center; }
 }
