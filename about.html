@@ -48,7 +48,29 @@ transition:none !important;
 <link as="image" href="newchart.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
 <!-- mobile helper CSS -->
-<style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
+<style>
+/* Mobile helper CSS — About page */
+@media (max-width: 900px) {
+  .hero-text p:first-of-type { font-size: 1.3rem; }
+  .hero-text p { font-size: 1.2rem; }
+  /* Increase About page text gutters using a responsive clamp */
+  .hero .hero-text { padding-left: clamp(36px, 7.5vw, 52px) !important; padding-right: clamp(36px, 7.5vw, 52px) !important; }
+  /* Better headline line breaks on mobile */
+  .hero .hero-text > h1 { text-wrap: balance; }
+}
+/* Landscape mobile tweaks (about page) */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-image picture, .hero-image img {
+    width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important;
+  }
+  .hero-image + p, .chart-note {
+    text-align: center !important; margin-left: auto !important; margin-right: auto !important;
+    padding-left: clamp(36px, 7.5vw, 52px) !important; padding-right: clamp(36px, 7.5vw, 52px) !important;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-image { max-width: none !important; }
+}
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description">
 <link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
