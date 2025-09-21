@@ -52,7 +52,15 @@ transition:none !important;
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description">
 <link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</meta></meta></link></link></meta>
+</meta></meta></link></link></meta><style id="about-hero-mobile-tune">
+@media (max-width: 600px){
+  .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
+  .hero .hero-text > h1{
+    font-size: clamp(2.6rem, 6.6vw + 0.5rem, 3.2rem) !important;
+    line-height: 1.12 !important;
+  }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -68,7 +76,7 @@ transition:none !important;
 </header>
 <section class="hero">
 <div class="hero-text" style="text-align:center;">
-<h1 class="two-line"><span>Map the Cycle.</span><span>Cut the Noise.</span></h1>
+<h1>Map the Cycle.<br/>Cut the Noise.</h1>
 <p>AZRO Systems™ builds future‑ready tools that flag major opportunity and risk before the crowd. The XRP Top/Bottom Detector is live on TradingView®: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market‑wide elevated‑risk and top warnings—so you act with a plan, not emotion.</p>
 <p>Stop guessing the top. Stop missing the bottom.</p>
 <p>Works out of the box—no complex tuning. Load, set alerts, done.</p>
@@ -101,27 +109,5 @@ transition:none !important;
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <script defer="" src="script.js"></script>
-
-<style id="mobile-gutter-unifier">
-  :root{ --mobile-gutter: 26px; }
-  /* Unify hero text gutters across pages: loaded last so it wins the cascade */
-  @media (max-width: 900px){
-    .hero .hero-text{ padding-left: var(--mobile-gutter) !important; padding-right: var(--mobile-gutter) !important; }
-    .hero .hero-text > p{ padding-left: 0 !important; padding-right: 0 !important; } /* align paragraphs with H1 */
-  }
-</style>
-
-<style id="about-hero-outer-gutter">
-/* Match Home’s outer hero padding on mobile */
-@media (max-width: 900px){
-  .hero{ padding-left: 40px !important; padding-right: 40px !important; }
-}
-</style>
-<style id="about-hero-mobile-tune">
-/* Inner hero-text padding matches Home exactly on mobile */
-@media (max-width: 900px){
-  .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
-}
-</style>
 </body>
 </html>
