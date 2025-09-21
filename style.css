@@ -189,3 +189,15 @@ footer{
   .hero .hero-text h1.two-line{ line-height:1.1; }
   .hero .hero-text h1.two-line span{ display:block; white-space:nowrap; }
 }
+
+
+/* --- Normalize About (and other non-home) hero gutters to match Home on mobile --- */
+@media (max-width: 600px){
+  .hero:not(.home-hero){ padding-left: 12px !important; padding-right: 12px !important; }
+  .hero:not(.home-hero) .hero-text{ max-width: 560px !important; margin-left: 0 !important; margin-right: 0 !important; }
+}
+@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
+  .hero:not(.home-hero){ padding-left: 20px !important; padding-right: 20px !important; }
+  .hero:not(.home-hero) .hero-text{ max-width: 560px !important; margin-left: 0 !important; margin-right: 0 !important; }
+}
+
