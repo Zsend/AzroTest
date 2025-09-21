@@ -139,65 +139,37 @@ footer{
 @media(orientation:portrait) and (max-width:900px){.hero .hero-text>p{padding-left:0;padding-right:0}}
 
 
-/* Adaptive mobile gutters for non-home hero (About/Features/Pricing/Resources) */
-@media(max-width:900px){.hero:not(.home-hero){padding-left:clamp(18px,6vw,32px);padding-right:clamp(18px,6vw,32px)}}
+/* Fluid, larger gutters for non-home hero in portrait up to 900px */
+@media(orientation:portrait) and (max-width:900px){.hero:not(.home-hero){padding-left:clamp(32px,8vw,44px);padding-right:clamp(32px,8vw,44px)}}
 
 
-/* v4: Force comfortable gutters + content max width on non-home hero (mobile) */
-
-@media (max-width: 600px){
-  .hero:not(.home-hero){ padding-left: clamp(32px, 9vw, 44px); padding-right: clamp(32px, 9vw, 44px); }
-  .hero:not(.home-hero) .hero-text{ max-width: 40ch; margin-left: auto; margin-right: auto; }
-}
-@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
-  .hero:not(.home-hero){ padding-left: clamp(28px, 7vw, 48px); padding-right: clamp(28px, 7vw, 48px); }
-  .hero:not(.home-hero) .hero-text{ max-width: 46ch; margin-left: auto; margin-right: auto; }
-}
-
-
-
-
-/* ---- Mobile consistency overrides (v7): make About match Home ---- */
-/* Phones (<=600px): Home uses 12px hero side padding and no side margin on .hero-text.
-   Force the same for all non-home hero sections (About/Features/Pricing/Resources). */
-@media (max-width: 600px){
-  .hero:not(.home-hero){ padding-left:12px !important; padding-right:12px !important; }
-  .hero:not(.home-hero) .hero-text{ max-width:none !important; margin-left:0 !important; margin-right:0 !important; }
-}
-
-/* Portrait medium phones (601–900px): Home uses 20px hero side padding and the base 20px hero-text side margins. */
-@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
-  .hero:not(.home-hero){ padding-left:20px !important; padding-right:20px !important; }
-  .hero:not(.home-hero) .hero-text{ max-width:none !important; margin-left:20px !important; margin-right:20px !important; }
-}
-
-/* Landscape up to 900px: Home uses 12px side padding and zero side margins for .hero-text; mirror that. */
-@media (max-width: 900px) and (orientation: landscape){
-  .hero:not(.home-hero){ padding-left:12px !important; padding-right:12px !important; }
-  .hero:not(.home-hero) .hero-text{ max-width:none !important; margin-left:0 !important; margin-right:0 !important; }
-}
-
-
-
-/* Normalize hero paragraph padding on mobile (remove global <p> inset) */
-@media (orientation:portrait) and (max-width:900px){
-  .hero .hero-text > p{ padding-left:0; padding-right:0; }
-}
-
-/* Two-line hero heading support (used on About) */
+/* Two-line heading helper (About) */
 @media (max-width:900px){
-  .hero .hero-text h1.two-line{ line-height:1.1; }
   .hero .hero-text h1.two-line span{ display:block; white-space:nowrap; }
 }
 
 
-/* --- Normalize About (and other non-home) hero gutters to match Home on mobile --- */
-@media (max-width: 600px){
-  .hero:not(.home-hero){ padding-left: 12px !important; padding-right: 12px !important; }
-  .hero:not(.home-hero) .hero-text{ max-width: 560px !important; margin-left: 0 !important; margin-right: 0 !important; }
+
+/* FINAL: Make non-Home hero outer gutters match Home exactly on mobile */
+@media (max-width:600px){
+  .hero:not(.home-hero){ padding-left:12px; padding-right:12px; }
 }
-@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
-  .hero:not(.home-hero){ padding-left: 20px !important; padding-right: 20px !important; }
-  .hero:not(.home-hero) .hero-text{ max-width: 560px !important; margin-left: 0 !important; margin-right: 0 !important; }
+@media (orientation:portrait) and (min-width:601px) and (max-width:900px){
+  .hero:not(.home-hero){ padding-left:20px; padding-right:20px; }
+}
+
+
+/* === Unified mobile hero gutters for ALL pages (Home + About + others) === */
+/* Phones */
+@media (max-width:600px){
+  .hero{ padding-left:12px !important; padding-right:12px !important; }
+  .hero .hero-text{ padding-left:26px !important; padding-right:26px !important; }
+  .hero .hero-text > p{ padding-left:0 !important; padding-right:0 !important; }
+}
+/* Portrait medium phones / small tablets */
+@media (orientation:portrait) and (min-width:601px) and (max-width:900px){
+  .hero{ padding-left:20px !important; padding-right:20px !important; }
+  .hero .hero-text{ padding-left:26px !important; padding-right:26px !important; }
+  .hero .hero-text > p{ padding-left:0 !important; padding-right:0 !important; }
 }
 
