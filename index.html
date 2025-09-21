@@ -75,6 +75,25 @@ p0px){
   .hero.home-hero .hero-text > h1 br{ display: inline; }
 }
 </style>
+
+<style id="home-about-spacing-lock">
+/* Final override to mirror About on mobile */
+@media (min-width: 601px) and (max-width: 900px){
+  /* No container padding between 601–900px (About does not use it here) */
+  .hero.home-hero .hero-text{ padding-left: 0 !important; padding-right: 0 !important; }
+}
+@media (max-width: 600px){
+  /* Use the same 26px container padding as About */
+  .hero.home-hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
+  .hero.home-hero .hero-text > h1{
+    font-size: clamp(2.6rem, 6.6vw + 0.5rem, 3.2rem) !important;
+    line-height: 1.12 !important;
+  }
+}
+/* Ensure the overall hero horizontal padding matches About (20px) at all widths */
+.hero.home-hero{ padding-left: 20px !important; padding-right: 20px !important; }
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
