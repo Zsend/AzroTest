@@ -46,7 +46,67 @@ transition:none !important;
 <link as="image" href="logo.webp" rel="preload"/>
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="newchart.webp" rel="preload"/>
-<link href="style.css" rel="stylesheet"/>
+\1
+<!-- Readability / layout improvements for About page -->
+<style>
+  :root{
+    --accent: #1ee0c8;
+    --bg: #081125;
+    --text: #e9eef5;
+    --muted: #b7c3d4;
+    --card: rgba(255,255,255,.05);
+    --border: rgba(255,255,255,.12);
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(0,0,0,.45);
+    --max: 68ch;
+  }
+  .tv-section{ position:relative; isolation:isolate; color:var(--text); background:var(--bg); overflow:clip; padding:clamp(64px,6vw,96px) 20px; }
+  .tv-bg{ position:absolute; inset:0;
+    background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(29, 215, 201,.35), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(71, 104, 255,.25), transparent 60%),
+      url('coolback.webp') center/cover no-repeat;
+    filter:saturate(1.05); z-index:-2; }
+  .tv-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65)); z-index:-1; }
+  .tv-container{ margin:0 auto; max-width:1100px; }
+
+  .eyebrow{ letter-spacing:.08em; text-transform:uppercase; font-size:.85rem; color:var(--muted); margin:0 0 .5rem 0; }
+  #tv-title{ font-size: clamp(1.8rem, 2.8vw + 1rem, 3rem); line-height:1.15; margin:0 0 .75rem 0; text-wrap:balance; }
+  .lead{ max-width:var(--max); font-size: clamp(1.05rem, .45vw + 1rem, 1.25rem); line-height:1.6; color:var(--text); margin:0 0 1.25rem 0; }
+  .muted{ color:var(--muted); max-width:var(--max); }
+  .country-note{ opacity:.8; font-size:.95rem; margin-top:.75rem; }
+
+  .cta-row{ display:flex; gap:.75rem; flex-wrap:wrap; margin: 1rem 0 1.75rem; }
+  .btn{ display:inline-block; padding:.8rem 1.1rem; border-radius:10px; text-decoration:none; font-weight:600; border:1px solid var(--border); box-shadow:var(--shadow); }
+  .btn-primary{ background: linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, black)); color:#081115; border:none; }
+  .btn-ghost{ background: transparent; color: var(--text); }
+  .cta-row-bottom{ margin-top:1rem; }
+
+  .stat-grid{ display:grid; gap:.75rem; grid-template-columns: repeat(3, minmax(0,1fr)); max-width:900px; margin: 0 0 1.75rem 0; }
+  .stat{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem; }
+  .stat-value{ font-size: clamp(1.35rem, 2vw + .6rem, 1.85rem); font-weight:800; }
+  .stat-label{ color:var(--muted); font-size:.95rem; margin-top:.25rem; }
+
+  .subhead{ margin: 1.25rem 0 .5rem 0; font-size: clamp(1.25rem, .8vw + 1rem, 1.6rem); }
+  .feature-grid{ display:grid; gap:.75rem; grid-template-columns:1fr; list-style:none; padding:0; margin:0 0 1rem 0; max-width:1000px; }
+  .feature{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.1rem; }
+  .feature h3{ margin:0 0 .25rem 0; font-size:1.05rem; }
+  .feature p{ margin:0; color:var(--muted); max-width:var(--max); }
+
+  .how{ margin-top:.5rem; }
+  .steps{ max-width:var(--max); margin:.25rem 0 0 0; padding-left:1.1rem; line-height:1.6; }
+  .steps li{ margin-bottom:.4rem; }
+
+  .disclosure{ margin-top:1rem; max-width:var(--max); background:rgba(255,255,255,.03); border:1px dashed var(--border); border-radius:10px; padding:.75rem 1rem; }
+  .disclosure summary{ cursor:pointer; font-weight:600; }
+  .disclosure p{ color:var(--muted); margin:.5rem 0 0; }
+
+  @media (max-width: 860px){ .stat-grid{ grid-template-columns:1fr; } }
+  @media (min-width:861px) and (max-width:1120px){ .feature-grid{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:1121px){ .feature-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+  @media (prefers-reduced-motion: reduce){ .tv-bg{ filter:none; } }
+</style>
 <!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
 </style>
@@ -74,35 +134,92 @@ transition:none !important;
 <a href="resources.html">RESOURCES</a>
 </nav>
 </header>
-<section class="hero">
-<div class="hero-text" style="text-align:center;">
-<h1>Map the Cycle.<br/>Cut the Noise.</h1>
-<p>AZRO Systems™ builds future‑ready tools that flag major opportunity and risk before the crowd. The XRP Top/Bottom Detector is live on TradingView®: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market‑wide elevated‑risk and top warnings—so you act with a plan, not emotion.</p>
-<p>Stop guessing the top. Stop missing the bottom.</p>
-<p>Works out of the box—no complex tuning. Load, set alerts, done.</p>
-<p>Catch more of the move, stomach less of the pain.</p>
-<p><strong>Proven on historical data</strong> Across a 10‑year hypothetical backtest (2015–present), a simple rule—buy MAJOR Bottoms, sell MAJOR Tops—produced ~9× more total profit than XRP buy‑and‑hold with ~6× lower max drawdown. The Market‑Wide Top Warning historically fired before severe alt‑coin sell‑offs and drawdowns, giving practical lead time to de‑risk and protect gains.*</p>
-<p><strong>On‑chart labels &amp; instant alerts</strong></p>
-<p>• <strong>MAJOR TOP / MAJOR BOTTOM (XRP):</strong> Cycle‑level confirmations for bigger swings.</p>
-<p>• <strong>RADAR TOP / RADAR BOTTOM (XRP):</strong> Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.</p>
-<p>• <strong>LIGHT tops &amp; bottoms (XRP):</strong> Stay proactive between major turns.</p>
-<p>• <strong>Elevated Risk (XRP + market‑wide):</strong> Persistent caution markers when conditions worsen.</p>
-<p>• <strong>Market‑Wide Top Warning (non‑XRP):</strong> Optional overlay when many coins meet top conditions—clear, market‑wide caution.</p>
-<p>Replace guess‑targets and headline chasing. Visualize the cycle, understand risk, and evaluate buy/sell zones with data‑driven confidence. TradingView alerts (push/email) fire the moment conditions are met—less screen‑watching, more executing a plan.</p>
-<p>Additional crypto‑asset models are in active development.</p>
-<p><em>Built and maintained in the United States.</em></p>
-<div class="hero-image chart-img" style="max-width:600px;margin:40px auto;">
-<picture>
-<source media="(max-width: 900px)" srcset="newchart-720.png" type="image/webp">
-<picture><source srcset="newchart.avif" type="image/avif"/><source srcset="newchart.webp" type="image/webp"/><img alt="XRP Top/Bottom Detector – chart with Major Top and Major Bottom labels" src="newchart.png"/></picture>
-</source></picture>
-</div>
-<p><em>*Hypothetical results. Backtests have limitations and do not guarantee future performance.</em></p>
-<div class="btn-container" style="text-align:center;margin-top:40px;margin-bottom:60px;">
-<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-</div>
-</div>
+
+<section class="tv-section" aria-labelledby="tv-title">
+  <div class="tv-bg" aria-hidden="true"></div>
+  <div class="tv-scrim" aria-hidden="true"></div>
+
+  <div class="tv-container">
+    <p class="eyebrow">TradingView® Indicator</p>
+    <h1 id="tv-title">Catch cycle turns. Cut risk.</h1>
+    <p class="lead">
+      The <strong>XRP Top/Bottom Detector</strong> prints on‑chart labels at likely cycle turns and
+      sends push/email alerts—so you act with a plan, not emotion.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+      <a class="btn btn-ghost" href="resources.html">See example alerts</a>
+    </div>
+
+    <div class="stat-grid" role="list" aria-label="Backtest highlights">
+      <div class="stat" role="listitem">
+        <div class="stat-value">~9×</div>
+        <div class="stat-label">more total profit vs. buy‑and‑hold</div>
+      </div>
+      <div class="stat" role="listitem">
+        <div class="stat-value">~6×</div>
+        <div class="stat-label">lower max drawdown</div>
+      </div>
+      <div class="stat" role="listitem">
+        <div class="stat-value">10 yrs</div>
+        <div class="stat-label">hypothetical backtest (2015–present)<sup><a href="#disclosure">*</a></sup></div>
+      </div>
+    </div>
+
+    <h2 class="subhead">On‑chart labels & instant alerts</h2>
+    <ul class="feature-grid">
+      <li class="feature">
+        <h3>MAJOR Top / MAJOR Bottom (XRP)</h3>
+        <p>Cycle‑level confirmations for bigger swing entries/exits.</p>
+      </li>
+      <li class="feature">
+        <h3>RADAR Top / RADAR Bottom (XRP)</h3>
+        <p>Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.</p>
+      </li>
+      <li class="feature">
+        <h3>LIGHT Tops & Bottoms (XRP)</h3>
+        <p>Stay proactive between major turns.</p>
+      </li>
+      <li class="feature">
+        <h3>Elevated Risk (XRP + Market‑Wide)</h3>
+        <p>Persistent caution markers when conditions worsen.</p>
+      </li>
+      <li class="feature">
+        <h3>Market‑Wide Top Warning (non‑XRP)</h3>
+        <p>Optional overlay: when many coins meet top conditions, signal clear market‑wide caution.</p>
+      </li>
+    </ul>
+
+    <div class="how">
+      <h2 class="subhead">How it works</h2>
+      <ol class="steps">
+        <li><strong>Load</strong> the indicator. No complex tuning.</li>
+        <li><strong>Set alerts</strong> to your device via TradingView.</li>
+        <li><strong>Execute your plan:</strong> visualize the cycle, evaluate buy/sell zones, protect gains.</li>
+      </ol>
+    </div>
+
+    <div class="cta-row cta-row-bottom">
+      <a class="btn btn-primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+      <a class="btn btn-ghost" href="resources.html">Read quick start</a>
+    </div>
+
+    <p class="muted">Additional crypto‑asset models are in active development.</p>
+
+    <details id="disclosure" class="disclosure">
+      <summary>Important disclosure</summary>
+      <p>
+        * Performance figures are <strong>hypothetical</strong> backtests and not actual trading results.
+        Past performance does not guarantee future results. Indicators are tools, not advice; trading involves risk,
+        including possible loss of principal.
+      </p>
+    </details>
+
+    <p class="country-note">Built and maintained in the United States.</p>
+  </div>
 </section>
+
 <footer class="footer" data-turbo-permanent=""> 2025 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) MADE IN THE USA · support@azrosystems.com · <a aria-label="Azro Systems on X" href="https://x.com/AzroSystems" rel="noopener noreferrer" target="_blank"><svg class="x-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
 </footer>
 <div class="sticky-cta">
