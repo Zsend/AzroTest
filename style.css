@@ -135,25 +135,20 @@ footer{
 .about-list dd{margin:0 0 1rem 0;}
 
 
-/* === Home hero image alignment fine‑tune (desktop only) === */
-@media (min-width: 901px) {
-  .home-hero .chart-img { margin-top: 5.75rem; }
-}
-
-/* === Chart-note centering guard (all breakpoints) === */
-.home-hero .hero-image { display:flex; flex-direction:column; align-items:center; }
-.home-hero .hero-image .chart-note { margin-left:auto !important; margin-right:auto !important; text-align:center !important; }
-
-/* === Home hero alignment smoothing (901px–1200px) === */
-@media (min-width: 901px) and (max-width: 1200px) {
-  .home-hero { align-items:center !important; }
-  .home-hero .hero-text { left:0 !important; text-align:center; }
-  .home-hero .hero-image { margin-right:0 !important; align-items:center; }
-}
-
-/* === Home hero centering band (901px–1439px) === */
-@media (min-width: 901px) and (max-width: 1439px) {
-  .home-hero { align-items:center !important; }
-  .home-hero .hero-text { left:0 !important; text-align:center; }
-  .home-hero .hero-image { margin-right:0 !important; align-items:center; }
+/* === Home hero: keep centered for stacked layout (<1440px) ===
+   Prevent any left-snap while the hero stacks vertically. */
+@media (max-width: 1439px) {
+  .home-hero {
+    align-items: center !important;
+  }
+  .home-hero .hero-text {
+    left: 0 !important;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home-hero .hero-image {
+    margin-right: 0 !important;
+    align-items: center;
+  }
 }
