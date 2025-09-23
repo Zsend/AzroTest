@@ -176,5 +176,287 @@ transition:none !important;
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <script defer="" src="script.js"></script>
+
+<style id="azro-modal-styles">
+/* === Feature Modal (namespaced) =================================== */
+.azro-modal {
+  width: min(980px, 94vw);
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(14,27,76,.96), rgba(37,12,88,.96));
+  color: var(--text-body, #E0E0E0);
+  box-shadow: 0 40px 120px rgba(0,0,0,.55);
+}
+.azro-modal::backdrop{
+  background: rgba(2,6,23,.66);
+  backdrop-filter: blur(2px);
+}
+.azro-modal__head{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.azro-modal__title{
+  margin: 0;
+  font: 800 clamp(1.1rem, .7vw + 1rem, 1.4rem)/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text-head, #fff);
+}
+.azro-modal__sub{
+  margin: 2px 0 0;
+  color: var(--text-sub, #cbd5e1);
+  font-size: .95rem;
+}
+.azro-modal__close{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  color: var(--text-body, #fff);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.azro-modal__body{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+@media (max-width: 900px){
+  .azro-modal__body{ grid-template-columns: 1fr; }
+}
+.azro-modal__text{
+  display: grid;
+  gap: 10px;
+}
+.azro-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: .8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent-a, #00e5ff), var(--accent-b, #8b46ff));
+  box-shadow: 0 6px 22px rgba(0,0,0,.35);
+}
+.azro-modal__media{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  padding: 10px;
+}
+.azro-video{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0,229,255,.18), rgba(139,70,255,.18));
+  display: grid;
+  place-items: center;
+  color: var(--text-head, #fff);
+}
+.azro-video__ph{
+  font-weight: 800;
+  letter-spacing: .3px;
+  text-align: center;
+  padding: 10px;
+}
+.azro-video iframe,
+.azro-video video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.azro-modal__foot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 12px 16px;
+  color: var(--text-sub, #cbd5e1);
+  font-size: .9rem;
+}
+/* Make the cards in the targeted section obviously clickable (only in that section) */
+.azro-oclai .grid-3 .card{
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .12s ease;
+}
+.azro-oclai .grid-3 .card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 48px rgba(0,0,0,.35);
+}
+</style>
+
+
+<!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
+<dialog class="azro-modal" id="featureModal" aria-labelledby="fmTitle">
+  <form method="dialog">
+    <div class="azro-modal__head">
+      <div>
+        <h3 class="azro-modal__title" id="fmTitle">Feature</h3>
+        <p class="azro-modal__sub" id="fmSub">—</p>
+      </div>
+      <button class="azro-modal__close" value="close" aria-label="Close">Close</button>
+    </div>
+    <div class="azro-modal__body">
+      <div class="azro-modal__text">
+        <span class="azro-pill" id="fmBadge">On‑chart Label & Alert</span>
+        <p id="fmDesc">This modal explains how the on‑chart label and instant alert work for this signal. We can expand this copy anytime.</p>
+        <ul id="fmBullets"></ul>
+      </div>
+      <div class="azro-modal__media">
+        <div class="azro-video" id="fmVideoBox" role="region" aria-label="Feature demo video">
+          <div class="azro-video__ph">Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.</div>
+        </div>
+      </div>
+    </div>
+    <div class="azro-modal__foot">
+      <span>Part of: <strong>On‑chart labels & instant alerts</strong></span>
+      <button class="azro-modal__close" value="close">Done</button>
+    </div>
+  </form>
+</dialog>
+
+
+<script id="azro-modal-script">
+(function(){
+  // Find the On‑chart labels & instant alerts section
+  const allH2 = Array.from(document.querySelectorAll('h2.h-subhead'));
+  const targetH2 = allH2.find(h =>
+    /on[\-\u2010\u2011]?chart labels\s*&\s*instant alerts/i.test(h.textContent.trim())
+  );
+  if(!targetH2) return;
+  // Add a hook class to scope hover visuals
+  const section = targetH2.parentElement;
+  section.classList.add('azro-oclai');
+
+  const grid = section.querySelector('.grid-3');
+  if(!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.card'));
+
+  // Derive details from card content, then enrich with longer copy + (optional) video
+  // You can edit URLs below later; we lazy-load iframes on open.
+  const ENRICH = {
+    "MAJOR Top / MAJOR Bottom (XRP)": {
+      tagline: "Cycle‑level confirmations for bigger swing entries/exits.",
+      bullets: [
+        "Printed on the chart exactly at the signal bar, with crystal‑clear label styling.",
+        "Instant push/email alert containing the feature name, price, and timestamp.",
+        "Designed for decisive swing calls at cycle inflection points."
+      ],
+      video: "" // e.g., "https://www.youtube.com/embed/XXXXXXXX?rel=0"
+    },
+    "RADAR Top / RADAR Bottom (XRP)": {
+      tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
+      bullets: [
+        "Fires before Major signals, helping you prepare position sizing and risk.",
+        "Pairs well with your ladder entries/exits playbook.",
+        "Alerts keep you proactive when momentum shifts."
+      ],
+      video: ""
+    },
+    "LIGHT Tops & Bottoms (XRP)": {
+      tagline: "Stay proactive between major turns.",
+      bullets: [
+        "Higher cadence labels to help navigate chop without over‑trading.",
+        "Pairs with medium‑term trend filters to avoid noise.",
+        "Great for tactical trims/add‑backs."
+      ],
+      video: ""
+    },
+    "Elevated Risk (XRP & Market‑Wide)": {
+      tagline: "Persistent caution markers when conditions worsen.",
+      bullets: [
+        "Highlights regimes where risk increases and staying defensive pays.",
+        "Optional market‑wide overlay to keep a broad read on conditions.",
+        "Complements stop management and hedging rules."
+      ],
+      video: ""
+    },
+    "Market‑Wide Top Warning (non‑XRP)": {
+      tagline: "Optional overlay: when many coins meet top conditions, signal clear market‑wide caution.",
+      bullets: [
+        "Helps avoid isolated bias when the broader market shows exhaustion.",
+        "Pairs with Major/Radar to confirm risk‑off pivots.",
+        "Useful for cross‑asset exposure management."
+      ],
+      video: ""
+    }
+  };
+
+  const modal = document.getElementById('featureModal');
+  const fmTitle  = document.getElementById('fmTitle');
+  const fmSub    = document.getElementById('fmSub');
+  const fmBadge  = document.getElementById('fmBadge');
+  const fmDesc   = document.getElementById('fmDesc');
+  const fmBullets= document.getElementById('fmBullets');
+  const fmVideo  = document.getElementById('fmVideoBox');
+
+  function openModalFromCard(card){
+    const title = (card.querySelector('h3')?.textContent || 'Feature').trim();
+    const sub   = (card.querySelector('p')?.textContent || '').trim();
+    const e = ENRICH[title] || { tagline: sub, bullets: [], video: "" };
+
+    fmTitle.textContent = title;
+    fmSub.textContent = e.tagline || sub;
+    fmDesc.textContent = "How it works: " + (e.tagline || sub);
+    fmBullets.innerHTML = "";
+    (e.bullets || []).forEach(b => {
+      const li = document.createElement('li');
+      li.textContent = b;
+      fmBullets.appendChild(li);
+    });
+
+    // Lazy‑load iframe if a URL exists, otherwise show placeholder
+    fmVideo.innerHTML = '';
+    if(e.video){
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.src = e.video;
+      fmVideo.appendChild(iframe);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'azro-video__ph';
+      ph.innerHTML = 'Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.';
+      fmVideo.appendChild(ph);
+    }
+
+    modal.showModal();
+  }
+
+  // Clicking outside panel should close
+  modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
+  modal.addEventListener('close', () => {
+    // Stop playback by clearing iframe
+    const iframe = fmVideo.querySelector('iframe');
+    if(iframe) iframe.src = 'about:blank';
+  });
+
+  // Hook up cards
+  cards.forEach(card => {
+    card.addEventListener('click', () => openModalFromCard(card));
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', (ev) => {
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        openModalFromCard(card);
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
