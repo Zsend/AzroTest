@@ -100,3 +100,41 @@
 .media-card .media{ aspect-ratio: 16 / 9; }
 .media-card picture, .media-card img{ display:block; width:100%; height:100%; object-fit: cover; }
 .media-card figcaption{ color: var(--text-sub, #D4D9FF); font-size: .95rem; text-align: center; padding: .6rem .75rem .8rem; }
+
+
+/* === Global center pass (non-destructive) ===============================
+   Centers main content blocks and cards across pages. Keeps paragraphs
+   readable by constraining line length while aligning the layout center.
+   ====================================================================== */
+:root{ --measure: 68ch; }
+
+/* Center hero content and text */
+.hero .hero-text { text-align: center; margin-left: auto; margin-right: auto; }
+.hero .hero-text p { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+
+/* Make common grids/blocks center within the page */
+.features-wrapper,
+.features-grid,
+.pricing-grid,
+.resources-grid,
+.stat-grid,
+.about-feature-grid,
+.about-steps,
+.disclosure-box,
+.media-card { margin-left:auto; margin-right:auto; }
+
+/* Center grid items and cards; keep body text readable */
+.features-grid, .pricing-grid, .resources-grid { justify-items: center; }
+.features-grid .feature-card,
+.pricing-grid .price-card,
+.resources-grid .resource-card { text-align: center; max-width: 420px; }
+
+/* Ensure hero/media images are centered and responsive */
+.hero-image, .chart-img { margin-left: auto; margin-right: auto; display: block; }
+.media-card { margin-left:auto; margin-right:auto; }
+
+/* Steps list: center the list block, keep list text left-aligned for readability */
+.about-steps ol { display: inline-block; text-align: left; margin-left: auto; margin-right: auto; }
+
+/* CTA rows always centered */
+.cta-row { justify-content: center; }
