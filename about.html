@@ -178,17 +178,29 @@ transition:none !important;
 <script defer="" src="script.js"></script>
 
 <style id="azro-modal-styles">
-/* === Feature Modal (namespaced) =================================== */
+/* === Feature Modal (namespaced) - centered & responsive ============= */
+.azro-modal[open]{display:block}
 .azro-modal {
+  /* Center dialog in viewport */
+  position: fixed;
+  inset: 0;               /* cover the viewport to enable centering via margin auto */
+  margin: auto;           /* center horizontally & vertically */
   width: min(980px, 94vw);
+  max-height: 90svh; max-height: 90vh;
+  overflow: hidden;
   padding: 0;
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(14,27,76,.96), rgba(37,12,88,.96));
+  background: linear-gradient(180deg, rgba(14,27,76,.96), rgba(37,12,88,.96));
   color: var(--text-body, #E0E0E0);
   box-shadow: 0 40px 120px rgba(0,0,0,.55);
 }
+/* Ensure dialog's scrollable body when needed */
+.azro-modal__scroll{
+  overflow: auto;
+  max-height: calc(90svh - 58px - 52px); /* subtract head + foot approx */
+}
+
 .azro-modal::backdrop{
   background: rgba(2,6,23,.66);
   backdrop-filter: blur(2px);
@@ -227,7 +239,11 @@ transition:none !important;
   padding: 16px;
 }
 @media (max-width: 900px){
+  .azro-modal { width: min(760px, 96vw); }
   .azro-modal__body{ grid-template-columns: 1fr; }
+}
+@media (max-width: 520px){
+  .azro-modal { width: 96vw; border-radius: 12px; }
 }
 .azro-modal__text{
   display: grid;
@@ -286,7 +302,7 @@ transition:none !important;
   color: var(--text-sub, #cbd5e1);
   font-size: .9rem;
 }
-/* Make the cards in the targeted section obviously clickable (only in that section) */
+/* Make the cards in the targeted section clickable (only in that section) */
 .azro-oclai .grid-3 .card{
   cursor: pointer;
   transition: transform .08s ease, box-shadow .12s ease;
@@ -296,7 +312,6 @@ transition:none !important;
   box-shadow: 0 18px 48px rgba(0,0,0,.35);
 }
 </style>
-
 
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
 <dialog class="azro-modal" id="featureModal" aria-labelledby="fmTitle">
@@ -308,15 +323,17 @@ transition:none !important;
       </div>
       <button class="azro-modal__close" value="close" aria-label="Close">Close</button>
     </div>
-    <div class="azro-modal__body">
-      <div class="azro-modal__text">
-        <span class="azro-pill" id="fmBadge">On‑chart Label & Alert</span>
-        <p id="fmDesc">This modal explains how the on‑chart label and instant alert work for this signal. We can expand this copy anytime.</p>
-        <ul id="fmBullets"></ul>
-      </div>
-      <div class="azro-modal__media">
-        <div class="azro-video" id="fmVideoBox" role="region" aria-label="Feature demo video">
-          <div class="azro-video__ph">Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.</div>
+    <div class="azro-modal__scroll">
+      <div class="azro-modal__body">
+        <div class="azro-modal__text">
+          <span class="azro-pill" id="fmBadge">On‑chart Label & Alert</span>
+          <p id="fmDesc">This modal explains how the on‑chart label and instant alert work for this signal. We can expand this copy anytime.</p>
+          <ul id="fmBullets"></ul>
+        </div>
+        <div class="azro-modal__media">
+          <div class="azro-video" id="fmVideoBox" role="region" aria-label="Feature demo video">
+            <div class="azro-video__ph">Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -327,16 +344,14 @@ transition:none !important;
   </form>
 </dialog>
 
-
 <script id="azro-modal-script">
 (function(){
-  // Find the On‑chart labels & instant alerts section
+  // Locate the "On‑chart labels & instant alerts" section by its H2
   const allH2 = Array.from(document.querySelectorAll('h2.h-subhead'));
   const targetH2 = allH2.find(h =>
     /on[\-\u2010\u2011]?chart labels\s*&\s*instant alerts/i.test(h.textContent.trim())
   );
   if(!targetH2) return;
-  // Add a hook class to scope hover visuals
   const section = targetH2.parentElement;
   section.classList.add('azro-oclai');
 
@@ -344,8 +359,7 @@ transition:none !important;
   if(!grid) return;
   const cards = Array.from(grid.querySelectorAll('.card'));
 
-  // Derive details from card content, then enrich with longer copy + (optional) video
-  // You can edit URLs below later; we lazy-load iframes on open.
+  // Enrichment data for each card
   const ENRICH = {
     "MAJOR Top / MAJOR Bottom (XRP)": {
       tagline: "Cycle‑level confirmations for bigger swing entries/exits.",
@@ -354,7 +368,7 @@ transition:none !important;
         "Instant push/email alert containing the feature name, price, and timestamp.",
         "Designed for decisive swing calls at cycle inflection points."
       ],
-      video: "" // e.g., "https://www.youtube.com/embed/XXXXXXXX?rel=0"
+      video: ""
     },
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
@@ -394,13 +408,13 @@ transition:none !important;
     }
   };
 
-  const modal = document.getElementById('featureModal');
-  const fmTitle  = document.getElementById('fmTitle');
-  const fmSub    = document.getElementById('fmSub');
-  const fmBadge  = document.getElementById('fmBadge');
-  const fmDesc   = document.getElementById('fmDesc');
-  const fmBullets= document.getElementById('fmBullets');
-  const fmVideo  = document.getElementById('fmVideoBox');
+  const modal   = document.getElementById('featureModal');
+  const fmTitle = document.getElementById('fmTitle');
+  const fmSub   = document.getElementById('fmSub');
+  const fmBadge = document.getElementById('fmBadge');
+  const fmDesc  = document.getElementById('fmDesc');
+  const fmBullets = document.getElementById('fmBullets');
+  const fmVideo = document.getElementById('fmVideoBox');
 
   function openModalFromCard(card){
     const title = (card.querySelector('h3')?.textContent || 'Feature').trim();
@@ -417,7 +431,6 @@ transition:none !important;
       fmBullets.appendChild(li);
     });
 
-    // Lazy‑load iframe if a URL exists, otherwise show placeholder
     fmVideo.innerHTML = '';
     if(e.video){
       const iframe = document.createElement('iframe');
@@ -435,7 +448,7 @@ transition:none !important;
     modal.showModal();
   }
 
-  // Clicking outside panel should close
+  // Backdrop click closes (centered dialog uses fixed position)
   modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
   modal.addEventListener('close', () => {
     // Stop playback by clearing iframe
@@ -443,7 +456,6 @@ transition:none !important;
     if(iframe) iframe.src = 'about:blank';
   });
 
-  // Hook up cards
   cards.forEach(card => {
     card.addEventListener('click', () => openModalFromCard(card));
     card.setAttribute('role', 'button');
