@@ -76,18 +76,30 @@ transition:none !important;
 </header>
 
 <section class="hero about-hero section-scrim">
-  <div class="hero-text container">
+  <div class="hero-text container measure">
     <div class="panel">
       <p class="h-eyebrow">TradingView® Indicator</p>
-      <h1>Catch cycle turns. Cut risk.</h1>
-      <p class="h-lead measure">
-        The <strong>XRP Top/Bottom Detector</strong> prints on‑chart labels at likely cycle turns and sends push/email
-        alerts—so you act with a plan, not emotion.
+      <h1>Spot tops & bottoms with confidence.</h1>
+      <p class="h-lead">
+        The <strong>XRP Top/Bottom Detector</strong> prints on‑chart labels at likely cycle turns and
+        sends push/email alerts—so you act with a plan, not emotion.
       </p>
 
       <div class="cta-row">
         <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
         <a class="btn" href="resources.html">See example alerts</a>
+      </div>
+
+      <!-- Restored chart image -->
+      <div class="hero-media">
+        <div class="chart-img">
+          <picture>
+            <source srcset="newchart.avif" type="image/avif"/>
+            <source srcset="newchart.webp" type="image/webp"/>
+            <img src="newchart.png" alt="Example chart with Major Top and Major Bottom labels" width="1400" height="800" loading="lazy"/>
+          </picture>
+        </div>
+        <p class="chart-note">Labels and risk markers display directly on your TradingView chart.</p>
       </div>
 
       <div class="stat-grid">
@@ -131,7 +143,7 @@ transition:none !important;
 
       <div class="stack" style="--stack-gap: .6rem; margin-top:.6rem;">
         <h2 class="h-subhead">How it works</h2>
-        <ol class="measure" style="padding-left:1.1rem; line-height:1.6;">
+        <ol class="measure" style="padding-left:1.1rem; line-height:1.6; text-align:left; margin-inline:auto;">
           <li><strong>Load</strong> the indicator. No complex tuning.</li>
           <li><strong>Set alerts</strong> to your device via TradingView.</li>
           <li><strong>Execute your plan:</strong> visualize the cycle, evaluate buy/sell zones, protect gains.</li>
@@ -145,16 +157,16 @@ transition:none !important;
 
       <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
 
-      <details id="disclosure" class="disclosure-box measure" style="margin-top: .9rem;">
+      <details id="disclosure" class="card measure" style="margin-top: .9rem; text-align:left;">
         <summary><strong>Important disclosure</strong></summary>
-        <p>
+        <p class="h-muted" style="margin-top:.5rem;">
           * Performance figures are <strong>hypothetical</strong> backtests and not actual trading results.
           Past performance does not guarantee future results. Indicators are tools, not advice; trading involves risk,
           including possible loss of principal.
         </p>
       </details>
 
-      <p class="h-muted">Built and maintained in the United States.</p>
+      <p class="h-muted" style="margin-top:.6rem;">Built and maintained in the United States.</p>
     </div>
   </div>
 </section>
