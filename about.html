@@ -16,12 +16,64 @@ background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
 z-index:9998;
 pointer-events:none;
 }
+
+/* === Layout upgrade: stack & center the five cards =================== */
+.azro-oclai .grid-3{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.65rem, 1.6vw, .9rem) !important;
+  justify-items: center;
+  width: 100%;
+  margin-inline: auto;
+}
+.azro-oclai .grid-3 .card{
+  width: min(960px, 100%);
+  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
+}
+.azro-oclai .grid-3 .card h3{
+  margin: 0 0 .35rem 0;
+  text-align: center;
+}
+.azro-oclai .grid-3 .card p{
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 480px){
+  .azro-oclai .grid-3 .card{ width: 96%; }
+}
+
 </style> <style id="critical-header-bg">
 /* critical header background — prevents first‑paint flash */
 .site-header{
 background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
 transition:none !important;
 }
+
+/* === Layout upgrade: stack & center the five cards =================== */
+.azro-oclai .grid-3{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.65rem, 1.6vw, .9rem) !important;
+  justify-items: center;
+  width: 100%;
+  margin-inline: auto;
+}
+.azro-oclai .grid-3 .card{
+  width: min(960px, 100%);
+  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
+}
+.azro-oclai .grid-3 .card h3{
+  margin: 0 0 .35rem 0;
+  text-align: center;
+}
+.azro-oclai .grid-3 .card p{
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 480px){
+  .azro-oclai .grid-3 .card{ width: 96%; }
+}
+
 </style> <meta charset="utf-8"/>
 <!-- ———— SOCIAL PREVIEW ———— -->
 <!-- Twitter / X -->
@@ -49,6 +101,32 @@ transition:none !important;
 <link href="style.css" rel="stylesheet"/>
 <link rel="stylesheet" href="brand.css"/><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
+
+/* === Layout upgrade: stack & center the five cards =================== */
+.azro-oclai .grid-3{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.65rem, 1.6vw, .9rem) !important;
+  justify-items: center;
+  width: 100%;
+  margin-inline: auto;
+}
+.azro-oclai .grid-3 .card{
+  width: min(960px, 100%);
+  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
+}
+.azro-oclai .grid-3 .card h3{
+  margin: 0 0 .35rem 0;
+  text-align: center;
+}
+.azro-oclai .grid-3 .card p{
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 480px){
+  .azro-oclai .grid-3 .card{ width: 96%; }
+}
+
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description">
 <link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
@@ -60,6 +138,32 @@ transition:none !important;
     line-height: 1.12 !important;
   }
 }
+
+/* === Layout upgrade: stack & center the five cards =================== */
+.azro-oclai .grid-3{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.65rem, 1.6vw, .9rem) !important;
+  justify-items: center;
+  width: 100%;
+  margin-inline: auto;
+}
+.azro-oclai .grid-3 .card{
+  width: min(960px, 100%);
+  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
+}
+.azro-oclai .grid-3 .card h3{
+  margin: 0 0 .35rem 0;
+  text-align: center;
+}
+.azro-oclai .grid-3 .card p{
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 480px){
+  .azro-oclai .grid-3 .card{ width: 96%; }
+}
+
 </style>
 </head>
 <body>
@@ -311,6 +415,32 @@ transition:none !important;
   transform: translateY(-2px);
   box-shadow: 0 18px 48px rgba(0,0,0,.35);
 }
+
+/* === Layout upgrade: stack & center the five cards =================== */
+.azro-oclai .grid-3{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.65rem, 1.6vw, .9rem) !important;
+  justify-items: center;
+  width: 100%;
+  margin-inline: auto;
+}
+.azro-oclai .grid-3 .card{
+  width: min(960px, 100%);
+  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
+}
+.azro-oclai .grid-3 .card h3{
+  margin: 0 0 .35rem 0;
+  text-align: center;
+}
+.azro-oclai .grid-3 .card p{
+  margin: 0;
+  text-align: center;
+}
+@media (max-width: 480px){
+  .azro-oclai .grid-3 .card{ width: 96%; }
+}
+
 </style>
 
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
