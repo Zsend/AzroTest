@@ -77,14 +77,14 @@ transition:none !important;
 
 <section class="hero about-hero section-scrim">
   <div class="hero-text container">
-    <div class="panel">
-      <p class="h-eyebrow">TradingView® Indicator</p>
-      <h1>Map the cycle. Cut the noise.</h1>
-      <p class="h-lead measure">AZRO Systems™ develops future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts. The XRP Top/Bottom Detector is live on TradingView®: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market-wide elevated-risk and top warnings—so you act with a plan, not emotion. Stop guessing the top. Stop missing the bottom. Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
+    <div class="panel"><h1>Map the cycle. Cut the noise.</h1>
+      <p class="h-eyebrow" style="margin-top:.2rem;"><a class="eyebrow-link" href="https://www.tradingview.com/script/4M3OWBpz-AZRO-Systems-XRP-Top-Bottom-Indicator-Invite-Only/" target="_blank" rel="noopener">XRP TradingView® Indicator</a></p>
+      <p class="h-lead measure">AZRO Systems™ develops future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts. The XRP Top/Bottom Detector is live on TradingView®: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market-wide elevated-risk and top warnings—so you act with a plan, not emotion. Stop guessing the top. Stop missing the bottom.</p>
+      <p class="h-lead measure">Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
 
       <div class="cta-row">
         <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-        <a class="btn" href="resources.html">See example alerts</a>
+        <button class="btn" id="freeTrialBtn" type="button">Free trial</button>
       </div>
 <figure class="media-card">
   <div class="media">
@@ -98,7 +98,9 @@ transition:none !important;
 </figure>
 
 
-      <div class="stat-grid">
+      
+<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on historical data. Beats XRP HODL.</h2>
+<div class="stat-grid">
         <div class="stat-card">
           <div class="value">~9×</div>
           <div class="label">more total profit vs. buy‑and‑hold</div>
@@ -137,9 +139,7 @@ transition:none !important;
         </div>
       </div>
 
-      
-<p class="feature-note">Proven on historical data. Beats XRP hodl. The Market‑Wide Top Warning historically fired before severe alt‑coin sell‑offs and drawdowns, giving practical lead time to de‑risk and protect gains.<sup><a href="#disclosure">*</a></sup></p>
-<div class="stack" style="--stack-gap: .6rem; margin-top:.6rem;">
+      <div class="stack" style="--stack-gap: .6rem; margin-top:.6rem;">
         <h2 class="h-subhead">How it works</h2>
         <ol class="measure" style="padding-left:1.1rem; line-height:1.6;">
           <li><strong>Load</strong> the indicator. No complex tuning.</li>
@@ -154,8 +154,6 @@ transition:none !important;
       </div>
 
       <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
-<h2 class="h-subhead" style="text-align:center">Proven on historical data. Beats XRP hodl.</h2>
-
 
       <details id="disclosure" class="disclosure-box measure" style="margin-top: .9rem;">
         <summary><strong>Important disclosure</strong></summary>
@@ -329,7 +327,11 @@ transition:none !important;
 .about-hero .stack .h-subhead{ text-align: center; }
 .about-hero .h-muted{ text-align: center; margin-top: clamp(1.2rem, 3vw, 2.2rem); }
 
-/* === Feature section note ============================================ */
+/* Eyebrow link styling for TradingView link */
+.eyebrow-link{ color: var(--text-sub,#cbd5e1); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.25); }
+.eyebrow-link:hover{ color:#fff; border-bottom-color: rgba(255,255,255,.45); }
+
+/* Feature section note (if needed) */
 .feature-note{
   text-align: center;
   color: var(--text-sub, #cbd5e1);
@@ -492,6 +494,67 @@ transition:none !important;
       }
     });
   });
+})();
+</script>
+
+
+<style id="azro-trial-styles">
+.eyebrow-link{ color: var(--text-sub,#cbd5e1); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.25); }
+.eyebrow-link:hover{ color:#fff; border-bottom-color: rgba(255,255,255,.45); }
+</style>
+
+<!-- Free Trial Modal -->
+<dialog class="azro-modal" id="trialModal" aria-labelledby="trialTitle">
+  <form method="dialog">
+    <div class="azro-modal__head">
+      <div>
+        <h3 class="azro-modal__title" id="trialTitle">Two‑week Free Trial</h3>
+        <p class="azro-modal__sub">Unlock 14 days of access — no complex setup.</p>
+      </div>
+      <button class="azro-modal__close" value="close" aria-label="Close">Close</button>
+    </div>
+    <div class="azro-modal__scroll">
+      <div class="azro-modal__body">
+        <div class="azro-modal__text">
+          <span class="azro-pill">Welcome offer</span>
+          <p>Use this code at checkout to claim your two‑week free access:</p>
+          <div id="trialCodeBox" style="display:grid;gap:.5rem;justify-items:center;">
+            <code id="trialCode" style="font-weight:800; font-size:clamp(1.1rem,1.2vw+1rem,1.4rem); padding:.5rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06);">AZRO‑2WEEK‑FREE</code>
+            <button class="azro-modal__close" id="copyTrialCode" type="button" style="border-radius:10px; padding:.5rem .9rem; border:1px solid rgba(255,255,255,.16);">Copy code</button>
+          </div>
+          <p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p>
+        </div>
+        <div class="azro-modal__media">
+          <div class="azro-video" role="region" aria-label="Free trial info">
+            <div class="azro-video__ph">Trial applies to XRP Top/Bottom Detector.<br/>Cancel anytime during the trial.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="azro-modal__foot">
+      <span>Questions? <strong>support@azrosystems.com</strong></span>
+      <button class="azro-modal__close" value="close">Done</button>
+    </div>
+  </form>
+</dialog>
+
+<script id="azro-trial-script">
+(function(){
+  const btn = document.getElementById('freeTrialBtn');
+  const modal = document.getElementById('trialModal');
+  const copyBtn = document.getElementById('copyTrialCode');
+  const codeEl = document.getElementById('trialCode');
+
+  if(btn && modal){
+    btn.addEventListener('click', () => modal.showModal());
+    modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
+  }
+  if(copyBtn && codeEl){
+    copyBtn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(codeEl.textContent.trim()); copyBtn.textContent = 'Copied!'; setTimeout(()=>copyBtn.textContent='Copy code', 1200); }
+      catch(e){ copyBtn.textContent = 'Press Ctrl+C to copy'; setTimeout(()=>copyBtn.textContent='Copy code', 2000); }
+    });
+  }
 })();
 </script>
 
