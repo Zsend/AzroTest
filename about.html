@@ -16,64 +16,12 @@ background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
 z-index:9998;
 pointer-events:none;
 }
-
-/* === Layout upgrade: stack & center the five cards =================== */
-.azro-oclai .grid-3{
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: clamp(.65rem, 1.6vw, .9rem) !important;
-  justify-items: center;
-  width: 100%;
-  margin-inline: auto;
-}
-.azro-oclai .grid-3 .card{
-  width: min(960px, 100%);
-  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
-}
-.azro-oclai .grid-3 .card h3{
-  margin: 0 0 .35rem 0;
-  text-align: center;
-}
-.azro-oclai .grid-3 .card p{
-  margin: 0;
-  text-align: center;
-}
-@media (max-width: 480px){
-  .azro-oclai .grid-3 .card{ width: 96%; }
-}
-
 </style> <style id="critical-header-bg">
 /* critical header background — prevents first‑paint flash */
 .site-header{
 background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
 transition:none !important;
 }
-
-/* === Layout upgrade: stack & center the five cards =================== */
-.azro-oclai .grid-3{
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: clamp(.65rem, 1.6vw, .9rem) !important;
-  justify-items: center;
-  width: 100%;
-  margin-inline: auto;
-}
-.azro-oclai .grid-3 .card{
-  width: min(960px, 100%);
-  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
-}
-.azro-oclai .grid-3 .card h3{
-  margin: 0 0 .35rem 0;
-  text-align: center;
-}
-.azro-oclai .grid-3 .card p{
-  margin: 0;
-  text-align: center;
-}
-@media (max-width: 480px){
-  .azro-oclai .grid-3 .card{ width: 96%; }
-}
-
 </style> <meta charset="utf-8"/>
 <!-- ———— SOCIAL PREVIEW ———— -->
 <!-- Twitter / X -->
@@ -101,32 +49,6 @@ transition:none !important;
 <link href="style.css" rel="stylesheet"/>
 <link rel="stylesheet" href="brand.css"/><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
-
-/* === Layout upgrade: stack & center the five cards =================== */
-.azro-oclai .grid-3{
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: clamp(.65rem, 1.6vw, .9rem) !important;
-  justify-items: center;
-  width: 100%;
-  margin-inline: auto;
-}
-.azro-oclai .grid-3 .card{
-  width: min(960px, 100%);
-  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
-}
-.azro-oclai .grid-3 .card h3{
-  margin: 0 0 .35rem 0;
-  text-align: center;
-}
-.azro-oclai .grid-3 .card p{
-  margin: 0;
-  text-align: center;
-}
-@media (max-width: 480px){
-  .azro-oclai .grid-3 .card{ width: 96%; }
-}
-
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description">
 <link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
@@ -138,32 +60,6 @@ transition:none !important;
     line-height: 1.12 !important;
   }
 }
-
-/* === Layout upgrade: stack & center the five cards =================== */
-.azro-oclai .grid-3{
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: clamp(.65rem, 1.6vw, .9rem) !important;
-  justify-items: center;
-  width: 100%;
-  margin-inline: auto;
-}
-.azro-oclai .grid-3 .card{
-  width: min(960px, 100%);
-  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
-}
-.azro-oclai .grid-3 .card h3{
-  margin: 0 0 .35rem 0;
-  text-align: center;
-}
-.azro-oclai .grid-3 .card p{
-  margin: 0;
-  text-align: center;
-}
-@media (max-width: 480px){
-  .azro-oclai .grid-3 .card{ width: 96%; }
-}
-
 </style>
 </head>
 <body>
@@ -282,13 +178,32 @@ transition:none !important;
 <script defer="" src="script.js"></script>
 
 <style id="azro-modal-styles">
-/* === Feature Modal (namespaced) - centered & responsive ============= */
-.azro-modal[open]{display:block}
+/* === Cards layout: stack, center, wider, centered text ================= */
+.azro-oclai .grid-3{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.65rem, 1.6vw, .9rem) !important;
+  justify-items: center;
+  width: 100%;
+  margin-inline: auto;
+}
+.azro-oclai .grid-3 .card{
+  width: min(1040px, 100%);
+  padding: clamp(14px, 1.6vw, 18px) clamp(18px, 2.2vw, 24px);
+  text-align: center;
+}
+.azro-oclai .grid-3 .card h3,
+.azro-oclai .grid-3 .card p{ text-align: center !important; }
+@media (max-width: 520px){
+  .azro-oclai .grid-3 .card{ width: 96%; }
+}
+
+/* === Feature Modal (centered, responsive, generous padding) ============ */
+.azro-modal[open]{ display:block; }
 .azro-modal {
-  /* Center dialog in viewport */
   position: fixed;
-  inset: 0;               /* cover the viewport to enable centering via margin auto */
-  margin: auto;           /* center horizontally & vertically */
+  inset: 0;
+  margin: auto;
   width: min(980px, 94vw);
   max-height: 90svh; max-height: 90vh;
   overflow: hidden;
@@ -299,12 +214,6 @@ transition:none !important;
   color: var(--text-body, #E0E0E0);
   box-shadow: 0 40px 120px rgba(0,0,0,.55);
 }
-/* Ensure dialog's scrollable body when needed */
-.azro-modal__scroll{
-  overflow: auto;
-  max-height: calc(90svh - 58px - 52px); /* subtract head + foot approx */
-}
-
 .azro-modal::backdrop{
   background: rgba(2,6,23,.66);
   backdrop-filter: blur(2px);
@@ -313,34 +222,39 @@ transition:none !important;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
-  padding: 16px;
+  padding: clamp(16px, 2.4vw, 22px);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .azro-modal__title{
   margin: 0;
-  font: 800 clamp(1.1rem, .7vw + 1rem, 1.4rem)/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font: 800 clamp(1.2rem, .9vw + 1rem, 1.6rem)/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text-head, #fff);
+  text-align: center;
 }
 .azro-modal__sub{
-  margin: 2px 0 0;
+  margin: 4px 0 0;
   color: var(--text-sub, #cbd5e1);
-  font-size: .95rem;
+  font-size: clamp(.95rem, .3vw + .9rem, 1.05rem);
+  text-align: center;
 }
 .azro-modal__close{
   appearance: none;
   border: 1px solid rgba(255,255,255,.12);
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
   color: var(--text-body, #fff);
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
 }
+
+.azro-modal__scroll{ overflow: auto; max-height: calc(90svh - 58px - 56px); max-height: calc(90vh - 58px - 56px); }
+
 .azro-modal__body{
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 16px;
-  padding: 16px;
+  gap: clamp(16px, 2vw, 24px);
+  padding: clamp(18px, 2.8vw, 28px);
 }
 @media (max-width: 900px){
   .azro-modal { width: min(760px, 96vw); }
@@ -349,64 +263,49 @@ transition:none !important;
 @media (max-width: 520px){
   .azro-modal { width: 96vw; border-radius: 12px; }
 }
+
 .azro-modal__text{
   display: grid;
-  gap: 10px;
+  gap: clamp(10px, 1.4vw, 14px);
+  justify-items: center;
+  text-align: center;
 }
 .azro-pill{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: .8rem;
-  padding: 6px 10px;
-  border-radius: 999px;
-  color: #fff;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 700; font-size: .85rem;
+  padding: 8px 12px; border-radius: 999px; color: #fff;
   background: linear-gradient(90deg, var(--accent-a, #00e5ff), var(--accent-b, #8b46ff));
   box-shadow: 0 6px 22px rgba(0,0,0,.35);
+  margin-inline: auto;
 }
+.azro-modal__text p,
+.azro-modal__text ul{ max-width: 66ch; margin-inline: auto; }
+.azro-modal__text ul{ list-style-position: inside; padding-left: 0; }
+.azro-modal__text li{ margin: .35rem 0; }
+
 .azro-modal__media{
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 14px;
-  padding: 10px;
+  padding: clamp(12px, 1.8vw, 16px);
 }
 .azro-video{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  overflow: hidden;
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  border-radius: 12px; overflow: hidden;
   background: linear-gradient(135deg, rgba(0,229,255,.18), rgba(139,70,255,.18));
-  display: grid;
-  place-items: center;
-  color: var(--text-head, #fff);
+  display: grid; place-items: center; color: var(--text-head, #fff);
 }
-.azro-video__ph{
-  font-weight: 800;
-  letter-spacing: .3px;
-  text-align: center;
-  padding: 10px;
-}
-.azro-video iframe,
-.azro-video video{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+.azro-video__ph{ font-weight: 800; letter-spacing: .3px; text-align: center; padding: 10px; }
+.azro-video iframe, .azro-video video{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 .azro-modal__foot{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
   border-top: 1px solid rgba(255,255,255,.08);
-  padding: 12px 16px;
-  color: var(--text-sub, #cbd5e1);
-  font-size: .9rem;
+  padding: clamp(14px, 2.4vw, 20px);
+  color: var(--text-sub, #cbd5e1); font-size: .95rem;
 }
-/* Make the cards in the targeted section clickable (only in that section) */
+
+/* Hover micro-interaction retained */
 .azro-oclai .grid-3 .card{
   cursor: pointer;
   transition: transform .08s ease, box-shadow .12s ease;
@@ -415,32 +314,6 @@ transition:none !important;
   transform: translateY(-2px);
   box-shadow: 0 18px 48px rgba(0,0,0,.35);
 }
-
-/* === Layout upgrade: stack & center the five cards =================== */
-.azro-oclai .grid-3{
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: clamp(.65rem, 1.6vw, .9rem) !important;
-  justify-items: center;
-  width: 100%;
-  margin-inline: auto;
-}
-.azro-oclai .grid-3 .card{
-  width: min(960px, 100%);
-  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 22px);
-}
-.azro-oclai .grid-3 .card h3{
-  margin: 0 0 .35rem 0;
-  text-align: center;
-}
-.azro-oclai .grid-3 .card p{
-  margin: 0;
-  text-align: center;
-}
-@media (max-width: 480px){
-  .azro-oclai .grid-3 .card{ width: 96%; }
-}
-
 </style>
 
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
@@ -578,7 +451,7 @@ transition:none !important;
     modal.showModal();
   }
 
-  // Backdrop click closes (centered dialog uses fixed position)
+  // Backdrop click closes
   modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
   modal.addEventListener('close', () => {
     // Stop playback by clearing iframe
