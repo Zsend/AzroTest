@@ -79,62 +79,48 @@
 /* Footnotes & disclosures */
 .disclosure-box { border: 1px dashed rgba(255,255,255,.18); border-radius: 10px; padding: .75rem 1rem; background: rgba(255,255,255,.03); color: var(--text-sub); }
 
-/* Integrated media card for About chart */
-.media-card {
-  max-width: min(980px, 92vw);
-  margin: clamp(14px, 3vw, 32px) auto;
-  border-radius: 14px;
-  overflow: clip;
-  background: #0b0f1a;
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 16px 40px rgba(0,0,0,.45);
-  position: relative;
-}
-.media-card::before{
-  content:""; position:absolute; inset:0; border-radius:inherit; padding:1px;
+/* integrated media card */
+.media-card { max-width:min(980px,92vw); margin: clamp(14px,3vw,32px) auto; border-radius:14px; overflow:clip;
+  background:#0b0f1a; border:1px solid rgba(255,255,255,.12); box-shadow:0 16px 40px rgba(0,0,0,.45); position:relative; }
+.media-card::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding:1px;
   background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  opacity:.22; pointer-events:none;
-}
-.media-card .media{ aspect-ratio: 16 / 9; }
-.media-card picture, .media-card img{ display:block; width:100%; height:100%; object-fit: cover; }
-.media-card figcaption{ color: var(--text-sub, #D4D9FF); font-size: .95rem; text-align: center; padding: .6rem .75rem .8rem; }
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude; opacity:.22; pointer-events:none; }
+.media-card .media{ aspect-ratio:16/9; } .media-card picture,.media-card img{ display:block; width:100%; height:100%; object-fit:cover; }
+.media-card figcaption{ color: var(--text-sub,#D4D9FF); font-size:.95rem; text-align:center; padding:.6rem .75rem .8rem; }
+
+:root{ --measure:68ch; }
+.hero .hero-text{ text-align:center; margin-left:auto; margin-right:auto; }
+.hero .hero-text p{ max-width:var(--measure); margin-left:auto; margin-right:auto; }
+.cta-row{ justify-content:center; }
 
 
-/* === Global center pass (non-destructive) ===============================
-   Centers main content blocks and cards across pages. Keeps paragraphs
-   readable by constraining line length while aligning the layout center.
-   ====================================================================== */
-:root{ --measure: 68ch; }
+/* ====================== LAYOUT VARIANTS =============================== */
+.media-card--overlay{ position: relative; }
+.chip{ position: absolute; padding: .5rem .7rem; border-radius: 999px;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(6px); box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  font: 600 .9rem/1 'Exo 2', system-ui, sans-serif; color: var(--text-head,#F5F7FF); white-space: nowrap; }
+.chip--tl{ top: 6%; left: 6%; } .chip--tr{ top: 10%; right: 7%; } .chip--br{ bottom: 8%; right: 12%; }
+@media (max-width: 720px){ .chip{ display: none; } }
 
-/* Center hero content and text */
-.hero .hero-text { text-align: center; margin-left: auto; margin-right: auto; }
-.hero .hero-text p { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.layout--split .hero-grid{ display:grid; gap: clamp(14px,2vw,22px); align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 980px){ .layout--split .hero-grid{ grid-template-columns: 1fr 1fr; } }
+.panel--elevated{ border-radius: 16px; padding: clamp(24px,2.5vw,32px); background: rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.12); box-shadow:0 12px 38px rgba(0,0,0,.32); }
 
-/* Make common grids/blocks center within the page */
-.features-wrapper,
-.features-grid,
-.pricing-grid,
-.resources-grid,
-.stat-grid,
-.about-feature-grid,
-.about-steps,
-.disclosure-box,
-.media-card { margin-left:auto; margin-right:auto; }
+.layout--tabs .tabs{ max-width: 1100px; margin: 12px auto 0; text-align: center; }
+.tab-radio{ position: absolute; left: -9999px; }
+.tab{ display:inline-block; padding:.55rem .9rem; margin:.2rem; border-radius:999px; cursor:pointer;
+  background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); }
+.tab-radio:checked + .tab{ background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); color: #0b0f1a; border: none; }
+.panel-wrap{ margin-top: .8rem; }
+.panel{ display:none; }
+#tab-chart:checked ~ .panel-wrap #panel-chart,
+#tab-backtest:checked ~ .panel-wrap #panel-backtest,
+#tab-alerts:checked ~ .panel-wrap #panel-alerts{ display:block; }
 
-/* Center grid items and cards; keep body text readable */
-.features-grid, .pricing-grid, .resources-grid { justify-items: center; }
-.features-grid .feature-card,
-.pricing-grid .price-card,
-.resources-grid .resource-card { text-align: center; max-width: 420px; }
-
-/* Ensure hero/media images are centered and responsive */
-.hero-image, .chart-img { margin-left: auto; margin-right: auto; display: block; }
-.media-card { margin-left:auto; margin-right:auto; }
-
-/* Steps list: center the list block, keep list text left-aligned for readability */
-.about-steps ol { display: inline-block; text-align: left; margin-left: auto; margin-right: auto; }
-
-/* CTA rows always centered */
-.cta-row { justify-content: center; }
+.layout--slab .slab{ margin: clamp(12px, 3vw, 24px) 0; padding: clamp(8px, 1.5vw, 16px) 0;
+  background: radial-gradient(100% 120% at 50% -10%, rgba(77,109,255,.25), transparent 60%),
+              radial-gradient(100% 120% at 120% 10%, rgba(139,70,255,.18), transparent 60%); }
+.media-card--slab{ max-width: min(1160px, 96vw); }
