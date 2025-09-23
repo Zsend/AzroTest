@@ -1,78 +1,114 @@
 
-/* === AZRO Brand Harmonization — Centered Layout =====================
-   Keeps existing tokens from style.css and uses the AZRO gradient.
-   ==================================================================== */
 
-.container { max-width: 1100px; margin-inline: auto; padding-inline: 16px; }
-.measure   { max-width: 68ch; margin-inline: auto; }
-
-/* Typographic helpers (brand font is already loaded in style.css) */
-.h-eyebrow { letter-spacing: .08em; text-transform: uppercase; font: 600 0.85rem/1.1 'Exo 2', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--text-sub); margin: 0 0 .5rem 0; }
-.h-lead    { font: 400 clamp(1.05rem, .45vw + 1rem, 1.25rem)/1.6 'Exo 2', system-ui, sans-serif; color: var(--text-body); margin: 0 0 1.2rem 0; }
-.h-subhead { font: 700 clamp(1.25rem, .8vw + 1rem, 1.6rem)/1.3 'Exo 2', system-ui, sans-serif; margin: 1.25rem 0 .5rem; color: var(--text-head); }
-.h-muted   { color: var(--text-sub); }
-
-/* Hero centering + scrim so text always has contrast */
-.hero { padding: clamp(56px, 6vw, 92px) 20px; }
+/* === Centered pass (modern + professional) ========================= */
+.hero { padding: clamp(56px, 7vw, 88px) 20px; }
 .hero .hero-text { text-align: center; margin-inline: auto; }
-.hero .hero-text h1 { line-height: 1.12; text-wrap: balance; }
-.hero .hero-text p { line-height: 1.6; }
-.section-scrim { position: relative; isolation: isolate; }
-.section-scrim::before{
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.62));
+.hero .hero-text p { margin-inline: auto; }
+.cta-row { justify-content: center; }
+
+/* Centered grids without breaking readability */
+.stat-grid { max-width: 900px; margin: .75rem auto 1.5rem; }
+.grid-2, .grid-3 { justify-items: stretch; }
+.card h3 { text-align: center; }
+.card p  { text-align: left; } /* keep body copy readable */
+
+/* Chart media block */
+.media { margin: 24px auto; }
+.media img, .media picture { display: block; margin: 0 auto; max-width: min(720px, 100%); width: 100%; }
+.chart-note { font-size: .95rem; color: var(--text-sub); margin: .5rem auto 0; max-width: 68ch; text-align: center; }
+
+/* About hero uses site background + scrim; keep centered */
+.about-hero { background-position: center; background-size: cover; }
+.about-hero .panel { margin-inline: auto; max-width: 1100px; }
+
+
+/* === About v3: split hero with integrated chart ===================== */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 2vw, 22px);
+  align-items: center;
+  max-width: 1100px;
+  margin-inline: auto;
 }
 
-/* Unified card style matching site brand */
-.card {
-  background: rgba(255,255,255,.05);
+@media (min-width: 980px) {
+  .hero-grid {
+    grid-template-columns: 5fr 7fr; /* copy panel / chart panel */
+  }
+}
+
+.panel--elevated {
+  border-radius: 16px;
+  padding: clamp(24px, 2.5vw, 32px);
+  background: radial-gradient(120% 140% at 20% -10%, rgba(77,109,255,.22), transparent 55%),
+              radial-gradient(110% 130% at 120% 10%, rgba(139,70,255,.18), transparent 60%),
+              rgba(0,0,0,.28);
   border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
-  box-shadow: 0 8px 22px rgba(0,0,0,.28);
+  box-shadow: 0 12px 40px rgba(0,0,0,.35);
 }
-.card h3 { margin: 0 0 .25rem; font-weight: 700; color: var(--text-head); }
-.card p  { margin: 0; color: var(--text-body); text-align: left; }
 
-/* Grids */
-.grid-2 { display: grid; gap: .75rem; grid-template-columns: 1fr; }
-.grid-3 { display: grid; gap: .75rem; grid-template-columns: 1fr; }
-@media (min-width: 880px){ .grid-2{ grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1120px){ .grid-3{ grid-template-columns: repeat(3,minmax(0,1fr)); } }
+.chart-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 20px 50px rgba(0,0,0,.45);
+  background: radial-gradient(90% 90% at 15% 10%, rgba(77,109,255,.12), transparent 60%),
+              radial-gradient(80% 80% at 100% 0%, rgba(139,70,255,.10), transparent 70%),
+              #0b0f1a;
+}
 
-/* Stat cards */
-.stat-grid { display: grid; gap: .75rem; grid-template-columns: 1fr; margin: .75rem auto 1.5rem; max-width: 900px; }
-@media (min-width: 880px){ .stat-grid{ grid-template-columns: repeat(3,minmax(0,1fr)); } }
-.stat-card { padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
-.stat-card .value { font-weight: 800; font-size: clamp(1.35rem, 2vw + .6rem, 1.85rem); color: var(--text-head); }
-.stat-card .label { color: var(--text-sub); font-size: .95rem; margin-top: .25rem; text-align: center; }
-
-/* Buttons: reuse existing .btn effects; tint with brand gradient */
-.btn { display: inline-block; margin: 0; }
-.btn--primary{
+.chart-frame::before {
+  /* subtle gradient ring */
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 16px;
+  padding: 1px; /* thickness of the ring */
   background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
-  color: #0b0f1a !important;
-  border: none !important;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: .25;
 }
-.cta-row { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0 1.75rem; }
 
-/* Hero media (chart image) */
-.hero-media { display: grid; place-items: center; margin: clamp(16px, 3vw, 40px) auto; }
-.hero-media .chart-img { max-width: min(900px, 92vw); margin: 0 auto; }
-.hero-media .chart-note { color: var(--text-sub); font-size: .95rem; margin-top: .5rem; text-align: center; }
+.chart-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
 
-/* About hero background uses your existing image */
-.about-hero { background-image: url('coolback.webp'); background-size: cover; background-position: center; }
-.about-hero .panel { backdrop-filter: saturate(1.05); padding: clamp(24px, 3vw, 32px); border-radius: 16px; background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.12); }
+.chart-media picture, .chart-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-/* Bring other pages into the same card look */
-.features-grid .feature-card,
-.pricing-grid .price-card,
-.resources-grid .resource-card { border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); }
-.features-grid .feature-card h3,
-.pricing-grid .price-card span,
-.resources-grid .resource-card span { color: var(--text-head); }
-.features-grid .feature-card p { color: var(--text-body); }
+.hero-caption {
+  color: var(--text-sub);
+  font-size: .95rem;
+  text-align: center;
+  margin-top: .5rem;
+}
 
-/* Utility */
-.stack > * + * { margin-top: var(--stack-gap, .75rem); }
+.hero .cta-row { justify-content: center; }
+
+/* Stats row under hero — center it and match card aesthetic */
+.stats-wrap {
+  margin: clamp(16px, 3vw, 26px) auto 0;
+  max-width: 1100px;
+}
+.stats-wrap .stat-grid { margin: .75rem auto 0; }
+
+/* Feature grid spacing & centering */
+.about-feature-grid { margin: clamp(14px,2vw,20px) auto 0; max-width: 1100px; }
+.about-steps { margin: clamp(16px,2.5vw,24px) auto 0; max-width: 900px; }
+
+/* Details disclosure look consistent with cards */
+details.disclosure-box {
+  margin: clamp(14px, 2vw, 20px) auto 0;
+  max-width: 900px;
+}
