@@ -43,10 +43,10 @@ transition:none !important;
 <!-- Fonts & preloads -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link as="image" href="logo.webp" rel="preload"/>
-<link as="image" href="coolback.webp" rel="preload">
-<link as="image" href="newchart.webp" rel="preload">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link as="image" href="logo.webp" rel="preload">
+<link as="image" href="coolback.webp" rel="preload"/>
+<link as="image" href="newchart.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
 <link href="brand.css" rel="stylesheet"/><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
@@ -62,21 +62,18 @@ transition:none !important;
   }
 }
 </style>
-<style id="trial-modal-spacing-fix-hard">
-/* Equal spacing for right info panel in Free Trial modal */
-#trialModal .azro-modal__illustration{ display:block; padding: clamp(14px, 2.2vw, 20px) !important; }
-#trialModal .azro-video{ display:flex; align-items:center; justify-content:center; min-height: 0; }
-#trialModal .azro-video__ph{ margin: 0; padding: clamp(16px, 2.4vw, 22px); }
-#trialModal .azro-modal__body{ padding: clamp(14px, 2.2vw, 20px) !important; }
+<style id="trial-modal-spacing-fix">
+/* Scoped modal spacing fixes */
+#trialModal .azro-modal__illustration{ padding-bottom: clamp(10px, 1.6vw, 16px) !important; }
+#trialModal .azro-video{ display:flex; align-items:center; justify-content:center; }
+#trialModal .azro-video__ph{ margin: 0 !important; padding: clamp(12px, 1.8vw, 18px) !important; }
+#trialModal .azro-modal__body{ padding-bottom: clamp(10px, 1.6vw, 14px) !important; }
 #trialModal .azro-modal__scroll{ overflow:auto; }
-</style><style id="onchart-cards-center">
-.grid-3 .card{ text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-.grid-3 .card h3{ margin:.15rem 0 .35rem; }
-.grid-3 .card p{ margin:0; max-width: 62ch; }
 </style><style id="disclosure-spacing-fix">
 #disclosure{ padding: .9rem 1.0rem; }
 #disclosure p{ margin: .5rem 0; }
 #disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
+#disclosure .risk-link{ margin-top:.25rem; }
 </style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -125,7 +122,7 @@ transition:none !important;
 <div class="label">profits protected before sell-offs<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">*</a></sup></div>
 </div>
 </div>
-<h2 class="h-subhead" style="text-align:center;margin-inline:auto">On‑chart labels &amp; instant alerts</h2>
+<h2 class="h-subhead">On‑chart labels &amp; instant alerts</h2>
 <div class="grid-3">
 <div class="card">
 <h3>MAJOR Top / MAJOR Bottom (XRP)</h3>
@@ -158,7 +155,7 @@ transition:none !important;
 </div>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-<a class="btn" href="resources.html">Read quick start</a>
+<button class="btn js-free-trial" type="button">Free trial</button>
 </div>
 <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
 <details class="disclosure-box measure" id="disclosure" style="margin-top: .9rem;">
@@ -347,12 +344,13 @@ transition:none !important;
 <form method="dialog">
 <div class="azro-modal__head">
 <div>
-<h3 class="azro-modal__title" id="fmTitle" style="text-align:center;margin-inline:auto">Feature</h3>
-<p class="azro-modal__sub" id="fmSub" style="text-align:center;margin-inline:auto">—</p>
+<h3 class="azro-modal__title" id="fmTitle">Feature</h3>
+<p class="azro-modal__sub" id="fmSub">—</p>
 </div>
+<button aria-label="Close" class="azro-modal__close" value="close">Close</button>
 </div>
 <div class="azro-modal__scroll">
-<div class="azro-modal__body" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+<div class="azro-modal__body">
 <div class="azro-modal__text">
 <span class="azro-pill" id="fmBadge">On‑chart Label &amp; Alert</span>
 <p id="fmDesc">This modal explains how the on‑chart label and instant alert work for this signal. We can expand this copy anytime.</p>
@@ -365,8 +363,9 @@ transition:none !important;
 </div>
 </div>
 </div>
-<div class="azro-modal__foot" style="justify-content:center;text-align:center">
+<div class="azro-modal__foot">
 <span>Part of: <strong>On‑chart labels &amp; instant alerts</strong></span>
+<button class="azro-modal__close" value="close">Done</button>
 </div>
 </form>
 </dialog>
@@ -505,18 +504,20 @@ transition:none !important;
 <div class="azro-modal__head">
 <div>
 <h3 class="azro-modal__title" id="trialTitle" style="text-align:center;margin-inline:auto">Two‑week Free Trial</h3>
-<p class="azro-modal__sub" style="text-align:center;margin-inline:auto">Unlock 14 days of access — no complex setup.</p>
+<p class="azro-modal__sub" style="text-align:center;margin-inline:auto;margin-top:.25rem">Unlock 14 days of access — no complex setup.</p>
 </div>
+
 </div>
 <div class="azro-modal__scroll">
-<div class="azro-modal__body" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+<div class="azro-modal__body">
 <div class="azro-modal__text">
 <span class="azro-pill">Welcome offer</span>
 <p>Use this code at checkout to claim your two‑week free access:</p>
 <div id="trialCodeBox" style="display:grid;gap:.5rem;justify-items:center;">
 <code id="trialCode" style="font-weight:800; font-size:clamp(1.1rem,1.2vw+1rem,1.4rem); padding:.5rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06);">AZRO‑2WEEK‑FREE</code>
+<button class="azro-modal__close" id="copyTrialCode" style="border-radius:10px; padding:.5rem .9rem; border:1px solid rgba(255,255,255,.16);" type="button">Copy code</button>
 </div>
-<p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p><div class="azro-modal__redeem-cta" style="display:grid;justify-items:center;margin:.6rem 0 0;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
+<p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p>
 </div>
 <div class="azro-modal__media">
 <div aria-label="Free trial info" class="azro-video" role="region">
@@ -527,6 +528,7 @@ transition:none !important;
 </div>
 <div class="azro-modal__foot" style="justify-content:center;text-align:center">
 <span>Questions? <strong>support@azrosystems.com</strong></span>
+<button class="azro-modal__close" value="close">Done</button>
 </div>
 </form>
 </dialog>
@@ -549,5 +551,13 @@ transition:none !important;
   }
 })();
 </script>
-</body>
+<script>
+(function(){
+  var modal = document.getElementById('trialModal');
+  if(!modal) return;
+  document.querySelectorAll('.js-free-trial').forEach(function(el){
+    el.addEventListener('click', function(){ modal.showModal(); });
+  });
+  modal.addEventListener('click', function(e){ if(e.target === modal) modal.close(); });
+})();</script></body>
 </html>
