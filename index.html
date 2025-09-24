@@ -43,10 +43,10 @@ transition:none !important;
 <!-- Fonts & preloads -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
-<link as="image" href="logo.webp" rel="preload">
-<link as="image" href="coolback.webp" rel="preload"/>
-<link as="image" href="chart.webp" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
+<link as="image" href="coolback.webp" rel="preload">
+<link as="image" href="chart.webp" rel="preload">
 <link href="style.css" rel="stylesheet"/>
 <link href="brand.css" rel="stylesheet"/><!-- Page-specific helpers (unchanged) -->
 <style> /* … same inline CSS as before … */ .hero { padding: 60px 20px; display: flex; gap: 60px; justify-content: space-between; align-items: flex-start; } .hero-text { max-width: 640px; height: 560px; padding: 35px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; } .hero-text h1 { font-size: 3.4rem; line-height: 1.06; margin: 0 0 30px; } .hero-text p { font-size: 1.32rem; line-height: 1.55; margin: 0 0 36px; } .hero-text .btn { font-size: 1.15rem; padding: 16px 40px; margin: 0; } @media (max-width: 900px) { .hero { flex-direction: column; align-items: center; padding: 24px 12px 40px; gap: 8px; } .hero-text { height: auto; padding: 0 20px; margin: 0 0 12px !important; } .hero-text h1 { font-size: 3rem; margin: 0 0 16px; } .hero-text p { font-size: 1.2rem; margin-bottom: 16px; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0 !important; box-shadow: none !important; } .chart-note { font-size: 1.2rem; line-height: 1.55; margin: 16px 0 0; } } /* Landscape mobile tweaks (home page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } </style>
@@ -76,14 +76,18 @@ p0px){
   .hero.home-hero .hero-text > h1 br{ display: inline; }
 }
 </style>
-<style id="hero-align-top-fix">
-/* Align hero image/chart with headline at large widths */
+<style id="hero-align-top-fix-v2">
+/* Align hero image/chart with headline at large widths without breaking mobile */
 @media (min-width: 1024px){
-  .hero,
-  .hero .content{
-    align-items: flex-start !important;
-  }
-  .hero .chart-img{ margin-top: 0 !important; align-self: flex-start !important; }
+  .hero, .hero .wrap, .hero .row { align-items:flex-start !important; }
+  .hero .chart-img, .hero-image.chart-img { margin-top:0 !important; align-self:flex-start !important; }
+}
+</style><style id="home-hero-align">
+/* Align hero image with headline top on desktop */
+@media (min-width: 1024px){
+  .hero.home-hero{ display:flex; align-items:flex-start; gap: clamp(16px, 3vw, 32px); }
+  .hero.home-hero .hero-text{ align-self:flex-start; }
+  .hero.home-hero .hero-image.chart-img{ align-self:flex-start; margin-top:0; }
 }
 </style></head>
 <body>
