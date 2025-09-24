@@ -492,14 +492,14 @@ transition:none !important;
 <div class="azro-modal__head">
 <div>
 <h3 class="azro-modal__title" id="trialTitle">Two‑week Free Trial</h3>
-<p class="azro-modal__sub">Unlock 14 days of access — no complex setup.</p>
+<p class="azro-modal__sub" style="text-align:center;">Unlock 14 days of access — no complex setup.</p>
 </div>
 <button aria-label="Close" class="azro-modal__close" value="close">Close</button>
-</div><div class="azro-modal__head-cta" style="display:grid;place-items:center;padding:0 1rem 1rem;margin-top:-0.25rem;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
+</div>
 <div class="azro-modal__scroll">
 <div class="azro-modal__body">
 <div class="azro-modal__text">
-<span class="azro-pill">Welcome offer</span>
+<span class="azro-pill">Welcome offer</span><div class="azro-modal__redeem-wrap" style="display:grid;justify-items:center;gap:.55rem;margin:.25rem auto 1rem;text-align:center;"><p class="feature-note">Redeem on Gumroad when you check out.</p><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
 <p>Use this code at checkout to claim your two‑week free access:</p>
 <div id="trialCodeBox" style="display:grid;gap:.5rem;justify-items:center;">
 <code id="trialCode" style="font-weight:800; font-size:clamp(1.1rem,1.2vw+1rem,1.4rem); padding:.5rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06);">AZRO‑2WEEK‑FREE</code>
@@ -543,10 +543,9 @@ transition:none !important;
 (function(){
   var modal = document.getElementById('trialModal');
   if(!modal) return;
-  var triggers = document.querySelectorAll('.js-free-trial');
-  triggers.forEach(function(el){
+  document.querySelectorAll('.js-free-trial').forEach(function(el){
     el.addEventListener('click', function(){ modal.showModal(); });
   });
-})();
-</script></body>
+  modal.addEventListener('click', function(e){ if(e.target === modal) modal.close(); });
+})();</script></body>
 </html>
