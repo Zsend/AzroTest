@@ -62,18 +62,27 @@ transition:none !important;
   }
 }
 </style>
-<style id="trial-modal-spacing-fix">
-/* Scoped modal spacing fixes */
-#trialModal .azro-modal__illustration{ padding-bottom: clamp(10px, 1.6vw, 16px) !important; }
+<style id="onchart-cards-center">
+/* Center the On‑chart labels & instant alerts cards like the modal */
+.about-hero + .h-subhead + .grid-3 .card,
+.grid-3 .card{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding: clamp(14px, 2.2vw, 20px);
+  border-radius: 14px;
+}
+.grid-3 .card h3{ margin-top: .2rem; margin-bottom:.35rem; }
+.grid-3 .card p{ margin: 0; max-width: 60ch; }
+</style><style id="trial-modal-spacing-fix">
+/* Modal right panel spacing equalization */
+#trialModal .azro-modal__illustration{ padding: clamp(12px, 2vw, 18px); }
 #trialModal .azro-video{ display:flex; align-items:center; justify-content:center; }
-#trialModal .azro-video__ph{ margin: 0 !important; padding: clamp(12px, 1.8vw, 18px) !important; }
-#trialModal .azro-modal__body{ padding-bottom: clamp(10px, 1.6vw, 14px) !important; }
-#trialModal .azro-modal__scroll{ overflow:auto; }
-</style><style id="disclosure-spacing-fix">
-#disclosure{ padding: .9rem 1.0rem; }
-#disclosure p{ margin: .5rem 0; }
-#disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
-#disclosure .risk-link{ margin-top:.25rem; }
+#trialModal .azro-video__ph{ margin: 0; padding: clamp(16px, 2.4vw, 22px); }
+#trialModal .azro-modal__body{ padding-bottom: clamp(12px, 2vw, 16px); }
+#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
 </style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -91,7 +100,7 @@ transition:none !important;
 <div class="hero-text container">
 <div class="panel"><h1>Map the cycle. Cut the noise.</h1>
 <p class="h-eyebrow" style="margin-top:.2rem;"><a class="eyebrow-link" href="https://www.tradingview.com/script/4M3OWBpz-AZRO-Systems-XRP-Top-Bottom-Indicator-Invite-Only/" rel="noopener" target="_blank">XRP TradingView® Indicator</a></p>
-<p class="h-lead measure">AZRO Systems™ develops future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts. The XRP Top/Bottom Detector is live on TradingView®: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market-wide elevated-risk and top warnings—so you act with a plan, not emotion. Stop guessing the top. Stop missing the bottom.</p>
+<p class="h-lead measure">AZRO Systems™ develops future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts. The XRP Top/Bottom Detector is live on TradingView: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market-wide elevated-risk and top warnings—so you act with a plan, not emotion. Stop guessing the top. Stop missing the bottom.</p>
 <p class="h-lead measure">Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
@@ -107,7 +116,7 @@ transition:none !important;
 </div>
 <figcaption>Labels and risk markers display directly on your TradingView chart.</figcaption>
 </figure>
-<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on historical data. Beats XRP HODL.</h2>
+<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on 10 years of historical data. Beats XRP HODL.</h2><p class="h-subhead" style="text-align:center;margin-top:.35rem;">A simple strategy rule—buy MAJOR Bottoms, sell MAJOR Tops.</p>
 <div class="stat-grid">
 <div class="stat-card">
 <div class="value">~9×</div>
@@ -118,8 +127,8 @@ transition:none !important;
 <div class="label">lower max drawdown</div>
 </div>
 <div class="stat-card">
-<div class="value">XRP &amp; Alts</div>
-<div class="label">profits protected before sell-offs<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">*</a></sup></div>
+<div class="value">10 yrs</div>
+<div class="label">hypothetical backtest (2015–present)<sup><a href="#disclosure">*</a></sup></div>
 </div>
 </div>
 <h2 class="h-subhead">On‑chart labels &amp; instant alerts</h2>
@@ -165,7 +174,7 @@ transition:none !important;
           Past performance does not guarantee future results. Indicators are tools, not advice; trading involves risk,
           including possible loss of principal.
         </p>
-<p class="methodology-link">Methodology overview: <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">Read the PDF</a></p><p class="risk-link">Risk disclosure: <a href="https://zsend.github.io/AzroTest/pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">Read the PDF</a></p></details>
+</details>
 <p class="h-muted">Built and maintained in the United States.</p>
 </div>
 </div>
