@@ -62,7 +62,14 @@ transition:none !important;
   }
 }
 </style>
-</head>
+<style id="trial-modal-fixes">
+.azro-modal__redeem-cta{ margin-top:.5rem; }
+.azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
+.azro-modal{ max-height: 92vh; }
+@media (max-width: 720px){
+  .azro-modal__redeem-cta .btn{ width: min(420px, 90%); }
+}
+</style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -492,20 +499,20 @@ transition:none !important;
 <div class="azro-modal__head">
 <div>
 <h3 class="azro-modal__title" id="trialTitle">Two‑week Free Trial</h3>
-<p class="azro-modal__sub" style="text-align:center;">Unlock 14 days of access — no complex setup.</p>
+<p class="azro-modal__sub" style="text-align:center;margin-top:.25rem">Unlock 14 days of access — no complex setup.</p>
 </div>
 <button aria-label="Close" class="azro-modal__close" value="close">Close</button>
 </div>
 <div class="azro-modal__scroll">
 <div class="azro-modal__body">
 <div class="azro-modal__text">
-<span class="azro-pill">Welcome offer</span><div class="azro-modal__redeem-wrap" style="display:grid;justify-items:center;gap:.55rem;margin:.25rem auto 1rem;text-align:center;"><p class="feature-note">Redeem on Gumroad when you check out.</p><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
+<span class="azro-pill">Welcome offer</span>
 <p>Use this code at checkout to claim your two‑week free access:</p>
 <div id="trialCodeBox" style="display:grid;gap:.5rem;justify-items:center;">
 <code id="trialCode" style="font-weight:800; font-size:clamp(1.1rem,1.2vw+1rem,1.4rem); padding:.5rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06);">AZRO‑2WEEK‑FREE</code>
 <button class="azro-modal__close" id="copyTrialCode" style="border-radius:10px; padding:.5rem .9rem; border:1px solid rgba(255,255,255,.16);" type="button">Copy code</button>
 </div>
-<p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p>
+<p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p><div class="azro-modal__redeem-cta" style="display:grid;justify-items:center;margin:.5rem 0 0;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
 </div>
 <div class="azro-modal__media">
 <div aria-label="Free trial info" class="azro-video" role="region">
