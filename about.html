@@ -43,12 +43,12 @@ transition:none !important;
 <!-- Fonts & preloads -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
-<link as="image" href="logo.webp" rel="preload">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="newchart.webp" rel="preload"/>
-<link href="style.css" rel="stylesheet"/>
-<link href="brand.css" rel="stylesheet"/><!-- mobile helper CSS -->
+<link href="style.css" rel="stylesheet">
+<link href="brand.css" rel="stylesheet"><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
@@ -62,13 +62,15 @@ transition:none !important;
   }
 }
 </style>
-<style id="trial-modal-fixes">
-.azro-modal__redeem-cta{ margin-top:.5rem; }
-.azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
-.azro-modal{ max-height: 92vh; }
-@media (max-width: 720px){
-  .azro-modal__redeem-cta .btn{ width: min(420px, 90%); }
-}
+<style id="trial-modal-centering-v2">
+dialog#trialModal .azro-modal__foot{ justify-content:center !important; }
+dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-align:center !important; }
+dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
+dialog#trialModal{ max-height: 92vh; }
+</style><style id="disclosure-spacing-fix">
+#disclosure{ padding: .9rem 1.0rem; }
+#disclosure p{ margin: .45rem 0; }
+#disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
 </style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -86,7 +88,7 @@ transition:none !important;
 <div class="hero-text container">
 <div class="panel"><h1>Map the cycle. Cut the noise.</h1>
 <p class="h-eyebrow" style="margin-top:.2rem;"><a class="eyebrow-link" href="https://www.tradingview.com/script/4M3OWBpz-AZRO-Systems-XRP-Top-Bottom-Indicator-Invite-Only/" rel="noopener" target="_blank">XRP TradingView® Indicator</a></p>
-<p class="h-lead measure">AZRO Systems™ develops future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts. The XRP Top/Bottom Detector is live on TradingView®: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market-wide elevated-risk and top warnings—so you act with a plan, not emotion. Stop guessing the top. Stop missing the bottom.</p>
+<p class="h-lead measure">AZRO Systems™ develops future-ready tools that demystify complex markets, flagging major opportunity and risk levels before the crowd reacts. The XRP Top/Bottom Detector is live on TradingView: it prints buy/sell labels at likely cycle turns, sends device alerts, and adds market-wide elevated-risk and top warnings—so you act with a plan, not emotion. Stop guessing the top. Stop missing the bottom.</p>
 <p class="h-lead measure">Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
@@ -102,7 +104,7 @@ transition:none !important;
 </div>
 <figcaption>Labels and risk markers display directly on your TradingView chart.</figcaption>
 </figure>
-<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on historical data. Beats XRP HODL.</h2>
+<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on 10 years of historical data. Beats XRP HODL.</h2><p class="h-subhead" style="text-align:center;margin-top:.35rem;">A simple strategy rule—buy MAJOR Bottoms, sell MAJOR Tops.</p>
 <div class="stat-grid">
 <div class="stat-card">
 <div class="value">~9×</div>
@@ -113,8 +115,8 @@ transition:none !important;
 <div class="label">lower max drawdown</div>
 </div>
 <div class="stat-card">
-<div class="value">10 yrs</div>
-<div class="label">hypothetical backtest (2015–present)<sup><a href="#disclosure">*</a></sup></div>
+<div class="value">XRP &amp; Alts</div>
+<div class="label">cross-pair Top Warning historically fired before deep alt-coin drawdowns—giving lead time to de-risk and protect profits on XRP and alts.<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">*</a></sup></div>
 </div>
 </div>
 <h2 class="h-subhead">On‑chart labels &amp; instant alerts</h2>
@@ -150,7 +152,7 @@ transition:none !important;
 </div>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-<button class="btn js-free-trial" type="button">Free trial</button>
+<a class="btn" href="resources.html">Read quick start</a>
 </div>
 <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
 <details class="disclosure-box measure" id="disclosure" style="margin-top: .9rem;">
@@ -160,7 +162,7 @@ transition:none !important;
           Past performance does not guarantee future results. Indicators are tools, not advice; trading involves risk,
           including possible loss of principal.
         </p>
-</details>
+<p class="methodology-link">Methodology overview: <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">Read the PDF</a></p></details>
 <p class="h-muted">Built and maintained in the United States.</p>
 </div>
 </div>
@@ -498,8 +500,8 @@ transition:none !important;
 <form method="dialog">
 <div class="azro-modal__head">
 <div>
-<h3 class="azro-modal__title" id="trialTitle">Two‑week Free Trial</h3>
-<p class="azro-modal__sub" style="text-align:center;margin-top:.25rem">Unlock 14 days of access — no complex setup.</p>
+<h3 class="azro-modal__title" id="trialTitle" style="text-align:center;margin-inline:auto">Two‑week Free Trial</h3>
+<p class="azro-modal__sub" style="text-align:center;margin-top:.25rem;margin-inline:auto">Unlock 14 days of access — no complex setup.</p>
 </div>
 <button aria-label="Close" class="azro-modal__close" value="close">Close</button>
 </div>
@@ -512,7 +514,7 @@ transition:none !important;
 <code id="trialCode" style="font-weight:800; font-size:clamp(1.1rem,1.2vw+1rem,1.4rem); padding:.5rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06);">AZRO‑2WEEK‑FREE</code>
 <button class="azro-modal__close" id="copyTrialCode" style="border-radius:10px; padding:.5rem .9rem; border:1px solid rgba(255,255,255,.16);" type="button">Copy code</button>
 </div>
-<p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p><div class="azro-modal__redeem-cta" style="display:grid;justify-items:center;margin:.5rem 0 0;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
+<p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p><div class="azro-modal__redeem-cta" style="display:grid;justify-items:center;margin:.55rem 0 0;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
 </div>
 <div class="azro-modal__media">
 <div aria-label="Free trial info" class="azro-video" role="region">
@@ -521,7 +523,7 @@ transition:none !important;
 </div>
 </div>
 </div>
-<div class="azro-modal__foot">
+<div class="azro-modal__foot" style="justify-content:center;text-align:center">
 <span>Questions? <strong>support@azrosystems.com</strong></span>
 <button class="azro-modal__close" value="close">Done</button>
 </div>
@@ -546,13 +548,5 @@ transition:none !important;
   }
 })();
 </script>
-<script>
-(function(){
-  var modal = document.getElementById('trialModal');
-  if(!modal) return;
-  document.querySelectorAll('.js-free-trial').forEach(function(el){
-    el.addEventListener('click', function(){ modal.showModal(); });
-  });
-  modal.addEventListener('click', function(e){ if(e.target === modal) modal.close(); });
-})();</script></body>
+</body>
 </html>
