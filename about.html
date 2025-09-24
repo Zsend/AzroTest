@@ -47,12 +47,12 @@ transition:none !important;
 <link as="image" href="logo.webp" rel="preload"/>
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="newchart.webp" rel="preload"/>
-<link href="style.css" rel="stylesheet">
-<link href="brand.css" rel="stylesheet"><!-- mobile helper CSS -->
+<link href="style.css" rel="stylesheet"/>
+<link href="brand.css" rel="stylesheet"/><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
 </style>
-<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
-<link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<link href="https://USER.github.io/" rel="canonical"><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
+<link href="https://azrosystems.com/about.html" rel="canonical"> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
 </link></link><style id="about-hero-mobile-tune">
 @media (max-width: 600px){
   .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
@@ -62,15 +62,64 @@ transition:none !important;
   }
 }
 </style>
-<style id="trial-modal-centering-v2">
-dialog#trialModal .azro-modal__foot{ justify-content:center !important; }
-dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-align:center !important; }
-dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
-dialog#trialModal{ max-height: 92vh; }
+<style id="trial-modal-balance">
+#trialModal .azro-modal__illustration{ padding-block: clamp(12px, 1.8vw, 18px) !important; }
+#trialModal .azro-video{ display:grid; place-items:center; }
+#trialModal .azro-video__ph{ margin: 0 !important; padding: clamp(14px, 2vw, 20px) !important; }
+#trialModal .azro-modal__body{ padding-bottom: clamp(10px, 1.6vw, 14px) !important; }
+#trialModal .azro-modal__scroll{ overflow:auto; }
+</style><style id="onchart-cards-centering">
+/* Center content of On‑chart cards and unify panel spacing */
+.about-hero + .grid-3 .card, .grid-3 .card {
+  text-align: center;
+  display: grid;
+  gap: .45rem;
+  align-content: center;
+  justify-items: center;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  padding: clamp(16px, 2.4vw, 22px);
+}
+.grid-3 .card h3{ margin: 0; }
+.grid-3 .card p{ margin: .25rem 0 0; max-width: 48ch; }
 </style><style id="disclosure-spacing-fix">
 #disclosure{ padding: .9rem 1.0rem; }
-#disclosure p{ margin: .45rem 0; }
+#disclosure p{ margin: .5rem 0; }
 #disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
+#disclosure .risk-link{ margin-top:.25rem; }
+</style><style id="modal-panel-balance">
+/* Equal space around boxed text in both modals */
+#trialModal .azro-video__ph,
+#featureModal .azro-video__ph{
+  margin: 0 !important;
+  padding: clamp(14px, 2vw, 20px) !important;
+}
+#trialModal .azro-video, #featureModal .azro-video{
+  display:grid; place-items:center;
+}
+#trialModal .azro-modal__illustration,
+#featureModal .azro-modal__illustration{
+  padding-block: clamp(12px, 1.8vw, 18px) !important;
+}
+#trialModal .azro-modal__foot, #featureModal .azro-modal__foot{
+  justify-content:center !important;
+  text-align:center !important;
+}
+#trialModal .azro-modal__scroll, #featureModal .azro-modal__scroll{
+  overflow:auto;
+}
+</style><style id="disclosure-spacing-fix">
+#disclosure{ padding: .9rem 1.0rem; }
+#disclosure p{ margin: .5rem 0; }
+#disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
+#disclosure .risk-link{ margin-top:.25rem; }
+</style><style id="trial-equalize">
+#trialModal .azro-modal__illustration{ padding: clamp(12px, 2vw, 18px); }
+#trialModal .azro-video{ display:flex; align-items:center; justify-content:center; }
+#trialModal .azro-video__ph{ margin:0; padding: clamp(16px, 2.4vw, 22px); }
+#trialModal .azro-modal__body{ padding-bottom: clamp(12px, 2vw, 16px); }
+#trialModal .azro-modal__scroll{ overflow:auto; }
 </style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -116,7 +165,7 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 <div class="stat-card">
 <div class="value">XRP &amp; Alts</div>
-<div class="label">cross-pair Top Warning historically fired before deep alt-coin drawdowns—giving lead time to de-risk and protect profits on XRP and alts.<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">*</a></sup></div>
+<div class="label">profits protected before sell-offs<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">*</a></sup></div>
 </div>
 </div>
 <h2 class="h-subhead">On‑chart labels &amp; instant alerts</h2>
@@ -152,7 +201,7 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-<a class="btn" href="resources.html">Read quick start</a>
+<button class="btn js-free-trial" type="button">Free trial</button>
 </div>
 <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
 <details class="disclosure-box measure" id="disclosure" style="margin-top: .9rem;">
@@ -162,7 +211,7 @@ dialog#trialModal{ max-height: 92vh; }
           Past performance does not guarantee future results. Indicators are tools, not advice; trading involves risk,
           including possible loss of principal.
         </p>
-<p class="methodology-link">Methodology overview: <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">Read the PDF</a></p></details>
+<p class="methodology-link">Methodology overview: <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">Read the PDF</a></p><p class="risk-link">Risk disclosure: <a href="https://zsend.github.io/AzroTest/pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">Read the PDF</a></p></details>
 <p class="h-muted">Built and maintained in the United States.</p>
 </div>
 </div>
@@ -341,13 +390,12 @@ dialog#trialModal{ max-height: 92vh; }
 <form method="dialog">
 <div class="azro-modal__head">
 <div>
-<h3 class="azro-modal__title" id="fmTitle">Feature</h3>
-<p class="azro-modal__sub" id="fmSub">—</p>
+<h3 class="azro-modal__title" id="fmTitle" style="text-align:center;margin-inline:auto;text-align:center;margin-inline:auto">Feature</h3>
+<p class="azro-modal__sub" id="fmSub" style="text-align:center;margin-inline:auto;margin-top:.25rem;text-align:center;margin-inline:auto">—</p>
 </div>
-<button aria-label="Close" class="azro-modal__close" value="close">Close</button>
 </div>
 <div class="azro-modal__scroll">
-<div class="azro-modal__body">
+<div class="azro-modal__body" style="text-align:center;display:flex;flex-direction:column;align-items:center">
 <div class="azro-modal__text">
 <span class="azro-pill" id="fmBadge">On‑chart Label &amp; Alert</span>
 <p id="fmDesc">This modal explains how the on‑chart label and instant alert work for this signal. We can expand this copy anytime.</p>
@@ -360,9 +408,9 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 </div>
 </div>
-<div class="azro-modal__foot">
+<div class="azro-modal__foot" style="justify-content:center;text-align:center;justify-content:center;text-align:center">
 <span>Part of: <strong>On‑chart labels &amp; instant alerts</strong></span>
-<button class="azro-modal__close" value="close">Done</button>
+
 </div>
 </form>
 </dialog>
@@ -500,19 +548,17 @@ dialog#trialModal{ max-height: 92vh; }
 <form method="dialog">
 <div class="azro-modal__head">
 <div>
-<h3 class="azro-modal__title" id="trialTitle" style="text-align:center;margin-inline:auto">Two‑week Free Trial</h3>
-<p class="azro-modal__sub" style="text-align:center;margin-top:.25rem;margin-inline:auto">Unlock 14 days of access — no complex setup.</p>
+<h3 class="azro-modal__title" id="trialTitle" style="text-align:center;margin-inline:auto;text-align:center;margin-inline:auto;text-align:center;margin-inline:auto;text-align:center;margin-inline:auto">Two‑week Free Trial</h3>
+<p class="azro-modal__sub" style="text-align:center;margin-inline:auto;margin-top:.25rem;text-align:center;margin-inline:auto;margin-top:.25rem;text-align:center;margin-inline:auto;text-align:center;margin-inline:auto">Unlock 14 days of access — no complex setup.</p>
 </div>
-<button aria-label="Close" class="azro-modal__close" value="close">Close</button>
 </div>
 <div class="azro-modal__scroll">
-<div class="azro-modal__body">
+<div class="azro-modal__body" style="text-align:center;display:flex;flex-direction:column;align-items:center">
 <div class="azro-modal__text">
 <span class="azro-pill">Welcome offer</span>
 <p>Use this code at checkout to claim your two‑week free access:</p>
 <div id="trialCodeBox" style="display:grid;gap:.5rem;justify-items:center;">
 <code id="trialCode" style="font-weight:800; font-size:clamp(1.1rem,1.2vw+1rem,1.4rem); padding:.5rem 1rem; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06);">AZRO‑2WEEK‑FREE</code>
-<button class="azro-modal__close" id="copyTrialCode" style="border-radius:10px; padding:.5rem .9rem; border:1px solid rgba(255,255,255,.16);" type="button">Copy code</button>
 </div>
 <p style="font-size:.95rem; color:var(--text-sub,#cbd5e1)">Redeem on Gumroad when you check out.</p><div class="azro-modal__redeem-cta" style="display:grid;justify-items:center;margin:.55rem 0 0;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div>
 </div>
@@ -523,9 +569,8 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 </div>
 </div>
-<div class="azro-modal__foot" style="justify-content:center;text-align:center">
+<div class="azro-modal__foot" style="justify-content:center;text-align:center;justify-content:center;text-align:center;justify-content:center;text-align:center;justify-content:center;text-align:center">
 <span>Questions? <strong>support@azrosystems.com</strong></span>
-<button class="azro-modal__close" value="close">Done</button>
 </div>
 </form>
 </dialog>
@@ -548,5 +593,6 @@ dialog#trialModal{ max-height: 92vh; }
   }
 })();
 </script>
-</body>
+<script>
+(function(){var m=document.getElementById('trialModal');if(!m)return;document.querySelectorAll('.js-free-trial').forEach(function(el){el.addEventListener('click',function(){m.showModal();});});m.addEventListener('click',function(e){if(e.target===m)m.close();});})();</script></body>
 </html>
