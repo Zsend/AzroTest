@@ -43,12 +43,12 @@ transition:none !important;
 <!-- Fonts & preloads -->
 <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link as="image" href="logo.webp" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link as="image" href="logo.webp" rel="preload">
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="newchart.webp" rel="preload"/>
-<link href="style.css" rel="stylesheet">
-<link href="brand.css" rel="stylesheet"><!-- mobile helper CSS -->
+<link href="style.css" rel="stylesheet"/>
+<link href="brand.css" rel="stylesheet"/><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
 </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
@@ -62,7 +62,12 @@ transition:none !important;
   }
 }
 </style>
-</head>
+<style id="trial-modal-centering">
+.azro-modal__head-inner{ text-align:center; margin-inline:auto; }
+.azro-modal__title, .azro-modal__sub{ text-align:center; }
+.azro-modal__sub{ margin-top:.35rem; }
+.azro-modal__text .btn{ margin-top:.6rem; }
+</style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -83,7 +88,7 @@ transition:none !important;
 <p class="h-lead measure">Works out of the box—no complex tuning. Load, set alerts, done. Catch more of the move, stomach less of the pain.</p>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-<button class="btn free-trial-trigger" id="freeTrialBtn" type="button">Free trial</button>
+<button class="btn" id="freeTrialBtn" type="button">Free trial</button>
 </div>
 <figure class="media-card">
 <div class="media">
@@ -143,7 +148,7 @@ transition:none !important;
 </div>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-<button class="btn free-trial-trigger" type="button">Free trial</button>
+<button class="btn js-free-trial" type="button">Free trial</button>
 </div>
 <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
 <details class="disclosure-box measure" id="disclosure" style="margin-top: .9rem;">
@@ -487,47 +492,16 @@ transition:none !important;
 .eyebrow-link:hover{ color:#fff; border-bottom-color: rgba(255,255,255,.45); }
 </style>
 <!-- Free Trial Modal -->
-<dialog aria-labelledby="trialTitle" class="azro-modal" id="trialModal">
-<form method="dialog"><div class="azro-modal__head"><h3 class="azro-modal__title" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Free Trial</h3><button aria-label="Close" class="azro-modal__close" value="close">Close</button></div><div class="azro-modal__scroll"><div class="azro-modal__body" style="display:grid;place-items:center;min-height:160px;"><div class="cta-row" style="justify-content:center;margin:0;"><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Redeem on Gumroad</a></div></div></div></form>
-</dialog>
-<script id="azro-trial-script">
-(function(){
-  const btn = document.getElementById('freeTrialBtn');
-  const modal = document.getElementById('trialModal');
-  const copyBtn = document.getElementById('copyTrialCode');
-  const codeEl = document.getElementById('trialCode');
+<dialog aria-labelledby="trialTitle" class="azro-modal azro-modal" id="trialModal"><form method="dialog"><div class="azro-modal__head"><div class="azro-modal__head-inner"><h3 class="azro-modal__title" id="trialTitle">Two‑week Free Trial</h3><p class="azro-modal__sub">Unlock 14 days of access — no complex setup.</p></div><button aria-label="Close" class="azro-modal__close" value="close">Close</button></div><div class="azro-modal__scroll"><div class="azro-modal__body"><div class="azro-modal__text" style="text-align:center; margin-inline:auto;"><p class="feature-note">Redeem on Gumroad when you check out.</p><a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Redeem on Gumroad</a></div></div></div><div class="azro-modal__foot"><span>Questions? <strong>support@azrosystems.com</strong></span></div></form></dialog>
 
-  if(btn && modal){
-    btn.addEventListener('click', () => modal.showModal());
-    modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
-  }
-  if(copyBtn && codeEl){
-    copyBtn.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(codeEl.textContent.trim()); copyBtn.textContent = 'Copied!'; setTimeout(()=>copyBtn.textContent='Copy code', 1200); }
-      catch(e){ copyBtn.textContent = 'Press Ctrl+C to copy'; setTimeout(()=>copyBtn.textContent='Copy code', 2000); }
-    });
-  }
-})();
-</script>
 <script>
-(function(){
+(()=>{
   const modal = document.getElementById('trialModal');
   if(!modal) return;
-  const triggers = document.querySelectorAll('.free-trial-trigger');
-  triggers.forEach(el => {
-    // Avoid duplicate bindings
-    if (el.dataset.boundTrial === "1") return;
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (!modal.open && typeof modal.showModal === 'function') modal.showModal();
-    });
-    el.dataset.boundTrial = "1";
-  });
-  // Click outside to close
-  if (!modal.dataset.boundBackdrop) {
-    modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
-    modal.dataset.boundBackdrop = "1";
-  }
+  const openers = Array.from(document.querySelectorAll('#freeTrialBtn, .js-free-trial, [data-open="trialModal"]'));
+  openers.forEach(el => el.addEventListener('click', () => modal.showModal()));
+  modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
+  modal.addEventListener('cancel', (e) => { e.preventDefault(); modal.close(); });
 })();
 </script></body>
 </html>
