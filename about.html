@@ -76,55 +76,28 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
 
-<style id="azro-popup-fixes-v6">
-  .azro-modal__media{
-    --gap: 16px;
-    --inner-r: 12px;
-    position: relative;
-    padding: var(--gap) !important;
-    border: 0 !important;
-    border-radius: calc(var(--inner-r) + var(--gap)) !important;
-    background: rgba(255,255,255,.03);
-    box-shadow: none !important;
-    align-self: start !important;
+<style id="azro-trial-rightcol-inside">
+  /* Shorter box */
+  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 5.2 !important; position: relative; }
+  /* Ring on the video only (not the container), so instructions aren't inside ring */
+  dialog#trialModal .azro-modal__media::after{ display: none !important; }
+  dialog#trialModal .azro-modal__media{ padding: 16px !important; }
+  dialog#trialModal .azro-modal__media .azro-video::before{
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); pointer-events: none;
   }
-  .azro-modal__media::after{
-    content: "";
-    position: absolute;
-    inset: var(--gap);
-    border-radius: var(--inner-r);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
-    pointer-events: none;
-    z-index: 2;
-  }
-  .azro-video{
-    width: 100% !important;
-    border-radius: var(--inner-r) !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    overflow: hidden;
-  }
-  .azro-video::before{ display: none !important; }
-</style>
-
-<style id="azro-trial-rightcol-compact">
-  /* Place instructions under the right column box on desktop; compact type + spacing */
-  dialog#trialModal .trial-instructions{ grid-column: 2; margin: clamp(6px, 1vw, 10px) 0 0; }
-  dialog#trialModal .trial-instructions .trial-steps{
-    list-style-position: inside;
-    padding-left: 0;
-    margin: 0;
-    display: grid;
-    gap: .28rem;  /* tight vertical rhythm */
+  /* Instruction block directly under the box, compact */
+  dialog#trialModal .trial-instructions{ margin: 16px 0 0 0; }
+  dialog#trialModal .trial-steps-tight{
+    list-style: disc inside; padding-left: 0; margin: 0;
     color: var(--text-sub, #cbd5e1);
-    font-size: clamp(.88rem, .26vw + .85rem, .98rem);
-    line-height: 1.4;
+    font-size: clamp(.80rem, .18vw + .78rem, .90rem);
+    line-height: 1.32;
+    display: grid; gap: .22rem;
   }
-  /* Shorter box so list fits comfortably beneath */
-  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 6.5 !important; }
-  /* Mobile: full width under box when columns stack */
+  /* Responsive: if the layout stacks, let it breathe a bit */
   @media (max-width: 900px){
-    dialog#trialModal .trial-instructions{ grid-column: 1 / -1; margin-top: .5rem; }
+    dialog#trialModal .trial-instructions{ margin-top: 16px; }
   }
 </style>
 
@@ -447,8 +420,7 @@ dialog#trialModal{ max-height: 92vh; }
         "Instant push/email alert containing the feature name, price, and timestamp.",
         "Designed for decisive swing calls at cycle inflection points."
       ],
-      video: "feature-major.mp4",
-      poster: "feature-major.jpg"
+      video: ""
     },
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
@@ -513,42 +485,11 @@ dialog#trialModal{ max-height: 92vh; }
 
     fmVideo.innerHTML = '';
     if(e.video){
-      // If "video" points to a local file (mp4/webm/ogg), embed an HTML5 <video>.
-      if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video)){
-        const v = document.createElement('video');
-        v.setAttribute('playsinline','');
-        v.setAttribute('muted','');
-        v.setAttribute('autoplay','');
-        v.setAttribute('loop','');
-        v.setAttribute('preload','auto');
-        v.src = e.video;
-        v.style.cursor = 'zoom-in';
-        // Optional poster if provided via e.poster
-        if(e.poster){ v.setAttribute('poster', e.poster); }
-        fmVideo.appendChild(v);
-        // Ensure playback when modal opens (Safari/iOS reliability)
-        const tryPlay = () => { v.play().catch(()=>{}); };
-        v.addEventListener('canplay', tryPlay, {once:true});
-        setTimeout(tryPlay, 0);
-
-        // Click to enlarge: try Fullscreen; fallback to iOS inline fullscreen.
-        v.addEventListener('click', () => {
-          const el = v;
-          const goFS = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || el.mozRequestFullScreen;
-          if (goFS) {
-            goFS.call(el);
-          } else if (el.webkitEnterFullscreen) {
-            el.webkitEnterFullscreen(); // iOS
-          }
-        });
-      } else {
-        // Otherwise assume it's an embeddable URL (YouTube/Vimeo) and use an iframe
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.src = e.video;
-        fmVideo.appendChild(iframe);
-      }
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.src = e.video;
+      fmVideo.appendChild(iframe);
     } else {
       const ph = document.createElement('div');
       ph.className = 'azro-video__ph';
@@ -565,8 +506,6 @@ dialog#trialModal{ max-height: 92vh; }
     // Stop playback by clearing iframe
     const iframe = fmVideo.querySelector('iframe');
     if(iframe) iframe.src = 'about:blank';
-    const vid = fmVideo.querySelector('video');
-    if(vid){ try{ vid.pause(); vid.currentTime = 0; }catch(e){} }
   });
 
   cards.forEach(card => {
@@ -611,16 +550,16 @@ dialog#trialModal{ max-height: 92vh; }
 <div aria-label="Free trial info" class="azro-video" role="region">
 <div class="azro-video__ph">All features included. Early, Light, Radar, Major, Risk Levels and Altcoin Warnings. Access expires after 14 days.</div>
 </div>
-</div>
 <div class="trial-instructions">
-  <ul class="trial-steps">
-    <li>Enter the code at Gumroad checkout — <strong>no card required</strong>.</li>
-    <li>Enter your <strong>TradingView username</strong> at checkout. Works on a <strong>free TradingView account</strong>.</li>
-    <li>Access is granted within <strong>24 hours</strong>.</li>
-    <li>In TradingView: <em>Indicators → Invite‑only Scripts</em>, then select <strong>AZRO Systems XRP Top/Bottom Indicator — Invite‑Only</strong>.</li>
+  <ul class="trial-steps-tight">
+    <li><strong>No card required</strong> at Gumroad checkout.</li>
+    <li>Add your <strong>TradingView username</strong> (works with a <strong>free account</strong>).</li>
+    <li>Access within <strong>24 hours</strong>.</li>
+    <li>In TradingView: <em>Indicators → Invite‑only Scripts</em> → <strong>AZRO Systems XRP Top/Bottom — Invite‑Only</strong>.</li>
   </ul>
 </div>
 
+</div>
 </div>
 </div>
 <div class="azro-modal__foot" style="justify-content:center;text-align:center">
