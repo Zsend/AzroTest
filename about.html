@@ -76,17 +76,17 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
 
-<style id="azro-popup-fixes-v5">
-  /* Variables: inner radius & gap kept consistent across all popups */
+<style id="azro-popup-fixes-v6">
   .azro-modal__media{
     --gap: 16px;
     --inner-r: 12px;
     position: relative;
-    padding: var(--gap) !important;               /* equal spacing on all sides */
+    padding: var(--gap) !important;             /* equal spacing */
     border: 0 !important;
     border-radius: calc(var(--inner-r) + var(--gap)) !important;
-    box-shadow: none !important;                  /* ring drawn by ::after */
-    background: rgba(255,255,255,.03);            /* preserve original subtle fill */
+    background: rgba(255,255,255,.03);
+    box-shadow: none !important;                /* ring drawn by ::after */
+    align-self: start !important;               /* don't stretch taller than content */
   }
   .azro-modal__media::after{
     content: "";
@@ -98,11 +98,13 @@ dialog#trialModal{ max-height: 92vh; }
     z-index: 2;
   }
   .azro-video{
+    width: 100% !important;
     border-radius: var(--inner-r) !important;
-    overflow: hidden;     /* keeps iframes clipped to the inner radius */
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden;
   }
-  /* Remove any legacy inner ring if present */
-  .azro-video::before{ display: none !important; }
+  .azro-video::before{ display: none !important; } /* ensure single ring */
 </style>
 
 </head>
