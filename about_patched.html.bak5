@@ -500,7 +500,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     const e = ENRICH[title] || { tagline: sub, bullets: [], video: "" };
 
     fmTitle.textContent = title;
-    fmSub.textContent = "Subhead: " + (e.tagline || sub);
+    fmSub.textContent = e.tagline || sub;
     fmDesc.textContent = "How it works";
     fmBullets.innerHTML = "";
     (e.bullets || []).forEach(b => {
