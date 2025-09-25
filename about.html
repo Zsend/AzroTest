@@ -107,34 +107,41 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-video::before{ display: none !important; }
 </style>
 
-<style id="azro-trial-rightcol-fit">
-  /* Place instructions under right column; compress layout */
+<style id="azro-trial-rightcol-tightfit">
   dialog#trialModal .trial-instructions{
     grid-column: 2;
-    margin: clamp(6px, .9vw, 10px) 0 0;
-    max-width: 560px;
+    margin: clamp(6px, .8vw, 10px) 0 0;
+    max-width: 520px;
   }
-  dialog#trialModal .trial-steps{
-    list-style: disc inside;
-    padding-left: 0;
+  dialog#trialModal .trial-steps-grid{
+    list-style: none;
+    padding: 0;
     margin: 0;
-    column-count: 2;
-    column-gap: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: .28rem 1rem;
     color: var(--text-sub, #cbd5e1);
-    font-size: clamp(.84rem, .22vw + .84rem, .96rem);
-    line-height: 1.38;
+    font-size: clamp(.82rem, .2vw + .82rem, .92rem);
+    line-height: 1.34;
+    text-align: left;
   }
-  dialog#trialModal .trial-steps li{ break-inside: avoid; margin: .25rem 0; }
-  /* Shorter box to create space */
-  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 5.8 !important; }
-  /* If width is constrained, revert to one column and allow a touch more height */
+  dialog#trialModal .trial-steps-grid li{ position: relative; padding-left: 0; }
+  dialog#trialModal .trial-steps-grid li::before{
+    content: "• ";
+    color: rgba(255,255,255,.6);
+    margin-right: .2rem;
+  }
+  /* Make the right box shorter to create room */
+  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 5 !important; }
+
+  /* Responsiveness */
   @media (max-width: 1200px){
-    dialog#trialModal .trial-steps{ column-count: 1; }
-    dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 6.3 !important; }
+    dialog#trialModal .trial-instructions{ max-width: 100%; }
+    dialog#trialModal .trial-steps-grid{ grid-template-columns: 1fr; }
+    dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 6.4 !important; }
   }
   @media (max-width: 900px){
     dialog#trialModal .trial-instructions{ grid-column: 1 / -1; }
-    dialog#trialModal .trial-steps{ column-count: 1; }
   }
 </style>
 
@@ -589,11 +596,11 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 </div>
 <div class="trial-instructions">
-  <ul class="trial-steps">
-    <li>Enter the code at Gumroad checkout — <strong>no card required</strong>.</li>
-    <li>Enter your <strong>TradingView username</strong> (works with a <strong>free account</strong>).</li>
-    <li>Access is granted within <strong>24 hours</strong>.</li>
-    <li>In TradingView: <em>Indicators → Invite‑only Scripts</em>, select <strong>AZRO Systems XRP Top/Bottom Indicator — Invite‑Only</strong>.</li>
+  <ul class="trial-steps-grid">
+    <li><strong>No card required</strong> at Gumroad checkout.</li>
+    <li>Add your <strong>TradingView username</strong> (works with a <strong>free account</strong>).</li>
+    <li>Access within <strong>24 hours</strong>.</li>
+    <li>TradingView: <em>Indicators → Invite‑only Scripts</em> → <strong>AZRO Systems XRP Top/Bottom — Invite‑Only</strong>.</li>
   </ul>
 </div>
 
