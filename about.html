@@ -88,7 +88,6 @@ dialog#trialModal{ max-height: 92vh; }
     text-align: center !important;
     margin-inline: auto !important;
   }
-  /* Center the footer text but keep the Done button at the right */
   dialog#featureModal .azro-modal__foot{ justify-content: space-between !important; }
   dialog#featureModal .azro-modal__foot > span{
     margin-inline: auto !important;
@@ -97,7 +96,6 @@ dialog#trialModal{ max-height: 92vh; }
     width: 100% !important;
   }
 </style>
-
 
 <style id="azro-popup-fixes-v6">
   .azro-modal__media{
@@ -128,6 +126,16 @@ dialog#trialModal{ max-height: 92vh; }
     overflow: hidden;
   }
   .azro-video::before{ display: none !important; }
+</style>
+
+<style id="azro-trial-instructions-style">
+  dialog#trialModal .trial-instructions{
+    grid-column: 1 / -1;
+    max-width: 1100px;
+    margin: clamp(10px, 1.6vw, 14px) auto 0;
+  }
+  dialog#trialModal .trial-instructions ul{ list-style-position: inside; padding-left: 0; }
+  dialog#trialModal .trial-instructions li{ margin: .35rem 0; color: var(--text-sub, #cbd5e1); }
 </style>
 </head>
 <body>
@@ -453,7 +461,7 @@ dialog#trialModal{ max-height: 92vh; }
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
       bullets: [
-        "Fires before Major signals, helping you prepare position sizing and risk.",
+        "Provides early heads‑up for larger moves and helps identify mid‑cycle opportunities — useful for planning position sizing and risk.",
         "Pairs well with your ladder entries/exits playbook.",
         "Alerts keep you proactive when momentum shifts."
       ],
@@ -579,6 +587,16 @@ dialog#trialModal{ max-height: 92vh; }
 <div class="azro-video__ph">All features included. Early, Light, Radar, Major, Risk Levels and Altcoin Warnings. Access expires after 14 days.</div>
 </div>
 </div>
+<div class="trial-instructions azro-modal__text">
+  <h4 class="h-subhead" style="margin:0 0 .35rem;text-align:center;">How to redeem & activate</h4>
+  <ul style="margin:.25rem 0 0;">
+    <li>Enter the code at Gumroad checkout — <strong>no card required</strong>.</li>
+    <li>Enter your <strong>TradingView username</strong> at checkout. Works on a <strong>free TradingView account</strong>.</li>
+    <li>Access is granted within <strong>24 hours</strong>.</li>
+    <li>In TradingView: <em>Indicators → Invite‑only Scripts</em>, then select <strong>AZRO Systems XRP Top/Bottom Indicator — Invite‑Only</strong>.</li>
+  </ul>
+</div>
+
 </div>
 </div>
 <div class="azro-modal__foot" style="justify-content:center;text-align:center">
