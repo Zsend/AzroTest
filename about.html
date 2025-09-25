@@ -72,20 +72,37 @@ dialog#trialModal{ max-height: 92vh; }
 #disclosure p{ margin: .45rem 0; }
 #disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
 </style>
-<style id="azro-popup-close-hide">
-  .azro-modal__head .azro-modal__close{ display:none !important; }
+<style id="azro-popup-fixes">
+/* Ensure one clean, equal border on all sides of the inner text/video box */
+.azro-modal__media{ border: 0 !important; background: transparent !important; }
+/* The visible stroke lives on the gradient box itself */
+.azro-video{ border: 1px solid rgba(255,255,255,.12) !important; box-shadow: none !important; }
+/* Keep only the footer close button */
+.azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
 
-<style id="azro-popup-fixes-v4">
-  .azro-modal__media{
-    border: 0 !important;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12) !important;
-    border-radius: 14px !important;
-    padding: 16px !important; /* equal gap on all sides */
-  }
-  .azro-video::before{ display: none !important; } /* ensure single border */
-  .azro-video{ border-radius: 12px !important; border: 0 !important; box-shadow: none !important; }
+
+<style id="azro-popup-fixes-v3">
+/* Draw the border as an inset box-shadow above content to avoid aliasing and z-order issues */
+.azro-video{ border: 0 !important; box-shadow: none !important; position: relative; }
+.azro-video::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+  z-index: 1;
+  pointer-events: none;
+}
+/* Ensure the wrapper never reintroduces a stroke */
+.azro-modal__media{ border: 0 !important; }
 </style>
+
+
+<style id="azro-popup-fixes-v3-radius">
+  .azro-video{ border-radius: 14px !important; }
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -167,7 +184,7 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 <div class="cta-row">
 <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
-<button class="btn" id="freeTrialBtn2" type="button">Free trial</button>
+<button class="btn" type="button" onclick="document.getElementById('trialModal').showModal()">Free trial</button>
 </div>
 <p class="h-muted measure">Additional crypto‑asset models are in active development.</p>
 <details class="disclosure-box measure" id="disclosure" style="margin-top: .9rem;">
@@ -562,10 +579,6 @@ dialog#trialModal{ max-height: 92vh; }
     });
   }
 })();
-</script>
-
-<script id="trialBtn2-wire">
-(function(){ var b=document.getElementById('freeTrialBtn2');var m=document.getElementById('trialModal'); if(b&&m){b.addEventListener('click',function(){m.showModal();});}})();
 </script>
 </body>
 </html>
