@@ -107,26 +107,24 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-video::before{ display: none !important; }
 </style>
 
-<style id="azro-trial-rightcol-instructions">
-  /* Keep instructions under the right column box on desktop */
-  dialog#trialModal .trial-instructions{
-    grid-column: 2;                 /* sits under the media column */
-    margin: clamp(8px, 1.2vw, 12px) 0 0 0;
-  }
+<style id="azro-trial-rightcol-compact">
+  /* Place instructions under the right column box on desktop; compact type + spacing */
+  dialog#trialModal .trial-instructions{ grid-column: 2; margin: clamp(6px, 1vw, 10px) 0 0; }
   dialog#trialModal .trial-instructions .trial-steps{
     list-style-position: inside;
     padding-left: 0;
-    margin: .25rem 0 0;
+    margin: 0;
+    display: grid;
+    gap: .28rem;  /* tight vertical rhythm */
     color: var(--text-sub, #cbd5e1);
+    font-size: clamp(.88rem, .26vw + .85rem, .98rem);
+    line-height: 1.4;
   }
-  dialog#trialModal .trial-instructions .trial-steps li{ margin: .35rem 0; }
-
-  /* Make the right box a bit shorter to fit the instructions elegantly */
-  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 7 !important; }
-
-  /* Mobile: single-column stack — let instructions go full width underneath */
+  /* Shorter box so list fits comfortably beneath */
+  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 6.5 !important; }
+  /* Mobile: full width under box when columns stack */
   @media (max-width: 900px){
-    dialog#trialModal .trial-instructions{ grid-column: 1 / -1; }
+    dialog#trialModal .trial-instructions{ grid-column: 1 / -1; margin-top: .5rem; }
   }
 </style>
 
@@ -581,7 +579,6 @@ dialog#trialModal{ max-height: 92vh; }
 </div>
 </div>
 <div class="trial-instructions">
-  <h4 class="h-subhead" style="margin:0 0 .35rem;text-align:center;">How to redeem & activate</h4>
   <ul class="trial-steps">
     <li>Enter the code at Gumroad checkout — <strong>no card required</strong>.</li>
     <li>Enter your <strong>TradingView username</strong> at checkout. Works on a <strong>free TradingView account</strong>.</li>
