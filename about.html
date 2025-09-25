@@ -76,27 +76,6 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
 
-<style id="azro-feature-center-fix">
-  dialog#featureModal .azro-modal__head{ justify-content: center !important; }
-  dialog#featureModal .azro-modal__head > div{
-    width: 100% !important;
-    display: grid !important;
-    justify-items: center !important;
-  }
-  dialog#featureModal .azro-modal__title,
-  dialog#featureModal .azro-modal__sub{
-    text-align: center !important;
-    margin-inline: auto !important;
-  }
-  dialog#featureModal .azro-modal__foot{ justify-content: space-between !important; }
-  dialog#featureModal .azro-modal__foot > span{
-    margin-inline: auto !important;
-    text-align: center !important;
-    display: block !important;
-    width: 100% !important;
-  }
-</style>
-
 <style id="azro-popup-fixes-v6">
   .azro-modal__media{
     --gap: 16px;
@@ -128,15 +107,29 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-video::before{ display: none !important; }
 </style>
 
-<style id="azro-trial-instructions-style">
+<style id="azro-trial-rightcol-instructions">
+  /* Keep instructions under the right column box on desktop */
   dialog#trialModal .trial-instructions{
-    grid-column: 1 / -1;
-    max-width: 1100px;
-    margin: clamp(10px, 1.6vw, 14px) auto 0;
+    grid-column: 2;                 /* sits under the media column */
+    margin: clamp(8px, 1.2vw, 12px) 0 0 0;
   }
-  dialog#trialModal .trial-instructions ul{ list-style-position: inside; padding-left: 0; }
-  dialog#trialModal .trial-instructions li{ margin: .35rem 0; color: var(--text-sub, #cbd5e1); }
+  dialog#trialModal .trial-instructions .trial-steps{
+    list-style-position: inside;
+    padding-left: 0;
+    margin: .25rem 0 0;
+    color: var(--text-sub, #cbd5e1);
+  }
+  dialog#trialModal .trial-instructions .trial-steps li{ margin: .35rem 0; }
+
+  /* Make the right box a bit shorter to fit the instructions elegantly */
+  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: 16 / 7 !important; }
+
+  /* Mobile: single-column stack — let instructions go full width underneath */
+  @media (max-width: 900px){
+    dialog#trialModal .trial-instructions{ grid-column: 1 / -1; }
+  }
 </style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -587,9 +580,9 @@ dialog#trialModal{ max-height: 92vh; }
 <div class="azro-video__ph">All features included. Early, Light, Radar, Major, Risk Levels and Altcoin Warnings. Access expires after 14 days.</div>
 </div>
 </div>
-<div class="trial-instructions azro-modal__text">
+<div class="trial-instructions">
   <h4 class="h-subhead" style="margin:0 0 .35rem;text-align:center;">How to redeem & activate</h4>
-  <ul style="margin:.25rem 0 0;">
+  <ul class="trial-steps">
     <li>Enter the code at Gumroad checkout — <strong>no card required</strong>.</li>
     <li>Enter your <strong>TradingView username</strong> at checkout. Works on a <strong>free TradingView account</strong>.</li>
     <li>Access is granted within <strong>24 hours</strong>.</li>
