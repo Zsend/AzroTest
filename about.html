@@ -76,17 +76,40 @@ dialog#trialModal{ max-height: 92vh; }
   .azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
 
+<style id="azro-feature-center-fix">
+  dialog#featureModal .azro-modal__head{ justify-content: center !important; }
+  dialog#featureModal .azro-modal__head > div{
+    width: 100% !important;
+    display: grid !important;
+    justify-items: center !important;
+  }
+  dialog#featureModal .azro-modal__title,
+  dialog#featureModal .azro-modal__sub{
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+  /* Center the footer text but keep the Done button at the right */
+  dialog#featureModal .azro-modal__foot{ justify-content: space-between !important; }
+  dialog#featureModal .azro-modal__foot > span{
+    margin-inline: auto !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+  }
+</style>
+
+
 <style id="azro-popup-fixes-v6">
   .azro-modal__media{
     --gap: 16px;
     --inner-r: 12px;
     position: relative;
-    padding: var(--gap) !important;             /* equal spacing */
+    padding: var(--gap) !important;
     border: 0 !important;
     border-radius: calc(var(--inner-r) + var(--gap)) !important;
     background: rgba(255,255,255,.03);
-    box-shadow: none !important;                /* ring drawn by ::after */
-    align-self: start !important;               /* don't stretch taller than content */
+    box-shadow: none !important;
+    align-self: start !important;
   }
   .azro-modal__media::after{
     content: "";
@@ -104,7 +127,7 @@ dialog#trialModal{ max-height: 92vh; }
     box-shadow: none !important;
     overflow: hidden;
   }
-  .azro-video::before{ display: none !important; } /* ensure single ring */
+  .azro-video::before{ display: none !important; }
 </style>
 </head>
 <body>
