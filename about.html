@@ -161,12 +161,11 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:inherit;background:#000;"
   aria-label="AZRO chart demonstration video">
   <source src="main.mp4" type="video/mp4" />
-    <source src="main.mov" type="video/quicktime" />
   <!-- Fallback image if video unsupported -->
   <img src="newchart.png" alt="Example chart with Major Top and Major Bottom labels" width="1400" height="800" />
 </video>
 </div>
-<figcaption>Labels and risk markers show on your TradingView chart—plus instant push and email alerts to your device.</figcaption>
+<figcaption>Labels and risk markers display directly on your TradingView chart.</figcaption>
 </figure>
 <h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on 10 years of historical data. Beats XRP HODL.<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank" class="asterisk-link">*</a></sup></h2><p class="h-subhead" style="text-align:center;margin-top:.35rem;">A simple strategy rule—buy MAJOR Bottoms, sell MAJOR Tops.</p>
 <div class="stat-grid">
@@ -357,7 +356,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   display: grid; place-items: center; color: var(--text-head, #fff);
 }
 .azro-video__ph{ font-weight: 800; letter-spacing: .3px; text-align: center; padding: 10px; }
-.azro-video iframe, .azro-video video{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0;   object-fit: contain; background:#000; }
+.azro-video iframe, .azro-video video{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 .azro-modal__foot{
   display: flex; justify-content: space-between; align-items: center; gap: 12px;
@@ -455,7 +454,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Instant push/email alert containing the feature name, price, and timestamp.",
         "Designed for decisive swing calls at cycle inflection points."
       ],
-      video: "MAJOR Top : MAJOR Bottom (XRP).mov"
+      video: ""
     },
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
@@ -464,7 +463,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs well with your ladder entries/exits playbook.",
         "Alerts keep you proactive when momentum shifts."
       ],
-      video: "RADAR Top : RADAR Bottom (XRP).mov"
+      video: ""
     },
     "LIGHT Tops & Bottoms (XRP)": {
       tagline: "Stay proactive between major turns.",
@@ -473,7 +472,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with medium‑term trend filters to avoid noise.",
         "Great for tactical trims/add‑backs."
       ],
-      video: "LIGHT Tops & Bottoms (XRP).mov"
+      video: ""
     },
     "Elevated Risk (XRP & Market‑Wide)": {
       tagline: "Persistent caution markers when conditions worsen.",
@@ -482,7 +481,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Optional market‑wide overlay to keep a broad read on conditions.",
         "Complements stop management and hedging rules."
       ],
-      video: "Elevated Risk (XRP & Market‑Wide).mov"
+      video: ""
     },
     "Market‑Wide Top Warning (non‑XRP)": {
       tagline: "Optional overlay: when many coins meet top conditions, signal clear market‑wide caution.",
@@ -491,7 +490,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with Major/Radar to confirm risk‑off pivots.",
         "Useful for cross‑asset exposure management."
       ],
-      video: "Market‑Wide Top Warning (non‑XRP).mov"
+      video: ""
     }
   };
 
@@ -519,55 +518,13 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     });
 
     fmVideo.innerHTML = '';
-if(e.video){
-  var isURL = /^(https?:)?\/\//i.test(e.video);
-  if (isURL){
-    const iframe = document.createElement('iframe');
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.src = e.video;
-    fmVideo.appendChild(iframe);
-  } else {
-    const v = document.createElement('video');
-    v.setAttribute('controls','');
-    v.setAttribute('playsinline','');
-    v.setAttribute('preload','metadata');
-    v.style.width = '100%';
-    v.style.height = '100%';
-    v.style.objectFit = 'contain';
-    v.style.background = '#000';
-    const src = document.createElement('source');
-    src.src = encodeURI(e.video);
-    const ext = (e.video.split('.').pop() || '').toLowerCase();
-    src.type = ext === 'mp4' ? 'video/mp4' : (ext === 'webm' ? 'video/webm' : 'video/quicktime');
-    v.appendChild(src);
-    // Accessibility and fullscreen toggle
-    try { v.style.cursor = 'pointer'; } catch(e){}
-    v.setAttribute('tabindex','0');
-    v.setAttribute('aria-label','Feature demo video');
-    function openFS(el){
-      try { if (el.requestFullscreen) { el.requestFullscreen(); return; } } catch(e){}
-      try { if (el.webkitRequestFullscreen) { el.webkitRequestFullscreen(); return; } } catch(e){}
-      try { if (el.msRequestFullscreen) { el.msRequestFullscreen(); return; } } catch(e){}
-      try { if (typeof el.webkitEnterFullScreen === 'function') { el.webkitEnterFullScreen(); return; } } catch(e){}
-    }
-    function exitFS(){
-      var d=document;
-      try { if (d.exitFullscreen) d.exitFullscreen(); } catch(e){}
-      try { if (d.webkitExitFullscreen) d.webkitExitFullscreen(); } catch(e){}
-      try { if (d.msExitFullscreen) d.msExitFullscreen(); } catch(e){}
-    }
-    function toggleFS(){
-      var d=document;
-      var isFS = d.fullscreenElement || d.webkitFullscreenElement || d.msFullscreenElement || (v.webkitDisplayingFullscreen===true);
-      if (isFS) { exitFS(); } else { openFS(v); }
-    }
-    v.addEventListener('click', toggleFS, { passive:true });
-    v.addEventListener('touchend', function(){ toggleFS(); }, { passive:true });
-    v.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleFS(); } });
-    fmVideo.appendChild(v);
-  }
-} else {} else {
+    if(e.video){
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.src = e.video;
+      fmVideo.appendChild(iframe);
+    } else {
       const ph = document.createElement('div');
       ph.className = 'azro-video__ph';
       ph.innerHTML = 'Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.';
@@ -580,9 +537,6 @@ if(e.video){
   // Backdrop click closes
   modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
   modal.addEventListener('close', () => {
-    // Stop playback by clearing iframe and pausing local video
-    const v = fmVideo.querySelector('video');
-    if(v){ try{ v.pause(); v.currentTime = 0; }catch(e){} }
     // Stop playback by clearing iframe
     const iframe = fmVideo.querySelector('iframe');
     if(iframe) iframe.src = 'about:blank';
