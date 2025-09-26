@@ -140,69 +140,131 @@
 .cta-row { justify-content: center; }
 
 
-/* Center title & subhead at top of feature modal */
-#featureModal .azro-modal__head{ width:100% !important; display:flex !important; justify-content:center !important; text-align:center !important; }
-#featureModal .azro-modal__head > div{ width:100% !important; margin-inline:auto !important; }
-#featureModal .azro-modal__title, #featureModal .azro-modal__sub{ text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
-
-/* Footer inline & centered with text + button */
-#featureModal .azro-modal__foot{ width:100% !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; gap: clamp(.5rem, 1.6vw, 1rem) !important; flex-wrap: wrap; text-align:center; }
-#featureModal .azro-modal__foot span{ display:inline-block; white-space:nowrap; }
-
-/* On-brand link tinting */
-.asterisk-link{ color: var(--accent-a); text-decoration: none; }
-.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
-.disclosure-box .methodology-link a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
-
-/* Equal spacing for both disclosure rows */
-#disclosure .methodology-link{ margin:0 !important; padding:.6rem 0 !important; }
-#disclosure .methodology-link + .methodology-link{ margin-top:0 !important; }
-
-/* Subtle dividers around the note with equal margins */
-.feature-note--divided{ margin: .8rem auto; padding: .8rem 0; border-top: 1px dashed rgba(255,255,255,.18); border-bottom: 1px dashed rgba(255,255,255,.18); max-width:80ch; }
-
-
-/* Center the Feature modal header text (title + subhead) and footer row exactly */
-#featureModal .azro-modal__head{
-  display:flex !important;
-  justify-content:center !important;
-  align-items:center !important;
-  text-align:center !important;
-}
-#featureModal .azro-modal__head > div{ margin-inline:auto !important; }
-#featureModal .azro-modal__title, #featureModal .azro-modal__sub{ text-align:center !important; }
-
+/* Keep feature modal footer centered like Free Trial (row layout) */
 #featureModal .azro-modal__foot{
-  display:inline-flex !important;
-  justify-content:center !important;
-  align-items:center !important;
-  gap:clamp(.5rem, 1.6vw, 1rem) !important;
-  flex-wrap:wrap !important;
-  text-align:center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  flex-wrap: wrap;
+  text-align: center;
+}
+#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+#featureModal .azro-modal__foot span{ white-space: nowrap; }
+
+/* Equalize disclosure row spacing */
+#disclosure .methodology-link{
+  margin: 0 !important;
+  padding: .55rem 0 !important; /* same above/below for both rows */
+}
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+
+/* Branded asterisk link */
+.asterisk-link{ color: var(--accent-a); text-decoration: none; }
+.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness:1.5px; text-underline-offset: 2px; }
+
+/* Subtle page dividers around the explanatory note, with equal outer spacing */
+.feature-note--divided{
+  padding: .8rem 0;
+  border-top: 1px dashed rgba(255,255,255,.18);
+  border-bottom: 1px dashed rgba(255,255,255,.18);
+  max-width: 80ch;
+  margin: .8rem auto; /* equal top/bottom spacing */
 }
 
-/* Ensure equal border around the video placeholder */
-#featureModal .azro-modal__media{ position: relative; }
-#featureModal .azro-modal__media::after{
-  content:""; position:absolute; inset:0; border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); pointer-events:none;
-}
 
-/* One brand color for PDFs and asterisk */
+/* Center the Feature modal header text (title + subhead) */
+#featureModal .azro-modal__head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#featureModal .azro-modal__head > div{ margin-inline: auto; }
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub{ text-align: center; }
+
+/* Brand-colored links for disclosure PDFs and the asterisk */
 #disclosure .methodology-link a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
 .asterisk-link{ color: var(--accent-a); text-decoration: none; }
-.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness:1.5px; text-underline-offset:2px; }
 
-/* Make the two disclosure rows identical in vertical spacing */
-#disclosure .methodology-link{ margin:0 !important; padding:.6rem 0 !important; }
-#disclosure .methodology-link + .methodology-link{ margin-top:0 !important; }
+/* Ensure equal spacing for both disclosure rows */
+#disclosure .methodology-link{ margin: 0 !important; padding: .6rem 0 !important; }
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+#disclosure .methodology-link:last-of-type{ border-bottom: 1px dashed rgba(255,255,255,.18); }
 
 
-/* Equal insets inside the media box and center the placeholder text */
+/* === Feature Modal centering (header and footer) === */
+#featureModal .azro-modal__head{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__head > div{ margin-inline: auto !important; }
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub{ text-align: center !important; }
+
+/* Footer: center text and Done button with equal margins */
+#featureModal .azro-modal__foot{
+  display: block !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__foot span{ display: inline; }
+#featureModal .azro-modal__foot .azro-modal__close{
+  display: inline-flex; margin-left: clamp(.75rem, 1.6vw, 1rem);
+  vertical-align: middle;
+}
+
+/* Restore equal border look for the video placeholder box */
+#featureModal .azro-modal__media{ padding: clamp(16px, 1.8vw, 18px) !important; }
+#featureModal .azro-video{ position: relative; border-radius: 14px; }
+#featureModal .azro-video::before{
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+  pointer-events: none;
+}
+#featureModal .azro-video__ph{ border-radius: inherit; }
+
+
+/* Brand color for PDF links and the asterisk */
+#disclosure .methodology-link a{ color: var(--accent-a); text-decoration-thickness:1.5px; text-underline-offset:2px; }
+.asterisk-link{ color: var(--accent-a); text-decoration: none; }
+.asterisk-link:hover,.asterisk-link:focus{ text-decoration: underline; text-decoration-thickness:1.5px; text-underline-offset:2px; }
+
+/* Equalize spacing for both disclosure rows */
+#disclosure .methodology-link{ margin: 0 !important; padding: .6rem 0 !important; }
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+
+
+/* === Fine‑tune equal spacing around divided note (page dividers) === */
+.feature-note--divided{
+  margin: 1rem auto !important;      /* a touch more space under the bottom divider */
+  padding: .9rem 0 !important;       /* balanced internal space */
+}
+
+/* === Ensure the modal text box has an equal border & equal insets on all sides === */
+#featureModal .azro-modal__media{
+  display: grid !important;          /* center the inner box perfectly */
+  place-items: center !important;
+  box-sizing: border-box !important;
+  padding: clamp(12px, 1.8vw, 16px) !important;
+}
+#featureModal .azro-modal__media::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;               /* equal border thickness on all sides */
+  border-radius: inherit !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12) !important;
+  pointer-events: none !important;
+}
 #featureModal .azro-video__ph{
-  border-radius: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16/9;
+  margin: 0 !important;
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.25 !important;      /* helps visually center multi-line placeholder text */
 }
