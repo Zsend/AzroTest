@@ -150,20 +150,20 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 </div>
 <figure class="media-card">
 <div class="media">
-  <video
-    class="about-chart-video"
-    poster="newchart.webp"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:inherit;background:#000;"
-    aria-label="AZRO chart demonstration video">
-    <source src="main.mp4" type="video/mp4" />
-    <!-- Fallback image if video unsupported -->
-    <img src="newchart.png" alt="Example chart with Major Top and Major Bottom labels" width="1400" height="800" />
-  </video>
+<video
+  class="about-chart-video"
+  poster="newchart.webp"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:inherit;background:#000;"
+  aria-label="AZRO chart demonstration video">
+  <source src="main.mp4" type="video/mp4" />
+  <!-- Fallback image if video unsupported -->
+  <img src="newchart.png" alt="Example chart with Major Top and Major Bottom labels" width="1400" height="800" />
+</video>
 </div>
 <figcaption>Labels and risk markers display directly on your TradingView chart.</figcaption>
 </figure>
@@ -625,7 +625,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 <script id="trialBtn2-wire">
 (function(){ var b=document.getElementById('freeTrialBtn2');var m=document.getElementById('trialModal'); if(b&&m){b.addEventListener('click',function(){m.showModal();});}})();
 </script>
-
 <script defer src="about-video-fullscreen.js"></script>
 </body>
 </html>
