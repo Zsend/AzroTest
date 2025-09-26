@@ -140,44 +140,137 @@
 .cta-row { justify-content: center; }
 
 
-/* === Disclosure rows: consistent spacing and separators === */
-.disclosure-box .methodology-link{
-  margin: 0;
-  padding: .55rem 0;
-  text-align: center;
+/* === Adjustments for disclosure spacing & PDF link color (scoped) === */
+details.disclosure-box .methodology-link{
+  margin: .5rem 0;
+  padding: 0;
+  line-height: 1.45;
+}
+details.disclosure-box .methodology-link a{
+  color: var(--accent-a);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+
+/* === On‑chart Labels & Instant Alerts modal readability (scoped) === */
+dialog#featureModal #fmDesc{
+  margin: .8rem 0 .4rem;
+  font-weight: 700;
+  color: var(--text-head);
+}
+dialog#featureModal #fmBullets{
+  display: grid;
+  gap: .4rem;
+  padding-left: 1.2rem;
+  margin: 0 0 .6rem;
+  list-style: disc;
+}
+dialog#featureModal #fmBullets li{
+  color: var(--text-body);
   line-height: 1.5;
-  border-top: 1px dashed rgba(255,255,255,.18);
 }
-.disclosure-box .methodology-link:first-of-type{ margin-top: .10rem; }
 
-/* Preserve brand-colored PDF links */
-.disclosure-box .methodology-link a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
 
-/* === Modal readability: subhead + bullets spacing === */
-.azro-modal__sub{
-  color: var(--text-sub, #cbd5e1);
-  margin: .10rem 0 .6rem;
+/* Asterisk link styling to match brand accent */
+.asterisk-link { color: var(--accent-a); text-decoration: none; }
+.asterisk-link:hover, .asterisk-link:focus{
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
-#fmDesc{
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: .02em;
-  margin: .4rem 0 .35rem;
-  color: var(--text-head, #fff);
+
+
+/* === Tweaks: disclosure links & modal readability (scoped) ======= */
+/* Normalize spacing and separators for PDF link rows inside the disclosure box */
+.disclosure-box .methodology-link {
+  margin: 0 !important;
+  padding: .60rem 0;
+  border-top: 1px dashed rgba(255,255,255,.14);
 }
-#fmBullets{
+.disclosure-box .methodology-link:first-of-type { margin-top: .20rem !important; }
+
+/* Keep link color on brand */
+.disclosure-box .methodology-link a {
+  color: var(--accent-a);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+/* Feature modal: clear, modern spacing */
+#featureModal .azro-modal__text { display: grid; gap: .55rem; }
+#featureModal #fmDesc {
+  font-weight: 700;
+  color: var(--text-head);
+  margin: .4rem 0 .1rem 0;
+}
+#featureModal #fmBullets {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: .35rem;
+}
+#featureModal #fmBullets li { line-height: 1.45; }
+
+#featureModal .azro-modal__sub { color: var(--text-sub); }
+
+
+/* === Feature Modal centering & spacing (On‑chart labels & instant alerts) === */
+#featureModal .azro-modal__head{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(10px, 2vw, 16px) clamp(12px, 2.4vw, 18px);
+}
+#featureModal .azro-modal__head > div{ margin-inline: auto; }
+#featureModal .azro-modal__title{ margin: 0 0 .15rem 0; text-align: center; }
+#featureModal .azro-modal__sub{ text-align: center; margin: .10rem 0 .55rem 0; }
+
+#featureModal .azro-modal__close{
+  position: absolute;
+  right: clamp(8px, 2vw, 14px);
+  top: clamp(8px, 2vw, 14px);
+}
+
+#featureModal .azro-modal__body{
+  display: grid;
+  gap: clamp(14px, 2.2vw, 20px);
+  align-items: start;
+}
+
+#featureModal .azro-modal__text{
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: .55rem;
+}
+#featureModal #fmDesc{ margin: .4rem 0 .35rem; }
+#featureModal #fmBullets{
   margin: 0;
   padding-left: 1.05rem;
-  display: grid;
-  gap: .45rem;
-  line-height: 1.55;
+  text-align: left;
+  max-width: 66ch;
 }
-#fmBullets li{ margin: 0; }
 
-/* Keep the brand accent for inline asterisk links */
-.asterisk-link{ color: var(--accent-a); text-decoration: none; }
-.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+#featureModal .azro-modal__scroll{
+  padding-bottom: clamp(8px, 1.2vw, 12px);
+}
 
-
-/* Micro label style within modal subhead */
-.azro-modal__sub { font-weight: 500; }
+#featureModal .azro-modal__foot{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .35rem;
+  padding: clamp(14px, 2.4vw, 20px) !important;
+}
+#featureModal .azro-modal__foot .azro-modal__close{
+  position: static;
+  order: 2;
+}
+#featureModal .azro-modal__foot span{
+  order: 1;
+}
