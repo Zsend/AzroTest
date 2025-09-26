@@ -140,28 +140,34 @@
 .cta-row { justify-content: center; }
 
 
-/* Footer alignment for feature modal — button inline next to text */
+/* Feature Modal footer: center as one inline row (like Free Trial) */
 #featureModal .azro-modal__foot{
   display: inline-flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
+  flex-wrap: wrap;
   gap: clamp(.5rem, 1.6vw, 1rem) !important;
   text-align: center;
-  padding-top: clamp(14px, 2.4vw, 20px) !important;
-  padding-bottom: clamp(14px, 2.4vw, 20px) !important;
 }
-#featureModal .azro-modal__foot .azro-modal__close{ position: static !important; margin: 0; }
+#featureModal .azro-modal__foot span{ white-space: nowrap; }
+#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
 
-/* Center the feature modal title/subhead */
-#featureModal .azro-modal__head{ display:flex; justify-content:center; align-items:center; text-align:center; }
-#featureModal .azro-modal__head > div{ margin-inline:auto; }
-#featureModal .azro-modal__title{ text-align:center; }
-#featureModal .azro-modal__sub{ text-align:center; }
+/* Normalize disclosure spacing */
+#disclosure .methodology-link{ margin: 0 !important; padding: .6rem 0 !important; }
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
 
-/* Disclosure rows — even spacing + bottom divider */
-.disclosure-box .methodology-link{ margin:0; padding:.6rem 0; text-align:center; line-height:1.5; border-top:1px dashed rgba(255,255,255,.18); }
-.disclosure-box .methodology-link:last-of-type{ border-bottom:1px dashed rgba(255,255,255,.18); }
 
-/* Subtle divided note block (under On‑chart section) */
-.feature-note--divided{ padding:.8rem 0; border-top:1px dashed rgba(255,255,255,.18); border-bottom:1px dashed rgba(255,255,255,.18); max-width:80ch; margin-left:auto; margin-right:auto; }
+/* Brand link styling */
+.disclosure-box .methodology-link a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+
+/* Feature Modal footer centered row */
+#featureModal .azro-modal__foot{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  flex-wrap: wrap;
+}
+#featureModal .azro-modal__foot span{ display: inline-block; white-space: nowrap; }
