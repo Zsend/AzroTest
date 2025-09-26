@@ -216,8 +216,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
           Past performance does not guarantee future results. Indicators are tools, not advice; trading involves risk,
           including possible loss of principal.
         </p>
-<p class="methodology-link">Methodology overview: <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">Read the PDF</a></p>
-<p class="methodology-link">Risk disclosure: <a href="https://azrosystems.com/pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">Read the PDF</a></p></details>
+<p class="methodology-link">Methodology overview: <a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">Read the PDF</a></p></details>
 <p class="h-muted">Built and maintained in the United States.</p>
 </div>
 </div>

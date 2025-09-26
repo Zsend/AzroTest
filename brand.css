@@ -140,34 +140,22 @@
 .cta-row { justify-content: center; }
 
 
-/* Feature Modal footer: center as one inline row (like Free Trial) */
+/* Feature Modal footer inline and centered */
 #featureModal .azro-modal__foot{
   display: inline-flex !important;
-  flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-wrap: wrap;
   gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  flex-wrap: wrap;
   text-align: center;
 }
-#featureModal .azro-modal__foot span{ white-space: nowrap; }
-#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+#featureModal .azro-modal__foot span{ display:inline-block; white-space:nowrap; }
+#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness:1.5px; text-underline-offset:2px; }
 
-/* Normalize disclosure spacing */
-#disclosure .methodology-link{ margin: 0 !important; padding: .6rem 0 !important; }
-#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+/* Equal spacing for disclosure rows */
+#disclosure .methodology-link{ margin:0 !important; padding:.6rem 0 !important; }
+#disclosure .methodology-link + .methodology-link{ margin-top:0 !important; }
+#disclosure .methodology-link:last-of-type{ padding-bottom:.6rem !important; border-bottom:1px dashed rgba(255,255,255,.18); }
 
-
-/* Brand link styling */
-.disclosure-box .methodology-link a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
-#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
-
-/* Feature Modal footer centered row */
-#featureModal .azro-modal__foot{
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: clamp(.5rem, 1.6vw, 1rem) !important;
-  flex-wrap: wrap;
-}
-#featureModal .azro-modal__foot span{ display: inline-block; white-space: nowrap; }
+/* Subtle divided note with equal spacing (if present) */
+.feature-note--divided{ margin:.8rem auto; padding:.8rem 0; border-top:1px dashed rgba(255,255,255,.18); border-bottom:1px dashed rgba(255,255,255,.18); max-width:80ch; }
