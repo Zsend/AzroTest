@@ -622,8 +622,19 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   #featureModal .azro-video-wrap{position:relative;width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden}
   #featureModal .azro-video__el{width:100%;height:100%;object-fit:contain;display:block;background:#000}
   #featureModal .azro-video__expand{position:absolute;right:.5rem;bottom:.5rem;border:none;background:rgba(0,0,0,.45);color:#fff;padding:.35rem .55rem;border-radius:.5rem;font-size:.95rem;cursor:pointer;backdrop-filter:blur(2px)}
+
+  /* Backdrop */
   dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}
-  dialog.azro-vidbox{border:none;border-radius:12px;padding:0;width:min(96vw,1200px);height:min(96vh,70vh);background:transparent}
+
+  /* Center the dialog in a robust, modern way */
+  dialog.azro-vidbox{border:none;border-radius:12px;padding:0;background:transparent;
+    width:min(96vw,1200px);height:min(96vh,70vh)}
+
+  /* Ensure centering across engines */
+  dialog.azro-vidbox[open]{position:fixed;inset:0;margin:auto;display:block}
+  @supports not (inset: 0){ dialog.azro-vidbox[open]{top:50%;left:50%;transform:translate(-50%,-50%)} }
+
+  /* Inside frame */
   .azro-vidbox__frame{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
   .azro-vidbox__video{width:100%;height:100%;object-fit:contain}
   .azro-vidbox__close{position:fixed;top:calc(2vh + 8px);right:calc(2vw + 8px);border:none;padding:.4rem .6rem;font-size:1.5rem;line-height:1;background:rgba(0,0,0,.55);color:#fff;border-radius:.5rem;cursor:pointer}
@@ -664,16 +675,12 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         frame.innerHTML='';
         var v=document.createElement('video');
         v.className='azro-vidbox__video';
-        v.setAttribute('autoplay','');   // start immediately
-        v.setAttribute('muted','');      // allow autoplay reliably
-        v.setAttribute('playsinline','');
-        v.setAttribute('controls','');   // controls in lightbox
-        v.setAttribute('preload','auto');
-        // no type attribute (let the browser sniff)
+        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline','');
+        v.setAttribute('controls',''); v.setAttribute('preload','auto');
         v.innerHTML='<source src="'+src+'">';
         frame.appendChild(v);
         try{ v.play().catch(function(){}); }catch(e){}
-        try{ dlg.showModal(); }catch(e){}
+        try{ dlg.showModal(); }catch(e){}  // centered by CSS
       }};
     }
     var lightbox=setupLightbox();
@@ -687,7 +694,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       videoBox.innerHTML='';
       var wrap=document.createElement('div');
       wrap.className='azro-video-wrap';
-      // Inline video: autoplay + loop + muted + playsinline, NO controls
       wrap.innerHTML='<video class="azro-video__el" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
       videoBox.appendChild(wrap);
 
@@ -696,7 +702,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       function openBig(){ lightbox.open(src); }
       vid.addEventListener('click',openBig,{passive:true});
       btn.addEventListener('click',openBig,{passive:true});
-      // Ensure autoplay kicks in across browsers
       try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
     }
 
