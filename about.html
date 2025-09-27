@@ -517,48 +517,19 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       fmBullets.appendChild(li);
     });
 
-    
     fmVideo.innerHTML = '';
-    const v = (e.video || '').trim();
-    if(v){
-      // If it's a YouTube or Vimeo link, embed as iframe
-      const lower = v.toLowerCase();
-      const isEmbed = lower.includes('youtube.com') || lower.includes('youtu.be') || lower.includes('vimeo.com');
-      if(isEmbed){
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.src = v;
-        fmVideo.appendChild(iframe);
-      } else {
-        // Non-embed URL? fall back to a native <video>
-        const video = document.createElement('video');
-        video.className = 'azro-video__el';
-        video.setAttribute('playsinline','');
-        video.setAttribute('muted','');
-        video.setAttribute('loop','');
-        video.setAttribute('autoplay','');
-        video.setAttribute('preload','metadata');
-        video.src = v;
-        fmVideo.appendChild(video);
-      }
+    if(e.video){
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.src = e.video;
+      fmVideo.appendChild(iframe);
     } else {
-      // No video provided — fall back to the local demo clip if available
-      const video = document.createElement('video');
-      video.className = 'azro-video__el';
-      video.setAttribute('playsinline','');
-      video.setAttribute('muted','');
-      video.setAttribute('loop','');
-      video.setAttribute('autoplay','');
-      video.setAttribute('preload','metadata');
-      video.setAttribute('poster', 'newchart.webp');
-      const src = document.createElement('source');
-      src.src = 'main.mp4';
-      src.type = 'video/mp4';
-      video.appendChild(src);
-      fmVideo.appendChild(video);
+      const ph = document.createElement('div');
+      ph.className = 'azro-video__ph';
+      ph.innerHTML = 'Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.';
+      fmVideo.appendChild(ph);
     }
-
 
     modal.showModal();
   }
@@ -733,7 +704,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       videoBox.innerHTML='';
       var wrap=document.createElement('div');
       wrap.className='azro-video-wrap';
-      wrap.innerHTML='<video class="azro-video__el" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
+      wrap.innerHTML = '<video class="azro-video__el" poster=\"newchart.webp\" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
       videoBox.appendChild(wrap);
 
       var vid=wrap.querySelector('video');
