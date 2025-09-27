@@ -68,7 +68,7 @@ dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-a
 dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
 dialog#trialModal{ max-height: 92vh; }
 
-<style id="trial-modal-button-centering">
+</style><style id="trial-modal-button-centering">
 /* Scope strictly to the Free Trial dialog */
 dialog#trialModal .azro-modal__redeem-cta{
   display: grid;
@@ -125,6 +125,51 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
+
+<style id="azro-modal-centering-global-v3">
+/* --- Global modal centering & spacing (scoped to .azro-modal*) --- */
+.azro-modal__head{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  place-items: center !important;
+  text-align: center !important;
+  position: relative !important;
+}
+.azro-modal__head .azro-modal__close{
+  position: absolute !important;
+  top: clamp(10px, 2.4vw, 14px) !important;
+  right: clamp(10px, 2.4vw, 14px) !important;
+  margin: 0 !important;
+}
+.azro-modal__title, .azro-modal__sub{ text-align: center !important; }
+.azro-modal{ max-height: 90svh !important; }
+.azro-modal__scroll{ overflow: auto !important; overscroll-behavior: contain !important; }
+.azro-modal__body{
+  justify-items: center !important;
+  align-items: start !important;
+}
+.azro-modal__text{ justify-items: center !important; text-align: center !important; }
+.azro-modal__text p, .azro-modal__text ul{ margin-inline: auto !important; }
+.azro-modal__text ul{ list-style-position: inside !important; padding-left: 0 !important; }
+.azro-modal__foot{ justify-content: center !important; text-align: center !important; gap: 12px !important; }
+</style>
+
+<style id="azro-modal-video-css-v2">
+/* Video wrapper & expand button */
+#featureModal .azro-video-wrap{ position:relative; width:100%; height:100%; background:#000; border-radius:12px; overflow:hidden; }
+#featureModal .azro-video__el{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; background:#000; }
+#featureModal .azro-video__expand{
+  position:absolute; right:.5rem; bottom:.5rem; display:inline-flex; align-items:center; justify-content:center;
+  padding:.35rem .55rem; border-radius:.5rem; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45);
+  color:#fff; font-weight:700; line-height:1; cursor:pointer;
+}
+#featureModal .azro-video__expand:hover{ background:rgba(0,0,0,.65); }
+.azro-vidbox::backdrop{ background:rgba(2,6,23,.72); backdrop-filter: blur(2px); }
+.azro-vidbox{ border:0; padding:0; border-radius:12px; width:min(1080px,96vw); max-height:94svh; background:#000; }
+.azro-vidbox__frame{ position:relative; width:100%; aspect-ratio:16/9; }
+.azro-vidbox__video{ position:absolute; inset:0; width:100%; height:100%; background:#000; }
+.azro-vidbox__close{ position:absolute; top:.5rem; right:.5rem; z-index:2; border:1px solid rgba(255,255,255,.25); color:#fff; background:rgba(0,0,0,.45); border-radius:.5rem; padding:.35rem .55rem; cursor:pointer; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -400,44 +445,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   max-width: 80ch;
 }
 </style>
-<style id="azro-modal-centering-global">
-/* --- Global, non-destructive centering for all AZRO modals --- */
-/* Head: centered title/subhead on all viewports */
-.azro-modal__head{
-  /* override grid-based layout that can offset headings on mobile */
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  place-items: center !important;
-  text-align: center !important;
-  position: relative !important;
-}
-/* Keep the title block centered */
-.azro-modal__head > div{ margin-inline: auto !important; text-align: center !important; }
-/* Close button sits neatly in the corner when shown */
-.azro-modal__head .azro-modal__close{
-  position: absolute !important;
-  top: clamp(10px, 2.4vw, 14px) !important;
-  right: clamp(10px, 2.4vw, 14px) !important;
-}
-
-/* Body spacing: consistent rhythm */
-.azro-modal__body{
-  gap: clamp(16px, 2vw, 24px) !important;
-  padding: clamp(18px, 2.8vw, 28px) !important;
-}
-
-/* Text blocks inside the modal read comfortably and center on narrow screens */
-.azro-modal__text{ justify-items: center !important; text-align: center !important; }
-.azro-modal__text p, .azro-modal__text ul{ margin-inline: auto !important; }
-
-/* Footer stays centered and tidy */
-.azro-modal__foot{
-  justify-content: center !important;
-  text-align: center !important;
-  gap: 12px !important;
-}
-</style>
-
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
 <dialog aria-labelledby="fmTitle" class="azro-modal" id="featureModal">
 <form method="dialog">
@@ -688,6 +695,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   .azro-vidbox__close{position:fixed;top:calc(2vh + 8px);right:calc(2vw + 8px);border:none;padding:.4rem .6rem;font-size:1.5rem;line-height:1;background:rgba(0,0,0,.55);color:#fff;border-radius:.5rem;cursor:pointer}
   @media (max-width:600px){dialog.azro-vidbox{height:min(96vh,72vh)}}
 </style>
+
 <script id="azro-video-injector">
 (function(){
   function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn,{once:true}); }
@@ -719,21 +727,18 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
       dlg.querySelector('.azro-vidbox__close').addEventListener('click',function(){ dlg.close(); });
       dlg.addEventListener('close',function(){ frame.innerHTML=''; });
-      return { open:function(src){
+      return { open:function(srcBase){
         frame.innerHTML='';
         var v=document.createElement('video');
         v.className='azro-vidbox__video';
-        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline','');
-        v.setAttribute('controls',''); v.setAttribute('preload','metadata');
-        (function(){
-          var ext = (src.split('.').pop()||'').toLowerCase();
-          var typeAttr = ext==='mp4' ? 'video/mp4' : (ext==='mov' ? 'video/quicktime' : '');
-          v.innerHTML='<source src="'+src+'"'+(typeAttr?(' type="'+typeAttr+'"'):'')+'>'
-                    +'<source src="'+src.replace(/\.mov$/i,'.mp4')+'" type="video/mp4">';
-        })();
+        v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.setAttribute('controls',''); v.setAttribute('preload','metadata');
+        // MOV first, MP4 fallback
+        var s1=document.createElement('source'); s1.src=srcBase; s1.type='video/quicktime'; v.appendChild(s1);
+        var mp4=srcBase.replace(/\.mov(\?.*)?$/i,'.mp4$1');
+        if(mp4!==srcBase){ var s2=document.createElement('source'); s2.src=mp4; s2.type='video/mp4'; v.appendChild(s2); }
         frame.appendChild(v);
         try{ v.play().catch(function(){}); }catch(e){}
-        try{ dlg.showModal(); }catch(e){}  // centered by CSS
+        try{ dlg.showModal(); }catch(e){}
       }};
     }
     var lightbox=setupLightbox();
@@ -747,15 +752,22 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       videoBox.innerHTML='';
       var wrap=document.createElement('div');
       wrap.className='azro-video-wrap';
-      wrap.innerHTML='<video class="azro-video__el" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
+      var v=document.createElement('video');
+      v.className='azro-video__el';
+      v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.setAttribute('controls',''); v.setAttribute('preload','metadata');
+      // MOV source + MP4 fallback
+      var s1=document.createElement('source'); s1.src=src; s1.type='video/quicktime'; v.appendChild(s1);
+      var mp4=src.replace(/\.mov(\?.*)?$/i,'.mp4$1');
+      if(mp4!==src){ var s2=document.createElement('source'); s2.src=mp4; s2.type='video/mp4'; v.appendChild(s2); }
+      // Expand button
+      var exp=document.createElement('button'); exp.className='azro-video__expand'; exp.setAttribute('aria-label','Expand video'); exp.textContent='↗';
+      wrap.appendChild(v); wrap.appendChild(exp);
       videoBox.appendChild(wrap);
 
-      var vid=wrap.querySelector('video');
-      var btn=wrap.querySelector('.azro-video__expand');
       function openBig(){ lightbox.open(src); }
-      vid.addEventListener('click',openBig,{passive:true});
-      btn.addEventListener('click',openBig,{passive:true});
-      try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
+      v.addEventListener('click',openBig,{passive:true});
+      exp.addEventListener('click',openBig,{passive:true});
+      try{ v.muted=true; v.play().catch(function(){}); }catch(e){}
     }
 
     new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })
@@ -763,5 +775,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   });
 })();
 </script>
+
 </body>
 </html>
