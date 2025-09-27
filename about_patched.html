@@ -661,23 +661,43 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       dlg.querySelector('.azro-vidbox__close').addEventListener('click',function(){ dlg.close(); });
       dlg.addEventListener('close',function(){ frame.innerHTML=''; });
       return { open:function(src){
-        frame.innerHTML=''; var v=document.createElement('video');
-        v.className='azro-vidbox__video'; v.setAttribute('controls',''); v.setAttribute('playsinline',''); v.setAttribute('preload','metadata');
-        v.innerHTML='<source src="'+src+'" type="video/quicktime">'; frame.appendChild(v);
-        try{ dlg.showModal(); }catch(e){} try{ v.play().catch(function(){}); }catch(e){}
+        frame.innerHTML='';
+        var v=document.createElement('video');
+        v.className='azro-vidbox__video';
+        v.setAttribute('autoplay','');   // start immediately
+        v.setAttribute('muted','');      // allow autoplay reliably
+        v.setAttribute('playsinline','');
+        v.setAttribute('controls','');   // controls in lightbox
+        v.setAttribute('preload','auto');
+        // no type attribute (let the browser sniff)
+        v.innerHTML='<source src="'+src+'">';
+        frame.appendChild(v);
+        try{ v.play().catch(function(){}); }catch(e){}
+        try{ dlg.showModal(); }catch(e){}
       }};
     }
     var lightbox=setupLightbox();
 
     function injectVideo(){
-      var key=norm((titleEl.textContent||'').trim()); var file=nmap[key]; if(!file) return;
+      var key=norm((titleEl.textContent||'').trim());
+      var file=nmap[key];
+      if(!file) return;
       var src='videos/'+encodeURIComponent(file);
+
       videoBox.innerHTML='';
-      var wrap=document.createElement('div'); wrap.className='azro-video-wrap';
-      wrap.innerHTML='<video class="azro-video__el" controls playsinline preload="metadata"><source src="'+src+'" type="video/quicktime"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
+      var wrap=document.createElement('div');
+      wrap.className='azro-video-wrap';
+      // Inline video: autoplay + loop + muted + playsinline, NO controls
+      wrap.innerHTML='<video class="azro-video__el" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
       videoBox.appendChild(wrap);
-      var vid=wrap.querySelector('video'); var btn=wrap.querySelector('.azro-video__expand'); function openBig(){ lightbox.open(src); }
-      vid.addEventListener('click',openBig,{passive:true}); btn.addEventListener('click',openBig,{passive:true});
+
+      var vid=wrap.querySelector('video');
+      var btn=wrap.querySelector('.azro-video__expand');
+      function openBig(){ lightbox.open(src); }
+      vid.addEventListener('click',openBig,{passive:true});
+      btn.addEventListener('click',openBig,{passive:true});
+      // Ensure autoplay kicks in across browsers
+      try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
     }
 
     new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })
