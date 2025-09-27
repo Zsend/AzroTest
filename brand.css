@@ -437,73 +437,106 @@ dialog.azro-modal[open]{
 
 
 
-/* ===== AZRO Modal Hard-Fix (v5, 2025-09-27) ===================================
-   Scope: ONLY #featureModal and #trialModal dialogs and their internals.
-   Purpose: perfect centering, equal spacing, no clipping, reliable scrolling,
-            video visibility. This overrides earlier modal rules.
-=============================================================================== */
+/* =====================================================================
+   AZRO modal perfection patch (strictly scoped) — v7 (2025-09-27)
+   Targets ONLY: dialog.azro-modal, #featureModal, #trialModal
+   Purpose: perfect centering, no clipping, equal spacing, mobile scroll,
+            media reliability. No visual changes elsewhere.
+===================================================================== */
 
-/* A) Robust centering & mobile-safe sizing */
-#featureModal[open],
-#trialModal[open]{
+dialog.azro-modal[open]{
   position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  margin: 0 !important;
-  width: min(94vw, 1000px) !important;
-  max-height: calc(100dvh - 24px) !important;
+  inset: 0 !important;
   display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important; /* rounded corners respected */
-  border-radius: inherit;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 10000 !important;
 }
 
-/* B) Head/Scroll/Foot layout with consistent padding */
+dialog.azro-modal[open] > form{
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(94vw, 1000px) !important;
+  max-height: calc(100dvh - 24px) !important; /* never exceed viewport */
+  overflow: hidden !important;                 /* internal area scrolls */
+  border-radius: inherit !important;
+}
+
+/* Header & footer keep even padding and remain visible */
 #featureModal .azro-modal__head,
 #trialModal   .azro-modal__head,
 #featureModal .azro-modal__foot,
 #trialModal   .azro-modal__foot{
   padding: clamp(16px, 4vw, 24px) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
   text-align: center !important;
 }
+@supports (padding: max(0px)){
+  #featureModal .azro-modal__head{ padding-top: max(clamp(16px, 4vw, 24px), env(safe-area-inset-top)); }
+  #trialModal   .azro-modal__head{ padding-top: max(clamp(16px, 4vw, 24px), env(safe-area-inset-top)); }
+  #featureModal .azro-modal__foot{ padding-bottom: max(clamp(16px, 4vw, 24px), env(safe-area-inset-bottom)); }
+  #trialModal   .azro-modal__foot{ padding-bottom: max(clamp(16px, 4vw, 24px), env(safe-area-inset-bottom)); }
+}
+
+/* Only the middle section scrolls */
 #featureModal .azro-modal__scroll,
 #trialModal   .azro-modal__scroll{
   flex: 1 1 auto !important;
+  min-height: 0 !important;
   overflow: auto !important;
   -webkit-overflow-scrolling: touch !important;
   padding: clamp(16px, 4vw, 24px) !important;
   padding-bottom: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-bottom, 0px)) !important;
 }
-
-/* Vertical rhythm so text spacing is even */
 #featureModal .azro-modal__scroll > * + *,
-#trialModal   .azro-modal__scroll > * + *{ margin-top: clamp(12px, 3vw, 20px) !important; }
-
-/* “Done” button block — centered and evenly spaced from CTA text */
-#featureModal .azro-modal__foot span,
-#trialModal   .azro-modal__foot span{ display: block !important; margin-bottom: clamp(10px, 2.6vw, 14px) !important; }
-#featureModal .azro-modal__foot .azro-modal__close,
-#trialModal   .azro-modal__foot .azro-modal__close{
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 44px !important;
-  padding-inline: clamp(14px, 3.2vw, 18px) !important;
+#trialModal   .azro-modal__scroll > * + *{
+  margin-top: clamp(12px, 3vw, 20px) !important;
 }
 
-/* C) Video/iframe visibility in modal */
-#featureModal .azro-video,
-#trialModal   .azro-video{ aspect-ratio: 16/9 !important; width: 100% !important; }
-#featureModal .azro-video__el,
-#trialModal   .azro-video__el{
+/* Footer layout — centered CTA and button with consistent spacing */
+@media (max-width: 640px){
+  #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__foot{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: clamp(.6rem, 2.5vw, 1rem) !important;
+  }
+  #featureModal .azro-modal__foot .azro-modal__close,
+  #trialModal   .azro-modal__foot .azro-modal__close{
+    min-height: 44px !important;
+    padding-inline: clamp(14px, 3.2vw, 18px) !important;
+  }
+}
+
+/* Media reliability inside modal (iOS black-video fix) */
+#featureModal .azro-modal__media .azro-video,
+#trialModal   .azro-modal__media .azro-video{
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  display: block !important;
+  background: #000 !important;
+  border-radius: clamp(12px, 2vw, 18px);
+}
+#featureModal .azro-modal__media iframe,
+#featureModal .azro-modal__media video,
+#trialModal   .azro-modal__media iframe,
+#trialModal   .azro-modal__media video{
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
-  background: #000 !important;
   display: block !important;
+  border: 0 !important;
+  background: #000 !important;
+  transform: translateZ(0) !important;
+  will-change: transform !important;
+  backface-visibility: hidden !important;
 }
 
+/* Lock page scroll only while a modal is open (CSS-only browsers with :has) */
+html:has(dialog.azro-modal[open]), body:has(dialog.azro-modal[open]){
+  overflow: hidden !important;
+  touch-action: none !important;
+}

@@ -704,7 +704,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       videoBox.innerHTML='';
       var wrap=document.createElement('div');
       wrap.className='azro-video-wrap';
-      wrap.innerHTML = '<video class="azro-video__el" poster=\"newchart.webp\" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
+      wrap.innerHTML='<video class="azro-video__el" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
       videoBox.appendChild(wrap);
 
       var vid=wrap.querySelector('video');
