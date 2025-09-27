@@ -391,6 +391,44 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   max-width: 80ch;
 }
 </style>
+<style id="azro-modal-centering-global">
+/* --- Global, non-destructive centering for all AZRO modals --- */
+/* Head: centered title/subhead on all viewports */
+.azro-modal__head{
+  /* override grid-based layout that can offset headings on mobile */
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  place-items: center !important;
+  text-align: center !important;
+  position: relative !important;
+}
+/* Keep the title block centered */
+.azro-modal__head > div{ margin-inline: auto !important; text-align: center !important; }
+/* Close button sits neatly in the corner when shown */
+.azro-modal__head .azro-modal__close{
+  position: absolute !important;
+  top: clamp(10px, 2.4vw, 14px) !important;
+  right: clamp(10px, 2.4vw, 14px) !important;
+}
+
+/* Body spacing: consistent rhythm */
+.azro-modal__body{
+  gap: clamp(16px, 2vw, 24px) !important;
+  padding: clamp(18px, 2.8vw, 28px) !important;
+}
+
+/* Text blocks inside the modal read comfortably and center on narrow screens */
+.azro-modal__text{ justify-items: center !important; text-align: center !important; }
+.azro-modal__text p, .azro-modal__text ul{ margin-inline: auto !important; }
+
+/* Footer stays centered and tidy */
+.azro-modal__foot{
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 12px !important;
+}
+</style>
+
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
 <dialog aria-labelledby="fmTitle" class="azro-modal" id="featureModal">
 <form method="dialog">
@@ -676,8 +714,13 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         var v=document.createElement('video');
         v.className='azro-vidbox__video';
         v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline','');
-        v.setAttribute('controls',''); v.setAttribute('preload','auto');
-        v.innerHTML='<source src="'+src+'">';
+        v.setAttribute('controls',''); v.setAttribute('preload','metadata');
+        (function(){
+          var ext = (src.split('.').pop()||'').toLowerCase();
+          var typeAttr = ext==='mp4' ? 'video/mp4' : (ext==='mov' ? 'video/quicktime' : '');
+          v.innerHTML='<source src="'+src+'"'+(typeAttr?(' type="'+typeAttr+'"'):'')+'>'
+                    +'<source src="'+src.replace(/\.mov$/i,'.mp4')+'" type="video/mp4">';
+        })();
         frame.appendChild(v);
         try{ v.play().catch(function(){}); }catch(e){}
         try{ dlg.showModal(); }catch(e){}  // centered by CSS
