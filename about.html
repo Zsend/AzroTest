@@ -125,67 +125,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
-<style id="about-mobile-readability-and-modals">
-  /* Readability: let lead paragraphs breathe and be wider on mobile */
-  @media (max-width: 600px){
-    .hero.about-hero .hero-text{ padding-left: 18px !important; padding-right: 18px !important; }
-    .hero.about-hero .hero-text .measure{ max-width: none !important; }
-    .hero.about-hero .hero-text > p{ line-height: 1.58 !important; }
-  }
-
-  /* Keep “Read the PDF” links on a single line */
-  .disclosure-box .methodology-link a{ white-space: nowrap; }
-
-  /* Modal/lightbox: robust centering + spacing + safe focus behavior */
-  dialog.azro-modal{
-    position: fixed;
-    inset: 0;
-    margin: auto;
-    width: min(980px, 94vw);
-    max-height: 92svh; max-height: 92vh;
-    z-index: 10001; /* above header placeholder */
-  }
-  dialog.azro-modal::backdrop{ background: rgba(2,6,23,.66); }
-  dialog.azro-modal form{ display:flex; flex-direction:column; height: 100%; }
-
-  .azro-modal__head{ padding: clamp(16px, 2.4vw, 22px) clamp(16px, 2.4vw, 22px) 12px; }
-  .azro-modal__scroll{ flex:1 1 auto; overflow:auto; overscroll-behavior: contain;
-    padding: 0 clamp(16px, 2.4vw, 22px) clamp(16px, 2.4vw, 22px);
-  }
-  .azro-modal__body{ display:grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2.2vw, 22px); align-items: start; }
-  @media (max-width: 900px){ .azro-modal__body{ grid-template-columns: 1fr; } }
-  .azro-modal__foot{ padding: clamp(14px, 2.4vw, 20px); }
-
-  /* Button focus: only show outline when keyboard-activating */
-  .azro-modal__close{ outline: none; }
-  .azro-modal__close:focus{ outline: none; }
-  .azro-modal__close:focus-visible{
-    outline: 2px solid #3bf; outline-offset: 2px;
-  }
-  dialog.azro-modal:focus{ outline: none; }
-
-  /* iOS safe areas */
-  @supports (padding: max(0px)){
-    dialog.azro-modal{ padding-top: max(0px, env(safe-area-inset-top)); padding-bottom: max(0px, env(safe-area-inset-bottom)); }
-  }
-</style>
-<script id="about-modal-focus-guard">
-  (function(){
-    function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
-    ready(function(){
-      ['featureModal','trialModal'].forEach(function(id){
-        var dlg = document.getElementById(id);
-        if(!dlg || typeof MutationObserver==='undefined') return;
-        dlg.setAttribute('tabindex','-1');
-        new MutationObserver(function(){
-          if(dlg.open){
-            try{ dlg.focus({preventScroll:true}); }catch(e){}
-          }
-        }).observe(dlg,{attributes:true,attributeFilter:['open']});
-      });
-    });
-  })();
-</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

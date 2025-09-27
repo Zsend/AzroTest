@@ -269,224 +269,309 @@
   line-height: 1.25 !important;      /* helps visually center multi-line placeholder text */
 }
 
-/* === Targeted refinements (2025-09-27) ==============================
-   NOTE: Carefully scoped to avoid any unintended site-wide changes.
-   - Card titles: avoid single-word last lines and balance wrapping.
-   - About page (mobile): widen readable measure.
-   - Modal windows: fix clipping + spacing; outline behavior for "Done".
-   - PDF links (About): keep "Read the PDF" on one line for parity.
-   - Resources page: ensure centered and not cut off on mobile.
-===================================================================== */
+/* =========================  AZRO PATCH 2025-09-27  ==========================
+   Scope: visual-only improvements per client request. No content changes.
+   --------------------------------------------------------------------------- */
 
-/* --- Resources: card titles & layout --- */
-.resources-grid {
+/* A) Resources cards: prevent orphan words and improve wrapping */
+.resource-card span{
+  text-wrap: balance;                 /* modern browsers */
+  text-wrap: pretty;
+}
+@supports not (text-wrap: balance){
+  .resource-card span{
+    word-break: normal;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+}
+
+/* B) About page readability on small screens */
+@media (max-width: 600px){
+  .measure{ max-width: none; }        /* let text use the available width */
+  .hero-text.container{ padding-inline: 18px; } /* gentle side padding */
+  .hero-text .h-lead{ line-height: 1.7; }       /* slightly looser leading */
+}
+
+/* C) "Read the PDF" anchors should stay on one line */
+.methodology-link a{ white-space: nowrap; }
+
+/* D) Center & protect the Resources layout on mobile */
+.hero-text.resources-page{
+  margin-inline: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(14px, 2.8vw, 22px);
   justify-items: center;
-  align-items: stretch;
-  width: min(1100px, 92vw);
 }
-.resources-grid .resource-card {
-  text-align: center;
-  max-width: 420px;
-}
-/* Title text: balance lines, avoid orphan word */
-.resources-grid .resource-card span {
-  display: block;
-  line-height: 1.22;
-  /* Progressive enhancement; falls back gracefully */
-  text-wrap: balance;
-  /* Constrain measure so long titles don't produce an orphan last line */
-  max-inline-size: 28ch;
-  margin-inline: auto;
+@media (max-width: 900px){
+  .hero-text.resources-page{ padding-inline: 16px; }
+  .resources-grid{ transform: none !important; } /* avoid vertical cropping */
 }
 
-/* --- About page readability on mobile --- */
-@media (max-width: 600px) {
-  .about-hero .hero-text { max-width: 94vw; }
-  .about-hero .panel { padding: clamp(14px, 3.5vw, 18px) clamp(14px, 4vw, 22px); }
-  /* Let paragraphs use the available width on small screens */
-  .about-hero .measure { max-width: 100% !important; }
+/* E) Dialog (feature & trial) – ensure fully visible on mobile */
+dialog.azro-modal[open]{
+  position: fixed; inset: 0; margin: auto;      /* robust centering */
 }
-
-/* --- About: keep 'Read the PDF' on one line --- */
-.methodology-link a { white-space: nowrap; }
-
-/* --- Modal windows: robust centering, scrolling, spacing --- */
-dialog.azro-modal {
-  border: none;
-  border-radius: 12px;
-  padding: 0;
-  width: min(960px, 96vw);
-}
-dialog.azro-modal[open] { position: fixed; inset: 0; margin: auto; }
-dialog.azro-modal > form {
-  display: grid;
-  grid-template-rows: auto 1fr auto;  /* head | scroll | foot */
-  max-height: min(92dvh, 720px);
-}
-.azro-modal__scroll {
-  overflow: auto;
-  overscroll-behavior: contain;
-  padding: 0 clamp(14px, 2.4vw, 24px);
-}
-.azro-modal__body {
-  display: grid;
-  gap: clamp(14px, 2.4vw, 24px);
-}
-
-/* Better spacing in the modal footer on small screens */
-@media (max-width: 600px) {
-  .azro-modal__foot { padding: clamp(12px, 2.8vw, 16px) clamp(14px, 4vw, 20px); }
-}
-
-/* --- Modal 'Done' button ring behavior --- */
-.azro-modal__close { outline: none; }
-.azro-modal__close:focus { outline: none; }        /* no initial blue outline */
-.azro-modal__close:focus-visible,
-.azro-modal__close:active {
-  outline: 2px solid var(--accent-a);
-  outline-offset: 2px;
-}
-
-/* --- Resources page centering on mobile --- */
-.hero .hero-text.resources-page.container {
-  margin-inline: auto;
-  max-width: min(1100px, 92vw);
-}
-
-
-/* ===== Targeted polish (2025‑09‑27) — minimal, non‑textual changes only ===== */
-
-/* -- A. Resources cards: avoid orphan words, improve wrapping, balance lines -- */
-.resources-grid {
-  /* ensure cards have a reasonable minimum width and grid auto-fit */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(14px, 1.8vw, 24px);
-  justify-items: stretch;
-}
-.resource-card.card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: clamp(14px, 1.6vw, 18px) clamp(16px, 2vw, 20px);
-  text-align: left;
-}
-.resource-card.card span {
-  display: inline-block;
-  text-wrap: balance;         /* modern browsers: nicer line breaks */
-  word-break: keep-all;
-}
-
-/* -- B. About page: easier reading on mobile without changing copy -- */
-@media (max-width: 600px) {
-  .about-hero .panel {        /* widen hero copy block a touch */
-    max-width: 94vw;
-  }
-  .about-hero .h-lead.measure {
-    max-width: 36em;          /* wider measure so lines aren't too short */
-    line-height: 1.65;        /* slightly more breathing room */
-  }
-}
-
-/* -- C. Modal windows: never cut off, tidy spacing, predictable scroll -- */
-.azro-modal {
-  max-height: calc(100dvh - clamp(24px, 4vh, 48px));
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-}
-.azro-modal[open] {            /* center within viewport with safe inset */
-  position: fixed;
-  inset: clamp(12px, 2vh, 20px);
-  margin: auto;
-}
-.azro-modal__scroll {
-  overflow: auto;
-  overscroll-behavior: contain;
-  padding: 0 clamp(16px, 2vw, 24px);
-}
-
-/* Head / body / footer spacing */
-.azro-modal__head { padding: clamp(12px, 1.6vw, 16px) clamp(16px, 2vw, 20px); }
-.azro-modal__body { gap: clamp(12px, 1.6vw, 20px); }
-.azro-modal__foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: clamp(12px, 1.6vw, 16px) clamp(16px, 2vw, 20px);
-  border-top: 1px dashed rgba(255,255,255,.18);
-}
-
-/* Keep modal media padded on all screens */
-.azro-modal__media { padding: clamp(12px, 1.8vw, 18px) !important; }
-
-/* -- D. Done button ring behavior: show only on click (not on initial focus) -- */
-.azro-modal__close { outline: none; }
-.azro-modal__close:focus { outline: none; }                 /* prevent initial blue outline */
-.azro-modal__close:focus-visible { outline: none !important; }  /* keep keyboard focus ring off just for this button */
-.azro-modal__close:active {
-  outline: 2px solid var(--accent-a);
-  outline-offset: 2px;
-}
-
-/* -- E. PDF link: keep “Read the PDF” on one line in text blocks -- */
-a[href$=".pdf"]:not(.resource-card) { white-space: nowrap; }
-
-/* -- F. Resources page centering on mobile (prevent cut‑off) -- */
-.hero .hero-text.resources-page.container {
-  margin-inline: auto;
-  max-width: min(1100px, 92vw);
-}
-
-
-/* Micro‑tweak for ultranarrow devices so card labels don't break awkwardly */
-@media (max-width: 380px) {
-  .resource-card.card span { font-size: 0.96rem; }
-}
-
-
-/* ===== Modal mobile refinements (2025‑09‑27B) =========================
-   Fixes: top text clipping, bottom footer overflow & spacing on narrow screens.
-   These rules override earlier blocks, leaving HTML and content untouched.
-======================================================================= */
-
-/* Establish a robust grid: head | scroll | foot */
-.azro-modal form{
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  max-height: min(92dvh, 720px);
-}
-
-/* Give the scroll region real top/bottom padding so text never touches edges */
 .azro-modal__scroll{
-  padding: clamp(14px, 2.2vw, 20px) clamp(16px, 2vw, 24px) !important;
-  overflow: auto;
-  overscroll-behavior: contain;
+  max-height: min(85dvh, 85svh, 85vh);
+  overflow: auto;                                /* internal scroll if needed */
+}
+#featureModal, #trialModal{
+  width: min(96vw, 1000px);
+  max-height: 96dvh;                             /* keep within viewport */
 }
 
-/* Comfortable spacing in the footer, centered layout */
-.azro-modal__foot{
-  padding: clamp(12px, 1.8vw, 16px) clamp(16px, 2vw, 24px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: .75rem;
-  flex-wrap: wrap;
-  text-align: center;
+/* F) "Done"/"Close" buttons – only show outline when actively pressed */
+.azro-modal__close:focus,
+.azro-modal__close:focus-visible{
+  outline: none !important;
 }
+.azro-modal__close:active{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+/* ========================================================================= */
 
-/* Allow the long product line to wrap instead of overflowing */
-#featureModal .azro-modal__foot span{
-  white-space: normal !important;
+
+/* ===== AZRO micro‑patches (2025‑09‑27) =====
+   Scope: typography balancing, About readability, Resources centering,
+          modal layout, and button focus behavior.
+   Non‑destructive: adds rules only; does not change HTML content.
+*/
+
+/* A) Resources cards: prevent single‑word last lines */
+.resource-card span{
   text-wrap: balance;
-  overflow-wrap: anywhere;
-  display: block;
+  text-wrap: pretty;
+}
+@supports not (text-wrap: balance){
+  .resource-card span{
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
 }
 
-/* Ensure the "Done" button sits nicely below when space is tight */
-@media (max-width: 440px){
-  #featureModal .azro-modal__foot span{ flex-basis: 100%; margin-bottom: .25rem; }
+/* B) About page readability on small screens */
+@media (max-width: 600px){
+  .measure{ max-width: none; }                         /* allow wider measure */
+  .hero-text.container{ padding-inline: 18px; }        /* soft side gutters */
+  .hero-text .h-lead{ line-height: 1.7; }              /* easier reading */
 }
 
+/* C) Keep “Read the PDF” on one line */
+.methodology-link a{ white-space: nowrap; }
+
+/* D) Resources page: center and avoid cropping on mobile */
+.hero-text.resources-page{
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+}
+@media (max-width: 900px){
+  .hero-text.resources-page{ padding-inline: 16px; }
+  .resources-grid{ transform: none !important; }       /* prevent vertical clipping */
+}
+
+/* E) Dialogs (feature & trial): mobile‑safe sizing/spacings */
+dialog.azro-modal[open]{
+  position: fixed; inset: 0; margin: auto;             /* robust centering */
+}
+.azro-modal__scroll{
+  max-height: min(85dvh, 85svh, 85vh);
+  overflow: auto;
+  padding: clamp(12px, 2vw, 20px);                     /* breathing room */
+}
+#featureModal, #trialModal{
+  width: min(96vw, 1000px);
+  max-height: 96dvh;
+}
+.azro-modal__head{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.azro-modal__head > div{ margin-inline: auto; }
+.azro-modal__body{ display: grid; gap: clamp(16px, 2vw, 24px); }
+.azro-modal__foot{ display: flex; justify-content: center; gap: .75rem; }
+
+/* F) “Done” button outline should appear only when clicked */
+.azro-modal__close:focus,
+.azro-modal__close:focus-visible{
+  outline: none !important;
+  box-shadow: none !important;
+}
+.azro-modal__close:active{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+
+/* G) Media fit inside modals */
+.azro-modal__media img, .azro-modal__media video{
+  max-width: 100%; height: auto; border-radius: 12px;
+}
+.azro-video__ph{
+  margin: 0 !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.25 !important;
+}
+
+
+/* ===== Focus refinement (2025‑09‑27, accessibility‑preserving) ===== */
+.azro-modal__close:focus{ outline: none !important; box-shadow: none !important; }
+.azro-modal__close:focus-visible{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+.azro-modal__close:active{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+
+
+/* ===== Modal robustness patch — mobile & small screens (2025‑09‑27) =====
+   Scope: #featureModal and #trialModal only.
+   Fixes:
+   • Top text getting cut off → add safe‑area padding to header
+   • Bottom text/button getting cut off → grid layout + safe‑area padding on footer
+   • Popups not letting me scroll → create a true middle scroll region with min-height:0
+   • Long footer line clipping on mobile → allow wrapping
+   Non‑destructive: only adds overrides below existing rules.
+*/
+dialog.azro-modal[open]{
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;                        /* remove UA padding that can clip content */
+}
+
+dialog.azro-modal > form{
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto; /* header | scroll | footer */
+  max-height: 96dvh;                 /* keep full dialog within viewport */
+  overflow: hidden;                  /* contain the middle scrolling pane */
+  border-radius: inherit;
+  background: inherit;
+  box-sizing: border-box;
+}
+
+dialog.azro-modal .azro-modal__head{
+  padding: clamp(12px, 2.5vw, 18px) clamp(16px, 4vw, 24px);
+  padding-top: max(clamp(12px, 2.5vw, 18px), env(safe-area-inset-top));
+}
+
+dialog.azro-modal .azro-modal__scroll{
+  min-height: 0;                     /* critical so the area can actually scroll */
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
+  overscroll-behavior: contain;
+  padding: 0 clamp(16px, 4vw, 24px);
+}
+
+dialog.azro-modal .azro-modal__body{
+  padding-block: 8px clamp(16px, 4vw, 22px);
+}
+
+dialog.azro-modal .azro-modal__foot{
+  /* keep existing inline-flex styles; add only spacing and safe-area */
+  padding: clamp(12px, 2.5vw, 16px) clamp(16px, 4vw, 24px);
+  padding-bottom: max(clamp(12px, 2.5vw, 16px), env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+/* Allow long footer line to wrap on narrow screens instead of clipping */
+@media (max-width: 640px){
+  #featureModal .azro-modal__foot span{
+    white-space: normal !important;
+    word-break: normal;
+  }
+}
+/* ===== End modal robustness patch ===== */
+
+
+/* ===== BEGIN modal/mobile patch v2 ===== */
+
+/* ====== Modal/mobile fixes (scoped to AZRO modals only) ==================
+   Touches only .azro-modal, #featureModal, #trialModal
+   Last updated: 2025-09-27
+   Purpose: prevent clipping/cutoff on mobile; allow internal scroll; honor safe areas
+=========================================================================== */
+
+/* 1) Robust centering & viewport sizing */
+dialog.azro-modal[open]{
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+}
+
+/* 2) Make the dialog content a flex column so the middle can scroll */
+dialog.azro-modal[open] > form{
+  display: flex;
+  flex-direction: column;
+  width: min(96vw, 1000px);
+  /* fallbacks first, most-capable last */
+  max-height: calc(100vh  - 2 * clamp(8px, 2vw, 18px));
+  max-height: calc(100svh - 2 * clamp(8px, 2vw, 18px));
+  max-height: calc(100dvh - 2 * clamp(8px, 2vw, 18px));
+  overflow: hidden;                /* clip rounding; scroll happens inside */
+  border-radius: clamp(14px, 2vw, 20px);
+}
+
+/* 3) Head and foot blocks – consistent padding + safe areas */
+.azro-modal__head,
+.azro-modal__foot{
+  padding: clamp(12px, 2vw, 18px) clamp(16px, 3vw, 24px);
+}
+@supports (padding: max(0px)){
+  .azro-modal__head{ padding-top: max(clamp(12px, 2vw, 18px), env(safe-area-inset-top)); }
+  .azro-modal__foot{ padding-bottom: max(clamp(12px, 2vw, 18px), env(safe-area-inset-bottom)); }
+}
+
+/* Keep header/footer visible while content scrolls on small screens */
+@media (max-width: 900px){
+  .azro-modal__head{ position: sticky; top: 0; z-index: 1; }
+  .azro-modal__foot{ position: sticky; bottom: 0; z-index: 1; }
+}
+
+/* 4) The scrolling region – never crop, always scroll smoothly */
+.azro-modal__scroll{
+  flex: 1 1 auto;
+  overflow: auto;                 /* internal scroll only here */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  height: auto;
+  max-height: none;               /* let flexbox control height */
+  padding: clamp(14px, 2.4vw, 22px) clamp(16px, 3vw, 24px);
+  /* ensure the last line never hides behind the sticky footer */
+  padding-bottom: calc(clamp(14px, 2.4vw, 22px) + env(safe-area-inset-bottom, 0px));
+  scrollbar-gutter: stable;
+}
+
+/* 5) Tight mobile width/height caps for both modals we ship */
+#featureModal, #trialModal{
+  width: min(96vw, 1000px);
+}
+#featureModal[open], #trialModal[open]{
+  max-height: calc(100vh  - 2 * clamp(8px, 2vw, 18px));
+  max-height: calc(100svh - 2 * clamp(8px, 2vw, 18px));
+  max-height: calc(100dvh - 2 * clamp(8px, 2vw, 18px));
+}
+
+/* 6) Optional: lock page scroll while any AZRO modal is open (CSS-only) */
+html:has(dialog.azro-modal[open]), body:has(dialog.azro-modal[open]){
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* ===== END modal/mobile patch v2 ===== */
