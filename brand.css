@@ -543,43 +543,103 @@ html:has(dialog.azro-modal[open]), body:has(dialog.azro-modal[open]){
 }
 
 
-/* === DESKTOP MODAL FOOTER CLUSTER (side-by-side, centered) — 2025‑09‑27 === */
-@media (min-width: 1024px){
-  #featureModal .azro-modal__foot,
-  #trialModal   .azro-modal__foot{
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: clamp(.6rem, 1.4vw, 1rem) !important;
-    text-align: center !important;
-  }
-  /* Keep text compact and allow gentle wrapping if needed */
-  #featureModal .azro-modal__foot span,
-  #trialModal   .azro-modal__foot span{
-    display: inline-block !important;
-    flex: 0 1 auto !important;
-    white-space: normal !important;
-    text-wrap: balance;
-  }
-  /* Remove legacy push that misaligns the button */
-  #featureModal .azro-modal__foot .azro-modal__close,
-  #trialModal   .azro-modal__foot .azro-modal__close{
-    margin: 0 !important;
-  }
+/* =====================================================================
+   MODAL CENTERING + ALIGNMENT PATCH — 2025‑09‑27
+   Scope: <dialog class="azro-modal">, #featureModal, #trialModal
+   Goal: Perfect centering of the dialog on all screens + centered
+         header/subhead and footer (text + Done button).
+   Notes: Uses high specificity + !important where needed to avoid
+          regressions, and keeps everything inside modal scope only.
+   ===================================================================== */
+
+/* 1) Center the dialog itself — robust across desktop & mobile */
+dialog.azro-modal[open]{
+  position: fixed !important;
+  inset: 0 !important;            /* center via auto margins */
+  margin: auto !important;
+  z-index: 9999;                  /* above page UI */
+  max-width: min(1000px, 96vw) !important;
+  width: auto !important;
+  max-height: 96dvh !important;
+  /* Fallback for older engines */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@supports (inset: 0) {
+  /* Prefer inset-centering when supported */
+  dialog.azro-modal[open]{ left: auto; top: auto; transform: none; }
 }
 
-
-
-/* === FREE TRIAL right-column card — brand-tinted (not black) === */
-#trialModal .azro-modal__media .azro-video{
-  background: linear-gradient(180deg,
-              color-mix(in oklab, var(--accent-a), #0b1026 82%),
-              color-mix(in oklab, var(--accent-b), #0b1026 82%)) !important;
-  background: linear-gradient(180deg, rgba(23, 31, 82, .94), rgba(43, 22, 97, .94)) !important; /* fallback */
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10), 0 10px 36px rgba(0,0,0,.35) !important;
+/* 2) Lock page scroll behind an open dialog */
+html:has(dialog.azro-modal[open]),
+body:has(dialog.azro-modal[open]){
+  overflow: hidden !important;
 }
-#trialModal .azro-modal__media .azro-video__ph{
-  background: transparent !important;  /* let the gradient show through */
-  color: var(--text-body, #E0E0E0) !important;
+
+/* 3) Internal scroll area so long content never pushes dialog off-screen */
+dialog.azro-modal[open] .azro-modal__scroll{
+  max-height: min(85dvh, 85svh, 85vh) !important;
+  overflow: auto !important;
+  overscroll-behavior: contain;
+}
+
+/* 4) Header: center title/subhead perfectly */
+#featureModal .azro-modal__head,
+#trialModal   .azro-modal__head{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   text-align: center !important;
+}
+#featureModal .azro-modal__head > div,
+#trialModal   .azro-modal__head > div{
+  margin-inline: auto !important;
+}
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub,
+#trialModal   .azro-modal__title,
+#trialModal   .azro-modal__sub{
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 5) Body layout: two columns on desktop, single column on mobile */
+#featureModal .azro-modal__body,
+#trialModal   .azro-modal__body{
+  display: grid !important;
+  gap: clamp(16px, 2vw, 24px) !important;
+  grid-template-columns: 1.25fr .9fr;
+  align-items: start;
+}
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 6) Footer: center the text and the Done/Close button */
+#featureModal .azro-modal__foot,
+#trialModal   .azro-modal__foot{
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__foot .azro-modal__close,
+#trialModal   .azro-modal__foot .azro-modal__close{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-inline: auto !important;
+}
+
+/* 7) Backdrop polish */
+dialog.azro-modal::backdrop{
+  background: rgba(2, 6, 23, .66) !important;
+  backdrop-filter: blur(2px);
 }
