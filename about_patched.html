@@ -125,6 +125,23 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
+
+<style id="modal-centering-hotfix-v3">
+/* Minimal, safe centering fix scoped to About page modals only.
+   Prevent 'inset:0' (from base .azro-modal) from conflicting with centering. */
+dialog#featureModal[open],
+dialog#trialModal[open]{
+  position: fixed;
+  inset: auto !important;   /* reset all sides from the base rule */
+  top: 50%;
+  left: 50%;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
