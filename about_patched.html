@@ -125,6 +125,60 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
+
+<style id="modal-centering-fix-2025-09-28">
+/* ===== Robust centering for About-page dialogs (scoped) ===== */
+
+/* Cross-engine centering: use fixed positioning + translate, so the box
+   is truly centered regardless of internal columns, gaps, or scrollbars. */
+dialog#featureModal[open],
+dialog#trialModal[open]{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0; /* override UA margins */
+}
+
+/* Make sure the box sizing accounts for borders/padding */
+dialog#featureModal,
+dialog#trialModal{ box-sizing: border-box; }
+
+/* Header content should be visually centered across the full width. We keep the
+   close button absolutely positioned so it no longer steals horizontal space. */
+#featureModal .azro-modal__head,
+#trialModal .azro-modal__head{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr; /* one full-width column */
+  justify-items: center;
+  align-items: center;
+  gap: 0; /* no phantom gap column */
+}
+
+/* Place the (optional) header close button without affecting layout width */
+#featureModal .azro-modal__head .azro-modal__close,
+#trialModal  .azro-modal__head .azro-modal__close{
+  position: absolute;
+  top: clamp(12px, 2vw, 16px);
+  right: clamp(12px, 2vw, 16px);
+}
+
+/* Keep scrollbars from causing horizontal visual shift */
+#featureModal .azro-modal__scroll,
+#trialModal  .azro-modal__scroll{
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Bullet list readable but visually centered within its block */
+#featureModal .azro-modal__text ul,
+#trialModal  .azro-modal__text ul{
+  margin: 0 auto;
+  padding-left: 1.1em; /* keep bullets aligned while center-blocked */
+  max-width: 68ch;
+}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
