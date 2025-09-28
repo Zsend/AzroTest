@@ -666,3 +666,53 @@ dialog.azro-modal::backdrop{
   grid-column: 3 !important;
   justify-self: end !important;
 }
+
+/* === Modal centering—mobile & scrollbar stability (scoped) ============== */
+/* Keep internal scroll symmetric so content never shifts */
+dialog.azro-modal[open] .azro-modal__scroll,
+#featureModal .azro-modal__scroll,
+#trialModal   .azro-modal__scroll{
+  scrollbar-gutter: stable both-edges !important;
+}
+
+/* On narrow screens, keep the header perfectly centered regardless of the Close button */
+@media (max-width: 900px){
+  #featureModal .azro-modal__head,
+  #trialModal   .azro-modal__head{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    position: relative !important;
+    place-items: center !important;
+    text-align: center !important;
+  }
+  #featureModal .azro-modal__head > div,
+  #trialModal   .azro-modal__head > div{
+    grid-column: 1 !important;
+    margin: 0 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+  #featureModal .azro-modal__head .azro-modal__close,
+  #trialModal   .azro-modal__head .azro-modal__close{
+    position: absolute !important;
+    right: clamp(10px, 3vw, 16px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Ensure the modal body content is visually centered */
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    justify-items: center !important;
+  }
+  #featureModal .azro-modal__text,
+  #trialModal   .azro-modal__text{
+    text-align: center !important;
+    justify-items: center !important;
+  }
+  #featureModal .azro-modal__media,
+  #trialModal   .azro-modal__media{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
