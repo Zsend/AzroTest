@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
+/* placeholder to eliminate background flash before header mounts */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:120px; /* approximate header height */
+background:#0e1b4c;
+background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
+z-index:9998;
+pointer-events:none;
+}
+</style> <style id="critical-header-bg">
+/* critical header background — prevents first‑paint flash */
+.site-header{
+background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
+transition:none !important;
+}
+</style> <meta charset="utf-8"/>
+<!-- ———— SOCIAL PREVIEW ———— -->
+<!-- Twitter / X -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="@AzroSystems" name="twitter:site"/>
+<meta content="AZRO Systems — Institutional-grade logic, retail-friendly setup" name="twitter:title"/>
+<meta content="Cycle-timing tools that spot XRP tops &amp; bottoms weeks before headlines." name="twitter:description"/>
+<meta content="https://azrosystems.com/og-card.png" name="twitter:image"/> <!-- Open Graph (FB / LinkedIn / Discord) -->
+<meta content="https://azrosystems.com/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="AZRO Systems — Institutional-grade logic, retail-friendly setup" property="og:title"/>
+<meta content="Cycle-timing tools that spot XRP tops &amp; bottoms weeks before headlines." property="og:description"/>
+<meta content="https://azrosystems.com/og-card.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>The XRP Top/Bottom Detector</title>
+<!-- Fonts & preloads -->
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
+<link as="image" href="coolback.webp" rel="preload"/>
+<link as="image" href="newchart.webp" rel="preload"/>
+<link href="style.css" rel="stylesheet"/>
+<link rel="stylesheet" href="brand.css"/><!-- mobile helper CSS -->
+<style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
+</style>
+<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description">
+<link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+</meta></meta></link></link></meta><style id="about-hero-mobile-tune">
+@media (max-width: 600px){
+  .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
+  .hero .hero-text > h1{
+    font-size: clamp(2.6rem, 6.6vw + 0.5rem, 3.2rem) !important;
+    line-height: 1.12 !important;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<a id="main" tabindex="-1"></a>
+<header class="site-header" data-turbo-permanent="" style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
+<a href="index.html"><picture><source srcset="logo.avif" type="image/avif"/><source srcset="logo.webp" type="image/webp"/><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
+<nav class="nav">
+<a href="index.html">HOME</a>
+<a href="features.html">FEATURES</a>
+<a href="pricing.html">PRICING</a>
+<a href="resources.html">RESOURCES</a>
+</nav>
+</header>
+
+
+<section class="hero about-hero section-scrim layout--tabs">
+  <div class="hero-text container measure">
+    <p class="h-eyebrow">TradingView® Indicator</p>
+    <h1>Catch cycle turns. Cut risk.</h1>
+    <p class="h-lead">The <strong>XRP Top/Bottom Detector</strong> prints on‑chart labels at likely cycle turns and sends push/email alerts—so you act with a plan, not emotion.</p>
+    <div class="cta-row">
+      <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy&nbsp;Now&nbsp;on&nbsp;Gumroad</a>
+      <a class="btn" href="resources.html">See example alerts</a>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Media panels">
+      <input class="tab-radio" type="radio" id="tab-chart" name="media" checked aria-controls="panel-chart"/>
+      <label class="tab" role="tab" for="tab-chart" id="label-chart" aria-selected="true">Chart</label>
+      <input class="tab-radio" type="radio" id="tab-backtest" name="media" aria-controls="panel-backtest"/>
+      <label class="tab" role="tab" for="tab-backtest" id="label-backtest">Backtest</label>
+      <input class="tab-radio" type="radio" id="tab-alerts" name="media" aria-controls="panel-alerts"/>
+      <label class="tab" role="tab" for="tab-alerts" id="label-alerts">Alerts</label>
+      <div class="panel-wrap">
+        <section class="panel" id="panel-chart" role="tabpanel" aria-labelledby="label-chart">
+          <figure class="media-card"><div class="media"><picture>
+  <source srcset="newchart.avif" type="image/avif"/>
+  <source srcset="newchart.webp" type="image/webp"/>
+  <img src="newchart.png" width="1400" height="800" alt="Example chart with Major Top and Major Bottom labels"/>
+</picture></div><figcaption>Chart labels and risk markers.</figcaption></figure>
+        </section>
+        <section class="panel" id="panel-backtest" role="tabpanel" aria-labelledby="label-backtest">
+          <div class="stat-grid">
+            <div class="stat-card"><div class="value">~9×</div><div class="label">more total profit vs. buy‑and‑hold</div></div>
+            <div class="stat-card"><div class="value">~6×</div><div class="label">lower max drawdown</div></div>
+            <div class="stat-card"><div class="value">10 yrs</div><div class="label">hypothetical backtest (2015–present)</div></div>
+          </div>
+        </section>
+        <section class="panel" id="panel-alerts" role="tabpanel" aria-labelledby="label-alerts">
+          <div class="card measure"><h3>Alert Examples</h3><p>Push/email alerts fire the moment a label prints (automation-ready).</p></div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer" data-turbo-permanent=""> 2025 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) MADE IN THE USA · support@azrosystems.com · <a aria-label="Azro Systems on X" href="https://x.com/AzroSystems" rel="noopener noreferrer" target="_blank"><svg class="x-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
+</footer>
+<div class="sticky-cta">
+<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+</div>
+<script defer="" src="script.js"></script>
+</body>
+</html>
