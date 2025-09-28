@@ -68,7 +68,7 @@ dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-a
 dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
 dialog#trialModal{ max-height: 92vh; }
 
-</style><style id="trial-modal-button-centering">
+<style id="trial-modal-button-centering">
 /* Scope strictly to the Free Trial dialog */
 dialog#trialModal .azro-modal__redeem-cta{
   display: grid;
@@ -99,6 +99,29 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 <style id="azro-popup-close-hide">
   .azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
+<style id="azro-feature-modal-centering-v3">
+/* Center titles and content inside ALL AZRO popups without changing layout elsewhere */
+.azro-modal__head{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  place-items:center !important;
+  text-align:center !important;
+  position:relative !important;
+}
+.azro-modal__head .azro-modal__close{
+  position:absolute !important;
+  top:clamp(10px,2.4vw,14px) !important;
+  right:clamp(10px,2.4vw,14px) !important;
+}
+.azro-modal__text{ justify-items:center !important; text-align:center !important; }
+.azro-modal__text p, .azro-modal__text ul{ margin-inline:auto !important; }
+.azro-modal__text ul{ list-style-position:inside !important; padding-left:0 !important; }
+.azro-modal__foot{ justify-content:center !important; text-align:center !important; gap:12px !important; }
+@media (max-width:900px){
+  .azro-modal__body{ grid-template-columns:1fr !important; }
+}
+</style>
+
 
 <style id="azro-trial-rightcol-inside">
   /* Shorter box */
@@ -125,51 +148,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
-
-<style id="azro-modal-centering-global-v3">
-/* --- Global modal centering & spacing (scoped to .azro-modal*) --- */
-.azro-modal__head{
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  place-items: center !important;
-  text-align: center !important;
-  position: relative !important;
-}
-.azro-modal__head .azro-modal__close{
-  position: absolute !important;
-  top: clamp(10px, 2.4vw, 14px) !important;
-  right: clamp(10px, 2.4vw, 14px) !important;
-  margin: 0 !important;
-}
-.azro-modal__title, .azro-modal__sub{ text-align: center !important; }
-.azro-modal{ max-height: 90svh !important; }
-.azro-modal__scroll{ overflow: auto !important; overscroll-behavior: contain !important; }
-.azro-modal__body{
-  justify-items: center !important;
-  align-items: start !important;
-}
-.azro-modal__text{ justify-items: center !important; text-align: center !important; }
-.azro-modal__text p, .azro-modal__text ul{ margin-inline: auto !important; }
-.azro-modal__text ul{ list-style-position: inside !important; padding-left: 0 !important; }
-.azro-modal__foot{ justify-content: center !important; text-align: center !important; gap: 12px !important; }
-</style>
-
-<style id="azro-modal-video-css-v2">
-/* Video wrapper & expand button */
-#featureModal .azro-video-wrap{ position:relative; width:100%; height:100%; background:#000; border-radius:12px; overflow:hidden; }
-#featureModal .azro-video__el{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; background:#000; }
-#featureModal .azro-video__expand{
-  position:absolute; right:.5rem; bottom:.5rem; display:inline-flex; align-items:center; justify-content:center;
-  padding:.35rem .55rem; border-radius:.5rem; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45);
-  color:#fff; font-weight:700; line-height:1; cursor:pointer;
-}
-#featureModal .azro-video__expand:hover{ background:rgba(0,0,0,.65); }
-.azro-vidbox::backdrop{ background:rgba(2,6,23,.72); backdrop-filter: blur(2px); }
-.azro-vidbox{ border:0; padding:0; border-radius:12px; width:min(1080px,96vw); max-height:94svh; background:#000; }
-.azro-vidbox__frame{ position:relative; width:100%; aspect-ratio:16/9; }
-.azro-vidbox__video{ position:absolute; inset:0; width:100%; height:100%; background:#000; }
-.azro-vidbox__close{ position:absolute; top:.5rem; right:.5rem; z-index:2; border:1px solid rgba(255,255,255,.25); color:#fff; background:rgba(0,0,0,.45); border-radius:.5rem; padding:.35rem .55rem; cursor:pointer; }
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -546,6 +524,53 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   const fmDesc  = document.getElementById('fmDesc');
   const fmBullets = document.getElementById('fmBullets');
   const fmVideo = document.getElementById('fmVideoBox');
+  // Inject local demo video by feature title (.mov with optional .mp4 fallback)
+  function tryInjectVideoFromTitle(){
+    try{
+      var title = (fmTitle && fmTitle.textContent || '').trim();
+      var titleToFile = new Map([
+        ["MAJOR Top / MAJOR Bottom (XRP)","MAJOR Top : MAJOR Bottom (XRP).mov"],
+        ["RADAR Top / RADAR Bottom (XRP)","RADAR Top : RADAR Bottom (XRP).mov"],
+        ["LIGHT Tops & Bottoms (XRP)","LIGHT Tops & Bottoms (XRP).mov"],
+        ["Elevated Risk (XRP & Market‑Wide)","Elevated Risk (XRP & Market‑Wide).mov"],
+        ["Market‑Wide Top Warning (non‑XRP)","Market‑Wide Top Warning (non‑XRP).mov"]
+      ]);
+      var file = titleToFile.get(title);
+      if(!file) return false;
+      var src = 'videos/' + encodeURIComponent(file);
+      fmVideo.innerHTML='';
+    if(!tryInjectVideoFromTitle()){
+
+      var wrap = document.createElement('div');
+      wrap.className = 'azro-video-wrap';
+      var v = document.createElement('video');
+      v.className = 'azro-video__el';
+      v.setAttribute('playsinline','');
+      v.setAttribute('muted','');
+      v.setAttribute('controls','');
+      v.setAttribute('preload','metadata');
+      // MOV first
+      var s1 = document.createElement('source'); s1.src = src; s1.type = 'video/quicktime'; v.appendChild(s1);
+      // MP4 fallback (if provided alongside)
+      if(/\.mov(\?.*)?$/i.test(src)){
+        var s2 = document.createElement('source'); s2.src = src.replace(/\.mov(\?.*)?$/i, '.mp4$1'); s2.type = 'video/mp4'; v.appendChild(s2);
+      }
+      wrap.appendChild(v);
+      var btn = document.createElement('button');
+      btn.className = 'azro-video__expand';
+      btn.setAttribute('aria-label','Expand video');
+      btn.textContent = '↗';
+      wrap.appendChild(btn);
+      fmVideo.appendChild(wrap);
+      // lightbox open
+      var openBig = function(){ lightbox.open(src); };
+      v.addEventListener('click', openBig, {passive:true});
+      btn.addEventListener('click', openBig, {passive:true});
+      try{ v.muted = true; v.play().catch(function(){}); }catch(e){}
+      return true;
+    }catch(e){ return false; }
+  }
+
 
   function openModalFromCard(card){
     const title = (card.querySelector('h3')?.textContent || 'Feature').trim();
@@ -562,7 +587,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       fmBullets.appendChild(li);
     });
 
-    fmVideo.innerHTML = '';
+    
     if(e.video){
       const iframe = document.createElement('iframe');
       iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
@@ -577,6 +602,8 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     }
 
     modal.showModal();
+    }
+
   }
 
   // Backdrop click closes
@@ -695,7 +722,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   .azro-vidbox__close{position:fixed;top:calc(2vh + 8px);right:calc(2vw + 8px);border:none;padding:.4rem .6rem;font-size:1.5rem;line-height:1;background:rgba(0,0,0,.55);color:#fff;border-radius:.5rem;cursor:pointer}
   @media (max-width:600px){dialog.azro-vidbox{height:min(96vh,72vh)}}
 </style>
-
 <script id="azro-video-injector">
 (function(){
   function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn,{once:true}); }
@@ -727,18 +753,16 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
       dlg.querySelector('.azro-vidbox__close').addEventListener('click',function(){ dlg.close(); });
       dlg.addEventListener('close',function(){ frame.innerHTML=''; });
-      return { open:function(srcBase){
+      return { open:function(src){
         frame.innerHTML='';
         var v=document.createElement('video');
         v.className='azro-vidbox__video';
-        v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.setAttribute('controls',''); v.setAttribute('preload','metadata');
-        // MOV first, MP4 fallback
-        var s1=document.createElement('source'); s1.src=srcBase; s1.type='video/quicktime'; v.appendChild(s1);
-        var mp4=srcBase.replace(/\.mov(\?.*)?$/i,'.mp4$1');
-        if(mp4!==srcBase){ var s2=document.createElement('source'); s2.src=mp4; s2.type='video/mp4'; v.appendChild(s2); }
+        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline','');
+        v.setAttribute('controls',''); v.setAttribute('preload','auto');
+        v.innerHTML='<source src="'+src+'">';
         frame.appendChild(v);
         try{ v.play().catch(function(){}); }catch(e){}
-        try{ dlg.showModal(); }catch(e){}
+        try{ dlg.showModal(); }catch(e){}  // centered by CSS
       }};
     }
     var lightbox=setupLightbox();
@@ -752,22 +776,15 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       videoBox.innerHTML='';
       var wrap=document.createElement('div');
       wrap.className='azro-video-wrap';
-      var v=document.createElement('video');
-      v.className='azro-video__el';
-      v.setAttribute('playsinline',''); v.setAttribute('muted',''); v.setAttribute('controls',''); v.setAttribute('preload','metadata');
-      // MOV source + MP4 fallback
-      var s1=document.createElement('source'); s1.src=src; s1.type='video/quicktime'; v.appendChild(s1);
-      var mp4=src.replace(/\.mov(\?.*)?$/i,'.mp4$1');
-      if(mp4!==src){ var s2=document.createElement('source'); s2.src=mp4; s2.type='video/mp4'; v.appendChild(s2); }
-      // Expand button
-      var exp=document.createElement('button'); exp.className='azro-video__expand'; exp.setAttribute('aria-label','Expand video'); exp.textContent='↗';
-      wrap.appendChild(v); wrap.appendChild(exp);
+      wrap.innerHTML='<video class="azro-video__el" autoplay muted loop playsinline preload="auto"><source src="'+src+'"></video><button class="azro-video__expand" aria-label="Expand video">↗</button>';
       videoBox.appendChild(wrap);
 
+      var vid=wrap.querySelector('video');
+      var btn=wrap.querySelector('.azro-video__expand');
       function openBig(){ lightbox.open(src); }
-      v.addEventListener('click',openBig,{passive:true});
-      exp.addEventListener('click',openBig,{passive:true});
-      try{ v.muted=true; v.play().catch(function(){}); }catch(e){}
+      vid.addEventListener('click',openBig,{passive:true});
+      btn.addEventListener('click',openBig,{passive:true});
+      try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
     }
 
     new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })
@@ -775,6 +792,5 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   });
 })();
 </script>
-
 </body>
 </html>
