@@ -125,6 +125,25 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
+
+<style id="modal-mobile-centering-fix-v12">
+/* Keep the original desktop behavior. Only adjust small screens. */
+@media (max-width: 900px){
+  /* Center the entire dialog precisely while preserving your original size. */
+  .azro-modal{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 94svw; /* iOS dynamic toolbar safe viewport */
+  }
+  /* Ensure the stack inside the modal is centered as a whole. */
+  .azro-modal__body{
+    justify-items: center;
+  }
+  /* The text column is already centered; keep that guarantee. */
+  .azro-modal__text{ text-align: center; }
+}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -280,8 +299,8 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 }
 .azro-modal__head{
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 0;
   padding: clamp(16px, 2.4vw, 22px);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
@@ -359,7 +378,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 .azro-video iframe, .azro-video video{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 .azro-modal__foot{
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  display: flex; justify-content: space-between; align-items: center; gap: 0;
   border-top: 1px solid rgba(255,255,255,.08);
   padding: clamp(14px, 2.4vw, 20px);
   color: var(--text-sub, #cbd5e1); font-size: .95rem;
