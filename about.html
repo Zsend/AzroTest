@@ -65,16 +65,8 @@ transition:none !important;
 <style id="trial-modal-centering-v2">
 dialog#trialModal .azro-modal__foot{ justify-content:center !important; }
 dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-align:center !important; }
-dialog#trialModal .azro-modal__scroll{overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable both-edges;
-}
-dialog#trialModal{ max-height: 92vh; }
-dialog#trialModal .azro-modal__head{
-  position: relative; display: block; text-align: center;
-}
-dialog#trialModal .azro-modal__head .azro-modal__close{
-  position: absolute; top: clamp(12px, 2.2vw, 16px); right: clamp(12px, 2.2vw, 16px);
-}
-</style>
+dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
+dialog#trialModal{ max-height: 92vh; }</style>
 
 
 <style id="trial-modal-button-centering">
@@ -132,6 +124,54 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   @media (max-width: 900px){
     dialog#trialModal .trial-instructions{ margin-top: 0; }
   }
+</style>
+
+
+<style id="modal-true-center-fix-final">
+/* Mobile true centering across all About-page modals — without changing layout elsewhere */
+@media (max-width: 900px){
+  dialog.azro-modal{
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    box-sizing: border-box !important;
+  }
+  dialog#featureModal .azro-modal__head,
+  dialog#trialModal .azro-modal__head{
+    position: relative !important;
+    display: block !important;
+    text-align: center !important;
+  }
+  dialog#featureModal .azro-modal__head .azro-modal__close,
+  dialog#trialModal .azro-modal__head .azro-modal__close{
+    position: absolute !important;
+    inset-block-start: clamp(12px, 2.2vw, 16px);
+    inset-inline-end: clamp(12px, 2.2vw, 16px);
+  }
+  dialog#featureModal .azro-modal__body,
+  dialog#trialModal .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    padding-left: clamp(18px, 2.8vw, 28px) !important;
+    padding-right: clamp(18px, 2.8vw, 28px) !important;
+  }
+  dialog#featureModal .azro-modal__text,
+  dialog#trialModal .azro-modal__text,
+  dialog#featureModal .azro-modal__media,
+  dialog#trialModal .azro-modal__media{
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0 !important;
+    justify-self: center !important;
+  }
+}
+
+/* Keep scrollbars from biasing horizontal centering on platforms with non-overlay scrollbars */
+dialog.azro-modal .azro-modal__scroll{
+  overflow: auto !important;
+  overscroll-behavior: contain !important;
+  scrollbar-gutter: stable both-edges !important;
+}
 </style>
 
 </head>
@@ -282,20 +322,17 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   background: linear-gradient(180deg, rgba(14,27,76,.96), rgba(37,12,88,.96));
   color: var(--text-body, #E0E0E0);
   box-shadow: 0 40px 120px rgba(0,0,0,.55);
-  left: 50%; right: auto; transform: translateX(-50%);
-box-sizing: border-box;
 }
 .azro-modal::backdrop{
   background: rgba(2,6,23,.66);
   backdrop-filter: blur(2px);
 }
 .azro-modal__head{
-  
-  /* grid-template-columns (replaced) */ grid-template-columns: 1fr auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
   gap: 12px;
   padding: clamp(16px, 2.4vw, 22px);
   border-bottom: 1px solid rgba(255,255,255,.08);
-  position: relative; display: block; text-align: center;
 }
 .azro-modal__title{
   margin: 0;
@@ -320,9 +357,7 @@ box-sizing: border-box;
   cursor: pointer;
 }
 
-.azro-modal__scroll{  max-height: calc(90svh - 58px - 56px); max-height: calc(90vh - 58px - 56px);
-  overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable both-edges;
-}
+.azro-modal__scroll{ overflow: auto; max-height: calc(90svh - 58px - 56px); max-height: calc(90vh - 58px - 56px); }
 
 .azro-modal__body{
   display: grid;
@@ -412,9 +447,6 @@ box-sizing: border-box;
   color: var(--text-sub, #cbd5e1);
   margin: .35rem auto 1.25rem;
   max-width: 80ch;
-}
-.azro-modal__head .azro-modal__close{
-  position: absolute; top: clamp(12px, 2.2vw, 16px); right: clamp(12px, 2.2vw, 16px);
 }
 </style>
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
