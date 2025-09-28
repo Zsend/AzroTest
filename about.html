@@ -65,10 +65,27 @@ transition:none !important;
 <style id="trial-modal-centering-v2">
 dialog#trialModal .azro-modal__foot{ justify-content:center !important; }
 dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-align:center !important; }
-dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain;
-  scrollbar-gutter: stable both-edges; /* keep layout centered when vertical scrollbar appears */
+dialog#trialModal .azro-modal__scroll{overflow: auto; overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
 }
 dialog#trialModal{ max-height: 92vh; }
+/* True centering for Trial modal header as well */
+dialog#trialModal .azro-modal__head{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+dialog#trialModal .azro-modal__head > div:first-child{
+  grid-column: 1 / -1;
+  justify-self: center;
+  text-align: center;
+}
+dialog#trialModal .azro-modal__head .azro-modal__close{
+  grid-column: 3;
+  justify-self: end;
+}
+</style>
+
 
 <style id="trial-modal-button-centering">
 /* Scope strictly to the Free Trial dialog */
@@ -310,8 +327,9 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   cursor: pointer;
 }
 
-.azro-modal__scroll{ overflow: auto; max-height: calc(90svh - 58px - 56px); max-height: calc(90vh - 58px - 56px);
-  scrollbar-gutter: stable both-edges; /* keep layout centered when vertical scrollbar appears */
+.azro-modal__scroll{  max-height: calc(90svh - 58px - 56px); max-height: calc(90vh - 58px - 56px);
+  overflow: auto; /* ensure scrolling */
+  scrollbar-gutter: stable both-edges;
 }
 
 .azro-modal__body{
@@ -402,6 +420,21 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   color: var(--text-sub, #cbd5e1);
   margin: .35rem auto 1.25rem;
   max-width: 80ch;
+}
+/* True centering for Feature modal header: span title across all columns and pin close button right */
+dialog#featureModal .azro-modal__head{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+dialog#featureModal .azro-modal__head > div:first-child{
+  grid-column: 1 / -1;
+  justify-self: center;
+  text-align: center;
+}
+dialog#featureModal .azro-modal__head .azro-modal__close{
+  grid-column: 3;
+  justify-self: end;
 }
 </style>
 <!-- Feature Detail Modal (On‑chart labels & instant alerts) -->
