@@ -666,23 +666,3 @@ dialog.azro-modal::backdrop{
   grid-column: 3 !important;
   justify-self: end !important;
 }
-
-
-/* === Modal centering hardener (2025-09-28) ==========================
-   Fixes left/right bias on some engines (notably iOS Safari) by
-   pinning dialogs to the viewport center using the time‑tested
-   left/top + translate technique. This rule comes last and uses
-   !important to reliably override earlier inset-based centering.
-   It is scoped to our two modals only.
-===================================================================== */
-#featureModal[open],
-#trialModal[open],
-dialog.azro-modal[open]{
-  position: fixed !important;
-  left: 50% !important;
-  top: 50% !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: translate(-50%, -50%) !important;
-  margin: 0 !important;
-}
