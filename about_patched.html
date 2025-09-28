@@ -125,6 +125,52 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
+
+<style id="modal-centering-video-fix-v5">
+/* *** Minimal, scoped fixes for centering + mobile layout in popups *** */
+#featureModal .azro-modal__head,
+#trialModal .azro-modal__head{ position:relative; text-align:center; }
+
+/* Make the header title/subtitle block span the head and center */
+#featureModal .azro-modal__head > :not(.azro-modal__close),
+#trialModal .azro-modal__head > :not(.azro-modal__close){
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+/* Keep the close button (if shown) at the top-right without affecting centering */
+#featureModal .azro-modal__head .azro-modal__close,
+#trialModal .azro-modal__head .azro-modal__close{
+  position: absolute;
+  top: clamp(10px, 2vw, 14px);
+  right: clamp(10px, 2vw, 14px);
+}
+
+/* Center modal body content; on mobile force single column to truly center */
+#featureModal .azro-modal__body,
+#trialModal .azro-modal__body{ justify-items: center; }
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal .azro-modal__body{ grid-template-columns: 1fr !important; }
+}
+
+/* Center text blocks and keep bullets readable */
+#featureModal .azro-modal__text,
+#trialModal .azro-modal__text{ text-align: center; justify-items: center; }
+#featureModal .azro-modal__text p,
+#featureModal .azro-modal__text ul,
+#trialModal .azro-modal__text p,
+#trialModal .azro-modal__text ul{ margin-inline: auto; }
+#featureModal .azro-modal__text ul,
+#trialModal .azro-modal__text ul{ list-style: disc inside; padding-left: 0; text-align: left; }
+
+/* Make media box center consistently */
+#featureModal .azro-modal__media,
+#trialModal .azro-modal__media{ margin-inline: auto; }
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -710,26 +756,71 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   });
 })();
 </script>
-<style id="modal-centering-fix-v4">
-/* Minimal, non-destructive centering for popups */
-#featureModal .azro-modal__head > div,
-#trialModal .azro-modal__head > div{
-  grid-column: 1 / -1;
-  justify-self: center;
-  text-align: center;
-}
-#featureModal .azro-modal__head,
-#trialModal .azro-modal__head{ text-align: center; }
 
-/* Make stacked content blocks stay centered */
-#featureModal .azro-modal__body,
-#trialModal .azro-modal__body{ justify-items: center; }
+<script id="modal-video-ensure-v2">
+(function(){
+  function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  onReady(function(){
+    var modal = document.getElementById('featureModal');
+    var fmVideo = document.getElementById('fmVideoBox');
+    var fmTitle = document.getElementById('fmTitle');
+    if(!modal || !fmVideo || !fmTitle) return;
 
-/* Keep inline elements and copy visually centered */
-#featureModal .azro-modal__text p,
-#featureModal .azro-modal__text ul,
-#trialModal .azro-modal__text p,
-#trialModal .azro-modal__text ul{ margin-inline: auto; }
-</style>
+    var titleToFile = {
+      "MAJOR Top / MAJOR Bottom (XRP)": "MAJOR Top : MAJOR Bottom (XRP).mov",
+      "RADAR Top / RADAR Bottom (XRP)": "RADAR Top : RADAR Bottom (XRP).mov",
+      "LIGHT Tops & Bottoms (XRP)": "LIGHT Tops & Bottoms (XRP).mov",
+      "Elevated Risk (XRP & Market‑Wide)": "Elevated Risk (XRP & Market‑Wide).mov",
+      "Market‑Wide Top Warning (non‑XRP)": "Market‑Wide Top Warning (non‑XRP).mov"
+    };
+
+    function ensureVideo(){
+      if(!modal.open) return;
+      var title=(fmTitle.textContent||'').trim();
+      var file=titleToFile[title];
+      if(!file) return;
+
+      // If a real video or iframe already exists, do nothing
+      var existing = fmVideo.querySelector('video,iframe');
+      if(existing && existing.tagName.toLowerCase()!=='div') return;
+
+      // Replace placeholder with local video (MOV + optional MP4 fallback)
+      fmVideo.innerHTML='';
+      var v=document.createElement('video');
+      v.className='azro-video__el';
+      v.setAttribute('playsinline','');
+      v.setAttribute('muted','');
+      v.setAttribute('controls','');
+      v.setAttribute('preload','metadata');
+
+      var src = 'videos/' + encodeURIComponent(file);
+      var s1=document.createElement('source'); s1.src=src; s1.type='video/quicktime'; v.appendChild(s1);
+      var s2=document.createElement('source'); s2.src=src.replace(/\.mov(\?.*)?$/i,'.mp4$1'); s2.type='video/mp4'; v.appendChild(s2);
+
+      fmVideo.appendChild(v);
+      try{ v.muted=true; v.play().catch(function(){}); }catch(e){}
+    }
+
+    // Inject on dialog open
+    new MutationObserver(function(ms){
+      for(var i=0;i<ms.length;i++){
+        var m=ms[i];
+        if(m.type==='attributes' && m.attributeName==='open'){ ensureVideo(); }
+      }
+    }).observe(modal,{attributes:true});
+
+    // Safety: also try when a card is clicked (in case .showModal() set before observer fired)
+    document.addEventListener('click', function(ev){
+      var card = ev.target && ev.target.closest && ev.target.closest('.card');
+      if(card) setTimeout(ensureVideo, 0);
+    }, {capture:true, passive:true});
+
+    modal.addEventListener('close', function(){
+      var v = fmVideo.querySelector('video'); if(v){ try{v.pause();}catch(e){} }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
