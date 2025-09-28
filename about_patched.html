@@ -64,7 +64,7 @@ transition:none !important;
 </style>
 <style id="trial-modal-centering-v2">
 dialog#trialModal .azro-modal__foot{ justify-content:center !important; }
-dialog#trialModal .azro-modal__title, .azro-modal__sub{ text-align:center !important; }
+dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-align:center !important; }
 dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
 dialog#trialModal{ max-height: 92vh; }
 
@@ -125,12 +125,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
-
-<style id="modal-scrollgutter">
-/* Keep left/right spacing visually symmetric when the inner container scrolls */
-.azro-modal__scroll{ scrollbar-gutter: stable both-edges; }
-.azro-modal__head > div{ justify-self: stretch; width: 100%; }
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -277,8 +271,8 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 }
 .azro-modal__head{
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
   padding: clamp(16px, 2.4vw, 22px);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
@@ -356,7 +350,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 .azro-video iframe, .azro-video video{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 .azro-modal__foot{
-  display: flex; justify-content: space-between; align-items: center; gap: 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
   border-top: 1px solid rgba(255,255,255,.08);
   padding: clamp(14px, 2.4vw, 20px);
   color: var(--text-sub, #cbd5e1); font-size: .95rem;
