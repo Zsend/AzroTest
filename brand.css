@@ -610,7 +610,7 @@ dialog.azro-modal[open] .azro-modal__scroll{
 #trialModal   .azro-modal__body{
   display: grid !important;
   gap: clamp(16px, 2vw, 24px) !important;
-  grid-template-columns: 1.25fr .9fr;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   align-items: start;
 }
 @media (max-width: 900px){

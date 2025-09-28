@@ -66,8 +66,7 @@ transition:none !important;
 dialog#trialModal .azro-modal__foot{ justify-content:center !important; }
 dialog#trialModal .azro-modal__title, dialog#trialModal .azro-modal__sub{ text-align:center !important; }
 dialog#trialModal .azro-modal__scroll{ overflow:auto; overscroll-behavior:contain; }
-dialog#trialModal{ max-height: 92vh; }</style>
-
+dialog#trialModal{ max-height: 92vh; }
 
 <style id="trial-modal-button-centering">
 /* Scope strictly to the Free Trial dialog */
@@ -124,54 +123,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   @media (max-width: 900px){
     dialog#trialModal .trial-instructions{ margin-top: 0; }
   }
-</style>
-
-
-<style id="modal-true-center-fix-final">
-/* Mobile true centering across all About-page modals — without changing layout elsewhere */
-@media (max-width: 900px){
-  dialog.azro-modal{
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    box-sizing: border-box !important;
-  }
-  dialog#featureModal .azro-modal__head,
-  dialog#trialModal .azro-modal__head{
-    position: relative !important;
-    display: block !important;
-    text-align: center !important;
-  }
-  dialog#featureModal .azro-modal__head .azro-modal__close,
-  dialog#trialModal .azro-modal__head .azro-modal__close{
-    position: absolute !important;
-    inset-block-start: clamp(12px, 2.2vw, 16px);
-    inset-inline-end: clamp(12px, 2.2vw, 16px);
-  }
-  dialog#featureModal .azro-modal__body,
-  dialog#trialModal .azro-modal__body{
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    padding-left: clamp(18px, 2.8vw, 28px) !important;
-    padding-right: clamp(18px, 2.8vw, 28px) !important;
-  }
-  dialog#featureModal .azro-modal__text,
-  dialog#trialModal .azro-modal__text,
-  dialog#featureModal .azro-modal__media,
-  dialog#trialModal .azro-modal__media{
-    width: 100%;
-    max-width: 100%;
-    margin-inline: 0 !important;
-    justify-self: center !important;
-  }
-}
-
-/* Keep scrollbars from biasing horizontal centering on platforms with non-overlay scrollbars */
-dialog.azro-modal .azro-modal__scroll{
-  overflow: auto !important;
-  overscroll-behavior: contain !important;
-  scrollbar-gutter: stable both-edges !important;
-}
 </style>
 
 </head>
@@ -769,42 +720,5 @@ dialog.azro-modal .azro-modal__scroll{
   });
 })();
 </script>
-
-<style id="modal-true-center-postfinal">
-/* Final-in-cascade mobile true centering (About page modals only) */
-@media (max-width: 900px){
-  dialog.azro-modal{
-    --modal-pad: clamp(18px, 2.8vw, 28px);
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    margin-inline: auto !important;
-    box-sizing: border-box !important;
-    width: min(980px, 96vw) !important; /* fallback */
-    width: min(980px, calc(100dvw - 2 * var(--modal-pad))) !important; /* iOS precise */
-  }
-  dialog#featureModal .azro-modal__head,
-  dialog#trialModal .azro-modal__head{
-    display: block !important;
-    text-align: center !important;
-    padding-left: var(--modal-pad) !important;
-    padding-right: var(--modal-pad) !important;
-  }
-  dialog#featureModal .azro-modal__body,
-  dialog#trialModal .azro-modal__body{
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    padding-left: var(--modal-pad) !important;
-    padding-right: var(--modal-pad) !important;
-  }
-}
-/* Keep scrollbars from biasing centering */
-dialog.azro-modal .azro-modal__scroll{
-  overflow: auto !important;
-  overscroll-behavior: contain !important;
-  scrollbar-gutter: stable both-edges !important;
-}
-</style>
-
 </body>
 </html>
