@@ -125,63 +125,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
-
-<style id="about-modal-centering-final">
-/* === About-page modal alignment (scoped, mobile-first) ================= */
-
-/* Center the dialog geometry robustly (iOS & desktop) */
-dialog#featureModal[open],
-dialog#trialModal[open]{
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: translate(-50%, -50%) !important;
-  margin: 0 !important;
-}
-
-/* Header: center text across the true width; close button doesn't take space */
-#featureModal .azro-modal__head,
-#trialModal .azro-modal__head{
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr !important;
-  justify-items: center !important;
-  align-items: center !important;
-}
-#featureModal .azro-modal__head .azro-modal__close,
-#trialModal  .azro-modal__head .azro-modal__close{
-  position: absolute !important;
-  top: clamp(12px, 2vw, 16px) !important;
-  right: clamp(12px, 2vw, 16px) !important;
-}
-
-/* Body: keep the text block centered as a block on all widths */
-#featureModal .azro-modal__text,
-#trialModal  .azro-modal__text{
-  justify-items: center !important;
-  text-align: center !important;
-  margin-inline: auto !important;
-}
-
-/* Bullet list: center the block, keep readable left‑aligned text */
-#featureModal .azro-modal__text ul,
-#trialModal  .azro-modal__text ul{
-  margin: 0 auto !important;
-  padding-left: 1.1em !important;
-  text-align: left !important;
-  max-width: 68ch !important;
-}
-
-/* Footer: center its contents for the feature modal */
-#featureModal .azro-modal__foot{ justify-content: center !important; }
-
-/* Prevent scrollbar-induced lateral shift */
-#featureModal .azro-modal__scroll,
-#trialModal  .azro-modal__scroll{ scrollbar-gutter: stable both-edges; }
-</style>
-
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

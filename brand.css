@@ -666,3 +666,120 @@ dialog.azro-modal::backdrop{
   grid-column: 3 !important;
   justify-self: end !important;
 }
+
+/* === Modal spacing fix (Windows scrollbar) ==============================
+   Keep content visually centered when an inner scrollbar appears.
+   Reserve symmetric gutter so left/right padding remains equal.
+   ====================================================================== */
+dialog.azro-modal[open] .azro-modal__scroll,
+#featureModal .azro-modal__scroll,
+#trialModal   .azro-modal__scroll{
+  scrollbar-gutter: stable both-edges !important;
+}
+
+/* === Modal header centering fix (scoped) ==============================
+   Ensures the title/subhead are perfectly centered on all devices.
+   We take the Close button out of normal flow so it no longer biases
+   the layout math. This overrides earlier grid/flex rules safely.
+   ==================================================================== */
+#featureModal .azro-modal__head,
+#trialModal   .azro-modal__head{
+  display: block !important;
+  position: relative !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__head > div,
+#trialModal   .azro-modal__head > div{
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__head .azro-modal__close,
+#trialModal   .azro-modal__head .azro-modal__close{
+  position: absolute !important;
+  right: clamp(10px, 3vw, 16px) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  grid-column: auto !important;
+  justify-self: auto !important;
+}
+
+/* === Modal body centering (narrow viewports) ========================= */
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+  #featureModal .azro-modal__text,
+  #trialModal   .azro-modal__text{
+    justify-items: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+  #featureModal .azro-modal__text ul,
+  #trialModal   .azro-modal__text ul{
+    max-width: 66ch;
+    margin-inline: auto !important;
+    list-style-position: inside;
+    padding-left: 0;
+  }
+}
+
+/* === Final mobile centering override (wins cascade) ===================== */
+@media (max-width: 900px){
+  #featureModal .azro-modal__head,
+  #trialModal   .azro-modal__head{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    position: relative !important;
+    place-items: center !important;
+    text-align: center !important;
+  }
+  #featureModal .azro-modal__head > div,
+  #trialModal   .azro-modal__head > div{
+    grid-column: 1 !important;
+    margin-inline: 0 !important;
+    justify-self: center !important;
+  }
+  #featureModal .azro-modal__head .azro-modal__close,
+  #trialModal   .azro-modal__head .azro-modal__close{
+    position: absolute !important;
+    right: clamp(10px, 3vw, 16px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    grid-column: auto !important;
+    justify-self: auto !important;
+  }
+
+  /* Ensure content is centered in the single-column layout */
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+  }
+  #featureModal .azro-modal__text,
+  #trialModal   .azro-modal__text{
+    text-align: center !important;
+    justify-items: center !important;
+  }
+  #featureModal .azro-modal__media,
+  #trialModal   .azro-modal__media{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+/* === FINAL mobile centering override (last in cascade) ===================
+   Guarantees the header title/subhead sit in column 1 on ≤900px even if
+   earlier grid-column rules were injected elsewhere.
+   ======================================================================== */
+@media (max-width: 900px){
+  #featureModal .azro-modal__head,
+  #trialModal   .azro-modal__head{ grid-template-columns: 1fr !important; position: relative !important; }
+  #featureModal .azro-modal__head > div,
+  #trialModal   .azro-modal__head > div{ grid-column: 1 !important; margin-inline: 0 !important; justify-self: center !important; }
+  #featureModal .azro-modal__head .azro-modal__close,
+  #trialModal   .azro-modal__head .azro-modal__close{ position: absolute !important; right: clamp(10px, 3vw, 16px) !important; top: 50% !important; transform: translateY(-50%) !important; }
+}
