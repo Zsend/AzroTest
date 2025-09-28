@@ -666,3 +666,81 @@ dialog.azro-modal::backdrop{
   grid-column: 3 !important;
   justify-self: end !important;
 }
+
+/* === Modal spacing fix (Windows scrollbar) ============================== */
+dialog.azro-modal[open] .azro-modal__scroll,
+#featureModal .azro-modal__scroll,
+#trialModal   .azro-modal__scroll{
+  scrollbar-gutter: stable both-edges !important;
+}
+
+/* === Mobile header centering fix ========================================= */
+@media (max-width: 900px){
+  #featureModal .azro-modal__head,
+  #trialModal   .azro-modal__head{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    position: relative !important;
+    text-align: center !important;
+    place-items: center !important;
+  }
+  #featureModal .azro-modal__head > div,
+  #trialModal   .azro-modal__head > div{
+    grid-column: 1 !important;
+    margin-inline: 0 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+  #featureModal .azro-modal__head .azro-modal__close,
+  #trialModal   .azro-modal__head .azro-modal__close{
+    position: absolute !important;
+    right: clamp(10px, 3vw, 16px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    grid-column: auto !important;
+    justify-self: auto !important;
+  }
+}
+
+/* === Modal hard-centering guardrails (mobile + desktop) ==================
+   Ensures the entire modal structure and each top-level section use the
+   same width and are centered. This neutralizes any residual left/right
+   bias from grid math, list bullets, or browser quirks.
+   ======================================================================== */
+dialog.azro-modal[open] > form,
+#featureModal form,
+#trialModal   form{
+  width: min(96vw, 1000px) !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+}
+
+#featureModal .azro-modal__head,
+#featureModal .azro-modal__scroll,
+#featureModal .azro-modal__foot,
+#trialModal   .azro-modal__head,
+#trialModal   .azro-modal__scroll,
+#trialModal   .azro-modal__foot{
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-inline: 0 !important;
+}
+
+#featureModal .azro-modal__body,
+#trialModal   .azro-modal__body{
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-inline: 0 !important;
+}
+
+#featureModal .azro-modal__text,
+#trialModal   .azro-modal__text{
+  margin-inline: auto !important;
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+#featureModal .azro-modal__media,
+#trialModal   .azro-modal__media{
+  margin-inline: auto !important;
+}

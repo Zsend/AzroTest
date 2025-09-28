@@ -102,7 +102,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 
 <style id="azro-trial-rightcol-inside">
   /* Shorter box */
-  dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: auto !important; position: relative; padding: clamp(16px, 2vw, 22px); margin-bottom: 16px; }
+  dialog#trialModal .azro-modal__media dialog#trialModal .azro-modal__media dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: auto !important; position: relative; padding: clamp(16px, 2vw, 22px); margin-bottom: 16px; }
   /* Ring on the video only (not the container), so instructions aren't inside ring */
   dialog#trialModal .azro-modal__media::after{ display: none !important; }
   dialog#trialModal .azro-modal__media{ padding: 16px !important; }
@@ -123,56 +123,6 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   @media (max-width: 900px){
     dialog#trialModal .trial-instructions{ margin-top: 0; }
   }
-</style>
-
-
-<style id="about-modal-centering-v5">
-/* Final, robust centering that works on iOS Safari and desktop,
-   without altering any other layout. Scoped strictly to About page modals. */
-
-/* 1) Center the dialog box itself reliably. */
-dialog#featureModal[open],
-dialog#trialModal[open]{
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: translate(-50%, -50%) !important;
-  margin: 0 !important;
-}
-
-/* 2) Make header text visually centered across the full width,
-      while the close button (if present) doesn't consume a grid column. */
-#featureModal .azro-modal__head,
-#trialModal .azro-modal__head{
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr !important;
-  justify-items: center !important;
-  align-items: center !important;
-}
-
-#featureModal .azro-modal__head .azro-modal__close,
-#trialModal  .azro-modal__head .azro-modal__close{
-  position: absolute !important;
-  top: clamp(12px, 2vw, 16px) !important;
-  right: clamp(12px, 2vw, 16px) !important;
-}
-
-/* 3) Stabilize inner scrolling so scrollbars never shift content alignment */
-#featureModal .azro-modal__scroll,
-#trialModal  .azro-modal__scroll{
-  scrollbar-gutter: stable both-edges;
-}
-
-/* 4) Ensure the text block presents centered on narrow screens */
-#featureModal .azro-modal__text,
-#trialModal  .azro-modal__text{
-  justify-items: center !important;
-  text-align: center !important;
-  margin-inline: auto !important;
-}
 </style>
 
 </head>
