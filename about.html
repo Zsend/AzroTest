@@ -126,8 +126,8 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 </style>
 
 
-<style id="modal-centering-fix-v6">
-/* Center the title/sub inside modal headers without altering layout */
+<style id="modal-centering-video-fix-v7">
+/* Header: center title/subtitle across the full header grid */
 #featureModal .azro-modal__head > div,
 #trialModal   .azro-modal__head > div{
   grid-column: 1 / -1;
@@ -140,11 +140,10 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 #featureModal .azro-modal__sub,
 #trialModal   .azro-modal__title,
 #trialModal   .azro-modal__sub{
-  text-align: center;
-  margin-inline: auto;
+  text-align: center; margin-inline: auto;
 }
 
-/* Keep body items visually centered; do not change your grid except on small screens */
+/* Body: centered content; mobile -> single column */
 #featureModal .azro-modal__body,
 #trialModal   .azro-modal__body{ justify-items: center; }
 @media (max-width: 900px){
@@ -152,15 +151,15 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   #trialModal   .azro-modal__body{ grid-template-columns: 1fr !important; }
 }
 
-/* Center text blocks and ensure list lines wrap neatly */
-#featureModal .azro-modal__text,
-#trialModal   .azro-modal__text{ text-align: center; justify-items: center; }
-#featureModal .azro-modal__text p,
-#featureModal .azro-modal__text ul,
-#trialModal   .azro-modal__text p,
-#trialModal   .azro-modal__text ul{ margin-inline: auto; }
-#featureModal .azro-modal__text ul,
-#trialModal   .azro-modal__text ul{ list-style: disc inside; padding-left: 0; text-align: left; }
+/* VIDEO VISIBILITY FIX:
+   A general .azro-video rule elsewhere forces aspect-ratio:auto !important;
+   Restore a fixed ratio inside popups so the player has height. */
+#featureModal .azro-video,
+#trialModal   .azro-video{ aspect-ratio: 16 / 9 !important; position: relative; }
+#featureModal .azro-video iframe, #featureModal .azro-video video,
+#trialModal   .azro-video iframe, #trialModal   .azro-video video{
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+}
 </style>
 
 </head>
@@ -759,90 +758,82 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 })();
 </script>
 
-<script id="modal-video-ensure-v3">
+<script id="modal-video-ensure-v4">
 (function(){
-  function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
-  onReady(function(){
-    var modal = document.getElementById('featureModal');
-    var fmVideo = document.getElementById('fmVideoBox');
-    var fmTitle = document.getElementById('fmTitle');
-    if(!modal || !fmVideo || !fmTitle) return;
+  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  ready(function(){
+    var modal=document.getElementById('featureModal');
+    var fmVideo=document.getElementById('fmVideoBox');
+    var fmTitle=document.getElementById('fmTitle');
+    if(!modal||!fmVideo||!fmTitle) return;
 
-    var titleToBase = {
-      "MAJOR Top / MAJOR Bottom (XRP)": "MAJOR Top : MAJOR Bottom (XRP)",
-      "RADAR Top / RADAR Bottom (XRP)": "RADAR Top : RADAR Bottom (XRP)",
-      "LIGHT Tops & Bottoms (XRP)": "LIGHT Tops & Bottoms (XRP)",
-      "Elevated Risk (XRP & Market‑Wide)": "Elevated Risk (XRP & Market‑Wide)",
-      "Market‑Wide Top Warning (non‑XRP)": "Market‑Wide Top Warning (non‑XRP)"
+    var map={
+      "MAJOR Top / MAJOR Bottom (XRP)":"MAJOR Top : MAJOR Bottom (XRP)",
+      "RADAR Top / RADAR Bottom (XRP)":"RADAR Top : RADAR Bottom (XRP)",
+      "LIGHT Tops & Bottoms (XRP)":"LIGHT Tops & Bottoms (XRP)",
+      "Elevated Risk (XRP & Market‑Wide)":"Elevated Risk (XRP & Market‑Wide)",
+      "Market‑Wide Top Warning (non‑XRP)":"Market‑Wide Top Warning (non‑XRP)"
     };
 
-    function variants(base){
-      var v = [];
-      if(!base) return v;
-      var specialHyphens = /[\u2010\u2011\u2012\u2013\u2014\u2212]/g; // hyphen, non-breaking hyphen, figure dash, en/em dash, minus
-      var b1 = base;
-      var b2 = base.replace(specialHyphens, '-');
-      var cands = [b1, b2];
-      // colon variants
-      cands = cands.concat(cands.map(s => s.replace(/\s*:\s*/g, ' - ')));
-      cands = cands.concat(cands.map(s => s.replace(/\s*:\s*/g, '-')));
-      cands = Array.from(new Set(cands));
-      return cands;
+    function candidates(base){
+      if(!base) return [];
+      var H=/[\u2010\u2011\u2012\u2013\u2014\u2212]/g;
+      var forms=[base, base.replace(H,'-')];
+      forms=forms.concat(forms.map(s=>s.replace(/\s*:\s*/g,' - ')));
+      forms=forms.concat(forms.map(s=>s.replace(/\s*:\s*/g,'-')));
+      return Array.from(new Set(forms));
     }
 
-    function inject(){
+    function injectIfPlaceholder(){
       if(!modal.open) return;
-      var title = (fmTitle.textContent||'').trim();
-      var base = titleToBase[title];
+      var title=(fmTitle.textContent||'').trim();
+      var base=map[title];
       if(!base) return;
 
-      // If a real video or iframe already exists, do nothing
-      if(fmVideo.querySelector('video,iframe')) return;
+      // Only proceed if the placeholder is present; otherwise don't touch
+      if(!fmVideo.querySelector('.azro-video__ph')){
+        // If an iframe or video already exists, leave it
+        if(fmVideo.querySelector('video,iframe')) return;
+      }
 
-      var video = document.createElement('video');
-      video.className = 'azro-video__el';
-      video.setAttribute('controls','');
-      video.setAttribute('playsinline','');
-      video.setAttribute('muted','');
-      video.setAttribute('preload','metadata');
+      var v=document.createElement('video');
+      v.setAttribute('controls','');
+      v.setAttribute('playsinline','');
+      v.setAttribute('muted','');
+      v.setAttribute('preload','metadata');
 
-      var seen = new Set();
-      variants(base).forEach(function(name){
+      // Add multiple source variants to survive punctuation differences
+      var seen=new Set();
+      candidates(base).forEach(function(name){
         ['.mov','.mp4'].forEach(function(ext){
-          var src = 'videos/' + encodeURIComponent(name + ext);
-          if(seen.has(src)) return;
-          seen.add(src);
-          var s = document.createElement('source');
-          s.src = src;
-          s.type = (ext === '.mp4') ? 'video/mp4' : 'video/quicktime';
-          video.appendChild(s);
+          var src='videos/'+encodeURIComponent(name+ext);
+          if(seen.has(src)) return; seen.add(src);
+          var s=document.createElement('source'); s.src=src; s.type=(ext==='.mp4')?'video/mp4':'video/quicktime';
+          v.appendChild(s);
         });
       });
 
-      // If nothing appended, bail to placeholder
-      if(!video.querySelector('source')) return;
-
-      // Swap placeholder with the video
-      fmVideo.innerHTML = '';
-      fmVideo.appendChild(video);
-      try{ video.muted = true; video.play().catch(function(){}); }catch(e){}
+      if(!v.querySelector('source')) return; // nothing to load
+      fmVideo.innerHTML='';
+      fmVideo.appendChild(v);
+      try{ v.muted=true; v.play().catch(function(){}); }catch(e){}
     }
 
-    // Fire on open
+    // When the dialog toggles open, inject
     new MutationObserver(function(ms){
       for(var i=0;i<ms.length;i++){
-        if(ms[i].type==='attributes' && ms[i].attributeName==='open'){ inject(); }
+        if(ms[i].type==='attributes' && ms[i].attributeName==='open'){ injectIfPlaceholder(); }
       }
-    }).observe(modal, { attributes:true });
+    }).observe(modal,{attributes:true});
 
-    // Also attempt right after a card click (timed to the next tick)
+    // Safety: also attempt after a card click
     document.addEventListener('click', function(e){
-      var card = e.target && e.target.closest && e.target.closest('.card');
-      if(card){ setTimeout(inject, 0); }
+      if(e.target && e.target.closest && e.target.closest('.card')) setTimeout(injectIfPlaceholder, 0);
     }, {capture:true, passive:true});
 
+    // Pause on close
     modal.addEventListener('close', function(){
-      var v = fmVideo.querySelector('video'); if(v){ try{ v.pause(); }catch(e){} }
+      var v=fmVideo.querySelector('video'); if(v){ try{ v.pause(); }catch(e){} }
     });
   });
 })();
