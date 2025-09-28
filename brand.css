@@ -666,3 +666,15 @@ dialog.azro-modal::backdrop{
   grid-column: 3 !important;
   justify-self: end !important;
 }
+
+/* === Modal spacing fix (Windows scrollbar) ==============================
+   Ensures the content in <dialog> modals remains perfectly centered
+   even when the inner scroll area shows a vertical scrollbar that
+   consumes layout width (common on Windows). We reserve a stable,
+   symmetric gutter so left/right padding stays equal.
+   ====================================================================== */
+dialog.azro-modal[open] .azro-modal__scroll,
+#featureModal .azro-modal__scroll,
+#trialModal   .azro-modal__scroll{
+  scrollbar-gutter: stable both-edges !important;
+}
