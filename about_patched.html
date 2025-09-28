@@ -125,6 +125,26 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 
+
+<style id="about-modal-head-centering">
+/* Keep dialog centering as-is. Only correct visual centering of header text. */
+#featureModal .azro-modal__head,
+#trialModal .azro-modal__head{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr; /* full-width track, no reserved column */
+  justify-items: center;
+  align-items: center;
+}
+/* Close button no longer consumes layout width */
+#featureModal .azro-modal__head .azro-modal__close,
+#trialModal  .azro-modal__head .azro-modal__close{
+  position: absolute;
+  top: clamp(12px, 2vw, 16px);
+  right: clamp(12px, 2vw, 16px);
+}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
