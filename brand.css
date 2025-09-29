@@ -308,7 +308,7 @@
 }
 
 /* E) Dialog (feature & trial) – ensure fully visible on mobile */
-dialog.azro-modal[open]{
+#featureModal[open], #trialModal[open]{
   position: fixed; inset: 0; margin: auto;      /* robust centering */
 }
 .azro-modal__scroll{
@@ -373,7 +373,7 @@ dialog.azro-modal[open]{
 }
 
 /* E) Dialogs (feature & trial): mobile‑safe sizing/spacings */
-dialog.azro-modal[open]{
+#featureModal[open], #trialModal[open]{
   position: fixed; inset: 0; margin: auto;             /* robust centering */
 }
 .azro-modal__scroll{
@@ -444,7 +444,7 @@ dialog.azro-modal[open]{
           proper wrapping of footer text on mobile.
 ===================================================================== */
 
-dialog.azro-modal[open]{
+#featureModal[open], #trialModal[open]{
   position: fixed !important;
   inset: 0 !important;
   display: grid !important;
@@ -553,7 +553,7 @@ html:has(dialog.azro-modal[open]), body:has(dialog.azro-modal[open]){
    ===================================================================== */
 
 /* 1) Center the dialog itself — robust across desktop & mobile */
-dialog.azro-modal[open]{
+#featureModal[open], #trialModal[open]{
   position: fixed !important;
   inset: 0 !important;            /* center via auto margins */
   margin: auto !important;
@@ -568,7 +568,7 @@ dialog.azro-modal[open]{
 }
 @supports (inset: 0) {
   /* Prefer inset-centering when supported */
-  dialog.azro-modal[open]{ left: auto; top: auto; transform: none; }
+  #featureModal[open], #trialModal[open]{ left: auto; top: auto; transform: none; }
 }
 
 /* 2) Lock page scroll behind an open dialog */
@@ -668,8 +668,93 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* === v15 mobile hard-center + symmetric-widths (scoped) === */
-dialog.azro-modal[open]{
+/* ===== v13 Symmetric Gutters & Safe‑Area Centering (About modals only) ===== */
+@supports (padding: max(0px)) {
+  @media (max-width: 900px){
+    #featureModal .azro-modal__content,
+    #featureModal .azro-modal__section,
+    #featureModal .azro-modal__text,
+    #featureModal .azro-modal__header,
+    #featureModal .azro-modal__footer,
+    #trialModal   .azro-modal__content,
+    #trialModal   .azro-modal__section,
+    #trialModal   .azro-modal__text,
+    #trialModal   .azro-modal__header,
+    #trialModal   .azro-modal__footer{
+      box-sizing: border-box !important;
+      margin-inline: auto !important;
+      width: 100% !important;
+      padding-inline: max(env(safe-area-inset-left), env(safe-area-inset-right), 20px) !important;
+    }
+  }
+}
+@media (max-width: 900px){
+  #featureModal .azro-modal__content,
+  #featureModal .azro-modal__section,
+  #featureModal .azro-modal__text,
+  #featureModal .azro-modal__header,
+  #featureModal .azro-modal__footer,
+  #trialModal   .azro-modal__content,
+  #trialModal   .azro-modal__section,
+  #trialModal   .azro-modal__text,
+  #trialModal   .azro-modal__header,
+  #trialModal   .azro-modal__footer{
+    box-sizing: border-box !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+#featureModal .azro-modal__header, 
+#trialModal   .azro-modal__header,
+#featureModal .azro-modal__text, 
+#trialModal   .azro-modal__text,
+#featureModal .azro-modal__footer,
+#trialModal   .azro-modal__footer{
+  max-width: min(92vw, 720px) !important;
+  margin-inline: auto !important;
+  text-align: center;
+}
+/* ===== end v13 patch ===== */
+
+
+/* === v15 precise centering: remove residual button shift & enforce equal headers === */
+
+/* Remove leftover left offset on the Done button in both modals */
+#featureModal .azro-modal__foot .azro-modal__close,
+#trialModal   .azro-modal__foot .azro-modal__close{ margin-left: 0 !important; }
+
+/* Ensure footer uses gap for spacing instead of margins */
+#featureModal .azro-modal__foot,
+#trialModal   .azro-modal__foot{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  flex-wrap: wrap !important;
+  text-align: center !important;
+}
+
+/* Equalize padding in head/body/foot and center inner wrappers */
+#featureModal .azro-modal__head,
+#trialModal   .azro-modal__head{
+  padding-inline: clamp(16px, 4vw, 24px) !important;
+  box-sizing: border-box !important;
+}
+#featureModal .azro-modal__head > div,
+#trialModal   .azro-modal__head > div{ margin-inline: auto !important; }
+
+/* Keep dialog centering unambiguous */
+#featureModal[open], #trialModal[open]{
+  position: fixed !important; inset: 0 !important; margin: auto !important;
+  left: auto !important; right: auto !important; top: auto !important; bottom: auto !important;
+  transform: none !important; display: grid !important; place-items: center !important;
+}
+
+
+/* === v16 desktop centering + footer row (surgical & scoped) === */
+
+/* 1) Ensure the dialog itself is perfectly centered on desktop too */
+#featureModal[open], #trialModal[open]{
   position: fixed !important;
   inset: 0 !important;
   margin: auto !important;
@@ -678,56 +763,29 @@ dialog.azro-modal[open]{
   top: auto !important;
   bottom: auto !important;
   transform: none !important;
-  display: grid !important;
-  place-items: center !important;
+  width: auto !important;                    /* let content define width up to max */
   max-width: min(1000px, 96vw) !important;
   max-height: 96dvh !important;
 }
 
-@media (max-width: 900px){
-  :root{ --modal-px: clamp(16px, 4vw, 24px); }
-  #featureModal, #trialModal{ padding: 0 !important; }
-
-  #featureModal .azro-modal__head,
-  #featureModal .azro-modal__body,
+/* 2) Desktop footer: text + Done button in one centered row */
+@media (min-width: 901px){
   #featureModal .azro-modal__foot,
-  #trialModal   .azro-modal__head,
-  #trialModal   .azro-modal__body,
   #trialModal   .azro-modal__foot{
-    padding-inline: var(--modal-px) !important;
-    box-sizing: border-box !important;
-    margin-inline: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: clamp(.5rem, 1.6vw, 1rem) !important;
+    flex-wrap: nowrap !important;
+    text-align: center !important;
+    width: auto !important;
+    margin-inline: auto !important;
   }
-
-  #featureModal .azro-modal__head > *,
-  #trialModal   .azro-modal__head > *,
+  /* remove any stray space-between from inherited styles */
+  #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__foot{ justify-content: center !important; }
   #featureModal .azro-modal__foot > *,
-  #trialModal   .azro-modal__foot > *{ margin-inline: auto !important; }
-
-  #featureModal .azro-modal__text,
-  #trialModal   .azro-modal__text{
-    width: min(92%, 560px) !important;
-    margin-inline: auto !important;
-    display: grid !important;
-    justify-items: center !important;
-  }
-
-  #featureModal .azro-modal__media,
-  #trialModal   .azro-modal__media{
-    width: min(92%, 680px) !important;
-    margin-inline: auto !important;
-    position: relative !important;
-  }
+  #trialModal   .azro-modal__foot > *{ margin: 0 !important; }
 }
-/* === end v15 patch === */
 
-
-/* === v15b: force center the child blocks inside each section on mobile === */
-@media (max-width: 900px){
-  #featureModal .azro-modal__body > *,
-  #trialModal   .azro-modal__body > *{
-    margin-inline: auto !important;
-    width: min(92%, 560px) !important;
-  }
-}
-/* === end v15b === */
+/* Keep mobile experience unchanged (already centered) */
