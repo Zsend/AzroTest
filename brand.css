@@ -668,8 +668,66 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* v27c: On-brand media card background (replaces pure black) */
+/* === v30: targeted, page-scoped improvements (no layout changes elsewhere) === */
+
+/* On-brand media card background (replaces pure black) — both modals */
 #featureModal .azro-modal__media .azro-video,
 #trialModal   .azro-modal__media .azro-video{
   background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
 }
+
+/* Resources page — center grid & prevent left crop on small screens */
+@media (max-width: 900px){
+  .hero-text.resources-page{ padding-inline:16px !important; }
+  .resources-grid{
+    grid-template-columns: 1fr !important;
+    width: min(100%, 680px) !important;
+    margin-inline: auto !important;
+    padding-inline: 16px !important;
+    transform: none !important;
+  }
+  .resources-grid > *{ margin-inline:auto !important; }
+}
+
+/* Subtle affordance: On‑chart labels & instant alerts cards are clickable */
+h2.h-subhead + .grid-3 .card{
+  transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
+  outline: 1px solid rgba(255,255,255,.10);
+}
+h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  outline-color: rgba(129,138,255,.35);
+  cursor: pointer;
+}
+@media (hover:none){
+  h2.h-subhead + .grid-3 .card:active{
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.26);
+  }
+}
+
+/* Prevent trailing gap under footer on mobile */
+.page-wrap{ min-height: 100svh; display:flex; flex-direction:column; }
+.site-main{ flex: 1 0 auto; }
+.site-footer, .footer{ margin-bottom: 0 !important; }
+html, body{ overscroll-behavior-y: contain; }
+
+/* Landscape phones: compact modal chrome for readability */
+@media (max-height: 520px) and (orientation: landscape){
+  #featureModal .azro-modal__head,
+  #trialModal   .azro-modal__head{ padding-block:8px !important; }
+  #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__foot{ padding-block:8px !important; }
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{ max-height:calc(100svh - 96px) !important; overflow:auto !important; }
+  #featureModal .azro-modal__title,
+  #trialModal   .azro-modal__title{ font-size:clamp(1rem, 2.4vw, 1.25rem) !important; line-height:1.2 !important; }
+}
+
+/* Home hero — align image top with headline top; remove legacy top margin */
+@media (min-width:901px){
+  .home-hero{ align-items:flex-start !important; }
+  .home-hero .chart-img{ margin-top:0 !important; align-self:flex-start !important; }
+}
+/* === end v30 patch === */
