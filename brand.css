@@ -668,17 +668,39 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* ==================== v21 (scoped) — About Modals Centering & Balance ====================
-   Scope: #featureModal and #trialModal only. No other parts of the site are affected.
-   Goal: 1) True viewport centering on desktop.
-         2) Balanced interior gutters & list alignment on mobile.
-         3) Footer link + Done on one centered row (desktop).
-         4) Video visually centered between the section dividers (both breakpoints).
-   ======================================================================================== */
+/* ================= AZRO Modal – Full Update (scoped) ===================
+   Goals (requested):
+   1) Desktop: dialogs perfectly centered in viewport.
+   2) Desktop: footer text + "Done" in one centered row.
+   3) On‑chart Labels (feature) modal: video centered between dividers on all breakpoints.
+   4) Free Trial modal: video centered between dividers on all breakpoints.
+   NOTE: All rules are STRICTLY scoped to #featureModal and #trialModal.
+   ====================================================================== */
 
-/* A) Viewport‑center the dialog on desktop (robust across transforms/perspective/filters) */
+/* A) Two-column layout uses symmetric columns */
+#featureModal .azro-modal__body,
+#trialModal   .azro-modal__body{
+  display: grid !important;
+  gap: clamp(16px, 2vw, 24px) !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  align-items: start;
+}
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+  }
+}
+
+/* B) Anchor media overlays to their own container (no visual drift) */
+#featureModal .azro-modal__media,
+#trialModal   .azro-modal__media{ position: relative !important; }
+
+/* C) Desktop: center dialogs in the viewport (robust against transforms) */
 @media (min-width: 901px){
-  #featureModal[open], #trialModal[open]{
+  #featureModal[open],
+  #trialModal[open]{
     position: fixed !important;
     left: 50% !important; top: 50% !important;
     right: auto !important; bottom: auto !important;
@@ -688,51 +710,10 @@ dialog.azro-modal::backdrop{
     max-width: min(1000px, 96vw) !important;
     max-height: 96dvh !important;
   }
-}
 
-/* B) Two‑column layout on desktop: use symmetric columns */
-#featureModal .azro-modal__body, #trialModal .azro-modal__body{
-  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
-}
-
-/* C) One‑column on mobile: center items; prevent list indent from shifting visual center */
-@media (max-width: 900px){
-  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-  }
-  #featureModal .azro-modal__text, #trialModal .azro-modal__text{
-    width: 100% !important;
-    display: grid !important;
-    justify-items: center !important;
-  }
-  #featureModal .azro-modal__text ul, #trialModal .azro-modal__text ul{
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin: 0 auto !important;
-    display: inline-block !important;
-    text-align: left !important;
-    max-width: 72ch !important;
-  }
-  #featureModal .azro-modal__text li, #trialModal .azro-modal__text li{
-    position: relative !important;
-    padding-left: 1.05em !important;
-    margin: .35rem 0 !important;
-  }
-  #featureModal .azro-modal__text li::before, #trialModal .azro-modal__text li::before{
-    content: "" !important;
-    position: absolute !important; left: 0 !important; top: 0.6em !important;
-    width: .33em !important; height: .33em !important; border-radius: 50% !important;
-    background: currentColor !important; opacity: .9 !important; transform: translateY(-50%) !important;
-  }
-}
-
-/* D) Anchor media overlay to the media box to avoid any left‑glow illusions */
-#featureModal .azro-modal__media, #trialModal .azro-modal__media{ position: relative !important; }
-
-/* E) Footer (desktop): link + Done on one centered row */
-@media (min-width: 901px){
-  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{
+  /* Footer: link + Done on one centered row */
+  #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__foot{
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -742,79 +723,127 @@ dialog.azro-modal::backdrop{
     margin-inline: auto !important;
     text-align: center !important;
   }
-  #featureModal .azro-modal__foot a, #trialModal   .azro-modal__foot a{
-    display: inline !important; white-space: nowrap !important;
+  #featureModal .azro-modal__foot a,
+  #trialModal   .azro-modal__foot a{
+    display: inline !important;
+    white-space: nowrap !important;
   }
-  #featureModal .azro-modal__foot .azro-modal__close, #trialModal .azro-modal__foot .azro-modal__close{
-    display: inline-flex !important; margin-left: clamp(.5rem, 1vw, .75rem) !important;
+  #featureModal .azro-modal__foot .azro-modal__close,
+  #trialModal   .azro-modal__foot .azro-modal__close{
+    display: inline-flex !important;
+    margin-left: clamp(.5rem, 1vw, .75rem) !important;
   }
 }
 
-/* F) Video vertical centering between dividers
-   - Desktop/two‑column: text stays top‑aligned; video centered within the row
-   - Mobile/one‑column: small top offset so it sits visually between the dividers */
+/* D) Visual centering of videos between section dividers */
 @media (min-width: 901px){
-  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ align-items: start !important; }
-  #featureModal .azro-modal__media, #trialModal .azro-modal__media{ align-self: center !important; }
+  #featureModal .azro-modal__body{ align-items: start !important; }
+  #featureModal .azro-modal__media{ align-self: center !important; }
+
+  #trialModal   .azro-modal__body{ align-items: start !important; }
+  #trialModal   .azro-modal__media{ align-self: center !important; }
 }
 @media (max-width: 900px){
-  #featureModal .azro-modal__media, #trialModal .azro-modal__media{
-    margin-top: clamp(24px, 6vh, 56px) !important;
-  }
+  #featureModal .azro-modal__media{ margin-top: clamp(24px, 6vh, 56px) !important; }
+  #trialModal   .azro-modal__media{ margin-top: clamp(24px, 6vh, 56px) !important; }
 }
-/* ==================== end v21 patch ===================================================== */
+
+/* E) (Feature modal only) Bullet list: remove browser left indent and center block */
+#featureModal .azro-modal__text ul{
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 auto !important;
+  display: inline-block !important;
+  text-align: left !important;
+  max-width: 72ch !important;
+}
+#featureModal .azro-modal__text li{
+  position: relative !important;
+  padding-left: 1.05em !important;
+  margin: .35rem 0 !important;
+}
+#featureModal .azro-modal__text li::before{
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important; top: 0.6em !important;
+  width: .33em !important; height: .33em !important;
+  border-radius: 50% !important;
+  background: currentColor !important; opacity: .9 !important;
+  transform: translateY(-50%) !important;
+}
+/* Maintain centered headings above the list */
+#featureModal .azro-modal__text > *:not(ul){ text-align: center !important; }
+/* ===================================================================== */
 
 
-/* === v22 (scoped): Free Trial modal – center media between dividers === */
+/* === v22 (scoped): Free Trial modal content centered between body dividers === */
+/* Tablet/Desktop (two-column): center BOTH columns inside the body row */
 @media (min-width: 901px){
-  #trialModal .azro-modal__media{
-    align-self: center !important;
-    display: grid !important;
-    justify-items: center !important;
-    align-content: center !important;
-    margin-top: clamp(12px, 3.2vh, 32px) !important;
-  }
+  #trialModal .azro-modal__text{ align-self: center !important; }
+  #trialModal .azro-modal__media{ align-self: center !important; } /* already present; ensure precedence */
 }
-/* === end v22 patch === */
+
+/* Mobile (one-column): maintain visual centering with a gentle top offset for the media;
+   text column remains naturally centered by existing grid rules */
+@media (max-width: 900px){
+  #trialModal .azro-modal__media{ margin-top: clamp(24px, 6vh, 56px) !important; }
+}
+/* === end v22 === */
 
 
-/* === v23 (scoped): Free Trial — center entire body between dividers === */
+/* === v23 (scoped): Free Trial modal — symmetric body spacing for true center === */
 @media (min-width: 901px){
   #trialModal .azro-modal__body{
-    margin-block: auto !important;   /* center body between header divider & footer divider */
+    padding-top:  clamp(16px, 3.5vh, 28px) !important;
+    padding-bottom: clamp(16px, 3.5vh, 28px) !important; /* equal top/bottom */
+    margin-block: 0 !important;
+    align-items: start !important; /* keep left column top-aligned */
+  }
+  /* Keep the media column centered within the row (same as feature modal) */
+  #trialModal .azro-modal__media{
+    align-self: center !important;
   }
 }
-/* === end v23 === */
+/* === end v23 patch === */
 
 
-/* === v24 (scoped): Free Trial modal — stronger vertical centering of video between dividers === */
+/* === v24 (scoped): Free Trial modal — true vertical centering for both columns === */
 @media (min-width: 901px){
+  #trialModal .azro-modal__text,
   #trialModal .azro-modal__media{
-    margin-top: clamp(32px, 6.5vh, 72px) !important; /* lower the video a bit more */
+    margin-top: 0 !important;               /* override earlier nudge */
+    align-self: center !important;           /* center each column in the row */
   }
 }
 /* === end v24 patch === */
 
 
-/* === v25 (scoped): Free Trial modal — definitive centering of video between body dividers === */
+/* === v25 (scoped): Free Trial modal — precise centering & small header cushion === */
 @media (min-width: 901px){
-  #trialModal .azro-modal__media{ margin-top: clamp(48px, 10vh, 120px) !important; }
+  /* Equalize the vertical frame between the two dividers */
+  #trialModal .azro-modal__body{
+    padding-top: clamp(36px, 4vh, 64px) !important;
+    padding-bottom: clamp(36px, 4vh, 64px) !important;
+  }
+  /* Keep both columns aligned to that frame (no stray offsets) */
+  #trialModal .azro-modal__text,
+  #trialModal .azro-modal__media{
+    margin-top: 0 !important;
+    align-self: center !important;
+  }
+  /* Micro cushion so the first pill doesn't hug the top divider visually */
+  #trialModal .azro-modal__text .azro-pill:first-child{
+    margin-top: clamp(6px, 1vh, 12px) !important;
+  }
 }
 /* === end v25 patch === */
 
 
-/* === v25b (scoped): Free Trial modal — center BOTH columns between dividers === */
+/* === v26 (scoped): Free Trial modal — visual centering between body dividers === */
 @media (min-width: 901px){
-  #trialModal .azro-modal__text{
-    align-self: stretch !important;
-    display: grid !important;
-    align-content: center !important; /* vertical center inside full row height */
-  }
-  #trialModal .azro-modal__media{
-    align-self: stretch !important;
-    display: grid !important;
-    align-content: center !important;
-    justify-items: center !important;
+  #trialModal .azro-modal__body{
+    padding-block: clamp(40px, 6vh, 76px) !important; /* equal top/bottom space */
+    box-sizing: border-box !important;
   }
 }
-/* === end v25b patch === */
+/* === end v26 patch === */
