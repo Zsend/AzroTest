@@ -610,7 +610,7 @@ dialog.azro-modal[open] .azro-modal__scroll{
 #trialModal   .azro-modal__body{
   display: grid !important;
   gap: clamp(16px, 2vw, 24px) !important;
-  grid-template-columns: 1.25fr .9fr;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
   align-items: start;
 }
 @media (max-width: 900px){
@@ -668,45 +668,38 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* =========================
-   v12c Modal Centering & List Polish (scoped to About modals only)
-   ========================= */
+/* === v13 true-center mobile + custom bullets + overlay anchor (scoped) === */
+
+/* Equal columns on desktop for visual balance */
 #featureModal .azro-modal__body,
 #trialModal   .azro-modal__body{
   display: grid !important;
   gap: clamp(16px, 2vw, 24px) !important;
-  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; /* balanced desktop */
-  align-items: start !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  align-items: start;
 }
 
-/* Anchor media overlay to its own container so it can't create a left glow */
+/* Anchor media overlay to its own box to prevent left bias on mobile */
 #featureModal .azro-modal__media,
-#trialModal   .azro-modal__media{
+#trialModal .azro-modal__media{
   position: relative !important;
 }
-
-/* True-center mobile layout */
-@media (max-width: 900px){
-  #featureModal .azro-modal__body,
-  #trialModal   .azro-modal__body{
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-  }
-  #featureModal .azro-modal__text,
-  #trialModal   .azro-modal__text{
-    width: 100% !important;
-    display: grid !important;
-    justify-items: center !important;
-  }
+#trialModal .azro-modal__media::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12) !important;
+  pointer-events: none !important;
 }
 
-/* Remove default UL indent and draw professional bullets */
+/* Bullet list: remove browser left indent and center the block */
 #featureModal .azro-modal__text ul,
 #trialModal   .azro-modal__text ul{
   list-style: none !important;
   padding-left: 0 !important;
   margin: 0 auto !important;
-  display: inline-block !important;   /* allows true centering */
+  display: inline-block !important;
   text-align: left !important;
   max-width: 72ch !important;
 }
@@ -715,7 +708,6 @@ dialog.azro-modal::backdrop{
   position: relative !important;
   padding-left: 1.05em !important;
   margin: .35rem 0 !important;
-  line-height: 1.45 !important;
 }
 #featureModal .azro-modal__text li::before,
 #trialModal   .azro-modal__text li::before{
@@ -731,15 +723,84 @@ dialog.azro-modal::backdrop{
   transform: translateY(-50%) !important;
 }
 
-/* Keep lead copy and headings centered above list */
+/* Keep headings centered above list */
 #featureModal .azro-modal__text > *:not(ul),
 #trialModal   .azro-modal__text > *:not(ul){
-  text-align: center !important;
+  text-align: center;
 }
 
-/* Minor safe spacing for first pill under the divider */
+/* First pill spacing under the divider */
 #featureModal .azro-modal__text .azro-pill:first-child,
 #trialModal   .azro-modal__text .azro-pill:first-child{
   margin-top: clamp(6px, 1.2vh, 10px) !important;
 }
-/* ===== end v12c patch ===== */
+
+/* One-column mobile: truly center items */
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+  }
+  #featureModal .azro-modal__text,
+  #trialModal   .azro-modal__text{
+    width: 100% !important;
+    display: grid !important;
+    justify-items: center !important;
+  }
+}
+/* === end v13 patch === */
+
+
+/* === v14 hard-center assurance (iOS-safe) === */
+/* 1) Use a single centering strategy to avoid rounding drift */
+dialog.azro-modal[open]{
+  position: fixed !important;
+  inset: 0 !important;
+  margin: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  display: grid !important;
+  place-items: center !important;
+  max-width: min(1000px, 96vw) !important;
+  max-height: 96dvh !important;
+}
+
+/* 2) Equalize interior gutters on the three modal sections */
+#featureModal .azro-modal__head,
+#featureModal .azro-modal__body,
+#featureModal .azro-modal__foot,
+#trialModal   .azro-modal__head,
+#trialModal   .azro-modal__body,
+#trialModal   .azro-modal__foot{
+  padding-left: clamp(16px, 4vw, 24px) !important;
+  padding-right: clamp(16px, 4vw, 24px) !important;
+  box-sizing: border-box !important;
+  margin-inline: 0 !important;
+}
+
+/* 3) Ensure their content blocks align to the true center */
+#featureModal .azro-modal__head > *, 
+#featureModal .azro-modal__foot > *,
+#trialModal   .azro-modal__head > *, 
+#trialModal   .azro-modal__foot > *{
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+/* 4) Respect safe areas on iOS (if present) */
+@supports (padding: max(0px)) {
+  #featureModal .azro-modal__head,
+  #featureModal .azro-modal__body,
+  #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__head,
+  #trialModal   .azro-modal__body,
+  #trialModal   .azro-modal__foot{
+    padding-left: max(clamp(16px, 4vw, 24px), env(safe-area-inset-left)) !important;
+    padding-right: max(clamp(16px, 4vw, 24px), env(safe-area-inset-right)) !important;
+  }
+}
+/* === end v14 patch === */
