@@ -668,9 +668,8 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* === v27c: On-brand media card background (replaces pure black, scoped) === */
+/* v27c: On-brand media card background (replaces pure black) */
 #featureModal .azro-modal__media .azro-video,
 #trialModal   .azro-modal__media .azro-video{
-  background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important; /* deep indigo -> midnight */
+  background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
 }
-/* ========================================================================== */
