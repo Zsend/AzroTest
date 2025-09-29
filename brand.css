@@ -790,10 +790,10 @@ dialog.azro-modal::backdrop{
 /* === end v17 patch === */
 
 
-/* === v18 mobile: lower feature video slightly to center between dividers === */
+/* === v19: mobile visual-centering nudge for feature video (scoped) === */
 @media (max-width: 900px){
   #featureModal .azro-modal__media{
-    margin-top: clamp(12px, 3.5vh, 28px) !important; /* gentle, responsive nudge */
+    margin-top: clamp(24px, 6vh, 56px) !important; /* lower the video a bit */
   }
 }
-/* === end v18 patch === */
+/* === end v19 === */
