@@ -668,132 +668,15 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* ===== v13 mobile true-center: symmetric paddings for header/body/footer ===== */
+/* === v20 (scoped): Center feature video between section dividers === */
+/* Two-column (tablet/desktop): keep text at the top, center the video within the row */
+@media (min-width: 901px){
+  #featureModal .azro-modal__body{ align-items: start !important; }
+  #featureModal .azro-modal__media{ align-self: center !important; }
+}
+
+/* One-column (mobile): gently lower the video to visually center between dividers */
 @media (max-width: 900px){
-  #featureModal .azro-modal__header,
-  #featureModal .azro-modal__body,
-  #featureModal .azro-modal__footer,
-  #trialModal   .azro-modal__header,
-  #trialModal   .azro-modal__body,
-  #trialModal   .azro-modal__footer{
-    padding-left: clamp(16px, 4vw, 24px) !important;
-    padding-right: clamp(16px, 4vw, 24px) !important;
-    box-sizing: border-box !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  /* Ensure footer actions are truly centered to the dialog width */
-  #featureModal .azro-modal__footer,
-  #trialModal   .azro-modal__footer{
-    display: grid !important;
-    justify-items: center !important;
-  }
+  #featureModal .azro-modal__media{ margin-top: clamp(24px, 6vh, 56px) !important; }
 }
-/* ===== end v13 patch ===== */
-
-
-/* === v15 mobile LR-balance centering (scoped to <dialog.azro-modal>) === */
-@media (max-width: 920px){
-  dialog.azro-modal[open]{
-    inset: auto !important;
-    left: max(3.5vw, env(safe-area-inset-left)) !important;
-    right: max(3.5vw, env(safe-area-inset-right)) !important;
-    width: auto !important;
-    margin: 0 !important;
-    top: 50% !important;
-    bottom: auto !important;
-    transform: translateY(-50%) !important;
-    position: fixed !important;
-    z-index: 9999 !important;
-    box-sizing: border-box !important;
-    max-width: none !important;
-  }
-}
-/* === end v15 patch === */
-
-
-/* === v16 desktop center + footer inline-center (scoped to About modals) === */
-
-/* Center the dialog on desktop with a single positioning model */
-@media (min-width: 901px){
-  #featureModal[open],
-  #trialModal[open]{
-    position: fixed !important;
-    inset: 0 !important;
-    margin: auto !important;
-    left: auto !important; right: auto !important;
-    top: auto !important;  bottom: auto !important;
-    transform: none !important;
-  }
-}
-
-/* Place the footer label and Done button next to each other and center them as a group */
-@media (min-width: 901px){
-  #featureModal .azro-modal__footer,
-  #trialModal   .azro-modal__footer,
-  #featureModal .azro-modal__foot,
-  #trialModal   .azro-modal__foot{
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: clamp(.5rem, 1.6vw, 1rem) !important;
-    text-align: center !important;
-    width: 100%;
-  }
-  #featureModal .azro-modal__footer .azro-modal__close,
-  #trialModal   .azro-modal__footer .azro-modal__close,
-  #featureModal .azro-modal__foot .azro-modal__close,
-  #trialModal   .azro-modal__foot .azro-modal__close{
-    margin-left: 0 !important;   /* prevent auto-push to far-right */
-  }
-}
-/* === end v16 patch === */
-
-
-/* === v17: Desktop viewport-centering + footer one-line (final, scoped) === */
-@media (min-width: 901px){
-  /* Lock centering to viewport using 50% + translate (robust across transforms) */
-  #featureModal[open], #trialModal[open]{
-    position: fixed !important;
-    left: 50% !important; top: 50% !important;
-    right: auto !important; bottom: auto !important;
-    transform: translate(-50%, -50%) !important;
-    margin: 0 !important;
-    width: auto !important;
-    max-width: min(1000px, 96vw) !important;
-    max-height: 96dvh !important;
-  }
-
-  /* Footer: keep link and Done on one centered row */
-  #featureModal .azro-modal__foot,
-  #trialModal   .azro-modal__foot{
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: clamp(.75rem, 1.2vw, 1rem) !important;
-    flex-wrap: nowrap !important;
-    width: auto !important;
-    margin-inline: auto !important;
-    text-align: center !important;
-  }
-  #featureModal .azro-modal__foot a,
-  #trialModal   .azro-modal__foot a{
-    display: inline !important;
-    white-space: nowrap !important;
-  }
-  #featureModal .azro-modal__foot .azro-modal__close,
-  #trialModal   .azro-modal__foot .azro-modal__close{
-    display: inline-flex !important;
-    margin-left: clamp(.5rem, 1vw, .75rem) !important;
-  }
-}
-/* === end v17 patch === */
-
-
-/* === v19: mobile visual-centering nudge for feature video (scoped) === */
-@media (max-width: 900px){
-  #featureModal .azro-modal__media{
-    margin-top: clamp(24px, 6vh, 56px) !important; /* lower the video a bit */
-  }
-}
-/* === end v19 === */
+/* === end v20 === */
