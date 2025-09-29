@@ -668,31 +668,41 @@ dialog.azro-modal::backdrop{
 }
 
 
-/* === v30: targeted, page-scoped improvements (no layout changes elsewhere) === */
 
-/* On-brand media card background (replaces pure black) — both modals */
+/* === v31: final targeted fixes (scoped, no structural changes) ================ */
+
+/* On-brand media card background (replaces pure black) in both modals */
 #featureModal .azro-modal__media .azro-video,
 #trialModal   .azro-modal__media .azro-video{
   background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
 }
 
-/* Resources page — center grid & prevent left crop on small screens */
+/* Resources page — guarantee centered grid on mobile (no cut-off) */
 @media (max-width: 900px){
-  .hero-text.resources-page{ padding-inline:16px !important; }
   .resources-grid{
     grid-template-columns: 1fr !important;
-    width: min(100%, 680px) !important;
+    width: min(680px, 100%) !important;
     margin-inline: auto !important;
     padding-inline: 16px !important;
     transform: none !important;
   }
-  .resources-grid > *{ margin-inline:auto !important; }
+  .resources-grid > *{ margin-inline:auto !important; max-width: 100% !important; }
 }
 
-/* Subtle affordance: On‑chart labels & instant alerts cards are clickable */
+/* Clickable affordance for On‑chart Labels & Instant Alerts cards */
 h2.h-subhead + .grid-3 .card{
+  position: relative;
   transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
   outline: 1px solid rgba(255,255,255,.10);
+}
+h2.h-subhead + .grid-3 .card::after{
+  content: "";
+  position: absolute; inset: 14px 14px auto auto;
+  width: 18px; height: 18px;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-size: 18px 18px;
+  opacity: .55; filter: drop-shadow(0 1px 0 rgba(0,0,0,.3));
+  transition: transform .18s ease, opacity .18s ease;
 }
 h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){
   transform: translateY(-2px);
@@ -700,34 +710,38 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){
   outline-color: rgba(129,138,255,.35);
   cursor: pointer;
 }
+h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform: translate(2px,-2px); opacity:.9; }
 @media (hover:none){
-  h2.h-subhead + .grid-3 .card:active{
-    transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(0,0,0,.26);
+  h2.h-subhead + .grid-3 .card:active{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.26); }
+  h2.h-subhead + .grid-3 .card:active::after{ transform: translate(2px,-2px); opacity:.85; }
+}
+
+/* Prevent trailing gap under the footer on mobile */
+html, body{ min-height: 100%; }
+body{ min-height: 100svh; display:flex; flex-direction:column; }
+main{ flex: 1 0 auto; }
+footer{ flex: 0 0 auto; margin-bottom: 0 !important; }
+
+/* Landscape phones: compact modal chrome and fit content */
+@media (max-height: 520px) and (orientation: landscape){
+  #featureModal .azro-modal__head, #trialModal .azro-modal__head{ padding-block:8px !important; }
+  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block:8px !important; }
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ max-height:calc(100svh - 96px) !important; overflow:auto !important; }
+  #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size: clamp(1rem, 2.4vw, 1.15rem) !important; line-height:1.2 !important; }
+}
+
+/* Modal text wrapping and true centering on very narrow screens */
+@media (max-width: 480px){
+  #featureModal .azro-modal__text h3, #trialModal .azro-modal__text h3{ white-space: normal !important; overflow-wrap: break-word; }
+  #featureModal .azro-modal__head, #featureModal .azro-modal__body, #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__head, #trialModal   .azro-modal__body, #trialModal   .azro-modal__foot{
+    padding-inline: 16px !important;
   }
 }
 
-/* Prevent trailing gap under footer on mobile */
-.page-wrap{ min-height: 100svh; display:flex; flex-direction:column; }
-.site-main{ flex: 1 0 auto; }
-.site-footer, .footer{ margin-bottom: 0 !important; }
-html, body{ overscroll-behavior-y: contain; }
-
-/* Landscape phones: compact modal chrome for readability */
-@media (max-height: 520px) and (orientation: landscape){
-  #featureModal .azro-modal__head,
-  #trialModal   .azro-modal__head{ padding-block:8px !important; }
-  #featureModal .azro-modal__foot,
-  #trialModal   .azro-modal__foot{ padding-block:8px !important; }
-  #featureModal .azro-modal__body,
-  #trialModal   .azro-modal__body{ max-height:calc(100svh - 96px) !important; overflow:auto !important; }
-  #featureModal .azro-modal__title,
-  #trialModal   .azro-modal__title{ font-size:clamp(1rem, 2.4vw, 1.25rem) !important; line-height:1.2 !important; }
+/* Home hero — align image top with headline top */
+@media (min-width: 901px){
+  .home-hero{ align-items: flex-start !important; }
+  .home-hero .hero-right, .home-hero .chart-img{ margin-top: 0 !important; align-self: flex-start !important; }
 }
-
-/* Home hero — align image top with headline top; remove legacy top margin */
-@media (min-width:901px){
-  .home-hero{ align-items:flex-start !important; }
-  .home-hero .chart-img{ margin-top:0 !important; align-self:flex-start !important; }
-}
-/* === end v30 patch === */
+/* ========================================================================= */
