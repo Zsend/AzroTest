@@ -669,59 +669,75 @@ dialog.azro-modal::backdrop{
 
 
 
-/* === unified v34 (from base): resources centering, footer gap, modal centering,
-   landscape usability, video cues, hero alignment, autoplay reliability ===== */
+/* === v35 unified === */
+html, body{ overflow-x:hidden; }
 
-/* Global overflow safety (glows & animations sometimes cause sideways scroll) */
-html, body{ overflow-x: hidden; }
-
-/* Sticky CTA in-flow on phones — eliminates "bottom gap" when scrolled to footer */
+/* CTA + footer (phones portrait): sticky in-flow */
 @media (max-width:600px){
-  body{ padding-bottom: 0 !important; }
-  .sticky-cta{ position: sticky !important; bottom: 0; z-index: 30; }
+  body{ padding-bottom:0 !important; }
+  .sticky-cta{ position:sticky !important; bottom:0; z-index:30; }
 }
 
-/* Resources grid: guaranteed center with safe padding */
+/* CTA + footer (phones landscape): fixed overlay, content padded */
+@media (orientation:landscape) and (max-width:900px){
+  .sticky-cta{ position:fixed !important; left:0; right:0; bottom:max(0px,env(safe-area-inset-bottom)); z-index:50; }
+  main, .site, .site-main, #content{ padding-bottom:calc(84px + env(safe-area-inset-bottom)) !important; }
+}
+
+/* Resources centering */
 @media (max-width:900px){
   .resources-grid{
-    width: min(680px, 100%) !important;
-    margin-left:auto !important; margin-right:auto !important;
-    padding-left:16px !important; padding-right:16px !important;
-    transform:none !important; left:auto !important; right:auto !important;
+    width:min(680px,100%) !important; margin-inline:auto !important;
+    padding-inline:16px !important; transform:none !important;
+    box-sizing:border-box !important; left:auto !important; right:auto !important;
     justify-items:center !important;
   }
   .resources-grid > *{ max-width:100% !important; }
+  .resources-section, .resources-wrap, #resources{
+    width:100% !important; margin-inline:auto !important; padding-inline:16px !important;
+    box-sizing:border-box !important; transform:none !important; left:auto !important; right:auto !important;
+  }
 }
 
-/* Clickable affordance on "On‑chart labels & instant alerts" cards */
+/* Cards clickable cue */
 h2.h-subhead + .grid-3 .card{
-  position:relative;
-  outline:1px solid rgba(255,255,255,.10);
+  position:relative; outline:1px solid rgba(255,255,255,.10);
   transition:transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
 }
 h2.h-subhead + .grid-3 .card::after{
-  content:""; position:absolute; inset:14px 14px auto auto;
-  width:18px; height:18px; opacity:.55;
-  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center/18px 18px;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.3));
-  transition: transform .18s ease, opacity .18s ease;
+  content:""; position:absolute; inset:14px 14px auto auto; width:18px; height:18px; opacity:.55;
+  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center/18px 18px;
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.3));
+  transition:transform .18s ease, opacity .18s ease;
 }
 h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.28); outline-color:rgba(129,138,255,.35); cursor:pointer; }
 h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:translate(2px,-2px); opacity:.9; }
 @media (max-width:900px){
-  h2.h-subhead + .grid-3 .card::after{ inset:auto 14px 14px auto !important; } /* bottom-right on mobile */
+  h2.h-subhead + .grid-3 .card::after{ inset:auto 14px 14px auto !important; }
   h2.h-subhead + .grid-3 .card:active{ transform:translateY(-1px); }
 }
 
-/* Modal media card on-brand (avoid pure black) */
-#featureModal .azro-modal__media .azro-video,
-#trialModal   .azro-modal__media .azro-video{
-  background: linear-gradient(180deg,#231754f5 0%,#0e0c28f5 100%) !important;
-}
+/* Use only one arrow on modal media; remove any older arrow/icon overlays inside media */
+#featureModal .azro-modal__media [class*="arrow"],
+#trialModal   .azro-modal__media [class*="arrow"],
+#featureModal .azro-modal__media [class*="expand"],
+#trialModal   .azro-modal__media [class*="expand"],
+#featureModal .azro-modal__media .icon,
+#trialModal   .azro-modal__media .icon{ display:none !important; }
 
-/* Modal centering + landscape readability */
+/* Add unified arrow on modal media (via .azro-video) and on about video */
+.azro-video{ position:relative; overflow:hidden; }
+.azro-video::after{
+  content:""; position:absolute; right:12px; bottom:12px; width:20px; height:20px;
+  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center/20px 20px;
+  opacity:.75; pointer-events:none; filter:drop-shadow(0 1px 0 rgba(0,0,0,.35));
+}
+@media (hover:hover){ .azro-video:hover::after{ opacity:.95; transform:translate(1px,-1px); } }
+.azro-video iframe, .azro-video video, .azro-video img{ display:block; width:100%; height:auto; border-radius:inherit; }
+
+/* Modal centering & landscape usability */
 #featureModal .azro-modal__text, #trialModal .azro-modal__text{ text-align:center !important; }
-#featureModal .azro-modal__body, #trialModal .azro-modal__body{ 
+#featureModal .azro-modal__body, #trialModal .azro-modal__body{
   display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,2.6vw,32px);
   align-items:center; padding-block:clamp(28px,4vh,56px);
 }
@@ -736,28 +752,18 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   #featureModal .azro-modal__head, #trialModal .azro-modal__head,
   #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block:8px !important; }
   #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size:clamp(1rem,2.2vw,1.1rem) !important; line-height:1.2 !important; }
-  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ 
-    grid-template-columns:1fr 1fr; 
-    max-height:calc(100svh - 92px) !important; overflow:auto !important; -webkit-overflow-scrolling:touch; 
+  #featureModal .azro-modal__content, #trialModal .azro-modal__content,
+  #featureModal .azro-modal__scroll,   #trialModal .azro-modal__scroll{ margin-inline:auto !important; }
+  #featureModal .azro-modal__body,     #trialModal .azro-modal__body{
+    grid-template-columns:1fr 1fr;
+    max-height:calc(100svh - 92px) !important; overflow:auto !important; -webkit-overflow-scrolling:touch;
     align-items:center; padding-block:12px;
   }
 }
 
-/* Video cues on any azro-video box */
-.azro-video{ position:relative; overflow:hidden; }
-.azro-video::after{
-  content:""; position:absolute; right:12px; bottom:12px; width:20px; height:20px;
-  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center/20px 20px;
-  opacity:.65; pointer-events:none; filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
-}
-@media (hover:hover){ .azro-video:hover::after{ opacity:.9; transform:translate(1px,-1px); } }
-.azro-video iframe, .azro-video video, .azro-video img{ display:block; width:100%; height:auto; border-radius:inherit; position:relative; z-index:1; }
-
-/* Home hero – exact top alignment (slight nudge down) */
-@media (min-width:901px){
-  .home-hero{ align-items:flex-start !important; }
-  .home-hero .hero-right, .home-hero .chart-img{ align-self:flex-start !important; margin-top:clamp(8px,1.2vw,20px) !important; }
-  .home-hero .chart-img{ display:block; vertical-align:top; }
+/* Hero top align on wide desktop */
+@media (min-width:1300px){
+  .home-hero .hero-right, .home-hero .chart-img{ margin-top: clamp(18px, 1.6vw, 34px) !important; }
 }
 
 /* Autoplay reliability */
