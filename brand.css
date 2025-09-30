@@ -669,15 +669,15 @@ dialog.azro-modal::backdrop{
 
 
 
-/* === v31: final targeted fixes (scoped, no structural changes) ================ */
+/* === v32 final: scoped fixes without structural changes ==================== */
 
-/* On-brand media card background (replaces pure black) in both modals */
+/* On-brand media card background (replace pure black) in both modals */
 #featureModal .azro-modal__media .azro-video,
 #trialModal   .azro-modal__media .azro-video{
   background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
 }
 
-/* Resources page — guarantee centered grid on mobile (no cut-off) */
+/* Resources page — center grid & prevent cut‑off on small screens */
 @media (max-width: 900px){
   .resources-grid{
     grid-template-columns: 1fr !important;
@@ -685,8 +685,9 @@ dialog.azro-modal::backdrop{
     margin-inline: auto !important;
     padding-inline: 16px !important;
     transform: none !important;
+    left: auto !important; right: auto !important;
   }
-  .resources-grid > *{ margin-inline:auto !important; max-width: 100% !important; }
+  .resources-grid > *{ margin-inline: auto !important; max-width: 100% !important; }
 }
 
 /* Clickable affordance for On‑chart Labels & Instant Alerts cards */
@@ -710,38 +711,51 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){
   outline-color: rgba(129,138,255,.35);
   cursor: pointer;
 }
-h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform: translate(2px,-2px); opacity:.9; }
+h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform: translate(2px,-2px); opacity: .9; }
 @media (hover:none){
   h2.h-subhead + .grid-3 .card:active{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.26); }
-  h2.h-subhead + .grid-3 .card:active::after{ transform: translate(2px,-2px); opacity:.85; }
+  h2.h-subhead + .grid-3 .card:active::after{ transform: translate(2px,-2px); opacity: .85; }
+}
+/* Move the arrow to bottom-right on mobile so it never overlaps headings */
+@media (max-width: 900px){
+  h2.h-subhead + .grid-3 .card::after{ inset: auto 14px 14px auto !important; }
 }
 
-/* Prevent trailing gap under the footer on mobile */
+/* Footer gap — stop scrolling exactly at the footer */
 html, body{ min-height: 100%; }
-body{ min-height: 100svh; display:flex; flex-direction:column; }
-main{ flex: 1 0 auto; }
-footer{ flex: 0 0 auto; margin-bottom: 0 !important; }
+body{ min-height: 100svh; display: flex; flex-direction: column; }
+main, .site, .site-main{ flex: 1 0 auto; }
+footer, .footer{ flex: 0 0 auto; margin-bottom: 0 !important; }
 
-/* Landscape phones: compact modal chrome and fit content */
+/* Mobile landscape modals — compact chrome, visible media, readable text */
 @media (max-height: 520px) and (orientation: landscape){
-  #featureModal .azro-modal__head, #trialModal .azro-modal__head{ padding-block:8px !important; }
-  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block:8px !important; }
-  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ max-height:calc(100svh - 96px) !important; overflow:auto !important; }
-  #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size: clamp(1rem, 2.4vw, 1.15rem) !important; line-height:1.2 !important; }
+  #featureModal .azro-modal__head, #trialModal .azro-modal__head,
+  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block: 8px !important; }
+  #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size: clamp(1rem, 2.2vw, 1.1rem) !important; line-height: 1.2 !important; }
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ max-height: calc(100svh - 96px) !important; overflow: auto !important; align-items: center !important; }
+  #featureModal .azro-modal__text, #trialModal .azro-modal__text{ font-size: .95em !important; }
 }
 
-/* Modal text wrapping and true centering on very narrow screens */
-@media (max-width: 480px){
+/* Modal centering — text and video perfectly centered between dividers */
+@media (min-width: 901px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{ padding-block: clamp(32px, 4vh, 64px) !important; align-items: center !important; }
+  #featureModal .azro-modal__text,  #featureModal .azro-modal__media,
+  #trialModal   .azro-modal__text,  #trialModal   .azro-modal__media{ align-self: center !important; }
+}
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{ display: grid !important; justify-items: center !important; text-align: center !important; }
+  #featureModal .azro-modal__text,  #featureModal .azro-modal__media,
+  #trialModal   .azro-modal__text,  #trialModal   .azro-modal__media{ margin-inline: auto !important; }
+  #featureModal .azro-modal__media, #trialModal   .azro-modal__media{ margin-top: clamp(16px, 6vh, 48px) !important; }
   #featureModal .azro-modal__text h3, #trialModal .azro-modal__text h3{ white-space: normal !important; overflow-wrap: break-word; }
-  #featureModal .azro-modal__head, #featureModal .azro-modal__body, #featureModal .azro-modal__foot,
-  #trialModal   .azro-modal__head, #trialModal   .azro-modal__body, #trialModal   .azro-modal__foot{
-    padding-inline: 16px !important;
-  }
 }
 
-/* Home hero — align image top with headline top */
+/* Home hero — align image top with headline top with a tiny responsive nudge */
 @media (min-width: 901px){
   .home-hero{ align-items: flex-start !important; }
-  .home-hero .hero-right, .home-hero .chart-img{ margin-top: 0 !important; align-self: flex-start !important; }
+  .home-hero .hero-right, .home-hero .chart-img{ align-self: flex-start !important; margin-top: clamp(0px, .6vw, 12px) !important; }
 }
+
 /* ========================================================================= */
