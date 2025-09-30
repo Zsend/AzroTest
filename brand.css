@@ -669,41 +669,42 @@ dialog.azro-modal::backdrop{
 
 
 
-/* === v32 final: scoped fixes without structural changes ==================== */
+/* === v33: mobile footer gap, resources centering, modal centering & arrows === */
 
-/* On-brand media card background (replace pure black) in both modals */
-#featureModal .azro-modal__media .azro-video,
-#trialModal   .azro-modal__media .azro-video{
-  background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
+/* Global safety: prevent sideways overflow from strong glows etc. */
+html, body{ overflow-x: hidden; }
+
+/* Sticky CTA: make it a fixed overlay at the bottom on phones.
+   This removes extra document height so there is NO bottom gap. */
+@media (max-width: 600px){
+  .sticky-cta{ 
+    position: fixed !important; left: 0; right: 0;
+    bottom: max(0px, env(safe-area-inset-bottom));
+    display: block !important; /* keep visible */
+    z-index: 9999;
+    pointer-events: none; /* container */
+  }
+  .sticky-cta .btn{ pointer-events: auto; } /* keep button clickable */
+  body{ padding-bottom: calc(84px + env(safe-area-inset-bottom)) !important; }
 }
 
-/* Resources page — center grid & prevent cut‑off on small screens */
+/* Resources grid: belt-and-suspenders centering */
 @media (max-width: 900px){
   .resources-grid{
-    grid-template-columns: 1fr !important;
     width: min(680px, 100%) !important;
     margin-inline: auto !important;
     padding-inline: 16px !important;
-    transform: none !important;
-    left: auto !important; right: auto !important;
+    transform: none !important; left:auto !important; right:auto !important;
+    justify-items: center !important;
   }
-  .resources-grid > *{ margin-inline: auto !important; max-width: 100% !important; }
+  .resources-grid > *{ max-width: 100% !important; }
 }
 
-/* Clickable affordance for On‑chart Labels & Instant Alerts cards */
+/* Card affordance + arrow placement: bottom-right on mobile */
 h2.h-subhead + .grid-3 .card{
   position: relative;
-  transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
   outline: 1px solid rgba(255,255,255,.10);
-}
-h2.h-subhead + .grid-3 .card::after{
-  content: "";
-  position: absolute; inset: 14px 14px auto auto;
-  width: 18px; height: 18px;
-  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-size: 18px 18px;
-  opacity: .55; filter: drop-shadow(0 1px 0 rgba(0,0,0,.3));
-  transition: transform .18s ease, opacity .18s ease;
+  transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
 }
 h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){
   transform: translateY(-2px);
@@ -711,51 +712,60 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){
   outline-color: rgba(129,138,255,.35);
   cursor: pointer;
 }
-h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform: translate(2px,-2px); opacity: .9; }
-@media (hover:none){
-  h2.h-subhead + .grid-3 .card:active{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.26); }
-  h2.h-subhead + .grid-3 .card:active::after{ transform: translate(2px,-2px); opacity: .85; }
+h2.h-subhead + .grid-3 .card::after{
+  content:""; position:absolute; inset:14px 14px auto auto;
+  width:18px; height:18px; opacity:.55;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center / 18px 18px;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.3));
+  transition: transform .18s ease, opacity .18s ease;
 }
-/* Move the arrow to bottom-right on mobile so it never overlaps headings */
+h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform: translate(2px,-2px); opacity:.9; }
 @media (max-width: 900px){
   h2.h-subhead + .grid-3 .card::after{ inset: auto 14px 14px auto !important; }
+  h2.h-subhead + .grid-3 .card:active{ transform: translateY(-1px); }
 }
 
-/* Footer gap — stop scrolling exactly at the footer */
-html, body{ min-height: 100%; }
-body{ min-height: 100svh; display: flex; flex-direction: column; }
-main, .site, .site-main{ flex: 1 0 auto; }
-footer, .footer{ flex: 0 0 auto; margin-bottom: 0 !important; }
-
-/* Mobile landscape modals — compact chrome, visible media, readable text */
-@media (max-height: 520px) and (orientation: landscape){
-  #featureModal .azro-modal__head, #trialModal .azro-modal__head,
-  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block: 8px !important; }
-  #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size: clamp(1rem, 2.2vw, 1.1rem) !important; line-height: 1.2 !important; }
-  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ max-height: calc(100svh - 96px) !important; overflow: auto !important; align-items: center !important; }
-  #featureModal .azro-modal__text, #trialModal .azro-modal__text{ font-size: .95em !important; }
+/* About: add the same arrow cue to the modal video box and main hero video */
+.azro-video{ position: relative; overflow: hidden; }
+.azro-video::after{
+  content:""; position:absolute; right:12px; bottom:12px; width:20px; height:20px;
+  background: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center / 20px 20px;
+  opacity:.65; pointer-events:none; filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
 }
+@media (hover:hover){
+  .azro-video:hover::after{ opacity:.9; transform: translate(1px,-1px); }
+}
+.azro-video iframe, .azro-video video, .azro-video img{ display:block; width:100%; height:auto; border-radius:inherit; position:relative; z-index:1; }
 
-/* Modal centering — text and video perfectly centered between dividers */
-@media (min-width: 901px){
-  #featureModal .azro-modal__body,
-  #trialModal   .azro-modal__body{ padding-block: clamp(32px, 4vh, 64px) !important; align-items: center !important; }
-  #featureModal .azro-modal__text,  #featureModal .azro-modal__media,
-  #trialModal   .azro-modal__text,  #trialModal   .azro-modal__media{ align-self: center !important; }
+/* Modal centering + mobile landscape readability */
+#featureModal .azro-modal__scroll, #trialModal .azro-modal__scroll{
+  max-height: 100svh; overflow: hidden;
+}
+#featureModal .azro-modal__body, #trialModal .azro-modal__body{
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.6vw, 32px);
+  align-items: center; padding-block: clamp(28px, 4vh, 56px);
 }
 @media (max-width: 900px){
-  #featureModal .azro-modal__body,
-  #trialModal   .azro-modal__body{ display: grid !important; justify-items: center !important; text-align: center !important; }
-  #featureModal .azro-modal__text,  #featureModal .azro-modal__media,
-  #trialModal   .azro-modal__text,  #trialModal   .azro-modal__media{ margin-inline: auto !important; }
-  #featureModal .azro-modal__media, #trialModal   .azro-modal__media{ margin-top: clamp(16px, 6vh, 48px) !important; }
-  #featureModal .azro-modal__text h3, #trialModal .azro-modal__text h3{ white-space: normal !important; overflow-wrap: break-word; }
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    grid-template-columns: 1fr; justify-items: center; text-align:center;
+  }
+  #featureModal .azro-modal__media, #trialModal .azro-modal__media{ margin-top: clamp(16px, 6vh, 48px) !important; }
+}
+@media (max-height: 520px) and (orientation: landscape){
+  #featureModal .azro-modal__head, #trialModal .azro-modal__head,
+  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block:8px !important; }
+  #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size: clamp(1rem, 2.2vw, 1.1rem) !important; line-height:1.2 !important; }
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    grid-template-columns: 1fr 1fr;
+    max-height: calc(100svh - 92px) !important; overflow: auto !important; -webkit-overflow-scrolling: touch;
+    align-items: center; padding-block: 12px;
+  }
+  #featureModal .azro-modal__text, #trialModal .azro-modal__text{ font-size: .95em; }
 }
 
-/* Home hero — align image top with headline top with a tiny responsive nudge */
+/* Hero image exact top alignment & no baseline gap */
 @media (min-width: 901px){
   .home-hero{ align-items: flex-start !important; }
-  .home-hero .hero-right, .home-hero .chart-img{ align-self: flex-start !important; margin-top: clamp(0px, .6vw, 12px) !important; }
+  .home-hero .hero-right, .home-hero .chart-img{ align-self:flex-start !important; margin-top: 0 !important; }
+  .home-hero .chart-img{ display:block; vertical-align: top; }
 }
-
-/* ========================================================================= */
