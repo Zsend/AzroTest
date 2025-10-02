@@ -33,31 +33,29 @@ transition:none !important;
 <link as="image" href="coolback.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
 <link rel="stylesheet" href="brand.css"/><!-- Page-specific styles (unchanged) -->
-<style> .resources-grid { display: grid; grid-template-columns: 1fr; gap: 28px; justify-items: center; margin-top: 28px; } .resource-card { width: 100%; max-width: 420px; display: flex; align-items: center; flex-direction: column; text-align: center; gap: 14px; padding: 22px 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; color: var(--text-head); text-decoration: none; transition: 0.3s ease background, 0.3s ease transform; } .resource-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .resource-card svg { flex: none; stroke: currentColor; } .resource-card span { font-size: 1.1rem; font-weight: 600; line-height: 1.35; text-align: center; } @media(max-width: 600px) { .hero-text.resources-page { padding: 0 16px; } } 
-/* ──────────────────────────────────────────────────────────────
-   Mobile centering fix for the Resources grid
-   (scoped to the Resources page only; no other pages affected)
-   Date: 2025-10-02
-────────────────────────────────────────────────────────────── */
-@media (max-width: 900px){
-  .resources-page .resources-grid{
-    grid-template-columns: 1fr;
-    justify-items: center;
+<style> .resources-grid { display: grid; grid-template-columns: 1fr; gap: 28px; justify-items: center; margin-top: 28px; } .resource-card { width: 100%; max-width: 420px; display: flex; align-items: center; flex-direction: column; text-align: center; gap: 14px; padding: 22px 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; color: var(--text-head); text-decoration: none; transition: 0.3s ease background, 0.3s ease transform; } .resource-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .resource-card svg { flex: none; stroke: currentColor; } .resource-card span { font-size: 1.1rem; font-weight: 600; line-height: 1.35; text-align: center; } @media(max-width: 600px) { .hero-text.resources-page { padding: 0 16px; } } </style>
+<link href="https://USER.github.io/" rel="canonical"/><meta content="Landing page" name="description"/> <meta content="Download PDFs, FAQs, and best‑practice docs for the AZRO Systems trading indicator." name="description"/>
+<link href="https://azrosystems.com/resources.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+</link></link>
+<style id="resources-mobile-centering-fix">
+/* Mobile centering fix — scoped to Resources page only */
+@media (max-width: 640px){
+  .hero .hero-text.resources-page { left: 0 !important; } /* reset any legacy nudge */
+  .hero-text.resources-page .resources-grid { 
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
-    max-width: 100%;
-    transform: none;
+    justify-items: center;
   }
-  .resources-page .resource-card{
-    width: 100%;
-    max-width: 540px;
+  .hero-text.resources-page .resource-card {
+    width: min(100%, 520px);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
-<link href="https://USER.github.io/" rel="canonical"/><meta content="Landing page" name="description"/> <meta content="Download PDFs, FAQs, and best‑practice docs for the AZRO Systems trading indicator." name="description"/>
-<link href="https://azrosystems.com/resources.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</link></link></head>
+
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
