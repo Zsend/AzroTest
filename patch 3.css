@@ -1,0 +1,7 @@
+/* ===== AZRO mobile hero gutter patch (2025‑07‑24) ===== */
+@media (max-width: 600px){
+  .hero.home-hero .hero-text h1{
+    padding-left:8vw !important;
+    padding-right:8vw !important;
+  }
+}
