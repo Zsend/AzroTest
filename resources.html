@@ -32,8 +32,29 @@ transition:none !important;
 <link as="image" href="logo.webp" rel="preload"/>
 <link as="image" href="coolback.webp" rel="preload"/>
 <link href="style.css" rel="stylesheet"/>
-<!-- Page-specific styles (unchanged) -->
-<style> .resources-grid { display: grid; grid-template-columns: 1fr; gap: 28px; justify-items: center; margin-top: 28px; } .resource-card { width: 100%; max-width: 420px; display: flex; align-items: center; flex-direction: column; text-align: center; gap: 14px; padding: 22px 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; color: var(--text-head); text-decoration: none; transition: 0.3s ease background, 0.3s ease transform; } .resource-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .resource-card svg { flex: none; stroke: currentColor; } .resource-card span { font-size: 1.1rem; font-weight: 600; line-height: 1.35; text-align: center; } @media(max-width: 600px) { .hero-text.resources-page { padding: 0 16px; } } </style>
+<link rel="stylesheet" href="brand.css"/><!-- Page-specific styles (unchanged) -->
+<style> .resources-grid { display: grid; grid-template-columns: 1fr; gap: 28px; justify-items: center; margin-top: 28px; } .resource-card { width: 100%; max-width: 420px; display: flex; align-items: center; flex-direction: column; text-align: center; gap: 14px; padding: 22px 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; color: var(--text-head); text-decoration: none; transition: 0.3s ease background, 0.3s ease transform; } .resource-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .resource-card svg { flex: none; stroke: currentColor; } .resource-card span { font-size: 1.1rem; font-weight: 600; line-height: 1.35; text-align: center; } @media(max-width: 600px) { .hero-text.resources-page { padding: 0 16px; } } 
+/* ──────────────────────────────────────────────────────────────
+   Mobile centering fix for the Resources grid
+   (scoped to the Resources page only; no other pages affected)
+   Date: 2025-10-02
+────────────────────────────────────────────────────────────── */
+@media (max-width: 900px){
+  .resources-page .resources-grid{
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+  }
+  .resources-page .resource-card{
+    width: 100%;
+    max-width: 540px;
+  }
+}
+</style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="Landing page" name="description"/> <meta content="Download PDFs, FAQs, and best‑practice docs for the AZRO Systems trading indicator." name="description"/>
 <link href="https://azrosystems.com/resources.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
 </link></link></head>
@@ -50,12 +71,12 @@ transition:none !important;
 </nav>
 </header>
 <section class="hero">
-<div class="hero-text resources-page" style="text-align:center;">
+<div class="hero-text resources-page container" style="text-align:center;">
 <h1>Resources</h1>
 <!-- ▸ UPDATED GRID -->
 <div class="resources-grid">
 <!-- How It Works – Methodology Overview -->
-<a class="resource-card" href="pdfs/methodology-overview.pdf" rel="noopener" target="_blank">
+<a class="resource-card card" href="pdfs/methodology-overview.pdf" rel="noopener" target="_blank">
 <svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
 <circle cx="12" cy="12" r="10"></circle>
 <line x1="12" x2="12" y1="8" y2="13"></line>
@@ -64,7 +85,7 @@ transition:none !important;
 <span>Methodology &amp; Tear‑Sheet Overview</span>
 </a>
 <!-- Quick Start Guide -->
-<a class="resource-card" href="pdfs/quick-start-guide.pdf" rel="noopener" target="_blank">
+<a class="resource-card card" href="pdfs/quick-start-guide.pdf" rel="noopener" target="_blank">
 <svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
 <rect height="20" rx="2" width="14" x="3" y="2"></rect>
 <polyline points="17 6 21 6 21 22 7 22 7 17"></polyline>
@@ -73,7 +94,7 @@ transition:none !important;
 <span>Quick Start Guide</span>
 </a>
 <!-- Frequently Asked Questions -->
-<a class="resource-card" href="pdfs/faq.pdf" rel="noopener" target="_blank">
+<a class="resource-card card" href="pdfs/faq.pdf" rel="noopener" target="_blank">
 <svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
 <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
 <circle cx="12" cy="10" r="1.5"></circle>
@@ -82,7 +103,7 @@ transition:none !important;
 <span>Frequently Asked Questions</span>
 </a>
 <!-- Privacy Policy -->
-<a class="resource-card" href="pdfs/privacy-policy.pdf" rel="noopener" target="_blank">
+<a class="resource-card card" href="pdfs/privacy-policy.pdf" rel="noopener" target="_blank">
 <svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
 <path d="M12 22c4.97 0 9-3.58 9-8V5l-9-3-9 3v9c0 4.42 4.03 8 9 8z"></path>
 <path d="M9 12l2 2 4-4"></path>
@@ -90,7 +111,7 @@ transition:none !important;
 <span>Privacy Policy</span>
 </a>
 <!-- Risk Disclosure -->
-<a class="resource-card" href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">
+<a class="resource-card card" href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">
 <svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
 <polygon points="12 2 2 22 22 22 12 2"></polygon>
 <line x1="12" x2="12" y1="8" y2="13"></line>
@@ -99,7 +120,7 @@ transition:none !important;
 <span>Risk Disclosure</span>
 </a>
 <!-- Terms of Service -->
-<a class="resource-card" href="pdfs/terms-of-service.pdf" rel="noopener" target="_blank">
+<a class="resource-card card" href="pdfs/terms-of-service.pdf" rel="noopener" target="_blank">
 <svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
 <rect height="18" rx="2" width="18" x="3" y="3"></rect>
 <path d="M8 9h8M8 13h8M8 17h5"></path>
