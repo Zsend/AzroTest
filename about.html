@@ -51,9 +51,9 @@ transition:none !important;
 <link href="brand.css" rel="stylesheet"/><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
 </style>
-<link href="https://USER.github.io/" rel="canonical"><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
-<link href="https://azrosystems.com/about.html" rel="canonical"> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</link></link><style id="about-hero-mobile-tune">
+<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
+<link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<style id="about-hero-mobile-tune">
 @media (max-width: 600px){
   .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
   .hero .hero-text > h1{
@@ -123,25 +123,83 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     dialog#trialModal .trial-instructions{ margin-top: 0; }
   }
 </style>
-<style>
-/* === About page – Feature modal precise centering (mobile-only, scoped) === */
+<style id="feature-modal-centering-v3">
+/* Feature Modal — robust centering + mobile balance */
+#featureModal[open]{ position: fixed; inset: 0; margin: auto; }
+@supports not (inset: 0){
+  #featureModal[open]{ top: 50%; left: 50%; transform: translate(-50%, -50%); }
+}
+#featureModal{ margin: 0; }
+/* Keep footer content centered on phones */
+@media (max-width: 600px){
+  #featureModal .azro-modal__foot{ justify-content: center; text-align: center; }
+}
+</style><style>
+/* === About page – Feature modal mobile centering (scoped) === */
 @media (max-width: 900px){
-  dialog#featureModal.azro-modal .azro-modal__head,
-  dialog#featureModal.azro-modal .azro-modal__scroll,
-  dialog#featureModal.azro-modal .azro-modal__foot{
-    box-sizing: border-box;
-    width: min(100%, 720px);
+  dialog#featureModal.azro-modal .azro-modal__scroll{
     margin-left: auto !important;
     margin-right: auto !important;
     padding-left: clamp(16px, 4vw, 22px) !important;
     padding-right: clamp(16px, 4vw, 22px) !important;
+    max-width: 680px;
+    box-sizing: border-box;
   }
-  dialog#featureModal.azro-modal .azro-modal__foot{ justify-content: center !important; }
-  dialog#featureModal.azro-modal .azro-modal__scroll{ overflow:auto; scrollbar-gutter: stable; }
-  dialog#featureModal.azro-modal .azro-modal__text{ text-align:center; }
+  dialog#featureModal.azro-modal .azro-modal__head,
+  dialog#featureModal.azro-modal .azro-modal__foot{
+    padding-left: clamp(16px, 4vw, 22px) !important;
+    padding-right: clamp(16px, 4vw, 22px) !important;
+  }
+  dialog#featureModal.azro-modal .azro-modal__body{
+    display: grid !important;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 18px;
+  }
+  dialog#featureModal.azro-modal .azro-modal__text{
+    width: 100%;
+    max-width: 640px;
+    text-align: center;
+    margin-inline: auto;
+  }
   dialog#featureModal.azro-modal .azro-modal__text ul{
-    text-align:left; margin-left:auto; margin-right:auto;
-    padding-left: 1.2rem; max-width: 640px;
+    text-align: left;
+    margin: 0 auto;
+    padding-left: 1.1rem;
+    max-width: 640px;
+  }
+  dialog#featureModal.azro-modal .azro-modal__media{
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+</style><style>
+/* Robust centering for about page feature modal */
+dialog#featureModal.azro-modal[open]{ position: fixed; inset: 0; margin: auto; }
+@supports not (inset: 0){
+  dialog#featureModal.azro-modal[open]{ top: 50%; left: 50%; transform: translate(-50%, -50%); }
+}
+</style><style>
+/* === About page – force true centering of feature modal on mobile (iOS/Android) === */
+@media (max-width: 900px){
+  #featureModal[open]{
+    /* override UA 'margin:auto' oddities */
+    inset: auto !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+  }
+}
+</style><style>
+/* === About page – absolute centering backstop for all modal containers (mobile) === */
+@media (max-width: 900px){
+  dialog#featureModal,
+  dialog#featureModal form{
+    width: min(980px, 94vw);
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 </style></head>
@@ -504,6 +562,49 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     }
   };
 
+  
+  // Helper: build local video sources from card title.
+  function buildLocalVideoSources(title){
+    // Replace "/" with " : " to match file names, keep other punctuation.
+    const base = title.replace(/\//g, " : ");
+    const enc = encodeURIComponent(base);
+    return [
+      "videos/" + enc + ".mp4",
+      "videos/" + enc + ".mov"
+    ];
+  }
+
+  function insertVideo(box, urlOrSources){
+    box.innerHTML = "";
+    // If a single URL string was provided
+    if(typeof urlOrSources === "string" && urlOrSources){
+      if(/^https?:/i.test(urlOrSources)){
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.src = urlOrSources;
+        box.appendChild(iframe);
+        return;
+      }
+      // Fall through to treat string as a direct file
+    }
+    // Treat as local sources
+    const video = document.createElement('video');
+    video.setAttribute('controls','');
+    video.setAttribute('playsinline','');
+    video.setAttribute('preload','metadata');
+    // Provide both mp4+mov; browser will pick what it supports
+    const sources = Array.isArray(urlOrSources) ? urlOrSources : buildLocalVideoSources(fmTitle.textContent.trim());
+    sources.forEach(src => {
+      const s = document.createElement('source');
+      s.src = src;
+      if(src.endsWith('.mp4')) s.type = 'video/mp4';
+      if(src.endsWith('.mov')) s.type = 'video/quicktime';
+      video.appendChild(s);
+    });
+    box.appendChild(video);
+  }
+
   const modal   = document.getElementById('featureModal');
   const fmTitle = document.getElementById('fmTitle');
   const fmSub   = document.getElementById('fmSub');
@@ -528,43 +629,32 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     });
 
     
-        fmVideo.innerHTML = '';
-        if(e.video){
-          const isMp4 = /\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
-          if(isMp4){
-            const video = document.createElement('video');
-            video.className = 'azro-video__el';
-            video.src = e.video;
-            video.controls = true;
-            video.playsInline = true;
-            video.preload = 'metadata';
-            fmVideo.appendChild(video);
-          } else {
-            const iframe = document.createElement('iframe');
-            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-            iframe.setAttribute('allowfullscreen', '');
-            iframe.src = e.video;
-            fmVideo.appendChild(iframe);
-          }
-        } else {
-        
-      const ph = document.createElement('div');
-      ph.className = 'azro-video__ph';
-      ph.innerHTML = 'Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.';
-      fmVideo.appendChild(ph);
-    }
-
+    fmVideo.innerHTML = '';
+    if(e.video){
+      const isMp4 = /\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
+      if(isMp4){
+        const video = document.createElement('video');
+        video.className = 'azro-video__el';
+        video.src = e.video;
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        fmVideo.appendChild(video);
+      } else {
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.src = e.video;
+        fmVideo.appendChild(iframe);
+      }
+    } else {
+ insertVideo(fmVideo, buildLocalVideoSources(title)); }
     modal.showModal();
   }
 
   // Backdrop click closes
   modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
-  modal.addEventListener('close', () => {
-    const iframe = fmVideo.querySelector('iframe');
-    if(iframe) iframe.src = 'about:blank';
-    const vid = fmVideo.querySelector('video');
-    if(vid){ try{ vid.pause(); vid.currentTime = 0; }catch(e){} }
-  });
+  modal.addEventListener('close', () => { const iframe = fmVideo.querySelector('iframe'); if(iframe) iframe.src = 'about:blank'; const vid = fmVideo.querySelector('video'); if(vid){ try{ vid.pause(); vid.currentTime = 0; }catch(e){} } });
 
   cards.forEach(card => {
     card.addEventListener('click', () => openModalFromCard(card));
