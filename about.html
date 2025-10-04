@@ -741,7 +741,6 @@ if(e.video){
       var vid=wrap.querySelector('video');
       var btn=wrap.querySelector('.azro-video__expand');
       function openBig(){ lightbox.open(src); }
-      // Robust inline autoplay on iOS/Android
       function tryPlay(){
         try{
           vid.muted = true; vid.playsInline = true;
@@ -750,7 +749,10 @@ if(e.video){
         }catch(e){}
       }
       vid.addEventListener('loadedmetadata', tryPlay, { once:true });
-      ('click',openBig,{passive:true});
+      vid.addEventListener('canplay', tryPlay, { once:true });
+      vid.addEventListener('touchstart', tryPlay, { passive:true });
+      vid.addEventListener('click', tryPlay, { passive:true });
+      vid.addEventListener('click',openBig,{passive:true});
       btn.addEventListener('click',openBig,{passive:true});
       tryPlay()
     }
@@ -760,5 +762,42 @@ if(e.video){
   });
 })();
 </script>
+
+<script id="feature-modal-center-fallback">
+(function(){
+  function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  onReady(function(){
+    var modal=document.getElementById('featureModal');
+    if(!modal) return;
+    var mql = window.matchMedia('(max-width: 900px)');
+    function center(){
+      if(!modal.open || !mql.matches) return;
+      // Reset any previous inline values first
+      modal.style.top='auto'; modal.style.left='auto'; modal.style.right='auto'; modal.style.bottom='auto';
+      modal.style.margin='auto';
+      // Use visualViewport for accurate mobile coordinates
+      var vv = window.visualViewport || { width: window.innerWidth, height: window.innerHeight, offsetTop: 0, offsetLeft: 0 };
+      // Temporarily make sure we can measure actual size
+      modal.style.visibility='hidden'; modal.style.display='block';
+      var w = modal.offsetWidth, h = modal.offsetHeight;
+      modal.style.visibility=''; modal.style.display='';
+      var top  = Math.max(8, vv.offsetTop  + Math.round((vv.height - h)/2));
+      var left = Math.max(8, vv.offsetLeft + Math.round((vv.width  - w)/2));
+      modal.style.top  = top + 'px';
+      modal.style.left = left + 'px';
+      modal.style.right='auto';
+      modal.style.bottom='auto';
+    }
+    // Run on open and on viewport changes
+    var obs = new MutationObserver(function(){ if(modal.open) setTimeout(center, 0); });
+    obs.observe(modal, { attributes:true, attributeFilter:['open'] });
+    window.addEventListener('resize', center, { passive:true });
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', center, { passive:true });
+    // Also center if fonts load late and reflow changes size
+    document.fonts && document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', center);
+  });
+})();
+</script>
+
 </body>
 </html>
