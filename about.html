@@ -128,9 +128,10 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 @media (max-width: 900px){
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
-    top: 50% !important; left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    margin: 0 !important; right: auto !important; bottom: auto !important;
+    inset: 0 !important;
+    margin: auto !important;
+    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+    transform: none !important;
     width: min(94vw, 720px) !important; padding: 0 !important;
   }
   dialog#featureModal.azro-modal > form{ width: 100% !important; margin: 0 !important; }
@@ -738,9 +739,18 @@ if(e.video){
       var vid=wrap.querySelector('video');
       var btn=wrap.querySelector('.azro-video__expand');
       function openBig(){ lightbox.open(src); }
+      
+      function tryPlay(){
+        try{
+          vid.muted = true; vid.playsInline = true;
+          vid.setAttribute('playsinline',''); vid.setAttribute('webkit-playsinline','');
+          const p = vid.play(); if(p && p.catch) p.catch(()=>{});
+        }catch(e){}
+      }
+      vid.addEventListener('loadedmetadata', tryPlay, { once:true });
       vid.addEventListener('click',openBig,{passive:true});
       btn.addEventListener('click',openBig,{passive:true});
-      try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
+      tryPlay()
     }
 
     new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })

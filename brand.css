@@ -864,3 +864,13 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   .sticky-cta{ position: fixed !important; left: 50% !important; transform: translateX(-50%) !important;
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
+
+/* === Final mobile override: ensure Feature modal is centered without transforms (keeps video visible) === */
+@media (max-width: 900px){
+  dialog#featureModal.azro-modal[open]{
+    inset: 0 !important;
+    margin: auto !important;
+    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+    transform: none !important;
+  }
+}
