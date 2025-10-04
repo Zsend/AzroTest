@@ -124,57 +124,50 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   }
 </style>
 <style>
-/* === About page – mobile modal centering (final, scoped) === */
+/* === About page — Feature modal dead-center on mobile (scoped) ================== */
 @media (max-width: 900px){
-  /* Force the dialog itself to dead-center */
-  #featureModal[open]{
+  /* Center the dialog itself using grid; neutralize any prior transforms */
+  dialog#featureModal[open]{
     position: fixed !important;
-    top: 50% !important; left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    margin: 0 !important; inset: auto !important;
-  }
-
-  /* Ensure the form container is centered and not adding side bias */
-  #featureModal form{
-    width: min(96vw, 720px) !important;
-    margin-inline: auto !important;
+    inset: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    margin: 0 !important;
+    transform: none !important;
     padding: 0 !important;
+  }
+  /* Center the form container, avoid extra side bias */
+  dialog#featureModal form{
+    width: min(96vw, 720px) !important;
+    max-height: 92vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important; /* scrolling only inside .azro-modal__scroll */
+    margin-inline: auto !important;
     box-sizing: border-box !important;
   }
-
-  /* Make head/body/foot symmetrical and centered */
-  #featureModal .azro-modal__head,
-  #featureModal .azro-modal__scroll,
-  #featureModal .azro-modal__foot{
+  /* Symmetric head/body/foot */
+  dialog#featureModal .azro-modal__head,
+  dialog#featureModal .azro-modal__scroll,
+  dialog#featureModal .azro-modal__foot{
     width: 100% !important;
     max-width: 720px !important;
     margin-inline: auto !important;
     padding-inline: clamp(16px, 4vw, 22px) !important;
     box-sizing: border-box !important;
   }
-
-  /* Text/media blocks centered */
-  #featureModal .azro-modal__text,
-  #featureModal .azro-modal__media{
-    margin-inline: auto !important;
-  }
-
-  /* Keep bullets readable yet balanced */
-  #featureModal .azro-modal__text ul{
-    margin-inline: auto !important;
-    padding-inline-start: 1.2rem !important; /* logical prop */
-    max-width: 640px !important;
+  /* Keep copy centered; bullets readable and balanced */
+  dialog#featureModal .azro-modal__text{ text-align: center !important; }
+  dialog#featureModal .azro-modal__text ul{
     text-align: left !important;
+    padding-inline-start: 1.2rem !important;
+    margin-inline: auto !important;
+    max-width: 640px !important;
   }
-
-  /* No visual shift when content scrolls */
-  #featureModal .azro-modal__scroll{
+  /* Scrollbar symmetry so content stays visually centered when body scrolls */
+  dialog#featureModal .azro-modal__scroll{
     overflow: auto !important;
-  }
-}
-@supports (scrollbar-gutter: stable both-edges){
-  @media (max-width: 900px){
-    #featureModal .azro-modal__scroll{ scrollbar-gutter: stable both-edges !important; }
+    scrollbar-gutter: stable both-edges;
   }
 }
 </style></head>
@@ -561,13 +554,24 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     });
 
     fmVideo.innerHTML = '';
-    if(e.video){
-      const iframe = document.createElement('iframe');
-      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.src = e.video;
-      fmVideo.appendChild(iframe);
-    } else {
+if(e.video){
+  const isMp4 = /\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
+  if(isMp4){
+    const video = document.createElement('video');
+    video.className = 'azro-video__el';
+    video.src = e.video;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    fmVideo.appendChild(video);
+  } else {
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.src = e.video;
+    fmVideo.appendChild(iframe);
+  }
+} else {
       const ph = document.createElement('div');
       ph.className = 'azro-video__ph';
       ph.innerHTML = 'Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.';
@@ -579,11 +583,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 
   // Backdrop click closes
   modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
-  modal.addEventListener('close', () => {
-    // Stop playback by clearing iframe
-    const iframe = fmVideo.querySelector('iframe');
-    if(iframe) iframe.src = 'about:blank';
-  });
+  modal.addEventListener('close', () => { const iframe = fmVideo.querySelector('iframe'); if(iframe) iframe.src='about:blank'; const vid=fmVideo.querySelector('video'); if(vid){ try{ vid.pause(); vid.currentTime=0; }catch(e){} } });
 
   cards.forEach(card => {
     card.addEventListener('click', () => openModalFromCard(card));
