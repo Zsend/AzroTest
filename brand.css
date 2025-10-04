@@ -865,12 +865,21 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* === Final mobile override: ensure Feature modal is centered without transforms (keeps video visible) === */
+/* === Final mobile resources centering and modal video visibility (scoped) === */
 @media (max-width: 900px){
-  dialog#featureModal.azro-modal[open]{
-    inset: 0 !important;
-    margin: auto !important;
-    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
-    transform: none !important;
+  /* Resources: keep grid inside container padding and centered */
+  body .hero-text.resources-page .resources-grid{
+    width: min(680px, 100%) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    padding-inline: 16px !important;
+    box-sizing: border-box !important;
+    left: auto !important; right: auto !important; transform: none !important;
   }
+  body .hero-text.resources-page{ margin-inline:auto !important; padding-inline: 16px !important; }
+  body .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; }
+
+  /* Feature modal: forbid transforms so <video> paints on WebKit */
+  dialog#featureModal.azro-modal[open]{ transform: none !important; left:auto !important; top:auto !important; right:auto !important; bottom:auto !important; }
+  #featureModal .azro-modal__media video{ opacity: 1 !important; visibility: visible !important; }
 }
