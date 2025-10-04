@@ -128,13 +128,13 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 @media (max-width: 900px){
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
-    inset: 0 !important;
+    left: 0 !important; right: 0 !important; top: 0 !important; bottom: 0 !important;
     margin: auto !important;
-    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
     transform: none !important;
-    display: grid !important; place-items: center !important;
+    display: block !important;
     width: min(94vw, 720px) !important; padding: 0 !important;
-    max-height: min(92svh, 92vh) !important;
+    height: auto !important; max-height: min(92svh, 92vh) !important;
+    z-index: 2147483000 !important; /* over everything */
   }
   dialog#featureModal.azro-modal > form{ width: 100% !important; margin: 0 !important; }
 
@@ -161,7 +161,25 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal .azro-modal__title,
   dialog#featureModal.azro-modal .azro-modal__sub{ text-wrap: balance; }
 }
-</style></head>
+</style>
+<style id="azro-modal-mobile-overrides">
+@media (max-width: 900px){
+  /* Ensure brand.css full-screen grid rule does not override this modal */
+  html body dialog#featureModal.azro-modal[open]{ display:block !important; }
+  html body dialog#featureModal.azro-modal[open] > form{ margin: 0 auto !important; width: 100% !important; }
+  /* Fallback placeholder tap target */
+  #featureModal .azro-video__ph--tap{
+    display:flex; align-items:center; justify-content:center;
+    aspect-ratio:16/9; width:100%;
+    border-radius: clamp(12px, 2vw, 18px);
+    border: 1px solid rgba(255,255,255,.12);
+    background: #0b122f;
+    color: #fff; font-weight: 600; letter-spacing: .01em;
+  }
+}
+</style>
+
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -741,6 +759,9 @@ if(e.video){
       var vid=wrap.querySelector('video');
       var btn=wrap.querySelector('.azro-video__expand');
       function openBig(){ lightbox.open(src); }
+      vid.addEventListener('click',openBig,{passive:true});
+      btn.addEventListener('click',openBig,{passive:true});
+      // Robust inline autoplay + MOV fallback path
       function tryPlay(){
         try{
           vid.muted = true; vid.playsInline = true;
@@ -748,13 +769,19 @@ if(e.video){
           const p = vid.play(); if(p && p.catch) p.catch(()=>{});
         }catch(e){}
       }
-      vid.addEventListener('loadedmetadata', tryPlay, { once:true });
-      vid.addEventListener('canplay', tryPlay, { once:true });
-      vid.addEventListener('touchstart', tryPlay, { passive:true });
-      vid.addEventListener('click', tryPlay, { passive:true });
-      vid.addEventListener('click',openBig,{passive:true});
-      btn.addEventListener('click',openBig,{passive:true});
-      tryPlay()
+      let fallbackTimer = setTimeout(function(){ showFallback(); }, 1800);
+      function clearFB(){ if(fallbackTimer){ clearTimeout(fallbackTimer); fallbackTimer=0; } }
+      function showFallback(){
+        // If the MOV can't play (many Androids), provide a clean tap-to-open
+        wrap.innerHTML = '<a href="#" class="azro-video__ph azro-video__ph--tap" aria-label="Open demo video">Tap to view demo</a>';
+        var a=wrap.querySelector('a');
+        a.addEventListener('click', function(ev){ ev.preventDefault(); lightbox.open(src); }, { passive:false });
+      }
+      vid.addEventListener('loadedmetadata', function(){ tryPlay(); }, { once:true });
+      vid.addEventListener('canplay', function(){ clearFB(); }, { once:true });
+      vid.addEventListener('playing', function(){ clearFB(); }, { once:true });
+      vid.addEventListener('error', function(){ clearFB(); showFallback(); }, { once:true });
+      tryPlay();
     }
 
     new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })
@@ -772,29 +799,23 @@ if(e.video){
     var mql = window.matchMedia('(max-width: 900px)');
     function center(){
       if(!modal.open || !mql.matches) return;
-      // Reset any previous inline values first
-      modal.style.top='auto'; modal.style.left='auto'; modal.style.right='auto'; modal.style.bottom='auto';
+      var vv = window.visualViewport || { width: innerWidth, height: innerHeight, offsetTop: 0, offsetLeft: 0 };
       modal.style.margin='auto';
-      // Use visualViewport for accurate mobile coordinates
-      var vv = window.visualViewport || { width: window.innerWidth, height: window.innerHeight, offsetTop: 0, offsetLeft: 0 };
-      // Temporarily make sure we can measure actual size
+      modal.style.transform='none';
+      modal.style.right='auto'; modal.style.bottom='auto';
+      // compute precise top/left for engines that ignore margin auto due to padding
       modal.style.visibility='hidden'; modal.style.display='block';
-      var w = modal.offsetWidth, h = modal.offsetHeight;
+      var w=modal.offsetWidth, h=modal.offsetHeight;
       modal.style.visibility=''; modal.style.display='';
       var top  = Math.max(8, vv.offsetTop  + Math.round((vv.height - h)/2));
       var left = Math.max(8, vv.offsetLeft + Math.round((vv.width  - w)/2));
       modal.style.top  = top + 'px';
       modal.style.left = left + 'px';
-      modal.style.right='auto';
-      modal.style.bottom='auto';
     }
-    // Run on open and on viewport changes
-    var obs = new MutationObserver(function(){ if(modal.open) setTimeout(center, 0); });
-    obs.observe(modal, { attributes:true, attributeFilter:['open'] });
-    window.addEventListener('resize', center, { passive:true });
-    if (window.visualViewport) window.visualViewport.addEventListener('resize', center, { passive:true });
-    // Also center if fonts load late and reflow changes size
-    document.fonts && document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', center);
+    new MutationObserver(function(){ if(modal.open) setTimeout(center, 0); })
+      .observe(modal, { attributes:true, attributeFilter:['open'] });
+    addEventListener('resize', center, { passive:true });
+    if (window.visualViewport) visualViewport.addEventListener('resize', center, { passive:true });
   });
 })();
 </script>
