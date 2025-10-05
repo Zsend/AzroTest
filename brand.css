@@ -747,7 +747,7 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
     transform:none !important; left:auto !important; right:auto !important; overflow:visible !important;
   }
   .resources-grid{
-    width:min(680px,100%) !important; max-width: 100% !important;
+    width:min(680px,100%) !important; ;
     margin-inline:auto !important; padding-inline:16px !important; box-sizing:border-box !important;
     transform:none !important; left:auto !important; right:auto !important; justify-items:center !important;
   }
@@ -791,7 +791,7 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
 @media (max-width: 900px){
   .resources-grid{
     width: min(680px, 100%) !important;
-    max-width: 100% !important;
+    ;
     margin-inline: auto !important;
     padding-inline: 16px !important;
     box-sizing: border-box !important;
@@ -865,29 +865,39 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* === Authoritative mobile overrides (scoped) === */
+/* FINAL mobile-only scopes to keep layout correct without altering other pages */
 @media (max-width: 900px){
-  /* Resources grid: center and respect container padding */
-  body .hero-text.resources-page .resources-grid{
+  /* Resources */
+  .hero-text.resources-page{
+    margin-inline: auto !important;
+    padding-inline: clamp(16px, 4vw, 22px) !important;
+    overflow-x: hidden !important;
+  }
+  .hero-text.resources-page .resources-grid{
     width: min(680px, 100%) !important;
     max-width: 100% !important;
     margin-inline: auto !important;
-    padding-inline: 16px !important;
+    left: auto !important; right: auto !important;
+    transform: none !important;
     box-sizing: border-box !important;
-    left: auto !important; right: auto !important; transform: none !important;
   }
-  body .hero-text.resources-page{ margin-inline:auto !important; padding-inline: 16px !important; }
-  body .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; }
+  .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; }
 
-  /* Feature modal: ensure no transforms so <video> paints */
+  /* Feature modal */
   dialog#featureModal.azro-modal[open]{
-    inset: 0 !important; margin: auto !important;
-    transform: none !important; left:auto !important; top:auto !important; right:auto !important; bottom:auto !important;
+    position: fixed !important;
+    inset: 0 !important;
+    display: grid !important; place-items: center !important;
+    margin: 0 !important; padding: clamp(8px, 2vw, 16px) !important;
+    transform: none !important;
   }
-  #featureModal .azro-modal__media video, 
-  #featureModal .azro-modal__media iframe{
-    display:block !important; width:100% !important; height:100% !important; 
-    opacity:1 !important; visibility:visible !important;
-    transform: translateZ(0) !important; backface-visibility:hidden !important;
+  dialog#featureModal.azro-modal[open] > form{
+    width: min(94vw, 720px) !important;
+    max-height: 96svh !important;
+    margin: 0 !important;
+  }
+  dialog#featureModal .azro-modal__scroll{
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 }
