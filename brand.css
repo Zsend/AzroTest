@@ -865,9 +865,9 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* === Final mobile resources centering and modal video visibility (scoped) === */
+/* === Authoritative mobile overrides (scoped) === */
 @media (max-width: 900px){
-  /* Resources: keep grid inside container padding and centered */
+  /* Resources grid: center and respect container padding */
   body .hero-text.resources-page .resources-grid{
     width: min(680px, 100%) !important;
     max-width: 100% !important;
@@ -879,7 +879,15 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   body .hero-text.resources-page{ margin-inline:auto !important; padding-inline: 16px !important; }
   body .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; }
 
-  /* Feature modal: forbid transforms so <video> paints on WebKit */
-  dialog#featureModal.azro-modal[open]{ transform: none !important; left:auto !important; top:auto !important; right:auto !important; bottom:auto !important; }
-  #featureModal .azro-modal__media video{ opacity: 1 !important; visibility: visible !important; }
+  /* Feature modal: ensure no transforms so <video> paints */
+  dialog#featureModal.azro-modal[open]{
+    inset: 0 !important; margin: auto !important;
+    transform: none !important; left:auto !important; top:auto !important; right:auto !important; bottom:auto !important;
+  }
+  #featureModal .azro-modal__media video, 
+  #featureModal .azro-modal__media iframe{
+    display:block !important; width:100% !important; height:100% !important; 
+    opacity:1 !important; visibility:visible !important;
+    transform: translateZ(0) !important; backface-visibility:hidden !important;
+  }
 }
