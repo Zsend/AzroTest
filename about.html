@@ -129,10 +129,9 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
     inset: 0 !important;
-    margin: auto !important;
-    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+    display: grid !important; place-items: center !important;
+    margin: 0 !important; padding: clamp(8px, 2vw, 16px) !important;
     transform: none !important;
-    width: min(94vw, 720px) !important; padding: 0 !important;
   }
   dialog#featureModal.azro-modal > form{ width: 100% !important; margin: 0 !important; }
 
@@ -749,10 +748,8 @@ if(e.video){
       }
 vid.addEventListener('click',openBig,{passive:true});
       btn.addEventListener('click',openBig,{passive:true});
-      
-      vid.addEventListener('loadedmetadata', function(){ ensureInlineAutoplay(vid); }, { once:true });
-      ensureInlineAutoplay(vid);
-}
+      try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
+    }
 
     new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })
       .observe(modal,{attributes:true,attributeFilter:['open']});

@@ -865,9 +865,8 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* FINAL mobile-only scopes to keep layout correct without altering other pages */
+/* FINAL — resources centering + feature modal video-safe (mobile only) */
 @media (max-width: 900px){
-  /* Resources */
   .hero-text.resources-page{
     margin-inline: auto !important;
     padding-inline: clamp(16px, 4vw, 22px) !important;
@@ -877,13 +876,11 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
     width: min(680px, 100%) !important;
     max-width: 100% !important;
     margin-inline: auto !important;
-    left: auto !important; right: auto !important;
-    transform: none !important;
+    left: auto !important; right: auto !important; transform: none !important;
     box-sizing: border-box !important;
   }
   .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; }
 
-  /* Feature modal */
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
     inset: 0 !important;
@@ -892,12 +889,6 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
     transform: none !important;
   }
   dialog#featureModal.azro-modal[open] > form{
-    width: min(94vw, 720px) !important;
-    max-height: 96svh !important;
-    margin: 0 !important;
-  }
-  dialog#featureModal .azro-modal__scroll{
-    overflow: auto !important;
-    -webkit-overflow-scrolling: touch !important;
+    width: min(94vw, 720px) !important; max-height: 96svh !important; margin: 0 !important;
   }
 }
