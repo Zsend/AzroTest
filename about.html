@@ -756,6 +756,45 @@ vid.addEventListener('click',openBig,{passive:true});
   });
 })();
 </script>
+
+<script id="feature-modal-center-fallback">
+(function(){
+  function rd(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  rd(function(){
+    var m = document.getElementById('featureModal'); if(!m) return;
+    var mq = window.matchMedia('(max-width: 900px)');
+    function center(){
+      if(!m.open || !mq.matches) return;
+      var vv = window.visualViewport || { width: innerWidth, height: innerHeight, offsetTop: 0, offsetLeft: 0 };
+      m.style.transform='none'; m.style.margin='0'; m.style.right='auto'; m.style.bottom='auto';
+      m.style.visibility='hidden'; m.style.display='grid';
+      var w=m.offsetWidth, h=m.offsetHeight; m.style.visibility=''; m.style.display='';
+      var top  = Math.max(8, vv.offsetTop  + Math.round((vv.height - h)/2));
+      var left = Math.max(8, vv.offsetLeft + Math.round((vv.width  - w)/2));
+      m.style.top  = top + 'px'; m.style.left = left + 'px';
+    }
+    new MutationObserver(function(){ if(m.open) requestAnimationFrame(center); }).observe(m, {attributes:true, attributeFilter:['open']});
+    addEventListener('resize', center, {passive:true});
+    if(window.visualViewport){ visualViewport.addEventListener('resize', center, {passive:true}); visualViewport.addEventListener('scroll', center, {passive:true}); }
+  });
+})();
+</script>
+
+
+<script id="feature-modal-media-guard">
+(function(){
+  function rd(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  rd(function(){
+    var m = document.getElementById('featureModal');
+    var box = document.getElementById('fmVideoBox');
+    if(!m||!box) return;
+    function hasMedia(){ return !!box.querySelector('video,iframe'); }
+    function tryInject(){ if(m.open && !hasMedia() && typeof injectVideo==='function'){ injectVideo(); } }
+    setInterval(tryInject, 400);
+  });
+})();
+</script>
+
 <script defer src="js/azro-hotfix-autoplay.js"></script>
 </body>
 </html>
