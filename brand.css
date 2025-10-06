@@ -865,8 +865,9 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* FINAL scoped mobile fixes */
+/* ULTRA-FIXED — mobile-only, scoped rules */
 @media (max-width: 900px){
+  /* Resources centering within container padding */
   .hero-text.resources-page{
     margin-inline:auto !important;
     padding-inline:16px !important;
@@ -876,8 +877,20 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
     width:min(680px,100%) !important;
     max-width:100% !important;
     margin-inline:auto !important;
-    transform:none !important; left:auto !important; right:auto !important;
+    left:auto !important; right:auto !important; transform:none !important;
     box-sizing:border-box !important;
   }
   .hero-text.resources-page .resources-grid > *{ max-width:100% !important; }
+
+  /* Feature modal video-safe centering (no transforms) */
+  dialog#featureModal.azro-modal[open]{
+    position: fixed !important;
+    inset: 0 !important;
+    display: grid !important; place-items: center !important;
+    margin: 0 !important; padding: clamp(8px, 2vw, 16px) !important;
+    transform: none !important;
+  }
+  dialog#featureModal.azro-modal[open] > form{
+    width: min(94vw, 720px) !important; max-height: 96svh !important; margin: 0 !important;
+  }
 }
