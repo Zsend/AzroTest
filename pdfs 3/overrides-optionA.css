@@ -1,5 +1,0 @@
-/* Option A: Minimal — normalize hero gutters on small phones and neutralize About hero-text padding */
-@media (max-width: 600px){
-  .hero { padding-inline: 26px !important; }
-  .hero .hero-text { padding-inline: 0 !important; }
-}
