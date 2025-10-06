@@ -129,11 +129,19 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
     inset: 0 !important;
-    display: grid !important; place-items: center !important;
-    margin: 0 !important; padding: clamp(8px, 2vw, 16px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important; padding: 0 !important;
     transform: none !important;
+    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
   }
-  dialog#featureModal.azro-modal > form{ width: 100% !important; margin: 0 !important; }
+  dialog#featureModal.azro-modal > form{
+    width: min(94vw, 720px) !important;
+    max-height: 96svh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
   /* Symmetric inner padding */
   dialog#featureModal.azro-modal .azro-modal__head,
@@ -756,29 +764,6 @@ vid.addEventListener('click',openBig,{passive:true});
   });
 })();
 </script>
-
-<script id="feature-modal-center-fallback">
-(function(){
-  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
-  ready(function(){
-    var m=document.getElementById('featureModal'); if(!m) return;
-    var mq=matchMedia('(max-width: 900px)');
-    function center(){
-      if(!m.open || !mq.matches) return;
-      var vv=visualViewport||{width:innerWidth,height:innerHeight,offsetTop:0,offsetLeft:0};
-      m.style.transform='none'; m.style.margin='0'; m.style.right='auto'; m.style.bottom='auto';
-      m.style.visibility='hidden'; m.style.display='grid';
-      var w=m.offsetWidth,h=m.offsetHeight; m.style.visibility=''; m.style.display='';
-      m.style.top=Math.max(8,vv.offsetTop+Math.round((vv.height-h)/2))+'px';
-      m.style.left=Math.max(8,vv.offsetLeft+Math.round((vv.width-w)/2))+'px';
-    }
-    new MutationObserver(function(){ if(m.open) requestAnimationFrame(center); }).observe(m,{attributes:true,attributeFilter:['open']});
-    addEventListener('resize',center,{passive:true});
-    if(visualViewport){ visualViewport.addEventListener('resize',center,{passive:true}); visualViewport.addEventListener('scroll',center,{passive:true}); }
-  });
-})();
-</script>
-
 <script defer src="js/azro-hotfix-autoplay.js"></script>
 </body>
 </html>
