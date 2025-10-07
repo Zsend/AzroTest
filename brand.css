@@ -865,7 +865,7 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* STRICT HOTFIX — Resources page centering (mobile only) */
+/* HOTFIX — Resources mobile centering (scoped) */
 @media (max-width: 900px){
   .hero-text.resources-page,
   .hero-text.resources-page .container,
