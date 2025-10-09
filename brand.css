@@ -865,20 +865,19 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
                bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
 }
 
-/* HOTFIX — Resources mobile centering (scoped) */
+/* resources-mobile-center-v9 */
 @media (max-width: 900px){
   .hero-text.resources-page,
   .hero-text.resources-page .container,
   .hero-text.resources-page .resources-grid{
     width: 100% !important;
     max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    margin-left: auto !important; margin-right: auto !important;
+    padding-left: 16px !important; padding-right: 16px !important;
     box-sizing: border-box !important;
     left: auto !important; right: auto !important; transform: none !important;
   }
-  .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; }
+  .hero-text.resources-page .resources-grid{ margin-inline:auto !important; }
+  .hero-text.resources-page .resources-grid > *{ max-width: 100% !important; margin-inline:auto !important; }
   .hero-text.resources-page{ overflow-x: hidden !important; }
 }

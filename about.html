@@ -159,26 +159,30 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal .azro-modal__sub{ text-wrap: balance; }
 }
 </style>
-<style id="hotfix-feature-modal-mobile">
+<style id="fix-feature-modal-mobile-v9">
 @media (max-width: 900px){
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
     inset: 0 !important;
-    display: grid !important;
-    place-items: center !important;
-    margin: 0 !important; padding: 0 !important;
+    display: grid !important; place-items: center !important;
+    margin: 0 !important; padding: clamp(8px, 2vw, 16px) !important;
     transform: none !important;
     top:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
+    overscroll-behavior: contain;
   }
   dialog#featureModal.azro-modal[open] > form{
-    width: min(94vw, 720px) !important;
-    max-height: 96svh !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    width: min(94vw, 720px) !important; max-height: 96svh !important; margin:0 !important;
   }
   #featureModal .azro-modal__wrap,
   #featureModal .azro-modal__body,
-  #featureModal .azro-modal__media{ transform: none !important; }
+  #featureModal .azro-modal__media{ transform:none !important; }
+  #featureModal .azro-video__expand{
+    position:absolute; right:12px; bottom:12px;
+    display:inline-flex !important; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:999px;
+    background:rgba(0,0,0,.35); color:#fff; border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:saturate(1.2) blur(3px);
+  }
 }
 </style>
 </head>
@@ -755,7 +759,7 @@ if(e.video){
       videoBox.innerHTML='';
       var wrap=document.createElement('div');
       wrap.className='azro-video-wrap';
-      wrap.innerHTML='<video class=\"azro-video__el\" autoplay muted loop playsinline preload=\"auto\"><source src=\""+src+"\" type=\""+(/\.mp4(\?.*)?$/i.test(src)?"video/mp4":"video/quicktime")+"\"></video><button class=\"azro-video__expand\" aria-label=\"Expand video\">↗</button>';
+      wrap.innerHTML='<video class=\"azro-video__el\" autoplay muted loop playsinline preload=\"auto\"><source src=\""+src+"\" type=\""+(/\.mp4(\?.*)?$/i.test(src)?"video/mp4":"video/quicktime")+"\"></video><button class=\"azro-video__expand\" aria-label=\"Open video\">↗</button>';
       videoBox.appendChild(wrap);
 
       var vid=wrap.querySelector('video');
@@ -765,9 +769,16 @@ if(e.video){
       function ensureInlineAutoplay(el){
         try{
           el.muted = true; el.playsInline = true;
-          el.setAttribute('playsinline','');
-          el.setAttribute('webkit-playsinline','');
+          el.setAttribute('playsinline',''); el.setAttribute('webkit-playsinline','');
           const p = el.play(); if(p && p.catch) p.catch(()=>{});
+        }catch(e){}
+      }
+      function showTapFallback(){
+        try{
+          var wrap = document.querySelector('#fmVideoBox .azro-video-wrap');
+          if(!wrap) return;
+          wrap.innerHTML = '<a class="azro-video__ph azro-video__ph--tap" style="display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;width:100%;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:#0b122f;color:#fff;font-weight:600;letter-spacing:.01em" href="#">Tap to view demo</a>';
+          wrap.querySelector('a').addEventListener('click', function(ev){ ev.preventDefault(); openBig(); }, { passive:false });
         }catch(e){}
       }
 vid.addEventListener('click',openBig,{passive:true});
