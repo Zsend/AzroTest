@@ -904,30 +904,15 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
 @media (max-width: 900px){ .azr-modal-open *:not(dialog){ transform:none !important; } }
 
 
-/* --- Resources: title wrapping, scoped to the first card only --- */
-.hero-text.resources-page .resources-grid{ container-type: inline-size; }
-
-.hero-text.resources-page .resource-card__title{
-  display:block;
-  white-space: normal !important;
-  word-break: normal !important;
-  overflow-wrap: normal;
-  hyphens: manual;                  /* avoid auto-hyphenating 'Methodology' */
-  text-wrap: balance;
-  line-height: 1.18;
-  margin-inline: auto;
-  max-inline-size: 26ch;           /* keep line length elegant */
-}
-
-@container (max-width: 380px){
-  .hero-text.resources-page .resource-card__title{
-    max-inline-size: 24ch;
-    font-size: clamp(1rem, 3.2vw + .2rem, 1.25rem);
-  }
-}
-@container (max-width: 330px){
-  .hero-text.resources-page .resource-card__title{
-    max-inline-size: 22ch;
-    font-size: clamp(.95rem, 3vw + .2rem, 1.15rem);
-  }
+/* >>> FINAL OVERRIDE: Methodology card title — no auto hyphenation, no mid‑word breaks, full card width <<< */
+.hero-text.resources-page .resources-grid a[href$="methodology-overview.pdf"] span{
+  display:block !important;
+  max-width:100% !important;
+  max-inline-size:none !important;
+  white-space:normal !important;
+  word-break:keep-all !important;    /* never break within words */
+  overflow-wrap:normal !important;   /* wrap only at spaces/hyphens */
+  hyphens:none !important;           /* disable auto hyphenation */
+  text-wrap:balance;
+  line-height:1.18;
 }
