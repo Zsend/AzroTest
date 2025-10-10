@@ -159,7 +159,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal .azro-modal__sub{ text-wrap: balance; }
 }
 </style>
-<style id="fix-feature-modal-mobile-v9">
+<style id="fix-feature-modal-mobile-v10">
 @media (max-width: 900px){
   dialog#featureModal.azro-modal[open]{
     position: fixed !important;
@@ -168,20 +168,23 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     margin: 0 !important; padding: clamp(8px, 2vw, 16px) !important;
     transform: none !important;
     top:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
-    overscroll-behavior: contain;
   }
   dialog#featureModal.azro-modal[open] > form{
-    width: min(94vw, 720px) !important; max-height: 96svh !important; margin:0 !important;
+    width: min(94vw, 720px) !important; max-height: 96svh !important; margin: 0 !important;
   }
   #featureModal .azro-modal__wrap,
   #featureModal .azro-modal__body,
-  #featureModal .azro-modal__media{ transform:none !important; }
+  #featureModal .azro-modal__media{ transform: none !important; }
   #featureModal .azro-video__expand{
     position:absolute; right:12px; bottom:12px;
     display:inline-flex !important; align-items:center; justify-content:center;
     width:44px; height:44px; border-radius:999px;
     background:rgba(0,0,0,.35); color:#fff; border:1px solid rgba(255,255,255,.25);
-    backdrop-filter:saturate(1.2) blur(3px);
+  }
+  /* If any ancestor has a transform, neutralize it while the modal is open */
+  body.azr-modal-open *{ transform: none !important; }
+  @supports(selector(:has(*))){
+    body:has(dialog#featureModal[open]) *{ transform: none !important; }
   }
 }
 </style>
