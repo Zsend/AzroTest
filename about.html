@@ -158,7 +158,25 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal .azro-modal__title,
   dialog#featureModal.azro-modal .azro-modal__sub{ text-wrap: balance; }
 }
-</style></head>
+</style>
+<style id="fix-feature-modal-mobile-v13r2">
+@media (max-width: 900px){
+  dialog#featureModal.azro-modal[open]{
+    position: fixed !important; inset: 0 !important;
+    display: grid !important; place-items: center !important;
+    margin:0 !important; padding:0 !important; transform:none !important;
+    top:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
+  }
+  dialog#featureModal.azro-modal[open] > form{ width:min(94vw,720px) !important; max-height:96svh !important; margin:0 !important; }
+  #featureModal .azro-modal__wrap, #featureModal .azro-modal__body, #featureModal .azro-modal__media{ transform:none !important; }
+  #featureModal .azro-modal__media video{ display:block !important; width:100% !important; height:auto !important; opacity:1 !important; visibility:visible !important; }
+  #featureModal .azro-video__expand{
+    position:absolute; right:12px; bottom:12px; display:inline-flex !important; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:999px; background:rgba(0,0,0,.35); color:#fff; border:1px solid rgba(255,255,255,.25); z-index:2;
+  }
+}
+</style>
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -738,15 +756,7 @@ if(e.video){
       var vid=wrap.querySelector('video');
       var btn=wrap.querySelector('.azro-video__expand');
       function openBig(){ lightbox.open(src); }
-      
-      function ensureInlineAutoplay(el){
-        try{
-          el.muted = true; el.playsInline = true;
-          el.setAttribute('playsinline',''); el.setAttribute('webkit-playsinline','');
-          var p = el.play(); if(p && p.catch) p.catch(function(){});
-        }catch(e){}
-      }
-vid.addEventListener('click',openBig,{passive:true});
+      vid.addEventListener('click',openBig,{passive:true});
       btn.addEventListener('click',openBig,{passive:true});
       try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
     }
@@ -766,5 +776,33 @@ vid.addEventListener('click',openBig,{passive:true});
   sync();
 })();
 </script>
+
+<script id="azr-video-ensure">
+(function(){
+  function ensureInline(el){
+    try{
+      el.muted = true; el.playsInline = true;
+      el.setAttribute('playsinline',''); el.setAttribute('webkit-playsinline','');
+      var p = el.play(); if(p && p.catch) p.catch(function(){});
+    }catch(e){}
+  }
+  function ensurePreview(){
+    var box = document.getElementById('fmVideoBox'); if(!box) return;
+    var v = box.querySelector('video');
+    if(!v && typeof injectVideo === 'function'){
+      try{ injectVideo(); }catch(e){}
+      v = box.querySelector('video');
+    }
+    if(v){
+      v.addEventListener('loadedmetadata', function(){ ensureInline(v); }, { once:true });
+      ensureInline(v);
+    }
+  }
+  var m = document.getElementById('featureModal');
+  if(!m) return;
+  new MutationObserver(function(){ if(m.open) setTimeout(ensurePreview, 0); }).observe(m,{attributes:true,attributeFilter:['open']});
+})();
+</script>
+
 </body>
 </html>
