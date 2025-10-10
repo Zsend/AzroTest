@@ -759,10 +759,10 @@ vid.addEventListener('click',openBig,{passive:true});
 
 <script id="azr-modal-toggle">
 (function(){
-  var modal = document.getElementById('featureModal');
-  if(!modal) return;
-  function sync(){ document.body.classList.toggle('azr-modal-open', !!modal.open); }
-  new MutationObserver(sync).observe(modal, {attributes:true, attributeFilter:['open']});
+  var m = document.getElementById('featureModal');
+  if(!m) return;
+  function sync(){ document.body.classList.toggle('azr-modal-open', !!m.open); }
+  new MutationObserver(sync).observe(m, {attributes:true, attributeFilter:['open']});
   sync();
 })();
 </script>
