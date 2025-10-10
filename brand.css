@@ -902,3 +902,28 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
 }
 /* Neutralize stray transforms only while the modal is open (mobile only) */
 @media (max-width: 900px){ .azr-modal-open *:not(dialog){ transform:none !important; } }
+
+
+/* --- Resources: long title fix (CSS-only, no HTML changes) --- */
+.hero-text.resources-page .resources-grid{ container-type: inline-size; }
+
+.hero-text.resources-page .resources-grid a[href$="methodology-overview.pdf"] span{
+  display:inline-block;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;          /* Safari fallback */
+  hyphens: auto;
+  text-wrap: balance;
+  line-height: 1.15;
+}
+
+@container (max-width: 420px){
+  .hero-text.resources-page .resources-grid a[href$="methodology-overview.pdf"] span{
+    font-size: clamp(1rem, 3.6vw + .15rem, 1.35rem);
+  }
+}
+@container (max-width: 340px){
+  .hero-text.resources-page .resources-grid a[href$="methodology-overview.pdf"] span{
+    font-size: clamp(.95rem, 3.2vw + .15rem, 1.2rem);
+  }
+}
