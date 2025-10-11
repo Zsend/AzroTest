@@ -529,7 +529,14 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   function openModalFromCard(card){
     const title = (card.querySelector('h3')?.textContent || 'Feature').trim();
     const sub   = (card.querySelector('p')?.textContent || '').trim();
-    const e = ENRICH[title] || { tagline: sub, bullets: [], video: "" };
+    const NORM = s => (s||'')
+      .toLowerCase()
+      .replace(/[\u2010-\u2015]/g,'-')       // hyphen variants → '-'
+      .replace(/[\u00a0\u202f]/g,' ')        // NBSP/thin-space → space
+      .replace(/\s+/g,' ')                    // collapse spaces
+      .trim();
+    const NMAP = (()=>{ const m={}; for(const k in ENRICH){ m[NORM(k)] = ENRICH[k]; } return m; })();
+    const e = NMAP[NORM(title)] || { tagline: sub, bullets: [], video: "" };
 
     fmTitle.textContent = title;
     fmSub.textContent = e.tagline || sub;
@@ -547,18 +554,25 @@ if(e.video){
   if(isMp4){
     const video=document.createElement('video');
     video.className='azro-video__el';
-    video.setAttribute('muted',''); video.muted = true;
-    video.setAttribute('autoplay',''); video.setAttribute('loop','');
-    video.setAttribute('playsinline',''); video.setAttribute('preload','metadata');
-    video.setAttribute('controls','');
-    const src=document.createElement('source');
-    const isMov=/\.mov(\?.*)?$/i.test(e.video);
-    src.src=encodeURI(e.video);
-    src.type = isMov ? 'video/quicktime' : 'video/mp4';
-    video.appendChild(src);
+    video.src=e.video;
+    video.controls=true;
+    video.playsInline=true;
+    video.preload='metadata';
     fmVideo.appendChild(video);
-    try{ video.play().catch(()=>{});}catch(e){}
   }else{
+    // Modern, audit-safe: muted, inline, encoded src, correct MIME via <source>
+    const safe = encodeURI(e.video).replace(/#/g,'%23').replace(/&/g,'%26');
+    video.muted = true;
+    // Build a <source> with an explicit type for stronger cross-browser support
+    const source = document.createElement('source');
+    source.src = safe;
+    source.type = /\.mov(\?.*)?$/i.test(e.video) ? 'video/quicktime'
+                : /\.mp4(\?.*)?$/i.test(e.video) ? 'video/mp4'
+                : /\.webm(\?.*)?$/i.test(e.video) ? 'video/webm'
+                : 'video/ogg';
+    video.appendChild(source);
+    try { video.play().catch(()=>{}); } catch(e) {}
+
     const iframe=document.createElement('iframe');
     iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen','');
@@ -573,7 +587,6 @@ if(e.video){
     }
 
     modal.showModal();
-  try{ document.dispatchEvent(new CustomEvent('azro:modal:open', { detail:{ modal }, bubbles:true })); }catch(e){}
   }
 
   // Backdrop click closes
