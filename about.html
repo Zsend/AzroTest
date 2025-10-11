@@ -547,11 +547,17 @@ if(e.video){
   if(isMp4){
     const video=document.createElement('video');
     video.className='azro-video__el';
-    video.src=e.video;
-    video.controls=true;
-    video.playsInline=true;
-    video.preload='metadata';
+    video.setAttribute('muted',''); video.muted = true;
+    video.setAttribute('autoplay',''); video.setAttribute('loop','');
+    video.setAttribute('playsinline',''); video.setAttribute('preload','metadata');
+    video.setAttribute('controls','');
+    const src=document.createElement('source');
+    const isMov=/\.mov(\?.*)?$/i.test(e.video);
+    src.src=encodeURI(e.video);
+    src.type = isMov ? 'video/quicktime' : 'video/mp4';
+    video.appendChild(src);
     fmVideo.appendChild(video);
+    try{ video.play().catch(()=>{});}catch(e){}
   }else{
     const iframe=document.createElement('iframe');
     iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
@@ -567,6 +573,7 @@ if(e.video){
     }
 
     modal.showModal();
+  try{ document.dispatchEvent(new CustomEvent('azro:modal:open', { detail:{ modal }, bubbles:true })); }catch(e){}
   }
 
   // Backdrop click closes
