@@ -769,12 +769,10 @@ vid.addEventListener('click',openBig,{passive:true});
 
 <script id="azro-modal-video-restore">
 (()=>{
-  // Find any AZRO modal used on About variants
-  const modal = document.getElementById('featureModal') || document.getElementById('trialModal') || document.querySelector('dialog.azro-modal');
-  const box   = document.getElementById('fmVideoBox') || (modal && modal.querySelector('.azro-modal__media .azro-video')) || null;
+  const modal = document.getElementById('featureModal') || document.querySelector('dialog.azro-modal');
+  const box   = document.getElementById('fmVideoBox') || (modal && modal.querySelector('.azro-modal__media .azro-video'));
   if(!modal || !box) return;
 
-  // Scoped button styles and remove spinner overlay INSIDE the dialog only
   if(!document.getElementById('azro-preview-css')){
     const st=document.createElement('style'); st.id='azro-preview-css';
     st.textContent = `
@@ -795,24 +793,25 @@ vid.addEventListener('click',openBig,{passive:true});
 
   const EN = window.ENRICH || {};
   const NORM = s => (s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim();
-  const NMAP = (()=>{ const m={}; for(const k in EN){ m[NORM(k)] = EN[k]; } return m; })();
+  const NMAP = (()=>{ const m={}; for(const k in EN) m[NORM(k)]=EN[k]; return m; })();
 
-  function sourcesFor(title){
+  const sourcesFor = title => {
     const e = NMAP[NORM(title)] || {};
     const raw = String(e.video || 'main.mp4');
     return raw.split('|').map(s=>s.trim()).filter(Boolean);
-  }
+  };
 
   function ensure(){
-    if(!modal.open) return;
-    const title = (modal.querySelector('#fmTitle')?.textContent || '').trim();
+    if(!modal || !modal.open) return;
     if(box.querySelector('video,button.azro-preview-btn')) return;
+
+    const title = (modal.querySelector('#fmTitle')?.textContent || '').trim();
 
     const btn=document.createElement('button');
     btn.type='button'; btn.className='azro-preview-btn';
     btn.setAttribute('aria-label','Preview video');
     btn.innerHTML='<span class="azro-preview-btn__icon" aria-hidden="true"></span><span class="azro-preview-btn__label">Preview video</span>';
-    try{ box.innerHTML=''; }catch(e){}
+    try{ box.innerHTML=''; }catch(_){}
     box.appendChild(btn);
 
     btn.addEventListener('click', ()=>{
@@ -824,7 +823,7 @@ vid.addEventListener('click',openBig,{passive:true});
       v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png');
 
       const list = sourcesFor(title);
-      (list.length? list : ['main.mp4']).forEach(u=>{
+      (list.length ? list : ['main.mp4']).forEach(u=>{
         const s=document.createElement('source');
         s.src  = String(u).replace(/([^\/]+)$/,(m,b)=>encodeURIComponent(b));
         s.type = /\.mov(\?.*)?$/i.test(u) ? 'video/quicktime' : 'video/mp4';
