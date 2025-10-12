@@ -115,5 +115,81 @@ transition:none !important;
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <script defer="" src="script.js"></script>
+
+<script id="azro-modal-video-restore">
+(()=>{
+  // Find any AZRO modal used on About variants
+  const modal = document.getElementById('featureModal') || document.getElementById('trialModal') || document.querySelector('dialog.azro-modal');
+  const box   = document.getElementById('fmVideoBox') || (modal && modal.querySelector('.azro-modal__media .azro-video')) || null;
+  if(!modal || !box) return;
+
+  // Scoped button styles and remove spinner overlay INSIDE the dialog only
+  if(!document.getElementById('azro-preview-css')){
+    const st=document.createElement('style'); st.id='azro-preview-css';
+    st.textContent = `
+      dialog.azro-modal .azro-modal__media{position:relative}
+      dialog.azro-modal .azro-modal__media::after{display:none!important}
+      dialog.azro-modal .azro-preview-btn{
+        display:inline-flex;align-items:center;gap:.6rem;cursor:pointer;
+        border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.28);
+        padding:.7rem 1.0rem;border-radius:999px;color:#fff;font-weight:700;letter-spacing:.2px;
+        backdrop-filter:blur(2px);position:relative;z-index:9999
+      }
+      dialog.azro-modal .azro-preview-btn__icon{display:inline-block;width:0;height:0;
+        border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+      dialog.azro-modal .azro-preview-btn__label{font-size:.95rem}
+    `;
+    document.head.appendChild(st);
+  }
+
+  const EN = window.ENRICH || {};
+  const NORM = s => (s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim();
+  const NMAP = (()=>{ const m={}; for(const k in EN){ m[NORM(k)] = EN[k]; } return m; })();
+
+  function sourcesFor(title){
+    const e = NMAP[NORM(title)] || {};
+    const raw = String(e.video || 'main.mp4');
+    return raw.split('|').map(s=>s.trim()).filter(Boolean);
+  }
+
+  function ensure(){
+    if(!modal.open) return;
+    const title = (modal.querySelector('#fmTitle')?.textContent || '').trim();
+    if(box.querySelector('video,button.azro-preview-btn')) return;
+
+    const btn=document.createElement('button');
+    btn.type='button'; btn.className='azro-preview-btn';
+    btn.setAttribute('aria-label','Preview video');
+    btn.innerHTML='<span class="azro-preview-btn__icon" aria-hidden="true"></span><span class="azro-preview-btn__label">Preview video</span>';
+    try{ box.innerHTML=''; }catch(e){}
+    box.appendChild(btn);
+
+    btn.addEventListener('click', ()=>{
+      btn.remove();
+      const v=document.createElement('video');
+      v.className='azro-video__el';
+      v.setAttribute('muted',''); v.muted=true;
+      v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline','');
+      v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png');
+
+      const list = sourcesFor(title);
+      (list.length? list : ['main.mp4']).forEach(u=>{
+        const s=document.createElement('source');
+        s.src  = String(u).replace(/([^\/]+)$/,(m,b)=>encodeURIComponent(b));
+        s.type = /\.mov(\?.*)?$/i.test(u) ? 'video/quicktime' : 'video/mp4';
+        v.appendChild(s);
+      });
+      box.appendChild(v);
+      try{ v.play().catch(()=>{});}catch(_){}
+      try{ document.dispatchEvent(new CustomEvent('azro:modal:open',{detail:{modal},bubbles:true})); }catch(_){}
+    });
+  }
+
+  new MutationObserver(ensure).observe(modal,{attributes:true,attributeFilter:['open']});
+  document.addEventListener('azro:modal:open', ensure);
+  ensure();
+})();
+</script>
+
 </body>
 </html>
