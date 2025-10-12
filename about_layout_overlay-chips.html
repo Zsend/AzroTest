@@ -16,18 +16,7 @@ background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
 z-index:9998;
 pointer-events:none;
 }
-dialog#featureModal .azro-modal__media{position:relative}
-dialog#featureModal .azro-modal__media::after{display:none!important}
-dialog#featureModal .azro-preview-btn{
-  display:inline-flex;align-items:center;gap:.6rem;cursor:pointer;
-  border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.28);
-  padding:.7rem 1.0rem;border-radius:999px;color:#fff;font-weight:700;letter-spacing:.2px;
-  backdrop-filter:blur(2px);position:relative;z-index:9
-}
-dialog#featureModal .azro-preview-btn__icon{display:inline-block;width:0;height:0;
-  border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
-dialog#featureModal .azro-preview-btn__label{font-size:.95rem} 
-</style> <style id="critical-header-bg">
+dialog#featureModal .azro-modal__media{position:relative}dialog#featureModal .azro-modal__media::after{display:none!important}</style> <style id="critical-header-bg">
 /* critical header background — prevents first‑paint flash */
 .site-header{
 background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
@@ -127,43 +116,54 @@ transition:none !important;
 </div>
 <script defer="" src="script.js"></script>
 
-<script id="azro-modal-video-handler">
+<script id="azro-modal-video-immediate">
 (()=>{
-  const modal=document.getElementById('featureModal');
-  const box=document.getElementById('fmVideoBox');
-  const btn=document.getElementById('fmPreviewBtn');
-  if(!modal||!box||!btn) return;
+  const modal=document.getElementById('featureModal')||document.querySelector('dialog.azro-modal');
+  const box=document.getElementById('fmVideoBox')||(modal&&modal.querySelector('.azro-modal__media .azro-video'));
+  if(!modal||!box) return;
 
-  const EN = window.ENRICH || {};
-  const NORM = s => (s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim();
-  const NMAP = (()=>{ const m={}; for(const k in EN) m[NORM(k)]=EN[k]; return m; })();
-  const getSources = title => {
-    const e = NMAP[NORM(title)] || {};
-    const raw = String(e.video || 'main.mp4'); // supports "MOV|MP4" or just one
-    return raw.split('|').map(s=>s.trim()).filter(Boolean);
-  };
+  const EN = window.ENRICH||{};
+  const NORM=s=>(s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim();
+  const NMAP=(()=>{const m={};for(const k in EN)m[NORM(k)]=EN[k];return m;})();
 
-  btn.addEventListener('click', ()=>{
-    btn.remove();
-    const title=(document.getElementById('fmTitle')?.textContent||'').trim();
-    const list=getSources(title);
+  function sourcesFor(title){
+    const e=NMAP[NORM(title)]||{};
+    let raw=(e.video||'').toString().trim();
+    let list = raw? raw.split('|').map(s=>s.trim()).filter(Boolean) : [];
+    if(!list.length && title){
+      // conservative guess for .mov name from title; still add MP4 fallback
+      const guess=('videos/'+title.replace(/\s*\/\s*/g,' - ').replace(/[^\w\-()+& ]+/g,'').trim()+'.mov').replace(/\s+/g,' ');
+      list=[guess,'main.mp4'];
+    }
+    if(!list.length) list=['main.mp4'];
+    return list;
+  }
 
+  function putVideo(){
+    if(!modal.open) return;
+    const title=(modal.querySelector('#fmTitle')?.textContent||'').trim();
+    box.innerHTML='';
     const v=document.createElement('video');
     v.className='azro-video__el';
     v.setAttribute('muted',''); v.muted=true;
     v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline','');
     v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png');
 
-    (list.length?list:['main.mp4']).forEach(u=>{
+    const list=sourcesFor(title);
+    list.forEach(u=>{
       const s=document.createElement('source');
-      s.src = String(u).replace(/([^\/]+)$/,(m,b)=>encodeURIComponent(b)); // encode filename only
-      s.type = /\.mov(\?.*)?$/i.test(u) ? 'video/quicktime' : 'video/mp4';
+      s.src=String(u).replace(/([^\/]+)$/,(m,b)=>encodeURIComponent(b));
+      s.type=/\.mov(\?.*)?$/i.test(u)?'video/quicktime':'video/mp4';
       v.appendChild(s);
     });
     box.appendChild(v);
     try{ v.play().catch(()=>{});}catch(_){}
     try{ document.dispatchEvent(new CustomEvent('azro:modal:open',{detail:{modal},bubbles:true})); }catch(_){}
-  });
+  }
+
+  new MutationObserver(putVideo).observe(modal,{attributes:true,attributeFilter:['open']});
+  document.addEventListener('azro:modal:open', putVideo);
+  putVideo();
 })();
 </script>
 
