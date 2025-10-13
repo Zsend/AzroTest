@@ -158,14 +158,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#featureModal.azro-modal .azro-modal__title,
   dialog#featureModal.azro-modal .azro-modal__sub{ text-wrap: balance; }
 }
-</style>
-<style id="azro-video-mobile-restore">
-#featureModal .azro-modal__media .azro-video{ aspect-ratio:16/9; width:100%; }
-#featureModal .azro-video-wrap{ position:relative; width:100%; height:100%; background:#000; border-radius:12px; overflow:hidden; }
-#featureModal .azro-video__el{ width:100%; height:100%; object-fit:contain; display:block; background:#000; }
-#featureModal .azro-video__expand{ position:absolute; right:12px; bottom:12px; display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:999px; border:1px solid rgba(255,255,255,.25); background:rgba(15,23,42,.65); color:#fff; font-weight:700; font-size:1rem; -webkit-tap-highlight-color:transparent; }
-</style>
-</head>
+</style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -780,6 +773,7 @@ vid.addEventListener('click',openBig,{passive:true});
   const box = modal && (document.getElementById('fmVideoBox') || modal.querySelector('.azro-modal__media .azro-video'));
   if (!modal || !box) return;
 
+  // Lightweight lightbox for preview
   function ensureVidBox(){
     let dlg = document.querySelector('dialog.azro-vidbox');
     if (!dlg){
@@ -812,10 +806,11 @@ vid.addEventListener('click',openBig,{passive:true});
     return dlg;
   }
 
+  // Hide faint ring only inside this modal
   if (!document.getElementById('azro-about-video-css')){
     const st = document.createElement('style'); st.id = 'azro-about-video-css';
-    st.textContent = `#featureModal .azro-modal__media{position:relative}
-    #featureModal .azro-modal__media::after{display:none!important}`;
+    st.textContent = `dialog.azro-modal .azro-modal__media{position:relative}
+    dialog.azro-modal .azro-modal__media::after{display:none!important}`;
     document.head.appendChild(st);
   }
 
@@ -832,26 +827,27 @@ vid.addEventListener('click',openBig,{passive:true});
     if (!modal.open) return;
     const title = (modal.querySelector('#fmTitle')?.textContent || '').trim();
     box.innerHTML = '';
-    const wrap = document.createElement('div'); wrap.className = 'azro-video-wrap';
     const v = document.createElement('video');
     v.className = 'azro-video__el';
     v.setAttribute('muted',''); v.muted = true;
     v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline','');
-    v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png');
+    v.setAttribute('preload','metadata'); v.setAttribute('controls','');
     sourcesFor(title).forEach(u => {
       const s = document.createElement('source');
       s.src = String(u);
       s.type = /\.mov(\?.*)?$/i.test(u) ? 'video/quicktime' : 'video/mp4';
       v.appendChild(s);
     });
-    wrap.appendChild(v);
-    box.appendChild(wrap);
+    box.appendChild(v);
     try{ v.play().catch(()=>{});}catch(_){}
 
+    // Add overlay preview button (restores on mobile)
     const btn = document.createElement('button');
-    btn.className = 'azro-video__expand'; btn.type = 'button';
-    btn.setAttribute('aria-label','Open video'); btn.textContent = '↗';
-    wrap.appendChild(btn);
+    btn.className = 'azro-video__expand';
+    btn.type = 'button';
+    btn.setAttribute('aria-label','Open video');
+    btn.textContent = '↗';
+    box.appendChild(btn);
 
     const vb = ensureVidBox();
     const srcs = sourcesFor(title);
@@ -861,6 +857,7 @@ vid.addEventListener('click',openBig,{passive:true});
   }
 
   new MutationObserver(putVideo).observe(modal, { attributes: true, attributeFilter: ['open'] });
+  // In case modal is opened programmatically before this script executes
   if (modal.open) putVideo();
 })();
 </script>

@@ -61,13 +61,6 @@ transition:none !important;
   }
 }
 </style>
-
-<style id="azro-video-mobile-restore">
-#featureModal .azro-modal__media .azro-video{ aspect-ratio:16/9; width:100%; }
-#featureModal .azro-video-wrap{ position:relative; width:100%; height:100%; background:#000; border-radius:12px; overflow:hidden; }
-#featureModal .azro-video__el{ width:100%; height:100%; object-fit:contain; display:block; background:#000; }
-#featureModal .azro-video__expand{ position:absolute; right:12px; bottom:12px; display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:999px; border:1px solid rgba(255,255,255,.25); background:rgba(15,23,42,.65); color:#fff; font-weight:700; font-size:1rem; -webkit-tap-highlight-color:transparent; }
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -125,23 +118,53 @@ transition:none !important;
 
 <script id="azro-modal-video-immediate">
 (()=>{
-  function init(modal){
-    const box = document.getElementById('fmVideoBox') || (modal && modal.querySelector('.azro-modal__media .azro-video'));
-    if (!modal || !box) return;
+  const modal=document.getElementById('featureModal')||document.querySelector('dialog.azro-modal');
+  const box=document.getElementById('fmVideoBox')||(modal&&modal.querySelector('.azro-modal__media .azro-video'));
+  if(!modal||!box) return;
 
-    function ensureVidBox(){ let dlg=document.querySelector('dialog.azro-vidbox'); if(!dlg){ dlg=document.createElement('dialog'); dlg.className='azro-vidbox'; dlg.setAttribute('aria-label','Video preview'); dlg.innerHTML='<button class="azro-vidbox__close" aria-label="Close">×</button><div class="azro-vidbox__frame"></div>'; document.body.appendChild(dlg); const frame=dlg.querySelector('.azro-vidbox__frame'); dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); }); dlg.querySelector('.azro-vidbox__close').addEventListener('click',()=>dlg.close()); dlg.addEventListener('close',()=>{ try{frame.innerHTML='';}catch(_){}}); dlg.openBox=(srcList)=>{ frame.innerHTML=''; const v=document.createElement('video'); v.className='azro-vidbox__video'; v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.muted=true; v.setAttribute('playsinline',''); v.setAttribute('controls',''); v.setAttribute('preload','auto'); (Array.isArray(srcList)?srcList:[srcList]).forEach(u=>{ const s=document.createElement('source'); s.src=String(u); s.type=/\.mov(\?.*)?$/i.test(u)?'video/quicktime':'video/mp4'; v.appendChild(s); }); frame.appendChild(v); try{v.play().catch(()=>{});}catch(_){ } try{ dlg.showModal(); }catch(_){ } }; } return dlg; }
-
-    if (!document.getElementById('azro-about-video-css')){ const st=document.createElement('style'); st.id='azro-about-video-css'; st.textContent=`#featureModal .azro-modal__media{position:relative} #featureModal .azro-modal__media::after{display:none!important}`; document.head.appendChild(st); }
-
-    const EN=window.ENRICH||{}; const NORM=s=>(s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim(); const NMAP=Object.keys(EN).reduce((a,k)=>(a[NORM(k)]=EN[k],a),{}); const sourcesFor=title=>{ const e=NMAP[NORM(title)]||{}; const raw=(e.video||'main.mp4')+''; return raw.split('|').map(s=>s.trim()).filter(Boolean); };
-
-    function putVideo(){ if(!modal.open) return; const title=(modal.querySelector('#fmTitle')?.textContent||'').trim(); box.innerHTML=''; const wrap=document.createElement('div'); wrap.className='azro-video-wrap'; const v=document.createElement('video'); v.className='azro-video__el'; v.setAttribute('muted',''); v.muted=true; v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline',''); v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png'); sourcesFor(title).forEach(u=>{ const s=document.createElement('source'); s.src=String(u); s.type=/\.mov(\?.*)?$/i.test(u)?'video/quicktime':'video/mp4'; v.appendChild(s); }); wrap.appendChild(v); box.appendChild(wrap); try{v.play().catch(()=>{});}catch(_){ } const btn=document.createElement('button'); btn.className='azro-video__expand'; btn.type='button'; btn.setAttribute('aria-label','Open video'); btn.textContent='↗'; wrap.appendChild(btn); const vb=ensureVidBox(); const srcs=sourcesFor(title); const openPreview=()=>{ try{ vb.openBox(srcs); }catch(_){ } }; btn.addEventListener('click',openPreview,{passive:true}); v.addEventListener('click',openPreview,{passive:true}); }
-
-    new MutationObserver(putVideo).observe(modal,{attributes:true,attributeFilter:['open']});
+  // Hide faint ring only inside this modal
+  if(!document.getElementById('azro-about-video-css')){
+    const st=document.createElement('style'); st.id='azro-about-video-css';
+    st.textContent=`dialog.azro-modal .azro-modal__media{position:relative}
+    dialog.azro-modal .azro-modal__media::after{display:none!important}`;
+    document.head.appendChild(st);
   }
 
-  function waitForModal(){ let modal=document.getElementById('featureModal'); if(modal){ init(modal); return; } const mo=new MutationObserver(()=>{ modal=document.getElementById('featureModal'); if(modal){ mo.disconnect(); init(modal);} }); mo.observe(document.documentElement,{subtree:true,childList:true}); }
-  waitForModal();
+  const EN=window.ENRICH||{};
+  const NORM=s=>(s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim();
+  const NMAP=(()=>{const m={};for(const k in EN)m[NORM(k)]=EN[k];return m;})();
+
+  function sourcesFor(title){
+    const e=NMAP[NORM(title)]||{};
+    const raw=(e.video||'main.mp4')+''; // supports "MOV|MP4" or single source
+    const list=raw.split('|').map(s=>s.trim()).filter(Boolean);
+    return list.length? list : ['main.mp4'];
+  }
+
+  function putVideo(){
+    if(!modal.open) return;
+    const title=(modal.querySelector('#fmTitle')?.textContent||'').trim();
+    box.innerHTML='';
+    const v=document.createElement('video');
+    v.className='azro-video__el';
+    v.setAttribute('muted',''); v.muted=true;
+    v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline','');
+    v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png');
+
+    sourcesFor(title).forEach(u=>{
+      const s=document.createElement('source');
+      s.src=String(u).replace(/([^\/]+)$/,(m,b)=>encodeURIComponent(b)); // encode filename only
+      s.type=/\.mov(\?.*)?$/i.test(u)?'video/quicktime':'video/mp4';
+      v.appendChild(s);
+    });
+    box.appendChild(v);
+    try{ v.play().catch(()=>{});}catch(_){}
+    try{ document.dispatchEvent(new CustomEvent('azro:modal:open',{detail:{modal},bubbles:true})); }catch(_){}
+  }
+
+  new MutationObserver(putVideo).observe(modal,{attributes:true,attributeFilter:['open']});
+  document.addEventListener('azro:modal:open', putVideo);
+  putVideo();
 })();
 </script>
 
