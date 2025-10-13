@@ -702,7 +702,7 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
 
 /* Use unified arrow on any .azro-video and remove any duplicate icon overlays inside modal media */
 #featureModal .azro-modal__media [class*="arrow"], #trialModal .azro-modal__media [class*="arrow"],
-#featureModal .azro-modal__media [class*="expand"]:not(.azro-video__expand), #trialModal .azro-modal__media [class*="expand"],
+#featureModal .azro-modal__media [class*=\"expand\"]:not(.azro-video__expand), #trialModal .azro-modal__media [class*=\"expand\"]:not(.azro-video__expand),
 #featureModal .azro-modal__media .icon,           #trialModal .azro-modal__media .icon{ display:none !important; }
 .azro-video{ position:relative; overflow:hidden; }
 .azro-video::after{
@@ -917,9 +917,14 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   line-height:1.18;
 }
 
-/* v14: harden visibility for the mobile video preview button within the About feature modal */
-#featureModal .azro-modal__media .azro-video__expand{
+/* v19 video expand visibility */
+#featureModal .azro-modal__media .azro-video__expand,
+#trialModal .azro-modal__media .azro-video__expand{
   display:inline-flex !important;
   opacity:1 !important; visibility:visible !important;
   pointer-events:auto !important; z-index:11 !important;
+}
+@media (pointer:coarse), (max-width:1024px){
+  #featureModal .azro-modal__media .azro-video__expand,
+  #trialModal .azro-modal__media .azro-video__expand{ display:inline-flex !important; }
 }
