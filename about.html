@@ -678,35 +678,6 @@ if(e.video){
   .azro-vidbox__close{position:fixed;top:calc(2vh + 8px);right:calc(2vw + 8px);border:none;padding:.4rem .6rem;font-size:1.5rem;line-height:1;background:rgba(0,0,0,.55);color:#fff;border-radius:.5rem;cursor:pointer}
   @media (max-width:600px){dialog.azro-vidbox{height:min(96vh,72vh)}}
 </style>
-<style id="azro-video-mobile-restore">
-/* Restore the video preview button on mobile (About page feature modal) */
-@media (max-width: 1024px), (pointer: coarse) {
-  #featureModal .azro-video__expand {
-    display: inline-flex !important;
-  }
-}
-/* Robust, modern styling so it remains visible above the video */
-#featureModal .azro-video__expand{
-  position: absolute;
-  right: 12px; bottom: 12px;
-  display: inline-flex; align-items:center; gap:.4rem;
-  z-index: 10;
-  height: 42px; padding: 0 .75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.24);
-  background: rgba(15, 23, 42, .55);
-  -webkit-backdrop-filter: saturate(140%) blur(8px);
-  backdrop-filter: saturate(140%) blur(8px);
-  color: #fff; font-weight: 600; font-size: 0.95rem;
-  text-decoration: none;
-  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
-}
-#featureModal .azro-video__expand:focus-visible{ outline:2px solid #93c5fd; outline-offset:2px; }
-#featureModal .azro-video__expand:hover{ background: rgba(15,23,42,.7); }
-#featureModal .azro-video__el{ pointer-events: auto; }
-#featureModal .azro-video-wrap{ position:relative; }
-</style>
-
 <script id="azro-video-injector">
 (function(){
   function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn,{once:true}); }

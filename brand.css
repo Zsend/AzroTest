@@ -916,3 +916,18 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   text-wrap:balance;
   line-height:1.18;
 }
+
+
+
+/* === v13 FIX: restore video preview button visibility on mobile within About feature modal === */
+#featureModal .azro-modal__media .azro-video__expand{
+  display:inline-flex !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  z-index:11 !important;
+}
+@media (pointer:coarse), (max-width: 1024px){
+  #featureModal .azro-modal__media .azro-video__expand{ display:inline-flex !important; }
+}
+/* === end v13 FIX === */
