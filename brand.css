@@ -917,14 +917,19 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   line-height:1.18;
 }
 
-/* v19 video expand visibility */
+/* v20 modal video fixes: guaranteed visibility & interactions */
+#featureModal .azro-modal__media{ position:relative !important; }
+#featureModal .azro-modal__media::after{ display:none !important; }
+#trialModal   .azro-modal__media{ position:relative !important; }
+#trialModal   .azro-modal__media::after{ display:none !important; }
+
 #featureModal .azro-modal__media .azro-video__expand,
-#trialModal .azro-modal__media .azro-video__expand{
+#trialModal   .azro-modal__media .azro-video__expand{
   display:inline-flex !important;
   opacity:1 !important; visibility:visible !important;
   pointer-events:auto !important; z-index:11 !important;
 }
 @media (pointer:coarse), (max-width:1024px){
   #featureModal .azro-modal__media .azro-video__expand,
-  #trialModal .azro-modal__media .azro-video__expand{ display:inline-flex !important; }
+  #trialModal   .azro-modal__media .azro-video__expand{ display:inline-flex !important; }
 }

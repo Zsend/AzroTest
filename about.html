@@ -814,8 +814,8 @@ vid.addEventListener('click',openBig,{passive:true});
 
   if (!document.getElementById('azro-about-video-css')){
     const st = document.createElement('style'); st.id = 'azro-about-video-css';
-    st.textContent = `dialog.azro-modal .azro-modal__media{position:relative}
-    dialog.azro-modal .azro-modal__media::after{display:none!important}`;
+    st.textContent = `#featureModal .azro-modal__media{position:relative}
+    #featureModal .azro-modal__media::after{display:none!important}`;
     document.head.appendChild(st);
   }
 
@@ -837,7 +837,7 @@ vid.addEventListener('click',openBig,{passive:true});
     v.className = 'azro-video__el';
     v.setAttribute('muted',''); v.muted = true;
     v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline','');
-    v.setAttribute('preload','metadata'); v.setAttribute('controls','');
+    v.setAttribute('preload','metadata'); v.setAttribute('controls',''); v.setAttribute('poster','newchart.png');
     sourcesFor(title).forEach(u => {
       const s = document.createElement('source');
       s.src = String(u);
