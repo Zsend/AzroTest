@@ -1,0 +1,21 @@
+
+/* About Video Hotfix — scoped to #featureModal only */
+#featureModal .azro-modal__media{ display:grid !important; gap:12px; margin:1rem auto !important; }
+#featureModal .azro-modal__media .azro-video{ position:relative; width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden; }
+#featureModal .azro-modal__media video{ display:block !important; width:100% !important; height:100% !important; object-fit:contain !important; background:#000; }
+
+#featureModal .azro-video__expand{
+  position:absolute; right:12px; bottom:12px;
+  display:inline-flex !important; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:999px;
+  background:rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.25);
+  z-index:11;
+}
+
+/* Vidbox (lightbox) */
+dialog.azro-vidbox{ border:none; border-radius:12px; padding:0; background:transparent; width:min(96vw,1200px); height:min(96vh,70vh); }
+dialog.azro-vidbox[open]{ position:fixed; inset:0; margin:auto; display:block; }
+dialog.azro-vidbox::backdrop{ background:rgba(3,7,18,.68); }
+.azro-vidbox__frame{ width:100%; height:100%; background:#000; border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.azro-vidbox__video{ width:100%; height:100%; object-fit:contain; }
+.azro-vidbox__close{ position:absolute; right:10px; top:10px; width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45); color:#fff; font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; }
