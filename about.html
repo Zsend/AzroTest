@@ -548,11 +548,62 @@ if(e.video){
     const video=document.createElement('video');
     video.className='azro-video__el';
     video.src=e.video;
-    video.controls=true;
-    video.playsInline=true;
-    video.preload='metadata';
+    video.setAttribute('autoplay',''); video.autoplay = true;
+video.setAttribute('muted','');   video.muted = true;
+video.setAttribute('loop','');    video.loop = true;
+video.setAttribute('playsinline',''); video.playsInline = true;
+video.controls=true; video.preload='metadata';
     fmVideo.appendChild(video);
-  }else{
+  
+// Add expand button and open-in-dialog looped preview
+(function(){
+  // ensure vidbox <dialog> exists and CSS is injected once
+  function ensureVidBox(){
+    let dlg = document.querySelector('dialog.azro-vidbox');
+    if (!dlg){
+      dlg = document.createElement('dialog');
+      dlg.className = 'azro-vidbox';
+      dlg.innerHTML = '<button class="azro-vidbox__close" aria-label="Close">×</button><div class="azro-vidbox__frame"></div>';
+      document.body.appendChild(dlg);
+      const st = document.createElement('style');
+      st.textContent = `dialog.azro-vidbox{border:none;border-radius:12px;padding:0;background:transparent;width:min(96vw,1200px);height:min(96vh,70vh)}
+dialog.azro-vidbox[open]{position:fixed;inset:0;margin:auto;display:block}
+dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}
+.azro-vidbox__frame{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.azro-vidbox__video{width:100%;height:100%;object-fit:contain;background:#000}
+.azro-vidbox__close{position:absolute;right:10px;top:10px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}`;
+      document.head.appendChild(st);
+      dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+      dlg.querySelector('.azro-vidbox__close').addEventListener('click', () => dlg.close());
+      const frame = dlg.querySelector('.azro-vidbox__frame');
+      dlg.openBox = (src) => {
+        frame.innerHTML = '';
+        const v = document.createElement('video');
+        v.className = 'azro-vidbox__video';
+        v.setAttribute('autoplay',''); v.autoplay = true;
+        v.setAttribute('muted','');   v.muted = true;
+        v.setAttribute('loop','');    v.loop = true;
+        v.setAttribute('playsinline',''); v.playsInline = true;
+        v.setAttribute('controls',''); v.preload = 'auto';
+        const s = document.createElement('source'); s.src = String(src);
+        s.type = /\.mov(\?.*)?$/i.test(src) ? 'video/quicktime' : 'video/mp4'; v.appendChild(s);
+        frame.appendChild(v); try{ v.play().catch(()=>{});}catch(_){}
+        try{ dlg.showModal(); }catch(_){}
+      };
+    }
+    return dlg;
+  }
+  const vbox = ensureVidBox();
+  const expandBtn = document.createElement('button');
+  expandBtn.className = 'azro-video__expand';
+  expandBtn.type = 'button';
+  expandBtn.setAttribute('aria-label','Preview video');
+  expandBtn.textContent = '↗';
+  fmVideo.appendChild(expandBtn);
+  const openPreview = () => { try{ vbox.openBox(e.video); }catch(_){ /* no-op */ } };
+  expandBtn.addEventListener('click', openPreview, { passive:true });
+  video.addEventListener('click', openPreview, { passive:true });
+})();}else{
     const iframe=document.createElement('iframe');
     iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen','');
@@ -661,16 +712,6 @@ if(e.video){
   #featureModal .azro-video__el{width:100%;height:100%;object-fit:contain;display:block;background:#000}
   #featureModal .azro-video__expand{position:absolute;right:.5rem;bottom:.5rem;border:none;background:rgba(0,0,0,.45);color:#fff;padding:.35rem .55rem;border-radius:.5rem;font-size:.95rem;cursor:pointer;backdrop-filter:blur(2px)}
 
-  
-  /* Visible "Preview video" text button for mobile & desktop */
-  #featureModal .azro-modal__media .azro-video__previewBtn{
-    position:absolute; left:12px; bottom:12px; padding:.5rem .75rem;
-    border-radius:8px; border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.45); color:#fff; font:600 0.9rem system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    line-height:1; cursor:pointer; backdrop-filter:blur(2px); z-index:11;
-  }
-  #featureModal .azro-modal__media .azro-video__previewBtn:focus{ outline:2px solid rgba(255,255,255,.8); outline-offset:2px; }
-
   /* Backdrop */
   dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}
 
@@ -723,7 +764,8 @@ if(e.video){
         frame.innerHTML='';
         var v=document.createElement('video');
         v.className='azro-vidbox__video';
-        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline',''); v.setAttribute('loop',''); v.setAttribute('controls',''); v.setAttribute('preload','auto');
+        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline','');
+        v.setAttribute('controls',''); v.setAttribute('preload','auto');
         v.innerHTML='<source src="'+src+'">';
         frame.appendChild(v);
         try{ v.play().catch(function(){}); }catch(e){}
@@ -858,19 +900,10 @@ vid.addEventListener('click',openBig,{passive:true});
     btn.textContent = '↗';
     box.appendChild(btn);
 
-    // Accessible text button (restores legacy "Preview Video" behavior)
-    const btnText = document.createElement('button');
-    btnText.className = 'azro-video__previewBtn';
-    btnText.type = 'button';
-    btnText.textContent = 'Preview video';
-    btnText.setAttribute('aria-label','Open preview video');
-    box.appendChild(btnText);
-
     const vb = ensureVidBox();
     const srcs = sourcesFor(title);
     const openPreview = () => { try{ vb.openBox(srcs); }catch(_){} };
     btn.addEventListener('click', openPreview, { passive: true });
-    btnText.addEventListener('click', openPreview, { passive: true });
     v.addEventListener('click', openPreview, { passive: true });
   }
 
@@ -879,6 +912,15 @@ vid.addEventListener('click',openBig,{passive:true});
   if (modal.open) putVideo();
 })();
 </script>
+
+
+<style id="azro-video-expand-fix">
+/* scope: About feature modal only */
+#featureModal .azro-modal__media .azro-video__expand{
+  position:absolute; right:12px; bottom:12px; display:inline-flex !important; align-items:center; justify-content:center;
+  width:44px; height:44px; border-radius:999px; background:rgba(0,0,0,.5); color:#fff; border:1px solid rgba(255,255,255,.25); z-index:11;
+}
+</style>
 
 </body>
 </html>
