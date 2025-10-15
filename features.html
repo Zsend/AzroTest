@@ -105,9 +105,7 @@ transition:none !important;
         .azro-vidbox__video{width:100%;height:100%;object-fit:contain}
         .azro-vidbox__close{position:absolute;right:10px;top:10px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
         /* Neutralize transforms on mobile while modal open (iOS paint bug) */
-        @media (max-width:900px){
-          html.azr-modal-open *:not(dialog){ transform:none !important; }
-        }`;
+        @media (max-width:900px){ html.azr-modal-open *:not(dialog){ transform:none !important; } }`;
       document.head.appendChild(st);
     }
 
@@ -148,7 +146,6 @@ transition:none !important;
       }
       let box = media.querySelector('.azro-video');
       if(!box){ box = document.createElement('div'); box.className='azro-video'; media.appendChild(box); }
-      // If something is already there (iframe/video), do nothing
       if(box.querySelector('video,iframe')) return;
 
       const url1 = 'main.mp4';
@@ -168,10 +165,8 @@ transition:none !important;
       const tryPlay = ()=>{ try{ v.play().catch(()=>{});}catch(_){}};
       const swap = ()=>{
         if(fellBack) return;
-        fellBack=true;
-        try{ s.remove(); }catch(_){}
-        const s2 = document.createElement('source'); s2.src=url2; s2.type='video/mp4';
-        v.appendChild(s2); tryPlay();
+        fellBack=true; try{ s.remove(); }catch(_){}
+        const s2=document.createElement('source'); s2.src=url2; s2.type='video/mp4'; v.appendChild(s2); tryPlay();
       };
       v.addEventListener('error', swap, { once:true });
       setTimeout(()=>{ if(v.readyState<1) swap(); }, 1600);
@@ -185,7 +180,6 @@ transition:none !important;
       btn.addEventListener('click', openPrev, { passive:true });
       v.addEventListener('click', openPrev, { passive:true });
 
-      // Cleanup on close
       modal.addEventListener('close', ()=>{ document.documentElement.classList.remove('azr-modal-open'); }, { once:true });
     };
 
@@ -194,7 +188,28 @@ transition:none !important;
   });
 })();
 </script>
-<!-- END: ULTRA fail-safe modal video -->
+<!-- END: ULTRA fail-safe modal video (scoped) -->
+
+
+<style id="azro-text-center-fix">
+/* Scope: About feature modal only (avoid global changes) */
+#featureModal .azro-modal__text{
+  text-align:center !important;
+  margin-inline:auto;
+  max-width:min(80ch, 92vw);
+}
+/* Keep bullets readable while the block is centered */
+#featureModal .azro-modal__text > ul{
+  display:inline-block;
+  text-align:left;
+  margin:.75rem auto 0;
+  padding:0 0 0 1.25rem;
+}
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub{
+  text-wrap:balance;
+}
+</style>
 
 </body>
 </html>
