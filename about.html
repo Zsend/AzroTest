@@ -761,7 +761,10 @@ vid.addEventListener('click',openBig,{passive:true});
 (function(){
   var m = document.getElementById('featureModal');
   if(!m) return;
-  function sync(){ document.body.classList.toggle('azr-modal-open', !!m.open); }
+  function sync(){ var open = !!m.open;
+    document.documentElement.classList.toggle('azr-modal-open', open);
+    document.body.classList.toggle('azr-modal-open', open);
+  }
   new MutationObserver(sync).observe(m, {attributes:true, attributeFilter:['open']});
   sync();
 })();
