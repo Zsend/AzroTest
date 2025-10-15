@@ -47,12 +47,12 @@ transition:none !important;
 <link as="image" href="logo.webp" rel="preload"/>
 <link as="image" href="coolback.webp" rel="preload"/>
 <link as="image" href="newchart.webp" rel="preload"/>
-<link href="style.css" rel="stylesheet"/>
-<link href="brand.css" rel="stylesheet"/><!-- mobile helper CSS -->
+<link href="style.css" rel="stylesheet">
+<link href="brand.css" rel="stylesheet"><!-- mobile helper CSS -->
 <style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
 </style>
-<link href="https://USER.github.io/" rel="canonical"><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
-<link href="https://azrosystems.com/about.html" rel="canonical"> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools." name="description"/>
+<link href="https://azrosystems.com/about.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
 </link></link><style id="about-hero-mobile-tune">
 @media (max-width: 600px){
   .hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
@@ -91,7 +91,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   dialog#trialModal .azro-modal__body{ grid-template-columns: 1fr; }
 }
 </style>
-<style id="disclosure-spacing-fix">
+</style><style id="disclosure-spacing-fix">
 #disclosure{ padding: .9rem 1.0rem; }
 #disclosure p{ margin: .45rem 0; }
 #disclosure .methodology-link{ margin-top:.65rem; padding-top:.35rem; border-top:1px dashed rgba(255,255,255,.18); }
@@ -99,6 +99,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 <style id="azro-popup-close-hide">
   .azro-modal__head .azro-modal__close{ display:none !important; }
 </style>
+
 <style id="azro-trial-rightcol-inside">
   /* Shorter box */
   dialog#trialModal .azro-modal__media .azro-video{ aspect-ratio: auto !important; position: relative; padding: clamp(16px, 2vw, 22px); margin-bottom: 16px; }
@@ -123,42 +124,8 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
     dialog#trialModal .trial-instructions{ margin-top: 0; }
   }
 </style>
-<style>
-/* === About page — Feature modal mobile centering & scrollbar-hide (scoped) === */
-@media (max-width: 900px){
-  dialog#featureModal.azro-modal[open]{
-    position: fixed !important;
-    top: 50% !important; left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    margin: 0 !important; right: auto !important; bottom: auto !important;
-    width: min(94vw, 720px) !important; padding: 0 !important;
-  }
-  dialog#featureModal.azro-modal > form{ width: 100% !important; margin: 0 !important; }
 
-  /* Symmetric inner padding */
-  dialog#featureModal.azro-modal .azro-modal__head,
-  dialog#featureModal.azro-modal .azro-modal__scroll,
-  dialog#featureModal.azro-modal .azro-modal__foot{
-    box-sizing: border-box !important;
-    padding-inline: clamp(16px, 4vw, 22px) !important;
-    width: 100% !important; margin: 0 !important;
-  }
-
-  /* Hide scrollbar to remove visual right-bias while keeping scroll enabled */
-  dialog#featureModal.azro-modal .azro-modal__scroll{
-    -ms-overflow-style: none;       /* IE/Edge */
-    scrollbar-width: none;          /* Firefox */
-  }
-  dialog#featureModal.azro-modal .azro-modal__scroll::-webkit-scrollbar{
-    width: 0 !important; height: 0 !important; display: none !important;
-    background: transparent !important;
-  }
-
-  /* Typography balance */
-  dialog#featureModal.azro-modal .azro-modal__title,
-  dialog#featureModal.azro-modal .azro-modal__sub{ text-wrap: balance; }
-}
-</style></head>
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -183,27 +150,27 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
 </div>
 <figure class="media-card">
 <div class="media">
-<video aria-label="AZRO chart demonstration video" autoplay="" class="about-chart-video" loop="" muted="" playsinline="" preload="auto" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:inherit;background:#000;">
-<source src="main.mp4" type="video/mp4"/>
-<!-- Fallback image if video unsupported -->
+<picture>
+<source srcset="newchart.avif" type="image/avif"/>
+<source srcset="newchart.webp" type="image/webp"/>
 <img alt="Example chart with Major Top and Major Bottom labels" height="800" src="newchart.png" width="1400"/>
-</video>
+</picture>
 </div>
-<figcaption>Labels and risk markers display on your chart—instant alerts to your device/email from TradingView.</figcaption>
+<figcaption>Labels and risk markers display directly on your TradingView chart.</figcaption>
 </figure>
-<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on 10 years of historical data. Beats XRP HODL.<sup><a class="asterisk-link" href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank">*</a></sup></h2><p class="h-subhead" style="text-align:center;margin-top:.35rem;">A simple strategy rule—buy MAJOR Bottoms, sell MAJOR Tops.</p>
+<h2 class="h-subhead" style="text-align:center; margin-top:1rem; margin-bottom:.4rem;">Proven on 10 years of historical data. Beats XRP HODL.</h2><p class="h-subhead" style="text-align:center;margin-top:.35rem;">A simple strategy rule—buy MAJOR Bottoms, sell MAJOR Tops.</p>
 <div class="stat-grid">
 <div class="stat-card">
 <div class="value">~9x</div>
-<div class="label">more total profit vs. XRP buy-and-hold</div>
+<div class="label">Cross-pair Top Warning precedes alt drawdowns — Proven on 10 years of historical data. Beats XRP HODL.<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank" class="asterisk-link">*</a></sup></div>
 </div>
 <div class="stat-card">
 <div class="value">~6x</div>
-<div class="label">lower max drawdown vs. XRP buy-and-hold</div>
+<div class="label">Cross-pair Top Warning precedes alt drawdowns — Proven on 10 years of historical data. Beats XRP HODL.<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank" class="asterisk-link">*</a></sup></div>
 </div>
 <div class="stat-card">
 <div class="value">Market De-Risk</div>
-<div class="label">Cross-pair Top Warning precedes alt drawdowns</div>
+<div class="label">Cross-pair Top Warning precedes alt drawdowns — Proven on 10 years of historical data. Beats XRP HODL.<sup><a href="https://azrosystems.com/pdfs/methodology-overview.pdf" rel="noopener" target="_blank" class="asterisk-link">*</a></sup></div>
 </div>
 </div>
 <h2 class="h-subhead">On‑chart labels &amp; instant alerts</h2>
@@ -478,7 +445,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Instant push/email alert containing the feature name, price, and timestamp.",
         "Designed for decisive swing calls at cycle inflection points."
       ],
-      video: "main.mp4"
+      video: ""
     },
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
@@ -487,7 +454,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs well with your ladder entries/exits playbook.",
         "Alerts keep you proactive when momentum shifts."
       ],
-      video: "main.mp4"
+      video: ""
     },
     "LIGHT Tops & Bottoms (XRP)": {
       tagline: "Stay proactive between major turns.",
@@ -496,7 +463,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with medium‑term trend filters to avoid noise.",
         "Great for tactical trims/add‑backs."
       ],
-      video: "main.mp4"
+      video: ""
     },
     "Elevated Risk (XRP & Market‑Wide)": {
       tagline: "Persistent caution markers when conditions worsen.",
@@ -505,7 +472,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Optional market‑wide overlay to keep a broad read on conditions.",
         "Complements stop management and hedging rules."
       ],
-      video: "main.mp4"
+      video: ""
     },
     "Market‑Wide Top Warning (non‑XRP)": {
       tagline: "Optional overlay: when many coins meet top conditions, signal clear market‑wide caution.",
@@ -514,7 +481,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with Major/Radar to confirm risk‑off pivots.",
         "Useful for cross‑asset exposure management."
       ],
-      video: "main.mp4"
+      video: ""
     }
   };
 
@@ -529,7 +496,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
   function openModalFromCard(card){
     const title = (card.querySelector('h3')?.textContent || 'Feature').trim();
     const sub   = (card.querySelector('p')?.textContent || '').trim();
-    const e = ENRICH[title] || { tagline: sub, bullets: [], video: "main.mp4" };
+    const e = ENRICH[title] || { tagline: sub, bullets: [], video: "" };
 
     fmTitle.textContent = title;
     fmSub.textContent = e.tagline || sub;
@@ -541,25 +508,14 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
       fmBullets.appendChild(li);
     });
 
-    fmVideo.innerHTML='';
-if(e.video){
-  const isMp4=/\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
-  if(isMp4){
-    const video=document.createElement('video');
-    video.className='azro-video__el';
-    video.src=e.video;
-    video.controls=true;
-    video.playsInline=true;
-    video.preload='metadata';
-    fmVideo.appendChild(video);
-  }else{
-    const iframe=document.createElement('iframe');
-    iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-    iframe.setAttribute('allowfullscreen','');
-    iframe.src=e.video;
-    fmVideo.appendChild(iframe);
-  }
-}else{
+    fmVideo.innerHTML = '';
+    if(e.video){
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.src = e.video;
+      fmVideo.appendChild(iframe);
+    } else {
       const ph = document.createElement('div');
       ph.className = 'azro-video__ph';
       ph.innerHTML = 'Video placeholder (16:9)<br/>Add YouTube/Vimeo URL later.';
@@ -571,7 +527,11 @@ if(e.video){
 
   // Backdrop click closes
   modal.addEventListener('click', (e) => { if(e.target === modal) modal.close(); });
-  modal.addEventListener('close',()=>{const iframe=fmVideo.querySelector('iframe');if(iframe) iframe.src='about:blank';const vid=fmVideo.querySelector('video');if(vid){try{vid.pause();vid.currentTime=0;}catch(e){}}});
+  modal.addEventListener('close', () => {
+    // Stop playback by clearing iframe
+    const iframe = fmVideo.querySelector('iframe');
+    if(iframe) iframe.src = 'about:blank';
+  });
 
   cards.forEach(card => {
     card.addEventListener('click', () => openModalFromCard(card));
@@ -613,16 +573,17 @@ if(e.video){
 </div>
 <div class="azro-modal__media">
 <div aria-label="Free trial info" class="azro-video" role="region">
-<div class="azro-video__ph">On-chart labels and alerts for top/bottom timing—Early, Light, Radar, and Major—plus Risk Levels and Altcoin Warnings. All features included. 14-day access.</div>
+<div class="azro-video__ph">All features included. Early, Light, Radar, Major, Risk Levels and Altcoin Warnings. Access expires after 14 days.</div>
 </div>
 <div class="trial-instructions">
-<ul class="trial-steps-tight">
-<li><strong>No card required</strong> at Gumroad checkout.</li>
-<li>Add your <strong>TradingView username</strong> (works with a <strong>free account</strong>).</li>
-<li>Access within <strong>24 hours</strong>.</li>
-<li>In TradingView: <em>Indicators → Invite‑only Scripts</em> → <strong>AZRO Systems XRP Top/Bottom — Invite‑Only</strong>.</li>
-</ul>
+  <ul class="trial-steps-tight">
+    <li><strong>No card required</strong> at Gumroad checkout.</li>
+    <li>Add your <strong>TradingView username</strong> (works with a <strong>free account</strong>).</li>
+    <li>Access within <strong>24 hours</strong>.</li>
+    <li>In TradingView: <em>Indicators → Invite‑only Scripts</em> → <strong>AZRO Systems XRP Top/Bottom — Invite‑Only</strong>.</li>
+  </ul>
 </div>
+
 </div>
 </div>
 </div>
@@ -651,300 +612,9 @@ if(e.video){
   }
 })();
 </script>
+
 <script id="trialBtn2-wire">
 (function(){ var b=document.getElementById('freeTrialBtn2');var m=document.getElementById('trialModal'); if(b&&m){b.addEventListener('click',function(){m.showModal();});}})();
 </script>
-<script defer="" src="about-video-fullscreen.js"></script>
-<style id="azro-video-patch">
-  #featureModal .azro-modal__media .azro-video{aspect-ratio:16/9;width:100%}
-  #featureModal .azro-video-wrap{position:relative;width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden}
-  #featureModal .azro-video__el{width:100%;height:100%;object-fit:contain;display:block;background:#000}
-  #featureModal .azro-video__expand{position:absolute;right:.5rem;bottom:.5rem;border:none;background:rgba(0,0,0,.45);color:#fff;padding:.35rem .55rem;border-radius:.5rem;font-size:.95rem;cursor:pointer;backdrop-filter:blur(2px)}
-
-  /* Backdrop */
-  dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}
-
-  /* Center the dialog in a robust, modern way */
-  dialog.azro-vidbox{border:none;border-radius:12px;padding:0;background:transparent;
-    width:min(96vw,1200px);height:min(96vh,70vh)}
-
-  /* Ensure centering across engines */
-  dialog.azro-vidbox[open]{position:fixed;inset:0;margin:auto;display:block}
-  @supports not (inset: 0){ dialog.azro-vidbox[open]{top:50%;left:50%;transform:translate(-50%,-50%)} }
-
-  /* Inside frame */
-  .azro-vidbox__frame{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  .azro-vidbox__video{width:100%;height:100%;object-fit:contain}
-  .azro-vidbox__close{position:fixed;top:calc(2vh + 8px);right:calc(2vw + 8px);border:none;padding:.4rem .6rem;font-size:1.5rem;line-height:1;background:rgba(0,0,0,.55);color:#fff;border-radius:.5rem;cursor:pointer}
-  @media (max-width:600px){dialog.azro-vidbox{height:min(96vh,72vh)}}
-</style>
-<script id="azro-video-injector">
-(function(){
-  function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded',fn,{once:true}); }
-  onReady(function(){
-    var modal=document.getElementById('featureModal');
-    var titleEl=document.getElementById('fmTitle');
-    var videoBox=document.getElementById('fmVideoBox');
-    if(!modal||!titleEl||!videoBox) return;
-
-    function norm(s){return (s||'').toLowerCase()
-      .replace(/[\u2010-\u2015]/g,'-').replace(/[:/]/g,' ')
-      .replace(/&/g,'and').replace(/\s+/g,' ')
-      .replace(/[^a-z0-9 ()-]/g,'').trim();}
-
-    var titleToFile=new Map([
-      ["MAJOR Top / MAJOR Bottom (XRP)","MAJOR Top : MAJOR Bottom (XRP).mov"],
-      ["RADAR Top / RADAR Bottom (XRP)","RADAR Top : RADAR Bottom (XRP).mov"],
-      ["LIGHT Tops & Bottoms (XRP)","LIGHT Tops & Bottoms (XRP).mov"],
-      ["Elevated Risk (XRP & Market‑Wide)","Elevated Risk (XRP & Market‑Wide).mov"],
-      ["Market‑Wide Top Warning (non‑XRP)","Market‑Wide Top Warning (non‑XRP).mov"]
-    ]);
-    var nmap={}; titleToFile.forEach(function(file,title){ nmap[norm(title)]=file; });
-
-    function setupLightbox(){
-      var dlg=document.createElement('dialog'); dlg.id='azroVidLightbox'; dlg.className='azro-vidbox'; dlg.setAttribute('aria-label','Video preview');
-      dlg.innerHTML='<button class="azro-vidbox__close" aria-label="Close">×</button><div class="azro-vidbox__frame"></div>';
-      document.body.appendChild(dlg);
-      var frame=dlg.querySelector('.azro-vidbox__frame');
-      dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
-      dlg.querySelector('.azro-vidbox__close').addEventListener('click',function(){ dlg.close(); });
-      dlg.addEventListener('close',function(){ frame.innerHTML=''; });
-      return { open:function(src){
-        frame.innerHTML='';
-        var v=document.createElement('video');
-        v.className='azro-vidbox__video';
-        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.setAttribute('playsinline','');
-        v.setAttribute('controls',''); v.setAttribute('preload','auto');
-        v.innerHTML='<source src="'+src+'">';
-        frame.appendChild(v);
-        try{ v.play().catch(function(){}); }catch(e){}
-        try{ dlg.showModal(); }catch(e){}  // centered by CSS
-      }};
-    }
-    var lightbox=setupLightbox();
-
-    function injectVideo(){
-      var key=norm((titleEl.textContent||'').trim());
-      var file=nmap[key];
-      if(!file) return;
-      var src='videos/'+encodeURIComponent(file);
-
-      videoBox.innerHTML='';
-      var wrap=document.createElement('div');
-      wrap.className='azro-video-wrap';
-      wrap.innerHTML='<video class=\"azro-video__el\" autoplay muted loop playsinline preload=\"auto\"><source src=\""+src+"\" type=\""+(/\.mp4(\?.*)?$/i.test(src)?"video/mp4":"video/quicktime")+"\"></video><button class=\"azro-video__expand\" aria-label=\"Open video\">↗</button>';
-      videoBox.appendChild(wrap);
-
-      var vid=wrap.querySelector('video');
-      var btn=wrap.querySelector('.azro-video__expand');
-      function openBig(){ lightbox.open(src); }
-      
-      function ensureInlineAutoplay(el){
-        try{
-          el.muted = true; el.playsInline = true;
-          el.setAttribute('playsinline',''); el.setAttribute('webkit-playsinline','');
-          var p = el.play(); if(p && p.catch) p.catch(function(){});
-        }catch(e){}
-      }
-vid.addEventListener('click',openBig,{passive:true});
-      btn.addEventListener('click',openBig,{passive:true});
-      try{ vid.muted=true; vid.play().catch(function(){}); }catch(e){}
-    }
-
-    new MutationObserver(function(){ if(modal.open) setTimeout(injectVideo,0); })
-      .observe(modal,{attributes:true,attributeFilter:['open']});
-  });
-})();
-</script>
-
-<script id="azr-modal-toggle">
-(function(){
-  var m = document.getElementById('featureModal');
-  if(!m) return;
-  function sync(){ document.body.classList.toggle('azr-modal-open', !!m.open); }
-  new MutationObserver(sync).observe(m, {attributes:true, attributeFilter:['open']});
-  sync();
-})();
-</script>
-
-<script id="azro-modal-video-immediate">
-(()=>{
-  const modal = document.getElementById('featureModal') || document.querySelector('dialog.azro-modal');
-  const box = modal && (document.getElementById('fmVideoBox') || modal.querySelector('.azro-modal__media .azro-video'));
-  if (!modal || !box) return;
-
-  // Lightweight lightbox for preview
-  function ensureVidBox(){
-    let dlg = document.querySelector('dialog.azro-vidbox');
-    if (!dlg){
-      dlg = document.createElement('dialog');
-      dlg.className = 'azro-vidbox';
-      dlg.setAttribute('aria-label','Video preview');
-      dlg.innerHTML = '<button class="azro-vidbox__close" aria-label="Close">×</button><div class="azro-vidbox__frame"></div>';
-      document.body.appendChild(dlg);
-      const frame = dlg.querySelector('.azro-vidbox__frame');
-      dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-      dlg.querySelector('.azro-vidbox__close').addEventListener('click', () => dlg.close());
-      dlg.addEventListener('close', () => { try{ frame.innerHTML=''; }catch(_){} });
-      dlg.openBox = (srcList) => {
-        frame.innerHTML = '';
-        const v = document.createElement('video');
-        v.className = 'azro-vidbox__video';
-        v.setAttribute('autoplay',''); v.setAttribute('muted',''); v.muted = true;
-        v.setAttribute('playsinline',''); v.setAttribute('controls',''); v.setAttribute('preload','auto');
-        (Array.isArray(srcList) ? srcList : [srcList]).forEach(u => {
-          const s = document.createElement('source');
-          s.src = String(u);
-          s.type = /\.mov(\?.*)?$/i.test(u) ? 'video/quicktime' : 'video/mp4';
-          v.appendChild(s);
-        });
-        frame.appendChild(v);
-        try{ v.play().catch(()=>{}); }catch(_){}
-        try{ dlg.showModal(); }catch(_){}
-      };
-    }
-    return dlg;
-  }
-
-  // Hide faint ring only inside this modal
-  if (!document.getElementById('azro-about-video-css')){
-    const st = document.createElement('style'); st.id = 'azro-about-video-css';
-    st.textContent = `dialog.azro-modal .azro-modal__media{position:relative}
-    dialog.azro-modal .azro-modal__media::after{display:none!important}`;
-    document.head.appendChild(st);
-  }
-
-  const EN = window.ENRICH || {};
-  const NORM = s => (s||'').toLowerCase().replace(/[\u2010-\u2015]/g,'-').replace(/[\u00a0\u202f]/g,' ').replace(/\s+/g,' ').trim();
-  const NMAP = Object.keys(EN).reduce((a,k)=> (a[NORM(k)] = EN[k], a), {});
-  function sourcesFor(title){
-    const e = NMAP[NORM(title)] || {};
-    const raw = (e.video || 'main.mp4') + '';
-    return raw.split('|').map(s => s.trim()).filter(Boolean);
-  }
-
-  function putVideo(){
-    if (!modal.open) return;
-    const title = (modal.querySelector('#fmTitle')?.textContent || '').trim();
-    box.innerHTML = '';
-    const v = document.createElement('video');
-    v.className = 'azro-video__el';
-    v.setAttribute('muted',''); v.muted = true;
-    v.setAttribute('autoplay',''); v.setAttribute('loop',''); v.setAttribute('playsinline','');
-    v.setAttribute('preload','metadata'); v.setAttribute('controls','');
-    sourcesFor(title).forEach(u => {
-      const s = document.createElement('source');
-      s.src = String(u);
-      s.type = /\.mov(\?.*)?$/i.test(u) ? 'video/quicktime' : 'video/mp4';
-      v.appendChild(s);
-    });
-    box.appendChild(v);
-    try{ v.play().catch(()=>{});}catch(_){}
-
-    // Add overlay preview button (restores on mobile)
-    const btn = document.createElement('button');
-    btn.className = 'azro-video__expand';
-    btn.type = 'button';
-    btn.setAttribute('aria-label','Open video');
-    btn.textContent = '↗';
-    box.appendChild(btn);
-
-    const vb = ensureVidBox();
-    const srcs = sourcesFor(title);
-    const openPreview = () => { try{ vb.openBox(srcs); }catch(_){} };
-    btn.addEventListener('click', openPreview, { passive: true });
-    v.addEventListener('click', openPreview, { passive: true });
-  }
-
-  new MutationObserver(putVideo).observe(modal, { attributes: true, attributeFilter: ['open'] });
-  // In case modal is opened programmatically before this script executes
-  if (modal.open) putVideo();
-})();
-</script>
-
-
-<!-- START: ULTRA fail-safe modal video (scoped) -->
-<script>
-(()=>{
-  const onReady = (fn)=> (document.readyState!=='loading'?fn():document.addEventListener('DOMContentLoaded',fn,{once:true}));
-  onReady(()=>{
-    const modal = document.getElementById('featureModal') || document.querySelector('dialog.azro-modal');
-    if(!modal) return;
-    if(!document.getElementById('azro-ultra-css')){
-      const st = document.createElement('style'); st.id='azro-ultra-css';
-      st.textContent = `#featureModal .azro-modal__media .azro-video{position:relative;width:100%;background:#000;border-radius:12px;overflow:hidden;min-height:clamp(180px,52vw,420px)}@supports (aspect-ratio:16/9){#featureModal .azro-modal__media .azro-video{aspect-ratio:16/9}}#featureModal .azro-modal__media video{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;background:#000;opacity:1!important;visibility:visible!important}#featureModal .azro-video__expand{position:absolute;right:12px;bottom:12px;display:inline-flex!important;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25);z-index:11}dialog.azro-vidbox{border:none;border-radius:12px;padding:0;background:transparent;width:min(96vw,1200px);height:min(96vh,70vh)}dialog.azro-vidbox[open]{position:fixed;inset:0;margin:auto;display:block}dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}.azro-vidbox__frame{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}.azro-vidbox__video{width:100%;height:100%;object-fit:contain}.azro-vidbox__close{position:absolute;right:10px;top:10px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}`;
-      document.head.appendChild(st);
-    }
-    const ensureVidBox = ()=>{
-      let dlg = document.querySelector('dialog.azro-vidbox');
-      if(!dlg){
-        dlg = document.createElement('dialog'); dlg.className='azro-vidbox';
-        dlg.innerHTML = '<button class="azro-vidbox__close" aria-label="Close">×</button><div class="azro-vidbox__frame"></div>';
-        document.body.appendChild(dlg);
-        dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });
-        dlg.querySelector('.azro-vidbox__close').addEventListener('click',()=>dlg.close());
-        dlg.openBox = (src) => {
-          const frame = dlg.querySelector('.azro-vidbox__frame'); frame.innerHTML='';
-          const v = document.createElement('video');
-          v.className='azro-vidbox__video';
-          v.setAttribute('autoplay',''); v.autoplay=true;
-          v.setAttribute('muted',''); v.muted=true;
-          v.setAttribute('loop',''); v.loop=true;
-          v.setAttribute('playsinline',''); v.playsInline=true;
-          v.setAttribute('controls',''); v.preload='auto';
-          const s = document.createElement('source'); s.src=String(src); s.type=/\.mov(\?.*)?$/i.test(src)?'video/quicktime':'video/mp4';
-          v.appendChild(s); frame.appendChild(v);
-          try{ v.play().catch(()=>{});}catch(_){}; try{ dlg.showModal(); }catch(_){}
-        };
-      }
-      return dlg;
-    };
-    const putVideo=()=>{
-      if(!modal.open) return;
-      document.documentElement.classList.add('azr-modal-open');
-      let media=modal.querySelector('.azro-modal__media');
-      if(!media){ const sc=modal.querySelector('.azro-modal__scroll')||modal; const body=sc.querySelector('.azro-modal__body')||sc; media=document.createElement('div'); media.className='azro-modal__media'; body.appendChild(media); }
-      let box=media.querySelector('.azro-video'); if(!box){ box=document.createElement('div'); box.className='azro-video'; media.appendChild(box); }
-      if(box.querySelector('video,iframe')) return;
-      const url1='main.mp4', url2='videos/main.mp4';
-      const v=document.createElement('video'); v.className='azro-video__el';
-      v.setAttribute('autoplay',''); v.autoplay=true; v.setAttribute('muted',''); v.muted=true; v.setAttribute('loop',''); v.loop=true; v.setAttribute('playsinline',''); v.playsInline=true; v.setAttribute('controls',''); v.preload='metadata';
-      v.style.width='100%'; v.style.height='100%'; v.style.minHeight='inherit'; v.style.background='#000';
-      const s=document.createElement('source'); s.src=url1; s.type='video/mp4'; v.appendChild(s); box.appendChild(v);
-      let fb=false; const tryPlay=()=>{ try{ v.play().catch(()=>{});}catch(_){} }; const swap=()=>{ if(fb)return; fb=true; try{s.remove();}catch(_){ } const s2=document.createElement('source'); s2.src=url2; s2.type='video/mp4'; v.appendChild(s2); tryPlay(); };
-      v.addEventListener('error', swap, {once:true}); setTimeout(()=>{ if(v.readyState<1) swap(); }, 1600); tryPlay();
-      const vb=ensureVidBox(); const btn=document.createElement('button'); btn.className='azro-video__expand'; btn.type='button'; btn.setAttribute('aria-label','Preview video'); btn.textContent='↗'; box.appendChild(btn);
-      const openPrev=()=>{ try{ vb.openBox(fb?url2:url1); }catch(_){ } };
-      btn.addEventListener('click', openPrev, {passive:true}); v.addEventListener('click', openPrev, {passive:true});
-      modal.addEventListener('close', ()=>{ document.documentElement.classList.remove('azr-modal-open'); }, {once:true});
-    };
-    new MutationObserver(putVideo).observe(modal,{attributes:true,attributeFilter:['open']}); if(modal.open) putVideo();
-  });
-})();
-</script>
-<!-- END: ULTRA fail-safe modal video (scoped) -->
-
-
-<style id="azro-modal-center-lock">
-/* Scope: About feature modal only */
-#featureModal{ overflow-x:hidden !important; }
-#featureModal .azro-modal__scroll{
-  overflow-x: hidden !important;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  padding-inline: clamp(14px, 3vw, 24px);
-}
-/* Horizontally lock & center blocks */
-#featureModal .azro-modal__body{ margin-inline:auto; max-width:min(96vw, 1100px); }
-#featureModal .azro-modal__text{ text-align:center !important; margin-inline:auto; max-width:min(80ch, 92vw); }
-#featureModal .azro-modal__media{ width:100%; max-width:min(96vw, 1100px); margin-inline:auto; }
-/* Keep bullets readable while centered */
-#featureModal .azro-modal__text > ul{ display:inline-block; text-align:left; margin:.75rem auto 0; padding:0 0 0 1.25rem; }
-/* Prevent lateral jank caused by transforms/backdrop stacking on iOS */
-@media (max-width: 900px){
-  html.azr-modal-open *:not(dialog){ transform:none !important; }
-}
-</style>
-
 </body>
 </html>
