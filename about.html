@@ -863,24 +863,104 @@ vid.addEventListener('click',openBig,{passive:true});
 </script>
 
 
-<style id="azro-video-expand-fix">
-/* Scope: About feature modal only */
-#featureModal .azro-modal__media .azro-video__expand{
-  position:absolute; right:12px; bottom:12px;
-  display:inline-flex !important; align-items:center; justify-content:center;
-  width:44px; height:44px; border-radius:999px;
-  background:rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.25); z-index:11;
-}
-/* Vidbox lightbox */
-dialog.azro-vidbox{border:none;border-radius:12px;padding:0;background:transparent;width:min(96vw,1200px);height:min(96vh,70vh)}
-dialog.azro-vidbox[open]{position:fixed;inset:0;margin:auto;display:block}
-dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}
-.azro-vidbox__frame{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.azro-vidbox__video{width:100%;height:100%;object-fit:contain}
-.azro-vidbox__close{position:absolute;right:10px;top:10px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
-/* Ensure video visibility inside modal */
-#featureModal .azro-modal__media video{ display:block !important; width:100% !important; height:100% !important; object-fit:contain !important; background:#000; }
-</style>
+<!-- START: Minimal, fail-safe About Video injector (scoped to #featureModal only) -->
+<script>
+(function(){
+  function ready(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  ready(function(){
+    var modal = document.getElementById('featureModal') || document.querySelector('dialog.azro-modal');
+    if(!modal) return;
+    var media = modal.querySelector('.azro-modal__media');
+    function visibleCSS(){ try{
+      if(document.getElementById('azro-about-inline-css')) return;
+      var st = document.createElement('style'); st.id = 'azro-about-inline-css';
+      st.textContent = '#featureModal .azro-modal__media video{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;background:#000}'+
+        '#featureModal .azro-modal__media .azro-video{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}'+
+        '#featureModal .azro-video__expand{position:absolute;right:12px;bottom:12px;display:inline-flex!important;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25);z-index:11}'+
+        'dialog.azro-vidbox{border:none;border-radius:12px;padding:0;background:transparent;width:min(96vw,1200px);height:min(96vh,70vh)}dialog.azro-vidbox[open]{position:fixed;inset:0;margin:auto;display:block}dialog.azro-vidbox::backdrop{background:rgba(3,7,18,.68)}.azro-vidbox__frame{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}.azro-vidbox__video{width:100%;height:100%;object-fit:contain}.azro-vidbox__close{position:absolute;right:10px;top:10px;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}';
+      document.head.appendChild(st);
+    }catch(_){}}
+
+    function ensureVidBox(){
+      var dlg = document.querySelector('dialog.azro-vidbox');
+      if(!dlg){
+        dlg = document.createElement('dialog'); dlg.className = 'azro-vidbox';
+        dlg.innerHTML = '<button class="azro-vidbox__close" aria-label="Close">×</button><div class="azro-vidbox__frame"></div>';
+        document.body.appendChild(dlg);
+        dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+        dlg.querySelector('.azro-vidbox__close').addEventListener('click', function(){ dlg.close(); });
+        dlg.openBox = function(src){
+          var frame = dlg.querySelector('.azro-vidbox__frame');
+          frame.innerHTML = '';
+          var v = document.createElement('video');
+          v.className = 'azro-vidbox__video';
+          v.setAttribute('autoplay',''); v.autoplay = true;
+          v.setAttribute('muted','');   v.muted = true;
+          v.setAttribute('loop','');    v.loop = true;
+          v.setAttribute('playsinline',''); v.playsInline = true;
+          v.setAttribute('controls',''); v.preload = 'auto';
+          var s = document.createElement('source'); s.src = String(src); s.type = /\.mov(\?.*)?$/i.test(src) ? 'video/quicktime' : 'video/mp4';
+          v.appendChild(s);
+          frame.appendChild(v);
+          try{ v.play().catch(function(){});}catch(_){}
+          try{ dlg.showModal(); }catch(_){}
+        };
+      }
+      return dlg;
+    }
+
+    function putVideo(){
+      visibleCSS();
+      if(!modal.open) return;
+      var box = media && (media.querySelector('.azro-video') || (function(){ var d=document.createElement('div'); d.className='azro-video'; if(!media){ media = document.createElement('div'); media.className='azro-modal__media'; (modal.querySelector('.azro-modal__body')||modal).appendChild(media);} media.appendChild(d); return d; })());
+      if(!box) return;
+
+      // If a video or iframe already exists, do nothing (idempotent)
+      if(box.querySelector('video,iframe')) return;
+
+      var urlPrimary = 'main.mp4';         // root default
+      var urlFallback = 'videos/main.mp4'; // optional folder
+      var v = document.createElement('video'); v.className='azro-video__el';
+      v.setAttribute('autoplay',''); v.autoplay = true;
+      v.setAttribute('muted','');   v.muted   = true;
+      v.setAttribute('loop','');    v.loop    = true;
+      v.setAttribute('playsinline',''); v.playsInline = true;
+      v.setAttribute('controls',''); v.preload='metadata';
+      var s1 = document.createElement('source'); s1.src = urlPrimary; s1.type = 'video/mp4'; v.appendChild(s1);
+      box.appendChild(v);
+      var triedFallback = false;
+
+      function tryPlay(){
+        try{ v.play().catch(function(){ /* no-op */ }); }catch(_){}
+      }
+
+      // If the primary fails, swap to /videos/main.mp4 automatically
+      function onError(){
+        if(triedFallback) return;
+        triedFallback = true;
+        try{ s1.remove(); }catch(_){}
+        var s2 = document.createElement('source'); s2.src = urlFallback; s2.type = 'video/mp4'; v.appendChild(s2);
+        tryPlay();
+      }
+      v.addEventListener('error', onError, { once:true });
+      setTimeout(function(){ if(v.readyState < 1) onError(); }, 1800);
+      tryPlay();
+
+      // Expand button/lightbox
+      var vb = ensureVidBox();
+      var btn = document.createElement('button'); btn.className='azro-video__expand'; btn.type='button'; btn.setAttribute('aria-label','Preview video'); btn.textContent='↗';
+      box.appendChild(btn);
+      var openPrev = function(){ try{ vb.openBox(triedFallback ? urlFallback : urlPrimary); }catch(_){ } };
+      btn.addEventListener('click', openPrev, { passive:true });
+      v.addEventListener('click', openPrev, { passive:true });
+    }
+
+    new MutationObserver(putVideo).observe(modal, { attributes:true, attributeFilter:['open'] });
+    if(modal.open) putVideo();
+  });
+})();
+</script>
+<!-- END: Minimal, fail-safe About Video injector -->
 
 </body>
 </html>
