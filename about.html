@@ -546,27 +546,17 @@ if(e.video){
   const isMp4=/\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
   if(isMp4){
     const video=document.createElement('video');
-video.className='azro-video__el';
-video.src=e.video;
-video.autoplay=true; video.loop=true; video.muted=true; video.playsInline=true;
-video.setAttribute('autoplay',''); video.setAttribute('loop','');
-video.setAttribute('muted',''); video.setAttribute('playsinline','');
-video.controls=true; video.preload='auto';
-fmVideo.appendChild(video);
-// Try to start playback once the dialog is open
-const _autoPlay=()=>{
-  try{
-    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const p = video.play(); if(p && p.catch){ p.catch(()=>{ video.muted=true; video.setAttribute('muted',''); video.play().catch(()=>{}); }); }
-  }catch(_e){}
-};
-setTimeout(_autoPlay, 0);
-
+    video.className='azro-video__el';
+    video.src=e.video;
+    video.controls=true;
+    video.playsInline=true;
+    video.preload='metadata';
+    fmVideo.appendChild(video);
   }else{
     const iframe=document.createElement('iframe');
-iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen','');
-    iframe.src=(function(u){if(/youtube\.com|youtu\.be|vimeo\.com/i.test(u)){try{var url=new URL(u, location.href); var s=url.toString();if(s.match(/youtube\.com|youtu\.be/)){var vid=url.searchParams.get('v')||url.pathname.split('/').pop(); if(vid && !s.includes('playlist=')) s+=(s.includes('?')?'&':'?')+'playlist='+vid; s+=(s.includes('?')?'&':'?')+'autoplay=1&mute=1&playsinline=1&loop=1&rel=0&modestbranding=1';}else if(s.match(/vimeo\.com/)){s+=(s.includes('?')?'&':'?')+'autoplay=1&muted=1&loop=1&autopause=0&background=1&dnt=1';}return s;}catch(e){return u}})(e.video);
+    iframe.src=e.video;
     fmVideo.appendChild(iframe);
   }
 }else{
@@ -958,6 +948,7 @@ vid.addEventListener('click',openBig,{passive:true});
 
 
 <style id="feature-modal-mobile-final">
+/* Final mobile centering + overflow fix for About page modal */
 @media (max-width: 900px){
   dialog#featureModal.azro-modal .azro-modal__scroll{display:grid!important;justify-items:center!important}
   dialog#featureModal.azro-modal .azro-modal__body{grid-template-columns:1fr!important;place-items:center!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
