@@ -924,24 +924,16 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   pointer-events:auto !important; z-index:11 !important;
 }
 
-/* === Fix: Mobile centering for About page feature modal ==============
-   Scope: #featureModal only (About page) to avoid side effects
-   Rationale: On mobile, .azro-modal__body stacked content wasn't centered.
-   We use modern CSS Grid `place-items:center` to center text + media.
+/* === Feature Modal mobile centering (strict scope) ======================
+   Reason: Inline styles in about.html override brand.css. Use high
+   specificity on dialog#featureModal to center text + video on small screens.
    Date: 2025-10-17
-====================================================================== */
+========================================================================= */
 @media (max-width: 900px) {
-  #featureModal .azro-modal__body {
-    grid-template-columns: 1fr;
-    place-items: center;
-  }
-}
-@media (max-width: 640px) {
-  #featureModal .azro-modal__text,
-  #featureModal .azro-modal__media {
-    width: 100%;
-    max-width: 640px;
-    margin-inline: auto;
-  }
-  #featureModal .azro-video { margin-inline: auto; }
+  dialog#featureModal .azro-modal__scroll { display: grid !important; justify-items: center !important; }
+  dialog#featureModal .azro-modal__body { width: 100% !important; max-width: min(94vw, 720px) !important; grid-template-columns: 1fr !important; place-items: center !important; }
+  dialog#featureModal .azro-modal__text,
+  dialog#featureModal .azro-modal__media { width: 100% !important; margin-inline: auto !important; justify-self: center !important; }
+  dialog#featureModal .azro-video { width: 100% !important; margin-inline: auto !important; }
+  dialog#featureModal .azro-modal__text > ul { margin-inline: auto !important; }
 }
