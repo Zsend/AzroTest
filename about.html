@@ -567,6 +567,21 @@ if(e.video){
     }
 
     modal.showModal();
+  /* azro: autoplay fix */
+  try {
+    requestAnimationFrame(() => {
+      const vid = fmVideo.querySelector('video');
+      if (vid) {
+        // Ensure mobile-safe autoplay
+        vid.muted = true; vid.setAttribute('muted','');
+        vid.loop = true; vid.autoplay = true; vid.playsInline = true; vid.setAttribute('playsinline','');
+        if (!vid.getAttribute('preload')) vid.preload = 'auto';
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const p = vid.play(); if (p && p.catch) { p.catch(()=>{}); }
+      }
+    });
+  } catch(_e) {}
+
   }
 
   // Backdrop click closes
@@ -948,7 +963,6 @@ vid.addEventListener('click',openBig,{passive:true});
 
 
 <style id="feature-modal-mobile-final">
-/* Final mobile centering + overflow fix for About page modal */
 @media (max-width: 900px){
   dialog#featureModal.azro-modal .azro-modal__scroll{display:grid!important;justify-items:center!important}
   dialog#featureModal.azro-modal .azro-modal__body{grid-template-columns:1fr!important;place-items:center!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important}
