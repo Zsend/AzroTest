@@ -923,3 +923,25 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   opacity:1 !important; visibility:visible !important;
   pointer-events:auto !important; z-index:11 !important;
 }
+
+/* === Fix: Mobile centering for About page feature modal ==============
+   Scope: #featureModal only (About page) to avoid side effects
+   Rationale: On mobile, .azro-modal__body stacked content wasn't centered.
+   We use modern CSS Grid `place-items:center` to center text + media.
+   Date: 2025-10-17
+====================================================================== */
+@media (max-width: 900px) {
+  #featureModal .azro-modal__body {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+}
+@media (max-width: 640px) {
+  #featureModal .azro-modal__text,
+  #featureModal .azro-modal__media {
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  #featureModal .azro-video { margin-inline: auto; }
+}
