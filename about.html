@@ -546,13 +546,31 @@ if(e.video){
   const isMp4=/\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
   if(isMp4){
     const video=document.createElement('video');
-    video.className='azro-video__el';
-    video.src=e.video;
-    video.controls=true;
-    video.playsInline=true;
-    video.preload='metadata';
-    fmVideo.appendChild(video);
-  }else{
+video.className='azro-video__el';
+video.muted=true; video.setAttribute('muted','');
+video.autoplay=true; video.setAttribute('autoplay','');
+video.loop=true; video.setAttribute('loop','');
+video.playsInline=true; video.setAttribute('playsinline','');
+video.controls=true; video.preload='auto';
+// Source element with a sensible MIME type for MOV
+const srcEl=document.createElement('source');
+srcEl.src=e.video;
+srcEl.type=/(\.mov)(\?.*)?$/i.test(e.video)?'video/quicktime':'video/mp4';
+video.appendChild(srcEl);
+fmVideo.appendChild(video);
+// Robust autoplay: load() first, then attempt play when ready
+const tryPlay=()=>{ try{
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const p=video.play(); if(p&&p.catch){ p.catch(()=>{}); }
+}catch(_e){} };
+video.addEventListener('canplay', tryPlay, {once:true});
+video.addEventListener('loadeddata', tryPlay, {once:true});
+video.load();
+// Ensure loop even in full screen on some iOS versions
+video.addEventListener('ended',()=>{ try{ video.currentTime=0; video.play().catch(()=>{}); }catch(_e){} });
+// iOS full-screen edge cases
+video.addEventListener('webkitendfullscreen',()=>{ try{ video.currentTime=0; video.play().catch(()=>{}); }catch(_e){} });
+}else{
     const iframe=document.createElement('iframe');
     iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen','');
