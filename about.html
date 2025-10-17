@@ -566,7 +566,36 @@ if(e.video){
       fmVideo.appendChild(ph);
     }
 
-    modal.showModal();
+    function openVidbox(src){
+  let box = document.querySelector('dialog.azro-vidbox');
+  if(!box){
+    box = document.createElement('dialog');
+    box.className = 'azro-vidbox';
+    const frame = document.createElement('div');
+    frame.className = 'azro-vidbox__frame';
+    box.appendChild(frame);
+    const closeBtn = document.createElement('button');
+    closeBtn.className='azro-vidbox__close';
+    closeBtn.textContent='Close';
+    closeBtn.addEventListener('click', ()=> box.close());
+    box.appendChild(closeBtn);
+    box.addEventListener('click', (e)=>{ if(e.target===box) box.close(); });
+    document.body.appendChild(box);
+  }
+  const frame = box.querySelector('.azro-vidbox__frame');
+  frame.innerHTML='';
+  if(/\.(mp4|webm|ogg)(\?.*)?$/i.test(src)){
+    const v = document.createElement('video');
+    v.className='azro-vidbox__video'; v.src=src; v.autoplay=true; v.loop=true; v.controls=true; v.playsInline=true;
+    frame.appendChild(v);
+  }else{
+    const i = document.createElement('iframe');
+    i.className='azro-vidbox__video'; i.src=src; i.allow='autoplay; fullscreen; picture-in-picture'; i.frameBorder='0';
+    frame.appendChild(i);
+  }
+  box.showModal();
+}
+modal.showModal();
   }
 
   // Backdrop click closes
