@@ -924,16 +924,35 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   pointer-events:auto !important; z-index:11 !important;
 }
 
-/* === Feature Modal mobile centering (strict scope) ======================
-   Reason: Inline styles in about.html override brand.css. Use high
-   specificity on dialog#featureModal to center text + video on small screens.
+/* === Feature Modal mobile centering (max specificity, overflow-safe) ===
+   This targets ONLY the About page modal (#featureModal) and ensures the
+   text + video center correctly on small screens while preventing width
+   overflow inside the padded scroll container.
    Date: 2025-10-17
 ========================================================================= */
 @media (max-width: 900px) {
-  dialog#featureModal .azro-modal__scroll { display: grid !important; justify-items: center !important; }
-  dialog#featureModal .azro-modal__body { width: 100% !important; max-width: min(94vw, 720px) !important; grid-template-columns: 1fr !important; place-items: center !important; }
-  dialog#featureModal .azro-modal__text,
-  dialog#featureModal .azro-modal__media { width: 100% !important; margin-inline: auto !important; justify-self: center !important; }
-  dialog#featureModal .azro-video { width: 100% !important; margin-inline: auto !important; }
-  dialog#featureModal .azro-modal__text > ul { margin-inline: auto !important; }
+  dialog#featureModal#featureModal.azro-modal .azro-modal__scroll {
+    display: grid !important;
+    justify-items: center !important;
+  }
+  dialog#featureModal#featureModal.azro-modal .azro-modal__body {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    place-items: center !important;
+  }
+  dialog#featureModal#featureModal.azro-modal .azro-modal__text,
+  dialog#featureModal#featureModal.azro-modal .azro-modal__media {
+    width: 100% !important;
+    margin-inline: auto !important;
+    justify-self: center !important;
+  }
+  dialog#featureModal#featureModal.azro-modal .azro-modal__text > ul {
+    margin-inline: auto !important;
+  }
+  dialog#featureModal#featureModal.azro-modal .azro-video {
+    width: 100% !important;
+    margin-inline: auto !important;
+  }
 }
