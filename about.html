@@ -546,24 +546,13 @@ if(e.video){
   const isMp4=/\.(mp4|webm|ogg)(\?.*)?$/i.test(e.video);
   if(isMp4){
     const video=document.createElement('video');
-video.className='azro-video__el';
-video.muted=true; video.setAttribute('muted','');
-video.autoplay=true; video.setAttribute('autoplay','');
-video.loop=true; video.setAttribute('loop','');
-video.playsInline=true; video.setAttribute('playsinline','');
-video.controls=false; video.preload='auto';
-const srcEl=document.createElement('source'); srcEl.src=e.video;
-srcEl.type=/(\.mov)(\?.*)?$/i.test(e.video)?'video/quicktime':'video/mp4';
-video.appendChild(srcEl);
-fmVideo.appendChild(video);
-// Synchronous attempt to start while still in click gesture
-try{ if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)) { video.play().catch(()=>{}); } }catch(_e){}
-// Reveal controls after playback begins (avoids some iOS/autoplay quirks)
-video.addEventListener('playing',()=>{ video.controls=true; }, {once:true});
-// Ensure loop even in full screen
-video.addEventListener('ended',()=>{ try{ video.currentTime=0; video.play().catch(()=>{}); }catch(_e){} });
-video.addEventListener('webkitendfullscreen',()=>{ try{ video.currentTime=0; video.play().catch(()=>{}); }catch(_e){} });
-}else{
+    video.className='azro-video__el';
+    video.src=e.video;
+    video.controls=true;
+    video.playsInline=true;
+    video.preload='metadata';
+    fmVideo.appendChild(video);
+  }else{
     const iframe=document.createElement('iframe');
     iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen','');
@@ -578,17 +567,29 @@ video.addEventListener('webkitendfullscreen',()=>{ try{ video.currentTime=0; vid
     }
 
     modal.showModal();
-  /* azro: autoplay fix */
-  try { requestAnimationFrame(() => {
+  /* azro: autoplay + encode fix */
+  try {
     const vid = fmVideo.querySelector('video');
     if (vid) {
-      vid.muted = true; vid.setAttribute('muted','');
-      vid.loop = true; vid.autoplay = true; vid.playsInline = true; vid.setAttribute('playsinline','');
-      if (!vid.getAttribute('preload')) vid.preload = 'auto';
-      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const p = vid.play(); if (p && p.catch) { p.catch(()=>{}); }
+      // Use encoded URL to handle spaces/colons/parentheses
+      const raw = (ENRICH[fmTitle.textContent]?.video || 'main.mp4') + '';
+      const src = encodeURI(raw);
+      if (!vid.querySelector('source')) {
+        const s=document.createElement('source'); s.src=src; s.type=/\.mov(\?.*)?$/i.test(src)?'video/quicktime':'video/mp4';
+        vid.appendChild(s);
+      } else { vid.querySelector('source').src=src; }
+      vid.muted=true; vid.setAttribute('muted','');
+      vid.loop=true; vid.setAttribute('loop','');
+      vid.autoplay=true; vid.setAttribute('autoplay','');
+      vid.playsInline=true; vid.setAttribute('playsinline','');
+      if (!vid.getAttribute('preload')) vid.preload='auto';
+      const start=()=>{ if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)) { const p=vid.play(); if(p&&p.catch){p.catch(()=>{});} } };
+      if (vid.readyState>=2) start(); else { vid.addEventListener('loadeddata',start,{once:true}); vid.load(); }
+      // Fullscreen loop resilience
+      vid.addEventListener('ended',()=>{ try{ vid.currentTime=0; vid.play().catch(()=>{}); }catch(_e){} });
+      vid.addEventListener('webkitendfullscreen',()=>{ try{ vid.currentTime=0; vid.play().catch(()=>{}); }catch(_e){} });
     }
-  }); } catch(_e) {}
+  } catch(_e) {}
 
   }
 
