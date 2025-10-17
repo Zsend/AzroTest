@@ -478,7 +478,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Instant push/email alert containing the feature name, price, and timestamp.",
         "Designed for decisive swing calls at cycle inflection points."
       ],
-      video: "main.mp4"
+      video: "videos/MAJOR Top : MAJOR Bottom (XRP).mov"
     },
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
@@ -487,7 +487,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs well with your ladder entries/exits playbook.",
         "Alerts keep you proactive when momentum shifts."
       ],
-      video: "main.mp4"
+      video: "videos/RADAR Top : RADAR Bottom (XRP).mov"
     },
     "LIGHT Tops & Bottoms (XRP)": {
       tagline: "Stay proactive between major turns.",
@@ -496,7 +496,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with medium‑term trend filters to avoid noise.",
         "Great for tactical trims/add‑backs."
       ],
-      video: "main.mp4"
+      video: "videos/LIGHT Tops & Bottoms (XRP).mov"
     },
     "Elevated Risk (XRP & Market‑Wide)": {
       tagline: "Persistent caution markers when conditions worsen.",
@@ -505,7 +505,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Optional market‑wide overlay to keep a broad read on conditions.",
         "Complements stop management and hedging rules."
       ],
-      video: "main.mp4"
+      video: "videos/Elevated Risk (XRP & Market‑Wide).mov"
     },
     "Market‑Wide Top Warning (non‑XRP)": {
       tagline: "Optional overlay: when many coins meet top conditions, signal clear market‑wide caution.",
@@ -514,7 +514,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with Major/Radar to confirm risk‑off pivots.",
         "Useful for cross‑asset exposure management."
       ],
-      video: "main.mp4"
+      video: "videos/Market‑Wide Top Warning (non‑XRP).mov"
     }
   };
 
@@ -568,19 +568,16 @@ if(e.video){
 
     modal.showModal();
   /* azro: autoplay fix */
-  try {
-    requestAnimationFrame(() => {
-      const vid = fmVideo.querySelector('video');
-      if (vid) {
-        // Ensure mobile-safe autoplay
-        vid.muted = true; vid.setAttribute('muted','');
-        vid.loop = true; vid.autoplay = true; vid.playsInline = true; vid.setAttribute('playsinline','');
-        if (!vid.getAttribute('preload')) vid.preload = 'auto';
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        const p = vid.play(); if (p && p.catch) { p.catch(()=>{}); }
-      }
-    });
-  } catch(_e) {}
+  try { requestAnimationFrame(() => {
+    const vid = fmVideo.querySelector('video');
+    if (vid) {
+      vid.muted = true; vid.setAttribute('muted','');
+      vid.loop = true; vid.autoplay = true; vid.playsInline = true; vid.setAttribute('playsinline','');
+      if (!vid.getAttribute('preload')) vid.preload = 'auto';
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const p = vid.play(); if (p && p.catch) { p.catch(()=>{}); }
+    }
+  }); } catch(_e) {}
 
   }
 
