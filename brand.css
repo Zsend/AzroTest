@@ -924,44 +924,9 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   pointer-events:auto !important; z-index:11 !important;
 }
 
-/* === Feature Modal mobile centering (overflow-safe + box-sizing) ======
-   Only affects dialog#featureModal on the About page. Ensures the text
-   and media center and prevents right-edge overflow caused by padding
-   and content-box sizing on nested elements.
-   Date: 2025-10-17
-========================================================================= */
+/* Preview video variant: keep the modal box centered and overflow-safe */
 @media (max-width: 900px) {
-  dialog#featureModal#featureModal.azro-modal .azro-modal__scroll {
-    display: grid !important;
-    justify-items: center !important;
-  }
-  dialog#featureModal#featureModal.azro-modal .azro-modal__body {
-    box-sizing: border-box !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    grid-template-columns: 1fr !important;
-    place-items: center !important;
-  }
-  dialog#featureModal#featureModal.azro-modal .azro-modal__text,
-  dialog#featureModal#featureModal.azro-modal .azro-modal__media {
-    box-sizing: border-box !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    margin-inline: auto !important;
-    justify-self: center !important;
-  }
-  dialog#featureModal#featureModal.azro-modal .azro-video {
-    box-sizing: border-box !important;
-    inline-size: 100% !important;
-    max-inline-size: 100% !important;
-    margin-inline: auto !important;
-  }
-  dialog#featureModal#featureModal.azro-modal .azro-video iframe,
-  dialog#featureModal#featureModal.azro-modal .azro-video video {
-    inline-size: 100% !important; block-size: 100% !important;
-  }
-  /* Keep bullet block centered as a unit */
-  dialog#featureModal#featureModal.azro-modal .azro-modal__text > ul {
-    margin-inline: auto !important;
-  }
+  dialog#featureModal#featureModal.azro-modal .azro-modal__scroll{display:grid !important;justify-items:center !important}
+  dialog#featureModal#featureModal.azro-modal .azro-modal__body{box-sizing:border-box !important;inline-size:100% !important;max-inline-size:100% !important;grid-template-columns:1fr !important;place-items:center !important}
+  dialog#featureModal#featureModal.azro-modal .azro-modal__media,dialog#featureModal#featureModal.azro-modal .azro-modal__text{box-sizing:border-box !important;inline-size:100% !important;max-inline-size:100% !important;margin-inline:auto !important;justify-self:center !important}
 }
