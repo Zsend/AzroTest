@@ -478,7 +478,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Instant push/email alert containing the feature name, price, and timestamp.",
         "Designed for decisive swing calls at cycle inflection points."
       ],
-      video: "videos/MAJOR Top : MAJOR Bottom (XRP).mov"
+      video: "main.mp4"
     },
     "RADAR Top / RADAR Bottom (XRP)": {
       tagline: "Earlier heads‑ups for planned scale‑ins/outs and mid‑cycle moves.",
@@ -487,7 +487,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs well with your ladder entries/exits playbook.",
         "Alerts keep you proactive when momentum shifts."
       ],
-      video: "videos/RADAR Top : RADAR Bottom (XRP).mov"
+      video: "main.mp4"
     },
     "LIGHT Tops & Bottoms (XRP)": {
       tagline: "Stay proactive between major turns.",
@@ -496,7 +496,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with medium‑term trend filters to avoid noise.",
         "Great for tactical trims/add‑backs."
       ],
-      video: "videos/LIGHT Tops & Bottoms (XRP).mov"
+      video: "main.mp4"
     },
     "Elevated Risk (XRP & Market‑Wide)": {
       tagline: "Persistent caution markers when conditions worsen.",
@@ -505,7 +505,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Optional market‑wide overlay to keep a broad read on conditions.",
         "Complements stop management and hedging rules."
       ],
-      video: "videos/Elevated Risk (XRP & Market‑Wide).mov"
+      video: "main.mp4"
     },
     "Market‑Wide Top Warning (non‑XRP)": {
       tagline: "Optional overlay: when many coins meet top conditions, signal clear market‑wide caution.",
@@ -514,7 +514,7 @@ dialog#trialModal .azro-modal__body{ gap: clamp(16px, 2vw, 24px); }
         "Pairs with Major/Radar to confirm risk‑off pivots.",
         "Useful for cross‑asset exposure management."
       ],
-      video: "videos/Market‑Wide Top Warning (non‑XRP).mov"
+      video: "main.mp4"
     }
   };
 
@@ -551,25 +551,14 @@ video.muted=true; video.setAttribute('muted','');
 video.loop=true; video.setAttribute('loop','');
 video.autoplay=true; video.setAttribute('autoplay','');
 video.playsInline=true; video.setAttribute('playsinline','');
-video.controls=false; video.preload='auto';
-const raw=e.video+''; const encoded=raw.split('/').map(encodeURIComponent).join('/');
-const srcEl=document.createElement('source'); srcEl.src=encoded; srcEl.type=/(\.mov)(\?.*)?$/i.test(raw)?'video/quicktime':'video/mp4';
-video.appendChild(srcEl);
+video.controls=true; video.preload='auto';
+// Fast-start preview source first
+const s1=document.createElement('source'); s1.src='main.mp4'; s1.type='video/mp4'; video.appendChild(s1);
+// Original MOV as secondary (browser may switch if playable)
+const s2=document.createElement('source'); const _raw=e.video+''; s2.src=encodeURI(_raw); s2.type=/(\.mov)(\?.*)?$/i.test(_raw)?'video/quicktime':'video/mp4'; video.appendChild(s2);
 fmVideo.appendChild(video);
-// 1) Try to play synchronously in the click gesture
-try{ if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)) { video.play().catch(()=>{}); } }catch(_e){}
-// 2) After metadata, jump a fraction of a second to avoid black leader, then play
-video.addEventListener('loadedmetadata',()=>{
-  try{ if(video.duration>0){ video.currentTime=Math.min(0.12, video.duration/50); } }catch(_e){}
-});
-const ensurePlay=()=>{ try{ const p=video.play(); if(p&&p.catch){p.catch(()=>{});} }catch(_e){} };
-video.addEventListener('loadeddata',ensurePlay,{once:true});
-video.addEventListener('canplay',ensurePlay,{once:true});
-// 3) Reveal controls once actually playing (prevents some iOS quirks)
-video.addEventListener('playing',()=>{ video.controls=true; },{once:true});
-// 4) Loop resilience incl. fullscreen
-video.addEventListener('ended',()=>{ try{ video.currentTime=0.05; video.play().catch(()=>{});}catch(_e){} });
-video.addEventListener('webkitendfullscreen',()=>{ try{ video.currentTime=0.05; video.play().catch(()=>{});}catch(_e){} });
+try{ if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){ const p=video.play(); if(p&&p.catch){p.catch(()=>{});} } }catch(_e){}
+video.addEventListener('ended',()=>{ try{ video.currentTime=0; video.play().catch(()=>{});}catch(_e){} });
 }else{
     const iframe=document.createElement('iframe');
     iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
