@@ -2,8 +2,6 @@
 
 <html lang="en">
 <head>
-<link id="preload-mainmp4" rel="preload" as="video" href="main.mp4" type="video/mp4"/>
-
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
 /* placeholder to eliminate background flash before header mounts */
@@ -961,12 +959,27 @@ vid.addEventListener('click',openBig,{passive:true});
   dialog#featureModal.azro-modal .azro-video iframe, dialog#featureModal.azro-modal .azro-video video{width:100%!important;height:100%!important;display:block!important}
 }
 </style>
-<script id="about-modal-loop-guard">
+<script id="about-modal-loop-h264pref">
 (()=>{
   const onReady=(fn)=>document.readyState!=='loading'?fn():document.addEventListener('DOMContentLoaded',fn,{once:true});
   onReady(()=>{
     const modal=document.getElementById('featureModal')||document.querySelector('dialog#featureModal');
     if(!modal) return;
+
+    function buildSources(v, primary, fallback){
+      // Prefer H.264/AAC when available; iOS/Safari is picky.
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) || 'webkitAudioContext' in window;
+      const h264Type = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+      const preferH264 = isSafari || (v.canPlayType && v.canPlayType(h264Type).length);
+      const first = preferH264 ? fallback : primary;   // default file is primary (your existing main.mp4)
+      const second= preferH264 ? primary : fallback;   // optional H.264 file: main_h264.mp4
+
+      const s1=document.createElement('source'); s1.src=first; s1.type='video/mp4'; v.appendChild(s1);
+      const addSecond=()=>{ if(!v.querySelector('source[data-fbk]')){ const s2=document.createElement('source'); s2.src=second; s2.type='video/mp4'; s2.setAttribute('data-fbk','1'); v.appendChild(s2); try{v.load();}catch(_){}}};
+      s1.addEventListener('error', addSecond, {once:true});
+      // Also attach quickly in case of 404
+      setTimeout(addSecond, 250);
+    }
 
     function tag(v){
       try{ v.setAttribute('playsinline',''); v.playsInline=true; v.webkitPlaysInline=true; }catch(_){}
@@ -974,28 +987,34 @@ vid.addEventListener('click',openBig,{passive:true});
       try{ v.setAttribute('autoplay',''); v.autoplay=true; }catch(_){}
       try{ v.setAttribute('loop',''); v.loop=true; }catch(_){}
       try{ v.preload='auto'; }catch(_){}
-      try{ if(!v.poster) v.poster='chart.webp'; }catch(_){}
     }
     function kick(v){
       const play=()=>{ try{ v.play().catch(()=>{}); }catch(_){}};
-      try{ if(v.currentTime<0.05) v.currentTime=0.08; }catch(_){}
-      v.addEventListener('loadedmetadata',()=>{ try{ v.currentTime=0.08; }catch(_){}; play(); },{once:true});
+      v.addEventListener('loadedmetadata',()=>{ try{ if(v.currentTime<0.05) v.currentTime=0.08; }catch(_){}; play(); }, {once:true});
       v.addEventListener('loadeddata', play, {once:true});
       v.addEventListener('canplay', play, {once:true});
-      requestAnimationFrame(play); setTimeout(play,160); setTimeout(play,480);
-      v.addEventListener('pause', ()=>{ if(!v.ended) play(); }, {passive:true});
-      v.addEventListener('ended', ()=>{ try{ v.currentTime=0.08; play(); }catch(_){} });
-      // last‑resort nudge: if 1.5s after open we still have 0 duration, reload
-      setTimeout(()=>{ try{ if((v.duration||0)===0){ v.load(); play(); } }catch(_){} }, 1500);
+      v.addEventListener('ended', ()=>{ try{ v.currentTime=0.08; play(); }catch(_){}});
+      requestAnimationFrame(play); setTimeout(play,150); setTimeout(play,450);
     }
-    function wire(){
-      const v=modal.querySelector('.azro-modal__media video, #fmVideoBox video, .azro-video video');
-      if(!v) return;
-      tag(v); kick(v);
-    }
-    new MutationObserver(wire).observe(modal,{subtree:true,childList:true,attributes:true,attributeFilter:['open']});
-    modal.addEventListener('close',()=>{ const v=modal.querySelector('video'); if(v){ try{ v.pause(); v.currentTime=0; }catch(_){}}});
-    wire();
+
+    // Hook both creation paths (feature modal + preview injector)
+    const mo = new MutationObserver(()=>{
+      const boxes = modal.querySelectorAll('.azro-modal__media .azro-video');
+      boxes.forEach(box => {
+        if (box.__wired) return;
+        const v = box.querySelector('video');
+        if (!v) return;
+        box.__wired = true;
+        tag(v);
+        // Build ordered sources: primary=main.mp4, fallback=main_h264.mp4 (provide this file for max compatibility)
+        const mp4 = 'main.mp4';
+        const h264 = 'main_h264.mp4';
+        // If no sources present, add with fallback logic
+        if (!v.querySelector('source')) buildSources(v, mp4, h264);
+        kick(v);
+      });
+    });
+    mo.observe(modal,{subtree:true, childList:true, attributes:true, attributeFilter:['open']});
   });
 })();
 </script>
