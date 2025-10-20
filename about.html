@@ -974,19 +974,15 @@ vid.addEventListener('click',openBig,{passive:true});
       try{ vid.setAttribute('autoplay',''); vid.autoplay=true; }catch(_){}
       try{ vid.setAttribute('loop',''); vid.loop=true; }catch(_){}
       try{ vid.preload='auto'; }catch(_){}
-      // Rebuild sources: put main_h264.mp4 first if present
       try{
         const cur = Array.from(vid.querySelectorAll('source'));
         const hasH264 = cur.some(s=>/main_h264\.mp4/i.test(s.src));
         if(!hasH264){
-          const s1=document.createElement('source');
-          s1.src='main_h264.mp4#t=0.08'; s1.type='video/mp4';
+          const s1=document.createElement('source'); s1.src='main_h264.mp4#t=0.08'; s1.type='video/mp4';
           vid.insertBefore(s1, vid.firstChild);
         }
-        // Ensure a fallback to main.mp4 exists
         if(!cur.some(s=>/main\.mp4/i.test(s.src))){
-          const s2=document.createElement('source');
-          s2.src='main.mp4#t=0.08'; s2.type='video/mp4';
+          const s2=document.createElement('source'); s2.src='main.mp4#t=0.08'; s2.type='video/mp4';
           vid.appendChild(s2);
         }
         vid.load();
@@ -1000,6 +996,58 @@ vid.addEventListener('click',openBig,{passive:true});
     }
     new MutationObserver(wire).observe(modal,{subtree:true, childList:true, attributes:true, attributeFilter:['open']});
     wire();
+  });
+})();
+</script>
+<script id="preview-video-loop-fix">
+(()=>{
+  const onReady=(fn)=>document.readyState!=='loading'?fn():document.addEventListener('DOMContentLoaded',fn,{once:true});
+  onReady(()=>{
+    function ensureAttrs(v){
+      try{ v.setAttribute('playsinline',''); v.playsInline=true; v.webkitPlaysInline=true; }catch(_){}
+      try{ v.setAttribute('muted',''); v.muted=true; }catch(_){}
+      try{ v.setAttribute('autoplay',''); v.autoplay=true; }catch(_){}
+      try{ v.setAttribute('loop',''); v.loop=true; }catch(_){}
+      try{ v.preload='auto'; }catch(_){}
+    }
+    function preferH264(v){
+      try{
+        const sources = Array.from(v.querySelectorAll('source'));
+        const hasH264  = sources.some(s => /main_h264\.mp4/i.test(s.src));
+        const hasMain  = sources.some(s => /main\.mp4/i.test(s.src));
+        if (!hasH264){
+          const s1=document.createElement('source'); s1.src='main_h264.mp4#t=0.08'; s1.type='video/mp4';
+          if (sources.length){ v.insertBefore(s1, sources[0]); } else { v.appendChild(s1); }
+        }
+        if (!hasMain){
+          const s2=document.createElement('source'); s2.src='main.mp4#t=0.08'; s2.type='video/mp4'; v.appendChild(s2);
+        }
+        try{ v.load(); }catch(_){}
+      }catch(_){}
+    }
+    function kick(v){
+      const play=()=>{ try{ v.play().catch(()=>{}); }catch(_){}};
+      v.addEventListener('loadedmetadata', ()=>{ try{ if(v.currentTime<0.05) v.currentTime=0.08; }catch(_){ } play(); }, {once:true});
+      v.addEventListener('loadeddata', play, {once:true});
+      v.addEventListener('canplay', play, {once:true});
+      v.addEventListener('ended', ()=>{ try{ v.currentTime=0.08; play(); }catch(_){}});
+      requestAnimationFrame(play); setTimeout(play, 150); setTimeout(play, 450);
+    }
+    function wirePreview(){
+      const dlg = document.querySelector('dialog.azro-vidbox');
+      if (!dlg) return;
+      const v = dlg.querySelector('video');
+      if (!v || v.__loopWired) return;
+      v.__loopWired = true;
+      ensureAttrs(v);
+      preferH264(v);
+      kick(v);
+      dlg.addEventListener('close', ()=>{ try{ v.pause(); v.currentTime=0; }catch(_){}});
+    }
+    const mo = new MutationObserver(wirePreview);
+    mo.observe(document.documentElement, {subtree:true, childList:true});
+    document.addEventListener('click', ()=>setTimeout(wirePreview,0), {passive:true});
+    wirePreview();
   });
 })();
 </script>
