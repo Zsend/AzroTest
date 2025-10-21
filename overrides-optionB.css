@@ -1,0 +1,24 @@
+/* Option B: Systematic — single gutter token, container-level gutters, remove paragraph-only padding */
+:root { --gutter: 26px; }
+
+/* Small phones */
+@media (max-width: 600px){
+  section, .hero { padding-inline: var(--gutter) !important; }
+  p { padding-inline: 0 !important; }
+  .hero .hero-text { padding-inline: 0 !important; margin-inline: 0 !important; }
+}
+
+/* Portrait 601–900px */
+@media (orientation: portrait) and (min-width: 601px) and (max-width: 900px){
+  section, .hero { padding-inline: var(--gutter) !important; }
+  p { padding-inline: 0 !important; }
+  .hero .hero-text { padding-inline: 0 !important; margin-inline: 0 !important; }
+}
+
+/* Optional: iOS safe area support */
+@media (max-width: 600px){
+  section, .hero {
+    padding-left: calc(var(--gutter) + env(safe-area-inset-left)) !important;
+    padding-right: calc(var(--gutter) + env(safe-area-inset-right)) !important;
+  }
+}
