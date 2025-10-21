@@ -1,0 +1,193 @@
+
+/* === v42 Global Modern Fixes ===============================================
+   Purpose: address mobile-landscape centering, modal layout, sticky CTA alignment,
+   and "on‑brand" preview button visuals — without touching existing structure.
+   ========================================================================= */
+
+/* --- Consistent brand button + background -------------------------------- */
+:root{
+  --btn-radius: 14px;
+  --btn-pad-x: clamp(16px, 2.6vw, 24px);
+  --btn-pad-y: clamp(10px, 1.5vw, 14px);
+  --btn-grad-a: #6e7cff;
+  --btn-grad-b: #a76cff;
+  --btn-shadow: 0 10px 22px rgba(98, 74, 255, .24), 0 2px 6px rgba(0,0,0,.18);
+}
+
+.btn,
+a.btn,
+button.btn{
+  border-radius: var(--btn-radius);
+}
+
+.btn--primary,
+.sticky-cta .btn{
+  background: linear-gradient(94deg, var(--btn-grad-a), var(--btn-grad-b)) !important;
+  color: #fff !important;
+  border: 0 !important;
+  padding: var(--btn-pad-y) var(--btn-pad-x) !important;
+  box-shadow: var(--btn-shadow) !important;
+}
+
+/* --- Sticky CTA: always centered across pages ----------------------------- */
+.sticky-cta{
+  position: fixed !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  bottom: clamp(12px, 2.4vh, 22px) !important;
+  z-index: 9000 !important;
+  width: auto !important;
+  pointer-events: none; /* so it never blocks modals; child will re-enable */
+}
+.sticky-cta .btn{
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: max(210px, 38vw);
+  text-align: center;
+}
+
+/* --- Home page: center content on mobile landscape ----------------------- */
+@media (max-width: 900px) and (orientation: landscape){
+  .hero.home-hero{ 
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center;
+    padding-block: 18px !important;
+    gap: 14px !important;
+    text-align: center;
+  }
+  .hero.home-hero .hero-text,
+  .hero.home-hero .hero-image,
+  .home-hero .hero-text, 
+  .home-hero .hero-image{
+    margin: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .home-hero .hero-text > *{ margin-left: auto; margin-right: auto; }
+  .chart-note{ text-align: center !important; }
+}
+
+/* --- About page modal: desktop layout like screenshot --------------------- */
+.azro-modal{
+  --modal-pad: clamp(14px, 2.2vw, 24px);
+  --modal-gap: clamp(16px, 2.4vw, 28px);
+}
+#featureModal .azro-modal__head{
+  padding: var(--modal-pad) var(--modal-pad) 8px var(--modal-pad) !important;
+}
+#featureModal .azro-modal__title{
+  text-align: center;
+  margin: 0 auto .25rem auto;
+  font-weight: 800;
+}
+#featureModal .azro-modal__sub{
+  text-align: center;
+  margin: 0 auto;
+}
+#featureModal .azro-modal__scroll{
+  padding-inline: var(--modal-pad) !important;
+}
+#featureModal .azro-modal__body{
+  display: grid !important;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr) !important;
+  gap: var(--modal-gap) !important;
+  align-items: start !important;
+}
+#featureModal .azro-modal__text{
+  margin: 0 !important;
+}
+#featureModal .azro-modal__media{
+  border-radius: 18px !important;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16/9;
+}
+#featureModal .azro-modal__foot{
+  padding: 12px var(--modal-pad) var(--modal-pad) var(--modal-pad) !important;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  gap: 12px;
+}
+#featureModal .azro-modal__foot > span{
+  font-size: .98rem;
+  opacity: .95;
+  white-space: nowrap;
+}
+#featureModal .azro-modal__foot .azro-modal__close{
+  margin-left: auto;
+  margin-right: 0;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: var(--btn-radius);
+}
+
+/* Mobile/Small view of modal */
+@media (max-width: 900px){
+  #featureModal .azro-modal__body{ grid-template-columns: 1fr !important; }
+  #featureModal .azro-modal__foot{ 
+    justify-content: center !important; 
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  #featureModal .azro-modal__foot > span{ display: none !important; }
+}
+
+/* Fine‑tune spacing around top/bottom text of modal content */
+.azro-modal__text > *:first-child{ margin-top: 0 !important; }
+.azro-modal__text > *:last-child{ margin-bottom: 0 !important; }
+
+/* --- About page: landscape mobile readability & centering ---------------- */
+@media (max-width: 900px) and (orientation: landscape){
+  .azro-modal{ max-height: 86svh; }
+  .azro-modal__head{ padding-bottom: 6px !important; }
+  #featureModal .azro-modal__title, 
+  #featureModal .azro-modal__sub{ text-align: center !important; }
+}
+
+/* --- Video preview button (visuals only; behavior in fixes-v42.js) ------- */
+.azro-video__preview{
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  background: radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.08), rgba(255,255,255,.03) 38%, rgba(255,255,255,0) 60%), #0b0b0b;
+  outline: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 12px 34px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.azro-video__preview button{
+  border: 0;
+  border-radius: 999px;
+  width: clamp(58px, 10vw, 84px);
+  height: clamp(58px, 10vw, 84px);
+  font-size: clamp(26px, 4.2vw, 34px);
+  line-height: 1;
+  background: linear-gradient(94deg, var(--btn-grad-a), var(--btn-grad-b));
+  color: #fff;
+  box-shadow: var(--btn-shadow);
+  cursor: pointer;
+}
+.azro-video__preview small{
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .78rem;
+  color: rgba(255,255,255,.76);
+}
+
+/* Ensure dialog element shows above sticky CTA */
+dialog[open]{ z-index: 9500; }
+
+
+/* Set a predictable desktop width for the Feature modal */
+#featureModal form{
+  width: min(1120px, 92vw) !important;
+  margin-inline: auto !important;
+}
