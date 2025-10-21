@@ -1,0 +1,1090 @@
+
+/* === AZRO Brand Harmonization (drop-in) ==============================
+   Uses existing :root tokens defined in style.css:
+   --text-body, --text-head, --text-sub, --accent-a, --accent-b, --bg-overlay
+   ==================================================================== */
+
+/* Layout containers */
+.container { max-width: 1100px; margin-inline: auto; padding-inline: 16px; }
+.measure   { max-width: 68ch; }
+
+/* Typographic rhythm */
+.h-eyebrow { letter-spacing: .08em; text-transform: uppercase; font: 600 0.85rem/1.1 'Exo 2', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--text-sub); margin: 0 0 .5rem 0; }
+.h-lead    { font: 400 clamp(1.05rem, .45vw + 1rem, 1.25rem)/1.6 'Exo 2', system-ui, sans-serif; color: var(--text-body); margin: 0 0 1.2rem 0; }
+.h-subhead { font: 700 clamp(1.25rem, .8vw + 1rem, 1.6rem)/1.3 'Exo 2', system-ui, sans-serif; margin: 1.25rem 0 .5rem; color: var(--text-head); }
+.h-muted   { color: var(--text-sub); }
+
+/* Hero improvements (non-breaking) */
+.hero { padding: clamp(48px, 6vw, 72px) 20px; }
+.hero .hero-text { text-align: left; }
+.hero .hero-text h1 { line-height: 1.12; text-wrap: balance; }
+.hero .hero-text p { max-width: 68ch; line-height: 1.6; }
+
+/* Scrim helper for sections with images behind */
+.section-scrim { position: relative; isolation: isolate; }
+.section-scrim::before{
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65));
+}
+
+/* Cards & grids */
+.card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.card h3 { margin: 0 0 .25rem; font-weight: 700; color: var(--text-head); }
+.card p  { margin: 0; color: var(--text-body); }
+
+.grid-2 { display: grid; gap: .75rem; grid-template-columns: 1fr; }
+.grid-3 { display: grid; gap: .75rem; grid-template-columns: 1fr; }
+@media (min-width: 880px){ .grid-2{ grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1120px){ .grid-3{ grid-template-columns: repeat(3,minmax(0,1fr)); } }
+
+/* Stat cards */
+.stat-grid { display: grid; gap: .75rem; grid-template-columns: 1fr; margin: .75rem 0 1.5rem; }
+@media (min-width: 880px){ .stat-grid{ grid-template-columns: repeat(3,minmax(0,1fr)); } }
+.stat-card { padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
+.stat-card .value { font-weight: 800; font-size: clamp(1.35rem, 2vw + .6rem, 1.85rem); color: var(--text-head); }
+.stat-card .label { color: var(--text-sub); font-size: .95rem; margin-top: .25rem; }
+
+/* Buttons: reuse .btn and tint via brand gradient */
+.btn { display: inline-block; margin: 0; }
+.btn--primary{
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color: #0b0f1a !important;
+  border: none !important;
+}
+.cta-row { display: flex; gap: .75rem; flex-wrap: wrap; margin: 1rem 0 1.75rem; }
+
+/* Utility spacing */
+.stack > * + * { margin-top: var(--stack-gap, .75rem); }
+
+/* About page specific hooks (mapped to brand) */
+.about-hero { background-image: url('coolback.webp'); background-size: cover; background-position: center; }
+.about-hero .hero-text { max-width: 1100px; margin-inline: auto; }
+.about-hero .panel { backdrop-filter: saturate(1.05); padding: clamp(24px, 3vw, 32px); border-radius: 16px; background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.12); }
+
+/* Make existing grids/cards feel consistent */
+.features-grid .feature-card,
+.pricing-grid .price-card,
+.resources-grid .resource-card { border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); }
+.features-grid .feature-card h3,
+.pricing-grid .price-card span,
+.resources-grid .resource-card span { color: var(--text-head); }
+.features-grid .feature-card p { color: var(--text-body); }
+
+/* Footnotes & disclosures */
+.disclosure-box { border: 1px dashed rgba(255,255,255,.18); border-radius: 10px; padding: .75rem 1rem; background: rgba(255,255,255,.03); color: var(--text-sub); }
+
+/* Integrated media card for About chart */
+.media-card {
+  max-width: min(980px, 92vw);
+  margin: clamp(14px, 3vw, 32px) auto;
+  border-radius: 14px;
+  overflow: clip;
+  background: #0b0f1a;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 16px 40px rgba(0,0,0,.45);
+  position: relative;
+}
+.media-card::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; padding:1px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity:.22; pointer-events:none;
+}
+.media-card .media{ aspect-ratio: 16 / 9; }
+.media-card picture, .media-card img{ display:block; width:100%; height:100%; object-fit: cover; }
+.media-card figcaption{ color: var(--text-sub, #D4D9FF); font-size: .95rem; text-align: center; padding: .6rem .75rem .8rem; }
+
+
+/* === Global center pass (non-destructive) ===============================
+   Centers main content blocks and cards across pages. Keeps paragraphs
+   readable by constraining line length while aligning the layout center.
+   ====================================================================== */
+:root{ --measure: 68ch; }
+
+/* Center hero content and text */
+.hero .hero-text { text-align: center; margin-left: auto; margin-right: auto; }
+.hero .hero-text p { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+
+/* Make common grids/blocks center within the page */
+.features-wrapper,
+.features-grid,
+.pricing-grid,
+.resources-grid,
+.stat-grid,
+.about-feature-grid,
+.about-steps,
+.disclosure-box,
+.media-card { margin-left:auto; margin-right:auto; }
+
+/* Center grid items and cards; keep body text readable */
+.features-grid, .pricing-grid, .resources-grid { justify-items: center; }
+.features-grid .feature-card,
+.pricing-grid .price-card,
+.resources-grid .resource-card { text-align: center; max-width: 420px; }
+
+/* Ensure hero/media images are centered and responsive */
+.hero-image, .chart-img { margin-left: auto; margin-right: auto; display: block; }
+.media-card { margin-left:auto; margin-right:auto; }
+
+/* Steps list: center the list block, keep list text left-aligned for readability */
+.about-steps ol { display: inline-block; text-align: left; margin-left: auto; margin-right: auto; }
+
+/* CTA rows always centered */
+.cta-row { justify-content: center; }
+
+
+/* Keep feature modal footer centered like Free Trial (row layout) */
+#featureModal .azro-modal__foot{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  flex-wrap: wrap;
+  text-align: center;
+}
+#featureModal .azro-modal__foot a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+#featureModal .azro-modal__foot span{ white-space: nowrap; }
+
+/* Equalize disclosure row spacing */
+#disclosure .methodology-link{
+  margin: 0 !important;
+  padding: .55rem 0 !important; /* same above/below for both rows */
+}
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+
+/* Branded asterisk link */
+.asterisk-link{ color: var(--accent-a); text-decoration: none; }
+.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness:1.5px; text-underline-offset: 2px; }
+
+/* Subtle page dividers around the explanatory note, with equal outer spacing */
+.feature-note--divided{
+  padding: .8rem 0;
+  border-top: 1px dashed rgba(255,255,255,.18);
+  border-bottom: 1px dashed rgba(255,255,255,.18);
+  max-width: 80ch;
+  margin: .8rem auto; /* equal top/bottom spacing */
+}
+
+
+/* Center the Feature modal header text (title + subhead) */
+#featureModal .azro-modal__head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#featureModal .azro-modal__head > div{ margin-inline: auto; }
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub{ text-align: center; }
+
+/* Brand-colored links for disclosure PDFs and the asterisk */
+#disclosure .methodology-link a{ color: var(--accent-a); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+.asterisk-link{ color: var(--accent-a); text-decoration: none; }
+.asterisk-link:hover, .asterisk-link:focus{ text-decoration: underline; text-decoration-thickness:1.5px; text-underline-offset:2px; }
+
+/* Ensure equal spacing for both disclosure rows */
+#disclosure .methodology-link{ margin: 0 !important; padding: .6rem 0 !important; }
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+#disclosure .methodology-link:last-of-type{ border-bottom: 1px dashed rgba(255,255,255,.18); }
+
+
+/* === Feature Modal centering (header and footer) === */
+#featureModal .azro-modal__head{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__head > div{ margin-inline: auto !important; }
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub{ text-align: center !important; }
+
+/* Footer: center text and Done button with equal margins */
+#featureModal .azro-modal__foot{
+  display: block !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__foot span{ display: inline; }
+#featureModal .azro-modal__foot .azro-modal__close{
+  display: inline-flex; margin-left: clamp(.75rem, 1.6vw, 1rem);
+  vertical-align: middle;
+}
+
+/* Restore equal border look for the video placeholder box */
+#featureModal .azro-modal__media{ padding: clamp(16px, 1.8vw, 18px) !important; }
+#featureModal .azro-video{ position: relative; border-radius: 14px; }
+#featureModal .azro-video::before{
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+  pointer-events: none;
+}
+#featureModal .azro-video__ph{ border-radius: inherit; }
+
+
+/* Brand color for PDF links and the asterisk */
+#disclosure .methodology-link a{ color: var(--accent-a); text-decoration-thickness:1.5px; text-underline-offset:2px; }
+.asterisk-link{ color: var(--accent-a); text-decoration: none; }
+.asterisk-link:hover,.asterisk-link:focus{ text-decoration: underline; text-decoration-thickness:1.5px; text-underline-offset:2px; }
+
+/* Equalize spacing for both disclosure rows */
+#disclosure .methodology-link{ margin: 0 !important; padding: .6rem 0 !important; }
+#disclosure .methodology-link + .methodology-link{ margin-top: 0 !important; }
+
+
+/* === Fine‑tune equal spacing around divided note (page dividers) === */
+.feature-note--divided{
+  margin: 1rem auto !important;      /* a touch more space under the bottom divider */
+  padding: .9rem 0 !important;       /* balanced internal space */
+}
+
+/* === Ensure the modal text box has an equal border & equal insets on all sides === */
+#featureModal .azro-modal__media{
+  display: grid !important;          /* center the inner box perfectly */
+  place-items: center !important;
+  box-sizing: border-box !important;
+  padding: clamp(12px, 1.8vw, 16px) !important;
+}
+#featureModal .azro-modal__media::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;               /* equal border thickness on all sides */
+  border-radius: inherit !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12) !important;
+  pointer-events: none !important;
+}
+#featureModal .azro-video__ph{
+  margin: 0 !important;
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.25 !important;      /* helps visually center multi-line placeholder text */
+}
+
+/* =========================  AZRO PATCH 2025-09-27  ==========================
+   Scope: visual-only improvements per client request. No content changes.
+   --------------------------------------------------------------------------- */
+
+/* A) Resources cards: prevent orphan words and improve wrapping */
+.resource-card span{
+  text-wrap: balance;                 /* modern browsers */
+  text-wrap: pretty;
+}
+@supports not (text-wrap: balance){
+  .resource-card span{
+    word-break: normal;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+}
+
+/* B) About page readability on small screens */
+@media (max-width: 600px){
+  .measure{ max-width: none; }        /* let text use the available width */
+  .hero-text.container{ padding-inline: 18px; } /* gentle side padding */
+  .hero-text .h-lead{ line-height: 1.7; }       /* slightly looser leading */
+}
+
+/* C) "Read the PDF" anchors should stay on one line */
+.methodology-link a{ white-space: nowrap; }
+
+/* D) Center & protect the Resources layout on mobile */
+.hero-text.resources-page{
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+}
+@media (max-width: 900px){
+  .hero-text.resources-page{ padding-inline: 16px; }
+  .resources-grid{ transform: none !important; } /* avoid vertical cropping */
+}
+
+/* E) Dialog (feature & trial) – ensure fully visible on mobile */
+dialog.azro-modal[open]{
+  position: fixed; inset: 0; margin: auto;      /* robust centering */
+}
+.azro-modal__scroll{
+  max-height: min(85dvh, 85svh, 85vh);
+  overflow: auto;                                /* internal scroll if needed */
+}
+#featureModal, #trialModal{
+  width: min(96vw, 1000px);
+  max-height: 96dvh;                             /* keep within viewport */
+}
+
+/* F) "Done"/"Close" buttons – only show outline when actively pressed */
+.azro-modal__close:focus,
+.azro-modal__close:focus-visible{
+  outline: none !important;
+}
+.azro-modal__close:active{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+/* ========================================================================= */
+
+
+/* ===== AZRO micro‑patches (2025‑09‑27) =====
+   Scope: typography balancing, About readability, Resources centering,
+          modal layout, and button focus behavior.
+   Non‑destructive: adds rules only; does not change HTML content.
+*/
+
+/* A) Resources cards: prevent single‑word last lines */
+.resource-card span{
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+@supports not (text-wrap: balance){
+  .resource-card span{
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+}
+
+/* B) About page readability on small screens */
+@media (max-width: 600px){
+  .measure{ max-width: none; }                         /* allow wider measure */
+  .hero-text.container{ padding-inline: 18px; }        /* soft side gutters */
+  .hero-text .h-lead{ line-height: 1.7; }              /* easier reading */
+}
+
+/* C) Keep “Read the PDF” on one line */
+.methodology-link a{ white-space: nowrap; }
+
+/* D) Resources page: center and avoid cropping on mobile */
+.hero-text.resources-page{
+  margin-inline: auto;
+  display: grid;
+  justify-items: center;
+}
+@media (max-width: 900px){
+  .hero-text.resources-page{ padding-inline: 16px; }
+  .resources-grid{ transform: none !important; }       /* prevent vertical clipping */
+}
+
+/* E) Dialogs (feature & trial): mobile‑safe sizing/spacings */
+dialog.azro-modal[open]{
+  position: fixed; inset: 0; margin: auto;             /* robust centering */
+}
+.azro-modal__scroll{
+  max-height: min(85dvh, 85svh, 85vh);
+  overflow: auto;
+  padding: clamp(12px, 2vw, 20px);                     /* breathing room */
+}
+#featureModal, #trialModal{
+  width: min(96vw, 1000px);
+  max-height: 96dvh;
+}
+.azro-modal__head{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.azro-modal__head > div{ margin-inline: auto; }
+.azro-modal__body{ display: grid; gap: clamp(16px, 2vw, 24px); }
+.azro-modal__foot{ display: flex; justify-content: center; gap: .75rem; }
+
+/* F) “Done” button outline should appear only when clicked */
+.azro-modal__close:focus,
+.azro-modal__close:focus-visible{
+  outline: none !important;
+  box-shadow: none !important;
+}
+.azro-modal__close:active{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+
+/* G) Media fit inside modals */
+.azro-modal__media img, .azro-modal__media video{
+  max-width: 100%; height: auto; border-radius: 12px;
+}
+.azro-video__ph{
+  margin: 0 !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.25 !important;
+}
+
+
+/* ===== Focus refinement (2025‑09‑27, accessibility‑preserving) ===== */
+.azro-modal__close:focus{ outline: none !important; box-shadow: none !important; }
+.azro-modal__close:focus-visible{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+.azro-modal__close:active{
+  outline: 2px solid var(--accent-a);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent-a), transparent 60%);
+}
+
+
+
+/* =====================================================================
+   AZRO modal perfection patch — v8 FINAL (2025-09-27)
+   Scope: ONLY dialog.azro-modal, #featureModal, #trialModal
+   Goal : Exact centering (desktop & mobile), no clipping, equal spacing,
+          proper wrapping of footer text on mobile.
+===================================================================== */
+
+dialog.azro-modal[open]{
+  position: fixed !important;
+  inset: 0 !important;
+  display: grid !important;
+  place-items: center !important;            /* precise centering */
+  padding: clamp(8px, 2vw, 16px) !important; /* small edge margin */
+  margin: 0 !important;
+  z-index: 10000 !important;
+}
+
+dialog.azro-modal[open] > form{
+  box-sizing: border-box !important;
+  justify-self: center !important;
+  align-self: center !important;
+  margin: 0 !important;
+  width: min(96vw, 1000px) !important;
+  max-height: calc(100dvh - 2 * clamp(8px, 2vw, 16px)) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;               /* internal scroll only */
+  border-radius: inherit !important;
+}
+
+/* Internal scroll area with consistent padding */
+#featureModal .azro-modal__scroll,
+#trialModal   .azro-modal__scroll{
+  flex: 1 1 auto !important;
+  min-height: 0 !important;                  /* allow flex child to shrink */
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: clamp(16px, 4vw, 24px) !important;
+  padding-bottom: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* Footer layout defaults (desktop keeps inline layout) */
+#featureModal .azro-modal__foot,
+#trialModal   .azro-modal__foot{
+  padding: clamp(16px, 4vw, 24px) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  flex-wrap: wrap !important;
+  text-align: center !important;
+}
+
+/* Mobile: stack footer, allow long label to wrap neatly */
+@media (max-width: 640px){
+  #featureModal .azro-modal__foot,
+  #trialModal   .azro-modal__foot{
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(.6rem, 2.5vw, 1rem) !important;
+  }
+  #featureModal .azro-modal__foot span,
+  #trialModal   .azro-modal__foot span{
+    white-space: normal !important;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  #featureModal .azro-modal__foot .azro-modal__close,
+  #trialModal   .azro-modal__foot .azro-modal__close{
+    min-height: 44px !important;
+    padding-inline: clamp(14px, 3.2vw, 18px) !important;
+  }
+}
+
+/* Media reliability inside modal */
+#featureModal .azro-modal__media .azro-video,
+#trialModal   .azro-modal__media .azro-video{
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  display: block !important;
+  background: #000 !important;
+  border-radius: clamp(12px, 2vw, 18px);
+}
+#featureModal .azro-modal__media iframe,
+#featureModal .azro-modal__media video,
+#trialModal   .azro-modal__media iframe,
+#trialModal   .azro-modal__media video{
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border: 0 !important;
+  background: #000 !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  will-change: transform !important;
+}
+
+/* Lock page scroll only while a modal is open (browsers with :has) */
+html:has(dialog.azro-modal[open]), body:has(dialog.azro-modal[open]){
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+
+/* =====================================================================
+   MODAL CENTERING + ALIGNMENT PATCH — 2025‑09‑27
+   Scope: <dialog class="azro-modal">, #featureModal, #trialModal
+   Goal: Perfect centering of the dialog on all screens + centered
+         header/subhead and footer (text + Done button).
+   Notes: Uses high specificity + !important where needed to avoid
+          regressions, and keeps everything inside modal scope only.
+   ===================================================================== */
+
+/* 1) Center the dialog itself — robust across desktop & mobile */
+dialog.azro-modal[open]{
+  position: fixed !important;
+  inset: 0 !important;            /* center via auto margins */
+  margin: auto !important;
+  z-index: 9999;                  /* above page UI */
+  max-width: min(1000px, 96vw) !important;
+  width: auto !important;
+  max-height: 96dvh !important;
+  /* Fallback for older engines */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@supports (inset: 0) {
+  /* Prefer inset-centering when supported */
+  dialog.azro-modal[open]{ left: auto; top: auto; transform: none; }
+}
+
+/* 2) Lock page scroll behind an open dialog */
+html:has(dialog.azro-modal[open]),
+body:has(dialog.azro-modal[open]){
+  overflow: hidden !important;
+}
+
+/* 3) Internal scroll area so long content never pushes dialog off-screen */
+dialog.azro-modal[open] .azro-modal__scroll{
+  max-height: min(85dvh, 85svh, 85vh) !important;
+  overflow: auto !important;
+  overscroll-behavior: contain;
+}
+
+/* 4) Header: center title/subhead perfectly */
+#featureModal .azro-modal__head,
+#trialModal   .azro-modal__head{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__head > div,
+#trialModal   .azro-modal__head > div{
+  margin-inline: auto !important;
+}
+#featureModal .azro-modal__title,
+#featureModal .azro-modal__sub,
+#trialModal   .azro-modal__title,
+#trialModal   .azro-modal__sub{
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 5) Body layout: two columns on desktop, single column on mobile */
+#featureModal .azro-modal__body,
+#trialModal   .azro-modal__body{
+  display: grid !important;
+  gap: clamp(16px, 2vw, 24px) !important;
+  grid-template-columns: 1.25fr .9fr;
+  align-items: start;
+}
+@media (max-width: 900px){
+  #featureModal .azro-modal__body,
+  #trialModal   .azro-modal__body{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 6) Footer: center the text and the Done/Close button */
+#featureModal .azro-modal__foot,
+#trialModal   .azro-modal__foot{
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.5rem, 1.6vw, 1rem) !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__foot .azro-modal__close,
+#trialModal   .azro-modal__foot .azro-modal__close{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-inline: auto !important;
+}
+
+/* 7) Backdrop polish */
+dialog.azro-modal::backdrop{
+  background: rgba(2, 6, 23, .66) !important;
+  backdrop-filter: blur(2px);
+}
+
+
+/* === Modal header centering fix (scoped) ============================== */
+#featureModal .azro-modal__head,
+#trialModal   .azro-modal__head{
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+#featureModal .azro-modal__head > div,
+#trialModal   .azro-modal__head > div{
+  grid-column: 2 !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+#featureModal .azro-modal__head .azro-modal__close,
+#trialModal   .azro-modal__head .azro-modal__close{
+  grid-column: 3 !important;
+  justify-self: end !important;
+}
+
+
+
+/* ===== v37b (2025-09-30): consolidated final site fixes ===== */
+
+/* 0) Defensive */
+:where(.azro-modal *) { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+
+/* 1) Home hero — align media with headline top (mobile + desktop) */
+.home-hero{ align-items:flex-start !important; }
+@media (max-width: 900px){
+  .home-hero .hero-right, .home-hero .chart-img{ margin-top: clamp(8px, 2.8vw, 22px) !important; align-self:flex-start !important; }
+}
+@media (min-width: 901px){
+  .home-hero .hero-right, .home-hero .chart-img{ margin-top: clamp(6px, 1.2vw, 20px) !important; align-self:flex-start !important; }
+}
+@media (min-width:1400px){
+  .home-hero .hero-right, .home-hero .chart-img{ margin-top: clamp(18px, 1.6vw, 34px) !important; }
+}
+
+/* 2) Cards + video arrow cues (single arrow, bottom-right on mobile) */
+h2.h-subhead + .grid-3 .card{ position:relative; outline:1px solid rgba(255,255,255,.10); transition:transform .18s, box-shadow .18s, outline-color .18s; }
+h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible){ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.28); outline-color:rgba(129,138,255,.35); cursor:pointer; }
+h2.h-subhead + .grid-3 .card::after{
+  content:""; position:absolute; inset:14px 14px auto auto; width:18px; height:18px; opacity:.55;
+  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center/18px 18px;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.3)); transition: transform .18s, opacity .18s;
+}
+h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:translate(2px,-2px); opacity:.9; }
+@media (max-width:900px){
+  h2.h-subhead + .grid-3 .card::after{ inset:auto 14px 14px auto !important; }
+}
+
+/* Use unified arrow on any .azro-video and remove any duplicate icon overlays inside modal media */
+#featureModal .azro-modal__media [class*="arrow"], #trialModal .azro-modal__media [class*="arrow"],
+#featureModal .azro-modal__media [class*="expand"]:not(.azro-video__expand), #trialModal .azro-modal__media [class*="expand"],
+#featureModal .azro-modal__media .icon,           #trialModal .azro-modal__media .icon{ display:none !important; }
+.azro-video{ position:relative; overflow:hidden; }
+.azro-video::after{
+  content:""; position:absolute; right:12px; bottom:12px; width:20px; height:20px;
+  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") no-repeat center/20px 20px;
+  opacity:.75; pointer-events:none; filter: drop-shadow(0 1px 0 rgba(0,0,0,.35));
+}
+
+/* 3) Modals — center content (portrait), stack + readable (landscape), and ensure media visible */
+#featureModal .azro-modal__text, #trialModal .azro-modal__text{ text-align:center !important; }
+#featureModal .azro-modal__content, #trialModal .azro-modal__content{ margin-inline:auto !important; }
+#featureModal .azro-modal__body, #trialModal .azro-modal__body{
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,2.6vw,32px);
+  align-items:center; padding-block:clamp(28px,4vh,56px);
+}
+#featureModal .azro-modal__media, #trialModal .azro-modal__media{ display:block !important; opacity:1 !important; }
+#featureModal .azro-modal__media :is(img,video,iframe), #trialModal .azro-modal__media :is(img,video,iframe){
+  display:block !important; width:100% !important; height:auto !important; max-width:960px; border-radius:16px;
+}
+@media (max-width:900px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+  #featureModal .azro-modal__media, #trialModal .azro-modal__media{ margin-top:clamp(16px,6vh,48px) !important; }
+  #featureModal .azro-modal__text h3, #trialModal .azro-modal__text h3{ white-space:normal !important; overflow-wrap:break-word; }
+}
+@media (max-height:520px) and (orientation:landscape){
+  #featureModal .azro-modal__head,  #trialModal .azro-modal__head{ padding-block:8px !important; }
+  #featureModal .azro-modal__foot,  #trialModal .azro-modal__foot{ padding-block:8px !important; }
+  #featureModal .azro-modal__title, #trialModal .azro-modal__title{ font-size:clamp(1rem,2.2vw,1.1rem) !important; line-height:1.2 !important; }
+  #featureModal .azro-modal__content, #trialModal .azro-modal__content,
+  #featureModal .azro-modal__scroll,   #trialModal .azro-modal__scroll{ margin-inline:auto !important; }
+  #featureModal .azro-modal__body,     #trialModal .azro-modal__body{
+    grid-template-columns:1fr !important; /* stack for readability */
+    max-height:calc(100svh - 92px) !important; overflow:auto !important; -webkit-overflow-scrolling:touch;
+    align-items:center; padding-block:12px;
+  }
+}
+
+/* 4) Resources (mobile) — true centering, no cut-off */
+@media (max-width:900px){
+  .resources-section, .resources-wrap, #resources{
+    width:100% !important; margin-inline:auto !important; padding-inline:16px !important;
+    transform:none !important; left:auto !important; right:auto !important; overflow:visible !important;
+  }
+  .resources-grid{
+    width:min(680px,100%) !important; ;
+    margin-inline:auto !important; padding-inline:16px !important; box-sizing:border-box !important;
+    transform:none !important; left:auto !important; right:auto !important; justify-items:center !important;
+  }
+  .resources-grid > *{ max-width:100% !important; }
+}
+
+/* 5) Footer/CTA gap — no trailing scroll, safe‑area padding */
+@media (max-width:600px){
+  body{ padding-bottom: 0 !important; }
+  .sticky-cta{ position: sticky !important; bottom: 0; z-index: 30; }
+}
+@media (orientation:landscape) and (max-width:900px){
+  .footer{ padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
+  .sticky-cta{
+    position:fixed !important; left:50% !important; transform:translateX(-50%) !important;
+    bottom: calc(16px + env(safe-area-inset-bottom)) !important; top:auto !important; width:min(92vw, 840px) !important; z-index:2147483000 !important;
+  }
+}
+
+/* 6) On-brand media card background (keep from earlier) */
+#featureModal .azro-modal__media .azro-video,
+#trialModal   .azro-modal__media .azro-video{
+  background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
+}
+
+
+
+/* === v41 consolidated fixes (2025-10-01) =============================
+   - Modal centering (portrait), stacked readable landscape layout
+   - Ensure modal media visible & centered; single arrow bottom-right on mobile
+   - Resources grid true centering & no right cut-off
+   - Sticky CTA bottom gap fix with CSS var fallback
+   - Desktop hero media top aligns with headline top (CSS pre-align)
+====================================================================== */
+
+/* Pre-align hero columns to top (JS will fine-tune via margin if needed) */
+.hero, .Hero, section.hero{ align-items: flex-start !important; }
+.hero .media, .Hero .media, .hero__media, .hero .chart, .hero .figure{ align-self: flex-start !important; }
+
+/* Resources clamp & centering on narrow screens */
+@media (max-width: 900px){
+  .resources-grid{
+    width: min(680px, 100%) !important;
+    ;
+    margin-inline: auto !important;
+    padding-inline: 16px !important;
+    box-sizing: border-box !important;
+    transform: none !important; left: auto !important; right: auto !important;
+    justify-items: center !important;
+  }
+  .resources-grid > *{ max-width: 100% !important; }
+}
+
+/* Modal – balanced content centering */
+#featureModal .azro-modal__content, #trialModal .azro-modal__content,
+#featureModal .azro-modal__scroll,   #trialModal .azro-modal__scroll{
+  margin-inline: auto !important;
+}
+#featureModal .azro-modal__text, #trialModal .azro-modal__text{
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+#featureModal .azro-modal__body, #trialModal .azro-modal__body{
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 2.6vw, 32px);
+  align-items: center;
+  padding-block: clamp(28px, 4vh, 56px);
+}
+
+/* Ensure media is visible, centered, and sized correctly */
+#featureModal .azro-modal__media, #trialModal .azro-modal__media{
+  display: block !important; opacity: 1 !important; visibility: visible !important;
+}
+#featureModal .azro-modal__media :is(img,video,iframe),
+#trialModal   .azro-modal__media :is(img,video,iframe){
+  display: block !important; width: 100% !important; height: auto !important;
+  max-width: 960px; border-radius: 16px; margin-inline: auto !important;
+}
+
+/* Mobile: single column; nudge media down so it sits centered between dividers */
+@media (max-width: 900px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    grid-template-columns: 1fr; justify-items: center;
+  }
+  #featureModal .azro-modal__media, #trialModal .azro-modal__media{
+    margin-top: clamp(16px, 6vh, 48px) !important;
+  }
+  /* move any arrow to bottom-right */
+  #featureModal .azro-modal__media [class*="arrow"], #trialModal .azro-modal__media [class*="arrow"]{
+    position: absolute !important; right: 12px !important; bottom: 12px !important; left: auto !important; top: auto !important;
+  }
+}
+
+/* Landscape phones: stack for readability with smooth scroll */
+@media (max-height: 520px) and (orientation: landscape){
+  #featureModal .azro-modal__head, #trialModal .azro-modal__head,
+  #featureModal .azro-modal__foot, #trialModal .azro-modal__foot{ padding-block: 8px !important; }
+  #featureModal .azro-modal__title, #trialModal .azro-modal__title{
+    font-size: clamp(1rem, 2.2vw, 1.1rem) !important; line-height: 1.2 !important;
+  }
+  #featureModal .azro-modal__content, #trialModal .azro-modal__content,
+  #featureModal .azro-modal__scroll,   #trialModal .azro-modal__scroll{ margin-inline: auto !important; }
+  #featureModal .azro-modal__body,     #trialModal .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    max-height: calc(100svh - 92px) !important; overflow: auto !important; -webkit-overflow-scrolling: touch;
+    align-items: center; padding-block: 12px;
+  }
+}
+
+/* Sticky CTA gap (landscape): ensure no trailing space under footer */
+:root{ --cta-bottom-h: 0px; }
+@media (orientation: landscape) and (max-width: 900px){
+  body{ padding-bottom: calc(var(--cta-bottom-h) + env(safe-area-inset-bottom)) !important; }
+  .sticky-cta{ position: fixed !important; left: 50% !important; transform: translateX(-50%) !important;
+               bottom: calc(16px + env(safe-area-inset-bottom)) !important; width: min(92vw, 840px) !important; z-index: 2147483000 !important; }
+}
+
+/* ===== v12 HOTFIX — mobile-only, scoped ===== */
+@media (max-width: 900px){
+  /* Resources: center grid within container & fix text clipping */
+  .hero-text.resources-page{ margin-inline:auto !important; padding-inline:16px !important; overflow-x:hidden !important; }
+  .hero-text.resources-page .container,
+  .hero-text.resources-page .resources-grid{
+    width:100% !important; max-width:100% !important; margin-inline:auto !important;
+    left:auto !important; right:auto !important; transform:none !important; box-sizing:border-box !important;
+  }
+  .hero-text.resources-page .resources-grid > *{ max-width:100% !important; min-width:0 !important; }
+  .hero-text.resources-page .resources-grid h3,
+  .hero-text.resources-page .resource-card__title{
+    white-space: normal !important;           /* allow wrapping */
+    overflow: visible !important;             /* no clipping */
+    text-overflow: clip !important;
+    word-break: normal !important;
+    hyphens: auto !important;
+    text-wrap: balance;
+  }
+
+  /* About modal: transform-free centering + make video element paint */
+  dialog#featureModal.azro-modal[open]{
+    position: fixed !important; inset: 0 !important;
+    display: grid !important; place-items: center !important;
+    margin:0 !important; padding:0 !important; transform:none !important;
+    top:auto !important; left:auto !important; right:auto !important; bottom:auto !important;
+  }
+  dialog#featureModal.azro-modal[open] > form{ width:min(94vw,720px) !important; max-height:96svh !important; margin:0 !important; }
+  #featureModal .azro-modal__wrap, #featureModal .azro-modal__body, #featureModal .azro-modal__media{ transform:none !important; }
+  #featureModal .azro-modal__media video{ display:block !important; width:100% !important; height:auto !important; max-height:60vh !important; opacity:1 !important; visibility:visible !important; }
+  #featureModal .azro-video__expand{
+    position:absolute; right:12px; bottom:12px; display:inline-flex !important; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:999px; background:rgba(0,0,0,.35); color:#fff; border:1px solid rgba(255,255,255,.25); z-index:2;
+  }
+}
+/* Neutralize stray transforms only while the modal is open (mobile only) */
+@media (max-width: 900px){ .azr-modal-open *:not(dialog){ transform:none !important; } }
+
+
+/* >>> FINAL OVERRIDE: Methodology card title — no auto hyphenation, no mid‑word breaks, full card width <<< */
+.hero-text.resources-page .resources-grid a[href$="methodology-overview.pdf"] span{
+  display:block !important;
+  max-width:100% !important;
+  max-inline-size:none !important;
+  white-space:normal !important;
+  word-break:keep-all !important;    /* never break within words */
+  overflow-wrap:normal !important;   /* wrap only at spaces/hyphens */
+  hyphens:none !important;           /* disable auto hyphenation */
+  text-wrap:balance;
+  line-height:1.18;
+}
+
+/* v14: harden visibility for the mobile video preview button within the About feature modal */
+#featureModal .azro-modal__media .azro-video__expand{
+  display:inline-flex !important;
+  opacity:1 !important; visibility:visible !important;
+  pointer-events:auto !important; z-index:11 !important;
+}
+
+
+/* === v41.4 (2025-10-21) — final polish per screenshots ======================
+   * Desktop modal: match previous look, balanced columns, refined paddings
+   * Mobile landscape: true video replacement (preview-only), centered head/body/foot
+   * Home + About heroes: bulletproof center (text, image/panel, CTA) in landscape
+   * Sticky CTA: always centered on all pages in landscape, even after dialog close
+==============================================================================*/
+
+/* A) HERO centering (landscape ≤900px) */
+@media (orientation: landscape) and (max-width: 900px){
+  .home-hero.hero, .about-hero.hero{
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: clamp(12px, 2.4vw, 24px) !important;
+  }
+  .home-hero :is(.hero-text, .hero-image, figure),
+  .about-hero :is(.hero-text, .panel, .media, figure){
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .home-hero .hero-text, .about-hero .hero-text{ display:grid !important; justify-items:center !important; }
+  .home-hero .cta-row, .about-hero .cta-row{ display:flex !important; justify-content:center !important; width:100% !important; gap: clamp(10px, 2vw, 16px) !important; }
+}
+
+/* B) Sticky CTA — centered in all landscape cases (fixes post-dialog close) */
+@media (orientation: landscape) and (max-width: 900px){
+  .sticky-cta{
+    position: fixed !important; left: 50% !important; transform: translateX(-50%) !important;
+    width: min(92vw, 840px) !important; margin: 0 auto !important;
+    display: grid !important; justify-items: center !important; z-index: 2147483000 !important;
+    right: auto !important;
+  }
+  body{ overflow-x: hidden !important; } /* prevent any horizontal drift */
+}
+
+/* C) Desktop modal layout — match your reference */
+@media (min-width: 901px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    display:grid !important;
+    grid-template-columns: minmax(420px, 560px) minmax(520px, 780px) !important;
+    align-items:start !important; gap: clamp(24px, 2.6vw, 40px) !important;
+    padding-block: clamp(28px, 3.4vh, 48px) !important;
+  }
+  #featureModal .azro-modal__media, #trialModal .azro-modal__media{ margin-top: 0 !important; }
+}
+
+/* D) Modal head/foot rhythm (all sizes) */
+.azro-modal__head{ padding-top: clamp(24px, 4.8vh, 48px) !important; }
+.azro-modal__title{ margin: 0 0 clamp(12px, 1.6vh, 16px) !important; line-height:1.18 !important; }
+.azro-modal__foot{
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  gap: clamp(.6rem, 2vw, 1rem) !important; padding-bottom: clamp(24px, 4.8vh, 48px) !important;
+  text-align:center !important; flex-wrap: wrap !important; width: min(98%, 980px); margin-inline:auto !important;
+}
+.azro-modal__foot > *{ margin:0 !important; }
+
+/* E) Mobile landscape modals — preview button and full centering */
+@media (orientation: landscape) and (max-width: 900px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    grid-template-columns: 1fr !important; justify-items: center !important; text-align: center !important;
+    padding-block: clamp(14px, 4vh, 28px) !important;
+  }
+  /* Hide any existing media in landscape mobile; show only preview tile */
+  dialog.azro-modal[open] .azro-modal__media :is(video, iframe, img, .azro-video, .azro-video__ph){ display:none !important; }
+  dialog.azro-modal[open] .azro-modal__media .azro-video__preview{
+    display:grid !important; place-items:center !important; width:min(92vw, 840px) !important; max-width:100% !important;
+    aspect-ratio: 16 / 9; border-radius: 16px; border: 1px solid rgba(255,255,255,.16);
+    background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 12px 28px rgba(0,0,0,.45);
+  }
+  .azro-video__preview button{
+    appearance:none; border:1px solid rgba(255,255,255,.25); background: rgba(90,105,255,.25);
+    border-radius:999px; width:62px; height:62px; display:grid; place-items:center; font-weight:700; font-size:15px; color:#fff;
+  }
+  .azro-video__preview small{ margin-top:8px; opacity:.84; }
+}
+
+
+/* === v41.5 (2025-10-21) — scoped fixes, no portrait/desktop changes ========
+   - Scope sticky-CTA centering to *mobile landscape only* (revert elsewhere)
+   - Stronger hero centering for Home/About in mobile landscape
+   - Mobile landscape modals: centered content, proper head/foot spacing,
+     preview tile (using .azro-video__ph) → fullscreen
+   - Desktop modals: keep two-column look exactly as before
+============================================================================= */
+
+/* A) HERO: Home + About (mobile landscape only) */
+@media (orientation: landscape) and (max-width: 900px){
+  .home-hero.hero, .about-hero.hero{
+    align-items:center !important; justify-content:center !important; text-align:center !important;
+    gap: clamp(12px, 2.5vw, 24px) !important;
+  }
+  .home-hero :is(.hero-text,.hero-image,figure),
+  .about-hero :is(.hero-text,.panel,.media,figure){
+    margin-left:auto !important; margin-right:auto !important;
+    text-align:center !important;
+  }
+  .home-hero .cta-row, .about-hero .cta-row{
+    display:flex !important; justify-content:center !important; width:100% !important;
+    gap: clamp(10px, 2vw, 16px) !important;
+  }
+}
+
+/* B) Sticky CTA — center *only* on mobile landscape; preserve portrait/desktop */
+@media (orientation: landscape) and (max-width: 900px){
+  .sticky-cta{
+    position: fixed !important; left:50% !important; transform: translateX(-50%) !important;
+    right:auto !important; bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+    width: min(92vw, 840px) !important; max-width:100% !important;
+    margin:0 auto !important; display:block !important;
+  }
+}
+/* Revert visuals elsewhere (portrait & desktop keep original look) */
+@media (min-width: 901px), (orientation: portrait){
+  .sticky-cta{
+    position: sticky !important; left:auto !important; right:auto !important;
+    transform:none !important; width: 100% !important; margin:0 !important;
+    background: transparent !important; border-radius: 0 !important;
+  }
+}
+
+/* C) About popups — universal foot/header polish (spacing + centering) */
+.azro-modal__head{ padding-top: clamp(22px, 5vh, 42px) !important; }
+.azro-modal__foot{
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  gap: clamp(.6rem, 2vw, 1rem) !important; padding-bottom: clamp(22px, 5vh, 42px) !important;
+  text-align:center !important; flex-wrap:wrap !important;
+}
+.azro-modal__foot > *{ margin:0 !important; }
+.azro-modal__foot span{ white-space:normal !important; text-wrap:balance; }
+
+/* D) About popups — mobile landscape: centered content + preview tile */
+@media (orientation: landscape) and (max-width: 900px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    grid-template-columns:1fr !important; justify-items:center !important; text-align:center !important;
+    padding-block: clamp(18px, 4.5vh, 32px) !important;
+  }
+  .azro-modal__media :is(video,iframe,img){ display:none !important; }  /* hide heavy embeds */
+  .azro-modal__media .azro-video__ph{
+    display:grid !important; place-items:center !important;
+    width:min(92vw, 840px) !important; max-width:100% !important; aspect-ratio:16/9;
+    border-radius:16px; border:1px solid rgba(255,255,255,.16);
+    background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 12px 28px rgba(0,0,0,.45);
+    color:#e6ebff; text-align:center; padding: clamp(6px, 1.2vw, 10px);
+    position:relative;
+  }
+  .azro-modal__media .azro-video__ph::after{
+    content:'▶'; position:absolute; inset:auto 0 14px 0; margin-inline:auto;
+    width:58px; height:58px; border-radius:999px; display:grid; place-items:center;
+    background: rgba(90,105,255,.25); border:1px solid rgba(255,255,255,.25);
+    font-weight:700; font-size:14px; color:#fff;
+  }
+}
+
+/* E) About popups — desktop two-column proportions (same as before) */
+@media (min-width: 901px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    display:grid !important; grid-template-columns:minmax(360px,520px) minmax(420px,1fr) !important;
+    align-items:start !important; gap: clamp(20px, 2.6vw, 36px) !important;
+  }
+}
+
