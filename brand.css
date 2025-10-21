@@ -760,7 +760,7 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   .sticky-cta{ position: sticky !important; bottom: 0; z-index: 30; }
 }
 @media (orientation:landscape) and (max-width:900px){
-  .footer{ padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
+  #footer{ padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
   .sticky-cta{
     position:fixed !important; left:50% !important; transform:translateX(-50%) !important;
     bottom: calc(16px + env(safe-area-inset-bottom)) !important; top:auto !important; width:min(92vw, 840px) !important; z-index:2147483000 !important;
@@ -922,10 +922,4 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   display:inline-flex !important;
   opacity:1 !important; visibility:visible !important;
   pointer-events:auto !important; z-index:11 !important;
-}
-
-/* v41.1: Landscape mobile – end scroll at footer (class-based) */
-@media (orientation: landscape) and (max-width: 900px){
-  body{ padding-bottom: 0 !important; }
-  .footer{ padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
 }
