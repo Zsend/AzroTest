@@ -760,7 +760,7 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   .sticky-cta{ position: sticky !important; bottom: 0; z-index: 30; }
 }
 @media (orientation:landscape) and (max-width:900px){
-  #footer{ padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
+  .footer{ padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
   .sticky-cta{
     position:fixed !important; left:50% !important; transform:translateX(-50%) !important;
     bottom: calc(16px + env(safe-area-inset-bottom)) !important; top:auto !important; width:min(92vw, 840px) !important; z-index:2147483000 !important;
@@ -923,3 +923,94 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   opacity:1 !important; visibility:visible !important;
   pointer-events:auto !important; z-index:11 !important;
 }
+
+
+/* === v41.3 (2025-10-21) — precise centering + modal polish =================
+   - Force centering on About/Home heroes in mobile landscape (overrides pre-align)
+   - Pop-up (About) mobile landscape: preview-only media + centered content
+   - Pop-up head/foot spacing tuned; bottom caption inline with Done and centered
+   - Desktop pop-ups keep two-column layout exactly like before
+============================================================================= */
+
+/* 1) HERO: About + Home — mobile landscape hard centering */
+@media (orientation: landscape) and (max-width: 900px){
+  .about-hero.hero, .home-hero.hero{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: clamp(12px, 2.5vw, 24px) !important;
+  }
+  .about-hero :is(.hero-text, .panel, .media, figure),
+  .home-hero  :is(.hero-text, .hero-image, figure){
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .about-hero .cta-row, .home-hero .cta-row{
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: clamp(10px, 2vw, 16px) !important;
+  }
+  .sticky-cta{
+    display: grid !important; justify-items: center !important;
+    left: 50% !important; transform: translateX(-50%) !important;
+    width: min(92vw, 840px) !important;
+  }
+  .sticky-cta > *{ margin-inline: auto !important; }
+}
+
+/* 2) MODALS (About) — spacing + centering */
+.azro-modal__head{ padding-top: clamp(22px, 5vh, 42px) !important; }
+.azro-modal__foot{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(.6rem, 2vw, 1rem) !important;
+  padding-bottom: clamp(22px, 5vh, 42px) !important;
+  text-align: center !important;
+  flex-wrap: wrap !important;
+}
+.azro-modal__foot > *{ margin: 0 !important; }
+.azro-modal__foot span{ white-space: normal !important; text-wrap: balance; }
+
+/* 3) MODALS — mobile landscape preview behavior + centered content */
+@media (orientation: landscape) and (max-width: 900px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    text-align: center !important;
+    padding-block: clamp(16px, 4vh, 28px) !important;
+  }
+  /* Hide any existing media (img/video/iframe/etc) and show preview tile */
+  dialog.azro-modal[open] .azro-modal__media > :not(.azro-video__preview){ 
+    display: none !important; 
+  }
+  dialog.azro-modal[open] .azro-modal__media .azro-video__preview{
+    display: grid !important; place-items: center !important;
+    width: min(92vw, 840px) !important; max-width: 100% !important;
+    aspect-ratio: 16 / 9; border-radius: 16px; 
+    border: 1px solid rgba(255,255,255,.16);
+    background: linear-gradient(180deg, #231754f5 0%, #0e0c28f5 100%) !important;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 12px 28px rgba(0,0,0,.45);
+  }
+  .azro-video__preview button{
+    appearance:none; border:1px solid rgba(255,255,255,.25);
+    background: rgba(90,105,255,.25);
+    border-radius: 999px; width: 58px; height: 58px;
+    display: grid; place-items: center; font-weight: 700; font-size: 14px; color: #fff;
+  }
+  .azro-video__preview small{ margin-top: 8px; opacity:.82; }
+}
+
+/* 4) MODALS — desktop keep two-column proportions */
+@media (min-width: 901px){
+  #featureModal .azro-modal__body, #trialModal .azro-modal__body{
+    display: grid !important;
+    grid-template-columns: minmax(360px, 520px) minmax(420px, 1fr) !important;
+    align-items: start !important;
+    gap: clamp(20px, 2.6vw, 36px) !important;
+  }
+}
+

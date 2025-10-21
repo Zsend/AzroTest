@@ -36,7 +36,8 @@ transition:none !important;
 <style> .resources-grid { display: grid; grid-template-columns: 1fr; gap: 28px; justify-items: center; margin-top: 28px; } .resource-card { width: 100%; max-width: 420px; display: flex; align-items: center; flex-direction: column; text-align: center; gap: 14px; padding: 22px 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; color: var(--text-head); text-decoration: none; transition: 0.3s ease background, 0.3s ease transform; } .resource-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .resource-card svg { flex: none; stroke: currentColor; } .resource-card span { font-size: 1.1rem; font-weight: 600; line-height: 1.35; text-align: center; } @media(max-width: 600px) { .hero-text.resources-page { padding: 0 16px; } } </style>
 <link href="https://USER.github.io/" rel="canonical"/><meta content="Landing page" name="description"/> <meta content="Download PDFs, FAQs, and best‑practice docs for the AZRO Systems trading indicator." name="description"/>
 <link href="https://azrosystems.com/resources.html" rel="canonical"/> <script src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js" type=""></script> <link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/> <link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
-</link></link></head>
+</link></link>  <link rel="stylesheet" href="fixes-v43.css">
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <a id="main" tabindex="-1"></a>
@@ -118,5 +119,6 @@ transition:none !important;
 <a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
 </div>
 <script defer="" src="script.js"></script>
+  <script defer src="fixes-v43.js"></script>
 </body>
 </html>

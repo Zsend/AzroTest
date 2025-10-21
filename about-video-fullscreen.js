@@ -44,3 +44,39 @@
     }
   });
 })();
+
+
+/* v41.3 — Ensure preview button is injected when dialogs open (mobile landscape) */
+(function(){
+  function ready(fn){ if (document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn, {once:true}); }
+  function isLandscapeMobile(){ return matchMedia('(orientation: landscape) and (max-width: 900px)').matches; }
+  function openFS(el){
+    try{ if(el && el.requestFullscreen){ el.requestFullscreen(); return; } }catch(e){}
+    try{ if(el && el.webkitRequestFullscreen){ el.webkitRequestFullscreen(); return; } }catch(e){}
+    try{ if(el && el.msRequestFullscreen){ el.msRequestFullscreen(); return; } }catch(e){}
+    try{ if(el && typeof el.webkitEnterFullScreen==='function'){ el.webkitEnterFullScreen(); return; } }catch(e){}
+    var src = el && (el.currentSrc || el.src); if(src) window.open(src, '_blank', 'noopener,noreferrer');
+  }
+  ready(function(){
+    if (!isLandscapeMobile()) return;
+    function ensurePreview(dlg){
+      if (!dlg || !dlg.open) return;
+      var box = dlg.querySelector('.azro-modal__media'); if (!box) return;
+      if (box.querySelector('.azro-video__preview')) return;
+      var preview = document.createElement('div'); preview.className='azro-video__preview';
+      var btn = document.createElement('button'); btn.type='button'; btn.setAttribute('aria-label','Open video in fullscreen'); btn.textContent='▶';
+      var note = document.createElement('small'); note.textContent='Open video preview';
+      preview.appendChild(btn); preview.appendChild(note); box.appendChild(preview);
+      var heroV = document.querySelector('.about-hero video, section.hero.about-hero video, .about-hero .media video');
+      var target = heroV || box.querySelector('video');
+      btn.addEventListener('click', function(){ openFS(target); }, {passive:true});
+    }
+    var observer = new MutationObserver(function(list){
+      list.forEach(function(m){
+        if (m.type==='attributes' && m.attributeName==='open') ensurePreview(m.target);
+      });
+    });
+    document.querySelectorAll('dialog.azro-modal').forEach(function(d){ observer.observe(d, {attributes:true}); if (d.open) ensurePreview(d); });
+  });
+})();
+
