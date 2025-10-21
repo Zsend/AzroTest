@@ -1,0 +1,125 @@
+
+/* === v43 Scoped Fixes ======================================================
+   - No global shifts. All changes are narrowly scoped to the About modal,
+     home hero in mobile-landscape, and sticky-CTA centering bug.
+   ========================================================================== */
+
+/* ---- Sticky CTA: restore full-width bar, center button, avoid shifts ----- */
+.sticky-cta{
+  /* Keep original behavior: a full-width bar fixed to bottom */
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  transform: none !important;
+  text-align: center !important;
+  /* do not meddle with pointer-events */
+}
+.sticky-cta .btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---- Home page (mobile landscape): center text + image cleanly ----------- */
+@media (max-width: 900px) and (orientation: landscape){
+  .home-hero{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    place-items: center !important;
+    gap: 14px !important;
+    padding-block: 14px !important;
+    text-align: center !important;
+  }
+  .home-hero .hero-text,
+  .home-hero .hero-image{
+    margin: 0 !important;
+  }
+  .home-hero .hero-text > *{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .home-hero .chart-note{ text-align: center !important; }
+}
+
+/* ---- About Feature modal: layout/spacing like screenshot ----------------- */
+#featureModal .azro-modal__head{
+  padding-block: clamp(10px, 1.6vw, 16px) 8px !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__title{
+  margin: 0 auto .25rem auto !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__sub{
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+#featureModal .azro-modal__scroll{ padding-inline: clamp(12px, 2vw, 22px) !important; }
+#featureModal .azro-modal__body{
+  display: grid !important;
+  grid-template-columns: minmax(300px, 1fr) minmax(320px, 1fr) !important;
+  gap: clamp(14px, 2.2vw, 26px) !important;
+  align-items: start !important;
+}
+#featureModal .azro-modal__text{ margin: 0 !important; }
+#featureModal .azro-modal__media{
+  aspect-ratio: 16/9 !important;
+  border-radius: 16px !important;
+  background: #000 !important;
+  overflow: hidden !important;
+}
+/* balanced top/bottom rhythm inside the text column */
+#featureModal .azro-modal__text > *:first-child{ margin-top: 0 !important; }
+#featureModal .azro-modal__text > *:last-child { margin-bottom: 0 !important; }
+
+/* Footer: label on left (desktop), centered Done on small screens */
+#featureModal .azro-modal__foot{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 10px clamp(12px, 2vw, 22px) clamp(14px, 2.2vw, 22px) !important;
+}
+#featureModal .azro-modal__foot .azro-modal__close{
+  margin-left: auto !important;
+}
+/* Mobile & mobile‑landscape stack */
+@media (max-width: 900px){
+  #featureModal .azro-modal__body{ grid-template-columns: 1fr !important; }
+  #featureModal .azro-modal__foot{
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  #featureModal .azro-modal__foot > span{ display: none !important; }
+}
+
+/* Ensure dialog sits above the sticky bar */
+dialog[open]{ z-index: 9500 !important; }
+
+/* ---- About: video preview button visual (no global styling) ------------- */
+.about-hero + figure.media-card .media{
+  position: relative !important;
+}
+.about-hero + figure.media-card .azro-video__preview{
+  position: relative !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  border-radius: 16px !important;
+  background: #0b0b0b !important;
+  outline: 1px solid rgba(255,255,255,.06) !important;
+  box-shadow: 0 10px 34px rgba(0,0,0,.45) !important;
+}
+.about-hero + figure.media-card .azro-video__preview button{
+  border: 0 !important;
+  border-radius: 999px !important;
+  width: clamp(56px, 9vw, 84px) !important;
+  height: clamp(56px, 9vw, 84px) !important;
+  font-size: clamp(26px, 4vw, 34px) !important;
+  background: linear-gradient(94deg, #6e7cff, #a76cff) !important;
+  color: #fff !important;
+  cursor: pointer !important;
+}
