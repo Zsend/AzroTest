@@ -154,23 +154,24 @@ footer{
 }
 
 
-/* === HOTFIX v13 — landscape: exact portrait parity, spacer via footer::after === */
-:root{ --cta-safe-buffer: 8px; } /* subtle cushion for glow */
-
+/* === HOTFIX v12 — landscape: stop exactly at footer bottom (no extra scroll), no overlap === */
+@media (max-width: 900px){
+  /* Single source of truth for spacing under content */
+  body{ padding-bottom: calc(var(--cta-bottom-h, 64px) + 8px) !important; }
+}
 @media (max-width: 900px) and (orientation: landscape){
-  /* Reset any previous spacing to avoid double-count */
-  body{ padding-bottom: 0 !important; }
-  .footer{ margin-bottom: 0 !important; padding-bottom: 0 !important; }
+  /* Cancel any previous footer padding/margin so the scroll ends exactly at the footer */
+  .footer{ padding-bottom: 0 !important; margin-bottom: 0 !important; }
+  .sticky-cta{ position: fixed !important; left:0 !important; right:0 !important; bottom:0 !important; }
+}
 
-  /* Create precise trailing spacer equal to CTA height (+ small buffer).
-     This makes the CTA background top meet the footer bottom exactly, without overlap or gap. */
-  .footer::after{
-    content: "";
-    display: block;
-    height: calc(var(--cta-bottom-h, 64px) + var(--cta-safe-buffer));
+
+/* === HOTFIX v13 — landscape: footer exact padding equals CTA height (no overlap, no gap) === */
+@media (max-width: 900px) and (orientation: landscape){
+  body{ padding-bottom: 0 !important; } /* don't add extra doc-level space */
+  .footer{
+    padding-bottom: var(--cta-bottom-h, 64px) !important; /* create room only inside footer */
+    margin-bottom: 0 !important; /* no extra gap under footer */
   }
-
-  /* Keep CTA pinned and centered */
-  .sticky-cta{ position: fixed !important; left:0 !important; right:0 !important; bottom:0 !important; width:100% !important; text-align:center !important; transform:none !important; }
-  .sticky-cta .btn{ margin-left:auto !important; margin-right:auto !important; }
+  main > :last-child{ margin-bottom: 0 !important; } /* prevent double spacing */
 }

@@ -7,11 +7,11 @@ if (window.matchMedia('(pointer:fine)').matches) { document.querySelectorAll('.b
 /* === v41 additive runtime (safe) === */
 (function(){
   function updateCTAPad(){
-  var el = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
-  var h = 0;
-  if (el){ var r = el.getBoundingClientRect(); h = Math.ceil(r.height || 0); }
-  document.documentElement.style.setProperty('--cta-bottom-h', h + 'px');
-}
+    var el = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
+    var h = 0;
+    if (el){ var r = el.getBoundingClientRect(); h = Math.ceil(r.height || 0); }
+    document.documentElement.style.setProperty('--cta-bottom-h', h + 'px');
+  }
   function alignHeroTop(){
     var hero = document.querySelector('.hero, .Hero, section.hero');
     if (!hero) return;
@@ -29,7 +29,6 @@ if (window.matchMedia('(pointer:fine)').matches) { document.querySelectorAll('.b
     updateCTAPad();
     alignHeroTop();
   }
-  document.addEventListener('DOMContentLoaded', init);
   window.addEventListener('load', init);
   window.addEventListener('resize', function(){ updateCTAPad(); alignHeroTop(); });
   var mo = new MutationObserver(function(){ updateCTAPad(); });
