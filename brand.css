@@ -923,39 +923,3 @@ h2.h-subhead + .grid-3 .card:where(:hover,:focus-visible)::after{ transform:tran
   opacity:1 !important; visibility:visible !important;
   pointer-events:auto !important; z-index:11 !important;
 }
-
-
-/* === Scoped fix: mobile landscape CTA behavior (no overlap; centered; no extra scroll) === */
-/* Keep scope tight: landscape + <=900px only */
-@media (orientation:landscape) and (max-width:900px){
-  /* 1) Do NOT pad the footer; we want no trailing scroll after the text */
-  #footer{ padding-bottom: 0 !important; }
-
-  /* 2) Sticky CTA should behave like portrait: stick to bottom within flow,
-        remain centered, and avoid transform-based centering that conflicts
-        with modal close transitions. */
-  .sticky-cta{
-    position: sticky !important;
-    bottom: 0 !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: none !important;
-    text-align: center !important;
-    z-index: 30 !important; /* sane, above content but not absurd */
-  }
-  .sticky-cta .btn{
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
-/* === About page modal close alignment hardening ======================== */
-/* Ensure centering remains correct after modal open/close transitions. */
-@media (max-width: 900px){
-  body.azr-modal-open .sticky-cta,
-  body .sticky-cta{
-    left: auto !important; right: auto !important; transform: none !important;
-  }
-}

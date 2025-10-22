@@ -10,27 +10,42 @@ if (window.matchMedia('(pointer:fine)').matches) { document.querySelectorAll('.b
     var el = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
     var h = 0;
     if (el){
+      // Always use element height so content never hides behind the bar.
       var r = el.getBoundingClientRect();
-      h = Math.ceil(r.height);
+      if (r.width > 0 && r.height > 0){ h = Math.ceil(r.height); }
     }
     document.documentElement.style.setProperty('--cta-bottom-h', h + 'px');
   }
-  
-  function dockCTA(){
-    var footer = document.querySelector('footer, .footer');
-    var cta = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
-    if (!cta || !footer){ 
-      document.documentElement.style.setProperty('--cta-overlap', '0px'); 
-      return; 
-    }
-    var vh = window.innerHeight;
-    var rt = footer.getBoundingClientRect().top;
-    var overlap = Math.max(0, vh - rt); /* amount footer intrudes into viewport */
-    cta.style.setProperty('--cta-overlap', overlap + 'px');
-    document.documentElement.style.setProperty('--cta-overlap', overlap + 'px');
+  function updateCTAStop(){ var cta=document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]'); if(!cta) return; cta.style.bottom='0px'; cta.style.left='0'; cta.style.right='0'; }
+    var rectF = footer.getBoundingClientRect();
+    var overlap = Math.max(0, window.innerHeight - rectF.top);
+    var safe = (overlap > 1 ? overlap : 0);
+    cta.style.bottom = safe + 'px';
+    cta.style.left = '0';
+    cta.style.right = '0';
+    cta.style.transform = 'none';
   }
 
-  function alignHeroTop(){
+  
+  function enforceStickyCenter(){
+    var el = document.querySelector('.sticky-cta');
+    if (!el) return;
+    el.style.display = 'flex';
+    el.style.justifyContent = 'center';
+    el.style.alignItems = 'center';
+  }
+
+  function nudgeCTAFromFooter(){
+    var el = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
+    var footer = document.querySelector('.footer');
+    if (!el || !footer){ document.documentElement.style.setProperty('--cta-lift','0px'); return; }
+    var fr = footer.getBoundingClientRect();
+    var h = Math.ceil(el.getBoundingClientRect().height || 0);
+    var overlap = Math.max(0, (window.innerHeight - fr.top));
+    var lift = Math.min(overlap, h); // never lift more than the CTA height
+    document.documentElement.style.setProperty('--cta-lift', lift + 'px');
+  }
+function alignHeroTop(){
     var hero = document.querySelector('.hero, .Hero, section.hero');
     if (!hero) return;
     var h1 = hero.querySelector('h1');
@@ -44,40 +59,53 @@ if (window.matchMedia('(pointer:fine)').matches) { document.querySelectorAll('.b
     }
   }
   function init(){
-    updateCTAPad(); dockCTA();
+    updateCTAPad();
+    nudgeCTAFromFooter();
     alignHeroTop();
   }
-  document.addEventListener('DOMContentLoaded', init);
   window.addEventListener('load', init);
-  window.addEventListener('scroll', function(){ dockCTA(); }, {passive:true});
-  window.addEventListener('resize', function(){ updateCTAPad(); dockCTA(); alignHeroTop(); });
-  var mo = new MutationObserver(function(){ updateCTAPad(); dockCTA(); });
+  window.addEventListener('scroll', updateCTAStop, {passive:true});
+  window.addEventListener('orientationchange', updateCTAStop);
+  window.addEventListener('resize', function(){ updateCTAPad(); enforceStickyCenter(); alignHeroTop(); });
+  var mo = new MutationObserver(function(){ updateCTAPad(); enforceStickyCenter(); });
   mo.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
   init();
+window.addEventListener('scroll', function(){ nudgeCTAFromFooter(); }, {passive:true});
 })();
 
-
-/* === v4: Dock sticky CTA above footer in small landscape (no overlap, matches portrait) === */
+/* === Sticky CTA: stop before footer (mobile landscape & small screens) === */
 (function(){
-  var mql = window.matchMedia('(max-width: 900px) and (orientation: landscape)');
-  var cta = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
-  var footer = document.querySelector('.footer');
-  if (!cta || !footer) return;
-
-  function computeRaise(){
-    var f = footer.getBoundingClientRect();
-    var c = cta.getBoundingClientRect();
-    var overlap = Math.max(0, window.innerHeight - f.top);
-    var raise = Math.min(Math.ceil(c.height), Math.ceil(overlap));
-    var val = (mql.matches ? raise : 0);
-    document.documentElement.style.setProperty('--ctaRaise', val + 'px');
+  var rafId = 0;
+  function adjustCTA(){
+    var cta = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
+    if (!cta) return;
+    var footer = document.querySelector('footer, .footer');
+    // keep --cta-bottom-h fresh for spacing
+    var r = cta.getBoundingClientRect();
+    var h = Math.ceil(r.height || 0);
+    document.documentElement.style.setProperty('--cta-bottom-h', h + 'px');
+    // if footer is in view, shift the bar up so it "parks" above it
+    if (footer){
+      var fr = footer.getBoundingClientRect();
+      var overlap = Math.max(0, window.innerHeight - fr.top);
+      cta.style.setProperty('transform', 'translateY(' + (overlap ? -overlap : 0) + 'px)', 'important');
+      // reinforce centering
+      cta.style.setProperty('left', '0');
+      cta.style.setProperty('right', '0');
+      cta.style.setProperty('textAlign', 'center');
+    }
   }
-
-  var raf = 0;
-  function schedule(){ if (raf) return; raf = requestAnimationFrame(function(){ raf = 0; computeRaise(); }); }
+  function schedule(){ if (rafId) return; rafId = requestAnimationFrame(function(){ rafId = 0; adjustCTA(); }); }
   window.addEventListener('scroll', schedule, {passive:true});
   window.addEventListener('resize', schedule);
-  var mo = new MutationObserver(schedule);
-  mo.observe(document.documentElement, {subtree:true, attributes:true, childList:true});
+  window.addEventListener('orientationchange', schedule);
+  window.addEventListener('load', schedule);
+  // Modal open/close on About page may cause transforms; resync on toggle
+  try{
+    var m = document.getElementById('featureModal');
+    if (m){
+      new MutationObserver(schedule).observe(m, {attributes:true, attributeFilter:['open']});
+    }
+  }catch(e){}
   schedule();
 })();

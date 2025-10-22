@@ -153,65 +153,27 @@ footer{
   }
 }
 
-/* =========================================================
-   Sticky CTA consistency fixes (mobile landscape + About)
-   ---------------------------------------------------------
-   - Prevents CTA from covering footer content on small screens
-   - Uses JS-provided --cta-bottom-h for adaptive spacing
-   - Centers CTA in landscape the same as portrait
-   - Keeps scope minimal and non-destructive
-   ========================================================= */
-@media (max-width: 900px){
-  /* Reserve dynamic space equal to CTA height */
-  body{
-    padding-bottom: var(--cta-bottom-h, 60px);
-  }
-  /* Ensure the last block of main content has enough gap above the CTA */
-  main > :last-child{
-    margin-bottom: max(60px, var(--cta-bottom-h, 60px)) !important;
-  }
-  /* Make sure footer text sits above CTA at page end */
-  .footer, footer.footer{
-    position: relative;
-    z-index: 9999;
-  }
-  .sticky-cta{
-    z-index: 9990;
-  }
-  .sticky-cta .btn{
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-/* Landscape-specific centering and consistency */
-@media (max-width: 900px) and (orientation: landscape){
-  .sticky-cta{
-    display: block;
-    text-align: center;
-  }
-}
 
+/* =============================
+   FIX: Mobile landscape sticky CTA + About centering
+   Scope: <=900px only; no other styles changed.
+   ----------------------------- */
 
-/* === Landscape sticky‑CTA hardening (no overlap; consistent centering) === */
+/* Ensure page content never hides behind the sticky CTA.
+   JS sets --cta-bottom-h to the CTA's runtime height when present. */
 @media (max-width: 900px) {
-  /* Make sure the last block of MAIN never sits under the CTA */
-  main > :last-child {
-    margin-bottom: max(60px, var(--cta-bottom-h, 64px)) !important;
-  }
-  /* Keep footer text fully readable (CTA sits above it) */
-  .footer {
-    margin-bottom: max(0px, var(--cta-bottom-h, 64px));
+  body {
+    padding-bottom: max(60px, var(--cta-bottom-h, 0px));
   }
 }
 
-/* Force robust centering of the sticky CTA on small landscape. */
+/* On small landscape screens, center the sticky CTA container and its button.
+   (About page lacked this; this keeps all pages consistent.) */
 @media (max-width: 900px) and (orientation: landscape) {
   .sticky-cta {
-    position: fixed;
-    left: 0;
-    right: 0;
     text-align: center;
-    transform: none !important; /* avoid transform-based shifts after modal */
+    margin-left: auto;
+    margin-right: auto;
   }
   .sticky-cta .btn {
     margin-left: auto;
@@ -220,59 +182,103 @@ footer{
 }
 
 
-/* === HOTFIX v4 — Mobile landscape sticky CTA (centering + stop above footer) === */
-/* Keep scope narrow and override earlier fixes only where necessary. */
-@media (max-width: 900px){
-  body{ padding-bottom: max(60px, var(--cta-bottom-h, 0px)) !important; }
-  main > :last-child{ margin-bottom: 0 !important; }
-  .footer{ margin-bottom: 0 !important; }
-  .sticky-cta{ display:grid !important; place-items:center !important; }
-  .sticky-cta .btn{ margin-left:auto !important; margin-right:auto !important; }
+/* =============================
+   FIX v2: Mobile landscape — prevent overlap and keep CTA centered
+   (Focused, no other changes)
+   ----------------------------- */
+
+/* Use the runtime height of the sticky CTA to create breathing room
+   so it never covers page text or footer content. */
+@media (max-width: 900px) {
+  main { padding-bottom: max(env(safe-area-inset-bottom), var(--cta-bottom-h, 0px)); }
+  footer { padding-bottom: max(env(safe-area-inset-bottom), var(--cta-bottom-h, 0px)); }
 }
-@media (max-width: 900px) and (orientation: landscape){
-  /* Anchor to viewport regardless of transformed ancestors */
+
+/* Strong centering of the sticky bar and its button on small screens,
+   including after modal open/close (uses !important to survive inline/late styles). */
+@media (max-width: 900px) {
   .sticky-cta{
-    position: fixed !important;
-    left: 50% !important;
-    right: auto !important;
-    width: 100dvw !important; /* full dynamic viewport width */
-    transform: translateX(-50%) translateY(calc(var(--ctaRaise, 0px) * -1));
-    text-align: center !important;
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    left:0 !important; right:0 !important; width:100% !important;
+    text-align:center !important;
   }
-  .sticky-cta *{ transform: none !important; } /* prevent inner transforms from offsetting centering */
+  .sticky-cta .btn{
+    margin:0 auto !important;
+  }
 }
 
+/* Also explicitly apply on mobile landscape for consistency */
+@media (max-width: 900px) and (orientation: landscape) {
+  .sticky-cta{ display:flex !important; justify-content:center !important; align-items:center !important; }
+  .sticky-cta .btn{ margin:0 auto !important; }
+}
 
-/* === HOTFIX v5 — Landscape CTA exact stop + About centering === */
-/* Use a runtime CSS var to lift the CTA when the footer enters viewport. */
+/* Strong centering of sticky CTA in small landscape — anchor to viewport */
+@media (max-width: 900px) and (orientation: landscape) {
+  .sticky-cta {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    width: 100vw;
+    max-width: 100vw;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .sticky-cta .btn { margin-left: auto; margin-right: auto; }
+}
+
+/* Global CTA clearance on small screens — never let content hide under CTA */
 @media (max-width: 900px){
-  .sticky-cta{ bottom: var(--cta-overlap, 0px) !important; }
+  body{ padding-bottom: max(60px, var(--cta-bottom-h, 64px)) !important; }
 }
+
+
+/* Lift the CTA up when footer enters the viewport (script sets --cta-lift) */
+@media (max-width: 900px){
+  .sticky-cta{ bottom: 0; }
+}
+/* === HOTFIX v5 — landscape: fixed bar with JS bottom offset; robust centering === */
 @media (max-width: 900px) and (orientation: landscape){
-  /* Ensure full-width, centered grid placement on About after modal close */
-  .sticky-cta{ grid-column: 1 / -1 !important; justify-self: stretch !important; text-align:center !important; left:0 !important; right:0 !important; width:100% !important; }
-  .sticky-cta .btn{ margin-left:auto !important; margin-right:auto !important; }
-}
-
-
-/* === HOTFIX v6 — universal small‑screen centering + full‑width === */
-@media (max-width: 900px){
   .sticky-cta{
     position: fixed !important;
     left: 0 !important;
     right: 0 !important;
-    bottom: 0 !important; /* will be nudged by JS when footer appears */
     width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
+    grid-column: 1 / -1 !important;
+    justify-self: stretch !important;
+    text-align: center !important;
+    transform: none !important;
+    margin-inline: 0 !important;
+  }
+  .sticky-cta .btn{ margin-left:auto !important; margin-right:auto !important; }
+}
+
+
+/* === HOTFIX v6 — absolute centering for sticky CTA on mobile landscape (final) === */
+@media (max-width: 900px) and (orientation: landscape){
+  .sticky-cta{
+    position: fixed !important;
+    left: 0 !important; right: 0 !important;
+    bottom: var(--cta-offset-bottom, 0px) !important;
+    width: 100% !important;
+    display: grid !important;
+    place-items: center !important;
     text-align: center !important;
     transform: none !important;
     margin: 0 !important;
-    padding-left: max(10px, env(safe-area-inset-left, 0px));
-    padding-right: max(10px, env(safe-area-inset-right, 0px));
   }
   .sticky-cta .btn{
-    margin: 0 auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
+}
+
+
+/* === HOTFIX v7 — keep CTA exactly at the bottom in landscape (like portrait) === */
+@media (max-width: 900px) and (orientation: landscape){
+  /* Ensure portrait-like behavior: fixed to bottom with reserved content space */
+  body{ padding-bottom: max(60px, var(--cta-bottom-h, 64px)) !important; }
+  .sticky-cta{ bottom: 0 !important; }
 }
