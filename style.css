@@ -153,35 +153,24 @@ footer{
   }
 }
 
-/* === HOTFIX v9 — Mobile (≤900px): consistent bottom spacing + footer safety === */
-@media (max-width: 900px){
-  body{ padding-bottom: calc(var(--cta-bottom-h, 64px) + 8px) !important; }
-  .footer{ padding-bottom: calc(var(--cta-bottom-h, 64px) + 8px) !important; margin-bottom: 0 !important; }
-  .sticky-cta{ position: fixed !important; left:0 !important; right:0 !important; bottom:0 !important; width:100% !important; display:flex !important; justify-content:center !important; align-items:center !important; text-align:center !important; transform:none !important; margin:0 !important; }
-  .sticky-cta .btn{ margin:0 auto !important; }
-}
 
-/* === HOTFIX v10 — precise bottom alignment in mobile landscape === */
-:root{ --cta-safe-buffer: 14px; }
+/* === HOTFIX v13 — landscape: exact portrait parity, spacer via footer::after === */
+:root{ --cta-safe-buffer: 8px; } /* subtle cushion for glow */
+
 @media (max-width: 900px) and (orientation: landscape){
-  .footer{ padding-bottom: calc(var(--cta-bottom-h, 64px) + var(--cta-safe-buffer)) !important; }
-}
-
-/* === HOTFIX v11 — landscape: final alignment + non-overlap spacer === */
-@media (max-width: 900px) and (orientation: landscape){
-  .footer{ padding-bottom: calc(var(--cta-bottom-h, 64px) + 20px) !important; }
-  body::after{ content:""; display:block; height: calc(var(--cta-bottom-h, 64px) + 4px); }
-}
-
-
-/* === HOTFIX v12 — landscape: exact portrait-style stop (no overlap, no gap) === */
-@media (max-width: 900px) and (orientation: landscape){
-  /* Reserve only the CTA height (+4px glow buffer) at the document level */
-  body{ padding-bottom: calc(var(--cta-bottom-h, 64px) + 4px) !important; }
-
-  /* Remove any extra footer spacing so the CTA background's top meets the footer bottom cleanly */
+  /* Reset any previous spacing to avoid double-count */
+  body{ padding-bottom: 0 !important; }
   .footer{ margin-bottom: 0 !important; padding-bottom: 0 !important; }
 
-  /* Neutralize legacy bottom margin on the last section when present */
-  main > :last-child{ margin-bottom: 0 !important; }
+  /* Create precise trailing spacer equal to CTA height (+ small buffer).
+     This makes the CTA background top meet the footer bottom exactly, without overlap or gap. */
+  .footer::after{
+    content: "";
+    display: block;
+    height: calc(var(--cta-bottom-h, 64px) + var(--cta-safe-buffer));
+  }
+
+  /* Keep CTA pinned and centered */
+  .sticky-cta{ position: fixed !important; left:0 !important; right:0 !important; bottom:0 !important; width:100% !important; text-align:center !important; transform:none !important; }
+  .sticky-cta .btn{ margin-left:auto !important; margin-right:auto !important; }
 }
