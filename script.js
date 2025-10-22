@@ -7,11 +7,17 @@ if (window.matchMedia('(pointer:fine)').matches) { document.querySelectorAll('.b
 /* === v41 additive runtime (safe) === */
 (function(){
   function updateCTAPad(){
-  var el = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
-  var h = 0;
-  if (el){ var r = el.getBoundingClientRect(); h = Math.ceil(r.height || 0); }
-  document.documentElement.style.setProperty('--cta-bottom-h', h + 'px');
-}
+    var el = document.querySelector('.sticky-cta, .buy-cta, .cta-sticky, [data-sticky-cta]');
+    var h = 0;
+    if (el){
+      var r = el.getBoundingClientRect();
+      // if it's visually near bottom and wide enough
+      if (r.width > 120 && (window.innerHeight - r.bottom) <= 4){
+        h = Math.ceil(r.height);
+      }
+    }
+    document.documentElement.style.setProperty('--cta-bottom-h', h + 'px');
+  }
   function alignHeroTop(){
     var hero = document.querySelector('.hero, .Hero, section.hero');
     if (!hero) return;
@@ -35,12 +41,7 @@ if (window.matchMedia('(pointer:fine)').matches) { document.querySelectorAll('.b
     if(!footer){ cta.style.bottom='0px'; return; }
     var h = Math.ceil(cta.getBoundingClientRect().height || 0);
     var overlap = window.innerHeight - footer.getBoundingClientRect().bottom;
-    // Only lift when we've actually reached beyond the footer's bottom; otherwise stay flush at 0.
-    if (overlap > 0){
-      cta.style.bottom = Math.min(overlap, h) + 'px';
-    } else {
-      cta.style.bottom = '0px';
-    }
+    cta.style.bottom = Math.max(0, overlap - h + 6) + 'px'; // flush: top of bar = footer bottom
   }
 function init(){
     updateCTAPad();
@@ -49,7 +50,7 @@ function init(){
   }
   window.addEventListener('load', init);
   window.addEventListener('scroll', updateCTAFlush, {passive:true});
-  window.addEventListener('orientationchange', function(){ setTimeout(updateCTAPad, 50); setTimeout(updateCTAFlush, 60); });
+  window.addEventListener('orientationchange', function(){ setTimeout(updateCTAPad,50); setTimeout(updateCTAFlush,60); });
   window.addEventListener('resize', function(){ updateCTAPad(); updateCTAFlush(); alignHeroTop(); });
   var mo = new MutationObserver(function(){ updateCTAPad(); updateCTAFlush(); });
   mo.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
