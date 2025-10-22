@@ -154,24 +154,13 @@ footer{
 }
 
 
-/* === HOTFIX v12 — landscape: stop exactly at footer bottom (no extra scroll), no overlap === */
-@media (max-width: 900px){
-  /* Single source of truth for spacing under content */
-  body{ padding-bottom: calc(var(--cta-bottom-h, 64px) + 8px) !important; }
-}
-@media (max-width: 900px) and (orientation: landscape){
-  /* Cancel any previous footer padding/margin so the scroll ends exactly at the footer */
-  .footer{ padding-bottom: 0 !important; margin-bottom: 0 !important; }
-  .sticky-cta{ position: fixed !important; left:0 !important; right:0 !important; bottom:0 !important; }
-}
+/* === HOTFIX v15 — landscape: exact portrait parity via footer::after spacer (18px cushion) === */
+:root{ --cta-safe-buffer: 18px; }
 
-
-/* === HOTFIX v13 — landscape: footer exact padding equals CTA height (no overlap, no gap) === */
 @media (max-width: 900px) and (orientation: landscape){
-  body{ padding-bottom: 0 !important; } /* don't add extra doc-level space */
-  .footer{
-    padding-bottom: var(--cta-bottom-h, 64px) !important; /* create room only inside footer */
-    margin-bottom: 0 !important; /* no extra gap under footer */
-  }
-  main > :last-child{ margin-bottom: 0 !important; } /* prevent double spacing */
+  body{ padding-bottom: 0 !important; }
+  .footer{ margin-bottom: 0 !important; padding-bottom: 0 !important; }
+  .footer::after{ content:""; display:block; height: calc(var(--cta-bottom-h, 64px) + var(--cta-safe-buffer)); }
+  .sticky-cta{ position: fixed !important; left:0 !important; right:0 !important; bottom:0 !important; width:100% !important; text-align:center !important; transform:none !important; }
+  .sticky-cta .btn{ margin-left:auto !important; margin-right:auto !important; }
 }
