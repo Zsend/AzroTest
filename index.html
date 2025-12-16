@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
+/* placeholder to eliminate background flash before header mounts */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:120px; /* approximate header height */
+background:#0e1b4c;
+background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
+z-index:9998;
+pointer-events:none;
+}
+</style> <style id="critical-header-bg">
+/* critical header background — prevents first‑paint flash */
+.site-header{
+background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
+transition:none !important;
+}
+</style> <meta charset="utf-8"/>
+<!-- ———— SOCIAL PREVIEW ———— -->
+<!-- Twitter / X -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="@AzroSystems" name="twitter:site"/>
+<meta content="AZRO Systems — Institutional-grade logic, retail-friendly setup" name="twitter:title"/>
+<meta content="Cycle-timing tools that spot XRP tops &amp; bottoms weeks before headlines." name="twitter:description"/>
+<meta content="https://azrosystems.com/og-card.png" name="twitter:image"/> <!-- Open Graph (FB / LinkedIn / Discord) -->
+<meta content="https://azrosystems.com/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="AZRO Systems — Institutional-grade logic, retail-friendly setup" property="og:title"/>
+<meta content="Cycle-timing tools that spot XRP tops &amp; bottoms weeks before headlines." property="og:description"/>
+<meta content="https://azrosystems.com/og-card.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AZRO Systems — XRP Top/Bottom Detector</title>
+<!-- Fonts & preloads -->
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" href="logo.webp" rel="preload"/>
+<link as="image" href="coolback.webp" rel="preload"/>
+<link as="image" href="chart.webp" rel="preload"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- Page-specific helpers (unchanged) -->
+<style> /* … same inline CSS as before … */ .hero { padding: 60px 20px; display: flex; gap: 60px; justify-content: space-between; align-items: flex-start; } .hero-text { max-width: 640px; height: 560px; padding: 35px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; } .hero-text h1 { font-size: 3.4rem; line-height: 1.06; margin: 0 0 30px; } .hero-text p { font-size: 1.32rem; line-height: 1.55; margin: 0 0 36px; } .hero-text .btn { font-size: 1.15rem; padding: 16px 40px; margin: 0; } @media (max-width: 900px) { .hero { flex-direction: column; align-items: center; padding: 24px 12px 40px; gap: 8px; } .hero-text { height: auto; padding: 0 20px; margin: 0 0 12px !important; } .hero-text h1 { font-size: 3rem; margin: 0 0 16px; } .hero-text p { font-size: 1.2rem; margin-bottom: 16px; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0 !important; box-shadow: none !important; } .chart-note { font-size: 1.2rem; line-height: 1.55; margin: 16px 0 0; } } /* Landscape mobile tweaks (home page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } </style>
+<meta content="AZRO Systems — Launch your XRP Top/Bottom Detector: algorithmic insight for crypto traders." name="description"/>
+<link href="https://azrosystems.com/" rel="canonical"/>
+<script type="application/ld+json"> {"@context": "https://schema.org", "@type": "WebSite", "name": "AZRO Systems", "url": "https://azrosystems.com/"} </script>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<style id="home-hero-consistency">
+/* Prevent collisions: allow height to grow and gently wrap when space is tight */
+.hero.home-hero .hero-text{ height:auto !important; }
+
+@media (max-width: 1150px){
+  .hero.home-hero{ flex-wrap: wrap; gap: 24px; }
+  .hero.home-hero .hero-text, .hero.home-hero .hero-image{ flex: 1 1 520px; }
+  .hero.home-hero .hero-image{ margin-top: 12px; }
+}
+
+/* Match About's edge spacing and scale smoothly on small/medium screens */
+@media (max-width: 900px){
+  .hero.home-hero .hero-text{ padding-left: 26px !important; padding-right: 26px !important; }
+  .hero.home-hero .hero-text > h1{
+    font-size: clamp(2.6rem, 6.6vw + 0.5rem, 3.2rem) !important;
+    line-height: 1.12 !important;
+    text-wrap: balance;
+    word-break: normal;
+  }
+  /* Keep the manual line break and ensure spacing looks natural */
+  .hero.home-hero .hero-text > h1 br{ display: inline; }
+}
+</style>
+<style id="modal-landscape-consistent-fixes">
+/* Landscape pop-up balance (scoped to AZRO modals only) */
+@media (orientation: landscape){
+  dialog.azro-modal{
+    --azr-land-pad: clamp(14px, 2vh, 18px);
+    --azr-land-extra-top: 10px;    /* extra breathing room above */
+    --azr-land-extra-bottom: 14px; /* slightly more under footer text/button */
+  }
+
+  /* Header: give the title/sub a touch more space above */
+  dialog.azro-modal .azro-modal__head{
+    padding-top: calc(var(--azr-land-pad) + var(--azr-land-extra-top)) !important;
+    padding-bottom: var(--azr-land-pad) !important;
+  }
+
+  dialog.azro-modal .azro-modal__title,
+  dialog.azro-modal .azro-modal__sub{
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+
+  /* Footer: keep as a single centered row with equal feel below */
+  dialog.azro-modal .azro-modal__foot{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    text-align: center !important;
+    padding-top: var(--azr-land-pad) !important;
+    padding-bottom: calc(var(--azr-land-pad) + var(--azr-land-extra-bottom)) !important;
+    padding-left: clamp(16px, 3vw, 24px) !important;
+    padding-right: clamp(16px, 3vw, 24px) !important;
+  }
+  /* Keep items together and sized by their content */
+  dialog.azro-modal .azro-modal__foot > span,
+  dialog.azro-modal .azro-modal__foot > .azro-modal__close{
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+  }
+  /* Prevent the long footer text from breaking onto multiple lines
+     so the Done button stays right next to it. */
+  dialog.azro-modal .azro-modal__foot > span{
+    white-space: nowrap !important;
+    line-height: 1.25 !important;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<a id="main" tabindex="-1"></a>
+<header class="site-header" style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
+<div class="site-header__inner">
+<a class="site-logo" href="index.html"><picture><source srcset="logo.avif" type="image/avif"/><source srcset="logo.webp" type="image/webp"/><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
+<nav class="nav" aria-label="Primary">
+<a href="index.html" aria-current="page">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="features.html">FEATURES</a>
+<a href="pricing.html">PRICING</a>
+<a href="resources.html">RESOURCES</a>
+</nav>
+<div class="header-actions">
+<a class="btn btn--primary btn--small" href="https://azrosystems.gumroad.com/l/kuvbu">Buy now</a>
+<button class="btn btn--secondary btn--small" data-open-trial type="button">Free trial</button>
+</div>
+</div>
+</header>
+<section class="hero home-hero">
+<div class="hero-text container measure">
+<h1>Spot Market Tops and Bottoms<br/>with Confidence.</h1>
+<p><strong>The AZRO Systems™ XRP Top/Bottom Detector</strong> is an invite-only TradingView® indicator that synthesizes macro-cycle timing, market flow, and momentum stress into on-chart alerts that help confirm decisions to buy near bottoms, sell near tops, adjust positions, and validate emerging trends. <br><br>Default settings are pre-tuned for XRP—ready to call the next cycle top and bottom.</p>
+<div class="trust-lines" aria-label="Trust highlights">
+<ul>
+<li>Invite-only TradingView script — access granted after purchase</li>
+<li>One-time payment · lifetime access · free upgrades</li>
+<li>Documentation + disclosures included (educational tool, not advice)</li>
+<li>Built and maintained in the USA</li>
+</ul>
+</div>
+<div class="cta-row">
+<a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+<button class="btn btn--secondary" data-open-trial type="button">Free trial</button>
+</div>
+</div>
+<div class="hero-image chart-img">
+<picture>
+  <!-- ▸ Mobile ≤ 899 px -->
+  <source media="(max-width: 899px)" srcset="chart-720.avif" type="image/avif"/>
+  <source media="(max-width: 899px)" srcset="chart-720.webp" type="image/webp"/>
+  <source media="(max-width: 899px)" srcset="chart-720.png" type="image/png"/>
+  <!-- ▸ Desktop ≥ 900 px -->
+  <source media="(min-width: 900px)" srcset="chart.avif" type="image/avif"/>
+  <source media="(min-width: 900px)" srcset="chart.webp" type="image/webp"/>
+  <!-- Fallback -->
+  <img alt="XRP Top/Bottom Detector chart illustration" loading="lazy" src="chart.png"/>
+</picture>
+<p class="chart-note"> The XRP Top/Bottom Detector is an educational tool from AZRO Systems™ — not a registered investment adviser. Past performance is not a guarantee of future results; markets evolve and future price action may differ from prior signals. </p>
+</div>
+</section>
+<footer class="footer"> 2025 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) MADE IN THE USA · support@azrosystems.com · <a aria-label="Azro Systems on X" href="https://x.com/AzroSystems" rel="noopener noreferrer" target="_blank"><svg class="x-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
+</footer>
+<div class="sticky-cta" data-sticky-cta>
+<a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy now</a>
+<button class="btn btn--secondary" data-open-trial type="button">Free trial</button>
+</div>
+<script defer="" src="script.js"></script>
+</body>
+</html>
