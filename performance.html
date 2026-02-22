@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AZRO — Performance Snapshot</title>
+  <meta name="description" content="Mode comparison and performance snapshot for AZRO's rules-based Bitcoin treasury execution."/>
+  <meta name="color-scheme" content="light"/>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="AZRO home">
+      <span class="logo" aria-hidden="true"></span>
+      <span>AZRO</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="customer.html">Customer packet</a>
+      <a href="performance.html">Performance</a>
+      <a href="security.html">Security & policy</a>
+      <a href="concerns.html">Bitcoin concerns</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-secondary" href="customer.html">View packet</a>
+      <a class="btn btn-primary" href="#get-started">Get started</a>
+      <button class="menu-btn" data-drawer-open aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" data-drawer data-open="false" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-label="Menu">
+    <button class="drawer-close" data-drawer-close>Close</button>
+    <a href="customer.html">Customer packet</a>
+    <a href="performance.html">Performance</a>
+    <a href="security.html">Security & policy</a>
+    <a href="concerns.html">Bitcoin concerns</a>
+    <div class="divider"></div>
+    <a class="btn btn-primary" href="#get-started">Get started</a>
+  </div>
+</div>
+
+
+<main>
+  <section class="section">
+    <div class="container stack">
+      <div class="stack" style="max-width: 78ch;">
+        <div class="eyebrow">Performance snapshot</div>
+        <h1 class="h1">Disciplined execution, quantified.</h1>
+        <p class="lede">
+          This page summarizes what the execution modes are designed to do: convert the same dollars into
+          more BTC over time under a rules‑based process — without discretionary trading or leverage.
+        </p>
+        <p class="small">
+          <strong>Important:</strong> These are historical simulations over a defined window. They are not a promise of future returns.
+          Bitcoin is volatile and can experience large drawdowns.
+        </p>
+      </div>
+
+      <div class="surface" style="padding: var(--s7);">
+        <div class="grid grid-2" style="align-items:start;">
+          <div class="stack">
+            <div class="h2">Mode comparison (example window)</div>
+            <p class="lede">
+              Interpreting the table:
+              <strong>BTC‑eq</strong> is “BTC held + (ending cash ÷ BTC price).”
+              <strong>Extra sats</strong> shows how much additional BTC you would have accumulated vs simple auto‑buy.
+            </p>
+
+            <div class="callout" style="margin-top: var(--s5);">
+              <div class="row" style="gap: var(--s6); align-items:flex-start;">
+                <div class="stripe" aria-hidden="true"></div>
+                <div class="stack" style="margin-top:0;">
+                  <div class="h3">What matters most</div>
+                  <p>
+                    The advantage comes from a process: consistently allocating, and executing buys with discipline
+                    during favorable windows — while keeping cash buffers intact.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div style="overflow-x:auto;">
+              <table class="table" aria-label="Mode comparison table">
+                <thead>
+                  <tr>
+                    <th>Mode</th>
+                    <th class="num">BTC‑eq</th>
+                    <th class="num">vs auto‑buy</th>
+                    <th class="num">Extra sats</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Auto‑buy</strong></td>
+                    <td class="num">3.757</td>
+                    <td class="num">1.00×</td>
+                    <td class="num">—</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Accumulate‑only</strong></td>
+                    <td class="num">4.264</td>
+                    <td class="num">1.14×</td>
+                    <td class="num">+50.8M</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Valve Smooth</strong></td>
+                    <td class="num">5.544</td>
+                    <td class="num">1.48×</td>
+                    <td class="num">+178.8M</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="metrics" style="margin-top: var(--s5);">
+              <div class="metric">
+                <div class="label">Annual BTC accretion rate</div>
+                <div class="value">+4.37% / yr</div>
+                <div class="sub">vs auto‑buy (historical window)</div>
+              </div>
+              <div class="metric">
+                <div class="label">BTC from the same dollars</div>
+                <div class="value">+1.48× BTC</div>
+                <div class="sub">using disciplined execution</div>
+              </div>
+            </div>
+
+            <p class="small" style="margin-top: var(--s4);">
+              Use these as a way to understand behavior — not as a forecast.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--s8);">
+          <div class="grid grid-3">
+            <div class="card">
+              <div class="h3">Assumptions</div>
+              <ul class="small" style="margin: var(--s4) 0 0; padding-left: 18px;">
+                <li>Fixed weekly contribution amount.</li>
+                <li>No leverage; no borrowing to buy.</li>
+                <li>Rules‑based execution (no discretionary timing).</li>
+                <li>Simple accounting for BTC‑eq and cash balance.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="h3">What this is not</div>
+              <ul class="small" style="margin: var(--s4) 0 0; padding-left: 18px;">
+                <li>Not day trading.</li>
+                <li>Not a “get rich quick” pitch.</li>
+                <li>Not a guarantee of returns.</li>
+                <li>Not a replacement for a cash buffer.</li>
+              </ul>
+            </div>
+            <div class="card card-muted">
+              <div class="h3">What to do next</div>
+              <p class="meta">
+                If you can commit to a small weekly allocation and operate inside clear guardrails,
+                you’re ready for a treasury policy.
+              </p>
+              <a class="btn btn-primary" style="margin-top: var(--s4);" href="security.html">Review security &amp; policy</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="cols">
+      <div class="stack">
+        <div class="brand">
+          <span class="logo" aria-hidden="true"></span>
+          <span>AZRO</span>
+        </div>
+        <p class="small">
+          A rules-based Bitcoin treasury engine for small businesses — designed for disciplined execution,
+          simple reporting, and strong operational guardrails.
+        </p>
+        <p class="small">
+          <strong>Disclosure:</strong> This website is for informational purposes only. It is not investment, tax, or legal advice.
+          Bitcoin is volatile and can lose value. Past results do not guarantee future outcomes.
+        </p>
+      </div>
+
+      <div class="stack">
+        <div class="h3">Documents</div>
+        <a href="customer.html">Customer packet</a>
+        <a href="performance.html">Performance snapshot</a>
+        <a href="security.html">Security & policy</a>
+        <a href="concerns.html">Bitcoin concerns</a>
+      </div>
+
+      <div class="stack" id="get-started">
+        <div class="h3">Get started</div>
+        <p class="small">Bring last month’s P&amp;L and a rough cash buffer target. We’ll map a simple policy and turn it on.</p>
+        <a class="btn btn-primary" href="mailto:hello@azro.example?subject=AZRO%20Treasury%20Program%20-%20Intro">Book a 20‑min walk‑through</a>
+        <p class="small">Or email: <strong>hello@azro.example</strong></p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="row">
+      <p class="small">© <span id="year"></span> AZRO. All rights reserved.</p>
+      <p class="small">Made for clarity, not hype.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="app.js" defer></script>
+
+
+</body>
+</html>
