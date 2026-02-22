@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AZRO Methodology — Assumptions, rules, and limitations</title>
+  <meta name="description" content="How the backtest is constructed, what assumptions it uses, and what it does and does not prove."/>
+  <link rel="icon" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="site-header">
+  <a class="skiplink" href="#main">Skip to content</a>
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="AZRO home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>
+        <span class="brand-name">AZRO</span>
+        <span class="brand-sub">Treasury resilience for small business</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="research.html">Research</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="resources.html">Resources</a>
+      <a href="disclosures.html">Disclosures</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="btn btn-secondary" href="resources.html#customer-packet">Download packet</a>
+      <a class="btn btn-primary" href="mailto:hello@azro.com?subject=AZRO%20Intro%20Call">Request intro</a>
+    </div>
+
+    <button class="mobile-toggle" id="drawerOpen" aria-label="Open menu">Menu</button>
+  </div>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-label="Menu">
+      <a href="research.html">Research</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="resources.html">Resources</a>
+      <a href="disclosures.html">Disclosures</a>
+
+      <div class="drawer-actions">
+        <a class="btn btn-secondary" href="resources.html#customer-packet">Download packet</a>
+        <a class="btn btn-primary" href="mailto:hello@azro.com?subject=AZRO%20Intro%20Call">Request intro</a>
+      </div>
+
+      <button class="drawer-close" id="drawerClose">Close</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <div class="kicker"><span class="kicker-dot" aria-hidden="true"></span> Methodology • Evidence • Limitations</div>
+      <h1>Methodology you can evaluate like a professional.</h1>
+      <p class="lede">
+        We publish assumptions because simulated results can be misleading without context.
+        This page explains the dataset, the rules-based nature of the model, and the limitations.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-secondary" href="resources.html#performance-addendum"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Performance addendum</a>
+        <a class="btn btn-ghost" href="research.html">Research context</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Overview">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Backtest overview</h2>
+          <p>
+            The simulation uses weekly data and a fixed contribution schedule. Strategies are rules-based and do not require prediction.
+            The output is best viewed as an execution sanity check — not a guarantee of future returns.
+          </p>
+        </div>
+        <div data-perf-target="sample" style="display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;"></div>
+      </div>
+
+      <div class="grid-12">
+        <div class="card" style="grid-column: 1 / span 6;">
+          <h3>What’s modeled</h3>
+          <ul class="list">
+            <li>Regular contributions (weekly)</li>
+            <li>Rules-based position adjustments</li>
+            <li>Simple fee/tax assumptions inside the model outputs</li>
+            <li>Equity curve and drawdown tracking</li>
+          </ul>
+        </div>
+        <div class="card" style="grid-column: 7 / span 6;">
+          <h3>What’s not modeled (common pitfalls)</h3>
+          <ul class="list">
+            <li>Market impact from very large orders</li>
+            <li>Exchange outages / custody failures</li>
+            <li>Behavioral deviations (panic selling, overtrading)</li>
+            <li>Jurisdiction-specific tax treatment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="callout">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h3>Interpretation</h3>
+          <p>
+            We optimize for a process that a real business can run: no leverage, documented controls, and a cadence that survives stress.
+            The goal is durability across cycles — not maximizing backtest charts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Snapshot">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Snapshot table</h2>
+          <p>Shown here for convenience; the full addendum and spreadsheets are available in Resources.</p>
+        </div>
+      </div>
+      <div data-perf-target="snapshot"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Robustness">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Robustness checks</h2>
+          <p>
+            The same rules can behave differently depending on start date and regime.
+            We therefore look at sensitivity rather than pretending a single window is “the truth.”
+          </p>
+        </div>
+      </div>
+      <div data-perf-target="robustness"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Rules and controls">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Rules and controls (high level)</h2>
+          <p>
+            We keep the product usable and auditable. The details are in the customer packet and policy memo template.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <div class="card" style="grid-column: 1 / span 4;">
+          <h3>Funding rule</h3>
+          <p>Only allocate from free cash flow on a fixed schedule. No borrowing; no leverage.</p>
+        </div>
+        <div class="card" style="grid-column: 5 / span 4;">
+          <h3>Risk rule</h3>
+          <p>Adjust exposure using a rules-based valve approach. The goal is to manage drawdowns while staying in the game.</p>
+        </div>
+        <div class="card" style="grid-column: 9 / span 4;">
+          <h3>Governance rule</h3>
+          <p>Document the policy, custody, approvals, and reporting. Treat this as treasury, not entertainment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="brand-mark" aria-hidden="true" style="width:28px;height:28px;border-radius:9px;"></span>
+        <div style="font-weight:760;">AZRO</div>
+      </div>
+      <p style="margin-top:12px;">
+        A finance-first, rules-based approach to Bitcoin treasury allocation for small businesses and owner-operators.
+        Built for governance, repeatability, and calm execution.
+      </p>
+      <p class="fine">
+        Important: The material on this site is for informational purposes only and does not constitute investment, legal, tax, or accounting advice. Bitcoin is volatile and you can lose money.
+        Review the <a href="disclosures.html">disclosures</a> before making decisions.
+      </p>
+    </div>
+
+    <div>
+      <h3>Company</h3>
+      <a href="index.html">Home</a><br/>
+      <a href="research.html">Research</a><br/>
+      <a href="methodology.html">Methodology</a><br/>
+      <a href="resources.html">Resources</a><br/>
+    </div>
+
+    <div>
+      <h3>Get started</h3>
+      <a href="mailto:hello@azro.com?subject=AZRO%20Customer%20Packet">Request packet</a><br/>
+      <a href="mailto:hello@azro.com?subject=AZRO%20Intro%20Call">Request intro call</a><br/>
+      <a href="disclosures.html">Disclosures</a><br/>
+    </div>
+  </div>
+</footer>
+<script src="scripts.js"></script>
+</body>
+</html>
