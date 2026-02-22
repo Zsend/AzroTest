@@ -109,19 +109,23 @@
     `).join('');
 
     el.innerHTML = `
-      <table class="table" aria-label="Backtest performance snapshot">
-        <thead>
-          <tr>
-            <th>Strategy</th>
-            <th class="right">BTC&nbsp;equivalent</th>
-            <th class="right">vs&nbsp;auto</th>
-            <th class="right">End value</th>
-            <th class="right">Multiple*</th>
-            <th class="right">Max drawdown†</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
+      <div class="table-wrap" role="region" aria-label="Backtest performance snapshot (scrollable)">
+        <div class="table-scroll">
+          <table class="table" aria-label="Backtest performance snapshot">
+            <thead>
+              <tr>
+                <th>Strategy</th>
+                <th class="right">BTC&nbsp;equivalent</th>
+                <th class="right">vs&nbsp;auto</th>
+                <th class="right">End value</th>
+                <th class="right">Multiple*</th>
+                <th class="right">Max drawdown†</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>
       <div class="muted" style="margin-top:12px; font-size:12px;">
         *Multiple is end account value divided by total contributions in the simulation. †Max drawdown is based on simulated equity curve; methodology details and limitations apply.
       </div>
