@@ -3,502 +3,675 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="color-scheme" content="dark light" />
 
-  <title>AZRO — Bitcoin Treasury Program for Small Businesses</title>
-  <meta name="description" content="A rules-based treasury system that converts weekly operating surplus into long-term Bitcoin reserves while maintaining a stable cash buffer." />
+  <title>AZRO — Bitcoin Treasury Program</title>
+  <meta name="description" content="A rules-based treasury system that converts operating surplus into long-term bitcoin reserves while maintaining a stable cash buffer for operations." />
 
   <meta property="og:title" content="AZRO — Bitcoin Treasury Program" />
-  <meta property="og:description" content="Stack more BTC from the same cash flow with disciplined, rules-based execution and policy-grade controls." />
+  <meta property="og:description" content="Rules-based treasury execution: accumulate bitcoin, maintain liquidity, and operate within policy guardrails." />
   <meta property="og:type" content="website" />
 
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="assets/img/ui/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar" role="banner">
-    <div class="container topbar__inner">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
       <a class="brand" href="#top" aria-label="AZRO home">
-        <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__name">AZRO</span>
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">AZRO</span>
       </a>
 
-      <nav class="nav" aria-label="Primary">
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-panel">
-          <span class="sr-only">Open menu</span>
-          <span class="nav__toggleIcon" aria-hidden="true"></span>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav-toggle-bars" aria-hidden="true"><span></span></span>
         </button>
 
-        <div class="nav__panel" id="nav-panel">
-          <a class="nav__link" href="#why">Why now</a>
-          <a class="nav__link" href="#how">How it works</a>
-          <a class="nav__link" href="#proof">Proof</a>
-          <a class="nav__link" href="#controls">Controls</a>
-          <a class="nav__link" href="#faq">FAQ</a>
-          <a class="nav__cta" href="#cta">Request a demo</a>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#overview">Overview</a>
+          <a href="#performance">Performance</a>
+          <a href="#how">How it works</a>
+          <a href="#policy">Policy & operations</a>
+          <a href="#faq">FAQ</a>
+          <a href="#resources">Resources</a>
+
+          <div class="nav-cta">
+            <a class="btn btn-secondary" href="assets/docs/AZRO_Customer_Packet_v8.zip" download>
+              Download packet
+            </a>
+            <a class="btn btn-primary" href="#contact">Talk to us</a>
+          </div>
         </div>
       </nav>
     </div>
   </header>
 
-  <main id="main" role="main">
-    <section id="top" class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="eyebrow">Customer one‑pager</p>
-
-          <h1 class="h1">
-            Stack more BTC<span class="dot">.</span><br />
-            from the same cash flow<span class="dot">.</span>
-          </h1>
-
-          <p class="lead">
-            A rules‑based treasury system that converts weekly operating surplus into long‑term Bitcoin reserves
-            while maintaining a stable cash buffer for operations.
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="overview">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Bitcoin Treasury Program</p>
+          <h1>Convert surplus cash flow into long-term bitcoin reserves—within clear guardrails.</h1>
+          <p class="lede">
+            AZRO is a rules-based treasury system designed for small businesses.
+            It executes disciplined accumulation while maintaining a stable operating cash buffer.
           </p>
 
-          <div class="hero__pills" role="list">
-            <div class="pill" role="listitem">
-              <span class="pill__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2v20"/><path d="M5 9l7-7 7 7"/><path d="M5 15l7 7 7-7"/>
-                </svg>
-              </span>
-              <span class="pill__text">Long‑term BTC accumulation</span>
-            </div>
-            <div class="pill" role="listitem">
-              <span class="pill__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/>
-                </svg>
-              </span>
-              <span class="pill__text">Built for small weekly budgets</span>
-            </div>
-            <div class="pill" role="listitem">
-              <span class="pill__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 1l3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6z"/>
-                </svg>
-              </span>
-              <span class="pill__text">Optional liquidity controls</span>
-            </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="assets/docs/AZRO_Customer_Packet_v8.zip" download>
+              <span class="btn-icon" aria-hidden="true">⬇</span>
+              Download customer packet
+            </a>
+            <a class="btn btn-secondary" href="#performance">View performance evidence</a>
           </div>
 
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#cta">Get the customer packet</a>
-            <a class="btn btn--ghost" href="#how">See how it works</a>
+          <div class="pill-row" role="list" aria-label="Key attributes">
+            <span class="pill" role="listitem">Rules-based execution</span>
+            <span class="pill" role="listitem">No leverage</span>
+            <span class="pill" role="listitem">Custody-first posture</span>
+            <span class="pill" role="listitem">Optional liquidity controls</span>
           </div>
 
-          <p class="fineprint">
-            Start as small as <strong>$20/week</strong>. No leverage. No “yield.” Rules and reporting built for real operators.
+          <p class="microdisclaimer">
+            Educational materials only. Not financial, tax, or legal advice.
           </p>
         </div>
 
-        <aside class="hero__panel" aria-label="Preview">
-          <div class="panel">
-            <div class="panel__head">
-              <div>
-                <p class="panel__kicker">Historic window preview</p>
-                <p class="panel__title">Disciplined execution, measured in sats</p>
-              </div>
-              <span class="badge" aria-label="Policy-grade">Policy‑grade</span>
-            </div>
+        <div class="hero-panel" aria-label="Highlights">
+          <div class="metric-grid">
+            <article class="metric" aria-label="Annual BTC accretion rate">
+              <p class="metric-title">Annual BTC accretion rate</p>
+              <p class="metric-value">+4.37% <span class="metric-unit">/ yr</span></p>
+              <p class="metric-note">vs auto-buy (historical window)</p>
+            </article>
 
-            <div class="metrics">
-              <div class="metric">
-                <p class="metric__label">Annual BTC accretion rate</p>
-                <p class="metric__value">+4.37% <span class="metric__unit">/ yr</span></p>
-                <p class="metric__hint">vs auto‑buy (historical)</p>
-              </div>
-              <div class="metric">
-                <p class="metric__label">BTC from the same dollars</p>
-                <p class="metric__value">+1.48<span class="metric__unit">×</span> BTC</p>
-                <p class="metric__hint">using disciplined execution</p>
-              </div>
-            </div>
-
-            <div class="mini">
-              <div class="mini__row">
-                <p class="mini__label">Execution modes</p>
-                <p class="mini__hint">Choose the rule set that matches your volatility tolerance.</p>
-              </div>
-
-              <div class="tableWrap" role="region" aria-label="Modes comparison" tabindex="0">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Mode</th>
-                      <th scope="col">BTC‑eq</th>
-                      <th scope="col">vs auto‑buy</th>
-                      <th scope="col">Extra sats</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Auto‑buy</td>
-                      <td>3.757</td>
-                      <td>1.00×</td>
-                      <td>—</td>
-                    </tr>
-                    <tr>
-                      <td>Accumulate‑only</td>
-                      <td>4.264</td>
-                      <td>1.14×</td>
-                      <td>+50.8M</td>
-                    </tr>
-                    <tr>
-                      <td>Valve Smooth</td>
-                      <td>5.544</td>
-                      <td>1.48×</td>
-                      <td>+178.8M</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="panel__foot">
-              <span class="chip">Cash buffer</span>
-              <span class="chip">Monthly reporting</span>
-              <span class="chip">Separation of duties</span>
-            </div>
+            <article class="metric" aria-label="BTC from the same dollars">
+              <p class="metric-title">BTC from the same dollars</p>
+              <p class="metric-value">+1.48× <span class="metric-unit">BTC</span></p>
+              <p class="metric-note">using disciplined execution</p>
+            </article>
           </div>
-        </aside>
-      </div>
-    </section>
 
-    <section id="why" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Why now</h2>
-          <p class="sub">
-            When essentials rise faster than wages, “flat” becomes decline. You need an engine that compounds.
-          </p>
-        </div>
-
-        <div class="grid3">
-          <article class="card">
-            <h3 class="h3">Inflation hits essentials harder than CPI</h3>
-            <p>
-              Housing, healthcare, childcare, and education often rise faster than the headline number.
-              Even with raises, real purchasing power quietly erodes.
+          <div class="panel-callout">
+            <p class="callout-title">Designed for weekly budgets</p>
+            <p class="callout-body">
+              Start conservatively—many businesses begin with a small weekly budget and a defined cash buffer,
+              then scale only if the operating model remains robust.
             </p>
-          </article>
-          <article class="card">
-            <h3 class="h3">Small businesses face “grow or die” math</h3>
-            <p>
-              Rent, payroll, and inputs creep up every year. If revenue doesn’t outpace costs,
-              the margin gets squeezed until the business breaks.
-            </p>
-          </article>
-          <article class="card">
-            <h3 class="h3">Automation increases pressure on the middle</h3>
-            <p>
-              As tools get better, routine work becomes cheaper. Owners and builders with systems and distribution win.
-              Operators need resilient financial strategy, not more busywork.
-            </p>
-          </article>
-        </div>
-
-        <div class="callout">
-          <div class="callout__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l9 4.9v10.2L12 22l-9-4.9V6.9L12 2z"/>
-              <path d="M12 22V12"/>
-              <path d="M21 6.9l-9 5.1-9-5.1"/>
-            </svg>
-          </div>
-          <div>
-            <p class="callout__title">The practical escape hatch</p>
-            <p class="callout__text">
-              Allocate a fixed percentage of surplus, follow rules, avoid leverage, and let time do the work.
-              AZRO is designed to be that disciplined compounding engine.
+            <p class="callout-foot">
+              Past performance is not indicative of future results. Bitcoin is volatile.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section section--alt">
+    <!-- WHY NOW -->
+    <section class="section" id="why">
       <div class="container">
-        <div class="section__head">
-          <h2 class="h2">How it works</h2>
-          <p class="sub">Simple weekly execution. Policy‑grade controls. Reporting that a CFO can sign.</p>
+        <div class="section-header">
+          <h2>Why this matters now</h2>
+          <p>
+            Many small businesses are experiencing a widening gap between nominal growth and real purchasing power.
+            When essential costs rise faster than revenue and wages, “flat” performance can quietly become decline.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Rising essentials pressure cash flow</h3>
+            <p>
+              For many operators, the lived cost of housing, healthcare, childcare, and inputs can outpace headline inflation.
+              This compresses margins and reduces the ability to save in real terms.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>“Good jobs” and stable businesses are treading water</h3>
+            <p>
+              Even with nominal increases, many households and businesses see limited real improvement.
+              The result is more effort for the same outcome.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Compounding is the durable edge</h3>
+            <p>
+              The strongest long-term posture is to build an engine that compounds—
+              while keeping core operations liquid and resilient through cycles.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERFORMANCE -->
+    <section class="section section-alt" id="performance">
+      <div class="container">
+        <div class="section-header">
+          <h2>Performance evidence</h2>
+          <p>
+            Below is an example historical window from the performance addendum.
+            It compares rule-based execution against a simple auto-buy schedule.
+          </p>
+        </div>
+
+        <div class="performance-grid">
+          <div class="card">
+            <div class="card-head">
+              <h3>Mode comparison (historical example)</h3>
+              <p class="muted">
+                Example inputs shown in the addendum: $50/week contributions, $1,000 starting cash buffer, fees included;
+                window: 2017-01-01 to 2026-02-09.
+              </p>
+            </div>
+
+            <div class="table-wrap" role="region" aria-label="Mode comparison table" tabindex="0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Mode</th>
+                    <th class="num">BTC-eq</th>
+                    <th class="num">vs auto-buy</th>
+                    <th class="num">Extra sats</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Auto-buy</td>
+                    <td class="num">3.757</td>
+                    <td class="num">1.00×</td>
+                    <td class="num">—</td>
+                  </tr>
+                  <tr>
+                    <td>Accumulate-only</td>
+                    <td class="num">4.264</td>
+                    <td class="num">1.14×</td>
+                    <td class="num">+50.8M</td>
+                  </tr>
+                  <tr>
+                    <td>Valve Smooth</td>
+                    <td class="num">5.544</td>
+                    <td class="num">1.48×</td>
+                    <td class="num">+178.8M</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mini-bars" aria-label="Relative performance bars">
+              <div class="bar-row">
+                <span class="bar-label">Auto-buy</span>
+                <span class="bar" style="--w: 1.00"></span>
+                <span class="bar-val">1.00×</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Accumulate-only</span>
+                <span class="bar" style="--w: 1.14"></span>
+                <span class="bar-val">1.14×</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Valve Smooth</span>
+                <span class="bar" style="--w: 1.48"></span>
+                <span class="bar-val">1.48×</span>
+              </div>
+            </div>
+
+            <div class="card-foot">
+              <a class="link" href="assets/docs/AZRO_Performance_Addendum_BTC_Standard_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open performance addendum PDF</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>BTC multiplier vs auto-buy</h3>
+              <p class="muted">Illustration from the performance addendum. Click to expand.</p>
+            </div>
+
+            <figure class="img-frame">
+              <img src="assets/img/performance/perf_p1_chart_only.png" alt="Chart: BTC multiplier vs auto-buy showing improvement for the valve smooth mode." loading="lazy" decoding="async" data-lightbox />
+              <figcaption class="img-caption">Historical illustration; not a promise of results.</figcaption>
+            </figure>
+
+            <div class="divider"></div>
+
+            <div class="card-head">
+              <h3>BTC-equivalent balance over time</h3>
+              <p class="muted">A visual comparison of the strategy paths.</p>
+            </div>
+
+            <figure class="img-frame">
+              <img src="assets/img/performance/perf_p2_chart_only.png" alt="Chart: BTC-equivalent balance over time across modes." loading="lazy" decoding="async" data-lightbox />
+              <figcaption class="img-caption">Historical window shown in the addendum.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="note">
+          <p><strong>What this does and does not mean:</strong></p>
+          <ul>
+            <li>These results come from a specific historical window and assumptions; they are not a forecast.</li>
+            <li>All strategies can underperform. Bitcoin drawdowns can be severe.</li>
+            <li>The core objective is disciplined execution with liquidity-aware guardrails—not short-term trading.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-2">
+          <article class="card">
+            <h3>Long-range illustration</h3>
+            <p class="muted">Illustrative outcomes from the addendum. Click to expand.</p>
+            <figure class="img-frame">
+              <img src="assets/img/performance/perf_p5_table.png" alt="Illustrative long-range outcomes table from the performance addendum." loading="lazy" decoding="async" data-lightbox />
+              <figcaption class="img-caption">Illustration only; not a forecast.</figcaption>
+            </figure>
+          </article>
+
+          <article class="card">
+            <h3>Scenario planning tools</h3>
+            <p>
+              Stress-test weekly budgets and cash buffer targets under conservative assumptions.
+              Use scenarios to ensure the program remains operationally safe through volatility.
+            </p>
+            <ul class="bullets">
+              <li>Test weekly budget sizes against buffer runway.</li>
+              <li>Compare conservative vs optimistic long-range paths.</li>
+              <li>Document assumptions for internal governance.</li>
+            </ul>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="assets/docs/AZRO_Long_Range_Scenario_Calculator_FINAL.xlsx" download>Download scenario calculator</a>
+              <a class="btn btn-secondary" href="assets/docs/AZRO_BTC_Accretion_Compounding_Calculator_FINAL.xlsx" download>Download compounding calculator</a>
+            </div>
+          </article>
+        </div>
+
+</div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-header">
+          <h2>How it works</h2>
+          <p>
+            AZRO is a treasury operating system. It is designed to be simple to run week-to-week,
+            and strict enough to operate consistently under stress.
+          </p>
         </div>
 
         <div class="steps">
-          <div class="step">
-            <span class="step__num" aria-hidden="true">1</span>
-            <div>
-              <h3 class="h3">Set your cash buffer</h3>
-              <p>Choose a target and cap (e.g., % of contributed capital or an absolute dollar buffer).</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step__num" aria-hidden="true">2</span>
-            <div>
-              <h3 class="h3">Select an execution mode</h3>
-              <p>Auto‑buy, Accumulate‑only, or Valve Smooth—each designed for different volatility tolerance.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step__num" aria-hidden="true">3</span>
-            <div>
-              <h3 class="h3">Run weekly with guardrails</h3>
-              <p>AZRO converts surplus into BTC only when rules say it’s safe—without starving operations.</p>
-            </div>
-          </div>
-          <div class="step">
-            <span class="step__num" aria-hidden="true">4</span>
-            <div>
-              <h3 class="h3">Get a monthly treasury report</h3>
-              <p>BTC balance, BTC‑eq, buffer runway, trades/fees, realized gains/taxes, and policy compliance.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid2">
-          <article class="card card--tight">
-            <h3 class="h3">Why AZRO is not “just an LLM prompt”</h3>
-            <ul class="list">
-              <li><strong>Policy &amp; process</strong> — repeatable rules, not vibes.</li>
-              <li><strong>Operational rigor</strong> — buffer targets, separation of duties, and audit‑friendly reporting.</li>
-              <li><strong>Execution discipline</strong> — designed to survive volatility without leverage.</li>
-            </ul>
+          <article class="step">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>Define a buffer and budget</h3>
+            <p>
+              Set a target cash buffer (in weeks of operating spend) and a fixed weekly BTC budget.
+              The budget is sized so the business can hold through volatility without impairing operations.
+            </p>
           </article>
 
-          <article class="card card--tight">
-            <h3 class="h3">What you’re buying</h3>
-            <ul class="list">
-              <li><strong>A system</strong> that compounds over years without constant attention.</li>
-              <li><strong>A playbook</strong> that a small business can actually follow.</li>
-              <li><strong>A guardrailed engine</strong> that stays inside policy.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="proof" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Proof, not promises</h2>
-          <p class="sub">Bitcoin is volatile. The edge comes from behavior: consistent rules, consistent execution.</p>
-        </div>
-
-        <div class="proof">
-          <div class="proof__chart" aria-label="Illustrative chart">
-            <svg viewBox="0 0 640 240" role="img" aria-label="Illustrative compounding chart">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#2563eb" stop-opacity="0.35" />
-                  <stop offset="1" stop-color="#22c55e" stop-opacity="0.18" />
-                </linearGradient>
-              </defs>
-              <rect x="0" y="0" width="640" height="240" rx="18" fill="url(#g)" />
-              <path d="M20 190 C 90 160, 140 180, 200 140 S 320 70, 420 110 S 520 140, 620 60" fill="none" stroke="#0f172a" stroke-opacity="0.55" stroke-width="3" />
-              <path d="M20 200 C 100 195, 180 190, 260 185 S 400 170, 620 160" fill="none" stroke="#0f172a" stroke-opacity="0.30" stroke-width="3" />
-              <g fill="#0f172a" fill-opacity="0.78">
-                <circle cx="200" cy="140" r="4"/>
-                <circle cx="420" cy="110" r="4"/>
-                <circle cx="620" cy="60" r="4"/>
-              </g>
-            </svg>
-          </div>
-
-          <div class="proof__copy">
-            <h3 class="h3">BTC‑eq: the metric that matters</h3>
+          <article class="step">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>Execute with rules</h3>
             <p>
-              AZRO tracks <strong>BTC‑equivalent</strong> (BTC held + ending cash ÷ BTC price), so you can compare execution rules
-              on an apples‑to‑apples basis: how many sats did the same dollars produce?
+              The system accumulates on schedule and can optionally vary execution based on predefined signals
+              while remaining within policy guardrails.
             </p>
-            <div class="proof__bullets">
-              <div class="miniCard">
-                <p class="miniCard__title">Weekly cadence</p>
-                <p class="miniCard__text">Built for owners who need progress without complexity.</p>
-              </div>
-              <div class="miniCard">
-                <p class="miniCard__title">No leverage</p>
-                <p class="miniCard__text">Designed to survive full‑cycle volatility.</p>
-              </div>
-              <div class="miniCard">
-                <p class="miniCard__title">Policy-first</p>
-                <p class="miniCard__text">Guardrails and reporting, not vibes and screenshots.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="disclaimer">
-          Historical results are not a guarantee of future performance. This is not financial advice.
-          Bitcoin can lose significant value and may be unsuitable for some businesses.
-        </p>
-      </div>
-    </section>
-
-    <section id="controls" class="section section--alt">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Controls that feel like grown‑up finance</h2>
-          <p class="sub">AZRO is built to be defensible: clear rules, clean custody options, and no hidden risk.</p>
-        </div>
-
-        <div class="grid2">
-          <article class="card">
-            <h3 class="h3">Treasury policy guardrails</h3>
-            <ul class="list">
-              <li><strong>Cash buffer target/cap</strong> — maintain operational resilience.</li>
-              <li><strong>No discretionary sells</strong> — trims only within policy.</li>
-              <li><strong>No rehypothecation</strong> — no lending, yield, or derivatives.</li>
-              <li><strong>Custody options</strong> — institutional custody or multisig with separation of duties.</li>
-              <li><strong>Monthly reporting</strong> — balances, runway, trades/fees, taxes, compliance.</li>
-            </ul>
           </article>
 
-          <article class="card">
-            <h3 class="h3">Designed for small operators</h3>
-            <ul class="list">
-              <li><strong>Start small</strong> — as little as $20/week to build the habit.</li>
-              <li><strong>Automate the boring part</strong> — rules prevent emotion‑driven mistakes.</li>
-              <li><strong>Keep focus on the business</strong> — AZRO runs the process; you run the company.</li>
-            </ul>
+          <article class="step">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>Report and refine</h3>
+            <p>
+              Track BTC balance, BTC-eq, buffer runway, and execution quality in a monthly report.
+              Changes to guardrails require explicit approval.
+            </p>
           </article>
-        </div>
-      </div>
-    </section>
 
-    <section id="faq" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Bitcoin concerns, answered</h2>
-          <p class="sub">Short, direct answers meant for operators—not crypto Twitter.</p>
-        </div>
-
-        <div class="accordion" role="list">
-          <details class="acc" role="listitem">
-            <summary>Quantum computing</summary>
-            <p>
-              Not an immediate practical threat to Bitcoin’s security today. If credible risk emerges, upgrades would be
-              coordinated deliberately with broad review and consensus.
-            </p>
-          </details>
-
-          <details class="acc" role="listitem">
-            <summary>“Backed by nothing”</summary>
-            <p>
-              Backed by its properties: scarcity, durability, decentralization, and proof‑of‑work security.
-              It behaves like digital property.
-            </p>
-          </details>
-
-          <details class="acc" role="listitem">
-            <summary>Energy use / ESG backlash</summary>
-            <p>
-              Energy is the cost of incorruptible security. Mining gravitates to the cheapest/stranded energy and can help
-              stabilize grids by monetizing excess supply.
-            </p>
-          </details>
-
-          <details class="acc" role="listitem">
-            <summary>Volatility / drawdowns</summary>
-            <p>
-              Volatility is normal for an emerging monetary asset. The goal is disciplined long‑horizon accumulation
-              without leverage or forced selling.
-            </p>
-          </details>
-
-          <details class="acc" role="listitem">
-            <summary>Custody risk</summary>
-            <p>
-              Bitcoin rewards responsibility. Use institutional custody or multisig with separation of duties if you’re not
-              equipped for self‑custody.
-            </p>
-          </details>
-
-          <details class="acc" role="listitem">
-            <summary>Regulatory risk</summary>
-            <p>
-              The trend is toward institutional adoption and clearer rules. Global, neutral networks are hard to extinguish.
-              Operate within your jurisdiction’s compliance requirements.
-            </p>
-          </details>
-
-          <details class="acc" role="listitem">
-            <summary>“Better crypto replaces it”</summary>
-            <p>
-              Bitcoin is uniquely decentralized and issuerless. Many other tokens are platforms or ventures; they are not
-              the same asset class.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section id="cta" class="cta">
-      <div class="container cta__grid">
-        <div>
-          <h2 class="h2">Ready to build a treasury that compounds?</h2>
-          <p class="sub">
-            We’ll send the customer packet, walk through the policy template, and recommend an execution mode based on your
-            cash‑flow profile.
+        <div class="section-header section-header-compact">
+          <h2>Execution modes</h2>
+          <p>
+            Each mode is designed to be run consistently with minimal discretion.
+            The right choice depends on your liquidity needs and governance preferences.
           </p>
-
-          <div class="cta__bullets">
-            <div class="tick">Start small (e.g., $20/week)</div>
-            <div class="tick">No leverage, no yield, no hidden risk</div>
-            <div class="tick">Policy + reporting built in</div>
-          </div>
         </div>
 
-        <form class="form" action="#" method="post" aria-label="Request a demo">
-          <label class="field">
-            <span class="field__label">Work email</span>
-            <input class="field__input" type="email" name="email" placeholder="you@company.com" autocomplete="email" required />
-          </label>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Auto-buy (baseline)</h3>
+            <p>
+              A simple, fixed schedule that converts a defined weekly budget into bitcoin.
+              This is the reference point used in the performance comparison.
+            </p>
+          </article>
 
-          <label class="field">
-            <span class="field__label">Company</span>
-            <input class="field__input" type="text" name="company" placeholder="Acme LLC" autocomplete="organization" required />
-          </label>
+          <article class="card">
+            <h3>Accumulate-only</h3>
+            <p>
+              A disciplined accumulation approach that can lean into weakness while maintaining the cash buffer.
+              No selling—only accumulation inside the defined budget/guardrails.
+            </p>
+          </article>
 
-          <label class="field">
-            <span class="field__label">Monthly operating surplus (optional)</span>
-            <input class="field__input" type="text" name="surplus" placeholder="$1,000" />
-          </label>
+          <article class="card">
+            <h3>Valve Smooth</h3>
+            <p>
+              Adds optional trims within policy limits to protect operational runway.
+              Trims are guardrails—not discretionary trading—and are designed to keep the business liquid.
+            </p>
+          </article>
+        </div>
 
-          <button class="btn btn--primary btn--block" type="submit">Request demo</button>
-          <p class="form__hint">This form is a static demo. Replace the action with your CRM endpoint.</p>
-        </form>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Why this is different from “a strategy prompt”</h3>
+            <ul class="checklist">
+              <li><strong>Policy-first:</strong> explicit guardrails, approvals, and responsibilities.</li>
+              <li><strong>Execution discipline:</strong> repeatable rules designed to reduce emotional decision-making.</li>
+              <li><strong>Operational reality:</strong> cash buffers, reporting, custody procedures, and change control.</li>
+              <li><strong>Evidence:</strong> documented historical testing and scenario tools.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Optional liquidity controls</h3>
+            <p>
+              For businesses that want additional resilience, the system can include optional trims within preset limits.
+              The intent is to protect operating runway—never to chase short-term price moves.
+            </p>
+            <figure class="img-frame">
+              <img src="assets/img/performance/perf_p3_chart.png" alt="Chart: cash buffer behavior over time." loading="lazy" decoding="async" data-lightbox />
+              <figcaption class="img-caption">Illustration from the performance addendum.</figcaption>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICY / OPS -->
+    <section class="section section-alt" id="policy">
+      <div class="container">
+        <div class="section-header">
+          <h2>Policy & operations</h2>
+          <p>
+            A treasury program succeeds or fails on operational discipline.
+            The goal is clear rules, minimized discretion, and custody practices that match your risk tolerance.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Practical guardrails (template)</h3>
+            <ul class="bullets">
+              <li><strong>Cash buffer target:</strong> ____% of contributed capital (or $____).</li>
+              <li><strong>No discretionary sells:</strong> automated trims only within policy; never exceed ____% of BTC holdings per month.</li>
+              <li><strong>Custody posture:</strong> institutional custody or multisig with separation of duties; avoid exchange-held long-term custody.</li>
+              <li><strong>No rehypothecation:</strong> no lending, no yield products, no derivatives.</li>
+              <li><strong>Execution authority:</strong> CFO/treasurer executes within guardrails; board approval required for guardrail changes.</li>
+              <li><strong>Monthly report:</strong> BTC balance, BTC-eq, buffer runway, trades, fees, realized gains/taxes, policy exceptions.</li>
+            </ul>
+            <div class="card-foot">
+              <a class="link" href="assets/docs/AZRO_Bitcoin_Treasury_Policy_Memo_Template_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open policy memo template</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>What you get</h3>
+            <div class="feature-list">
+              <div class="feature">
+                <h4>Customer packet</h4>
+                <p>Proposal, one-pager, performance addendum, concerns, and scripts/FAQ.</p>
+              </div>
+              <div class="feature">
+                <h4>Calculators</h4>
+                <p>Accretion/compounding and scenario tools to stress-test budgets and horizons.</p>
+              </div>
+              <div class="feature">
+                <h4>Operating cadence</h4>
+                <p>Simple weekly execution and a monthly reporting cycle with change control.</p>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="assets/docs/AZRO_Customer_Packet_v8.zip" download>Download packet</a>
+              <a class="btn btn-secondary" href="#contact">Ask implementation questions</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ / CONCERNS -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2>Questions businesses ask</h2>
+          <p>
+            These are operationally grounded answers. The right approach depends on your time horizon,
+            budget sizing, and custody posture.
+          </p>
+        </div>
+
+        <div class="accordion" data-accordion>
+          <details class="acc-item">
+            <summary>Is quantum computing an immediate threat?</summary>
+            <div class="acc-body">
+              <p>
+                Not an immediate practical threat to Bitcoin’s security today.
+                If credible risk emerges, upgrades would be coordinated deliberately with broad review and consensus.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary>What about volatility and big drawdowns?</summary>
+            <div class="acc-body">
+              <p>
+                Large drawdowns are normal for an emerging monetary asset.
+                The program is designed around conservative budget sizing and maintaining operating liquidity.
+                Avoid leverage.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary>How do we avoid custody failures and hacks?</summary>
+            <div class="acc-body">
+              <p>
+                Treat custody as a core control: separation of duties, multisig (or institutional custody),
+                documented procedures, and periodic reviews. Avoid long-term exchange custody.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary>Is Bitcoin “backed by nothing”?</summary>
+            <div class="acc-body">
+              <p>
+                Bitcoin is digital property backed by verifiable scarcity, decentralization, durable consensus rules,
+                and proof-of-work security. Its “backing” is its enforceable monetary properties.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary>What about regulation and taxes?</summary>
+            <div class="acc-body">
+              <p>
+                Compliance is jurisdiction-specific. The program emphasizes clear reporting, recordkeeping,
+                and an operating model that avoids leverage and complex derivative exposure.
+                Consult qualified legal and tax professionals.
+              </p>
+            </div>
+          </details>
+
+          <details class="acc-item">
+            <summary>Can “a better crypto” replace Bitcoin?</summary>
+            <div class="acc-body">
+              <p>
+                Bitcoin is distinct as an issuerless digital commodity with a long track record of decentralization.
+                Many other tokens represent platform or venture risk and are not the same asset class.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="note">
+          <p>
+            For a deeper list of questions and answers, see
+            <a class="link" href="assets/docs/AZRO_Bitcoin_Concerns_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Bitcoin Concerns</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="section section-alt" id="resources">
+      <div class="container">
+        <div class="section-header">
+          <h2>Downloadable resources</h2>
+          <p>
+            Everything below is included in the customer packet.
+            Use these as internal references and governance artifacts.
+          </p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_One_Page_Pitch_Business_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: One-page pitch" loading="lazy" />
+            <div class="resource-body">
+              <h3>One-page pitch</h3>
+              <p>Executive overview for quick alignment and decision-making.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_One_Page_Pitch_Business_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_BTC_Treasury_Program_Proposal_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Treasury program proposal" loading="lazy" />
+            <div class="resource-body">
+              <h3>Treasury program proposal</h3>
+              <p>Program design, operating model, and implementation steps.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_BTC_Treasury_Program_Proposal_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Performance_Addendum_BTC_Standard_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Performance addendum" loading="lazy" />
+            <div class="resource-body">
+              <h3>Performance addendum</h3>
+              <p>Historical window comparison, charts, and illustrative long-range examples.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Performance_Addendum_BTC_Standard_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Bitcoin_Treasury_Policy_Memo_Template_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Policy memo template" loading="lazy" />
+            <div class="resource-body">
+              <h3>Policy memo template</h3>
+              <p>Board-ready guardrails, approvals, roles, and reporting template.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Bitcoin_Treasury_Policy_Memo_Template_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Bitcoin_Concerns_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Bitcoin concerns" loading="lazy" />
+            <div class="resource-body">
+              <h3>Bitcoin concerns</h3>
+              <p>Operationally grounded answers to common objections and risks.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Bitcoin_Concerns_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Pitch_Kit_Scripts_FAQ_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Pitch kit and FAQ" loading="lazy" />
+            <div class="resource-body">
+              <h3>Pitch kit & FAQ</h3>
+              <p>Customer-facing scripts and answers for consistent positioning.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Pitch_Kit_Scripts_FAQ_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+        
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Macro_Lens_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Macro lens" loading="lazy" />
+            <div class="resource-body">
+              <h3>Macro lens</h3>
+              <p>Context for why compounding assets matter in a world of accelerating change.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Macro_Lens_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Compounding_Value_Lens_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Compounding value lens" loading="lazy" />
+            <div class="resource-body">
+              <h3>Compounding value lens</h3>
+              <p>A framework for evaluating long-term store-of-value properties and compounding behavior.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Compounding_Value_Lens_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <img class="resource-thumb" src="assets/img/ui/AZRO_Trim_Optionality_PRINT_FINAL_v8_thumb.png" alt="Thumbnail: Trim optionality" loading="lazy" />
+            <div class="resource-body">
+              <h3>Trim optionality</h3>
+              <p>How and why optional trims can be structured as guardrails rather than discretionary trading.</p>
+              <a class="btn btn-tertiary" href="assets/docs/AZRO_Trim_Optionality_PRINT_FINAL_v8.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            </div>
+          </article>
+</div>
+
+        <div class="note">
+          <p>
+            Tools:
+            <a class="link" href="assets/docs/AZRO_BTC_Accretion_Compounding_Calculator_FINAL.xlsx" download>Accretion/Compounding Calculator</a>
+            and
+            <a class="link" href="assets/docs/AZRO_Long_Range_Scenario_Calculator_FINAL.xlsx" download>Long-range Scenario Calculator</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Ready to evaluate a treasury program?</h2>
+            <p>
+              If you share your weekly budget range, cash buffer target, jurisdiction, and custody preference,
+              we can outline an implementation plan and the right guardrails for your business.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:hello@azro.example?subject=AZRO%20Treasury%20Program">Email us</a>
+            <a class="btn btn-secondary" href="assets/docs/AZRO_Customer_Packet_v8.zip" download>Download packet</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
+  <footer class="site-footer">
+    <div class="container footer-inner">
       <div>
-        <div class="footer__brand">
-          <span class="brand__mark" aria-hidden="true"></span>
-          <span class="brand__name">AZRO</span>
-        </div>
-        <p class="footer__text">Rules‑based Bitcoin treasury for small operators.</p>
+        <p class="footer-brand">AZRO</p>
+        <p class="footer-muted">Educational materials — not financial, tax, or legal advice.</p>
       </div>
-
-      <div class="footer__links" aria-label="Footer">
-        <a href="#why">Why now</a>
-        <a href="#how">How it works</a>
-        <a href="#controls">Controls</a>
-        <a href="#faq">FAQ</a>
-      </div>
-
-      <div class="footer__fine">
-        <p>© <span id="year"></span> AZRO. All rights reserved.</p>
-        <p class="footer__disclaimer">Not investment advice. Bitcoin is volatile.</p>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="assets/docs/AZRO_Customer_Packet_v8.zip" download>Download</a>
       </div>
     </div>
   </footer>
 
-  <script src="./app.js" defer></script>
+  <div class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview" data-lightbox-modal>
+    <button class="lightbox-close" type="button" aria-label="Close preview">✕</button>
+    <img class="lightbox-img" alt="" />
+  </div>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

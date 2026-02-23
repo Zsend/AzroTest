@@ -1,22 +1,26 @@
-# AZRO Fintech Site (Static)
+# AZRO — Customer Site (v10)
 
-## Quick start
+## How to preview
 
-1. Unzip the folder.
-2. Run a local server (recommended so fonts load consistently):
+Open `index.html` in any modern browser.
+
+For a clean local preview on macOS/Linux you can run:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-3. Open:
+Then open `http://localhost:8000`.
 
-```text
-http://localhost:8000
-```
+## What’s included
 
-## Notes
+- `index.html` — single-page customer site
+- `assets/docs/` — PDFs + calculators (and a combined `AZRO_Customer_Packet_v8.zip`)
+- `assets/img/performance/` — extracted charts from the performance addendum for web display
 
-- The site bundles the Inter font (woff2) for consistent typography and spacing across devices.
-- Layout uses an 8px spacing system and grid-based sections to prevent overlaps and ensure consistent margins.
-- Replace the demo form `action` with your CRM endpoint.
+## Customization points
+
+- Update the contact email in `index.html` (search for `mailto:`)
+- Replace the favicon in `assets/img/ui/favicon.svg`
+- If you add new PDFs, generate new thumbnails (optional)
+
