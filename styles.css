@@ -60,7 +60,7 @@
 }
 
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth; overflow-x: clip;}
+html{scroll-behavior:smooth;}
 body{
   margin:0;
   font-family:var(--font);
@@ -72,19 +72,16 @@ body{
   line-height:var(--lh);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
 a{color:inherit;}
 a:hover{color:var(--accent);}
 img{max-width:100%; display:block;}
-svg{max-width:100%; height:auto; display:block;}
 
 .container{
-  width:100%;
-  max-width:var(--container);
+  width:min(100%, var(--container));
   margin:0 auto;
-  padding-inline:clamp(16px, 3.2vw, 32px);
+  padding:0 var(--s5);
 }
 
 .skiplink{
@@ -367,27 +364,9 @@ h1{
 
 .grid-12{
   display:grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--s6);
 }
-
-/*
-  Column span helpers
-  Use these classes (instead of fixed grid start lines) to avoid implicit columns
-  and to keep layouts responsive across breakpoints.
-*/
-.col-12{ grid-column: span 12; }
-.col-11{ grid-column: span 11; }
-.col-10{ grid-column: span 10; }
-.col-9{ grid-column: span 9; }
-.col-8{ grid-column: span 8; }
-.col-7{ grid-column: span 7; }
-.col-6{ grid-column: span 6; }
-.col-5{ grid-column: span 5; }
-.col-4{ grid-column: span 4; }
-.col-3{ grid-column: span 3; }
-.col-2{ grid-column: span 2; }
-.col-1{ grid-column: span 1; }
 .card{
   border-radius: var(--radius);
   background: rgba(255,255,255,0.86);
@@ -423,25 +402,13 @@ h1{
   margin: var(--s6) 0;
 }
 
-.table-wrap{
-  width:100%;
-  border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.10);
-  background: rgba(255,255,255,0.86);
-  overflow:hidden; /* ensures rounded corners remain crisp */
-}
-
-.table-scroll{
-  width:100%;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-}
-
 .table{
   width:100%;
   border-collapse: collapse;
-  min-width: 720px; /* enables horizontal scroll on small screens */
-  background: transparent;
+  overflow:hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(255,255,255,0.86);
 }
 .table th, .table td{
   padding: 12px 14px;
@@ -592,12 +559,6 @@ h1{
 
 /* Responsive */
 @media (max-width: 980px){
-  .grid-12{gap: var(--s5);} /* slightly tighter on tablet */
-
-  /* Responsive column spans */
-  .col-4{grid-column: span 6;} /* 3-up rows become 2-up */
-  .col-5, .col-7, .col-8{grid-column: span 12;} /* asymmetric splits stack */
-
   .hero-grid{grid-template-columns: 1fr; gap: var(--s6);}
   .hero-copy, .hero-side{grid-column: 1 / -1;}
   .split .left, .split .right{grid-column: 1 / -1;}
@@ -606,23 +567,14 @@ h1{
   .mobile-toggle{display:inline-flex;}
 }
 
-@media (max-width: 720px){
-  .grid-12{gap: var(--s4);} /* keep density readable */
-  .col-6{grid-column: span 12;}
-}
-
 @media (max-width: 560px){
-  .grid-12{gap: var(--s4);} 
-  .container{padding-inline: var(--s4);}
+  .container{padding: 0 var(--s4);}
   .hero{padding: var(--s10) 0 var(--s8);}
   .hero-card{padding: var(--s5);}
   .section{padding: var(--s9) 0;}
   .hero-metrics{grid-template-columns: 1fr;}
   .btn{width: 100%;}
   .header-cta{display:none;}
-
-  /* One column on mobile */
-  .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11{grid-column: span 12;}
 }
 
 /* Mobile nav drawer */
