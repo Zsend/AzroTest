@@ -1,250 +1,207 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Downloads: proposal, one-page pitch, performance addendum, concerns memo, policy templates, reporting templates, and scenario tools.">
-  <meta name="theme-color" content="#0b0f17">
-  <title>Resources — AZRO</title>
-  <link rel="preload" href="assets/css/main.css" as="style">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AZRO Resources — PDFs, templates, and calculators</title>
+  <meta name="description" content="Download the customer packet, performance addendum, policy templates, and calculators."/>
+  <link rel="icon" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<header class="header">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="index.html" aria-label="AZRO Home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M12 3L21 21H3L12 3Z" fill="rgba(20,20,20,0.92)"/>
-  <path d="M12 7.6L15.9 15.2H8.1L12 7.6Z" fill="rgba(255,255,255,0.92)"/>
-  <path d="M12 10.3L13.5 13.2H10.5L12 10.3Z" fill="rgba(20,20,20,0.92)"/>
-</svg>
-
-        </span>
+<header class="site-header">
+  <a class="skiplink" href="#main">Skip to content</a>
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="AZRO home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>
         <span class="brand-name">AZRO</span>
-        <span class="brand-tag">Bitcoin Treasury Program</span>
-      </a>
+        <span class="brand-sub">Treasury resilience for small business</span>
+      </span>
+    </a>
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="index.html">Overview</a>
-<a href="program.html">Program</a>
-<a href="performance.html">Performance</a>
-<a href="concerns.html">Concerns</a>
-<a href="governance.html">Governance</a>
-<a href="resources.html" aria-current="page">Resources</a>
-<a href="faq.html">FAQ</a>
-      </nav>
+    <nav class="nav" aria-label="Primary">
+      <a href="research.html">Research</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="resources.html">Resources</a>
+      <a href="disclosures.html">Disclosures</a>
+    </nav>
 
-      <div class="nav-actions">
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Theme: System" title="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M12 2v2.6M12 19.4V22M4 12H2m20 0h-2M5.2 5.2l1.9 1.9M16.9 16.9l1.9 1.9M18.8 5.2l-1.9 1.9M7.1 16.9l-1.9 1.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <a class="btn primary" href="resources.html#downloads">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          Download packet
-        </a>
-      </div>
+    <div class="header-cta">
+      <a class="btn btn-secondary" href="resources.html#customer-packet">Download packet</a>
+      <a class="btn btn-primary" href="mailto:hello@azro.com?subject=AZRO%20Intro%20Call">Request intro</a>
     </div>
 
-    <div id="mobile-menu" class="mobile-menu" data-mobile-menu data-open="false" aria-label="Mobile navigation">
-      <a href="index.html">Overview</a>
-<a href="program.html">Program</a>
-<a href="performance.html">Performance</a>
-<a href="concerns.html">Concerns</a>
-<a href="governance.html">Governance</a>
-<a href="resources.html" aria-current="page">Resources</a>
-<a href="faq.html">FAQ</a>
+    <button class="mobile-toggle" id="drawerOpen" aria-label="Open menu">Menu</button>
+  </div>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-label="Menu">
+      <a href="research.html">Research</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="resources.html">Resources</a>
+      <a href="disclosures.html">Disclosures</a>
+
+      <div class="drawer-actions">
+        <a class="btn btn-secondary" href="resources.html#customer-packet">Download packet</a>
+        <a class="btn btn-primary" href="mailto:hello@azro.com?subject=AZRO%20Intro%20Call">Request intro</a>
+      </div>
+
+      <button class="drawer-close" id="drawerClose">Close</button>
     </div>
   </div>
 </header>
 
 <main id="main">
-
-<section class="hero">
-  <div class="container hero-inner">
-    <div class="stack">
-      <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Resources</span></div>
-      <h1>Everything in one place.</h1>
+  <section class="page-hero">
+    <div class="container">
+      <div class="kicker"><span class="kicker-dot" aria-hidden="true"></span> Resources • Templates • Calculators</div>
+      <h1>Customer-ready documents and operator templates.</h1>
       <p class="lede">
-        Use these materials to evaluate the program, communicate it internally, and operate it with discipline.
+        Everything here is designed to be used, not admired: policy, reporting, education, and performance documentation.
       </p>
-
-      <div class="btn-row">
-        <a class="btn primary" href="#downloads">Jump to downloads</a>
-        <a class="btn" href="program.html">Program overview</a>
-      </div>
-
-      <div class="pill-row">
-        <span class="badge"><strong>PDFs</strong> stakeholder-ready</span>
-        <span class="badge"><strong>Templates</strong> policy + reporting</span>
-        <span class="badge"><strong>Tools</strong> scenarios</span>
-      </div>
     </div>
+  </section>
 
-    <div class="hero-card">
-      <div class="stack-tight">
-        <div class="small" style="color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase;">Recommended reading order</div>
-        <h2 style="font-size: var(--fs-3); margin-top: var(--s-2);">From thesis → practice</h2>
-        <ol style="margin: var(--s-4) 0 0; padding-left: 1.1rem; color: var(--muted);">
-          <li>One-page pitch</li>
-          <li>Macro lens + compounding value lens</li>
-          <li>Program proposal (deep dive)</li>
-          <li>Performance addendum</li>
-          <li>Concerns memo</li>
-          <li>Policy memo template + monthly report template</li>
-          <li>Trim optionality + scenario tools</li>
-        </ol>
+  <section class="section" aria-label="Customer packet">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 id="customer-packet">Customer packet</h2>
+          <p>A consolidated PDF you can share with a partner, CPA, or internal stakeholders.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">AZRO Customer Packet (PDF)</h3>
+        <p>Includes overview, value proposition, concerns, policy template guidance, and next steps.</p>
+        <div style="margin-top: var(--s4); display:flex; flex-wrap:wrap; gap: var(--s3);">
+          <a class="btn btn-primary" href="downloads/AZRO_Customer_Packet_PRINT_FINAL_v12_v1.0.12.pdf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Download PDF</a>
+          <a class="btn btn-secondary" href="mailto:hello@azro.com?subject=AZRO%20Customer%20Packet%20Questions"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Ask questions</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="downloads">
-  <div class="container stack">
-    <h2>Downloads</h2>
-    <p class="lede">All files below are included in the updated V8 pack.</p>
-
-    <div class="grid grid-3">
-      
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Program proposal (PDF)</h3>
-  <p class="small">The full program proposal: structure, rationale, and implementation framework.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_BTC_Treasury_Program_Proposal_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">One-page pitch (PDF)</h3>
-  <p class="small">A concise overview of the program: what it is, who it’s for, and the operating model.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_One_Page_Pitch_Business_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Performance addendum (PDF)</h3>
-  <p class="small">Backtest snapshot and BTC accretion framing (illustrative).</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Performance_Addendum_BTC_Standard_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Bitcoin concerns (PDF)</h3>
-  <p class="small">Common objections and sober responses: security, regulation, volatility, custody.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Bitcoin_Concerns_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Pitch kit scripts & FAQ (PDF)</h3>
-  <p class="small">Conversation-ready scripts, FAQs, and stakeholder framing.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Pitch_Kit_Scripts_FAQ_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Compounding value lens (PDF)</h3>
-  <p class="small">How small accumulation edges can compound over long horizons.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Compounding_Value_Lens_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Trim optionality (PDF)</h3>
-  <p class="small">A framework for optional trims that protect the business while preserving long-horizon exposure.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Trim_Optionality_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Macro lens (PDF)</h3>
-  <p class="small">A macro framing for why compounding engines matter for small businesses.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Macro_Lens_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Treasury policy memo template (PDF)</h3>
-  <p class="small">Board-ready template to formalize policy, controls, custody, and reporting cadence.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Bitcoin_Treasury_Policy_Memo_Template_PRINT_FINAL_v8.pdf">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Monthly BTC treasury report template (XLSX)</h3>
-  <p class="small">Monthly reporting template for holdings, cost basis, allocations, and compliance notes.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Monthly_BTC_Treasury_Report_Template_FINAL.xlsx">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">Long-range scenario calculator (XLSX)</h3>
-  <p class="small">Scenario planning for long-horizon outcomes under different assumptions.</p>
-  <div class="meta"><a href="assets/downloads/AZRO_Long_Range_Scenario_Calculator_FINAL.xlsx">Download</a></div>
-</div>
-
-<div class="card tight">
-  <h3 style="font-size: var(--fs-2);">BTC accretion compounding calculator (XLSX)</h3>
-  <p class="small">Translate accretion rates into long-horizon multipliers (illustrative).</p>
-  <div class="meta"><a href="assets/downloads/AZRO_BTC_Accretion_Compounding_Calculator_FINAL.xlsx">Download</a></div>
-</div>
-
-    </div>
-
-    <div class="callout stack">
-      <h3>Tip: keep one source of truth</h3>
-      <p class="small">
-        For teams, store the policy memo + monthly report in a shared folder and treat them as the system of record.
-        Consistency is what makes the program durable.
-      </p>
-      <div class="btn-row">
-        <a class="btn primary" href="governance.html">Governance model</a>
-        <a class="btn" href="concerns.html">Concerns</a>
+  <section class="section" aria-label="Performance">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 id="performance-addendum">Performance and methodology</h2>
+          <p>Backtest addendum and related artifacts. Review disclosures before relying on simulated results.</p>
+        </div>
+      </div>
+      <div class="grid-12">
+        <div class="card col-6">
+          <h3 style="margin-top:0;">Performance Addendum (PDF)</h3>
+          <p>Snapshot tables and notes intended to be read with the methodology page.</p>
+          <div style="margin-top: var(--s4);">
+            <a class="btn btn-secondary" href="downloads/AZRO_Performance_Addendum_BTC_Standard_PRINT_FINAL_v12_v1.0.12.pdf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Download</a>
+          </div>
+        </div>
+        <div class="card col-6">
+          <h3 style="margin-top:0;">Retest results (XLSX)</h3>
+          <p>Spreadsheet outputs for verification and deeper review.</p>
+          <div style="margin-top: var(--s4); display:flex; flex-wrap:wrap; gap: var(--s3);">
+            <a class="btn btn-secondary" href="downloads/AZRO_retest_results_v9_v1.0.12_INDEX_BTCUSD_1W.xlsx"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Standard</a>
+            <a class="btn btn-secondary" href="downloads/AZRO_retest_results_v9_v1.0.12_INDEX_BTCUSD_1W_ADVANCED.xlsx"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Advanced</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section" aria-label="Governance templates">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Governance templates</h2>
+          <p>Policy and reporting assets to turn “an idea” into a program.</p>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <div class="card col-6">
+          <h3 style="margin-top:0;">Bitcoin Treasury Policy Memo Template (PDF)</h3>
+          <p>A board/owner-ready policy memo template you can customize.</p>
+          <div style="margin-top: var(--s4);">
+            <a class="btn btn-secondary" href="downloads/AZRO_Bitcoin_Treasury_Policy_Memo_Template_PRINT_FINAL_v12_v1.0.12.pdf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Download</a>
+          </div>
+        </div>
+        <div class="card col-6">
+          <h3 style="margin-top:0;">Monthly Treasury Report Template (XLSX)</h3>
+          <p>Monthly reporting template to track holdings, changes, and notes.</p>
+          <div style="margin-top: var(--s4);">
+            <a class="btn btn-secondary" href="downloads/AZRO_Monthly_BTC_Treasury_Report_Template_FINAL_v9_v1.0.12.xlsx"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Download</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" aria-label="Education">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Education materials</h2>
+          <p>Use these to answer stakeholder questions and set expectations professionally.</p>
+        </div>
+      </div>
+
+      <div class="grid-12">
+        <div class="card col-6">
+          <h3 style="margin-top:0;">Bitcoin Concerns (PDF)</h3>
+          <p>A structured set of objections and responses, written for skeptics.</p>
+          <div style="margin-top: var(--s4);">
+            <a class="btn btn-secondary" href="downloads/AZRO_Bitcoin_Concerns_PRINT_FINAL_v12_v1.0.12.pdf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Download</a>
+          </div>
+        </div>
+        <div class="card col-6">
+          <h3 style="margin-top:0;">Pitch Kit Scripts + FAQ (PDF)</h3>
+          <p>Talking points for sales conversations, with finance-first framing.</p>
+          <div style="margin-top: var(--s4);">
+            <a class="btn btn-secondary" href="downloads/AZRO_Pitch_Kit_Scripts_FAQ_PRINT_FINAL_v12_v1.0.12.pdf"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V8l-5-6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 13h8M8 17h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div class="stack-tight">
-      <div class="brand" aria-label="AZRO">
-        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M12 3L21 21H3L12 3Z" fill="rgba(20,20,20,0.92)"/>
-  <path d="M12 7.6L15.9 15.2H8.1L12 7.6Z" fill="rgba(255,255,255,0.92)"/>
-  <path d="M12 10.3L13.5 13.2H10.5L12 10.3Z" fill="rgba(20,20,20,0.92)"/>
-</svg>
-</span>
-        <span class="brand-name">AZRO</span>
-        <span class="brand-tag">Bitcoin Treasury Program</span>
+    <div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="brand-mark" aria-hidden="true" style="width:28px;height:28px;border-radius:9px;"></span>
+        <div style="font-weight:760;">AZRO</div>
       </div>
-
-      <p class="small">
-        Educational materials for business owners evaluating a rules-based Bitcoin treasury approach. 
-        Nothing on this site is investment, legal, or tax advice. Digital assets are volatile; you can lose money.
+      <p style="margin-top:12px;">
+        A finance-first, rules-based approach to Bitcoin treasury allocation for small businesses and owner-operators.
+        Built for governance, repeatability, and calm execution.
       </p>
-      <small>© 2026 AZRO. Last updated Feb 23, 2026.</small>
+      <p class="fine">
+        Important: The material on this site is for informational purposes only and does not constitute investment, legal, tax, or accounting advice. Bitcoin is volatile and you can lose money.
+        Review the <a href="disclosures.html">disclosures</a> before making decisions.
+      </p>
     </div>
 
-    <div class="stack-tight">
-      <div class="small"><strong style="color: var(--text);">Quick links</strong></div>
-      <div class="stack-tight" style="margin-top: var(--s-3);">
-        <a href="resources.html#downloads">Downloads</a>
-        <a href="governance.html">Treasury policy & reporting</a>
-        <a href="concerns.html">Risk & common concerns</a>
-      </div>
-      <div class="small" style="margin-top: var(--s-5);">
-        For a working session, add your scheduling link to the primary button in the header (or replace it with your preferred CTA).
-      </div>
+    <div>
+      <h3>Company</h3>
+      <a href="index.html">Home</a><br/>
+      <a href="research.html">Research</a><br/>
+      <a href="methodology.html">Methodology</a><br/>
+      <a href="resources.html">Resources</a><br/>
+    </div>
+
+    <div>
+      <h3>Get started</h3>
+      <a href="mailto:hello@azro.com?subject=AZRO%20Customer%20Packet">Request packet</a><br/>
+      <a href="mailto:hello@azro.com?subject=AZRO%20Intro%20Call">Request intro call</a><br/>
+      <a href="disclosures.html">Disclosures</a><br/>
     </div>
   </div>
 </footer>
-
-<script src="assets/js/main.js" defer></script>
+<script src="scripts.js"></script>
 </body>
 </html>
