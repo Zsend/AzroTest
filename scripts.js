@@ -31,6 +31,14 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setOpen(false);
     });
+
+    // Ensure the menu can't get "stuck" open when rotating/resizing across breakpoints
+    const mq = window.matchMedia("(min-width: 981px)");
+    const handleMq = () => {
+      if (mq.matches) setOpen(false);
+    };
+    if (mq.addEventListener) mq.addEventListener("change", handleMq);
+    else mq.addListener(handleMq);
   }
 
   // Optional: allow only one accordion item open at a time (institutional preference)
