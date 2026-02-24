@@ -51,20 +51,25 @@
         <a href="program.html">Program</a>
         <a href="resources.html">Resources</a>
         <a href="faq.html">FAQ</a>
-      </div>
+      
+        <div class="mobileCtas">
+          <a class="btn primary" href="program.html#contact">Request onboarding</a>
+          <a class="btn ghost" href="resources.html#download">Download packet</a>
+        </div>
+</div>
     </div>
   </div>
 </header>
 
 <main>
 
-<section class="hero" style="padding-bottom:56px">
+<section class="hero">
   <div class="container">
     <div class="kicker"><span class="dot" aria-hidden="true"></span> Performance & robustness</div>
     <h1>Performance that’s explainable, testable, and presented cleanly.</h1>
     <p class="lead">
       This page shows model outputs and robustness tables directly from data files (no screenshots).
-      The goal is not hype—it’s an evidence trail you can bring to a finance meeting.
+      The goal is not marketing—it’s an evidence trail you can bring to a finance meeting.
     </p>
 
     <div class="meta">
@@ -89,7 +94,7 @@
         <div class="chartWrap">
           <svg class="chart" data-chart="modes-bars"></svg>
         </div>
-        <p class="note" style="margin-top:12px;color:var(--muted2)">
+        <p class="note mt-12 muted2">
           “BTC‑eq” is a unit‑focused view of treasury progress. It’s designed to keep the conversation on accumulation rather than price narratives.
         </p>
       </div>
@@ -105,7 +110,7 @@
         <div class="chartWrap">
           <svg class="chart" data-chart="startdate-line"></svg>
         </div>
-        <p class="note" style="margin-top:12px;color:var(--muted2)">
+        <p class="note mt-12 muted2">
           Robustness tables exist to reduce “single‑window optimism.” The question is not one cherry‑picked period—it’s repeatability across cycles.
         </p>
       </div>
@@ -140,7 +145,7 @@
           <tr><td colspan="7">Loading…</td></tr>
         </tbody>
       </table>
-      <p class="small" style="margin-top:12px;color:var(--muted2)">
+      <p class="small mt-12 muted2">
         “Extra sats” shown in millions (M). Assumptions: $50/week contributions, $1,000 initial cash buffer, weekly data, fees included.
       </p>
     </div>
@@ -167,10 +172,10 @@
         </div>
         <span class="badge">Rendered</span>
       </div>
-      <div class="chartWrap" style="padding:10px">
+      <div class="chartWrap tight">
         <canvas class="chart" data-chart="grid-scatter"></canvas>
       </div>
-      <p class="small" style="margin-top:12px;color:var(--muted2)">
+      <p class="small mt-12 muted2">
         Drawdown is shown as a negative percentage (e.g., −0.60 = −60%). “Multiple” is the ending BTC‑eq multiple under the standardized test.
       </p>
     </div>
@@ -203,7 +208,7 @@
           <tr><td colspan="7">Loading…</td></tr>
         </tbody>
       </table>
-      <p class="small" style="margin-top:12px;color:var(--muted2)">
+      <p class="small mt-12 muted2">
         This table is intentionally operational: it shows what the model did (activity and costs), not just the endpoint.
       </p>
     </div>
@@ -213,47 +218,31 @@
 </main>
 
 <footer>
-  <div class="container">
-    <div class="cols">
-      <div>
-        <div class="footerTitle">AZRO — Bitcoin Treasury Program</div>
-        <p class="small" style="margin-top:12px;max-width:78ch">
-          Built for operators who want a repeatable treasury discipline—not narratives, not hype.
-          The materials on this site are educational and operational in nature and are not investment, legal, tax, or accounting advice.
-        </p>
-        <p class="small" style="margin-top:12px;max-width:78ch">
-          <strong>Important:</strong> Any historical or simulated results shown (including backtests) are not guarantees of future outcomes.
-          Digital asset markets can be volatile. A treasury program should be governed by policy, limits, and operational controls.
-        </p>
-        <p class="small" style="margin-top:14px;color:var(--muted2)">
-          Data “as of” <span data-asof>—</span>.
-        </p>
-      </div>
-
-      <div>
-        <div class="footerTitle">Pages</div>
-        <div class="small" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
-          <a href="performance.html">Performance & robustness</a>
-          <a href="program.html">Program & deliverables</a>
-          <a href="resources.html">Resources & templates</a>
-          <a href="faq.html">FAQ & concerns</a>
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div class="footerTitle">AZRO — Bitcoin Treasury Program</div>
+          <p class="footerText">Built for operators who want repeatable treasury discipline. The materials on this site are educational and operational in nature and are not investment, legal, tax, or accounting advice.</p>
+        </div>
+        <div>
+          <div class="footerHead">Pages</div>
+          <a class="footerLink" href="performance.html">Performance &amp; robustness</a>
+          <a class="footerLink" href="program.html">Program &amp; deliverables</a>
+          <a class="footerLink" href="resources.html">Resources &amp; templates</a>
+          <a class="footerLink" href="faq.html">FAQ &amp; scripts</a>
+        </div>
+        <div>
+          <div class="footerHead">Notes</div>
+          <p class="footerText">Past performance is not indicative of future results. Bitcoin prices have historically been volatile. Any historical or simulated results shown are for context only and do not represent a guarantee of future outcomes.</p>
+          <div class="footerSmall">&copy; <span id="year"></span> AZRO</div>
         </div>
       </div>
-
-      <div>
-        <div class="footerTitle">Quality checks</div>
-        <p class="small" style="margin-top:12px">
-          Use <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">R</span> to hard refresh.
-          For review, test on desktop + mobile with browser zoom at 100%.
-        </p>
+      <div class="footerBottom">
+        <span class="footerSmall">Last updated: Feb 2026</span>
+        <span class="footerSmall">Built for clarity, repeatability, and auditability.</span>
       </div>
     </div>
-
-    <div style="margin-top:32px;font-size:.85rem;color:var(--muted2)">
-      © 2026 AZRO. All rights reserved.
-    </div>
-  </div>
-</footer>
+  </footer>
 
 <script src="data/data.js"></script>
 <script src="assets/js/app.js"></script>

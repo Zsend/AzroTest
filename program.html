@@ -51,14 +51,19 @@
         <a href="program.html">Program</a>
         <a href="resources.html">Resources</a>
         <a href="faq.html">FAQ</a>
-      </div>
+      
+        <div class="mobileCtas">
+          <a class="btn primary" href="program.html#contact">Request onboarding</a>
+          <a class="btn ghost" href="resources.html#download">Download packet</a>
+        </div>
+</div>
     </div>
   </div>
 </header>
 
 <main>
 
-<section class="hero" style="padding-bottom:56px">
+<section class="hero">
   <div class="container">
     <div class="kicker"><span class="dot" aria-hidden="true"></span> Program</div>
     <h1>A treasury program you can run while operating a business.</h1>
@@ -149,12 +154,12 @@
 <section class="section tight">
   <div class="container">
     <div class="notice">
-      <strong>What makes this different from “an LLM plan”</strong>
-      <div style="margin-top:10px;color:var(--muted2)">
-        An LLM can summarize ideas. It cannot give your business a governed operating system, a reporting standard, an execution template,
+      <strong>What makes this different from an AI-generated plan</strong>
+      <div class="mt-10 muted2">
+        An AI model can summarize ideas. It cannot give your business a governed operating system, a reporting standard, an execution template,
         and a repeatable cadence that can survive stress without drift.
       </div>
-      <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+      <div class="rowWrap mt-14">
         <a class="btn" href="resources.html#templates">See templates</a>
         <a class="btn primary" href="performance.html">See evidence</a>
       </div>
@@ -163,84 +168,70 @@
 </section>
 
 <section id="contact" class="section">
-  <div class="container">
-    <div class="head">
-      <div>
-        <h2>Request onboarding</h2>
-        <p class="desc">
-          Replace the placeholders below with your preferred contact method (Calendly link, email, or form).
-          This static site ships “as‑is,” ready to be hosted.
-        </p>
-      </div>
-    </div>
+      <div class="container">
+        <div class="head">
+          <div>
+            <h2>Request onboarding</h2>
+            <p class="desc">Ready to implement? We can tailor the policy, reporting, and execution cadence to your operating model and governance needs.</p>
+          </div>
+          <div class="actions">
+            <a class="btn" href="resources.html#download">Download packet</a>
+            <!-- TODO: Replace the mailto address with your preferred contact endpoint. -->
+            <a class="btn primary" href="mailto:hello@azro.example?subject=AZRO%20Treasury%20Program%20Inquiry">Request onboarding</a>
+          </div>
+        </div>
 
-    <div class="grid2">
-      <div class="card feature">
-        <h3>Operator onboarding</h3>
-        <p>
-          A lightweight onboarding can be structured as a 30‑minute policy session, followed by implementation and monthly reporting.
-        </p>
-        <p style="margin-top:14px;color:var(--muted2)">
-          Suggested CTA: <span class="kbd">Book a 15‑minute call</span>
-        </p>
+        <div class="grid2">
+          <div class="card feature">
+            <h3>Small business / solo operator</h3>
+            <p>Lightweight setup: cash buffer + buy rules, a weekly checklist, and a monthly report you can maintain without extra headcount.</p>
+            <ul class="bullets">
+              <li>Policy template + parameter worksheet</li>
+              <li>Weekly execution checklist</li>
+              <li>Monthly report template</li>
+            </ul>
+          </div>
+          <div class="card feature">
+            <h3>Teams / CFO workflow</h3>
+            <p>Governance-first setup: separation of duties, approvals, custody standards, and board-ready reporting that can pass scrutiny.</p>
+            <ul class="bullets">
+              <li>Guardrails + approvals map</li>
+              <li>Custody and signer model</li>
+              <li>Board packet reporting</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="card feature">
-        <h3>Enterprise / multi‑location</h3>
-        <p>
-          Multi‑entity structure, signers, multi‑sig governance, and reporting to a board or CFO workflow.
-        </p>
-        <p style="margin-top:14px;color:var(--muted2)">
-          Suggested CTA: <span class="kbd">Request a treasury workshop</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 </main>
 
 <footer>
-  <div class="container">
-    <div class="cols">
-      <div>
-        <div class="footerTitle">AZRO — Bitcoin Treasury Program</div>
-        <p class="small" style="margin-top:12px;max-width:78ch">
-          Built for operators who want a repeatable treasury discipline—not narratives, not hype.
-          The materials on this site are educational and operational in nature and are not investment, legal, tax, or accounting advice.
-        </p>
-        <p class="small" style="margin-top:12px;max-width:78ch">
-          <strong>Important:</strong> Any historical or simulated results shown (including backtests) are not guarantees of future outcomes.
-          Digital asset markets can be volatile. A treasury program should be governed by policy, limits, and operational controls.
-        </p>
-        <p class="small" style="margin-top:14px;color:var(--muted2)">
-          Data “as of” <span data-asof>—</span>.
-        </p>
-      </div>
-
-      <div>
-        <div class="footerTitle">Pages</div>
-        <div class="small" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
-          <a href="performance.html">Performance & robustness</a>
-          <a href="program.html">Program & deliverables</a>
-          <a href="resources.html">Resources & templates</a>
-          <a href="faq.html">FAQ & concerns</a>
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div class="footerTitle">AZRO — Bitcoin Treasury Program</div>
+          <p class="footerText">Built for operators who want repeatable treasury discipline. The materials on this site are educational and operational in nature and are not investment, legal, tax, or accounting advice.</p>
+        </div>
+        <div>
+          <div class="footerHead">Pages</div>
+          <a class="footerLink" href="performance.html">Performance &amp; robustness</a>
+          <a class="footerLink" href="program.html">Program &amp; deliverables</a>
+          <a class="footerLink" href="resources.html">Resources &amp; templates</a>
+          <a class="footerLink" href="faq.html">FAQ &amp; scripts</a>
+        </div>
+        <div>
+          <div class="footerHead">Notes</div>
+          <p class="footerText">Past performance is not indicative of future results. Bitcoin prices have historically been volatile. Any historical or simulated results shown are for context only and do not represent a guarantee of future outcomes.</p>
+          <div class="footerSmall">&copy; <span id="year"></span> AZRO</div>
         </div>
       </div>
-
-      <div>
-        <div class="footerTitle">Quality checks</div>
-        <p class="small" style="margin-top:12px">
-          Use <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">R</span> to hard refresh.
-          For review, test on desktop + mobile with browser zoom at 100%.
-        </p>
+      <div class="footerBottom">
+        <span class="footerSmall">Last updated: Feb 2026</span>
+        <span class="footerSmall">Built for clarity, repeatability, and auditability.</span>
       </div>
     </div>
-
-    <div style="margin-top:32px;font-size:.85rem;color:var(--muted2)">
-      © 2026 AZRO. All rights reserved.
-    </div>
-  </div>
-</footer>
+  </footer>
 
 <script src="data/data.js"></script>
 <script src="assets/js/app.js"></script>
