@@ -3,258 +3,259 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Backtest snapshot, assumptions, and the BTC accretion lens for rules-based Bitcoin treasury accumulation.">
-  <meta name="theme-color" content="#0b0f17">
-  <title>Performance — AZRO</title>
-  <link rel="preload" href="assets/css/main.css" as="style">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+  <meta name="color-scheme" content="dark light">
+  <title>AZRO — Performance & Robustness</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<header class="header">
-  <a class="skip-link" href="#main">Skip to content</a>
+<header>
   <div class="container">
     <div class="nav">
-      <a class="brand" href="index.html" aria-label="AZRO Home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M12 3L21 21H3L12 3Z" fill="rgba(20,20,20,0.92)"/>
-  <path d="M12 7.6L15.9 15.2H8.1L12 7.6Z" fill="rgba(255,255,255,0.92)"/>
-  <path d="M12 10.3L13.5 13.2H10.5L12 10.3Z" fill="rgba(20,20,20,0.92)"/>
-</svg>
-
-        </span>
-        <span class="brand-name">AZRO</span>
-        <span class="brand-tag">Bitcoin Treasury Program</span>
+      <a class="brand" href="index.html" aria-label="AZRO home">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="wordmark">
+          <strong>AZRO</strong>
+          <span>Bitcoin Treasury Program</span>
+        </div>
       </a>
 
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="navlinks" aria-label="Primary">
         <a href="index.html">Overview</a>
-<a href="program.html">Program</a>
-<a href="performance.html" aria-current="page">Performance</a>
-<a href="concerns.html">Concerns</a>
-<a href="governance.html">Governance</a>
-<a href="resources.html">Resources</a>
-<a href="faq.html">FAQ</a>
+        <a href="performance.html">Performance</a>
+        <a href="program.html">Program</a>
+        <a href="resources.html">Resources</a>
+        <a href="faq.html">FAQ</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Theme: System" title="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M12 2v2.6M12 19.4V22M4 12H2m20 0h-2M5.2 5.2l1.9 1.9M16.9 16.9l1.9 1.9M18.8 5.2l-1.9 1.9M7.1 16.9l-1.9 1.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <div class="actions">
+        <button id="themeToggle" class="iconbtn" type="button" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2" opacity="0.85"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" stroke="currentColor" stroke-width="2" opacity="0.55"/>
           </svg>
         </button>
-        <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <a class="btn ghost" href="resources.html#download">Download packet</a>
+        <a class="btn primary" href="program.html#contact">Request onboarding</a>
+        <button id="menuToggle" class="iconbtn hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" opacity="0.85"/>
           </svg>
         </button>
-        <a class="btn primary" href="resources.html#downloads">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          Download packet
-        </a>
       </div>
     </div>
 
-    <div id="mobile-menu" class="mobile-menu" data-mobile-menu data-open="false" aria-label="Mobile navigation">
-      <a href="index.html">Overview</a>
-<a href="program.html">Program</a>
-<a href="performance.html" aria-current="page">Performance</a>
-<a href="concerns.html">Concerns</a>
-<a href="governance.html">Governance</a>
-<a href="resources.html">Resources</a>
-<a href="faq.html">FAQ</a>
+    <div id="mobileMenu" class="mobilemenu" aria-label="Mobile menu">
+      <div class="inner">
+        <a href="index.html">Overview</a>
+        <a href="performance.html">Performance</a>
+        <a href="program.html">Program</a>
+        <a href="resources.html">Resources</a>
+        <a href="faq.html">FAQ</a>
+      </div>
     </div>
   </div>
 </header>
 
-<main id="main">
+<main>
 
-<section class="hero">
-  <div class="container hero-inner">
-    <div class="stack">
-      <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Performance</span></div>
-      <h1>Evidence, assumptions, and the “BTC accretion” lens.</h1>
-      <p class="lede">
-        The goal of the performance materials is to frame the program as an accumulation process.
-        The question is not “did we call the top?”—it’s “did the rules accumulate more BTC over time than doing nothing?”
-      </p>
+<section class="hero" style="padding-bottom:56px">
+  <div class="container">
+    <div class="kicker"><span class="dot" aria-hidden="true"></span> Performance & robustness</div>
+    <h1>Performance that’s explainable, testable, and presented cleanly.</h1>
+    <p class="lead">
+      This page shows model outputs and robustness tables directly from data files (no screenshots).
+      The goal is not hype—it’s an evidence trail you can bring to a finance meeting.
+    </p>
 
-      <div class="btn-row">
-        <a class="btn primary" href="assets/downloads/AZRO_Performance_Addendum_BTC_Standard_PRINT_FINAL_v8.pdf">Download performance addendum</a>
-        <a class="btn" href="assets/downloads/AZRO_BTC_Treasury_Program_Proposal_PRINT_FINAL_v8.pdf">Download full proposal</a>
-      </div>
-
-      <div class="pill-row">
-        <span class="badge"><strong>Window</strong> 2017‑01‑01 → 2026‑02‑09</span>
-        <span class="badge"><strong>Cadence</strong> $50/week</span>
-        <span class="badge"><strong>Buffer</strong> $1,000</span>
-      </div>
+    <div class="meta">
+      <div class="pill">Example config: $50/week contributions</div>
+      <div class="pill">$1,000 initial cash buffer</div>
+      <div class="pill">Fees + taxes included in model</div>
     </div>
+  </div>
+</section>
 
-    <div class="hero-card">
-      <div class="stack-tight">
-        <div class="small" style="color: var(--faint); letter-spacing: 0.08em; text-transform: uppercase;">Multiple vs auto-buy</div>
-        <h2 style="font-size: var(--fs-3); margin-top: var(--s-2);">Accumulation efficiency</h2>
-        <p class="small">
-          Bars show the relative multiple of BTC-equivalent holdings versus a simple weekly auto-buy baseline 
-          under the stated assumptions (illustrative).
+<section class="section tight">
+  <div class="container">
+    <div class="grid2">
+      <div class="card chartCard">
+        <div class="chartHeader">
+          <div>
+            <h3>Mode comparison (Balanced profile)</h3>
+            <p class="note">BTC‑equivalent end balance • “as of” <span data-asof>—</span></p>
+          </div>
+          <span class="badge">SVG</span>
+        </div>
+        <div class="chartWrap">
+          <svg class="chart" data-chart="modes-bars"></svg>
+        </div>
+        <p class="note" style="margin-top:12px;color:var(--muted2)">
+          “BTC‑eq” is a unit‑focused view of treasury progress. It’s designed to keep the conversation on accumulation rather than price narratives.
         </p>
       </div>
-      <div class="stack" style="margin-top: var(--s-6);">
-        
-    <div class="stack-tight" style="gap: var(--s-2);">
-      <div class="small" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="color: var(--text); font-weight:650;">Auto-buy</span>
-        <span class="mono">1.00×</span>
-      </div>
-      <div style="height: 12px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--bg-elev) 70%, transparent); overflow:hidden;">
-        <div style="height: 100%; width: 67.6%; background: linear-gradient(90deg, rgba(255,176,32,0.92), rgba(126,224,255,0.62));"></div>
-      </div>
-    </div>
-    
 
-    <div class="stack-tight" style="gap: var(--s-2);">
-      <div class="small" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="color: var(--text); font-weight:650;">Accumulate-only</span>
-        <span class="mono">1.14×</span>
-      </div>
-      <div style="height: 12px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--bg-elev) 70%, transparent); overflow:hidden;">
-        <div style="height: 100%; width: 77.0%; background: linear-gradient(90deg, rgba(255,176,32,0.92), rgba(126,224,255,0.62));"></div>
-      </div>
-    </div>
-    
-
-    <div class="stack-tight" style="gap: var(--s-2);">
-      <div class="small" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="color: var(--text); font-weight:650;">Valve Signals</span>
-        <span class="mono">1.30×</span>
-      </div>
-      <div style="height: 12px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--bg-elev) 70%, transparent); overflow:hidden;">
-        <div style="height: 100%; width: 87.8%; background: linear-gradient(90deg, rgba(255,176,32,0.92), rgba(126,224,255,0.62));"></div>
-      </div>
-    </div>
-    
-
-    <div class="stack-tight" style="gap: var(--s-2);">
-      <div class="small" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="color: var(--text); font-weight:650;">Valve Smooth</span>
-        <span class="mono">1.48×</span>
-      </div>
-      <div style="height: 12px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--bg-elev) 70%, transparent); overflow:hidden;">
-        <div style="height: 100%; width: 100.0%; background: linear-gradient(90deg, rgba(255,176,32,0.92), rgba(126,224,255,0.62));"></div>
-      </div>
-    </div>
-    
+      <div class="card chartCard">
+        <div class="chartHeader">
+          <div>
+            <h3>Start‑date robustness</h3>
+            <p class="note">Multiple vs auto‑buy across different starting years</p>
+          </div>
+          <span class="badge">Interactive</span>
+        </div>
+        <div class="chartWrap">
+          <svg class="chart" data-chart="startdate-line"></svg>
+        </div>
+        <p class="note" style="margin-top:12px;color:var(--muted2)">
+          Robustness tables exist to reduce “single‑window optimism.” The question is not one cherry‑picked period—it’s repeatability across cycles.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container stack">
-    <h2>Backtest snapshot</h2>
-    <p class="lede">
-      The table below mirrors the addendum snapshot. 
-      It’s intended as an “apples-to-apples” comparison under consistent contributions and fees.
-    </p>
-
-    <div class="table-wrap">
-  <div class="table-scroll" role="region" aria-label="Performance table" tabindex="0">
-    <table>
-      <thead>
-        <tr>
-          <th>Mode</th>
-          <th>BTC‑eq</th>
-          <th>Multiple vs auto‑buy</th>
-          <th>Extra sats vs auto‑buy</th>
-          <th>Annual BTC accretion (illustrative)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Auto-buy</strong></td><td>3.757</td><td>1.00×</td><td>—</td><td>0.00%/yr</td></tr><tr><td><strong>Accumulate-only</strong></td><td>4.264</td><td>1.14×</td><td>+50.8M</td><td>1.40%/yr</td></tr><tr><td><strong>Valve Signals</strong></td><td>4.873</td><td>1.30×</td><td>+111.6M</td><td>2.90%/yr</td></tr><tr><td><strong>Valve Smooth</strong></td><td>5.544</td><td>1.48×</td><td>+178.8M</td><td>4.37%/yr</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-    <div class="grid grid-2">
-      <div class="card tight">
-        <h3>Definitions</h3>
-        <ul style="margin: var(--s-4) 0 0; padding-left: 1.1rem; color: var(--muted);">
-          <li><strong style="color: var(--text);">BTC‑eq</strong>: total Bitcoin-equivalent accumulated through the approach over the test window.</li>
-          <li><strong style="color: var(--text);">Multiple</strong>: BTC‑eq vs the auto-buy baseline (1.00×).</li>
-          <li><strong style="color: var(--text);">Extra sats</strong>: additional satoshis accumulated vs baseline.</li>
-          <li><strong style="color: var(--text);">BTC accretion</strong>: annualized accumulation delta vs baseline (illustrative lens).</li>
-        </ul>
+<section class="section tight">
+  <div class="container">
+    <div class="head">
+      <div>
+        <h2>Start‑date table (built from data)</h2>
+        <p class="desc">Values are the “current” column from the model run, presented as a responsive table.</p>
       </div>
+      <span class="badge">No images</span>
+    </div>
 
-      <div class="card tight">
-        <h3>Important limitations</h3>
-        <ul style="margin: var(--s-4) 0 0; padding-left: 1.1rem; color: var(--muted);">
-          <li>Backtests are not guarantees and may not reflect real execution conditions.</li>
-          <li>BTC is volatile and may experience deep multi-year drawdowns.</li>
-          <li>Taxes, custody choices, and operational constraints can materially change outcomes.</li>
-          <li>Use the policy + reporting templates to manage governance, not to chase historical curves.</li>
-        </ul>
+    <div class="card smallpad">
+      <table class="table" aria-label="Start-date robustness table">
+        <thead>
+          <tr>
+            <th>Start</th>
+            <th>Years</th>
+            <th>Contrib</th>
+            <th>Auto‑buy BTC‑eq</th>
+            <th>Valve BTC‑eq</th>
+            <th>Multiple</th>
+            <th>Extra sats</th>
+          </tr>
+        </thead>
+        <tbody id="startDateTableBody">
+          <tr><td colspan="7">Loading…</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:12px;color:var(--muted2)">
+        “Extra sats” shown in millions (M). Assumptions: $50/week contributions, $1,000 initial cash buffer, weekly data, fees included.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    <div class="head">
+      <div>
+        <h2>Parameter space (what “robust” looks like)</h2>
+        <p class="desc">
+          This scatter plot shows top‑ranked configurations from a grid search. It’s a sanity check: you want a stable cluster, not a single lucky point.
+        </p>
+      </div>
+      <span class="badge">Canvas</span>
+    </div>
+
+    <div class="card chartCard">
+      <div class="chartHeader">
+        <div>
+          <h3>Multiple vs min drawdown (top 2,000)</h3>
+          <p class="note">Hover to inspect a configuration</p>
+        </div>
+        <span class="badge">Rendered</span>
+      </div>
+      <div class="chartWrap" style="padding:10px">
+        <canvas class="chart" data-chart="grid-scatter"></canvas>
+      </div>
+      <p class="small" style="margin-top:12px;color:var(--muted2)">
+        Drawdown is shown as a negative percentage (e.g., −0.60 = −60%). “Multiple” is the ending BTC‑eq multiple under the standardized test.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="head">
+      <div>
+        <h2>All modes summary table</h2>
+        <p class="desc">A compact view of BTC‑eq, costs, and activity across modes and risk profiles.</p>
       </div>
     </div>
 
-    <div class="callout stack">
-      <h3>How to use this responsibly</h3>
-      <p class="small">
-        Treat the performance materials as a decision aid for whether a rules-based approach fits your business risk
-        profile and time horizon. The program’s core value is discipline + governance + reporting.
+    <div class="card smallpad">
+      <table class="table" aria-label="All modes summary table">
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>Profile</th>
+            <th>BTC‑eq</th>
+            <th>End cash</th>
+            <th>Fees</th>
+            <th>Tax</th>
+            <th>Trades</th>
+          </tr>
+        </thead>
+        <tbody id="modesTableBody">
+          <tr><td colspan="7">Loading…</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:12px;color:var(--muted2)">
+        This table is intentionally operational: it shows what the model did (activity and costs), not just the endpoint.
       </p>
-      <div class="btn-row">
-        <a class="btn primary" href="governance.html">View governance model</a>
-        <a class="btn" href="concerns.html">Review common concerns</a>
-      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="footer">
-  <div class="container footer-grid">
-    <div class="stack-tight">
-      <div class="brand" aria-label="AZRO">
-        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M12 3L21 21H3L12 3Z" fill="rgba(20,20,20,0.92)"/>
-  <path d="M12 7.6L15.9 15.2H8.1L12 7.6Z" fill="rgba(255,255,255,0.92)"/>
-  <path d="M12 10.3L13.5 13.2H10.5L12 10.3Z" fill="rgba(20,20,20,0.92)"/>
-</svg>
-</span>
-        <span class="brand-name">AZRO</span>
-        <span class="brand-tag">Bitcoin Treasury Program</span>
+<footer>
+  <div class="container">
+    <div class="cols">
+      <div>
+        <div class="footerTitle">AZRO — Bitcoin Treasury Program</div>
+        <p class="small" style="margin-top:12px;max-width:78ch">
+          Built for operators who want a repeatable treasury discipline—not narratives, not hype.
+          The materials on this site are educational and operational in nature and are not investment, legal, tax, or accounting advice.
+        </p>
+        <p class="small" style="margin-top:12px;max-width:78ch">
+          <strong>Important:</strong> Any historical or simulated results shown (including backtests) are not guarantees of future outcomes.
+          Digital asset markets can be volatile. A treasury program should be governed by policy, limits, and operational controls.
+        </p>
+        <p class="small" style="margin-top:14px;color:var(--muted2)">
+          Data “as of” <span data-asof>—</span>.
+        </p>
       </div>
 
-      <p class="small">
-        Educational materials for business owners evaluating a rules-based Bitcoin treasury approach. 
-        Nothing on this site is investment, legal, or tax advice. Digital assets are volatile; you can lose money.
-      </p>
-      <small>© 2026 AZRO. Last updated Feb 23, 2026.</small>
+      <div>
+        <div class="footerTitle">Pages</div>
+        <div class="small" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <a href="performance.html">Performance & robustness</a>
+          <a href="program.html">Program & deliverables</a>
+          <a href="resources.html">Resources & templates</a>
+          <a href="faq.html">FAQ & concerns</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footerTitle">Quality checks</div>
+        <p class="small" style="margin-top:12px">
+          Use <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">R</span> to hard refresh.
+          For review, test on desktop + mobile with browser zoom at 100%.
+        </p>
+      </div>
     </div>
 
-    <div class="stack-tight">
-      <div class="small"><strong style="color: var(--text);">Quick links</strong></div>
-      <div class="stack-tight" style="margin-top: var(--s-3);">
-        <a href="resources.html#downloads">Downloads</a>
-        <a href="governance.html">Treasury policy & reporting</a>
-        <a href="concerns.html">Risk & common concerns</a>
-      </div>
-      <div class="small" style="margin-top: var(--s-5);">
-        For a working session, add your scheduling link to the primary button in the header (or replace it with your preferred CTA).
-      </div>
+    <div style="margin-top:32px;font-size:.85rem;color:var(--muted2)">
+      © 2026 AZRO. All rights reserved.
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="data/data.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
