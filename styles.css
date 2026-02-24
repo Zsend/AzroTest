@@ -53,6 +53,11 @@
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
+html{
+  /* Prevent mobile Safari / iOS from auto-inflating text sizes (can break pixel-perfect layouts). */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body{
   margin: 0;
   background: var(--bg);
@@ -141,26 +146,28 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   gap: var(--s5);
   align-items: center;
   flex: 1;
+  min-width: 0;
 }
 .nav__link{
   font-size: 14px;
   color: var(--muted);
   padding: var(--s2) var(--s3);
   border-radius: 10px;
+  white-space: nowrap;
 }
 .nav__link:hover{ background: rgba(47,107,255,.06); color: var(--text); }
 
-.topbar__actions{ display: flex; gap: var(--s3); align-items: center; }
+.topbar__actions{ display: flex; gap: var(--s3); align-items: center; margin-left: auto; }
 
 /* Keep topbar CTAs crisp and single-line, even as space tightens */
 .topbar__actions .btn{
-  min-height: 48px;
-  padding-inline: 16px;
+  min-height: 44px;
+  padding-inline: 14px;
   white-space: nowrap;
 }
 .navtoggle{
   display: none;
-  margin-left: auto;
+  margin-left: var(--s3);
   border: 1px solid var(--border);
   background: var(--surface);
   border-radius: 12px;
@@ -210,9 +217,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   .topbar__actions{ gap: var(--s2); }
 }
 
-@media (max-width: 1180px){
-  .nav, .topbar__actions{ display: none; }
+/*
+  Header responsiveness (pixel-perfect):
+  - Keep full nav on wide desktop.
+  - Collapse nav earlier (but keep CTAs) to prevent any CTA wrapping at mid widths.
+  - Hide the secondary CTA before we run out of space.
+  - On small screens, move all CTAs into the mobile menu.
+*/
+@media (max-width: 1240px){
+  .nav{ display: none; }
   .navtoggle{ display: inline-block; }
+}
+
+@media (max-width: 980px){
+  .topbar__actions .btn--ghost{ display: none; }
+}
+
+@media (max-width: 720px){
+  .topbar__actions{ display: none; }
 }
 
 /* Buttons */
@@ -227,8 +249,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   min-height: 48px;
   padding: 0 18px;
   font-size: 14px;
-  line-height: 1;
+  line-height: 1.1;
   white-space: nowrap;
+  text-wrap: nowrap;
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform .08s ease, background .18s ease, border-color .18s ease;
@@ -542,11 +565,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   background: #fff;
   box-shadow: 0 1px 0 rgba(0,0,0,.02);
 }
+.tablewrap:focus{ outline: none; }
+.tablewrap:focus-visible{
+  outline: 3px solid rgba(47,107,255,.35);
+  outline-offset: 3px;
+}
 .table{
   width: 100%;
   border-collapse: collapse;
-  min-width: 640px;
+  /* Base tables should be able to fit inside cards without forcing horizontal scroll. */
+  min-width: 0;
 }
+.table--wide{ min-width: 760px; }
 .table th, .table td{
   padding: 14px 16px;
   border-bottom: 1px solid var(--border);
@@ -566,6 +596,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .table tbody tr:last-child td{ border-bottom: none; }
 .table .num{ text-align: right; font-variant-numeric: tabular-nums; }
 .table--compact th, .table--compact td{ padding: 12px 16px; }
+
+/* Fit tables (no forced horizontal scroll) — used for compact “preview” tables inside narrow cards. */
+.table--fit{
+  min-width: 0;
+  table-layout: fixed;
+}
+.table--fit th, .table--fit td{
+  overflow-wrap: anywhere;
+}
 
 @media (max-width: 720px){
   .table th, .table td{ padding: 12px 12px; }
@@ -770,9 +809,9 @@ a.inline:hover{ text-decoration-thickness: 2px; }
   border: 0;
   background: transparent;
   color: var(--muted);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
-  height: 40px;
+  height: 44px;
   padding: 0 18px;
   line-height: 1;
   border-radius: 999px;
@@ -783,7 +822,7 @@ a.inline:hover{ text-decoration-thickness: 2px; }
 .viewtoggle__btn.is-active{
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #fff;
-  box-shadow: 0 12px 24px rgba(47,107,255,.20);
+  box-shadow: 0 10px 22px rgba(47,107,255,.18);
 }
 .viewtoggle__hint{
   margin-top: var(--s3);
@@ -849,7 +888,8 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 /* Artifact grid */
 .artifactgrid{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Give the reporting artifact more room (tables read better with width). */
+  grid-template-columns: 1fr 1.35fr;
   gap: var(--s5);
 }
 .artifactgrid__wide{ grid-column: 1 / -1; }
