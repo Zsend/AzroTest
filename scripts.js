@@ -33,7 +33,8 @@
     });
 
     // Ensure the menu can't get stuck open across breakpoints
-    const mq = window.matchMedia("(min-width: 981px)");
+    // Keep in sync with the CSS topbar breakpoint.
+    const mq = window.matchMedia("(min-width: 1181px)");
     const handleMq = () => {
       if (mq.matches) setOpen(false);
     };

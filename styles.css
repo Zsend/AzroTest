@@ -151,6 +151,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .nav__link:hover{ background: rgba(47,107,255,.06); color: var(--text); }
 
 .topbar__actions{ display: flex; gap: var(--s3); align-items: center; }
+
+/* Keep topbar CTAs crisp and single-line, even as space tightens */
+.topbar__actions .btn{
+  min-height: 48px;
+  padding-inline: 16px;
+  white-space: nowrap;
+}
 .navtoggle{
   display: none;
   margin-left: auto;
@@ -192,7 +199,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 .mobilemenu__link:hover{ background: rgba(47,107,255,.06); }
 
-@media (max-width: 980px){
+/*
+  Navigation breakpoint: collapse earlier than the main layout breakpoint.
+  Prevents mid-width "almost desktop" states where CTAs can wrap.
+*/
+@media (max-width: 1320px){
+  .topbar__inner{ gap: var(--s4); }
+  .nav{ gap: var(--s4); }
+  .nav__link{ padding: var(--s2) 10px; }
+  .topbar__actions{ gap: var(--s2); }
+}
+
+@media (max-width: 1180px){
   .nav, .topbar__actions{ display: none; }
   .navtoggle{ display: inline-block; }
 }
@@ -205,8 +223,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   gap: var(--s2);
   font-weight: 600;
   border-radius: 14px;
-  padding: 12px 16px;
+  /* Unified control sizing: consistent height + no text wrapping */
+  min-height: 48px;
+  padding: 0 18px;
   font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform .08s ease, background .18s ease, border-color .18s ease;
@@ -291,7 +313,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   color: var(--muted);
   font-size: 18px;
 }
-.hero__cta{ display: flex; gap: var(--s3); flex-wrap: wrap; margin-bottom: var(--s6); }
+.hero__cta{
+  display: flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  /* Consistent vertical rhythm under the view hint */
+  margin-top: var(--s5);
+  margin-bottom: var(--s6);
+}
 
 .chips{
   display: flex;
@@ -344,13 +373,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 .metriccard__value{
   font-size: 34px;
-  font-weight: 750;
+  font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
 .metriccard__unit{
   font-size: 16px;
-  font-weight: 650;
+  font-weight: 600;
   color: var(--muted);
   margin-left: 6px;
 }
@@ -529,7 +558,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   font-size: 13px;
   text-transform: none;
   letter-spacing: .02em;
-  font-weight: 750;
+  font-weight: 700;
 }
 .table tbody td{
   font-size: 15px;
@@ -741,8 +770,11 @@ a.inline:hover{ text-decoration-thickness: 2px; }
   border: 0;
   background: transparent;
   color: var(--muted);
-  font-weight: 850;
-  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  height: 40px;
+  padding: 0 18px;
+  line-height: 1;
   border-radius: 999px;
   cursor: pointer;
   transition: background .18s ease, color .18s ease, transform .08s ease, box-shadow .18s ease;
@@ -751,7 +783,7 @@ a.inline:hover{ text-decoration-thickness: 2px; }
 .viewtoggle__btn.is-active{
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #fff;
-  box-shadow: 0 14px 30px rgba(47,107,255,.22);
+  box-shadow: 0 12px 24px rgba(47,107,255,.20);
 }
 .viewtoggle__hint{
   margin-top: var(--s3);
@@ -802,7 +834,7 @@ a.inline:hover{ text-decoration-thickness: 2px; }
 .fold--lite summary{
   background: var(--tint2);
   border-bottom: 1px solid var(--border);
-  font-weight: 850;
+  font-weight: 800;
 }
 .fold--lite .fold__body{ padding: var(--s6); }
 
@@ -846,7 +878,7 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 .kv__k{
   color: var(--muted2);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: .02em;
 }
 .kv__v{
