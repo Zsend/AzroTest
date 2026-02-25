@@ -558,6 +558,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .tablewrap{
   border: 1px solid var(--border);
   border-radius: var(--r3);
+  width: 100%;
+  max-width: 100%;
+  display: block;
   /* Tables must be usable on narrow devices (horizontal scroll instead of clipping). */
   overflow-x: auto;
   overflow-y: hidden;
@@ -641,6 +644,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 
 .disclaimer{
   margin-top: var(--s6);
+  overflow-wrap: anywhere;
+  word-break: break-word;
   padding: var(--s5);
   border-radius: var(--r3);
   border: 1px solid var(--border);
@@ -683,7 +688,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   content: "＋";
   position: absolute;
   right: 16px;
-  top: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--accent2);
   font-size: 18px;
 }
@@ -859,7 +865,8 @@ a.inline:hover{ text-decoration-thickness: 2px; }
   content: "▾";
   position: absolute;
   right: 22px;
-  top: 18px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--accent2);
   font-size: 18px;
 }
@@ -1043,4 +1050,22 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{ scroll-behavior: auto !important; transition: none !important; }
+}
+
+
+/* Mobile polish (world-class fit & rhythm) */
+@media (max-width: 520px){
+  .card{ padding: var(--s5); }
+  .fold summary{ padding: var(--s4) var(--s5); padding-right: 56px; }
+  .fold summary::after{ right: 18px; }
+  .fold__body{ padding: 0 var(--s5) var(--s5); }
+  .fold--lite .fold__body{ padding: var(--s5); }
+  .disclaimer{ padding: var(--s4); }
+  .table--compact th, .table--compact td{ padding: 10px 12px; }
+  .table tbody td{ font-size: 14px; }
+  .table thead th{ font-size: 12px; }
+}
+
+@media (max-width: 380px){
+  .table--compact th, .table--compact td{ padding: 10px 10px; }
 }
