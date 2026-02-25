@@ -135,4 +135,22 @@
     if (!a) return;
     setView("board");
   });
+
+  // --- Mobile card tables (add data-labels from thead for CSS ::before labels) ---
+  const cardTables = document.querySelectorAll("table.table--mobilecards");
+  cardTables.forEach((table) => {
+    const headers = Array.from(table.querySelectorAll("thead th")).map((th) =>
+      (th.textContent || "").replace(/\s+/g, " ").trim()
+    );
+    if (!headers.length) return;
+
+    table.querySelectorAll("tbody tr").forEach((tr) => {
+      Array.from(tr.children).forEach((cell, idx) => {
+        if (!cell || cell.nodeType !== 1) return;
+        if (!cell.hasAttribute("data-label") && headers[idx]) {
+          cell.setAttribute("data-label", headers[idx]);
+        }
+      });
+    });
+  });
 })();

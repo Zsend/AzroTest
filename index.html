@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <meta content="light" name="color-scheme" />
-  <title>AZRO — Bitcoin Treasury Program</title>
+  <title>AZRO Systems — Bitcoin Treasury Program</title>
   <meta
     name="description"
-    content="A rules-based treasury operating system that converts recurring operating surplus into long-term Bitcoin reserves while maintaining a stable cash buffer, clear governance, and monthly reporting."
+    content="AZRO Systems provides a rules-based treasury operating system that converts recurring operating surplus into long-term Bitcoin reserves while maintaining a stable cash buffer, clear governance, and monthly reporting."
   />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
@@ -22,9 +22,12 @@
 
   <header class="topbar" role="banner">
     <div class="container topbar__inner">
-      <a class="brand" href="#top" aria-label="AZRO home">
+      <a class="brand" href="#top" aria-label="AZRO Systems home">
         <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__name">AZRO</span>
+        <span class="brand__text">
+          <span class="brand__name">AZRO</span>
+          <span class="brand__sub">Systems</span>
+        </span>
       </a>
 
       <nav class="nav" aria-label="Primary">
@@ -131,7 +134,7 @@
         <div class="sectionhead">
           <h2>Board/CFO quick view</h2>
           <p>
-            AZRO is designed to be <strong>board-approvable</strong>: written policy, clear roles, conservative guardrails,
+            AZRO Systems is designed to be <strong>board-approvable</strong>: written policy, clear roles, conservative guardrails,
             separation of duties, and a monthly BTC Treasury report. The goal is durability — survive full cycles while compounding sats.
           </p>
         </div>
@@ -201,8 +204,8 @@
                 <h3>Monthly BTC Treasury report (preview)</h3>
                 <p class="muted">What finance teams review to keep the program sustainable and audit-ready.</p>
 
-                <div class="tablewrap" role="region" aria-label="Monthly report preview" tabindex="0">
-                  <table class="table table--compact table--fit">
+                <div class="tablewrap tablewrap--cards" role="region" aria-label="Monthly report preview" tabindex="0">
+                  <table class="table table--compact table--fit table--mobilecards">
                     <colgroup>
                       <col style="width: 22%;" />
                       <col style="width: 56%;" />
@@ -217,34 +220,34 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td><strong>Balances</strong></td>
-                        <td>BTC balance, custody statements/addresses</td>
-                        <td>Auditability</td>
+                        <td data-label="Section"><strong>Balances</strong></td>
+                        <td data-label="What’s reported">BTC balance, custody statements/addresses</td>
+                        <td data-label="Why it matters">Auditability</td>
                       </tr>
                       <tr>
-                        <td><strong>BTC-eq</strong></td>
-                        <td>BTC + (remaining buffer ÷ spot BTC)</td>
-                        <td>Comparable KPI</td>
+                        <td data-label="Section"><strong>BTC-eq</strong></td>
+                        <td data-label="What’s reported">BTC + (remaining buffer ÷ spot BTC)</td>
+                        <td data-label="Why it matters">Comparable KPI</td>
                       </tr>
                       <tr>
-                        <td><strong>Liquidity</strong></td>
-                        <td>Buffer level vs target; months of expenses (if used)</td>
-                        <td>No forced selling</td>
+                        <td data-label="Section"><strong>Liquidity</strong></td>
+                        <td data-label="What’s reported">Buffer level vs target; months of expenses (if used)</td>
+                        <td data-label="Why it matters">No forced selling</td>
                       </tr>
                       <tr>
-                        <td><strong>Execution log</strong></td>
-                        <td>Buys/sells executed, fees paid, confirmations saved</td>
-                        <td>Operational control</td>
+                        <td data-label="Section"><strong>Execution log</strong></td>
+                        <td data-label="What’s reported">Buys/sells executed, fees paid, confirmations saved</td>
+                        <td data-label="Why it matters">Operational control</td>
                       </tr>
                       <tr>
-                        <td><strong>Baseline</strong></td>
-                        <td>Performance vs auto-buy (same dollars)</td>
-                        <td>Sats accretion</td>
+                        <td data-label="Section"><strong>Baseline</strong></td>
+                        <td data-label="What’s reported">Performance vs auto-buy (same dollars)</td>
+                        <td data-label="Why it matters">Sats accretion</td>
                       </tr>
                       <tr>
-                        <td><strong>Exceptions</strong></td>
-                        <td>Trims, custody changes, incidents, policy exceptions</td>
-                        <td>Governance</td>
+                        <td data-label="Section"><strong>Exceptions</strong></td>
+                        <td data-label="What’s reported">Trims, custody changes, incidents, policy exceptions</td>
+                        <td data-label="Why it matters">Governance</td>
                       </tr>
                     </tbody>
                   </table>
@@ -342,7 +345,7 @@
           <h2>Why this exists</h2>
           <p>
             The squeeze is structural. When essentials reset higher and competition intensifies, “flat” becomes a hidden loss.
-            AZRO exists to build a small, repeatable compounding engine — without leverage and without betting the business.
+            AZRO Systems exists to build a small, repeatable compounding engine — without leverage and without betting the business.
           </p>
         </div>
 
@@ -387,9 +390,9 @@
     <section class="section" id="product">
       <div class="container">
         <div class="sectionhead">
-          <h2>What AZRO does</h2>
+          <h2>What AZRO Systems does</h2>
           <p>
-            AZRO is a treasury operating system: a repeatable process that converts weekly operating surplus into Bitcoin reserves,
+            AZRO Systems is a treasury operating system: a repeatable process that converts weekly operating surplus into Bitcoin reserves,
             maintains a dedicated cash buffer, and (optionally) enables measured liquidity trims within policy.
             It’s designed to be straightforward to execute and easy to audit.
           </p>
@@ -500,7 +503,7 @@
           <div class="split__left">
             <h3>Why it’s different from “just ask an LLM”</h3>
             <p>
-              Advice is cheap. Execution is rare. AZRO is not a chat answer — it’s an operating system for governance + execution:
+              Advice is cheap. Execution is rare. AZRO Systems is not a chat answer — it’s an operating system for governance + execution:
               policy templates, guardrails, tested modes, checklists, and monthly reporting.
             </p>
             <ul class="bullets">
@@ -845,7 +848,7 @@
         <div class="sectionhead">
           <h2>Governance and controls</h2>
           <p>
-            AZRO is compatible with conservative treasury policies: clear guardrails, separation of duties, and auditability.
+            AZRO Systems is compatible with conservative treasury policies: clear guardrails, separation of duties, and auditability.
             Governance is the moat — it’s what makes the program sustainable through real business conditions.
           </p>
         </div>
@@ -959,7 +962,7 @@
             <summary>Volatility / drawdowns</summary>
             <div class="acc__body">
               Volatility is normal for an emerging monetary asset. The key risks are leverage, forced selling, and short horizons.
-              AZRO is designed around resilience: conservative weekly budgeting + a dedicated buffer + rules-based execution.
+              AZRO Systems is designed around resilience: conservative weekly budgeting + a dedicated buffer + rules-based execution.
             </div>
           </details>
         </div>
@@ -1080,7 +1083,7 @@
                   This is a static, ready-to-deploy template. Replace the email link below with your calendar link (Calendly, etc.) if desired.
                 </p>
                 <div class="contactbox__buttons">
-                  <a class="btn btn--primary btn--full" href="mailto:hello@azro.com?subject=AZRO%20Treasury%20Setup%20Call">
+                  <a class="btn btn--primary btn--full" href="mailto:hello@azro.com?subject=AZRO%20Systems%20Treasury%20Setup%20Call">
                     Email to schedule (placeholder)
                   </a>
                   <a class="btn btn--ghost btn--full" href="downloads/AZRO_FINAL_DOCS_v8.zip">Download the full docs</a>
@@ -1095,8 +1098,8 @@
 
         <footer class="footer">
           <div class="footer__left">
-            <div class="footer__brand">AZRO</div>
-            <div class="footer__small">© <span id="year"></span> AZRO. All rights reserved.</div>
+            <div class="footer__brand">AZRO Systems</div>
+            <div class="footer__small">© <span id="year"></span> AZRO Systems. All rights reserved.</div>
           </div>
           <div class="footer__right">
             <div class="footer__small">
