@@ -125,11 +125,20 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
+/*
+  Header width policy:
+  The main content container is intentionally constrained for readability.
+  The header is allowed to be wider so the full desktop nav + CTAs never collide.
+*/
+.topbar .container{
+  max-width: 1320px;
+}
 .topbar__inner{
   height: var(--navh);
   display: flex;
   align-items: center;
   gap: var(--s5);
+  flex-wrap: nowrap;
 }
 .brand{
   display: inline-flex;
@@ -168,6 +177,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   align-items: center;
   flex: 1;
   min-width: 0;
+  /* Safety: if a browser calculates slightly different intrinsic widths,
+     prevent nav text from painting underneath the CTA buttons. */
+  overflow: hidden;
 }
 .nav__link{
   font-size: 14px;
@@ -178,7 +190,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 .nav__link:hover{ background: rgba(47,107,255,.06); color: var(--text); }
 
-.topbar__actions{ display: flex; gap: var(--s3); align-items: center; margin-left: auto; }
+.topbar__actions{ display: flex; gap: var(--s3); align-items: center; margin-left: auto; flex-shrink: 0; }
 
 /* Keep topbar CTAs crisp and single-line, even as space tightens */
 .topbar__actions .btn{
@@ -245,7 +257,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   - Hide the secondary CTA before we run out of space.
   - On small screens, move all CTAs into the mobile menu.
 */
-@media (max-width: 1240px){
+@media (max-width: 1320px){
   .nav{ display: none; }
   .navtoggle{ display: inline-block; }
 }
