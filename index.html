@@ -35,6 +35,7 @@
         <a class="nav__link" href="#product">Product</a>
         <a class="nav__link" href="#proof">Proof</a>
         <a class="nav__link" href="#governance">Governance</a>
+        <a class="nav__link" href="#trust">Trust</a>
         <a class="nav__link" href="#concerns">Concerns</a>
         <a class="nav__link" href="#resources">Resources</a>
       </nav>
@@ -55,6 +56,7 @@
         <a class="mobilemenu__link" href="#product">Product</a>
         <a class="mobilemenu__link" href="#proof">Proof</a>
         <a class="mobilemenu__link" href="#governance">Governance</a>
+        <a class="mobilemenu__link" href="#trust">Trust</a>
         <a class="mobilemenu__link" href="#concerns">Concerns</a>
         <a class="mobilemenu__link" href="#resources">Resources</a>
         <a class="btn btn--primary btn--full" href="#contact">Request&nbsp;a&nbsp;setup&nbsp;call</a>
@@ -124,6 +126,30 @@
               <div class="metriccard__disclaimer">Illustrative only. Not a forecast. Past performance is not a guarantee of future results.</div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Non‑negotiables signature block (BTC Standard posture) -->
+    <section class="section section--tight" id="principles">
+      <div class="container">
+        <div class="signature" aria-label="Non-negotiables">
+          <div class="signature__copy">
+            <p class="eyebrow">Principles</p>
+            <h2>Non‑negotiables</h2>
+            <p class="lede lede--tight">
+              Durable treasury programs are built on constraints. These guardrails keep AZRO Systems board‑approvable and resilient
+              through full cycles — without drama, leverage, or discretionary trading.
+            </p>
+          </div>
+
+          <ul class="checklist" aria-label="Non-negotiable constraints">
+            <li><strong>No leverage.</strong> No margin, borrowing, derivatives, lending, or yield programs.</li>
+            <li><strong>Operations first.</strong> A cash buffer floor protects payroll and core obligations.</li>
+            <li><strong>Rules over emotion.</strong> Written policy + repeatable execution + documented exceptions.</li>
+            <li><strong>Separation of duties.</strong> Approver ≠ executor; multi‑party controls for meaningful balances.</li>
+            <li><strong>Audit‑ready reporting.</strong> Monthly BTC, BTC‑eq, buffer runway, baseline comparison, and exception log.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -330,6 +356,44 @@
 
                 <div class="mininote">
                   We explain the mechanics clearly for trust — but the exact signal logic remains proprietary to prevent reverse engineering.
+                </div>
+              </div>
+
+              <!-- Metrics standard -->
+              <div class="card artifactgrid__wide" id="metrics">
+                <h3>Metrics standard (used in reports)</h3>
+                <p class="muted">Definitions used across the program so boards and finance teams can review the same KPI set every month.</p>
+
+                <div class="metricsgrid" aria-label="Metrics standard definitions">
+                  <div class="metricdef">
+                    <div class="metricdef__k">BTC balance</div>
+                    <div class="metricdef__v">BTC held in custody (with statements/addresses retained).</div>
+                  </div>
+                  <div class="metricdef">
+                    <div class="metricdef__k">BTC‑eq</div>
+                    <div class="metricdef__v">BTC + (remaining cash buffer ÷ spot BTC). A comparable reserve KPI.</div>
+                  </div>
+                  <div class="metricdef">
+                    <div class="metricdef__k">Buffer runway</div>
+                    <div class="metricdef__v">Cash buffer ÷ monthly operating expenses (optional, but board-friendly).</div>
+                  </div>
+                  <div class="metricdef">
+                    <div class="metricdef__k">Baseline</div>
+                    <div class="metricdef__v">Auto-buy using the same dollars and schedule — the control group.</div>
+                  </div>
+                  <div class="metricdef">
+                    <div class="metricdef__k">Sats accretion</div>
+                    <div class="metricdef__v">(Strategy BTC − baseline BTC) measured in satoshis. Permanent compounding advantage.</div>
+                  </div>
+                  <div class="metricdef">
+                    <div class="metricdef__k">Exceptions</div>
+                    <div class="metricdef__v">Any trim, custody change, incident, or policy override (logged with rationale and approvals).</div>
+                  </div>
+                </div>
+
+                <div class="mininote" style="margin-top: var(--s5);">
+                  Principle: the program should be explainable in a board meeting without hand‑waving. If an action cannot be defended in writing,
+                  it should not be executed.
                 </div>
               </div>
             </div>
@@ -600,8 +664,8 @@
           </p>
         </div>
 
-        <div class="tablewrap" role="region" aria-label="Historical example results" tabindex="0">
-          <table class="table table--wide">
+        <div class="tablewrap tablewrap--cards" role="region" aria-label="Historical example results" tabindex="0">
+          <table class="table table--wide table--mobilecards">
             <thead>
               <tr>
                 <th>Mode</th>
@@ -650,6 +714,7 @@
             <div class="note__body">
               <p><strong>BTC-eq</strong> = BTC held + (ending cash buffer ÷ BTC price).</p>
               <p><strong>Extra satoshis</strong> = (strategy BTC − auto-buy BTC) × 100,000,000.</p>
+              <p><a class="inline" href="#metrics">See Metrics standard</a> for the KPI set used in monthly reporting.</p>
             </div>
           </div>
 
@@ -675,8 +740,8 @@
           </p>
         </div>
 
-        <div class="tablewrap" role="region" aria-label="Start-date robustness examples" tabindex="0">
-          <table class="table table--compact table--wide">
+        <div class="tablewrap tablewrap--cards" role="region" aria-label="Start-date robustness examples" tabindex="0">
+          <table class="table table--compact table--wide table--mobilecards">
             <thead>
               <tr>
                 <th>Window start</th>
@@ -888,6 +953,71 @@
             <p class="muted" style="margin-top: var(--s4);">
               Templates for policy memo, reporting, and operational checklists are included in the downloadable docs.
             </p>
+          </div>
+        </div>
+
+        <!-- Trust center -->
+        <div class="sectionhead sectionhead--tight" id="trust">
+          <h3>Trust center</h3>
+          <p>
+            High-quality treasury programs reduce operational risk with controls, documentation, and clear responsibilities.
+            The goal is durability — survive full cycles without forced actions.
+          </p>
+        </div>
+
+        <div class="grid3" aria-label="Trust center">
+          <div class="card">
+            <h3>Custody & key management</h3>
+            <ul class="bullets">
+              <li>Institutional custody, multisig, or hybrid models.</li>
+              <li>Avoid long-term exchange custody for strategic reserves.</li>
+              <li>Document signer roles, key-person risk, and recovery procedures.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Separation of duties</h3>
+            <ul class="bullets">
+              <li>Approver ≠ executor for meaningful balances.</li>
+              <li>Two-person approvals for custody transfers (recommended).</li>
+              <li>Monthly review by finance or a designated control owner.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Audit trail</h3>
+            <ul class="bullets">
+              <li>Retain confirmations, statements, and wallet addresses.</li>
+              <li>Maintain a policy exception log (reason, approvals, outcome).</li>
+              <li>Use the same KPI set each month (BTC, BTC‑eq, buffer runway).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Execution discipline</h3>
+            <ul class="bullets">
+              <li>Rules-based execution. No discretionary “market timing.”</li>
+              <li>Budgets sized to hold through drawdowns without distress.</li>
+              <li>Trims (if enabled) are bounded, justified, and documented.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Data handling</h3>
+            <ul class="bullets">
+              <li>This site is static; it does not collect analytics by default.</li>
+              <li>Only collect what you need for scheduling and onboarding.</li>
+              <li>Keep reporting artifacts in your internal systems of record.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Incident response</h3>
+            <ul class="bullets">
+              <li>Define what constitutes an incident (custody, venue, policy).</li>
+              <li>Document, disclose internally, remediate, and update controls.</li>
+              <li>Prefer conservative defaults that prevent emergencies.</li>
+            </ul>
           </div>
         </div>
       </div>
