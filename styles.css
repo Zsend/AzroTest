@@ -243,21 +243,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   Navigation breakpoint: collapse earlier than the main layout breakpoint.
   Prevents mid-width "almost desktop" states where CTAs can wrap.
 */
-@media (max-width: 1320px){
+@media (max-width: 1560px){
   .topbar__inner{ gap: var(--s4); }
-  .nav{ gap: var(--s4); }
-  .nav__link{ padding: var(--s2) 10px; }
+  .nav{ gap: var(--s3); }
+  .nav__link{ padding: 6px 8px; font-size: 13px; }
   .topbar__actions{ gap: var(--s2); }
+  .topbar__actions .btn{ padding-inline: 12px; }
 }
 
 /*
-  Header responsiveness (pixel-perfect):
-  - Keep full nav on wide desktop.
-  - Collapse nav earlier (but keep CTAs) to prevent any CTA wrapping at mid widths.
-  - Hide the secondary CTA before we run out of space.
-  - On small screens, move all CTAs into the mobile menu.
+  Header collapse (measured):
+  If the nav would clip (e.g., at common laptop widths), JS adds body.header--compact.
+  This prevents partial labels like “Resou” and guarantees no collisions.
 */
-@media (max-width: 1320px){
+body.header--compact .nav{ display: none; }
+body.header--compact .navtoggle{ display: inline-block; }
+
+/* No-JS fallback: collapse at smaller widths */
+@media (max-width: 980px){
   .nav{ display: none; }
   .navtoggle{ display: inline-block; }
 }
@@ -1291,6 +1294,7 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 /* --- Hero auxiliary links (Standard + Packet) --- */
 .hero__aux{
   margin-top: var(--s3);
+  margin-bottom: var(--s4);
   font-size: 14px;
   color: var(--muted);
   display: flex;
@@ -1337,19 +1341,23 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 .h1{ font-size: 42px; line-height: 1.08; letter-spacing: -0.02em; margin: 0; }
 @media (max-width: 720px){ .h1{ font-size: 34px; } }
 
-.docintro .sectionhead{ max-width: var(--measure); }
+.docintro .sectionhead{ max-width: var(--measure); margin-inline: auto; }
 .docactions{
   margin-top: var(--s6);
   display: flex;
   flex-wrap: wrap;
   gap: var(--s3);
 }
+/* Align doc controls with the centered doc measure */
+.docactions{ max-width: var(--measure); margin-inline: auto; }
 .toc{
   margin-top: var(--s6);
   display: flex;
   flex-wrap: wrap;
   gap: var(--s2);
 }
+/* Keep TOC aligned with the centered doc column */
+.toc{ max-width: var(--measure); margin-inline: auto; }
 .toc__link{
   font-size: 13px;
   color: var(--muted);
@@ -1361,7 +1369,9 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 .toc__link:hover{ border-color: var(--border2); background: rgba(47,107,255,.04); color: var(--text); }
 
 .doc{
+  width: 100%;
   max-width: var(--measure);
+  margin-inline: auto;
 }
 .docsection{ margin-bottom: var(--s10); }
 .docsection:last-child{ margin-bottom: 0; }
@@ -1436,6 +1446,10 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
   border-radius: var(--r3);
   padding: var(--s7);
   box-shadow: 0 10px 30px rgba(11,18,32,.04);
+  /* On screen, preview the packet as a centered document with a readable measure. */
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
 }
 @media (max-width: 560px){
   .printdoc{ padding: var(--s5); }

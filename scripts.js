@@ -32,14 +32,44 @@
       if (e.key === "Escape") setOpen(false);
     });
 
-    // Ensure the menu can't get stuck open across breakpoints
-    // Keep in sync with the CSS header breakpoint.
-    const mq = window.matchMedia("(min-width: 1241px)");
-    const handleMq = () => {
-      if (mq.matches) setOpen(false);
+    // --- Header fit (world-class): collapse into the hamburger menu
+    // whenever the desktop nav would clip at common laptop widths.
+    const nav = document.querySelector(".nav");
+    const actions = document.querySelector(".topbar__actions");
+
+    const computeHeaderFit = () => {
+      // Remove the class so measurements reflect the full desktop layout.
+      document.body.classList.remove("header--compact");
+
+      // If CTAs are hidden by CSS (small screens), we always use the compact header.
+      const actionsHidden = actions && window.getComputedStyle(actions).display === "none";
+      let compact = !!actionsHidden;
+
+      // If the nav would clip, switch to the compact header (hamburger).
+      if (!compact && nav && window.getComputedStyle(nav).display !== "none") {
+        compact = nav.scrollWidth > nav.clientWidth + 4;
+      }
+
+      document.body.classList.toggle("header--compact", compact);
+
+      // If we're in desktop mode, ensure the mobile menu is closed.
+      if (!compact) setOpen(false);
     };
-    if (mq.addEventListener) mq.addEventListener("change", handleMq);
-    else mq.addListener(handleMq);
+
+    let resizeT = 0;
+    const onResize = () => {
+      window.clearTimeout(resizeT);
+      resizeT = window.setTimeout(computeHeaderFit, 60);
+    };
+
+    computeHeaderFit();
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+
+    // Recompute after fonts load (font metrics can change nav width).
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => computeHeaderFit()).catch(() => {});
+    }
   }
 
   // --- Accordion (optional: only one open at a time) ---
