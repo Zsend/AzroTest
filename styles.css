@@ -320,8 +320,8 @@ body.header--compact .navtoggle{ display: inline-block; }
 }
 .sectionhead{
   max-width: var(--measure);
-  /* Center the readable column so narrow blocks don't feel left-weighted on wide screens. */
-  margin-inline: auto;
+  /* Align section headers to the same left edge as the content below for a consistent grid. */
+  margin-inline: 0;
   margin-bottom: var(--s7);
 }
 .sectionhead--tight{ margin-top: var(--s9); margin-bottom: var(--s5); }
@@ -564,21 +564,28 @@ body.header--compact .navtoggle{ display: inline-block; }
   padding: var(--s6);
   border: 1px solid rgba(47,107,255,.18);
   background: linear-gradient(180deg, rgba(47,107,255,.08), rgba(47,107,255,.03));
+  /* Full-width within the container so it aligns with cards/tables.
+     Use a 2-col layout on desktop to keep line length readable. */
   display: grid;
-  gap: var(--s2);
-  max-width: var(--measure);
+  grid-template-columns: 220px 1fr;
+  gap: var(--s6);
   width: 100%;
-  /* Keep callouts visually balanced within the page container. */
-  margin-inline: auto;
 }
 .callout__title{
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: .02em;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted2);
 }
 .callout__body{
   font-size: 16px;
   color: var(--text);
+}
+
+@media (max-width: 820px){
+  .callout{ grid-template-columns: 1fr; gap: var(--s3); }
+  .callout__title{ font-size: 12px; }
 }
 
 /* Steps */
@@ -615,20 +622,20 @@ body.header--compact .navtoggle{ display: inline-block; }
   .stepgrid{ grid-template-columns: 1fr; }
 }
 
-/* If a 2-col grid ends with a single item (odd count), center it and keep its width
-   consistent with the other column width (rather than leaving an empty right column). */
+/* If a 2-col grid ends with a single item (odd count), make the last item span full
+   width to avoid an awkward empty column and keep the rhythm consistent. */
 @media (min-width: 981px){
   .stepgrid > :last-child:nth-child(odd){
     grid-column: 1 / -1;
     width: 100%;
-    max-width: calc((100% - var(--s5)) / 2);
-    justify-self: center;
+    max-width: none;
+    justify-self: stretch;
   }
   .grid2 > :last-child:nth-child(odd){
     grid-column: 1 / -1;
     width: 100%;
-    max-width: calc((100% - var(--s5)) / 2);
-    justify-self: center;
+    max-width: none;
+    justify-self: stretch;
   }
 }
 
@@ -877,7 +884,8 @@ body.header--compact .navtoggle{ display: inline-block; }
 .accordion{
   max-width: 920px;
   width: 100%;
-  margin-inline: auto;
+  /* Align accordions to the same left edge as the section header for a tighter grid. */
+  margin-inline: 0;
 }
 .acc{
   border: 1px solid var(--border);
