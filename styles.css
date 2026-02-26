@@ -417,18 +417,23 @@ body.header--compact .navtoggle{ display: inline-block; }
 }
 .fitrow{
   display: grid;
-  grid-template-columns: 86px 1fr;
-  gap: var(--s3);
-  align-items: start;
+  grid-template-columns: max-content 1fr;
+  gap: 10px;
+  align-items: baseline;
 }
 .fitrow__k{
   color: var(--muted2);
   font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-weight: 800;
-  line-height: 1.35;
-  padding-top: 2px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.fitrow__k::after{
+  content: ':';
+  margin-left: 2px;
+  color: var(--muted2);
 }
 .fitrow__v{
   color: var(--muted);
@@ -438,7 +443,8 @@ body.header--compact .navtoggle{ display: inline-block; }
 
 @media (max-width: 520px){
   .modelbar{ padding: 12px 12px; }
-  .fitrow{ grid-template-columns: 1fr; gap: 6px; }
+  .fitrows{ gap: 8px; }
+  .fitrow{ gap: 8px; }
 }
 
 .hero__cta{
