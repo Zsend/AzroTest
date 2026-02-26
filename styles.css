@@ -394,11 +394,17 @@ body.header--compact .navtoggle{ display: inline-block; }
 .chip{
   background: rgba(47,107,255,.06);
   border: 1px solid rgba(47,107,255,.14);
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: 999px;
   font-size: 13px;
+  line-height: 1.25;
   color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 100%;
 }
+
 
 .hero__panel{
   background: var(--surface);
@@ -440,12 +446,16 @@ body.header--compact .navtoggle{ display: inline-block; }
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.05;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 .metriccard__unit{
   font-size: 16px;
   font-weight: 600;
   color: var(--muted);
-  margin-left: 6px;
+  white-space: nowrap;
 }
 .metriccard__note{
   color: var(--muted);
@@ -784,9 +794,9 @@ body.header--compact .navtoggle{ display: inline-block; }
   .table--mobilecards .num{ text-align: left !important; }
 
   .table--mobilecards tbody tr{
-    margin-bottom: var(--s4);
+    margin-bottom: var(--s3);
     border: 1px solid var(--border);
-    border-radius: var(--r3);
+    border-radius: var(--r2);
     overflow: hidden;
     background: #fff;
     box-shadow: 0 1px 0 rgba(0,0,0,.02);
@@ -829,9 +839,22 @@ body.header--compact .navtoggle{ display: inline-block; }
 }
 
 @media (max-width: 560px){
-  .metricgrid{ grid-template-columns: 1fr; }
-  .metriccard{ min-height: unset; }
-  .hero__panel{ padding: var(--s5); }
+  /* Mobile hero polish: consistent rhythm and no nested double-borders */
+  .chips{ flex-direction: column; align-items: stretch; gap: var(--s2); }
+  .chip{ width: 100%; justify-content: center; text-align: center; }
+
+  .metricgrid{ grid-template-columns: 1fr; gap: var(--s3); }
+  .metriccard{ min-height: unset; padding: var(--s5); }
+  .metriccard:not(.metriccard--wide){ text-align: center; }
+  .metriccard:not(.metriccard--wide) .metriccard__value{ justify-content: center; }
+  .metriccard:not(.metriccard--wide) .metriccard__note{ margin-inline: auto; }
+
+  .hero__panel{
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
 }
 
 @media (max-width: 520px){
