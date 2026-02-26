@@ -89,6 +89,17 @@
               </div>
 
               <div class="field">
+                <label for="preset">Starting preset</label>
+                <select id="preset" name="preset">
+                  <option value="balanced" selected>Balanced (default)</option>
+                  <option value="ops">Operations-first (higher buffer)</option>
+                  <option value="lean">Lean (small weekly budget)</option>
+                  <option value="custom">Custom (no auto-changes)</option>
+                </select>
+                <div class="help">Pick a sensible starting point; you can edit any field below.</div>
+              </div>
+
+              <div class="field">
                 <label for="budget">Weekly buy budget</label>
                 <input id="budget" name="budget" type="text" value="$3,000 / week" />
                 <div class="help">Fixed, sustainable through drawdowns.</div>
@@ -264,7 +275,7 @@
                 </div>
                 <div class="cadence__item">
                   <div class="cadence__k">Monthly</div>
-                  <div class="cadence__v">Publish KPI report (BTC, BTC‑eq, buffer runway, baseline comparison, exceptions); review and sign off.</div>
+                  <div class="cadence__v">Publish KPI report (BTC, BTC-eq, buffer runway, baseline comparison, exceptions); review and sign off.</div>
                 </div>
                 <div class="cadence__item">
                   <div class="cadence__k">Quarterly</div>
@@ -283,7 +294,7 @@
                   <div class="kvcell v">BTC held in custody (retain statements/addresses).</div>
                 </div>
                 <div class="kvrow">
-                  <div class="kvcell k">BTC‑eq</div>
+                  <div class="kvcell k">BTC-eq</div>
                   <div class="kvcell v">BTC + (remaining cash buffer ÷ spot BTC). Comparable reserve KPI.</div>
                 </div>
                 <div class="kvrow">
@@ -309,6 +320,10 @@
                 Bitcoin is volatile. This packet is for informational purposes only and is not financial, legal, or tax advice.
                 Past performance is not indicative of future results.
               </p>
+
+              <div class="printdoc__footer" aria-hidden="true">
+                <span id="footerText" class="muted"></span>
+              </div>
             </div>
           </div>
         </div>

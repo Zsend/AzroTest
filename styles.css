@@ -127,11 +127,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 /*
   Header width policy:
-  The main content container is intentionally constrained for readability.
-  The header is allowed to be wider so the full desktop nav + CTAs never collide.
+  Keep header rails aligned to the same container width as the page.
+  (Responsive logic + compact mode handle tight widths.)
 */
 .topbar .container{
-  max-width: 1320px;
+  max-width: var(--container);
 }
 .topbar__inner{
   height: var(--navh);
@@ -446,6 +446,7 @@ body.header--compact .navtoggle{ display: inline-block; }
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.05;
+  font-variant-numeric: tabular-nums;
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
@@ -507,7 +508,7 @@ body.header--compact .navtoggle{ display: inline-block; }
 }
 .muted{ color: var(--muted2); font-size: 13px; margin-top: var(--s2); }
 
-/* Signature block (Non‑negotiables) */
+/* Signature block (Non-negotiables) */
 .signature{
   border: 1px solid var(--border);
   border-radius: var(--r3);
@@ -834,11 +835,16 @@ body.header--compact .navtoggle{ display: inline-block; }
   .table--mobilecards tbody td:first-child::before{ content: none; }
 }
 
+@media (max-width: 420px){
+  .table--mobilecards tbody td{ padding: 10px 12px; }
+  .table--mobilecards tbody td:first-child{ padding: 12px 12px; font-size: 15px; background: rgba(47,107,255,.07); }
+}
+
 @media (max-width: 720px){
   .table th, .table td{ padding: 12px 12px; }
 }
 
-@media (max-width: 560px){
+@media (max-width: 720px){
   /* Mobile hero polish: consistent rhythm and no nested double-borders */
   .chips{ flex-direction: column; align-items: stretch; gap: var(--s2); }
   .chip{ width: 100%; justify-content: center; text-align: center; }
@@ -879,6 +885,18 @@ body.header--compact .navtoggle{ display: inline-block; }
 .note__body p{ margin: 0 0 var(--s2); color: var(--muted); }
 .note__body p:last-child{ margin-bottom: 0; }
 @media (max-width: 980px){ .notegrid{ grid-template-columns: 1fr; } }
+
+/* Proof framing (keeps the "proof" section intellectually honest and scannable) */
+.proofframe{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s5);
+  margin-bottom: var(--s6);
+}
+.note--compact{ padding: var(--s5); }
+@media (max-width: 980px){
+  .proofframe{ grid-template-columns: 1fr; }
+}
 
 .disclaimer{
   margin-top: var(--s6);
@@ -1530,6 +1548,7 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
   margin: 0 0 var(--s3);
 }
 .printdoc__p{ margin: 0 0 var(--s3); line-height: 1.55; }
+.printdoc__footer{ display: none; }
 .kvtable{
   border: 1px solid var(--border);
   border-radius: var(--r3);
@@ -1590,6 +1609,7 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 /* Print: output the packet cleanly (hide site chrome and the form) */
 .pagebreak{ height: 0; page-break-before: always; break-before: page; margin: 0; }
 @media print{
+  @page { margin: 0; }
   :root{ --bg: #fff; }
   body{ background: #fff; }
   .topbar, .footer, .formcard, .navtoggle, .mobilemenu{ display: none !important; }
@@ -1601,9 +1621,19 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
     border: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    padding: 0.65in !important;
+    padding: 0.65in 0.65in 1.05in !important;
   }
   a{ text-decoration: none !important; color: inherit !important; }
+  .printdoc__footer{
+    display: block;
+    position: fixed;
+    left: 0.65in;
+    right: 0.65in;
+    bottom: 0.35in;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #6b7789;
+  }
 }
 
 /* =============================
