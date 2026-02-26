@@ -1605,3 +1605,94 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
   }
   a{ text-decoration: none !important; color: inherit !important; }
 }
+
+/* =============================
+   Overview page (calm first impression)
+   ============================= */
+
+.page--overview .hero{
+  /* Slightly calmer hero rhythm on the overview page */
+  padding-bottom: calc(var(--s10) + var(--s6));
+}
+
+/* "Start here" panel */
+.startpanel{
+  display: grid;
+  gap: var(--s4);
+}
+.startpanel__kicker{
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+.startpanel__title{
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  font-size: 20px;
+  line-height: 1.15;
+  margin-top: -6px;
+}
+.startpanel__list{
+  display: grid;
+  gap: var(--s3);
+}
+
+.startcard{
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--r3);
+  padding: var(--s5);
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+  transition: transform .08s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.startcard:hover{
+  transform: translateY(-1px);
+  border-color: rgba(47,107,255,.28);
+  box-shadow: 0 14px 40px rgba(11,18,32,.08);
+}
+.startcard__title{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.startcard__body{
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.startcard__meta{
+  color: var(--muted2);
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+
+.startpanel__note{
+  border-top: 1px solid var(--border);
+  padding-top: var(--s3);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Overview fold: keep it compact and consistent */
+.fold--overview{
+  margin-top: var(--s7);
+}
+
+.btnrow--overview{
+  margin-top: var(--s5);
+}
+
+@media (max-width: 980px){
+  /* On tablets/phones, keep the overview hero focused */
+  .page--overview .hero__inner{ grid-template-columns: 1fr; }
+  .page--overview .hero__panel{ margin-top: var(--s8); }
+}
+
+@media (max-width: 560px){
+  .startcard{ padding: var(--s5); }
+  .startpanel__title{ font-size: 19px; }
+}
