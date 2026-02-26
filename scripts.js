@@ -166,6 +166,38 @@
     setView("board");
   });
 
+
+
+  // --- Forward-to-finance (prewritten email with live links) ---
+  const forwardLinks = document.querySelectorAll(".js-forward-finance");
+  if (forwardLinks.length) {
+    const base = window.location.origin && window.location.origin !== "null" ? window.location.origin : "";
+    const abs = (p) => (base ? `${base}/${p}` : p);
+
+    const subject = "AZRO Systems — BTC Treasury (policy + controls + reporting)";
+    const body = [
+      "Hi,",
+      "",
+      "Please review AZRO Systems' BTC Treasury program. It's policy-first, operations-first, and designed to be board-reviewable and audit-ready (no leverage, no derivatives, no ‘yield’ programs).",
+      "",
+      "Key artifacts:",
+      `- Treasury Standard v1: ${abs("downloads/AZRO_Treasury_Standard_v1.pdf")}`,
+      `- Controls checklist: ${abs("downloads/AZRO_Treasury_Controls_Checklist_v1.pdf")}`,
+      `- Sample monthly BTC Treasury report: ${abs("downloads/AZRO_Sample_Monthly_BTC_Treasury_Report.pdf")}`,
+      "",
+      "Optional:",
+      `- Board/CFO view (policy snapshot + reporting preview): ${abs("product.html?view=board#board")}`,
+      `- Board packet generator: ${abs("board-packet.html")}`,
+      `- Full documentation pack (ZIP): ${abs("downloads/AZRO_FINAL_DOCS_v8.zip")}`,
+      "",
+      "Thanks,",
+      "",
+    ].join("
+");
+
+    const mailto = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    forwardLinks.forEach((a) => a.setAttribute("href", mailto));
+  }
   // --- Mobile card tables (add data-labels from thead for CSS ::before labels) ---
   const cardTables = document.querySelectorAll("table.table--mobilecards");
   cardTables.forEach((table) => {
