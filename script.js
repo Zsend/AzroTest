@@ -1,126 +1,119 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // --- CANVAS SETUP ---
-  const container = document.getElementById("canvas-container");
-  if (!container) {
-    console.error("Canvas container not found");
-    return;
+(() => {
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // -----------------------------
+  // Background pointer “parallax”
+  // -----------------------------
+  const bg = document.querySelector('.bg');
+  if (bg && !prefersReducedMotion) {
+    let targetX = 50;
+    let targetY = 44;
+    let currentX = targetX;
+    let currentY = targetY;
+    let rafId = 0;
+
+    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+    const schedule = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+
+        // Smooth “ease” toward the target so it feels premium.
+        const ease = 0.10;
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
+
+        bg.style.setProperty('--x', `${currentX.toFixed(2)}%`);
+        bg.style.setProperty('--y', `${currentY.toFixed(2)}%`);
+
+        // If we’re still moving, keep animating.
+        if (Math.abs(targetX - currentX) > 0.08 || Math.abs(targetY - currentY) > 0.08) {
+          schedule();
+        }
+      });
+    };
+
+    const updateTargetFromEvent = (e) => {
+      // Pointer events (mouse/pen/touch) — use clientX/Y when available.
+      const point = e.touches && e.touches.length ? e.touches[0] : e;
+      if (!point || typeof point.clientX !== 'number' || typeof point.clientY !== 'number') return;
+
+      const vw = window.innerWidth || 1;
+      const vh = window.innerHeight || 1;
+
+      targetX = clamp((point.clientX / vw) * 100, 0, 100);
+      targetY = clamp((point.clientY / vh) * 100, 0, 100);
+      schedule();
+    };
+
+    window.addEventListener('pointermove', updateTargetFromEvent, { passive: true });
+    window.addEventListener('touchmove', updateTargetFromEvent, { passive: true });
   }
-  
-  const canvas = document.createElement("canvas");
-  container.appendChild(canvas);
-  const ctx = canvas.getContext("2d");
-  
-  let dynamicActive = false;
-  let mouseX = 0, mouseY = 0;
-  
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    if (!dynamicActive) {
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // -----------------------------
+  // Form UX polish
+  // -----------------------------
+  const form = document.getElementById('subscribe-form');
+  const emailInput = document.getElementById('email');
+  const joinBtn = document.getElementById('join-btn');
+  const errorEl = document.getElementById('form-error');
+
+  const setError = (msg) => {
+    if (!errorEl) return;
+    if (!msg) {
+      errorEl.textContent = '';
+      errorEl.hidden = true;
+      if (emailInput) emailInput.removeAttribute('aria-invalid');
+      return;
     }
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+    if (emailInput) emailInput.setAttribute('aria-invalid', 'true');
+  };
+
+  if (emailInput) {
+    emailInput.addEventListener('input', () => setError(''));
   }
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-  
-  function getTieDyeBackground(x, y) {
-    const cw = canvas.width || 1;
-    const ch = canvas.height || 1;
-    x = Math.max(0, Math.min(x, cw));
-    y = Math.max(0, Math.min(y, ch));
-    
-    const hue = (x / cw) * 360;
-    const rawSat = (y / ch) * 100;
-    const saturation = Math.max(0, Math.min(rawSat, 100));
-    const lightness = 50 + (Math.sin(x * 0.05) * 20);
-    
-    const gradient = ctx.createRadialGradient(x, y, 0, x, y, cw / 2);
-    gradient.addColorStop(0, `hsl(${hue}, ${saturation}%, ${lightness}%)`);
-    gradient.addColorStop(0.25, `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`);
-    gradient.addColorStop(0.5, `hsl(${(hue + 120) % 360}, ${saturation}%, ${lightness - 10}%)`);
-    gradient.addColorStop(0.75, `hsl(${(hue + 180) % 360}, ${saturation}%, ${lightness - 15}%)`);
-    gradient.addColorStop(1, `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`);
-    return gradient;
-  }
-  
-  function animate() {
-    if (dynamicActive) {
-      const bg = getTieDyeBackground(mouseX, mouseY);
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    } else {
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-    requestAnimationFrame(animate);
-  }
-  animate();
-  
-  // --- GLOW TOGGLING FUNCTIONS ---
-  const logoContainer = document.querySelector('.logo-container');
-  
-  function disableGlow() {
-    if (logoContainer) {
-      logoContainer.classList.remove('pulsing');
-      logoContainer.classList.add('no-glow');
-    }
-  }
-  
-  function enableGlow() {
-    if (logoContainer) {
-      logoContainer.classList.remove('no-glow');
-      logoContainer.classList.add('pulsing');
-      // Optionally, adjust logo image animation delay for a smoother restart:
-      const logoImg = logoContainer.querySelector('img');
-      if (logoImg) {
-        logoImg.style.animationDelay = '0s';
-        setTimeout(function() {
-          logoImg.style.animationDelay = '0.3s';
-        }, 50);
+
+  if (form && emailInput && joinBtn) {
+    form.addEventListener('submit', (e) => {
+      // Basic client-side validation (still relies on server-side handling by FormSubmit).
+      const email = (emailInput.value || '').trim();
+      emailInput.value = email;
+
+      const valid = email.length > 0 && emailInput.checkValidity();
+      if (!valid) {
+        e.preventDefault();
+        setError('Please enter a valid email address.');
+        emailInput.focus();
+        return;
+      }
+
+      // UI feedback.
+      setError('');
+      joinBtn.disabled = true;
+      joinBtn.textContent = 'Joining…';
+      form.setAttribute('aria-busy', 'true');
+    });
+
+    // Optional “Contact” link (only shown if we can safely infer your email address).
+    const contactLink = document.getElementById('contact-link');
+    if (contactLink) {
+      try {
+        const action = form.getAttribute('action') || '';
+        const match = action.match(/formsubmit\.co\/([^/?#]+)/i);
+        const inferred = match ? decodeURIComponent(match[1]) : '';
+
+        const looksReal = inferred.includes('@') && !/your_receiving_email|example\.com/i.test(inferred);
+
+        if (looksReal) {
+          contactLink.href = `mailto:${inferred}`;
+          contactLink.hidden = false;
+        }
+      } catch (_) {
+        // no-op
       }
     }
   }
-  
-  // --- DYNAMIC BACKGROUND & GLOW HANDLING ---
-  function handlePointerStart(e) {
-    e.preventDefault();
-    disableGlow();
-    
-    let x, y;
-    if (e.touches && e.touches.length > 0) {
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
-    } else {
-      x = e.clientX;
-      y = e.clientY;
-    }
-    if (isFinite(x) && isFinite(y)) {
-      mouseX = x;
-      mouseY = y;
-      dynamicActive = true;
-    }
-  }
-  
-  function handlePointerEnd() {
-    dynamicActive = false;
-    enableGlow();
-  }
-  
-  container.addEventListener("touchstart", handlePointerStart, { passive: false });
-  container.addEventListener("touchmove", handlePointerStart, { passive: false });
-  container.addEventListener("mousemove", handlePointerStart);
-  window.addEventListener("touchend", handlePointerEnd, { passive: false });
-  window.addEventListener("mouseup", handlePointerEnd);
-  
-  // --- INITIAL TRANSITION FROM FLICKER TO PULSING ---
-  setTimeout(() => {
-    if (logoContainer && !logoContainer.classList.contains('no-glow')) {
-      logoContainer.classList.add('pulsing');
-    }
-  }, 3000);
-});
-
-
-
-
+})();
