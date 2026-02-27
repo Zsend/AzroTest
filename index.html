@@ -1,343 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Virtue Climbing — Stay Tuned</title>
+    <meta name="description" content="Virtue Climbing — coming soon. Subscribe for launch updates and rewards." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Container for the canvas -->
+    <div id="canvas-container"></div>
+    
+    <!-- Logo and Heading -->
+    <div class="logo-container">
+      <img
+        src="img/logo.png"
+        alt="Virtue Climbing logo"
+        id="logo"
+      />
+      <h1>stay tuned</h1>
 
-  <title>AZRO Systems — XRP Top/Bottom Detector (Invite‑only)</title>
-  <meta name="description" content="Invite‑only TradingView indicator for XRP cycle extremes on the weekly chart. MAJOR + RADAR confirmations, early staging cues, and risk context — with a proof‑first methodology pack." />
+      <p class="signup-text">Get launch news + rewards.</p>
 
-  <meta property="og:title" content="AZRO Systems — XRP Top/Bottom Detector" />
-  <meta property="og:description" content="Map XRP cycle turns on the weekly chart. Proof‑first methodology, conservative assumptions, and clean alerts." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/img/newchart.png" />
+      <!--
+        ✅ Free + easiest email collection (no backend): FormSubmit
+        1) Replace YOUR_RECEIVING_EMAIL@example.com below with the email you want signups sent to.
+        2) Publish the site.
+        3) Submit the form once yourself — FormSubmit will email you a confirmation link.
 
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+        Docs: https://formsubmit.co/
+      -->
+      <form
+        class="subscribe-form"
+        action="https://formsubmit.co/YOUR_RECEIVING_EMAIL@example.com"
+        method="POST"
+        autocomplete="on"
+      >
+        <!-- Send user back to your own thank-you page (instead of FormSubmit's default) -->
+        <input type="hidden" name="_next" value="https://www.virtueclimbing.com/thanks.html" />
+        <!-- Email subject line for the notification you receive -->
+        <input type="hidden" name="_subject" value="Virtue Climbing — New subscriber" />
+        <!-- Spam honeypot (FormSubmit will silently ignore submissions that fill this) -->
+        <input
+          class="honeypot"
+          type="text"
+          name="_honey"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+        <!-- Optional: change the notification email template -->
+        <input type="hidden" name="_template" value="table" />
 
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/Inter-Regular.woff2" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/Inter-SemiBold.woff2" />
+        <label class="sr-only" for="email">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="Email address"
+          required
+        />
+        <button type="submit">Join</button>
+      </form>
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body class="page--overview">
-  <a class="skip" href="#main">Skip to content</a>
-
-  <header class="topbar" role="banner">
-    <div class="container topbar__inner">
-      <a class="brand" href="index.html#top" aria-label="AZRO Systems home">
-        <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__text">
-          <span class="brand__name">AZRO</span>
-          <span class="brand__sub">Systems</span>
-        </span>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a class="nav__link is-active" href="index.html">Overview</a>
-        <a class="nav__link" href="features.html">How it works</a>
-        <a class="nav__link" href="proof.html">Proof</a>
-        <a class="nav__link" href="pricing.html">Pricing</a>
-        <a class="nav__link" href="resources.html">Resources</a>
-      </nav>
-
-      <div class="topbar__actions">
-        <a class="btn btn--ghost" href="resources.html">Download docs</a>
-        <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy lifetime access</a>
-      </div>
-
-      <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <p class="signup-fineprint">No spam. Unsubscribe anytime.</p>
     </div>
-
-    <div class="mobilemenu" hidden>
-      <div class="mobilemenu__inner container">
-        <a class="mobilemenu__link" href="index.html">Overview</a>
-        <a class="mobilemenu__link" href="features.html">How it works</a>
-        <a class="mobilemenu__link" href="proof.html">Proof</a>
-        <a class="mobilemenu__link" href="pricing.html">Pricing</a>
-        <a class="mobilemenu__link" href="resources.html">Resources</a>
-
-        <a class="btn btn--primary btn--full" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy lifetime access</a>
-        <a class="btn btn--ghost btn--full" href="resources.html">Download docs</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow">Invite‑only TradingView indicator • Weekly timeframe</p>
-          <h1>Map XRP cycle turns — without guessing.</h1>
-          <p class="lede lede--tight">
-            The <strong>XRP Top/Bottom Detector</strong> prints cycle‑level confirmations on the 1W chart (MAJOR + RADAR),
-            adds early staging cues, and overlays risk context — designed for clarity, not noise.
-          </p>
-
-          <div class="modelbar" aria-label="Signal, plan, execution">
-            <div class="modelbar__flow">
-              <span class="modelbar__step">Signal</span>
-              <span class="modelbar__arrow" aria-hidden="true">→</span>
-              <span class="modelbar__step">Plan</span>
-              <span class="modelbar__arrow" aria-hidden="true">→</span>
-              <span class="modelbar__step">Execute</span>
-            </div>
-            <div class="modelbar__tag">Proof‑first • no promises</div>
-          </div>
-
-          <dl class="fitrows" aria-label="Who this is for">
-            <div class="fitrow">
-              <dt class="fitrow__k">For</dt>
-              <dd class="fitrow__v">Weekly cycle traders, allocators, and research‑driven operators who want clean signals.</dd>
-            </div>
-            <div class="fitrow">
-              <dt class="fitrow__k">Not for</dt>
-              <dd class="fitrow__v">Intraday scalping, high‑frequency alerts, or anyone who needs certainty.</dd>
-            </div>
-            <div class="fitrow">
-              <dt class="fitrow__k">Best fit</dt>
-              <dd class="fitrow__v">Start with a small, rule‑based plan → review monthly → scale only when stable.</dd>
-            </div>
-          </dl>
-
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy lifetime access</a>
-            <a class="btn btn--ghost" href="proof.html">See the proof</a>
-          </div>
-
-          <div class="hero__aux">
-            <a class="inline" href="features.html#setup">Quick setup</a>
-            <span class="dot" aria-hidden="true">•</span>
-            <a class="inline" href="resources.html">Download the docs</a>
-            <span class="dot" aria-hidden="true">•</span>
-            <a class="inline" href="features.html#signals">Signal glossary</a>
-          </div>
-
-          <div class="chips" role="list" aria-label="Key attributes">
-            <div class="chip" role="listitem">MAJOR + RADAR confirmations (weekly close)</div>
-            <div class="chip" role="listitem">EARLY staging cues + LIGHT timing marks</div>
-            <div class="chip" role="listitem">Risk overlays (independent of confirmations)</div>
-          </div>
-
-          <p class="tiny muted" style="margin-top: 14px; max-width: var(--measure);">
-            Educational only. Not investment advice. Trading involves risk; hypothetical results have limitations.
-            Read the <a class="inline" href="legal/risk.html">risk disclosure</a>.
-          </p>
-        </div>
-
-        <aside class="hero__panel" aria-label="XRP indicator preview">
-          <figure class="shot">
-            <picture>
-              <source srcset="assets/img/newchart.webp" type="image/webp"/>
-              <img src="assets/img/newchart.png" alt="Weekly XRP chart example with MAJOR TOP and MAJOR BOTTOM labels." loading="eager" decoding="async" />
-            </picture>
-            <figcaption class="shot__cap">Example chart (illustrative). Confirmations evaluate on the 1W bar close.</figcaption>
-          </figure>
-
-          <div class="startpanel" style="margin-top: var(--s6);">
-            <div class="startpanel__kicker">Start here</div>
-            <div class="startpanel__title">3‑step setup</div>
-            <div class="startpanel__list">
-              <a class="startcard" href="features.html#setup">
-                <div class="startcard__title">Add to chart</div>
-                <div class="startcard__body">Load on XRPUSD (1W). Choose your toggles and label spacing.</div>
-                <div class="startcard__meta">~2 minutes</div>
-              </a>
-
-              <a class="startcard" href="features.html#alerts">
-                <div class="startcard__title">Create alerts</div>
-                <div class="startcard__body">Set MAJOR TOP/BOTTOM (and RADAR if desired). Get clean notifications.</div>
-                <div class="startcard__meta">One‑time</div>
-              </a>
-
-              <a class="startcard" href="proof.html">
-                <div class="startcard__title">Review proof</div>
-                <div class="startcard__body">Read the methodology + tear‑sheet. Understand limitations before relying on it.</div>
-                <div class="startcard__meta">10 minutes</div>
-              </a>
-            </div>
-
-            <div class="startpanel__note">
-              Prefer the docs first? Download the full pack on the <a class="inline" href="resources.html">Resources</a> page.
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section section--tight" id="what">
-      <div class="container">
-        <div class="sectionhead">
-          <h2>What it does</h2>
-          <p>
-            A weekly, cycle‑aware indicator built to reduce emotional decision‑making. It’s not a promise — it’s a structured way
-            to interpret extremes.
-          </p>
-        </div>
-
-        <div class="grid3">
-          <div class="card">
-            <h3>Cycle confirmations</h3>
-            <p><strong>MAJOR TOP/BOTTOM</strong> prints only when multi‑layer consensus and timing alignment are present.</p>
-          </div>
-          <div class="card">
-            <h3>Parallel confirmation track</h3>
-            <p><strong>RADAR</strong> provides an alternate confirmation path to capture late‑phase structures (bottom path optional).</p>
-          </div>
-          <div class="card">
-            <h3>Context without noise</h3>
-            <p>
-              <strong>EARLY</strong> marks stage during the week, <strong>LIGHT</strong> cues provide structure‑aware heads‑ups,
-              and <strong>RISK</strong> overlays highlight caution windows.
-            </p>
-          </div>
-        </div>
-
-        <div class="callout" style="margin-top: var(--s7);">
-          <div class="callout__title">Designed for weekly decisions</div>
-          <div class="callout__body">
-            Confirmations evaluate on the <strong>1W bar close</strong>. Moves between weekly closes are not confirmations.
-            If you trade lower timeframes, treat this as a high‑level cycle layer — not a scalping tool.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="proof-preview">
-      <div class="container">
-        <div class="sectionhead">
-          <h2>Proof (not promises)</h2>
-          <p>
-            We publish a methodology & tear‑sheet with conservative modeled costs. Results are hypothetical. Evaluate persistence
-            using drawdowns and out‑of‑sample tracking.
-          </p>
-        </div>
-
-        <div class="grid3">
-          <div class="statcard">
-            <div class="statcard__k">Backtest window</div>
-            <div class="statcard__v">2015‑01‑01 → 2025‑07‑12</div>
-            <div class="statcard__s">Weekly (1W), bar‑close evaluation</div>
-          </div>
-          <div class="statcard">
-            <div class="statcard__k">Closed trades</div>
-            <div class="statcard__v">2</div>
-            <div class="statcard__s">Plus one open cycle trade (see trade log)</div>
-          </div>
-          <div class="statcard">
-            <div class="statcard__k">Max equity drawdown</div>
-            <div class="statcard__v">‑16.8%</div>
-            <div class="statcard__s">Modeled commission + slippage included</div>
-          </div>
-        </div>
-
-        <div class="hero__cta" style="margin-top: var(--s6); margin-bottom: 0;">
-          <a class="btn btn--primary" href="proof.html">Open the full proof page</a>
-          <a class="btn btn--ghost" href="downloads/methodology-overview.pdf" target="_blank" rel="noopener">Download methodology PDF</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="cta">
-      <div class="container">
-        <div class="cta">
-          <div class="cta__copy">
-            <h2>Get access</h2>
-            <p>
-              The detector is distributed as an <strong>invite‑only TradingView script</strong>. Purchase a lifetime license on Gumroad,
-              then submit your TradingView username for access.
-            </p>
-
-            <ul class="checklist" aria-label="Access steps">
-              <li>Buy license on Gumroad (one‑time payment).</li>
-              <li>Provide your TradingView username during checkout (or via support).</li>
-              <li>Access is granted after verification. (Invite‑only distribution.)</li>
-            </ul>
-
-            <div class="cta__actions">
-              <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy lifetime access</a>
-              <a class="btn btn--ghost" href="pricing.html">See pricing details</a>
-            </div>
-
-            <p class="tiny muted" style="margin-top: 14px;">
-              Questions? Email <a class="inline" href="mailto:support@azrosystems.com">support@azrosystems.com</a>.
-            </p>
-          </div>
-
-          <div class="cta__panel">
-            <div class="minicard">
-              <div class="minicard__title">Current version</div>
-              <div class="minicard__body">
-                v1.0.9 (TradingView script). See release notes on the Proof page.
-              </div>
-            </div>
-            <div class="minicard">
-              <div class="minicard__title">What you get</div>
-              <div class="minicard__body">
-                Indicator access • Quick start • Methodology pack • Ongoing updates.
-              </div>
-            </div>
-            <div class="minicard">
-              <div class="minicard__title">Not financial advice</div>
-              <div class="minicard__body">
-                Educational signals only. Results can differ from backtests.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer" role="contentinfo">
-      <div class="container footer__inner">
-        <div class="footer__top">
-          <div class="footer__brand">
-            <div class="brand brand--footer">
-              <span class="brand__mark" aria-hidden="true"></span>
-              <span class="brand__text">
-                <span class="brand__name">AZRO</span>
-                <span class="brand__sub">Systems</span>
-              </span>
-            </div>
-            <p class="muted" style="max-width: 46ch;">
-              Proof‑first crypto indicators and operating systems. Built for clarity, durability, and conservative execution.
-            </p>
-          </div>
-
-          <div class="footer__cols">
-            <div class="footer__col">
-              <div class="footer__h">Product</div>
-              <a class="footer__a" href="features.html">How it works</a>
-              <a class="footer__a" href="proof.html">Proof</a>
-              <a class="footer__a" href="pricing.html">Pricing</a>
-              <a class="footer__a" href="resources.html">Resources</a>
-            </div>
-            <div class="footer__col">
-              <div class="footer__h">Legal</div>
-              <a class="footer__a" href="legal/risk.html">Risk disclosure</a>
-              <a class="footer__a" href="legal/terms.html">Terms</a>
-              <a class="footer__a" href="legal/privacy.html">Privacy</a>
-            </div>
-            <div class="footer__col">
-              <div class="footer__h">Support</div>
-              <a class="footer__a" href="mailto:support@azrosystems.com">support@azrosystems.com</a>
-              <a class="footer__a" href="resources.html#faq">FAQ</a>
-              <a class="footer__a" href="downloads/quick-start-guide.pdf" target="_blank" rel="noopener">Quick start (PDF)</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer__bottom">
-          <div class="tiny muted">© <span id="year"></span> Azro Labs LLC. All rights reserved.</div>
-          <div class="tiny muted">Educational only • not investment advice</div>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <script src="scripts.js" defer></script>
-</body>
+    
+    <script src="script.js"></script>
+  </body>
 </html>
+
+
+
+
+
