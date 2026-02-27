@@ -1,26 +1,25 @@
-# AZRO — Customer Site (v10)
+# AZRO Systems — XRP Top/Bottom Detector (Static Site)
 
-## How to preview
+This is a **static** (no-build) website.
 
-Open `index.html` in any modern browser.
+## Publish
 
-For a clean local preview on macOS/Linux you can run:
+Upload the contents of this folder to the root of your hosting (Netlify, Vercel static, S3, Cloudflare Pages, GitHub Pages, etc.).
 
-```bash
-python3 -m http.server 8000
-```
+### Important paths
 
-Then open `http://localhost:8000`.
+- Main pages: `index.html`, `features.html`, `proof.html`, `pricing.html`, `resources.html`
+- PDFs: `/downloads/*.pdf`
+- Legal wrappers: `/legal/*.html`
 
-## What’s included
+## Updating numbers / wording
 
-- `index.html` — single-page customer site
-- `assets/docs/` — PDFs + calculators (and a combined `AZRO_Customer_Packet_v8.zip`)
-- `assets/img/performance/` — extracted charts from the performance addendum for web display
+- **Backtest snapshot values** are presented on `proof.html` and sourced from the included `downloads/methodology-overview.pdf`.
+- If you update your methodology PDF, update the same values in `proof.html` to match.
 
-## Customization points
+## Notes
 
-- Update the contact email in `index.html` (search for `mailto:`)
-- Replace the favicon in `assets/img/ui/favicon.svg`
-- If you add new PDFs, generate new thumbnails (optional)
+- Fonts are bundled (Inter) for consistent rendering.
+- No external analytics or trackers are included.
+- Gumroad purchase CTA points to `https://azrosystems.gumroad.com/l/kuvbu`.
 

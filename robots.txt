@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://azrosystems.com/sitemap.xml
