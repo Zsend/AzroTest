@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/> <style id="header-placeholder">
+/* placeholder to eliminate background flash before header mounts */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:120px; /* approximate header height */
+background:#0e1b4c;
+background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
+z-index:9998;
+pointer-events:none;
+}
+</style> <style id="critical-header-bg">
+/* critical header background — prevents first‑paint flash */
+.site-header{
+background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
+transition:none !important;
+}
+</style> <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#0e1b4c" name="theme-color"/>
+<title>Features | AZRO Systems — XRP Top/Bottom Detector</title>
+<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<link as="image" href="logo.webp" rel="preload">
+<link as="image" href="coolback.webp" rel="preload"/>
+<link href="style.css" rel="stylesheet"/>
+<!-- in-page styles unchanged -->
+<style> .features-wrapper { max-width: 1000px; margin: 0 auto; text-align: center; } .features-grid { display: grid; grid-template-columns: repeat(2, minmax(260px, 1fr)); gap: 24px; margin-top: 24px; justify-content: center; } .feature-card { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; padding: 24px 26px; text-align: left; transition: background 0.3s ease, transform 0.3s ease; } .feature-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .feature-card h3 { margin: 0 0 10px; font-weight: 700; color: var(--text-head); font-size: 1.25rem; } .feature-card p { margin: 0; line-height: 1.55; color: var(--text-body); } @media(max-width: 600px) { .features-wrapper { padding: 0 16px; } .features-grid { grid-template-columns: 1fr; } } </style>
+<meta content="Explore feature‑rich analytics: dominance metrics, multiperiod alerts, and responsive charts." name="description"/>
+<link href="https://azrosystems.com/features.html" rel="canonical"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<style id="modal-landscape-consistent-fixes">
+/* Landscape pop-up balance (scoped to AZRO modals only) */
+@media (orientation: landscape){
+  dialog.azro-modal{
+    --azr-land-pad: clamp(14px, 2vh, 18px);
+    --azr-land-extra-top: 10px;    /* extra breathing room above */
+    --azr-land-extra-bottom: 14px; /* slightly more under footer text/button */
+  }
+
+  /* Header: give the title/sub a touch more space above */
+  dialog.azro-modal .azro-modal__head{
+    padding-top: calc(var(--azr-land-pad) + var(--azr-land-extra-top)) !important;
+    padding-bottom: var(--azr-land-pad) !important;
+  }
+
+  dialog.azro-modal .azro-modal__title,
+  dialog.azro-modal .azro-modal__sub{
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+
+  /* Footer: keep as a single centered row with equal feel below */
+  dialog.azro-modal .azro-modal__foot{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    text-align: center !important;
+    padding-top: var(--azr-land-pad) !important;
+    padding-bottom: calc(var(--azr-land-pad) + var(--azr-land-extra-bottom)) !important;
+    padding-left: clamp(16px, 3vw, 24px) !important;
+    padding-right: clamp(16px, 3vw, 24px) !important;
+  }
+  /* Keep items together and sized by their content */
+  dialog.azro-modal .azro-modal__foot > span,
+  dialog.azro-modal .azro-modal__foot > .azro-modal__close{
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+  }
+  /* Prevent the long footer text from breaking onto multiple lines
+     so the Done button stays right next to it. */
+  dialog.azro-modal .azro-modal__foot > span{
+    white-space: nowrap !important;
+    line-height: 1.25 !important;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<a id="main" tabindex="-1"></a>
+<header class="site-header" style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
+<div class="site-header__inner">
+<a class="site-logo" href="index.html"><picture><source srcset="logo.avif" type="image/avif"/><source srcset="logo.webp" type="image/webp"/><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
+<nav class="nav" aria-label="Primary">
+<a href="index.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="features.html" aria-current="page">FEATURES</a>
+<a href="pricing.html">PRICING</a>
+<a href="resources.html">RESOURCES</a>
+</nav>
+<div class="header-actions">
+<a class="btn btn--primary btn--small" href="https://azrosystems.gumroad.com/l/kuvbu">Buy now</a>
+<button class="btn btn--secondary btn--small" data-open-trial type="button">Free trial</button>
+</div>
+</div>
+</header>
+<section class="hero" style="align-items:flex-start;">
+<div class="hero-text features-wrapper container">
+<h1>Key Features</h1>
+<div class="features-grid">
+<!-- cards unchanged -->
+<div class="feature-card card">
+<h3>Clear Buy &amp; Sell Labels</h3>
+<p>MAJOR TOP / MAJOR BOTTOM labels print at likely cycle turns—helping you buy near lows and take profit near tops. Load it, set alerts, and trade your plan with confidence—no guesswork.</p>
+</div>
+<div class="feature-card card">
+<h3>Early Heads-Ups + Smart Alerts</h3>
+<p>Optional EARLY heads-ups prepare you before a move and LIGHT and RADAR tops/bottoms can help spot mid-cycle opportunities. Push and email device alerts fire the moment a label prints.</p>
+</div>
+<div class="feature-card card">
+<h3>Market-Wide Risk &amp; Top Warnings</h3>
+<p>Risk Warnings flag rising risk on XRP and across crypto—your cue to de-risk: trim size or pause entries. When markets overheat altcoin Top Warnings help you de-risk ahead of weakness.</p>
+</div>
+<div class="feature-card card">
+<h3>Multi-Layer, Auto-Adapting Model</h3>
+<p>A multi-layer model blends multiple inputs into a single composite readout. Labels print only when both the composite and timing windows align—surfacing likely cycle tops and bottoms.</p>
+</div></div>
+<p class="disclaimer"> Not investment advice. Past results aren’t guarantees. Consult a financial advisor before trading. </p>
+<div class="cta-row" style="margin-top:40px;margin-bottom:60px;">
+<a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+<button class="btn btn--secondary" data-open-trial type="button">Free trial</button>
+</div>
+</div>
+</section>
+<footer class="footer"> 2025 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) MADE IN THE USA · support@azrosystems.com · <a aria-label="Azro Systems on X" href="https://x.com/AzroSystems" rel="noopener noreferrer" target="_blank"><svg class="x-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
+</footer>
+<div class="sticky-cta" data-sticky-cta>
+<a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu">Buy now</a>
+<button class="btn btn--secondary" data-open-trial type="button">Free trial</button>
+</div>
+<script defer="" src="script.js"></script>
+
+
+
+
+<style id="azro-modal-center-lock">
+/* Scope: About feature modal only */
+#featureModal{ overflow-x:hidden !important; }
+#featureModal .azro-modal__scroll{
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-inline: clamp(14px, 3vw, 24px);
+}
+/* Horizontally lock & center blocks */
+#featureModal .azro-modal__body{ margin-inline:auto; max-width:min(96vw, 1100px); }
+#featureModal .azro-modal__text{ text-align:center !important; margin-inline:auto; max-width:min(80ch, 92vw); }
+#featureModal .azro-modal__media{ width:100%; max-width:min(96vw, 1100px); margin-inline:auto; }
+/* Keep bullets readable while centered */
+#featureModal .azro-modal__text > ul{ display:inline-block; text-align:left; margin:.75rem auto 0; padding:0 0 0 1.25rem; }
+/* Prevent lateral jank caused by transforms/backdrop stacking on iOS */
+@media (max-width: 900px){
+  html.azr-modal-open *:not(dialog){ transform:none !important; }
+}
+</style>
+
+</body>
+</html>
