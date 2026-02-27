@@ -1,109 +1,167 @@
-<!DOCTYPE html> <html lang="en">
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <style id="header-placeholder">
-/* placeholder to eliminate background flash before header mounts */
-body::before{
-content:'';
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:120px; /* approximate header height */
-background:#0e1b4c;
-background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
-z-index:9998;
-pointer-events:none;
-}
-</style> <style id="critical-header-bg">
-/* critical header background — prevents first‑paint flash */
-.site-header{
-background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
-transition:none !important;
-}
-</style> <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The XRP Top/Bottom Detector</title>
-<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="#0E1B4C" name="theme-color"/>
+<title>Pricing — AZRO Systems</title>
+<meta content="One-time payment, lifetime access. Invite-only TradingView script access after purchase." name="description"/>
+<link href="https://azrosystems.com/pricing.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://azrosystems.com/pricing.html" property="og:url"/>
+<meta content="Pricing — AZRO Systems" property="og:title"/>
+<meta content="One-time payment, lifetime access. Invite-only TradingView script access after purchase." property="og:description"/>
+<meta content="https://azrosystems.com/og-card.png" property="og:image"/><meta content="Pricing — AZRO Systems" property="og:image:alt"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<!-- Twitter / X -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Pricing — AZRO Systems" name="twitter:title"/>
+<meta content="One-time payment, lifetime access. Invite-only TradingView script access after purchase." name="twitter:description"/>
+<meta content="https://azrosystems.com/og-card.png" name="twitter:image"/><meta content="Pricing — AZRO Systems" name="twitter:image:alt"/>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="site.webmanifest" rel="manifest"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link as="image" href="logo.webp" rel="preload"/>
-<link as="image" href="coolback.webp" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="style.css" rel="stylesheet"/>
-<!-- in-page styles unchanged -->
-<style> .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 28px; justify-items: center; margin-top: 28px; } .price-card { width: 100%; max-width: 520px; display: flex; align-items: center; gap: 14px; padding: 24px 28px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--text-sub); border-radius: 8px; text-decoration: none; transition: 0.3s ease background, 0.3s ease transform; } .price-card:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-4px); } .price-card svg { flex: none; stroke: currentColor; } .price-card span { font-size: 1.1rem; font-weight: 600; color: var(--text-head); line-height: 1.4; text-align: left; } @media(max-width: 600px) { .hero { align-items: center !important; } .hero-text { padding: 0 16px; } } .price-card span { text-align: center !important; } /* Landscape mobile tweaks (pricing page) */
-@media (max-width: 900px) and (orientation: landscape) { /* Center the hero container like Features page */ .hero { align-items: center !important; text-align: center !important; } /* Price cards stack vertically and centered */ .price-card { flex-direction: column !important; align-items: center !important; text-align: center !important; } .price-card span { text-align: center !important; } /* Landscape‑mobile: center Pricing cards */
-@media (max-width: 900px) and (orientation: landscape) { .pricing-grid { width: max-content !important; /* shrink to card stack width */ margin-left: auto !important; margin-right: auto !important; }
-} /* Landscape‑mobile: center each Pricing card within the grid */
-@media (max-width: 900px) and (orientation: landscape) { .pricing-grid > * { margin-left: auto !important; margin-right: auto !important; }
-} }
-</style>
-<link href="https://USER.github.io/" rel="canonical"/><meta content="Landing page" name="description"/> <meta name="description" content="Transparent one‑time pricing. Own your XRP Top/Bottom Detector licence with a 14‑day guarantee."/>
-<link rel="canonical" href="https://azrosystems.com/pricing.html" /> <script type="" src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js"></script> <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"> <link rel="icon" href="favicon-162.png" sizes="162x162" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AZRO Systems",
+  "url": "https://azrosystems.com",
+  "email": "support@azrosystems.com",
+  "sameAs": [
+    "https://x.com/AzroSystems"
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<a id="main" tabindex="-1"></a>
-<header class="site-header" data-turbo-permanent style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
-<a href="index.html"><picture><source srcset="logo.avif" type="image/avif"><source srcset="logo.webp" type="image/webp"><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
-<nav class="nav">
-<a href="index.html">HOME</a>
-<a href="about.html">ABOUT</a>
-<a href="features.html">FEATURES</a>
-<a href="resources.html">RESOURCES</a>
+<header class="site-header">
+<div class="header-inner">
+<a aria-label="AZRO Systems home" class="brand" href="index.html">
+<picture>
+<source srcset="logo.avif" type="image/avif"/>
+<source srcset="logo.webp" type="image/webp"/>
+<img alt="AZRO Systems logo" height="40" src="logo.png" width="40"/>
+</picture>
+<span>AZRO Systems</span>
+</a>
+<nav aria-label="Primary navigation" class="nav">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="features.html">Features</a>
+<a aria-current="page" href="pricing.html">Pricing</a>
+<a href="resources.html">Resources</a>
 </nav>
+<div aria-label="Primary actions" class="header-ctas">
+<a class="button button--secondary" href="free-trial.html">Free trial</a>
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+</div><details class="menu"><summary aria-expanded="false" aria-label="Open menu" class="menu-button"><span aria-hidden="true" class="menu-icon"></span></summary><div class="menu-panel"><div class="menu-surface"><div class="menu-title">Menu</div><nav aria-label="Menu" class="menu-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="features.html">Features</a><a aria-current="page" href="pricing.html">Pricing</a><a href="resources.html">Resources</a></nav><div class="menu-actions"><a class="button button--secondary" href="free-trial.html">Free trial</a><a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a></div></div></div></details>
+</div>
 </header>
-<!-- Desktop hero is top-aligned; mobile centers via CSS -->
-<section class="hero" style="align-items:flex-start;">
-<div class="hero-text" style="text-align:center;width:100%;">
-<h1>One-time payment — $200 · Lifetime access</h1>
-<div class="pricing-grid">
-<!-- cards unchanged -->
-<div class="price-card">
-<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
-<rect height="9" rx="2" width="10" x="7" y="12"></rect>
-<path d="M9 12V9a5 5 0 0110 0v3"></path>
-</svg>
-<span>Private TradingView Indicator — invite-only script </span>
-</div>
-<div class="price-card">
-<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
-<polygon points="12 3 22 8 12 13 2 8 12 3"></polygon>
-<polyline points="2 13 12 18 22 13"></polyline>
-<polyline points="2 18 12 23 22 18"></polyline>
-</svg>
-<span>Institutional Logic, Trader-Friendly Setup — battle-tested XRP cycle model</span>
-</div>
-<div class="price-card">
-<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
-<rect height="20" rx="2" width="14" x="3" y="2"></rect>
-<polyline points="17 6 21 6 21 22 7 22 7 17"></polyline>
-<polyline points="7 2 7 6 17 6"></polyline>
-</svg>
-<span>5-Minute Quick-Start PDF — install guide + pro-level tips</span>
-</div>
-<div class="price-card">
-<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
-<path d="M3 12a9 9 0 0114-7.5l1-1.5v6h-6l2-3"></path>
-<path d="M21 12a9 9 0 01-14 7.5l-1 1.5v-6h6l-2 3"></path>
-</svg>
-<span>Free Upgrades for Life — every refinement, zero extra cost</span>
-</div>
-<div class="price-card">
-<svg fill="none" height="28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="28">
-<rect height="12" rx="2" width="18" x="3" y="6"></rect>
-<polyline points="3 7 12 13 21 7"></polyline>
-</svg>
-<span>Responsive Email Support — real experts, fast answers</span>
-</div>
-</div>
-<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu" style="margin-top:40px;margin-bottom:60px;"> Buy Now on Gumroad </a>
+<main id="main">
+<section class="page-hero">
+<div class="container container--narrow">
+<p class="h-eyebrow">Pricing</p>
+<h1>Lifetime access. One-time payment.</h1>
+<p>Buy once, keep it forever. Invite‑only TradingView® script access is granted after purchase.</p>
 </div>
 </section>
-<footer class="footer" data-turbo-permanent> 2025 AZRO Systems™ · A brand of Azro Labs LLC · MADE IN THE USA · support@azrosystems.com · <a href="https://x.com/AzroSystems" target="_blank" rel="noopener noreferrer" aria-label="Azro Systems on X"><svg class="x-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"/></svg></a>
+<section class="section section--tight">
+<div class="container container--narrow">
+<div class="card pricing-card">
+<div class="pricing-head">
+<div>
+<div class="h-eyebrow pricing-name">XRP Top/Bottom Detector</div>
+<div class="price-line">$200 <span>USD</span></div>
+<div class="note mt-10">One‑time · lifetime access · free upgrades</div>
+</div>
+<div class="cta-row">
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+<a class="button button--secondary" href="free-trial.html">Free trial</a>
+</div>
+</div>
+<hr class="divider"/>
+<div class="grid grid-2 grid--tight">
+<div class="callout">
+<strong>Included</strong>
+<ul class="list">
+<li>Invite‑only TradingView indicator access (single TradingView username).</li>
+<li>On‑chart labels + alert conditions (weekly confirmations).</li>
+<li>Documentation + methodology + disclosures.</li>
+<li>Ongoing updates for licensed users.</li>
+</ul>
+</div>
+<div class="callout">
+<strong>After purchase</strong>
+<ol class="list">
+<li>Checkout on Gumroad.</li>
+<li>Provide your TradingView username.</li>
+<li>Invite is granted (typically within 24 hours).</li>
+<li>Install and set alerts on the 1‑Week chart.</li>
+</ol>
+</div>
+</div>
+<p class="note mt-14">
+        Refunds: if you have unresolved technical issues, contact support within 14 days of purchase for help and potential refund resolution. Access is revoked upon refund.
+      </p>
+</div>
+</div>
+</section>
+<section class="section section--tight">
+<div class="container container--narrow">
+<p class="h-eyebrow">Confidence</p>
+<h2 class="h2">Professional disclosures and documentation.</h2>
+<p class="p-muted">This product is an educational tool. Please review the methodology overview and risk disclosure before using signals in live markets.</p>
+<div class="grid grid-2 mt-18">
+<div class="card">
+<h3>Methodology overview</h3>
+<p>How the weekly composite and confirmation windows are structured, plus known limitations.</p>
+<div class="cta-row mt-10">
+<a class="button button--secondary button--small" href="docs/methodology.html">Read web version</a>
+<a class="button button--secondary button--small" href="pdfs/methodology-overview.pdf" rel="noopener noreferrer" target="_blank">Download PDF</a>
+</div>
+</div>
+<div class="card">
+<h3>Risk disclosure</h3>
+<p>Volatility, execution risk, platform dependency, and other key risk factors.</p>
+<div class="cta-row mt-10">
+<a class="button button--secondary button--small" href="docs/risk-disclosure.html">Read web version</a>
+<a class="button button--secondary button--small" href="pdfs/risk-disclosure.pdf" rel="noopener noreferrer" target="_blank">Download PDF</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-copy">© 2026 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) · Made in the USA</div>
+<div class="footer-links">
+<a href="mailto:support@azrosystems.com">support@azrosystems.com</a>
+<a href="docs/terms.html">Terms</a>
+<a href="docs/privacy.html">Privacy</a>
+<a href="docs/risk-disclosure.html">Risk disclosure</a>
+<a aria-label="AZRO Systems on X" href="https://x.com/AzroSystems" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="x-icon" focusable="false" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
+</div>
+</div>
 </footer>
-<div class="sticky-cta">
-<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+<div aria-label="Quick actions" class="sticky-cta" role="region">
+<div class="sticky-cta-inner">
+<a class="button button--secondary" href="free-trial.html">Free trial</a>
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+</div>
 </div>
 <script defer="" src="script.js"></script>
 </body>

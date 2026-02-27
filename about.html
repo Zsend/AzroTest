@@ -1,101 +1,183 @@
-<!DOCTYPE html> <html lang="en">
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <style id="header-placeholder">
-/* placeholder to eliminate background flash before header mounts */
-body::before{
-content:'';
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:120px; /* approximate header height */
-background:#0e1b4c;
-background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%);
-z-index:9998;
-pointer-events:none;
-}
-</style> <style id="critical-header-bg">
-/* critical header background — prevents first‑paint flash */
-.site-header{
-background:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important;
-transition:none !important;
-}
-</style> <meta charset="utf-8"/>
-<!-- ———— SOCIAL PREVIEW ———— -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="dark" name="color-scheme"/>
+<meta content="#0E1B4C" name="theme-color"/>
+<title>About — AZRO Systems</title>
+<meta content="Learn how AZRO Systems provides invite-only TradingView tools designed for weekly cycle extremes." name="description"/>
+<link href="https://azrosystems.com/about.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://azrosystems.com/about.html" property="og:url"/>
+<meta content="About — AZRO Systems" property="og:title"/>
+<meta content="Learn how AZRO Systems provides invite-only TradingView tools designed for weekly cycle extremes." property="og:description"/>
+<meta content="https://azrosystems.com/og-card.png" property="og:image"/><meta content="About — AZRO Systems" property="og:image:alt"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
 <!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@AzroSystems">
-<meta name="twitter:title" content="AZRO Systems — Institutional-grade logic, retail-friendly setup">
-<meta name="twitter:description" content="Cycle-timing tools that spot XRP tops & bottoms weeks before headlines.">
-<meta name="twitter:image" content="https://azrosystems.com/og-card.png"> <!-- Open Graph (FB / LinkedIn / Discord) -->
-<meta property="og:url" content="https://azrosystems.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AZRO Systems — Institutional-grade logic, retail-friendly setup">
-<meta property="og:description" content="Cycle-timing tools that spot XRP tops & bottoms weeks before headlines.">
-<meta property="og:image" content="https://azrosystems.com/og-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<!-- ———— END SOCIAL PREVIEW ———— --> <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The XRP Top/Bottom Detector</title>
-<!-- Fonts & preloads -->
-<link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="About — AZRO Systems" name="twitter:title"/>
+<meta content="Learn how AZRO Systems provides invite-only TradingView tools designed for weekly cycle extremes." name="twitter:description"/>
+<meta content="https://azrosystems.com/og-card.png" name="twitter:image"/><meta content="About — AZRO Systems" name="twitter:image:alt"/>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-162.png" rel="icon" sizes="162x162" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="site.webmanifest" rel="manifest"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link as="image" href="logo.webp" rel="preload"/>
-<link as="image" href="coolback.webp" rel="preload"/>
-<link as="image" href="newchart.webp" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800;900&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="style.css" rel="stylesheet"/>
-<!-- mobile helper CSS -->
-<style> @media (max-width:900px) { .hero-text p:first-of-type { font-size: 1.3rem; } .hero-text p { font-size: 1.2rem; } .hero-image { width: 100vw; max-width: none; margin: 0 calc(-50vw + 50%) 24px !important; } .hero-image img { width: 100%; max-width: none; border-radius: 0; } } /* Landscape mobile tweaks (about page) */ @media (max-width: 900px) and (orientation: landscape) { .hero-image picture, .hero-image img { width: 100vw !important; max-width: none !important; margin: 0 calc(-50vw + 50%) 24px !important; border-radius: 0 !important; } .hero-image + p, .chart-note { text-align: center !important; margin-left: auto !important; margin-right: auto !important; } } @media (max-width: 900px) and (orientation: landscape) { .hero-image { max-width: none !important; } }
-</style>
-<link href="https://USER.github.io/" rel="canonical"/><meta content="AZRO Systemsdevelops precision trading tools for crypto enthusiasts who value clarity over clutter. Our flagship product, the Top/Bottom Dete" name="description"/> <meta name="description" content="Learn how AZRO Systems empowers crypto investors through precision cycle‑detection tools."/>
-<link rel="canonical" href="https://azrosystems.com/about.html" /> <script type="" src="https://unpkg.com/@hotwired/turbo@9.0.0/dist/turbo.es.js"></script> <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"> <link rel="icon" href="favicon-162.png" sizes="162x162" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AZRO Systems",
+  "url": "https://azrosystems.com",
+  "email": "support@azrosystems.com",
+  "sameAs": [
+    "https://x.com/AzroSystems"
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<a id="main" tabindex="-1"></a>
-<header class="site-header" data-turbo-permanent style="background:#0e1b4c !important; background-image:linear-gradient(90deg,#0e1b4c 0%,#250c58 100%) !important; transition:none !important;">
-<a href="index.html"><picture><source srcset="logo.avif" type="image/avif"><source srcset="logo.webp" type="image/webp"><img alt="AZRO Systems logo" height="200" src="logo.png" width="200"/></picture></a>
-<nav class="nav">
-<a href="index.html">HOME</a>
-<a href="features.html">FEATURES</a>
-<a href="pricing.html">PRICING</a>
-<a href="resources.html">RESOURCES</a>
-</nav>
-</header>
-<section class="hero">
-<div class="hero-text" style="text-align:center;">
-<h1>About AZRO Systems</h1>
-<p>AZRO Systems™ develops future‑ready tools that help demystify complex markets, flagging major opportunity and risk levels before the crowd reacts.</p>
-
-<p>Our XRP Top/Bottom Detector is now live. In hypothetical back‑tests spanning 2015 to the present, the model captured each major upswing and drawdown—suggesting it could help traders manage risk, compound gains, and quiet market noise.</p>
-
-<p><strong>Data‑first trading&nbsp;—</strong> Multi‑factor cycle analytics—macro‑rotation, asset‑share, and momentum‑stress visualization—replace guess targets and headline chasing. Visualize market cycles, understand risk levels, and assess entries and exits with data‑driven confidence—tools to guide your strategy.</p>
-
-<p><strong>Real‑time clarity&nbsp;—</strong> Labels print intra‑bar and trigger TradingView® alerts and push notifications the moment buy and sell conditions fire, allowing you to spend less time screen‑watching and more time executing a plan—reducing stress and promoting more consistent outcomes.</p>
-
-<p>Additional crypto‑asset models are in active development.</p>
-
-<p><em>Built and maintained in the United States.</em></p>
-
-<div class="hero-image chart-img" style="max-width:600px;margin:40px auto;">
+<header class="site-header">
+<div class="header-inner">
+<a aria-label="AZRO Systems home" class="brand" href="index.html">
 <picture>
-<source media="(max-width: 900px)" srcset="newchart-720.png" type="image/webp"/>
-<picture><source srcset="newchart.avif" type="image/avif"><source srcset="newchart.webp" type="image/webp"><img alt="XRP Top/Bottom Detector – chart with Major Top and Major Bottom labels" src="newchart.png"/></picture>
+<source srcset="logo.avif" type="image/avif"/>
+<source srcset="logo.webp" type="image/webp"/>
+<img alt="AZRO Systems logo" height="40" src="logo.png" width="40"/>
 </picture>
+<span>AZRO Systems</span>
+</a>
+<nav aria-label="Primary navigation" class="nav">
+<a href="index.html">Home</a>
+<a aria-current="page" href="about.html">About</a>
+<a href="features.html">Features</a>
+<a href="pricing.html">Pricing</a>
+<a href="resources.html">Resources</a>
+</nav>
+<div aria-label="Primary actions" class="header-ctas">
+<a class="button button--secondary" href="free-trial.html">Free trial</a>
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+</div><details class="menu"><summary aria-expanded="false" aria-label="Open menu" class="menu-button"><span aria-hidden="true" class="menu-icon"></span></summary><div class="menu-panel"><div class="menu-surface"><div class="menu-title">Menu</div><nav aria-label="Menu" class="menu-links"><a href="index.html">Home</a><a aria-current="page" href="about.html">About</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="resources.html">Resources</a></nav><div class="menu-actions"><a class="button button--secondary" href="free-trial.html">Free trial</a><a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a></div></div></div></details>
 </div>
-<p>
-<strong>Important Disclosures</strong><br/> Our multi-layer model has identified every major XRP buy and sell signal in published historical data — yet it’s designed to complement, not replace, your independent analysis. Use the signal as a confirmation layer; never as a standalone trading decision. </p>
-<div class="btn-container" style="text-align:center;margin-top:40px;margin-bottom:60px;">
-<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+</header>
+<main id="main">
+<section class="page-hero">
+<div class="container container--narrow">
+<p class="h-eyebrow">About</p>
+<h1>Map the cycle. Cut the noise.</h1>
+<p>AZRO Systems™ develops future‑ready market-cycle tools that help traders and investors reduce guesswork at major inflection points. The XRP Top/Bottom Detector is an invite‑only TradingView® indicator that prints labels and sends alerts designed for weekly-cycle extremes.</p>
+</div>
+</section>
+<section class="section section--tight">
+<div class="container container--narrow">
+<div class="callout">
+<strong>How access works:</strong>
+<ol class="list">
+<li><strong>Buy</strong> on Gumroad.</li>
+<li><strong>Submit</strong> your TradingView username after checkout (works with a free TradingView account).</li>
+<li><strong>Receive</strong> invite‑only access to the private script (typically within 24 hours).</li>
+<li><strong>Install</strong> the indicator and set weekly alerts.</li>
+</ol>
+</div>
+<div class="cta-row mt-16">
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+<a class="button button--secondary" href="free-trial.html">Free trial</a>
 </div>
 </div>
 </section>
-<footer class="footer" data-turbo-permanent> 2025 AZRO Systems · A brand of Azro Labs LLC · MADE IN THE USA · support@azrosystems.com · <a href="https://x.com/AzroSystems" target="_blank" rel="noopener noreferrer" aria-label="Azro Systems on X"><svg class="x-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"/></svg></a>
+<section class="section section--tight">
+<div class="container">
+<div class="grid grid-2 grid--start">
+<figure class="media-card">
+<div class="media">
+<video controls="" playsinline="" poster="newchart.webp" preload="none">
+<source src="main_h264.mp4" type="video/mp4"/>
+            Sorry — your browser doesn’t support embedded video.
+          </video>
+</div>
+<figcaption class="caption">Demo preview (compressed for fast load). For best results, use on the <strong>1‑Week</strong> timeframe.</figcaption>
+</figure>
+<div>
+<p class="h-eyebrow">What it delivers</p>
+<h2 class="h2">On‑chart labels + instant alerts.</h2>
+<p class="p-muted">The detector is designed to help confirm cycle extremes and elevated-risk windows. Use it to plan entries/exits, adjust exposure, and validate trend transitions without living on low‑timeframe charts.</p>
+<div aria-label="Backtest highlights" class="stats">
+<div class="stat">
+<div class="value">~9×</div>
+<div class="label">more total profit vs. XRP buy‑and‑hold (hypothetical backtest)</div>
+</div>
+<div class="stat">
+<div class="value">~6×</div>
+<div class="label">lower max drawdown vs. XRP buy‑and‑hold (hypothetical backtest)</div>
+</div>
+<div class="stat">
+<div class="value">De‑risk</div>
+<div class="label">risk layers + warning behavior to help manage overheated conditions</div>
+</div>
+</div>
+<p class="note mt-14">
+          Performance figures are <strong>hypothetical</strong> backtests and not actual trading results. Past performance does not guarantee future results.
+        </p>
+</div>
+</div>
+</div>
+</section>
+<section class="section section--tight">
+<div class="container container--narrow">
+<p class="h-eyebrow">Signal layers</p>
+<h2 class="h2">Designed around weekly confirmations.</h2>
+<div class="grid grid-2 mt-18">
+<div class="card">
+<h3>MAJOR Top / Bottom</h3>
+<p>Primary weekly confirmations produced when multi‑layer consensus and timing alignment are present.</p>
+</div>
+<div class="card">
+<h3>RADAR / EARLY / LIGHT</h3>
+<p>Complementary layers for staging cues and alternative structures (features depend on settings/version).</p>
+</div>
+<div class="card">
+<h3>Risk context</h3>
+<p>Optional RISK/HIGH‑RISK markers can help visualize elevated caution windows.</p>
+</div>
+<div class="card">
+<h3>Market‑wide awareness</h3>
+<p>Optional non‑XRP warning behavior can help communicate broader market top‑side risk without duplicating internals.</p>
+</div>
+</div>
+<div class="cta-row mt-22">
+<a class="button button--secondary" href="resources.html">Read methodology</a>
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-copy">© 2026 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) · Made in the USA</div>
+<div class="footer-links">
+<a href="mailto:support@azrosystems.com">support@azrosystems.com</a>
+<a href="docs/terms.html">Terms</a>
+<a href="docs/privacy.html">Privacy</a>
+<a href="docs/risk-disclosure.html">Risk disclosure</a>
+<a aria-label="AZRO Systems on X" href="https://x.com/AzroSystems" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="x-icon" focusable="false" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
+</div>
+</div>
 </footer>
-<div class="sticky-cta">
-<a class="btn" href="https://azrosystems.gumroad.com/l/kuvbu">Buy Now on Gumroad</a>
+<div aria-label="Quick actions" class="sticky-cta" role="region">
+<div class="sticky-cta-inner">
+<a class="button button--secondary" href="free-trial.html">Free trial</a>
+<a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+</div>
 </div>
 <script defer="" src="script.js"></script>
 </body>
