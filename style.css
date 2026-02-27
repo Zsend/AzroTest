@@ -41,7 +41,9 @@ body, html {
   align-items: center;
   background: #000;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Re-enable text selection + interactions inside form controls */
@@ -63,6 +65,8 @@ textarea {
   color: #B0B0B0; /* Light grey for text */
   /* Allow the animated background to stay interactive behind the logo area */
   pointer-events: none;
+  width: min(760px, 92vw);
+  padding: 20px;
 }
 
 #logo {
@@ -85,18 +89,27 @@ h1 {
 /* ---------- SUBSCRIBE UI ---------- */
 .signup-text {
   margin-top: 14px;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-  opacity: 0.9;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  opacity: 0.92;
 }
 
 .subscribe-form {
-  margin-top: 12px;
+  /* Center the entire control under the headline */
+  margin: 16px auto 0;
+  width: min(560px, 92vw);
+
+  /* One cohesive “pill” control (input + button) */
   display: flex;
-  gap: 10px;
+  align-items: stretch;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(176, 176, 176, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   /* Re-enable interactions for the form even though the parent container is click-through */
   pointer-events: auto;
 }
@@ -106,52 +119,70 @@ h1 {
 }
 
 .subscribe-form input[type="email"] {
-  width: min(360px, 82vw);
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(176, 176, 176, 0.35);
-  background: rgba(0, 0, 0, 0.35);
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  border: 0;
+  background: transparent;
   color: #E6E6E6;
   outline: none;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  font-size: 16px;
 }
 
 .subscribe-form input[type="email"]::placeholder {
   color: rgba(176, 176, 176, 0.7);
 }
 
-.subscribe-form input[type="email"]:focus {
-  border-color: rgba(128, 222, 234, 0.75);
-  box-shadow: 0 0 0 3px rgba(128, 222, 234, 0.15);
+/* Unified focus ring for the whole pill */
+.subscribe-form:focus-within {
+  border-color: rgba(128, 222, 234, 0.8);
+  box-shadow: 0 0 0 4px rgba(128, 222, 234, 0.14);
 }
 
 .subscribe-form button {
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(128, 222, 234, 0.55);
-  background: rgba(0, 0, 0, 0.35);
+  padding: 14px 22px;
+  border: 0;
+  border-left: 1px solid rgba(128, 222, 234, 0.35);
+  background: rgba(128, 222, 234, 0.14);
   color: #E6E6E6;
   font-weight: 700;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.25px;
   cursor: pointer;
-  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  transition: background 120ms ease, box-shadow 120ms ease;
 }
 
 .subscribe-form button:hover {
-  transform: translateY(-1px);
-  border-color: rgba(128, 222, 234, 0.85);
-  box-shadow: 0 0 0 3px rgba(128, 222, 234, 0.12);
+  background: rgba(128, 222, 234, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(128, 222, 234, 0.18);
 }
 
 .subscribe-form button:active {
-  transform: translateY(0);
+  background: rgba(128, 222, 234, 0.26);
 }
 
 .signup-fineprint {
   margin-top: 10px;
   font-size: 12px;
   opacity: 0.75;
+}
+
+/* Mobile: stack input + button for a cleaner layout */
+@media (max-width: 520px) {
+  .subscribe-form {
+    flex-direction: column;
+    border-radius: 14px;
+  }
+
+  .subscribe-form button {
+    width: 100%;
+    border-left: 0;
+    border-top: 1px solid rgba(128, 222, 234, 0.35);
+    transform: none;
+  }
+
+  .subscribe-form button:hover {
+    transform: none;
+  }
 }
 
 .honeypot {
