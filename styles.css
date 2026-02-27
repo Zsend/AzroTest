@@ -1904,7 +1904,7 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--muted);
-  font-weight: 650;
+  font-weight: 600;
 }
 .statcard__v{
   font-size: clamp(22px, 2.3vw, 28px);
@@ -1983,3 +1983,93 @@ body[data-view="board"] #board-fold .fold__body{ padding: 0; }
 
 .chip--link{ cursor: pointer; text-decoration: none; color: var(--ink); }
 .chip--link:hover{ border-color: rgba(47,107,255,.35); background: rgba(47,107,255,.06); }
+
+
+/* --- Home (simplified hero) additions --- */
+.hero--simple{
+  padding: var(--s10) 0 var(--s9);
+}
+@media (max-width: 860px){
+  .hero--simple{
+    padding: var(--s9) 0 var(--s8);
+  }
+}
+
+.minicards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s4);
+}
+.mini{
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  background: linear-gradient(180deg, rgba(246,248,252,.75), rgba(255,255,255,.90));
+  padding: 14px 14px;
+}
+.mini__k{
+  font-size: 12px;
+  color: var(--muted2);
+  letter-spacing: .02em;
+}
+.mini__v{
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--text);
+}
+@media (max-width: 520px){
+  .minicards{ grid-template-columns: 1fr; }
+  .mini{ padding: 14px 14px; }
+}
+
+.ctaBand{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s6);
+  padding: var(--s6);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background:
+    radial-gradient(700px 180px at 20% 0%, rgba(47,107,255,.10), transparent 60%),
+    #fff;
+  box-shadow: 0 16px 40px rgba(11,18,32,.06);
+}
+.ctaBand__title{
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+.ctaBand__body{
+  color: var(--muted);
+}
+.ctaBand__actions{
+  display: flex;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+@media (max-width: 760px){
+  .ctaBand{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ctaBand__actions{ width: 100%; }
+  .ctaBand__actions .btn{ width: 100%; justify-content: center; }
+}
+
+
+.headline__line{ display:block; }
+.kicker{
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 10px;
+}
+.card__meta{
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent2);
+  letter-spacing: .01em;
+}
+.card--link:hover .card__meta{ text-decoration: underline; }

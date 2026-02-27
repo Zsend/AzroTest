@@ -27,17 +27,17 @@
         </span>
       </a>
 
-      <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="index.html">Overview</a>
+            <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="index.html">Home</a>
         <a class="nav__link is-active" href="features.html">How it works</a>
         <a class="nav__link" href="proof.html">Proof</a>
         <a class="nav__link" href="pricing.html">Pricing</a>
         <a class="nav__link" href="resources.html">Resources</a>
       </nav>
 
-      <div class="topbar__actions">
+            <div class="topbar__actions">
         <a class="btn btn--ghost" href="resources.html">Download docs</a>
-        <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy lifetime access</a>
+        <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy now — $200 lifetime</a>
       </div>
 
       <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false">
@@ -47,13 +47,13 @@
 
     <div class="mobilemenu" hidden>
       <div class="mobilemenu__inner container">
-        <a class="mobilemenu__link" href="index.html">Overview</a>
+        <a class="mobilemenu__link" href="index.html">Home</a>
         <a class="mobilemenu__link" href="features.html">How it works</a>
         <a class="mobilemenu__link" href="proof.html">Proof</a>
         <a class="mobilemenu__link" href="pricing.html">Pricing</a>
         <a class="mobilemenu__link" href="resources.html">Resources</a>
 
-        <a class="btn btn--primary btn--full" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy lifetime access</a>
+        <a class="btn btn--primary btn--full" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy now — $200 lifetime</a>
         <a class="btn btn--ghost btn--full" href="resources.html">Download docs</a>
       </div>
     </div>
@@ -70,8 +70,8 @@
         </p>
 
         <div class="chips" role="list" aria-label="Quick links">
+          <a class="chip chip--link" href="#setup">Quick setup</a>
           <a class="chip chip--link" href="#signals">Signal glossary</a>
-          <a class="chip chip--link" href="#setup">Setup</a>
           <a class="chip chip--link" href="#alerts">Alerts</a>
           <a class="chip chip--link" href="#modes">Toggles</a>
           <a class="chip chip--link" href="#limits">Limitations</a>
@@ -79,7 +79,46 @@
       </div>
     </section>
 
-    <section class="section" id="signals">
+    
+
+    <section class="section" id="setup">
+      <div class="container">
+        <div class="sectionhead">
+          <h2>Quick setup</h2>
+          <p>A clean setup is repeatable. This keeps you from “tuning” signals emotionally.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>1) Load on weekly XRPUSD</h3>
+            <p>
+              The detector is designed for the <strong>1W</strong> chart. Apply it to an XRPUSD market you trust.
+              Confirmations evaluate on weekly close.
+            </p>
+            <p class="tiny muted">If you switch exchanges, treat that as a new dataset and re‑validate.</p>
+          </div>
+          <div class="card">
+            <h3>2) Set your display toggles</h3>
+            <p>
+              v1.0.9 includes: label distance spacing, light‑mode palette, a soft‑confirm filter for EARLY labels,
+              and optional risk‑colored price line.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: var(--s6);">
+          <h3>Recommended baseline</h3>
+          <ul class="checklist">
+            <li><strong>RADAR TOP:</strong> on (default).</li>
+            <li><strong>RADAR BOTTOM:</strong> off (unless you explicitly want that alternate track).</li>
+            <li><strong>Soft‑confirm filter:</strong> on (reduces “blip” EARLY prints).</li>
+            <li><strong>Label distance:</strong> use spacing to prevent overlaps on mobile.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<section class="section" id="signals">
       <div class="container">
         <div class="sectionhead">
           <h2>Signal glossary</h2>
@@ -140,43 +179,6 @@
               <p class="tiny muted">Risk overlays are context. They don’t replace MAJOR/RADAR confirmation logic.</p>
             </div>
           </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="setup">
-      <div class="container">
-        <div class="sectionhead">
-          <h2>Setup</h2>
-          <p>A clean setup is repeatable. This keeps you from “tuning” signals emotionally.</p>
-        </div>
-
-        <div class="grid2">
-          <div class="card">
-            <h3>1) Load on weekly XRPUSD</h3>
-            <p>
-              The detector is designed for the <strong>1W</strong> chart. Apply it to an XRPUSD market you trust.
-              Confirmations evaluate on weekly close.
-            </p>
-            <p class="tiny muted">If you switch exchanges, treat that as a new dataset and re‑validate.</p>
-          </div>
-          <div class="card">
-            <h3>2) Set your display toggles</h3>
-            <p>
-              v1.0.9 includes: label distance spacing, light‑mode palette, a soft‑confirm filter for EARLY labels,
-              and optional risk‑colored price line.
-            </p>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top: var(--s6);">
-          <h3>Recommended baseline</h3>
-          <ul class="checklist">
-            <li><strong>RADAR TOP:</strong> on (default).</li>
-            <li><strong>RADAR BOTTOM:</strong> off (unless you explicitly want that alternate track).</li>
-            <li><strong>Soft‑confirm filter:</strong> on (reduces “blip” EARLY prints).</li>
-            <li><strong>Label distance:</strong> use spacing to prevent overlaps on mobile.</li>
-          </ul>
         </div>
       </div>
     </section>
@@ -311,7 +313,7 @@
           <div class="footer__cols">
             <div class="footer__col">
               <div class="footer__h">Product</div>
-              <a class="footer__a" href="index.html">Overview</a>
+              <a class="footer__a" href="index.html">Home</a>
               <a class="footer__a" href="proof.html">Proof</a>
               <a class="footer__a" href="pricing.html">Pricing</a>
               <a class="footer__a" href="resources.html">Resources</a>

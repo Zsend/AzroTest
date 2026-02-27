@@ -1,78 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Virtue Climbing — Stay Tuned</title>
-    <meta name="description" content="Virtue Climbing — coming soon. Subscribe for launch updates and rewards." />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Container for the canvas -->
-    <div id="canvas-container"></div>
-    
-    <!-- Logo and Heading -->
-    <div class="logo-container">
-      <img
-        src="img/logo.png"
-        alt="Virtue Climbing logo"
-        id="logo"
-      />
-      <h1>stay tuned</h1>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
 
-      <p class="signup-text">Get launch news + rewards.</p>
+  <title>AZRO Systems — XRP Top/Bottom Detector (Invite‑only)</title>
+  <meta name="description" content="Invite‑only TradingView® indicator for XRP cycle turning points on the weekly chart. MAJOR TOP/BOTTOM confirmations, optional RADAR heads‑ups, and market‑wide risk overlays." />
 
-      <!--
-        ✅ Free + easiest email collection (no backend): FormSubmit
-        1) Replace YOUR_RECEIVING_EMAIL@example.com below with the email you want signups sent to.
-        2) Publish the site.
-        3) Submit the form once yourself — FormSubmit will email you a confirmation link.
+  <meta property="og:title" content="AZRO Systems — XRP Top/Bottom Detector" />
+  <meta property="og:description" content="Spot market tops and bottoms with confidence. Weekly‑close confirmations, clean alerts, and risk context — invite‑only." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/newchart.png" />
 
-        Docs: https://formsubmit.co/
-      -->
-      <form
-        class="subscribe-form"
-        action="https://formsubmit.co/YOUR_RECEIVING_EMAIL@example.com"
-        method="POST"
-        autocomplete="on"
-      >
-        <!-- Send user back to your own thank-you page (instead of FormSubmit's default) -->
-        <input type="hidden" name="_next" value="https://www.virtueclimbing.com/thanks.html" />
-        <!-- Email subject line for the notification you receive -->
-        <input type="hidden" name="_subject" value="Virtue Climbing — New subscriber" />
-        <!-- Spam honeypot (FormSubmit will silently ignore submissions that fill this) -->
-        <input
-          class="honeypot"
-          type="text"
-          name="_honey"
-          tabindex="-1"
-          autocomplete="off"
-          aria-hidden="true"
-        />
-        <!-- Optional: change the notification email template -->
-        <input type="hidden" name="_template" value="table" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-        <label class="sr-only" for="email">Email address</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          inputmode="email"
-          autocomplete="email"
-          placeholder="Email address"
-          required
-        />
-        <button type="submit">Join</button>
-      </form>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/Inter-Regular.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/Inter-SemiBold.woff2" />
 
-      <p class="signup-fineprint">No spam. Unsubscribe anytime.</p>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="page--overview">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar" role="banner">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html#top" aria-label="AZRO Systems home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">AZRO</span>
+          <span class="brand__sub">Systems</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link is-active" href="index.html">Home</a>
+        <a class="nav__link" href="features.html">How it works</a>
+        <a class="nav__link" href="proof.html">Proof</a>
+        <a class="nav__link" href="pricing.html">Pricing</a>
+        <a class="nav__link" href="resources.html">Resources</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <a class="btn btn--ghost" href="resources.html">Download docs</a>
+        <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy now — $200 lifetime</a>
+      </div>
+
+      <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    
-    <script src="script.js"></script>
-  </body>
+
+    <div class="mobilemenu" hidden>
+      <div class="mobilemenu__inner container">
+        <a class="mobilemenu__link" href="index.html">Home</a>
+        <a class="mobilemenu__link" href="features.html">How it works</a>
+        <a class="mobilemenu__link" href="proof.html">Proof</a>
+        <a class="mobilemenu__link" href="pricing.html">Pricing</a>
+        <a class="mobilemenu__link" href="resources.html">Resources</a>
+
+        <a class="btn btn--primary btn--full" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy now — $200 lifetime</a>
+        <a class="btn btn--ghost btn--full" href="resources.html">Download docs</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--simple" id="top">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Invite‑only TradingView® indicator • XRP • Weekly chart (1W)</p>
+          <h1><span class="headline__line">Spot market tops and bottoms</span><span class="headline__line">with confidence.</span></h1>
+
+          <p class="lede lede--tight">
+            The <strong>AZRO Systems™ XRP Top/Bottom Detector</strong> synthesizes macro‑cycle timing, market flow, and momentum stress into
+            on‑chart alerts that help confirm decisions to buy near bottoms, sell near tops, adjust positions, and validate emerging trends.
+          </p>
+
+          <p class="lede" style="margin-top: 10px;">
+            Default settings are pre‑tuned for XRP — <strong>load, set alerts, done.</strong>
+          </p>
+
+          <ul class="checklist" aria-label="What you get">
+            <li><strong>MAJOR TOP / MAJOR BOTTOM</strong> cycle confirmations (evaluated on the 1W close).</li>
+            <li><strong>RADAR</strong> and <strong>LIGHT</strong> heads‑ups to plan scale‑ins/outs without screen‑watching.</li>
+            <li><strong>Market‑wide risk & top warnings</strong> (optional overlay) for broader context.</li>
+          </ul>
+
+          <div class="hero__cta" style="margin-top: var(--s5);">
+            <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy now — $200 lifetime</a>
+            <a class="btn btn--ghost" href="features.html">How it works</a>
+            <a class="btn btn--ghost" href="proof.html">See proof</a>
+          </div>
+
+          <p class="tiny muted" style="margin-top: 12px; max-width: 70ch;">
+            Invite‑only script. After purchase, email your TradingView username to
+            <a class="inline" href="mailto:support@azrosystems.com">support@azrosystems.com</a>.
+            Access is typically added within <strong>24 business hours</strong>.
+          </p>
+
+          <p class="tiny muted" style="margin-top: 8px; max-width: 70ch;">
+            Educational only. Not investment advice. Past performance is not a guarantee of future results.
+            Read the <a class="inline" href="legal/risk.html">risk disclosure</a>.
+          </p>
+        </div>
+
+        <aside class="hero__panel" aria-label="Indicator preview">
+          <figure class="shot">
+            <picture>
+              <source srcset="assets/img/newchart.webp" type="image/webp"/>
+              <img src="assets/img/newchart.png" alt="Weekly XRP chart example with Major Top and Major Bottom labels." loading="eager" decoding="async" />
+            </picture>
+            <figcaption class="shot__cap">
+              Example chart (illustrative). Confirmations evaluate on the weekly close. Alerts can notify via push/email.
+            </figcaption>
+          </figure>
+
+          <div class="minicards" style="margin-top: var(--s6);">
+            <div class="mini">
+              <div class="mini__k">Version</div>
+              <div class="mini__v">v1.0.9</div>
+            </div>
+            <div class="mini">
+              <div class="mini__k">Timeframe</div>
+              <div class="mini__v">1W (weekly)</div>
+            </div>
+            <div class="mini">
+              <div class="mini__k">Support</div>
+              <div class="mini__v">Email help</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--tight" id="learn">
+      <div class="container">
+        <div class="sectionhead">
+          <h2>Start simple. Go deeper only if you want to.</h2>
+          <p>
+            Most users only need the basics: install on the weekly chart, set alerts, and follow a written plan.
+            The docs and proof are available when you’re ready.
+          </p>
+        </div>
+
+        <div class="grid3">
+          <a class="card card--link" href="features.html#setup">
+            <h3>5‑minute setup</h3>
+            <p>Install on XRPUSD (1W) and apply the default preset. Minimal tuning required.</p>
+            <div class="card__meta">Read setup →</div>
+          </a>
+          <a class="card card--link" href="features.html#signals">
+            <h3>Signal glossary</h3>
+            <p>Understand MAJOR vs RADAR vs LIGHT, plus market‑wide risk overlays.</p>
+            <div class="card__meta">Read glossary →</div>
+          </a>
+          <a class="card card--link" href="proof.html">
+            <h3>Proof + methodology</h3>
+            <p>Backtest snapshot, assumptions, and limitations — presented clearly and conservatively.</p>
+            <div class="card__meta">Open proof →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="access">
+      <div class="container">
+        <div class="sectionhead">
+          <h2>How access works</h2>
+          <p>It’s a private, invite‑only TradingView® script. Purchase once, then we add your TradingView username.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="kicker">Step 1</div>
+            <h3>Buy on Gumroad</h3>
+            <p>One‑time payment — <strong>$200</strong>. Lifetime access. Free upgrades for life.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Step 2</div>
+            <h3>Send your TradingView username</h3>
+            <p>Email <a class="inline" href="mailto:support@azrosystems.com">support@azrosystems.com</a> with your TradingView handle.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Step 3</div>
+            <h3>Get invited</h3>
+            <p>We add access (typically within <strong>24 business hours</strong>). Then load it on XRPUSD (1W) and set alerts.</p>
+          </div>
+        </div>
+
+        <div class="ctaBand" style="margin-top: var(--s7);">
+          <div class="ctaBand__copy">
+            <div class="ctaBand__title">Ready?</div>
+            <div class="ctaBand__body">Buy lifetime access and install in minutes.</div>
+          </div>
+          <div class="ctaBand__actions">
+            <a class="btn btn--primary" href="https://azrosystems.gumroad.com/l/kuvbu" target="_blank" rel="noopener">Buy now — $200 lifetime</a>
+            <a class="btn btn--ghost" href="pricing.html">See what’s included</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="disclosure">
+      <div class="container">
+        <div class="callout">
+          <div class="callout__k">Disclosure</div>
+          <div class="callout__v">
+            The XRP Top/Bottom Detector is an educational tool from AZRO Systems™ — not a registered investment adviser.
+            Past performance is not a guarantee of future results; markets evolve and future price action may differ from prior signals.
+            See <a class="inline" href="legal/risk.html">risk disclosure</a>.
+          </div>
+        </div>
+
+        <div class="tiny muted" style="margin-top: var(--s6);">
+          AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) · MADE IN THE USA ·
+          <a class="inline" href="mailto:support@azrosystems.com">support@azrosystems.com</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__top">
+          <div>
+            <div class="footer__brand">
+              <span class="brand__mark" aria-hidden="true"></span>
+              <div>
+                <div class="footer__name">AZRO Systems</div>
+                <div class="footer__tag">XRP Top/Bottom Detector • Invite‑only</div>
+              </div>
+            </div>
+
+            <p class="footer__note">
+              Built for clarity on the weekly chart. Educational only — not investment advice.
+            </p>
+          </div>
+
+          <div class="footer__cols">
+            <div class="footer__col">
+              <div class="footer__h">Product</div>
+              <a class="footer__a" href="features.html">How it works</a>
+              <a class="footer__a" href="proof.html">Proof</a>
+              <a class="footer__a" href="pricing.html">Pricing</a>
+              <a class="footer__a" href="resources.html">Resources</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__h">Legal</div>
+              <a class="footer__a" href="legal/risk.html">Risk disclosure</a>
+              <a class="footer__a" href="legal/terms.html">Terms</a>
+              <a class="footer__a" href="legal/privacy.html">Privacy</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__h">Support</div>
+              <a class="footer__a" href="mailto:support@azrosystems.com">support@azrosystems.com</a>
+              <a class="footer__a" href="resources.html#faq">FAQ</a>
+              <a class="footer__a" href="downloads/quick-start-guide.pdf" target="_blank" rel="noopener">Quick start (PDF)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="tiny muted">© <span id="year"></span> Azro Labs LLC. All rights reserved.</div>
+          <div class="tiny muted">Educational only • not investment advice</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="scripts.js" defer></script>
+</body>
 </html>
-
-
-
-
-
