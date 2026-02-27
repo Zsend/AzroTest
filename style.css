@@ -97,7 +97,7 @@ h1 {
 .subscribe-form {
   /* Center the entire control under the headline */
   margin: 16px auto 0;
-  width: min(560px, 92vw);
+  width: min(480px, 92vw);
 
   /* One cohesive “pill” control (input + button) */
   display: flex;
