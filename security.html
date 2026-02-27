@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AZRO — Security & Policy</title>
+  <meta name="description" content="Governance, custody, and operational guardrails for a rules-based Bitcoin treasury program."/>
+  <meta name="color-scheme" content="light"/>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" aria-label="AZRO home">
+      <span class="logo" aria-hidden="true"></span>
+      <span>AZRO</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="customer.html">Customer packet</a>
+      <a href="performance.html">Performance</a>
+      <a href="security.html">Security & policy</a>
+      <a href="concerns.html">Bitcoin concerns</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-secondary" href="customer.html">View packet</a>
+      <a class="btn btn-primary" href="#get-started">Get started</a>
+      <button class="menu-btn" data-drawer-open aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" data-drawer data-open="false" aria-hidden="true">
+  <div class="drawer-panel" role="dialog" aria-label="Menu">
+    <button class="drawer-close" data-drawer-close>Close</button>
+    <a href="customer.html">Customer packet</a>
+    <a href="performance.html">Performance</a>
+    <a href="security.html">Security & policy</a>
+    <a href="concerns.html">Bitcoin concerns</a>
+    <div class="divider"></div>
+    <a class="btn btn-primary" href="#get-started">Get started</a>
+  </div>
+</div>
+
+
+<main>
+  <section class="section">
+    <div class="container stack">
+      <div class="stack" style="max-width: 78ch;">
+        <div class="eyebrow">Security &amp; policy</div>
+        <h1 class="h1">Operate like a treasury, not a trader.</h1>
+        <p class="lede">
+          This program is designed to be operationally boring: clear authority, clear constraints,
+          and clear reporting. The goal is resilient reserves — not experimentation.
+        </p>
+      </div>
+
+      <div class="surface" style="padding: var(--s7);">
+        <div class="grid grid-2" style="align-items:start;">
+          <div class="stack">
+            <h2 class="h2">Non‑negotiables</h2>
+            <p class="lede">
+              These rules exist to prevent the most common treasury failures: hidden leverage, custody mistakes,
+              and policy drift.
+            </p>
+
+            <div class="callout" style="margin-top: var(--s5);">
+              <div class="row" style="gap: var(--s6); align-items:flex-start;">
+                <div class="stripe" aria-hidden="true"></div>
+                <div class="stack" style="margin-top:0;">
+                  <div class="h3">Principle</div>
+                  <p>
+                    The company is buying <strong>time</strong> and <strong>optionality</strong>. Any shortcut that increases fragility
+                    defeats the purpose.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <div class="h3">Policy constraints</div>
+              <ul class="small" style="margin: var(--s4) 0 0; padding-left: 18px;">
+                <li><strong>No rehypothecation:</strong> no lending, no yield products, no derivatives.</li>
+                <li><strong>No discretionary sells:</strong> execution stays inside the policy; optional trims are predefined and capped.</li>
+                <li><strong>Buffer first:</strong> cash runway is protected; contributions pause if buffer falls below target.</li>
+                <li><strong>Separation of duties:</strong> the person who approves is not the person who executes.</li>
+                <li><strong>Audit trail:</strong> every trade is recorded; every month is reported.</li>
+              </ul>
+            </div>
+
+            <div class="card card-muted">
+              <div class="h3">Recommended custody posture</div>
+              <p class="meta">
+                Institutional custody or multisig with separation of duties. Avoid long‑term exchange custody.
+              </p>
+              <div class="row" style="margin-top: var(--s4); flex-wrap: wrap;">
+                <span class="badge">Multisig</span>
+                <span class="badge">Separation of duties</span>
+                <span class="badge warn">Exchange risk avoided</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--s8);">
+          <div class="h2">Monthly report fields</div>
+          <p class="lede" style="margin-top: var(--s3);">
+            A treasury program must be legible. Every month, the same dashboard — so leadership can govern without guessing.
+          </p>
+
+          <div style="margin-top: var(--s4); overflow-x:auto;">
+            <table class="table" aria-label="Monthly report fields">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Fields</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Holdings</strong></td>
+                  <td>BTC balance, USD cash balance, BTC‑eq, cost basis (policy-defined), custody location</td>
+                </tr>
+                <tr>
+                  <td><strong>Runway</strong></td>
+                  <td>Cash buffer target, current buffer, months of runway (simple view), contribution pause/resume flags</td>
+                </tr>
+                <tr>
+                  <td><strong>Activity</strong></td>
+                  <td>Trades executed, fees paid, execution mode, exceptions (if any) and approvals</td>
+                </tr>
+                <tr>
+                  <td><strong>Accounting</strong></td>
+                  <td>Realized gains/taxes where applicable, reconciliations, documentation links</td>
+                </tr>
+                <tr>
+                  <td><strong>Governance</strong></td>
+                  <td>Policy version, authorized signers, separation-of-duty checks, board notes/decisions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="small" style="margin-top: var(--s4);">
+            If you can’t explain your treasury position in 60 seconds, it’s too complicated.
+          </p>
+        </div>
+
+        <div style="margin-top: var(--s8);" class="grid grid-3">
+          <div class="card">
+            <div class="h3">Implementation checklist</div>
+            <ul class="small" style="margin: var(--s4) 0 0; padding-left: 18px;">
+              <li>Define buffer target and pause rules</li>
+              <li>Select custody approach (institutional or multisig)</li>
+              <li>Define authorized roles and approvals</li>
+              <li>Select execution mode</li>
+              <li>Set monthly reporting cadence</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="h3">Common failure modes</div>
+            <ul class="small" style="margin: var(--s4) 0 0; padding-left: 18px;">
+              <li>Buying without a buffer policy</li>
+              <li>Leaving treasury assets on exchanges</li>
+              <li>Using leverage to “accelerate”</li>
+              <li>Changing rules mid‑cycle</li>
+              <li>Skipping reporting when volatile</li>
+            </ul>
+          </div>
+          <div class="card card-muted">
+            <div class="h3">Want the printable memo?</div>
+            <p class="meta">
+              The policy memo template is included in the customer packet and can be adopted as-is.
+            </p>
+            <a class="btn btn-primary" style="margin-top: var(--s4);" href="customer.html#policy-template">Open template</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="cols">
+      <div class="stack">
+        <div class="brand">
+          <span class="logo" aria-hidden="true"></span>
+          <span>AZRO</span>
+        </div>
+        <p class="small">
+          A rules-based Bitcoin treasury engine for small businesses — designed for disciplined execution,
+          simple reporting, and strong operational guardrails.
+        </p>
+        <p class="small">
+          <strong>Disclosure:</strong> This website is for informational purposes only. It is not investment, tax, or legal advice.
+          Bitcoin is volatile and can lose value. Past results do not guarantee future outcomes.
+        </p>
+      </div>
+
+      <div class="stack">
+        <div class="h3">Documents</div>
+        <a href="customer.html">Customer packet</a>
+        <a href="performance.html">Performance snapshot</a>
+        <a href="security.html">Security & policy</a>
+        <a href="concerns.html">Bitcoin concerns</a>
+      </div>
+
+      <div class="stack" id="get-started">
+        <div class="h3">Get started</div>
+        <p class="small">Bring last month’s P&amp;L and a rough cash buffer target. We’ll map a simple policy and turn it on.</p>
+        <a class="btn btn-primary" href="mailto:hello@azro.example?subject=AZRO%20Treasury%20Program%20-%20Intro">Book a 20‑min walk‑through</a>
+        <p class="small">Or email: <strong>hello@azro.example</strong></p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="row">
+      <p class="small">© <span id="year"></span> AZRO. All rights reserved.</p>
+      <p class="small">Made for clarity, not hype.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="app.js" defer></script>
+
+
+</body>
+</html>

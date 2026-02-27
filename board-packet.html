@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="light" name="color-scheme" />
+  <title>AZRO Systems — Board Packet Generator</title>
+  <meta
+    name="description"
+    content="Generate a board-ready Bitcoin treasury packet (policy memo draft + roles/controls + reporting KPI set). Runs locally in your browser; print or save as PDF."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/Inter-Regular.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/Inter-SemiBold.woff2" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-view="owner">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar" role="banner">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html#top" aria-label="AZRO Systems home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">AZRO</span>
+          <span class="brand__sub">Systems</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="index.html">Overview</a>
+        <a class="nav__link" href="product.html?view=board#board">Board/CFO</a>
+        <a class="nav__link" href="standard.html">Standard</a>
+        <a class="nav__link is-active" href="board-packet.html">Board packet</a>
+        <a class="nav__link" href="product.html#proof">Proof</a>
+        <a class="nav__link" href="product.html#trust">Trust</a>
+        <a class="nav__link" href="product.html#resources">Resources</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <a class="btn btn--ghost" href="downloads/AZRO_Sample_Board_Packet.pdf">Sample&nbsp;PDF</a>
+        <a class="btn btn--primary" href="index.html#contact">Request&nbsp;a&nbsp;setup&nbsp;call</a>
+      </div>
+
+      <button class="navtoggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobilemenu" hidden>
+      <div class="mobilemenu__inner container">
+        <a class="mobilemenu__link" href="index.html">Overview</a>
+        <a class="mobilemenu__link" href="product.html?view=board#board">Board/CFO</a>
+        <a class="mobilemenu__link" href="standard.html">Standard</a>
+        <a class="mobilemenu__link" href="board-packet.html">Board packet</a>
+        <a class="mobilemenu__link" href="product.html#proof">Proof</a>
+        <a class="mobilemenu__link" href="product.html#trust">Trust</a>
+        <a class="mobilemenu__link" href="product.html#resources">Resources</a>
+        <a class="btn btn--primary btn--full" href="index.html#contact">Request&nbsp;a&nbsp;setup&nbsp;call</a>
+        <a class="btn btn--ghost btn--full" href="downloads/AZRO_Sample_Board_Packet.pdf">Download&nbsp;sample&nbsp;PDF</a>
+        <a class="btn btn--ghost btn--full" href="downloads/AZRO_Treasury_Standard_v1.pdf">Treasury&nbsp;Standard&nbsp;PDF</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section section--tint">
+      <div class="container">
+        <div class="sectionhead">
+          <h1 class="h1">Board Packet Generator</h1>
+          <p class="lede">
+            Produce a board-ready packet you can print or save as PDF: policy memo draft, roles & controls, operating cadence, and reporting KPI set.
+            This tool runs locally in your browser — <strong>no data is sent</strong>.
+          </p>
+        </div>
+
+        <div class="packetgrid">
+          <div class="card formcard">
+            <h3>Program inputs</h3>
+            <p class="muted">Conservative defaults. Customize with your CPA/attorney. (Not legal, tax, or financial advice.)</p>
+
+            <form class="form" id="packetForm" autocomplete="off">
+              <div class="field">
+                <label for="company">Company name (optional)</label>
+                <input id="company" name="company" type="text" placeholder="e.g., Acme Manufacturing" />
+              </div>
+
+              <div class="field">
+                <label for="preset">Starting preset</label>
+                <select id="preset" name="preset">
+                  <option value="balanced" selected>Balanced (default)</option>
+                  <option value="ops">Operations-first (higher buffer)</option>
+                  <option value="lean">Lean (small weekly budget)</option>
+                  <option value="custom">Custom (no auto-changes)</option>
+                </select>
+                <div class="help">Pick a sensible starting point; you can edit any field below.</div>
+              </div>
+
+              <div class="field">
+                <label for="budget">Weekly buy budget</label>
+                <input id="budget" name="budget" type="text" value="$3,000 / week" />
+                <div class="help">Fixed, sustainable through drawdowns.</div>
+              </div>
+
+              <div class="field">
+                <label for="bufferFloor">Cash buffer floor</label>
+                <input id="bufferFloor" name="bufferFloor" type="text" value="$150,000" />
+                <div class="help">Operations first. Avoid forced selling.</div>
+              </div>
+
+              <div class="field">
+                <label for="bufferTarget">Cash buffer target range (optional)</label>
+                <input id="bufferTarget" name="bufferTarget" type="text" value="$150,000–$200,000" />
+              </div>
+
+              <div class="field">
+                <label for="mode">Execution mode</label>
+                <select id="mode" name="mode">
+                  <option>Auto-buy (baseline)</option>
+                  <option>Accumulate-only</option>
+                  <option>Valve Signals</option>
+                  <option selected>Valve Smooth</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="trimPolicy">Trim policy</label>
+                <select id="trimPolicy" name="trimPolicy">
+                  <option value="disabled">Disabled (accumulate-only posture)</option>
+                  <option value="emergency">Emergency operations only</option>
+                  <option value="optional" selected>Optional, policy-limited (emergency • buffer rebuild • high-ROI reinvestment)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="custody">Custody approach</label>
+                <select id="custody" name="custody">
+                  <option>Institutional custody</option>
+                  <option selected>Multisig</option>
+                  <option>Hybrid (custody + multisig)</option>
+                </select>
+                <div class="help">Avoid long-term exchange custody for strategic reserves.</div>
+              </div>
+
+              <div class="field">
+                <label for="cadence">Reporting cadence</label>
+                <select id="cadence" name="cadence">
+                  <option selected>Monthly</option>
+                  <option>Monthly + quarterly board review</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="approval">Approval threshold for non-routine actions</label>
+                <input id="approval" name="approval" type="text" value="$10,000 or any custody transfer" />
+              </div>
+            </form>
+
+            <div class="btnrow" style="margin-top: var(--s5);">
+              <button class="btn btn--primary" type="button" id="printBtn">Print / Save as PDF</button>
+              <a class="btn btn--ghost" href="downloads/AZRO_Sample_Board_Packet.pdf">Download sample (PDF)</a>
+              <a class="btn btn--ghost" href="downloads/AZRO_Treasury_Standard_v1.pdf">Treasury Standard (PDF)</a>
+            </div>
+
+            <div class="disclaimer" style="margin-top: var(--s5);">
+              Tip: Click <strong>Print / Save as PDF</strong> and choose “Save as PDF” in your browser print dialog.
+            </div>
+          </div>
+
+          <div class="card previewcard">
+            <div class="printdoc" id="printdoc" aria-label="Board packet preview">
+              <div class="printdoc__top">
+                <div class="printdoc__brand">AZRO Systems</div>
+                <div class="printdoc__title">Bitcoin Treasury Program — Board Packet</div>
+                <div class="printdoc__meta">
+                  <span class="muted" id="genDate"></span>
+                  <span class="dot" aria-hidden="true">•</span>
+                  <span class="muted"><span class="muted">Company:</span> <strong data-out="company">—</strong></span>
+                </div>
+              </div>
+
+              <div class="printdoc__hr"></div>
+
+              <h2 class="printdoc__h2">1) Policy memo (draft)</h2>
+              <p class="printdoc__p muted">Conservative defaults. Customize with qualified professionals. Not legal, tax, or financial advice.</p>
+
+              <div class="kvtable" role="table" aria-label="Policy memo table">
+                <div class="kvrow">
+                  <div class="kvcell k">Purpose</div>
+                  <div class="kvcell v">Accumulate Bitcoin as long-term treasury reserve while maintaining operational liquidity and controls.</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Weekly buy budget</div>
+                  <div class="kvcell v"><strong data-out="budget"></strong></div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Cash buffer floor</div>
+                  <div class="kvcell v"><strong data-out="bufferFloor"></strong> (operations first)</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Buffer target range</div>
+                  <div class="kvcell v"><strong data-out="bufferTarget"></strong></div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Execution mode</div>
+                  <div class="kvcell v"><strong data-out="mode"></strong> (rules-based)</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Trim policy</div>
+                  <div class="kvcell v"><strong data-out="trimPolicyText"></strong></div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Custody approach</div>
+                  <div class="kvcell v"><strong data-out="custody"></strong> (separation of duties recommended)</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Reporting cadence</div>
+                  <div class="kvcell v"><strong data-out="cadence"></strong> reporting with consistent KPI set</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Approval threshold</div>
+                  <div class="kvcell v"><strong data-out="approval"></strong></div>
+                </div>
+              </div>
+
+              <div class="callout">
+                <div class="callout__title">Non-negotiables</div>
+                <ul class="checklist">
+                  <li><strong>No leverage.</strong> No margin, borrowing, derivatives, lending, rehypothecation, or yield products.</li>
+                  <li><strong>Operations first.</strong> Cash buffer floor protects payroll and core obligations.</li>
+                  <li><strong>Rules over emotion.</strong> No discretionary trading; exceptions are documented.</li>
+                  <li><strong>Audit-ready reporting.</strong> Confirmations, statements, addresses, and logs retained.</li>
+                </ul>
+              </div>
+
+              <div class="pagebreak"></div>
+
+              <h2 class="printdoc__h2">2) Roles & controls</h2>
+              <p class="printdoc__p">Treasury programs reduce risk by separating approvals, execution, and reporting.</p>
+
+              <div class="roles">
+                <div class="roles__row">
+                  <div class="roles__k">Owner / Board</div>
+                  <div class="roles__v">Approves policy, budgets, and major changes.</div>
+                </div>
+                <div class="roles__row">
+                  <div class="roles__k">Treasury lead</div>
+                  <div class="roles__v">Runs the monthly process, produces reports, ensures compliance.</div>
+                </div>
+                <div class="roles__row">
+                  <div class="roles__k">Executor</div>
+                  <div class="roles__v">Executes buys/sells per policy; cannot self-approve non-routine actions.</div>
+                </div>
+                <div class="roles__row">
+                  <div class="roles__k">Control owner (optional)</div>
+                  <div class="roles__v">Independent review and sign-off on monthly report and exception log.</div>
+                </div>
+              </div>
+
+              <div class="callout">
+                <div class="callout__title">Retention & audit trail</div>
+                <p class="printdoc__p muted" style="margin:0;">
+                  Retain trade confirmations, custody statements/addresses, policy exceptions (reason + approvals), and monthly reports in internal systems of record.
+                </p>
+              </div>
+
+              <h2 class="printdoc__h2" style="margin-top: 18px;">3) Operating cadence</h2>
+              <div class="cadence">
+                <div class="cadence__item">
+                  <div class="cadence__k">Weekly</div>
+                  <div class="cadence__v">Allocate operating surplus per policy; execute buys; retain confirmations.</div>
+                </div>
+                <div class="cadence__item">
+                  <div class="cadence__k">Monthly</div>
+                  <div class="cadence__v">Publish KPI report (BTC, BTC-eq, buffer runway, baseline comparison, exceptions); review and sign off.</div>
+                </div>
+                <div class="cadence__item">
+                  <div class="cadence__k">Quarterly</div>
+                  <div class="cadence__v">Reaffirm policy sizing (budget + buffer) and roles; evaluate custody/control updates.</div>
+                </div>
+              </div>
+
+              <div class="pagebreak"></div>
+
+              <h2 class="printdoc__h2">4) Reporting KPI set</h2>
+              <p class="printdoc__p muted">Use the same definitions every month. This keeps reviews consistent and avoids “moving goalposts.”</p>
+
+              <div class="kvtable" role="table" aria-label="KPI definitions">
+                <div class="kvrow">
+                  <div class="kvcell k">BTC balance</div>
+                  <div class="kvcell v">BTC held in custody (retain statements/addresses).</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">BTC-eq</div>
+                  <div class="kvcell v">BTC + (remaining cash buffer ÷ spot BTC). Comparable reserve KPI.</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Buffer runway</div>
+                  <div class="kvcell v">Cash buffer ÷ monthly operating expenses (optional, board-friendly).</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Baseline</div>
+                  <div class="kvcell v">Auto-buy using the same dollars and schedule — the control group.</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Sats accretion</div>
+                  <div class="kvcell v">(Strategy BTC − baseline BTC) in satoshis; compounding advantage.</div>
+                </div>
+                <div class="kvrow">
+                  <div class="kvcell k">Exceptions</div>
+                  <div class="kvcell v">Any trim, custody change, incident, or policy override (logged with rationale + approvals).</div>
+                </div>
+              </div>
+
+              <div class="printdoc__hr"></div>
+              <p class="printdoc__p muted">
+                Bitcoin is volatile. This packet is for informational purposes only and is not financial, legal, or tax advice.
+                Past performance is not indicative of future results.
+              </p>
+
+              <div class="printdoc__footer" aria-hidden="true">
+                <span id="footerText" class="muted"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__left">
+      <div class="footer__brand">AZRO Systems</div>
+      <div class="footer__small">© <span id="year"></span> AZRO Systems. All rights reserved.</div>
+    </div>
+    <div class="footer__right">
+      <div class="footer__small">
+        Bitcoin is volatile. This material is for informational purposes only and is not financial, legal, or tax advice.
+        Past performance is not indicative of future results.
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script src="packet.js"></script>
+</body>
+</html>

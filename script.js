@@ -1,258 +1,119 @@
-// AZRO Systems — Minimal, stable JS (no dependencies)
-// Goals: zero glitches, fast navigation, and accessibility.
-// Features:
-// - Copy-to-clipboard buttons (with safe fallback)
-// - Mobile menu (hamburger): scroll lock + focus trap + Escape + overlay close
-// - Layout vars: set CSS custom properties for header / sticky CTA heights (prevents overlaps)
+(() => {
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-(function () {
-  'use strict';
+  // -----------------------------
+  // Background pointer “parallax”
+  // -----------------------------
+  const bg = document.querySelector('.bg');
+  if (bg && !prefersReducedMotion) {
+    let targetX = 50;
+    let targetY = 44;
+    let currentX = targetX;
+    let currentY = targetY;
+    let rafId = 0;
 
-  var root = document.documentElement;
-  var body = document.body;
+    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
-  function copyText(text) {
-    if (!text) return Promise.reject(new Error('No text'));
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text);
-    }
-    return new Promise(function (resolve, reject) {
-      try {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        ta.style.top = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        var ok = document.execCommand('copy');
-        document.body.removeChild(ta);
-        ok ? resolve() : reject(new Error('Copy failed'));
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
+    const schedule = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
 
-  function initCopyButtons() {
-    var btns = document.querySelectorAll('[data-copy]');
-    if (!btns || !btns.length) return;
+        // Smooth “ease” toward the target so it feels premium.
+        const ease = 0.10;
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
 
-    btns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var text = btn.getAttribute('data-copy-text');
-        var targetId = btn.getAttribute('data-copy-target');
-        if (!text && targetId) {
-          var el = document.getElementById(targetId);
-          if (el) text = (el.textContent || '').trim();
+        bg.style.setProperty('--x', `${currentX.toFixed(2)}%`);
+        bg.style.setProperty('--y', `${currentY.toFixed(2)}%`);
+
+        // If we’re still moving, keep animating.
+        if (Math.abs(targetX - currentX) > 0.08 || Math.abs(targetY - currentY) > 0.08) {
+          schedule();
         }
-
-        var original = btn.textContent;
-        copyText((text || '').trim())
-          .then(function () {
-            btn.textContent = 'Copied';
-            btn.setAttribute('aria-live', 'polite');
-            setTimeout(function () { btn.textContent = original; }, 1200);
-          })
-          .catch(function () {
-            btn.textContent = 'Copy failed';
-            setTimeout(function () { btn.textContent = original; }, 1400);
-          });
       });
-    });
+    };
+
+    const updateTargetFromEvent = (e) => {
+      // Pointer events (mouse/pen/touch) — use clientX/Y when available.
+      const point = e.touches && e.touches.length ? e.touches[0] : e;
+      if (!point || typeof point.clientX !== 'number' || typeof point.clientY !== 'number') return;
+
+      const vw = window.innerWidth || 1;
+      const vh = window.innerHeight || 1;
+
+      targetX = clamp((point.clientX / vw) * 100, 0, 100);
+      targetY = clamp((point.clientY / vh) * 100, 0, 100);
+      schedule();
+    };
+
+    window.addEventListener('pointermove', updateTargetFromEvent, { passive: true });
+    window.addEventListener('touchmove', updateTargetFromEvent, { passive: true });
   }
 
-  // --- Layout vars (prevents sticky overlaps & docs-nav clipping) ---
-  var _layoutRaf = 0;
-  function setLayoutVars() {
-    _layoutRaf = 0;
+  // -----------------------------
+  // Form UX polish
+  // -----------------------------
+  const form = document.getElementById('subscribe-form');
+  const emailInput = document.getElementById('email');
+  const joinBtn = document.getElementById('join-btn');
+  const errorEl = document.getElementById('form-error');
 
-    var header = document.querySelector('.site-header');
-    if (header) {
-      var hh = Math.round(header.getBoundingClientRect().height);
-      if (hh > 0) root.style.setProperty('--headerH', hh + 'px');
+  const setError = (msg) => {
+    if (!errorEl) return;
+    if (!msg) {
+      errorEl.textContent = '';
+      errorEl.hidden = true;
+      if (emailInput) emailInput.removeAttribute('aria-invalid');
+      return;
     }
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+    if (emailInput) emailInput.setAttribute('aria-invalid', 'true');
+  };
 
-    var sticky = document.querySelector('.sticky-cta');
-    if (sticky) {
-      // Height is 0 when display:none (desktop) — that's fine.
-      var sh = Math.round(sticky.getBoundingClientRect().height);
-      if (sh > 0) {
-        root.style.setProperty('--stickyBarH', sh + 'px');
-      }
-    }
+  if (emailInput) {
+    emailInput.addEventListener('input', () => setError(''));
   }
 
-  function scheduleLayoutVars() {
-    if (_layoutRaf) cancelAnimationFrame(_layoutRaf);
-    _layoutRaf = requestAnimationFrame(setLayoutVars);
-  }
+  if (form && emailInput && joinBtn) {
+    form.addEventListener('submit', (e) => {
+      // Basic client-side validation (still relies on server-side handling by FormSubmit).
+      const email = (emailInput.value || '').trim();
+      emailInput.value = email;
 
-  // --- Mobile menu (hamburger) ---
-  function initMobileMenu() {
-    var btn = document.querySelector('[data-menu-button]');
-    var menu = document.getElementById('mobileMenu');
-    if (!btn || !menu) return;
-
-    var overlay = menu.querySelector('[data-menu-overlay]');
-    var closeBtn = menu.querySelector('[data-menu-close]');
-    var panel = menu.querySelector('.mobile-menu__panel');
-
-    var lastFocus = null;
-    var scrollY = 0;
-
-    function lockScroll() {
-      scrollY = window.scrollY || window.pageYOffset || 0;
-      // iOS-friendly scroll lock
-      body.style.position = 'fixed';
-      body.style.top = (-scrollY) + 'px';
-      body.style.left = '0';
-      body.style.right = '0';
-      body.style.width = '100%';
-    }
-
-    function unlockScroll() {
-      body.style.position = '';
-      body.style.top = '';
-      body.style.left = '';
-      body.style.right = '';
-      body.style.width = '';
-      window.scrollTo(0, scrollY);
-    }
-
-    function getFocusable() {
-      if (!panel) return [];
-      return panel.querySelectorAll(
-        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-      );
-    }
-
-    function focusFirst() {
-      var focusables = getFocusable();
-      if (focusables && focusables.length) {
-        focusables[0].focus();
-      } else if (closeBtn) {
-        closeBtn.focus();
-      } else {
-        btn.focus();
-      }
-    }
-
-    function openMenu() {
-      if (!menu.hasAttribute('hidden')) return;
-
-      lastFocus = document.activeElement;
-      menu.removeAttribute('hidden');
-      body.classList.add('is-menu-open');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.setAttribute('aria-label', 'Close menu');
-
-      lockScroll();
-
-      // Ensure layout vars are accurate (header height can vary slightly per breakpoint)
-      scheduleLayoutVars();
-
-      // Move focus into the dialog
-      setTimeout(focusFirst, 0);
-    }
-
-    function closeMenu() {
-      if (menu.hasAttribute('hidden')) return;
-
-      menu.setAttribute('hidden', '');
-      body.classList.remove('is-menu-open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-label', 'Open menu');
-
-      unlockScroll();
-
-      if (lastFocus && typeof lastFocus.focus === 'function') {
-        lastFocus.focus();
-      } else {
-        btn.focus();
-      }
-    }
-
-    function toggleMenu() {
-      if (menu.hasAttribute('hidden')) openMenu();
-      else closeMenu();
-    }
-
-    // Focus trap
-    function onKeydown(e) {
-      if (e.key === 'Escape') {
-        closeMenu();
+      const valid = email.length > 0 && emailInput.checkValidity();
+      if (!valid) {
+        e.preventDefault();
+        setError('Please enter a valid email address.');
+        emailInput.focus();
         return;
       }
-      if (e.key !== 'Tab') return;
-      if (menu.hasAttribute('hidden')) return;
 
-      var focusables = getFocusable();
-      if (!focusables || !focusables.length) return;
+      // UI feedback.
+      setError('');
+      joinBtn.disabled = true;
+      joinBtn.textContent = 'Joining…';
+      form.setAttribute('aria-busy', 'true');
+    });
 
-      var first = focusables[0];
-      var last = focusables[focusables.length - 1];
+    // Optional “Contact” link (only shown if we can safely infer your email address).
+    const contactLink = document.getElementById('contact-link');
+    if (contactLink) {
+      try {
+        const action = form.getAttribute('action') || '';
+        const match = action.match(/formsubmit\.co\/([^/?#]+)/i);
+        const inferred = match ? decodeURIComponent(match[1]) : '';
 
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
+        const looksReal = inferred.includes('@') && !/your_receiving_email|example\.com/i.test(inferred);
+
+        if (looksReal) {
+          contactLink.href = `mailto:${inferred}`;
+          contactLink.hidden = false;
         }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
+      } catch (_) {
+        // no-op
       }
     }
-
-    btn.addEventListener('click', function () {
-      toggleMenu();
-    });
-
-    if (overlay) {
-      overlay.addEventListener('click', function () {
-        closeMenu();
-      });
-    }
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        closeMenu();
-      });
-    }
-
-    // Close when clicking a link inside the menu (navigation)
-    menu.addEventListener('click', function (e) {
-      var t = e.target;
-      if (!t) return;
-      if (t.tagName === 'A') closeMenu();
-    });
-
-    document.addEventListener('keydown', onKeydown);
-
-    // If viewport grows to desktop, ensure menu closes (prevents weird states)
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 1100) closeMenu();
-    });
-
-    // Ensure correct initial attributes
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Open menu');
-  }
-
-  function init() {
-    initCopyButtons();
-    initMobileMenu();
-    setLayoutVars();
-    window.addEventListener('resize', scheduleLayoutVars, { passive: true });
-    window.addEventListener('orientationchange', scheduleLayoutVars, { passive: true });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
   }
 })();
