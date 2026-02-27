@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.virtueclimbing.com/</loc>
-  </url>
-  <url>
-    <loc>https://www.virtueclimbing.com/thanks.html</loc>
-  </url>
-  <url>
-    <loc>https://www.virtueclimbing.com/privacy.html</loc>
-  </url>
+  <url><loc>/</loc></url>
+  <url><loc>/how-it-works.html</loc></url>
+  <url><loc>/proof.html</loc></url>
+  <url><loc>/pricing.html</loc></url>
+  <url><loc>/resources.html</loc></url>
+  <url><loc>/legal/risk.html</loc></url>
+  <url><loc>/legal/terms.html</loc></url>
+  <url><loc>/legal/privacy.html</loc></url>
 </urlset>

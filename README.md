@@ -8,7 +8,7 @@ Upload the contents of this folder to the root of your hosting (Netlify, Vercel 
 
 ### Important paths
 
-- Main pages: `index.html`, `features.html`, `proof.html`, `pricing.html`, `resources.html`
+- Main pages: `index.html`, `how-it-works.html`, `proof.html`, `pricing.html`, `resources.html`
 - PDFs: `/downloads/*.pdf`
 - Legal wrappers: `/legal/*.html`
 
