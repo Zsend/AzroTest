@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E1B4C">
+<title>Methodology Overview — AZRO Systems</title>
+<meta name="description" content="How the indicator works: layer overview, calculation highlights, limitations, and validation notes.">
+<link rel="canonical" href="https://azrosystems.com/docs/methodology.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://azrosystems.com/docs/methodology.html">
+<meta property="og:title" content="Methodology Overview — AZRO Systems">
+<meta property="og:description" content="How the indicator works: layer overview, calculation highlights, limitations, and validation notes.">
+<meta property="og:image" content="https://azrosystems.com/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology Overview — AZRO Systems">
+<meta name="twitter:description" content="How the indicator works: layer overview, calculation highlights, limitations, and validation notes.">
+<meta name="twitter:image" content="https://azrosystems.com/og-card.png">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="162x162" href="../favicon-162.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../style.css">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AZRO Systems",
+  "url": "https://azrosystems.com",
+  "email": "support@azrosystems.com",
+  "sameAs": [
+    "https://x.com/AzroSystems"
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../index.html" aria-label="AZRO Systems home">
+      <picture>
+        <source srcset="../logo.avif" type="image/avif">
+        <source srcset="../logo.webp" type="image/webp">
+        <img src="../logo.png" width="40" height="40" alt="AZRO Systems logo">
+      </picture>
+      <span>AZRO Systems</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../features.html">Features</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../resources.html" aria-current="page">Resources</a>
+    </nav>
+
+    <div class="header-ctas" aria-label="Primary actions">
+      <a class="button button--secondary" href="../free-trial.html">Free trial</a>
+      <a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="section section--tight">
+  <div class="container container--narrow">
+    <div class="cta-row" style="margin:0 0 14px; gap:10px; flex-wrap:wrap;">
+      <a class="button button--secondary button--small" href="../resources.html">Back to Resources</a>
+      <a class="button button--secondary button--small" href="../pdfs/methodology-overview.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
+    </div>
+    <div class="prose">
+<h1>How the Indicator Works — Methodology &amp; Tear-Sheet Overview</h1>
+<h2>Executive Summary</h2>
+<p>The XRP Top/Bottom Indicator highlights statistically significant cycle extremes by blending multiple proprietary signal layers into a weekly composite. A MAJOR TOP/BOTTOM prints only when the composite and timing window align. A parallel RADAR track provides a complementary confirmation path. EARLY labels function as intra-week staging marks that resolve at the weekly close, and LIGHT marks act as structure-aware timing cues separate from confirmations. For non-XRP charts, the engine projects market-wide WARNING labels, while optional RISK/HIGH RISK markers provide context windows for elevated caution.</p>
+<h2>Layer Overview</h2>
+<p>alignment are present.</p>
+<p>The BOTTOM path is optional.</p>
+<p>awareness.</p>
+<ul>
+<li>MAJOR (TOP/BOTTOM) — Primary weekly confirmations produced when multi-layer consensus and timing</li>
+<li>RADAR (TOP/BOTTOM) — Complementary weekly confirmations recognizing alternative late-phase structures.</li>
+<li>EARLY (TOP/BOTTOM) — Provisional staging signals during the week; finalize only on the weekly close.</li>
+<li>LIGHT (TOP/BOTTOM) — Structure-aware timing cues; excluded from the confirmation logic.</li>
+<li>WARNING (MAJOR/RADAR/EARLY, non-XRP) — Projection of XRP top-side risk to alt charts for market-wide</li>
+<li>RISK / HIGH RISK — Context markers indicating elevated caution windows; independent of confirmations.</li>
+</ul>
+<h2>Calculation Highlights</h2>
+<p>tree into a single weekly composite confidence.</p>
+<p>with a statistically defined peak/trough zone.</p>
+<p>horizon; the RADAR BOTTOM path is optional.</p>
+<p>only.</p>
+<p>communicate market-wide risk without duplicating internals.</p>
+<p>timing cues, projection behavior, and safeguards.</p>
+<ul>
+<li>Each analytical layer produces a normalized signal value; layers are blended via a proprietary multi-layer logic</li>
+<li>A label prints only when composite confidence exceeds a proprietary threshold and the timing window aligns</li>
+<li>Dual-track confirmations (v1.0.6): MAJOR (primary) and RADAR (complementary) operate on the same weekly</li>
+<li>Staging lifecycle: EARLY labels are intra-week and transient; the historical record retains finalized confirmations</li>
+<li>Timing cues (LIGHT): structure-aware heads-ups excluded from confirmation logic.</li>
+<li>Alt-chart projection: XRP top-side confirmations are projected to non-XRP crypto charts as WARNINGs to</li>
+<li>Refresh cadence: inputs are evaluated on a weekly schedule; calibration is reviewed at major cycle boundaries.</li>
+<li>Continuity: MAJOR confirmation recipe remains consistent with v1.0.5; v1.0.6 formalizes RADAR, staging lifecycle,</li>
+<li>Proprietary details: exact formulas, inputs, thresholds, and weights remain confidential.</li>
+</ul>
+<h2>Known Limitations</h2>
+<p>weekly closes are not confirmations.</p>
+<p>infrastructure; provider delays or platform limits may postpone labels/alerts.</p>
+<p>eligibility and historical classification.</p>
+<ul>
+<li>Weekly-close scope — Confirmations (MAJOR/RADAR) evaluate on the 1-week bar close only; moves between</li>
+<li>Data &amp; platform dependency — Signals and alerts depend on TradingView-provided market data and its alert</li>
+<li>Versioned behavior &amp; settings — Results reflect v1.0.6 defaults. Changing feature toggles or spacing alters</li>
+</ul>
+<p>trades, certain ratios can be unstable; emphasize CAGR, maximum drawdown, and forward out-of-sample tracking.</p>
+<p>model can lag initial upside. Some users mitigate opportunity-cost by separating exposure into (a) a rules-tracked account aligned to confirmations and (b) a separate long-term holding account. This is a risk-management consideration, not advice.</p>
+<ul>
+<li>Hypothetical-results caveat — Back-tests rely on historical data quality and modeled costs. With few closed</li>
+<li>Regime-shift &amp; upside-break risk — In rare, abrupt structural repricing (e.g., sudden regime shifts), a weekly-close</li>
+<li>No advice — Signals are for research and risk awareness only and do not constitute investment advice.</li>
+</ul>
+<h2>Validation &amp; Robustness</h2>
+<p>Pre-release validation included a bar-accurate replay of the full XRP history and a matching TradingView strategy test. Historically, MAJOR bottoms preceded advances and top labels were followed by declines; however, no single test guarantees future performance.</p>
+<h2>Back-test Overview</h2>
+<p>The snapshot below summarizes a bar-accurate TradingView strategy replay of XRP using the v1.0.4 Early-Buy → MAJOR-Sell recipe over 01/01/2015-07/12/2025, with default costs (0.40% per side, 5-tick slippage) and no leverage. It contextualizes the MAJOR engine that v1.0.6 retains; RADAR/LIGHT/WARNING features are documented separately and are not part of these metrics. Results are hypothetical—prioritize CAGR, drawdowns, and forward out-of-sample tracking. Note: one MAJOR-Bottom position that began 06/13/2022 at $0.34335 remains open and is included in the totals. Method note — The snapshot below reflects the v1.0.5 Early-Buy → MAJOR-Sell recipe. Version v1.0.6 retains the MAJOR logic and formalizes RADAR/LIGHT/WARNING without changing the MAJOR test recipe.</p>
+<h2>Back-test Snapshot</h2>
+<h2>Back-test        v1.0.4 — Weekly Early-Buy ↔</h2>
+<h2>version          MAJOR-Sell logic</h2>
+<h2>Time window      01/01/2015 - 07/12/2025</h2>
+<h2>Performance Summary</h2>
+<h2>Total Return          +420,540% (includes open position gains)</h2>
+<h2>Net P&amp;L               $4,205,404 — TradingView Total P&amp;L</h2>
+<h2>CAGR (geometric)      ≈ 120.9% p.a. (assumes default start</h2>
+<h2>balance; includes open gains)</h2>
+<h2>Sharpe Ratio          0.104</h2>
+<h2>(weekly)</h2>
+<h2>Sharpe Ratio          ≈ 0.75 (derived from weekly × √52)</h2>
+<h2>(annualized)</h2>
+<h2>Sortino Ratio         2,727.6</h2>
+<h2>(weekly)</h2>
+<h2>Profit Factor          250.5 (gross profit ÷ gross loss)</h2>
+<h2>Max Entry              -16.7%</h2>
+<h2>Drawdown</h2>
+<h2>Max Equity             -16.8%</h2>
+<h2>Drawdown</h2>
+<h2>Total Trades           2</h2>
+<h2>(closed)</h2>
+<h2>Win Rate               100%</h2>
+<h2>Average Holding        53 weekly bars</h2>
+<h2>Period</h2>
+<h2>Commission (per        0.40% (spot assumption)</h2>
+<h2>side)</h2>
+<h2>Slippage               5 ticks (TradingView cost simulation)</h2>
+<p>Open Position Note — As of 07/12/2025, the strategy holds an open long entered at $0.34335. Metrics will be refreshed once this trade closes.</p>
+<h2>How to Read These Metrics</h2>
+<p>Sharpe ratio can appear low because the strategy spends most weeks flat; volatility is overstated relative to realized gains. Sortino inflates when negative weeks are scarce. Profit Factor can be extreme when no losing trades are recorded. Treat these as context and emphasize CAGR, drawdowns, and forward out-of-sample tracking when evaluating persistence.</p>
+<h2>Methodology &amp; Disclosures</h2>
+<p>proprietary.</p>
+<p>non-essential visuals (e.g., LIGHT/RISK) may be temporarily deprioritized; confirmation alerts are unaffected.</p>
+<p>escrow available upon request.</p>
+<ul>
+<li>Data sources — Market data as provided by TradingView; specific venues and any transformations are</li>
+<li>Back-test integrity — No look-ahead: the back-test does not access future data; all signals evaluate on bar close.</li>
+<li>Costs — Commission: 0.40% per side; Slippage: 5 ticks.</li>
+<li>No leverage — Strategy trades spot without leverage.</li>
+<li>Reliability — Confirmation prints and alerts are prioritized for legibility. If the platform ever constrains rendering,</li>
+<li>Hypothetical results — No guarantee of future performance; educational use only; not investment advice.</li>
+<li>Distribution — Proprietary code distributed as an invite-only TradingView script. Independent audit and code</li>
+<li>Publisher status — Published by Azro Labs LLC under applicable publisher exemptions.</li>
+</ul>
+<h2>Changelog (v1.0.4 → v1.0.6)</h2>
+<p>Core MAJOR logic unchanged vs v1.0.5.</p>
+<ul>
+<li>v1.0.6 — RADAR TOP (weekly close), optional RADAR BOTTOM, LIGHT cues, optional RADAR WARNING (non-XRP).</li>
+<li>v1.0.5 — Cross-pair support; EARLY/MAJOR WARNING on non-XRP (risk-only).</li>
+<li>v1.0.4 — Baseline XRP weekly MAJOR TOP/BOTTOM (1W, close-based).</li>
+</ul>
+<h2>Trade Log (unchanged from v1.0.4)</h2>
+<p># Entry Date Entry Px Exit Date Exit Px P&amp;L Run-Up Drawdown</p>
+<p>1 03/13/2017 $0.0062 01/08/2018 $2.75794 +$431,910 $521,755 -$87 (-8.79%) 9 (+43,397%)</p>
+<p>2 03/23/202 $0.1475 05/17/2021 $1.45013 +$3,783,043 $5,308,3 -$9,106 (-2.11%) 0 3 (+875%) 34</p>
+<p>3 06/13/2022 $0.3433 OPEN $2.83714 +$30,393,820 $37,428, -$706,639 (-16.73%) 5 (+719%) 050</p>
+<p>Note: “Indicator” is the official TradingView listing. “Detector” may appear in some marketing copy; both refer to the same XRP Top/Bottom model.</p>
+<h2>For further questions, contact support@azrosystems.com</h2>
+<p>Educational only. Trading involves risk; hypothetical results have limitations. See Master Disclaimer &amp; Notices.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <div>© 2025 AZRO Systems™ · A brand of Azro Labs LLC · UT Entity #14569235‑0160 · NOT IA/CTA (CFTC 4.14(a)(9)) · Made in the USA</div>
+    <div>
+      <a href="mailto:support@azrosystems.com">support@azrosystems.com</a>
+      <a href="https://x.com/AzroSystems" target="_blank" rel="noopener noreferrer" aria-label="AZRO Systems on X"><svg class="x-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M0 0h5.6L12 9.8 18.4 0H24L15 12l9 12h-5.6L12 14.2 5.6 24H0l9-12L0 0z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+  <div class="sticky-cta-inner">
+    <a class="button button--secondary" href="../free-trial.html">Free trial</a>
+    <a class="button button--primary" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener noreferrer" target="_blank">Buy now</a>
+  </div>
+</div>
+
+<script defer src="../script.js"></script>
+</body>
+</html>
