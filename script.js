@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // --- CANVAS SETUP ---
+
   const container = document.getElementById("canvas-container");
   if (!container) {
     console.error("Canvas container not found");
@@ -56,8 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
     requestAnimationFrame(animate);
   }
   animate();
-  
-  // --- GLOW TOGGLING FUNCTIONS ---
+
   const logoContainer = document.querySelector('.logo-container');
   
   function disableGlow() {
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (logoContainer) {
       logoContainer.classList.remove('no-glow');
       logoContainer.classList.add('pulsing');
-      // Optionally, adjust logo image animation delay for a smoother restart:
+
       const logoImg = logoContainer.querySelector('img');
       if (logoImg) {
         logoImg.style.animationDelay = '0s';
@@ -81,8 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   }
-  
-  // --- DYNAMIC BACKGROUND & GLOW HANDLING ---
+
   function handlePointerStart(e) {
     disableGlow();
     
@@ -111,15 +109,11 @@ document.addEventListener("DOMContentLoaded", function() {
   container.addEventListener("mousemove", handlePointerStart);
   window.addEventListener("touchend", handlePointerEnd, { passive: true });
   window.addEventListener("mouseup", handlePointerEnd);
-  
-  // --- INITIAL TRANSITION FROM FLICKER TO PULSING ---
+
   setTimeout(() => {
     if (logoContainer && !logoContainer.classList.contains('no-glow')) {
       logoContainer.classList.add('pulsing');
     }
   }, 3000);
 });
-
-
-
 

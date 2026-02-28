@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Container for the canvas -->
+    
     <div id="canvas-container"></div>
     
-    <!-- Logo and Heading -->
+    
     <div class="logo-container">
       <img
         src="img/logo.png"
@@ -22,25 +22,18 @@
 
       <p class="signup-text">Join the list for news. First subscribers get founding member rewards.</p>
 
-      <!--
-        ✅ Free + easiest email collection (no backend): FormSubmit
-        1) Replace YOUR_RECEIVING_EMAIL@example.com below with the email you want signups sent to.
-        2) Publish the site.
-        3) Submit the form once yourself — FormSubmit will email you a confirmation link.
-
-        Docs: https://formsubmit.co/
-      -->
+      
       <form
         class="subscribe-form"
         action="https://formsubmit.co/YOUR_RECEIVING_EMAIL@example.com"
         method="POST"
         autocomplete="on"
       >
-        <!-- Send user back to your own thank-you page (instead of FormSubmit's default) -->
+        
         <input type="hidden" name="_next" value="https://www.virtueclimbing.com/thanks.html" />
-        <!-- Email subject line for the notification you receive -->
+        
         <input type="hidden" name="_subject" value="Virtue Climbing — New subscriber" />
-        <!-- Spam honeypot (FormSubmit will silently ignore submissions that fill this) -->
+        
         <input
           class="honeypot"
           type="text"
@@ -49,7 +42,7 @@
           autocomplete="off"
           aria-hidden="true"
         />
-        <!-- Optional: change the notification email template -->
+        
         <input type="hidden" name="_template" value="table" />
 
         <label class="sr-only" for="email">Email address</label>
@@ -64,11 +57,9 @@
         />
         <button type="submit">Join</button>
       </form>
-
-      <p class="signup-fineprint">No spam. Unsubscribe anytime.</p>
-    </div>
+</div>
     
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
 
