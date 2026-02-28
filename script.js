@@ -1,227 +1,169 @@
-/* AZRO Systems — site JS
-   - Mobile nav toggle
-   - Free trial modal (optional)
-*/
+// Virtue Climbing — interactive background + neon timing
+// No trackers, no external deps.
 
-(function () {
-  // -----------------------------
-  // Mobile nav
-  // -----------------------------
-  const header = document.querySelector('.site-header');
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-
-  if (header && toggle && nav) {
-    const setOpen = (open) => {
-      header.classList.toggle('nav-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    };
-
-    toggle.addEventListener('click', () => {
-      const open = !header.classList.contains('nav-open');
-      setOpen(open);
-    });
-
-    nav.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!a) return;
-      setOpen(false);
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setOpen(false);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!header.classList.contains('nav-open')) return;
-      if (header.contains(e.target)) return;
-      setOpen(false);
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 920) setOpen(false);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("canvas-container");
+  if (!container) {
+    console.error("Canvas container not found");
+    return;
   }
 
-  // -----------------------------
-  // Free trial modal
-  // -----------------------------
-  const trialModal = document.getElementById('trialModal');
-  if (!trialModal) return;
+  const canvas = document.createElement("canvas");
+  canvas.setAttribute("aria-hidden", "true");
+  container.appendChild(canvas);
 
-  const openers = document.querySelectorAll('[data-trial-open]');
-  const closers = trialModal.querySelectorAll('[data-modal-close]');
-  const closeBtn = trialModal.querySelector('.modal__close');
-  const copyBtn = trialModal.querySelector('[data-copy-code]');
-  const codeEl = trialModal.querySelector('#trialCode');
-
-  const openModal = () => {
-    trialModal.classList.add('is-open');
-    trialModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    // Focus close button for keyboard users
-    if (closeBtn) closeBtn.focus();
-  };
-
-  const closeModal = () => {
-    trialModal.classList.remove('is-open');
-    trialModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (copyBtn) copyBtn.textContent = 'Copy';
-  };
-
-  openers.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal();
-    });
-  });
-
-  closers.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModal();
-    });
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && trialModal.classList.contains('is-open')) {
-      closeModal();
-    }
-  });
-
-  if (copyBtn && codeEl) {
-    copyBtn.addEventListener('click', async () => {
-      const code = (codeEl.textContent || '').trim();
-      if (!code) return;
-
-      try {
-        await navigator.clipboard.writeText(code);
-        copyBtn.textContent = 'Copied';
-        setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
-      } catch (err) {
-        // Fallback
-        const range = document.createRange();
-        range.selectNodeContents(codeEl);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-        try {
-          document.execCommand('copy');
-          copyBtn.textContent = 'Copied';
-          setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
-        } finally {
-          sel.removeAllRanges();
-        }
-      }
-    });
-  }
-})();
-
-
-/* Cursor-reactive glow for primary CTAs (desktop) */
-(() => {
-  const btns = Array.from(document.querySelectorAll('[data-glow]'));
-  if (!btns.length) return;
-
-  const prefersReduced =
-    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReduced) return;
-
-  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-  const maxDist = 260; // px
-
-  function onMove(e) {
-    const x = e.clientX;
-    const y = e.clientY;
-
-    for (const btn of btns) {
-      const r = btn.getBoundingClientRect();
-      const cx = r.left + r.width / 2;
-      const cy = r.top + r.height / 2;
-
-      const dx = x - cx;
-      const dy = y - cy;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      const t = clamp(1 - d / maxDist, 0, 1);
-
-      btn.style.setProperty('--x', `${x - r.left}px`);
-      btn.style.setProperty('--y', `${y - r.top}px`);
-      // Intensity scales as you get closer — subtle at rest, stronger near.
-      btn.style.setProperty('--centerGlow', (0.18 + t * 0.82).toFixed(3));
-      btn.style.setProperty('--edgeGlow', (0.06 + t * 0.34).toFixed(3));
-    }
+  const ctx = canvas.getContext("2d", { alpha: false });
+  if (!ctx) {
+    console.error("2D canvas context not available");
+    return;
   }
 
-  window.addEventListener('pointermove', onMove, { passive: true });
-})();
+  const reduceMotionMQ = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  let reduceMotion = !!reduceMotionMQ?.matches;
 
+  let cw = 1;
+  let ch = 1;
+  let mouseX = 0;
+  let mouseY = 0;
+  let dynamicActive = false;
+  let rafPending = false;
 
-/* Label example modal (About page) */
-(() => {
-  const modal = document.getElementById('labelModal');
-  if (!modal) return;
+  const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
 
-  const video = modal.querySelector('video');
-  const titleEl = modal.querySelector('[data-label-title]');
-  const descEl = modal.querySelector('[data-label-desc]');
-  const openers = Array.from(document.querySelectorAll('[data-label-open]'));
-  const closers = Array.from(modal.querySelectorAll('[data-modal-close]'));
+  function resizeCanvas() {
+    cw = window.innerWidth || 1;
+    ch = window.innerHeight || 1;
 
-  function close() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.floor(cw * dpr);
+    canvas.height = Math.floor(ch * dpr);
+    canvas.style.width = `${cw}px`;
+    canvas.style.height = `${ch}px`;
 
-    if (video) {
-      try { video.pause(); } catch (_) {}
-      video.removeAttribute('src');
-      video.load();
-    }
+    // Draw in CSS pixels for consistent math.
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    draw();
   }
 
-  function open(btn) {
-    const card = btn.closest('.label-card');
-    const title = btn.getAttribute('data-title') || (card && card.querySelector('h3,h4')?.textContent.trim()) || 'Example';
-    const desc = (card && card.querySelector('p')?.textContent.trim()) || '';
-    const src = btn.getAttribute('data-video');
+  function getTieDyeBackground(x, y) {
+    x = clamp(x, 0, cw);
+    y = clamp(y, 0, ch);
 
-    if (titleEl) titleEl.textContent = title;
-    if (descEl) descEl.textContent = desc;
+    const hue = (x / cw) * 360;
+    const saturation = clamp((y / ch) * 100, 0, 100);
+    const lightness = 50 + Math.sin(x * 0.05) * 20;
 
-    if (video && src) {
-      video.src = src;
-      video.muted = true;
-      video.loop = true;
-      video.load();
-      const p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
+    const radius = cw / 2;
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, `hsl(${hue}, ${saturation}%, ${lightness}%)`);
+    gradient.addColorStop(
+      0.25,
+      `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`
+    );
+    gradient.addColorStop(
+      0.5,
+      `hsl(${(hue + 120) % 360}, ${saturation}%, ${lightness - 10}%)`
+    );
+    gradient.addColorStop(
+      0.75,
+      `hsl(${(hue + 180) % 360}, ${saturation}%, ${lightness - 15}%)`
+    );
+    gradient.addColorStop(
+      1,
+      `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`
+    );
+    return gradient;
+  }
+
+  function draw() {
+    if (document.hidden) return;
+
+    if (!dynamicActive || reduceMotion) {
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, cw, ch);
+      return;
     }
 
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-
-    const closeBtn = modal.querySelector('.modal__close');
-    if (closeBtn) closeBtn.focus();
+    ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
+    ctx.fillRect(0, 0, cw, ch);
   }
 
-  for (const btn of openers) {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      open(btn);
+  function scheduleDraw() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      rafPending = false;
+      draw();
     });
   }
 
-  for (const el of closers) {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      close();
-    });
+  function getClientPoint(e) {
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    if (typeof e.clientX === "number" && typeof e.clientY === "number") {
+      return { x: e.clientX, y: e.clientY };
+    }
+    return null;
   }
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  function activateDynamic(e) {
+    if (reduceMotion) return;
+
+    const p = getClientPoint(e);
+    if (!p) return;
+
+    mouseX = p.x;
+    mouseY = p.y;
+    dynamicActive = true;
+    scheduleDraw();
+  }
+
+  function deactivateDynamic() {
+    if (!dynamicActive) return;
+    dynamicActive = false;
+    scheduleDraw();
+  }
+
+  // Initial render + sizing
+  resizeCanvas();
+
+  // Resize handling
+  window.addEventListener(
+    "resize",
+    () => {
+      resizeCanvas();
+      scheduleDraw();
+    },
+    { passive: true }
+  );
+
+  // Dynamic background events
+  container.addEventListener("mousemove", activateDynamic);
+  window.addEventListener("mouseup", deactivateDynamic);
+
+  // Touch (passive so scrolling is never blocked)
+  container.addEventListener("touchstart", activateDynamic, { passive: true });
+  container.addEventListener("touchmove", activateDynamic, { passive: true });
+  window.addEventListener("touchend", deactivateDynamic, { passive: true });
+
+  // If user switches tabs, redraw once when they return
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) return;
+    scheduleDraw();
   });
-})();
+
+  // Respect reduced-motion changes live
+  reduceMotionMQ?.addEventListener?.("change", (e) => {
+    reduceMotion = !!e.matches;
+    dynamicActive = false;
+    scheduleDraw();
+  });
+
+  // Neon: keep the original "flicker" intro, then switch to smooth pulsing.
+  const logoContainer = document.querySelector(".logo-container");
+  window.setTimeout(() => {
+    logoContainer?.classList.add("pulsing");
+  }, 3000);
+});
