@@ -43,6 +43,21 @@
     });
   }
 
+
+
+  // -----------------------------
+  // Home: reveal header CTA after scroll
+  // -----------------------------
+  const body = document.body;
+  if (body && body.classList.contains('home')) {
+    const threshold = 36;
+    const update = () => {
+      body.classList.toggle('home-scrolled', window.scrollY > threshold);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
   // -----------------------------
   // Free trial modal
   // -----------------------------
@@ -129,7 +144,7 @@
   if (!finePointer) return;
 
   const RIM_MIN = 0.10;
-  const RIM_MAX = 0.75;
+  const RIM_MAX = 0.58;
 
   let raf = 0;
   let lastEvt = null;
@@ -141,8 +156,10 @@
       const cy = rect.top + rect.height / 2;
 
       const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-      const maxDist = Math.hypot(rect.width, rect.height) * 2;
-      const proximity = Math.max(0, 1 - dist / maxDist);
+      const maxDist = Math.hypot(rect.width, rect.height) * 3.2;
+      const raw = Math.max(0, 1 - dist / maxDist);
+      // Easing (<1) makes the glow respond earlier without blowing out near the button.
+      const proximity = Math.pow(raw, 0.65);
 
       const rim = RIM_MIN + (RIM_MAX - RIM_MIN) * proximity;
       btn.style.setProperty('--edgeGlow', rim.toFixed(3));
