@@ -171,12 +171,23 @@ h1 {
 }
 
 
+
 @media (max-width: 520px) {
+  .subscribe-form {
+    --btn-w: 104px;
+    width: min(560px, 92vw);
+  }
+
   .subscribe-form input[type="email"] {
-    padding: 12px 16px;
+    padding: 12px calc(var(--btn-w) + 16px);
+    font-size: 16px;
   }
 
   .subscribe-form button {
+    width: var(--btn-w);
+  }
+}
+.subscribe-form button {
     padding: 12px 16px;
   }
 }

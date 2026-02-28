@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
-
   const container = document.getElementById("canvas-container");
-  if (!container) {
-    console.error("Canvas container not found");
-    return;
-  }
-  
+  if (!container) return;
+
   const canvas = document.createElement("canvas");
   container.appendChild(canvas);
   const ctx = canvas.getContext("2d");
-  
+  if (!ctx) return;
+
   let dynamicActive = false;
   let mouseX = 0, mouseY = 0;
-  
+  let pending = false;
+  let idleTimer = 0;
+
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -21,20 +20,21 @@ document.addEventListener("DOMContentLoaded", function() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
   }
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-  
+
+  function clamp(n, min, max) {
+    return Math.max(min, Math.min(n, max));
+  }
+
   function getTieDyeBackground(x, y) {
     const cw = canvas.width || 1;
     const ch = canvas.height || 1;
-    x = Math.max(0, Math.min(x, cw));
-    y = Math.max(0, Math.min(y, ch));
-    
+    x = clamp(x, 0, cw);
+    y = clamp(y, 0, ch);
+
     const hue = (x / cw) * 360;
-    const rawSat = (y / ch) * 100;
-    const saturation = Math.max(0, Math.min(rawSat, 100));
+    const saturation = clamp((y / ch) * 100, 0, 100);
     const lightness = 50 + (Math.sin(x * 0.05) * 20);
-    
+
     const gradient = ctx.createRadialGradient(x, y, 0, x, y, cw / 2);
     gradient.addColorStop(0, `hsl(${hue}, ${saturation}%, ${lightness}%)`);
     gradient.addColorStop(0.25, `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`);
@@ -43,77 +43,73 @@ document.addEventListener("DOMContentLoaded", function() {
     gradient.addColorStop(1, `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`);
     return gradient;
   }
-  
-  function animate() {
-    if (dynamicActive) {
-      const bg = getTieDyeBackground(mouseX, mouseY);
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    } else {
+
+  function draw() {
+    if (!dynamicActive) {
       ctx.fillStyle = "#000";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      return;
     }
-    requestAnimationFrame(animate);
-  }
-  animate();
 
-  const logoContainer = document.querySelector('.logo-container');
-  
-  function disableGlow() {
-    if (logoContainer) {
-      logoContainer.classList.remove('pulsing');
-      logoContainer.classList.add('no-glow');
-    }
-  }
-  
-  function enableGlow() {
-    if (logoContainer) {
-      logoContainer.classList.remove('no-glow');
-      logoContainer.classList.add('pulsing');
-
-      const logoImg = logoContainer.querySelector('img');
-      if (logoImg) {
-        logoImg.style.animationDelay = '0s';
-        setTimeout(function() {
-          logoImg.style.animationDelay = '0.3s';
-        }, 50);
-      }
-    }
+    ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-  function handlePointerStart(e) {
-    disableGlow();
-    
-    let x, y;
+  function scheduleDraw() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      pending = false;
+      draw();
+    });
+  }
+
+  function readPoint(e) {
     if (e.touches && e.touches.length > 0) {
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
-    } else {
-      x = e.clientX;
-      y = e.clientY;
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
     }
-    if (isFinite(x) && isFinite(y)) {
-      mouseX = x;
-      mouseY = y;
-      dynamicActive = true;
+    if (typeof e.clientX === "number" && typeof e.clientY === "number") {
+      return { x: e.clientX, y: e.clientY };
     }
+    return null;
   }
-  
-  function handlePointerEnd() {
-    dynamicActive = false;
-    enableGlow();
-  }
-  
-  container.addEventListener("touchstart", handlePointerStart, { passive: true });
-  container.addEventListener("touchmove", handlePointerStart, { passive: true });
-  container.addEventListener("mousemove", handlePointerStart);
-  window.addEventListener("touchend", handlePointerEnd, { passive: true });
-  window.addEventListener("mouseup", handlePointerEnd);
 
+  function handleMove(e) {
+    const p = readPoint(e);
+    if (!p) return;
+    mouseX = p.x;
+    mouseY = p.y;
+    dynamicActive = true;
+    scheduleDraw();
+
+    if (idleTimer) window.clearTimeout(idleTimer);
+    idleTimer = window.setTimeout(() => {
+      dynamicActive = false;
+      scheduleDraw();
+    }, 220);
+  }
+
+  function handleEnd() {
+    if (idleTimer) window.clearTimeout(idleTimer);
+    dynamicActive = false;
+    scheduleDraw();
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    scheduleDraw();
+  }, { passive: true });
+
+  container.addEventListener("mousemove", handleMove);
+  container.addEventListener("touchstart", handleMove, { passive: true });
+  container.addEventListener("touchmove", handleMove, { passive: true });
+
+  window.addEventListener("mouseup", handleEnd);
+  window.addEventListener("touchend", handleEnd, { passive: true });
+
+  const logoContainer = document.querySelector(".logo-container");
   setTimeout(() => {
-    if (logoContainer && !logoContainer.classList.contains('no-glow')) {
-      logoContainer.classList.add('pulsing');
-    }
+    if (logoContainer) logoContainer.classList.add("pulsing");
   }, 3000);
 });
-
