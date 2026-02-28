@@ -1,119 +1,162 @@
-/* AZRO Systems — site JS
-   - Mobile nav toggle
-   - Free trial modal (optional)
-*/
-
-(function () {
-  // -----------------------------
-  // Mobile nav
-  // -----------------------------
-  const header = document.querySelector('.site-header');
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('site-nav');
-
-  if (header && toggle && nav) {
-    const setOpen = (open) => {
-      header.classList.toggle('nav-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    };
-
-    toggle.addEventListener('click', () => {
-      const open = !header.classList.contains('nav-open');
-      setOpen(open);
-    });
-
-    nav.addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if (!a) return;
-      setOpen(false);
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') setOpen(false);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!header.classList.contains('nav-open')) return;
-      if (header.contains(e.target)) return;
-      setOpen(false);
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 920) setOpen(false);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  // --- CANVAS SETUP ---
+  const container = document.getElementById("canvas-container");
+  if (!container) {
+    console.error("Canvas container not found");
+    return;
   }
 
-  // -----------------------------
-  // Free trial modal
-  // -----------------------------
-  const trialModal = document.getElementById('trialModal');
-  if (!trialModal) return;
+  const canvas = document.createElement("canvas");
+  canvas.setAttribute("aria-hidden", "true");
+  container.appendChild(canvas);
 
-  const openers = document.querySelectorAll('[data-trial-open]');
-  const closers = trialModal.querySelectorAll('[data-modal-close]');
-  const closeBtn = trialModal.querySelector('.modal__close');
-  const copyBtn = trialModal.querySelector('[data-copy-code]');
-  const codeEl = trialModal.querySelector('#trialCode');
+  const ctx = canvas.getContext("2d", { alpha: false });
 
-  const openModal = () => {
-    trialModal.classList.add('is-open');
-    trialModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    // Focus close button for keyboard users
-    if (closeBtn) closeBtn.focus();
-  };
+  let dynamicActive = false;
+  let mouseX = 0;
+  let mouseY = 0;
+  let cw = 1;
+  let ch = 1;
+  let rafPending = false;
 
-  const closeModal = () => {
-    trialModal.classList.remove('is-open');
-    trialModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (copyBtn) copyBtn.textContent = 'Copy';
-  };
+  function clamp(n, min, max) {
+    return Math.max(min, Math.min(n, max));
+  }
 
-  openers.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal();
-    });
-  });
+  function resizeCanvas() {
+    cw = window.innerWidth || 1;
+    ch = window.innerHeight || 1;
 
-  closers.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModal();
-    });
-  });
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(cw * dpr);
+    canvas.height = Math.floor(ch * dpr);
+    canvas.style.width = `${cw}px`;
+    canvas.style.height = `${ch}px`;
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && trialModal.classList.contains('is-open')) {
-      closeModal();
+    // Draw in CSS pixels for consistent math.
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // Keep the current visual state after a resize.
+    draw();
+  }
+
+  function getTieDyeBackground(x, y) {
+    x = clamp(x, 0, cw);
+    y = clamp(y, 0, ch);
+
+    const hue = (x / cw) * 360;
+    const saturation = clamp((y / ch) * 100, 0, 100);
+    const lightness = 50 + Math.sin(x * 0.05) * 20;
+
+    const radius = cw / 2;
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, `hsl(${hue}, ${saturation}%, ${lightness}%)`);
+    gradient.addColorStop(0.25, `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`);
+    gradient.addColorStop(0.5, `hsl(${(hue + 120) % 360}, ${saturation}%, ${lightness - 10}%)`);
+    gradient.addColorStop(0.75, `hsl(${(hue + 180) % 360}, ${saturation}%, ${lightness - 15}%)`);
+    gradient.addColorStop(1, `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`);
+    return gradient;
+  }
+
+  function draw() {
+    if (document.hidden) return;
+
+    if (dynamicActive) {
+      ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
+    } else {
+      ctx.fillStyle = "#000";
     }
-  });
 
-  if (copyBtn && codeEl) {
-    copyBtn.addEventListener('click', async () => {
-      const code = (codeEl.textContent || '').trim();
-      if (!code) return;
+    ctx.fillRect(0, 0, cw, ch);
+  }
 
-      try {
-        await navigator.clipboard.writeText(code);
-        copyBtn.textContent = 'Copied';
-        setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
-      } catch (err) {
-        // Fallback
-        const range = document.createRange();
-        range.selectNodeContents(codeEl);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-        try {
-          document.execCommand('copy');
-          copyBtn.textContent = 'Copied';
-          setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
-        } finally {
-          sel.removeAllRanges();
-        }
-      }
+  function scheduleDraw() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      rafPending = false;
+      draw();
     });
   }
-})();
+
+  resizeCanvas();
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    scheduleDraw();
+  });
+
+  // --- GLOW TOGGLING FUNCTIONS ---
+  const logoContainer = document.querySelector(".logo-container");
+
+  function disableGlow() {
+    if (!logoContainer) return;
+    logoContainer.classList.remove("pulsing");
+    logoContainer.classList.add("no-glow");
+  }
+
+  function enableGlow() {
+    if (!logoContainer) return;
+    logoContainer.classList.remove("no-glow");
+    logoContainer.classList.add("pulsing");
+
+    // Smooth restart of the logo animation
+    const logoImg = logoContainer.querySelector("img");
+    if (logoImg) {
+      logoImg.style.animationDelay = "0s";
+      setTimeout(() => {
+        logoImg.style.animationDelay = "0.3s";
+      }, 50);
+    }
+  }
+
+  // --- DYNAMIC BACKGROUND & GLOW HANDLING ---
+  function getClientPoint(e) {
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function activateDynamic(e) {
+    const { x, y } = getClientPoint(e);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+
+    if (!dynamicActive) {
+      dynamicActive = true;
+      disableGlow();
+    }
+
+    mouseX = x;
+    mouseY = y;
+    scheduleDraw();
+  }
+
+  function deactivateDynamic() {
+    if (!dynamicActive) return;
+    dynamicActive = false;
+    enableGlow();
+    scheduleDraw();
+  }
+
+  // Mouse
+  container.addEventListener("mousemove", activateDynamic);
+  window.addEventListener("mouseup", deactivateDynamic);
+
+  // Touch (passive so scrolling is never blocked)
+  container.addEventListener("touchstart", activateDynamic, { passive: true });
+  container.addEventListener("touchmove", activateDynamic, { passive: true });
+  window.addEventListener("touchend", deactivateDynamic, { passive: true });
+
+  // Pause redraws when hidden
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) return;
+    scheduleDraw();
+  });
+
+  // --- INITIAL TRANSITION FROM FLICKER TO PULSING ---
+  setTimeout(() => {
+    if (logoContainer && !logoContainer.classList.contains("no-glow")) {
+      logoContainer.classList.add("pulsing");
+    }
+  }, 3000);
+});
