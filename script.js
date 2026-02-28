@@ -1,3 +1,6 @@
+// Virtue Climbing — dynamic tie-dye background + neon timing
+// Lightweight (no trackers, no dependencies) and audit-friendly.
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- CANVAS SETUP ---
   const container = document.getElementById("canvas-container");
@@ -11,33 +14,35 @@ document.addEventListener("DOMContentLoaded", () => {
   container.appendChild(canvas);
 
   const ctx = canvas.getContext("2d", { alpha: false });
+  if (!ctx) {
+    console.error("2D canvas context not available");
+    return;
+  }
 
-  let dynamicActive = false;
-  let mouseX = 0;
-  let mouseY = 0;
+  // Render state
   let cw = 1;
   let ch = 1;
-  let rafPending = false;
+  let mouseX = 0;
+  let mouseY = 0;
+  let dynamicActive = false;
+  let rafId = 0;
 
-  function clamp(n, min, max) {
-    return Math.max(min, Math.min(n, max));
-  }
+  const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
 
   function resizeCanvas() {
     cw = window.innerWidth || 1;
     ch = window.innerHeight || 1;
 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
     canvas.width = Math.floor(cw * dpr);
     canvas.height = Math.floor(ch * dpr);
     canvas.style.width = `${cw}px`;
     canvas.style.height = `${ch}px`;
 
-    // Draw in CSS pixels for consistent math.
+    // Draw using CSS pixels for consistent math.
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // Keep the current visual state after a resize.
-    draw();
+    requestDraw();
   }
 
   function getTieDyeBackground(x, y) {
@@ -59,79 +64,63 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function draw() {
+    rafId = 0;
     if (document.hidden) return;
 
-    if (dynamicActive) {
-      ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
-    } else {
+    if (!dynamicActive) {
       ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, cw, ch);
+      return;
     }
 
+    ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
     ctx.fillRect(0, 0, cw, ch);
   }
 
-  function scheduleDraw() {
-    if (rafPending) return;
-    rafPending = true;
-    requestAnimationFrame(() => {
-      rafPending = false;
-      draw();
-    });
+  function requestDraw() {
+    if (rafId) return;
+    rafId = window.requestAnimationFrame(draw);
   }
 
-  resizeCanvas();
-  window.addEventListener("resize", () => {
-    resizeCanvas();
-    scheduleDraw();
-  });
-
-  // Keep the neon glow always on.
-  const logoContainer = document.querySelector(".logo-container");
-
-  // --- DYNAMIC BACKGROUND & GLOW HANDLING ---
   function getClientPoint(e) {
     if (e.touches && e.touches.length > 0) {
       return { x: e.touches[0].clientX, y: e.touches[0].clientY };
     }
-    return { x: e.clientX, y: e.clientY };
-  }
-
-  function activateDynamic(e) {
-    const { x, y } = getClientPoint(e);
-    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
-
-    if (!dynamicActive) {
-      dynamicActive = true;
+    if (typeof e.clientX === "number" && typeof e.clientY === "number") {
+      return { x: e.clientX, y: e.clientY };
     }
-
-    mouseX = x;
-    mouseY = y;
-    scheduleDraw();
+    return null;
   }
 
-  function deactivateDynamic() {
-    if (!dynamicActive) return;
-    dynamicActive = false;
-    scheduleDraw();
+  function handleMove(e) {
+    const p = getClientPoint(e);
+    if (!p) return;
+
+    mouseX = p.x;
+    mouseY = p.y;
+    dynamicActive = true;
+    requestDraw();
   }
 
-  // Mouse
-  container.addEventListener("mousemove", activateDynamic);
-  window.addEventListener("mouseup", deactivateDynamic);
+  // Initial sizing / paint
+  resizeCanvas();
 
-  // Touch (passive so scrolling is never blocked)
-  container.addEventListener("touchstart", activateDynamic, { passive: true });
-  container.addEventListener("touchmove", activateDynamic, { passive: true });
-  window.addEventListener("touchend", deactivateDynamic, { passive: true });
+  // Resize handling
+  window.addEventListener("resize", resizeCanvas, { passive: true });
 
-  // Pause redraws when hidden
+  // Pointer handling (passive for touch to avoid scroll-blocking warnings)
+  window.addEventListener("mousemove", handleMove);
+  window.addEventListener("touchstart", handleMove, { passive: true });
+  window.addEventListener("touchmove", handleMove, { passive: true });
+
+  // Redraw once when returning to the tab
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) return;
-    scheduleDraw();
+    if (!document.hidden) requestDraw();
   });
 
-  // --- INITIAL TRANSITION FROM FLICKER TO PULSING ---
-  setTimeout(() => {
+  // --- NEON INTRO: flicker -> pulsing (but NEVER disable glow) ---
+  const logoContainer = document.querySelector(".logo-container");
+  window.setTimeout(() => {
     logoContainer?.classList.add("pulsing");
   }, 3000);
 });
