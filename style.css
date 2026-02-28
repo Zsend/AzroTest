@@ -63,14 +63,18 @@ textarea {
 }
 
 .logo-container {
+
   position: relative;
   z-index: 2;
   text-align: center;
-  color: #B0B0B0; 
-  
+  color: #B0B0B0;
+
   pointer-events: none;
   width: min(760px, 92vw);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #logo {
@@ -95,6 +99,10 @@ h1 {
   font-size: 15px;
   letter-spacing: 0.2px;
   opacity: 0.92;
+  max-width: min(560px, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: balance;
 }
 
 .subscribe-form {
