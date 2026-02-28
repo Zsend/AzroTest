@@ -106,22 +106,16 @@ h1 {
 }
 
 .subscribe-form {
-  
+  --btn-w: 120px;
   margin: 16px auto 0;
   width: min(560px, 92vw);
-
-  
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
+  position: relative;
   border-radius: 999px;
   overflow: hidden;
   border: 1px solid rgba(176, 176, 176, 0.35);
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
-  
   pointer-events: auto;
 }
 
@@ -130,9 +124,9 @@ h1 {
 }
 
 .subscribe-form input[type="email"] {
-  flex: 1;
+  width: 100%;
   min-width: 0;
-  padding: 14px 18px;
+  padding: 14px calc(var(--btn-w) + 18px);
   border: 0;
   background: transparent;
   color: #E6E6E6;
@@ -151,7 +145,12 @@ h1 {
 }
 
 .subscribe-form button {
-  padding: 14px 22px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: var(--btn-w);
+  padding: 0 22px;
   border: 0;
   border-left: 1px solid rgba(128, 222, 234, 0.35);
   background: rgba(128, 222, 234, 0.14);
@@ -170,6 +169,7 @@ h1 {
 .subscribe-form button:active {
   background: rgba(128, 222, 234, 0.26);
 }
+
 
 @media (max-width: 520px) {
   .subscribe-form input[type="email"] {
