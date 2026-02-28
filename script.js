@@ -1,126 +1,238 @@
-document.addEventListener("DOMContentLoaded", function() {
-  // --- CANVAS SETUP ---
-  const container = document.getElementById("canvas-container");
-  if (!container) {
-    console.error("Canvas container not found");
-    return;
+/* AZRO Systems — site JS
+   - Mobile nav toggle
+   - Free trial modal (optional)
+*/
+
+(function () {
+  // -----------------------------
+  // Mobile nav
+  // -----------------------------
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+
+  if (header && toggle && nav) {
+    const setOpen = (open) => {
+      header.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle.addEventListener('click', () => {
+      const open = !header.classList.contains('nav-open');
+      setOpen(open);
+    });
+
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!header.classList.contains('nav-open')) return;
+      if (header.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 920) setOpen(false);
+    });
   }
-  
-  const canvas = document.createElement("canvas");
-  container.appendChild(canvas);
-  const ctx = canvas.getContext("2d");
-  
-  let dynamicActive = false;
-  let mouseX = 0, mouseY = 0;
-  
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    if (!dynamicActive) {
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // -----------------------------
+  // Free trial modal
+  // -----------------------------
+  const trialModal = document.getElementById('trialModal');
+  if (!trialModal) return;
+
+  const openers = document.querySelectorAll('[data-trial-open]');
+  const closers = trialModal.querySelectorAll('[data-modal-close]');
+  const closeBtn = trialModal.querySelector('.modal__close');
+  const copyBtn = trialModal.querySelector('[data-copy-code]');
+  const codeEl = trialModal.querySelector('#trialCode');
+
+  const openModal = () => {
+    trialModal.classList.add('is-open');
+    trialModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Focus close button for keyboard users
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closeModal = () => {
+    trialModal.classList.remove('is-open');
+    trialModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (copyBtn) copyBtn.textContent = 'Copy';
+  };
+
+  openers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && trialModal.classList.contains('is-open')) {
+      closeModal();
     }
-  }
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-  
-  function getTieDyeBackground(x, y) {
-    const cw = canvas.width || 1;
-    const ch = canvas.height || 1;
-    x = Math.max(0, Math.min(x, cw));
-    y = Math.max(0, Math.min(y, ch));
-    
-    const hue = (x / cw) * 360;
-    const rawSat = (y / ch) * 100;
-    const saturation = Math.max(0, Math.min(rawSat, 100));
-    const lightness = 50 + (Math.sin(x * 0.05) * 20);
-    
-    const gradient = ctx.createRadialGradient(x, y, 0, x, y, cw / 2);
-    gradient.addColorStop(0, `hsl(${hue}, ${saturation}%, ${lightness}%)`);
-    gradient.addColorStop(0.25, `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`);
-    gradient.addColorStop(0.5, `hsl(${(hue + 120) % 360}, ${saturation}%, ${lightness - 10}%)`);
-    gradient.addColorStop(0.75, `hsl(${(hue + 180) % 360}, ${saturation}%, ${lightness - 15}%)`);
-    gradient.addColorStop(1, `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`);
-    return gradient;
-  }
-  
-  function animate() {
-    if (dynamicActive) {
-      const bg = getTieDyeBackground(mouseX, mouseY);
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    } else {
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-    requestAnimationFrame(animate);
-  }
-  animate();
-  
-  // --- GLOW TOGGLING FUNCTIONS ---
-  const logoContainer = document.querySelector('.logo-container');
-  
-  function disableGlow() {
-    if (logoContainer) {
-      logoContainer.classList.remove('pulsing');
-      logoContainer.classList.add('no-glow');
-    }
-  }
-  
-  function enableGlow() {
-    if (logoContainer) {
-      logoContainer.classList.remove('no-glow');
-      logoContainer.classList.add('pulsing');
-      // Optionally, adjust logo image animation delay for a smoother restart:
-      const logoImg = logoContainer.querySelector('img');
-      if (logoImg) {
-        logoImg.style.animationDelay = '0s';
-        setTimeout(function() {
-          logoImg.style.animationDelay = '0.3s';
-        }, 50);
+  });
+
+  if (copyBtn && codeEl) {
+    copyBtn.addEventListener('click', async () => {
+      const code = (codeEl.textContent || '').trim();
+      if (!code) return;
+
+      try {
+        await navigator.clipboard.writeText(code);
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
+      } catch (err) {
+        // Fallback
+        const range = document.createRange();
+        range.selectNodeContents(codeEl);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try {
+          document.execCommand('copy');
+          copyBtn.textContent = 'Copied';
+          setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
+        } finally {
+          sel.removeAllRanges();
+        }
       }
+    });
+  }
+})();
+
+
+/* Cursor-reactive glow for primary CTAs (desktop) */
+(() => {
+  const btns = Array.from(document.querySelectorAll('[data-glow]'));
+  if (!btns.length) return;
+
+  const prefersReduced =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) return;
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const maxDist = 260; // px
+
+  function onMove(e) {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    for (const btn of btns) {
+      const r = btn.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+
+      const dx = x - cx;
+      const dy = y - cy;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      const t = clamp(1 - d / maxDist, 0, 1);
+
+      btn.style.setProperty('--x', `${x - r.left}px`);
+      btn.style.setProperty('--y', `${y - r.top}px`);
+      // Intensity scales as you get closer — subtle at rest, stronger near.
+      btn.style.setProperty('--centerGlow', (0.18 + t * 0.82).toFixed(3));
+      btn.style.setProperty('--edgeGlow', (0.06 + t * 0.34).toFixed(3));
     }
   }
-  
-  // --- DYNAMIC BACKGROUND & GLOW HANDLING ---
-  function handlePointerStart(e) {
-    e.preventDefault();
-    disableGlow();
-    
-    let x, y;
-    if (e.touches && e.touches.length > 0) {
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
-    } else {
-      x = e.clientX;
-      y = e.clientY;
-    }
-    if (isFinite(x) && isFinite(y)) {
-      mouseX = x;
-      mouseY = y;
-      dynamicActive = true;
+
+  window.addEventListener('pointermove', onMove, { passive: true });
+})();
+
+
+/* Label example modal (About page) */
+(() => {
+  const modal = document.getElementById('labelModal');
+  if (!modal) return;
+
+  const video = modal.querySelector('video');
+  const titleEl = modal.querySelector('[data-label-title]');
+  const descEl = modal.querySelector('[data-label-desc]');
+  const openers = Array.from(document.querySelectorAll('[data-label-open]'));
+  const closers = Array.from(modal.querySelectorAll('[data-modal-close]'));
+
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (video) {
+      try { video.pause(); } catch (_) {}
+      video.removeAttribute('src');
+      video.load();
     }
   }
-  
-  function handlePointerEnd() {
-    dynamicActive = false;
-    enableGlow();
-  }
-  
-  container.addEventListener("touchstart", handlePointerStart, { passive: false });
-  container.addEventListener("touchmove", handlePointerStart, { passive: false });
-  container.addEventListener("mousemove", handlePointerStart);
-  window.addEventListener("touchend", handlePointerEnd, { passive: false });
-  window.addEventListener("mouseup", handlePointerEnd);
-  
-  // --- INITIAL TRANSITION FROM FLICKER TO PULSING ---
-  setTimeout(() => {
-    if (logoContainer && !logoContainer.classList.contains('no-glow')) {
-      logoContainer.classList.add('pulsing');
+
+  function open(btn) {
+    // Prefer explicit attributes to avoid layout-coupled parsing
+    const explicitTitle = btn.getAttribute('data-title');
+    const explicitDesc = btn.getAttribute('data-desc');
+    const src = btn.getAttribute('data-video');
+
+    const container = btn.closest('.label-card') || btn.closest('details') || btn.closest('[data-label-container]');
+    const title =
+      explicitTitle ||
+      (container && (container.querySelector('.label-name') || container.querySelector('h3,h4') || container.querySelector('summary'))?.textContent.trim()) ||
+      'Example';
+
+    const desc =
+      explicitDesc ||
+      (container && (container.querySelector('[data-label-text]') || container.querySelector('p'))?.textContent.trim()) ||
+      '';
+
+    if (titleEl) titleEl.textContent = title;
+    if (descEl) descEl.textContent = desc;
+
+    if (video && src) {
+      video.src = src;
+      video.muted = true;
+      video.loop = true;
+      video.load();
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
     }
-  }, 3000);
-});
 
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
 
+    const closeBtn = modal.querySelector('.modal__close');
+    if (closeBtn) closeBtn.focus();
+  }
 
+  for (const btn of openers) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(btn);
+    });
+  }
 
+  for (const el of closers) {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      close();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();

@@ -44,8 +44,8 @@
 <a href="resources.html">Resources</a>
 </nav>
 <div class="header-actions">
-<a class="btn btn--sm btn--ghost" href="resources.html">Docs</a>
-<button class="btn btn--sm btn--ghost" data-trial-open="" type="button">Free trial</button><a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy</a>
+<button class="btn btn--sm btn--ghost" data-trial-open="" type="button">Free trial</button>
+<a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy on Gumroad</a>
 </div>
 </div>
 </header>
@@ -64,66 +64,135 @@
 <dd>Install on <strong>XRPUSD (1W)</strong>, set alerts once, then follow written entry/exit rules.</dd>
 </dl>
 <div class="hero-cta">
-<button class="btn btn--ghost" data-trial-open="" type="button">Free trial</button><a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy now on Gumroad</a>
-<a class="btn" href="resources.html">Read docs first</a>
+<a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy on Gumroad</a>
+<button class="btn btn--ghost" data-trial-open="" type="button">Free trial</button>
 </div>
+<p class="small" style="margin-top: 12px;"><a href="resources.html">Docs + disclosures →</a></p>
 <p class="small" style="margin-top: 14px;">Educational tool only • not investment advice. Read the <a href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">risk disclosure</a> before purchase or use.</p>
 </div>
 <div class="hero-media">
 <div class="media-card">
-<video autoplay="" loop="" muted="" playsinline="" poster="newchart.webp" preload="metadata">
-<source src="main_h264.mp4" type="video/mp4"/>
-</video>
+<img alt="Example XRP chart with labels" decoding="async" height="720" loading="eager" src="newchart.png" style="width:100%; height:auto; display:block; border-radius: 16px;" width="1280"/>
 </div>
-<p class="chart-note">Short demo. Labels/alerts are evaluated on the weekly close; intraday price action can diverge.</p>
+<p class="chart-note">Example chart (illustrative). Confirmations evaluate on the weekly close; intraday price action can diverge.</p>
+<div style="display:flex; gap: 12px; flex-wrap:wrap; margin-top: 14px;">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="Short demo (overview)" data-video="main_h264.mp4" data-desc="A short overview of labels and the weekly-close workflow." type="button">Watch short demo</button>
+<a class="btn btn--sm btn--ghost" href="#labels">Jump to label glossary</a>
+</div>
 </div>
 </div>
 </section>
 <section class="section section--tight" id="labels">
 <div class="container">
 <div class="card card-pad">
-<h2 class="section-title">Label glossary</h2>
-<p class="section-sub">Short definitions of what you’ll see on the chart. Everything is designed around the <b>weekly close</b>. “EARLY” labels are intra‑week staging cues and can disappear.</p>
-<div class="label-grid">
-<div class="label-card">
-<h3>MAJOR TOP / MAJOR BOTTOM</h3>
-<p>Cycle‑level confirmations on the weekly close. Low frequency by design. Treat these as <b>decision points</b>—not predictions.</p>
-<div class="chip"><span class="dot"></span>Weekly close confirmation</div>
-<div class="label-actions"><button class="btn btn--sm btn--ghost" data-label-open="" data-title="MAJOR TOP / MAJOR BOTTOM" data-video="videos/major.mp4" type="button">Watch example</button></div></div>
-<div class="label-card">
-<h3>RADAR TOP / RADAR BOTTOM</h3>
-<p>A secondary confirmation track that complements MAJOR signals. Still weekly‑close based—use it to add structure, not urgency.</p>
-<div class="chip"><span class="dot"></span>Weekly close confirmation</div>
-<div class="label-actions"><button class="btn btn--sm btn--ghost" data-label-open="" data-title="RADAR TOP / RADAR BOTTOM" data-video="videos/radar.mp4" type="button">Watch example</button></div></div>
-<div class="label-card">
-<h3>LIGHT TOP / LIGHT BOTTOM</h3>
-<p>Heads‑up labels for timing and awareness. Designed to be useful without being noisy. Not a guarantee; validate against your plan.</p>
-<div class="chip"><span class="dot"></span>Heads‑up</div>
-<div class="label-actions"><button class="btn btn--sm btn--ghost" data-label-open="" data-title="LIGHT TOP / LIGHT BOTTOM" data-video="videos/light.mp4" type="button">Watch example</button></div></div>
-<div class="label-card">
-<h3>EARLY TOP / EARLY BOTTOM</h3>
-<p>Intra‑week staging cues. Helpful for context during the week, but only confirmations persist at the weekly close.</p>
-<div class="chip"><span class="dot"></span>Can appear intra‑week</div>
-<div class="label-actions"><button class="btn btn--sm btn--ghost" data-label-open="" data-title="EARLY TOP / EARLY BOTTOM" data-video="videos/early.mp4" type="button">Watch example</button></div></div>
-<div class="label-card">
-<h3>RISK / HIGH‑RISK triangles</h3>
-<p>Risk context markers. Use them to tighten rules, reduce exposure, or avoid emotional decision‑making—not as entries.</p>
-<div class="chip"><span class="dot"></span>Context overlay</div>
-<div class="label-actions"><button class="btn btn--sm btn--ghost" data-label-open="" data-title="RISK / HIGH‑RISK triangles" data-video="videos/risk.mp4" type="button">Watch example</button></div></div>
-<div class="label-card">
-<h3>Market‑context overlays (optional)</h3>
-<p>Optional non‑XRP risk triangles and related context controls to help you assess broader crypto regime risk (informational).</p>
-<div class="chip"><span class="dot"></span>Optional</div>
-<div class="label-actions"><button class="btn btn--sm btn--ghost" data-label-open="" data-title="Market‑context overlays (optional)" data-video="videos/context.mp4" type="button">Watch example</button></div></div>
+<h2 class="section-title">Label glossary (with short videos)</h2>
+<p class="section-sub">Everything is designed around the <b>weekly close</b>. “EARLY” labels can appear intra‑week as staging cues and may disappear before the weekly close.</p>
+
+<h3 style="margin-top: 10px;">Core confirmations</h3>
+<div class="accordion">
+<details open="">
+<summary>
+<span class="label-title">
+<span class="label-name">MAJOR TOP / MAJOR BOTTOM</span>
+<span class="label-meta">Cycle‑level confirmations (weekly close). Low frequency by design.</span>
+</span>
+</summary>
+<div class="label-body">
+<p>Treat these as <b>decision points</b>—not predictions. Use them to follow your written exposure and exit rules.</p>
+<div class="label-actions">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="MAJOR TOP / MAJOR BOTTOM" data-video="videos/major.mp4" type="button">Watch example</button>
 </div>
+</div>
+</details>
+
+<details>
+<summary>
+<span class="label-title">
+<span class="label-name">RADAR TOP / RADAR BOTTOM</span>
+<span class="label-meta">A secondary confirmation track that complements MAJOR signals.</span>
+</span>
+</summary>
+<div class="label-body">
+<p>Still weekly‑close based. Use it to add structure, not urgency.</p>
+<div class="label-actions">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="RADAR TOP / RADAR BOTTOM" data-video="videos/radar.mp4" type="button">Watch example</button>
+</div>
+</div>
+</details>
+</div>
+
+<h3 style="margin-top: 18px;">Optional heads-ups + context</h3>
+<div class="accordion">
+<details>
+<summary>
+<span class="label-title">
+<span class="label-name">LIGHT TOP / LIGHT BOTTOM</span>
+<span class="label-meta">Heads‑up labels for timing and awareness (context, not certainty).</span>
+</span>
+</summary>
+<div class="label-body">
+<p>Designed to be useful without being noisy. Validate against your plan and risk limits.</p>
+<div class="label-actions">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="LIGHT TOP / LIGHT BOTTOM" data-video="videos/light.mp4" type="button">Watch example</button>
+</div>
+</div>
+</details>
+
+<details>
+<summary>
+<span class="label-title">
+<span class="label-name">EARLY TOP / EARLY BOTTOM</span>
+<span class="label-meta">Intra‑week staging cues (can appear and disappear).</span>
+</span>
+</summary>
+<div class="label-body">
+<p>Helpful during the week, but only confirmations persist at the weekly close.</p>
+<div class="label-actions">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="EARLY TOP / EARLY BOTTOM" data-video="videos/early.mp4" type="button">Watch example</button>
+</div>
+</div>
+</details>
+
+<details>
+<summary>
+<span class="label-title">
+<span class="label-name">RISK / HIGH‑RISK triangles</span>
+<span class="label-meta">Risk context markers (informational overlays).</span>
+</span>
+</summary>
+<div class="label-body">
+<p>Use them to tighten rules, reduce exposure, or avoid emotional decision‑making—not as entries.</p>
+<div class="label-actions">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="RISK / HIGH‑RISK triangles" data-video="videos/risk.mp4" type="button">Watch example</button>
+</div>
+</div>
+</details>
+
+<details>
+<summary>
+<span class="label-title">
+<span class="label-name">Market‑context overlays</span>
+<span class="label-meta">Optional broader-crypto regime context (informational).</span>
+</span>
+</summary>
+<div class="label-body">
+<p>Optional non‑XRP risk triangles and related context controls to help assess broader crypto regime risk.</p>
+<div class="label-actions">
+<button class="btn btn--sm btn--ghost" data-label-open="" data-title="Market‑context overlays" data-video="videos/context.mp4" type="button">Watch example</button>
+</div>
+</div>
+</details>
+</div>
+
 <div class="card card-pad card--flat" style="margin-top:18px; background: rgba(118,152,255,.06); border-color: rgba(118,152,255,.22);">
-<h3 style="margin:0 0 6px; font-size:1.05rem;">Alert setup (one‑time)</h3>
+<h3 style="margin:0 0 6px; font-size:1.05rem;">Alert setup (one-time)</h3>
 <p style="margin:0; color: var(--text-sub);">Recommended defaults: set <b>MAJOR</b> and <b>RADAR</b> alerts to <b>Once per bar close</b> (weekly). Set <b>EARLY</b> alerts to <b>Once per bar</b> if you want intra‑week heads‑ups. More detail in the Alert Trigger Guide.</p>
 <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
-<a class="btn btn--sm" href="resources.html#downloads">Download docs</a>
+<a class="btn btn--sm" href="resources.html#downloads">Docs pack</a>
 <a class="btn btn--sm btn--ghost" href="pdfs/alert-trigger-guide.pdf">Alert Trigger Guide (PDF)</a>
 </div>
 </div>
+
 </div>
 </div>
 </section>
@@ -154,46 +223,7 @@
 </div>
 </div>
 </section>
-<section class="section section--tight">
-<div class="container">
-<div class="grid-2">
-<div class="card card-pad">
-<h2 class="section-title">What it is</h2>
-<ul class="bullets">
-<li>A TradingView® indicator for cycle-level confirmations.</li>
-<li>Labels + alerts to support timing and risk decisions.</li>
-<li>Defaults tuned for XRPUSD (weekly) with minimal “tuning.”</li>
-</ul>
-</div>
-<div class="card card-pad">
-<h2 class="section-title">What it isn’t</h2>
-<ul class="bullets">
-<li>Not a “day trading” signal service.</li>
-<li>Not a promise of tops/bottoms.</li>
-<li>Not a substitute for risk rules and position sizing.</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section class="section section--tight">
-<div class="container">
-<div class="card card-pad">
-<h2 class="section-title">Why this exists</h2>
-<p class="section-sub">Most investors lose money because they buy too late, hold too long, and get chopped by noise. AZRO is built to reduce those errors.</p>
-<ul class="bullets">
-<li>Reduce emotional entries (FOMO and “revenge trades”).</li>
-<li>Confirm turns without overfitting to the last few months.</li>
-<li>Plan exits without staring at charts 24/7.</li>
-<li>Keep the system repeatable and auditable (docs + disclosures).</li>
-</ul>
-<div style="margin-top: 18px; display:flex; gap: 12px; flex-wrap:wrap;">
-<button class="btn btn--ghost" data-trial-open="" type="button">Free trial</button><a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy now</a>
-<a class="btn btn--ghost" href="resources.html">Open documentation</a>
-</div>
-</div>
-</div>
-</section>
+
 <section class="section section--tight">
 <div class="container">
 <div class="card card-pad">
@@ -250,7 +280,8 @@
 </div>
 <p class="small" style="margin-top:10px;">If the code doesn’t work, it may have expired. Check our X (updates) or email support for the current status.</p>
 <div class="modal__actions">
-<button class="btn btn--sm btn--ghost" data-trial-open="" type="button">Free trial</button><a class="btn btn--sm" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Open Gumroad</a>
+<a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Open Gumroad</a>
+<a class="btn btn--sm btn--ghost" href="pricing.html">See pricing</a>
 <a class="btn btn--sm btn--ghost" href="mailto:support@azrosystems.com?subject=Free%20trial%20request%20(XRP%20indicator)">Email support</a>
 </div>
 </div>
@@ -264,7 +295,7 @@
 <p class="modal__sub" data-label-desc=""></p>
 </div>
 <div class="video-frame">
-<video controls="" playsinline="" preload="metadata"></video>
+<video id="labelVideo" controls="" playsinline="" muted="" loop="" preload="metadata"></video>
 </div>
 <div class="modal__foot">
 <p class="small">Clips are illustrative. Confirmations evaluate on the weekly close.</p><a class="link" href="features.html">Read the full setup &amp; glossary →</a>
