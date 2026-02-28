@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.virtueclimbing.com/sitemap.xml
+Sitemap: https://azrosystems.com/sitemap.xml
