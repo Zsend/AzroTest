@@ -76,7 +76,7 @@
 </div>
 <p class="chart-note">Example chart (illustrative). Confirmations evaluate on the weekly close; intraday price action can diverge.</p>
 <div style="display:flex; gap: 12px; flex-wrap:wrap; margin-top: 14px;">
-<button class="btn btn--sm btn--ghost" data-label-open="" data-title="Short demo (overview)" data-video="main_h264.mp4" data-desc="A short overview of labels and the weekly-close workflow." type="button">Watch short demo</button>
+<button class="btn btn--sm btn--ghost" data-desc="A short overview of labels and the weekly-close workflow." data-label-open="" data-title="Short demo (overview)" data-video="main_h264.mp4" type="button">Watch short demo</button>
 <a class="btn btn--sm btn--ghost" href="#labels">Jump to label glossary</a>
 </div>
 </div>
@@ -87,7 +87,6 @@
 <div class="card card-pad">
 <h2 class="section-title">Label glossary (with short videos)</h2>
 <p class="section-sub">Everything is designed around the <b>weekly close</b>. “EARLY” labels can appear intra‑week as staging cues and may disappear before the weekly close.</p>
-
 <h3 style="margin-top: 10px;">Core confirmations</h3>
 <div class="accordion">
 <details open="">
@@ -104,7 +103,6 @@
 </div>
 </div>
 </details>
-
 <details>
 <summary>
 <span class="label-title">
@@ -120,8 +118,7 @@
 </div>
 </details>
 </div>
-
-<h3 style="margin-top: 18px;">Optional heads-ups + context</h3>
+<h3 style="margin-top: 18px;">Optional context layers</h3>
 <div class="accordion">
 <details>
 <summary>
@@ -137,7 +134,6 @@
 </div>
 </div>
 </details>
-
 <details>
 <summary>
 <span class="label-title">
@@ -152,7 +148,6 @@
 </div>
 </div>
 </details>
-
 <details>
 <summary>
 <span class="label-title">
@@ -167,7 +162,6 @@
 </div>
 </div>
 </details>
-
 <details>
 <summary>
 <span class="label-title">
@@ -183,16 +177,14 @@
 </div>
 </details>
 </div>
-
 <div class="card card-pad card--flat" style="margin-top:18px; background: rgba(118,152,255,.06); border-color: rgba(118,152,255,.22);">
 <h3 style="margin:0 0 6px; font-size:1.05rem;">Alert setup (one-time)</h3>
-<p style="margin:0; color: var(--text-sub);">Recommended defaults: set <b>MAJOR</b> and <b>RADAR</b> alerts to <b>Once per bar close</b> (weekly). Set <b>EARLY</b> alerts to <b>Once per bar</b> if you want intra‑week heads‑ups. More detail in the Alert Trigger Guide.</p>
+<p style="margin:0; color: var(--text-sub);">Recommended defaults: set <b>MAJOR</b> and <b>RADAR</b> alerts to <b>Once per bar close</b> (weekly). Set <b>EARLY</b> alerts to <b>Once per bar</b> for intra‑week visibility. More detail in the Alert Trigger Guide.</p>
 <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
 <a class="btn btn--sm" href="resources.html#downloads">Docs pack</a>
 <a class="btn btn--sm btn--ghost" href="pdfs/alert-trigger-guide.pdf">Alert Trigger Guide (PDF)</a>
 </div>
 </div>
-
 </div>
 </div>
 </section>
@@ -208,7 +200,7 @@
 </div>
 <div class="card card-pad card--flat">
 <h3>2) Set alerts once</h3>
-<p class="small" style="margin-top: 8px;">Set alerts for the major signals (and optional radar/heads-ups). Then let the system work.</p>
+<p class="small" style="margin-top: 8px;">Set alerts for the major signals (and any optional context layers you enable). Then let the system work.</p>
 </div>
 <div class="card card-pad card--flat">
 <h3>3) Execute a written plan</h3>
@@ -223,7 +215,6 @@
 </div>
 </div>
 </section>
-
 <section class="section section--tight">
 <div class="container">
 <div class="card card-pad">
@@ -281,7 +272,6 @@
 <p class="small" style="margin-top:10px;">If the code doesn’t work, it may have expired. Check our X (updates) or email support for the current status.</p>
 <div class="modal__actions">
 <a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Open Gumroad</a>
-<a class="btn btn--sm btn--ghost" href="pricing.html">See pricing</a>
 <a class="btn btn--sm btn--ghost" href="mailto:support@azrosystems.com?subject=Free%20trial%20request%20(XRP%20indicator)">Email support</a>
 </div>
 </div>
@@ -295,7 +285,7 @@
 <p class="modal__sub" data-label-desc=""></p>
 </div>
 <div class="video-frame">
-<video id="labelVideo" controls="" playsinline="" muted="" loop="" preload="metadata"></video>
+<video controls="" id="labelVideo" loop="" muted="" playsinline="" preload="metadata"></video>
 </div>
 <div class="modal__foot">
 <p class="small">Clips are illustrative. Confirmations evaluate on the weekly close.</p><a class="link" href="features.html">Read the full setup &amp; glossary →</a>
