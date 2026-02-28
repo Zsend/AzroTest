@@ -79,7 +79,13 @@ textarea {
 
 #logo {
   width: 300px;
-  margin-bottom: 20px;
+  /* Prevent distortion and keep the logo crisp/responsive */
+  height: auto;
+  /* Preserve layout stability even before the image loads */
+  aspect-ratio: 2047 / 954;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 20px;
   /* Force hardware acceleration for smoother animations */
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
