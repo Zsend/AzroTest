@@ -33,25 +33,17 @@ body, html {
 }
 
 /* BODY & PAGE SETUP */
-html, body {
+body, html {
   width: 100%;
   height: 100%;
-  background: #000;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Center content, but allow scrolling on small screens / when the keyboard is open */
-body {
-  min-height: 100vh;
-  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 28px 16px calc(28px + env(safe-area-inset-bottom));
-  overflow-x: hidden;
-  overflow-y: auto;
+  background: #000;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Re-enable text selection + interactions inside form controls */
@@ -79,13 +71,7 @@ textarea {
 
 #logo {
   width: 300px;
-  /* Prevent distortion and keep the logo crisp/responsive */
-  height: auto;
-  /* Preserve layout stability even before the image loads */
-  aspect-ratio: 2047 / 954;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto 20px;
+  margin-bottom: 20px;
   /* Force hardware acceleration for smoother animations */
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
@@ -117,7 +103,6 @@ h1 {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  flex-wrap: nowrap;
   border-radius: 999px;
   overflow: hidden;
   border: 1px solid rgba(176, 176, 176, 0.35);
@@ -163,8 +148,6 @@ h1 {
   font-weight: 700;
   letter-spacing: 0.25px;
   cursor: pointer;
-  min-width: 96px;
-  white-space: nowrap;
   transition: background 120ms ease, box-shadow 120ms ease;
 }
 
@@ -183,19 +166,22 @@ h1 {
   opacity: 0.75;
 }
 
-/* Small screens: keep it as one clean pill (no stacking) */
+/* Mobile: stack input + button for a cleaner layout */
 @media (max-width: 520px) {
   .subscribe-form {
-    width: min(420px, 92vw);
-  }
-
-  .subscribe-form input[type="email"] {
-    padding: 12px 16px;
+    flex-direction: column;
+    border-radius: 14px;
   }
 
   .subscribe-form button {
-    padding: 12px 16px;
-    min-width: 86px;
+    width: 100%;
+    border-left: 0;
+    border-top: 1px solid rgba(128, 222, 234, 0.35);
+    transform: none;
+  }
+
+  .subscribe-form button:hover {
+    transform: none;
   }
 }
 
@@ -465,13 +451,12 @@ h1 {
 
 /* ---------- CANVAS CONTAINER ---------- */
 #canvas-container {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
-}
-
-#canvas-container canvas {
-  display: block;
 }
 
 /* ---------- RESPONSIVE DESIGN ---------- */
@@ -512,23 +497,6 @@ h1 {
 /* Disable clicking & text selection on the logo/text */
 .logo-container {
   -webkit-touch-callout: none; /* disables iOS long-press menu */
-}
-
-/* Respect reduced motion preferences (keep the glow visible, but stop flicker/pulsing) */
-@media (prefers-reduced-motion: reduce) {
-  .logo-container h1 {
-    animation: none !important;
-    opacity: 1;
-    text-shadow: 0 0 3px #1565C0, 0 0 6px #0D47A1, 0 0 9px #0A357A;
-  }
-
-  .logo-container img {
-    animation: none !important;
-    opacity: 1;
-    filter: drop-shadow(0 0 3px #80DEEA)
-            drop-shadow(0 0 6px #4FC3F7)
-            drop-shadow(0 0 9px #29B6F6);
-  }
 }
 
 
