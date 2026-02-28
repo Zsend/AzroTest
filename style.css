@@ -522,7 +522,7 @@ h1 {
 
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  /* Keep the glow visible, but stop motion/flicker for users who prefer reduced motion */
+  /* Stop flicker/pulse motion, but KEEP the glow visible. */
   .logo-container h1 {
     animation: none !important;
     opacity: 1;

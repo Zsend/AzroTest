@@ -1,7 +1,5 @@
-// Virtue Climbing — interactive background + neon timing
-// No trackers, no external deps.
-
 document.addEventListener("DOMContentLoaded", () => {
+  // --- CANVAS SETUP ---
   const container = document.getElementById("canvas-container");
   if (!container) {
     console.error("Canvas container not found");
@@ -13,28 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
   container.appendChild(canvas);
 
   const ctx = canvas.getContext("2d", { alpha: false });
-  if (!ctx) {
-    console.error("2D canvas context not available");
-    return;
-  }
 
-  const reduceMotionMQ = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-  let reduceMotion = !!reduceMotionMQ?.matches;
-
-  let cw = 1;
-  let ch = 1;
+  let dynamicActive = false;
   let mouseX = 0;
   let mouseY = 0;
-  let dynamicActive = false;
+  let cw = 1;
+  let ch = 1;
   let rafPending = false;
 
-  const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
+  function clamp(n, min, max) {
+    return Math.max(min, Math.min(n, max));
+  }
 
   function resizeCanvas() {
     cw = window.innerWidth || 1;
     ch = window.innerHeight || 1;
 
-    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const dpr = window.devicePixelRatio || 1;
     canvas.width = Math.floor(cw * dpr);
     canvas.height = Math.floor(ch * dpr);
     canvas.style.width = `${cw}px`;
@@ -43,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Draw in CSS pixels for consistent math.
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    // Keep the current visual state after a resize.
     draw();
   }
 
@@ -57,35 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const radius = cw / 2;
     const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
     gradient.addColorStop(0, `hsl(${hue}, ${saturation}%, ${lightness}%)`);
-    gradient.addColorStop(
-      0.25,
-      `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`
-    );
-    gradient.addColorStop(
-      0.5,
-      `hsl(${(hue + 120) % 360}, ${saturation}%, ${lightness - 10}%)`
-    );
-    gradient.addColorStop(
-      0.75,
-      `hsl(${(hue + 180) % 360}, ${saturation}%, ${lightness - 15}%)`
-    );
-    gradient.addColorStop(
-      1,
-      `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`
-    );
+    gradient.addColorStop(0.25, `hsl(${(hue + 60) % 360}, ${saturation}%, ${lightness - 5}%)`);
+    gradient.addColorStop(0.5, `hsl(${(hue + 120) % 360}, ${saturation}%, ${lightness - 10}%)`);
+    gradient.addColorStop(0.75, `hsl(${(hue + 180) % 360}, ${saturation}%, ${lightness - 15}%)`);
+    gradient.addColorStop(1, `hsl(${(hue + 240) % 360}, ${saturation}%, ${lightness - 20}%)`);
     return gradient;
   }
 
   function draw() {
     if (document.hidden) return;
 
-    if (!dynamicActive || reduceMotion) {
+    if (dynamicActive) {
+      ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
+    } else {
       ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, cw, ch);
-      return;
     }
 
-    ctx.fillStyle = getTieDyeBackground(mouseX, mouseY);
     ctx.fillRect(0, 0, cw, ch);
   }
 
@@ -98,25 +79,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  resizeCanvas();
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    scheduleDraw();
+  });
+
+  // Keep the neon glow always on.
+  const logoContainer = document.querySelector(".logo-container");
+
+  // --- DYNAMIC BACKGROUND & GLOW HANDLING ---
   function getClientPoint(e) {
     if (e.touches && e.touches.length > 0) {
       return { x: e.touches[0].clientX, y: e.touches[0].clientY };
     }
-    if (typeof e.clientX === "number" && typeof e.clientY === "number") {
-      return { x: e.clientX, y: e.clientY };
-    }
-    return null;
+    return { x: e.clientX, y: e.clientY };
   }
 
   function activateDynamic(e) {
-    if (reduceMotion) return;
+    const { x, y } = getClientPoint(e);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
 
-    const p = getClientPoint(e);
-    if (!p) return;
+    if (!dynamicActive) {
+      dynamicActive = true;
+    }
 
-    mouseX = p.x;
-    mouseY = p.y;
-    dynamicActive = true;
+    mouseX = x;
+    mouseY = y;
     scheduleDraw();
   }
 
@@ -126,20 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scheduleDraw();
   }
 
-  // Initial render + sizing
-  resizeCanvas();
-
-  // Resize handling
-  window.addEventListener(
-    "resize",
-    () => {
-      resizeCanvas();
-      scheduleDraw();
-    },
-    { passive: true }
-  );
-
-  // Dynamic background events
+  // Mouse
   container.addEventListener("mousemove", activateDynamic);
   window.addEventListener("mouseup", deactivateDynamic);
 
@@ -148,22 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
   container.addEventListener("touchmove", activateDynamic, { passive: true });
   window.addEventListener("touchend", deactivateDynamic, { passive: true });
 
-  // If user switches tabs, redraw once when they return
+  // Pause redraws when hidden
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) return;
     scheduleDraw();
   });
 
-  // Respect reduced-motion changes live
-  reduceMotionMQ?.addEventListener?.("change", (e) => {
-    reduceMotion = !!e.matches;
-    dynamicActive = false;
-    scheduleDraw();
-  });
-
-  // Neon: keep the original "flicker" intro, then switch to smooth pulsing.
-  const logoContainer = document.querySelector(".logo-container");
-  window.setTimeout(() => {
+  // --- INITIAL TRANSITION FROM FLICKER TO PULSING ---
+  setTimeout(() => {
     logoContainer?.classList.add("pulsing");
   }, 3000);
 });
