@@ -1,6 +1,6 @@
 # AZRO Systems — Polished Static Site
 
-This is a polished, production-ready static website for the **AZRO Systems™ XRP Top/Bottom Detector**.
+This is a polished, production-ready static website for the **AZRO Systems XRP Top/Bottom Detector**.
 
 ## Quick edits you may want
 
