@@ -171,10 +171,14 @@
     window.matchMedia && window.matchMedia('(pointer: fine)').matches;
   if (!finePointer) return;
 
-  // Glow tuning: softer peak, clearer distance-based ramp.
-  const RIM_MIN = 0.05;
-  const RIM_MAX = 0.17;
-  const CENTER_MAX = 0.08;
+  // Glow tuning: lower peak brightness, longer reach, more responsive ramp.
+  const RIM_MIN = 0.045;
+  const RIM_MAX = 0.14;
+  const CENTER_MAX = 0.065;
+
+  const DIST_FACTOR = 6.2;      // larger = glow starts farther away
+  const POWER = 1.05;           // closer to 1 = more visible at mid distances
+  const OUTSIDE_CENTER = 0.32;  // faint inner bloom even before hover
 
   let raf = 0;
   let lastEvt = null;
@@ -186,26 +190,29 @@
       const cy = rect.top + rect.height / 2;
 
       const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-      // Wider reach, but a steeper curve so it feels more "alive" as you approach.
-      const maxDist = Math.hypot(rect.width, rect.height) * 4.6;
+      const maxDist = Math.hypot(rect.width, rect.height) * DIST_FACTOR;
       const raw = Math.max(0, 1 - dist / maxDist);
-      const proximity = Math.pow(raw, 1.35);
+      const proximity = Math.pow(raw, POWER);
 
       const rim = RIM_MIN + (RIM_MAX - RIM_MIN) * proximity;
       btn.style.setProperty('--edgeGlow', rim.toFixed(3));
 
-      // Inner “spot” only when hovering the button.
       const inside =
         e.clientX >= rect.left && e.clientX <= rect.right &&
         e.clientY >= rect.top  && e.clientY <= rect.bottom;
 
-      if (inside){
-        btn.style.setProperty('--x', `${((e.clientX - rect.left) / rect.width) * 100}%`);
-        btn.style.setProperty('--y', `${((e.clientY - rect.top) / rect.height) * 100}%`);
-        btn.style.setProperty('--centerGlow', (CENTER_MAX * proximity).toFixed(3));
-      } else {
-        btn.style.setProperty('--centerGlow', '0');
-      }
+      // Clamp pointer to the nearest point on the button so the glow feels “pulled”
+      // toward the cursor even before hover.
+      const px = Math.min(rect.right, Math.max(rect.left, e.clientX));
+      const py = Math.min(rect.bottom, Math.max(rect.top, e.clientY));
+      btn.style.setProperty('--x', `${((px - rect.left) / rect.width) * 100}%`);
+      btn.style.setProperty('--y', `${((py - rect.top) / rect.height) * 100}%`);
+
+      const centerFactor = inside ? 1 : OUTSIDE_CENTER;
+      btn.style.setProperty(
+        '--centerGlow',
+        (CENTER_MAX * proximity * centerFactor).toFixed(3)
+      );
     }
   }
 
