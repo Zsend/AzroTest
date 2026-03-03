@@ -1,1 +1,292 @@
-document.addEventListener("DOMContentLoaded",()=>{const c=document.getElementById("canvas-container");if(!c)return;const bg=document.createElement("canvas"),tr=document.createElement("canvas");bg.style.position="absolute";bg.style.inset="0";bg.style.display="block";tr.style.position="absolute";tr.style.inset="0";tr.style.display="block";c.appendChild(bg);c.appendChild(tr);const ctx=bg.getContext("2d",{alpha:false});if(!ctx)return;const tctx=tr.getContext("2d",{alpha:true});let w=1,h=1,dpr=1,active=false,locked=false,x=0,y=0,rafPending=false,flash=null,bgOn=false;const coarse=(window.matchMedia&&window.matchMedia("(hover: none) and (pointer: coarse)").matches)||(navigator.maxTouchPoints||0)>0;const joinBtn=document.querySelector(".subscribe-form button");const email=document.getElementById("email");const rootStyle=document.documentElement.style;let desktopGlowTO=0;let mobileReady=false;let introDone=false,pendingStart=false;let md=false,mDrag=false,mSX=0,mSY=0,mLX=0,mLY=0,mLT=0,ignoreClick=false;let td=false,tLX=0,tLY=0,tLT=0;let trailRun=false,trailLast=0,lastStroke=0;const clamp=(n,min,max)=>Math.max(min,Math.min(n,max));const lerpHue=(a,b,t)=>{let d=((b-a+540)%360)-180;return(a+d*t+360)%360};const clearAccent=()=>{rootStyle.removeProperty("--acc-h");rootStyle.removeProperty("--acc-s");rootStyle.removeProperty("--acc-l");rootStyle.removeProperty("--acc2-h");rootStyle.removeProperty("--acc2-s");rootStyle.removeProperty("--acc2-l");rootStyle.removeProperty("--txt1");rootStyle.removeProperty("--txt2");rootStyle.removeProperty("--txt3");rootStyle.removeProperty("--logo1");rootStyle.removeProperty("--logo2");rootStyle.removeProperty("--logo3")};const computeAccent=(px,py)=>{px=clamp(px,0,w);py=clamp(py,0,h);const bh=px/w*360;const sw=clamp(py/h,0,1);const ah=lerpHue(190,bh,.32);const as=68+sw*24;const al=70-sw*8;const a2h=(ah+18)%360;const a2s=Math.min(96,as+6);const a2l=Math.max(52,al-6);return{ah,as,al,a2h,a2s,a2l}};const applyAccent=a=>{rootStyle.setProperty("--acc-h",a.ah.toFixed(2));rootStyle.setProperty("--acc-s",a.as.toFixed(1)+"%");rootStyle.setProperty("--acc-l",a.al.toFixed(1)+"%");rootStyle.setProperty("--acc2-h",a.a2h.toFixed(2));rootStyle.setProperty("--acc2-s",a.a2s.toFixed(1)+"%");rootStyle.setProperty("--acc2-l",a.a2l.toFixed(1)+"%");const th=lerpHue(212,a.ah,.45),ts=Math.min(92,a.as+6),l1=Math.max(18,a.al-28),l2=Math.max(14,a.al-38),l3=Math.max(10,a.al-48);rootStyle.setProperty("--txt1",`hsl(${th.toFixed(2)}, ${ts.toFixed(1)}%, ${l1.toFixed(1)}%)`);rootStyle.setProperty("--txt2",`hsl(${th.toFixed(2)}, ${ts.toFixed(1)}%, ${l2.toFixed(1)}%)`);rootStyle.setProperty("--txt3",`hsl(${th.toFixed(2)}, ${ts.toFixed(1)}%, ${l3.toFixed(1)}%)`);const l2b=Math.max(18,a.a2l-10);rootStyle.setProperty("--logo1",`hsl(${a.ah.toFixed(2)}, ${a.as.toFixed(1)}%, ${a.al.toFixed(1)}%)`);rootStyle.setProperty("--logo2",`hsl(${a.a2h.toFixed(2)}, ${a.a2s.toFixed(1)}%, ${a.a2l.toFixed(1)}%)`);rootStyle.setProperty("--logo3",`hsl(${a.a2h.toFixed(2)}, ${a.a2s.toFixed(1)}%, ${l2b.toFixed(1)}%)`)};const setBgOn=(on,px,py,a)=>{if(on)applyAccent(a||computeAccent(px,py));else clearAccent();if(on!==bgOn){document.body.classList.toggle("bg-on",on);bgOn=on}};const clearBtnVars=()=>{if(!joinBtn)return;joinBtn.style.setProperty("--jgo","0");joinBtn.style.setProperty("--jgh","0")};const updateMobileGlow=()=>{if(!coarse||!joinBtn)return;const should=mobileReady;if(should)joinBtn.classList.add("btn-autopulse");else joinBtn.classList.remove("btn-autopulse");if(!should)clearBtnVars()};const resize=()=>{w=window.innerWidth||1;h=window.innerHeight||1;document.documentElement.style.setProperty("--vh",`${h*.01}px`);dpr=Math.max(1,window.devicePixelRatio||1);bg.width=Math.floor(w*dpr);bg.height=Math.floor(h*dpr);bg.style.width=`${w}px`;bg.style.height=`${h}px`;ctx.setTransform(dpr,0,0,dpr,0,0);if(tctx){tr.width=Math.floor(w*dpr);tr.height=Math.floor(h*dpr);tr.style.width=`${w}px`;tr.style.height=`${h}px`;tctx.setTransform(dpr,0,0,dpr,0,0);tctx.clearRect(0,0,w,h)}};const tieDye=(px,py,boost=0)=>{px=clamp(px,0,w);py=clamp(py,0,h);const hue=px/w*360;const sat=clamp(py/h*100*(1+boost*.12),0,100);const light=50+Math.sin(px*.05)*20+boost*10;const rad=w/2;const grad=ctx.createRadialGradient(px,py,0,px,py,rad);grad.addColorStop(0,`hsl(${hue}, ${sat}%, ${light}%)`);grad.addColorStop(.25,`hsl(${(hue+60)%360}, ${sat}%, ${light-5}%)`);grad.addColorStop(.5,`hsl(${(hue+120)%360}, ${sat}%, ${light-10}%)`);grad.addColorStop(.75,`hsl(${(hue+180)%360}, ${sat}%, ${light-15}%)`);grad.addColorStop(1,`hsl(${(hue+240)%360}, ${sat}%, ${light-20}%)`);return grad};const drawBlack=()=>{ctx.fillStyle="#000";ctx.fillRect(0,0,w,h)};const drawActive=()=>{ctx.fillStyle=tieDye(x,y,0);ctx.fillRect(0,0,w,h)};const drawFlash=now=>{if(!flash)return;const t=(now-flash.start)/flash.dur;if(t>=1){flash=null;updateMobileGlow();if(active)setBgOn(true,x,y);else setBgOn(false,0,0);return}const pulse=Math.sin(Math.PI*t);drawBlack();ctx.save();ctx.globalAlpha=pulse;ctx.fillStyle=tieDye(flash.x,flash.y,pulse);ctx.fillRect(0,0,w,h);ctx.restore();ctx.save();ctx.globalCompositeOperation="screen";const rad=Math.max(w,h)*.6;const glow=ctx.createRadialGradient(flash.x,flash.y,0,flash.x,flash.y,rad);glow.addColorStop(0,`hsla(${flash.a.ah}, ${flash.a.as}%, ${flash.a.al}%, ${.22*pulse})`);glow.addColorStop(.35,`hsla(${flash.a.a2h}, ${flash.a.a2s}%, ${flash.a.a2l}%, ${.14*pulse})`);glow.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);ctx.restore();setBgOn(true,flash.x,flash.y,flash.a)};const render=now=>{rafPending=false;if(flash){drawFlash(now);if(flash)schedule();else if(active)drawActive();else drawBlack();return}if(!active){drawBlack();return}drawActive()};const schedule=()=>{if(rafPending)return;rafPending=true;requestAnimationFrame(render)};const pointFromEvent=e=>{if(e.touches&&e.touches.length>0)return{x:e.touches[0].clientX,y:e.touches[0].clientY};if(typeof e.clientX==="number"&&typeof e.clientY==="number")return{x:e.clientX,y:e.clientY};return null};const activateFromEvent=e=>{if(!coarse&&locked)return;const pt=pointFromEvent(e);if(!pt)return;x=pt.x;y=pt.y;active=true;setBgOn(true,x,y);updateMobileGlow();schedule()};const deactivate=()=>{active=false;updateMobileGlow();if(!flash)setBgOn(false,0,0);schedule()};const startFlashAt=(px,py,dur=300)=>{const a=computeAccent(px,py);flash={x:px,y:py,start:performance.now(),dur,a};setBgOn(true,px,py,a);updateMobileGlow();schedule()};const desktopGlowFromPoint=(px,py)=>{if(!joinBtn)return;const r=joinBtn.getBoundingClientRect();if(!(r.width>0&&r.height>0))return;const cx=r.left+r.width/2,cy=r.top+r.height/2;const dist=Math.hypot(px-cx,py-cy);let t=clamp(1-dist/520,0,1);t=t*t;const nx=clamp((px-r.left)/r.width,0,1);const ny=clamp((py-r.top)/r.height,0,1);joinBtn.style.setProperty("--jx",`${(nx*100).toFixed(2)}%`);joinBtn.style.setProperty("--jy",`${(ny*100).toFixed(2)}%`);joinBtn.style.setProperty("--jgo",(t*.26).toFixed(3));joinBtn.style.setProperty("--jgh",(t*.12).toFixed(3));if(desktopGlowTO)clearTimeout(desktopGlowTO);desktopGlowTO=window.setTimeout(()=>{clearBtnVars();desktopGlowTO=0},220)};const trailLoop=now=>{if(!trailRun||!tctx)return;const dt=now-trailLast;trailLast=now;const fade=1-Math.exp(-dt/220);tctx.save();tctx.globalCompositeOperation="destination-out";tctx.globalAlpha=fade;tctx.fillRect(0,0,w,h);tctx.restore();if(md||td||now-lastStroke<900){requestAnimationFrame(trailLoop)}else{trailRun=false}};const startTrail=()=>{if(!tctx||trailRun)return;trailRun=true;trailLast=performance.now();requestAnimationFrame(trailLoop)};const paintStroke=(x1,y1,x2,y2,spd)=>{if(!tctx)return;const now=performance.now();lastStroke=now;startTrail();const a=computeAccent(x2,y2);const v=clamp(spd,0,2.4);const inten=clamp(1-v*.35,.55,1);const base=coarse?20:16;const width=clamp(base-v*6,10,base);tctx.save();tctx.globalCompositeOperation="screen";tctx.lineCap="round";tctx.lineJoin="round";tctx.globalAlpha=.10*inten;tctx.strokeStyle=`hsla(${a.ah.toFixed(2)}, ${a.as.toFixed(1)}%, ${Math.min(94,a.al+12).toFixed(1)}%, 1)`;tctx.shadowColor=`hsla(${a.ah.toFixed(2)}, ${a.as.toFixed(1)}%, ${Math.min(96,a.al+18).toFixed(1)}%, ${(.55*inten).toFixed(3)})`;tctx.shadowBlur=width*2.2;tctx.lineWidth=width*2.2;tctx.beginPath();tctx.moveTo(x1,y1);tctx.lineTo(x2,y2);tctx.stroke();tctx.globalAlpha=.18*inten;tctx.strokeStyle=`hsla(${a.a2h.toFixed(2)}, ${a.a2s.toFixed(1)}%, ${Math.min(95,a.a2l+14).toFixed(1)}%, 1)`;tctx.shadowColor=`hsla(${a.a2h.toFixed(2)}, ${a.a2s.toFixed(1)}%, ${Math.min(97,a.a2l+18).toFixed(1)}%, ${(.70*inten).toFixed(3)})`;tctx.shadowBlur=width*1.3;tctx.lineWidth=width*.95;tctx.beginPath();tctx.moveTo(x1,y1);tctx.lineTo(x2,y2);tctx.stroke();const hr=width*1.2;const g=tctx.createRadialGradient(x2,y2,0,x2,y2,hr*3);g.addColorStop(0,`hsla(${a.a2h.toFixed(2)}, ${a.a2s.toFixed(1)}%, ${Math.min(96,a.a2l+18).toFixed(1)}%, ${(.14*inten).toFixed(3)})`);g.addColorStop(1,"rgba(0,0,0,0)");tctx.shadowBlur=0;tctx.globalAlpha=1;tctx.fillStyle=g;tctx.beginPath();tctx.arc(x2,y2,hr*3,0,Math.PI*2);tctx.fill();tctx.restore()};const handleBrushMouse=pt=>{if(!md||locked||!introDone||!pt||!active)return;const now=performance.now();const dx=pt.x-mLX,dy=pt.y-mLY;const dist=Math.hypot(dx,dy);if(dist<.8)return;if(!mDrag){const dd=Math.hypot(pt.x-mSX,pt.y-mSY);if(dd>8)mDrag=true}const dt=Math.max(16,now-mLT);paintStroke(mLX,mLY,pt.x,pt.y,dist/dt);mLX=pt.x;mLY=pt.y;mLT=now};const handleBrushTouch=pt=>{if(!td||!pt||!active)return;const now=performance.now();const dx=pt.x-tLX,dy=pt.y-tLY;const dist=Math.hypot(dx,dy);if(dist<.8)return;const dt=Math.max(16,now-tLT);paintStroke(tLX,tLY,pt.x,pt.y,dist/dt);tLX=pt.x;tLY=pt.y;tLT=now};resize();drawBlack();setBgOn(false,0,0);window.addEventListener("resize",()=>{resize();schedule()},{passive:true});c.addEventListener("mousedown",e=>{if(coarse||e.button!==0)return;const pt=pointFromEvent(e);if(!pt)return;md=true;mDrag=false;mSX=pt.x;mSY=pt.y;mLX=pt.x;mLY=pt.y;mLT=performance.now()},{passive:true});window.addEventListener("mouseup",e=>{if(coarse||e.button!==0)return;if(md&&mDrag)ignoreClick=true;md=false;mDrag=false},{passive:true});const mouseMove=e=>{if(coarse)return;const pt=pointFromEvent(e);if(locked){if(pt)desktopGlowFromPoint(pt.x,pt.y);return}if(!introDone){if(pt){x=pt.x;y=pt.y;pendingStart=true}return}activateFromEvent(e);handleBrushMouse(pt)};c.addEventListener("mousemove",mouseMove,{passive:true});const touchStart=e=>{td=true;const pt=pointFromEvent(e);if(pt){tLX=pt.x;tLY=pt.y;tLT=performance.now()}activateFromEvent(e)};const touchMove=e=>{if(e.cancelable)e.preventDefault();activateFromEvent(e);handleBrushTouch(pointFromEvent(e))};const touchEnd=()=>{td=false;deactivate()};c.addEventListener("touchstart",touchStart,{passive:true});c.addEventListener("touchmove",touchMove,{passive:false});window.addEventListener("touchend",touchEnd,{passive:true});window.addEventListener("touchcancel",touchEnd,{passive:true});if(email){if(coarse){const flashFrom=evt=>{const r=email.getBoundingClientRect();const px=typeof evt.clientX==="number"?evt.clientX:r.left+r.width/2;const py=typeof evt.clientY==="number"?evt.clientY:r.top+r.height/2;startFlashAt(px,py,300)};email.addEventListener("touchstart",flashFrom,{passive:true});email.addEventListener("mousedown",flashFrom,{passive:true})}else{const lockFromUI=e=>{if(e&&e.stopPropagation)e.stopPropagation();locked=true;active=false;flash=null;clearBtnVars();if(desktopGlowTO){clearTimeout(desktopGlowTO);desktopGlowTO=0}setBgOn(false,0,0);updateMobileGlow();schedule()};email.addEventListener("pointerdown",lockFromUI,true);email.addEventListener("click",lockFromUI,true);email.addEventListener("focus",lockFromUI,true)}}if(joinBtn&&!coarse){const stop=e=>{if(e&&e.stopPropagation)e.stopPropagation()};joinBtn.addEventListener("pointerdown",stop,true);joinBtn.addEventListener("click",stop,true)}window.addEventListener("click",e=>{if(coarse)return;if(ignoreClick){ignoreClick=false;return}if(e.target&&e.target.closest&&e.target.closest(".subscribe-form"))return;if(!locked&&!active&&!flash)return;locked=!locked;clearBtnVars();if(desktopGlowTO){clearTimeout(desktopGlowTO);desktopGlowTO=0}if(locked){active=false;flash=null;setBgOn(false,0,0);updateMobileGlow();schedule();return}const pt=pointFromEvent(e);if(pt){x=pt.x;y=pt.y}if(!introDone){pendingStart=true;active=false;setBgOn(false,0,0);updateMobileGlow();schedule();return}active=true;setBgOn(true,x,y);updateMobileGlow();schedule()},{passive:true});const lc=document.querySelector(".logo-container");setTimeout(()=>{if(lc)lc.classList.add("pulsing");mobileReady=true;updateMobileGlow();introDone=true;if(!coarse&&pendingStart&&!locked&&!active&&!flash){pendingStart=false;active=true;setBgOn(true,x,y);updateMobileGlow();schedule()}},3000)});
+/* AZRO Systems — site JS
+   - Mobile nav toggle
+   - Free trial modal (optional)
+*/
+
+(function () {
+  // -----------------------------
+  // Mobile nav
+  // -----------------------------
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('site-nav');
+
+  if (header && toggle && nav) {
+    const setOpen = (open) => {
+      header.classList.toggle('nav-open', open);
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    toggle.addEventListener('click', () => {
+      const open = !header.classList.contains('nav-open');
+      setOpen(open);
+    });
+
+    nav.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      setOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!header.classList.contains('nav-open')) return;
+      if (header.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024) setOpen(false);
+    });
+  }
+
+
+
+  // -----------------------------
+  // Sticky CTA: keep content above the fixed bar on mobile
+  // -----------------------------
+  const sticky = document.querySelector('.sticky-cta');
+  const updateSticky = () => {
+    if (!sticky) return;
+    const h = Math.ceil(sticky.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--sticky-h', `${h}px`);
+  };
+  updateSticky();
+  window.addEventListener('resize', updateSticky, { passive: true });
+
+  // -----------------------------
+  // Free trial modal
+  // -----------------------------
+  const trialModal = document.getElementById('trialModal');
+  if (!trialModal) return;
+
+  const openers = document.querySelectorAll('[data-trial-open]');
+  const closers = trialModal.querySelectorAll('[data-modal-close]');
+  const closeBtn = trialModal.querySelector('.modal__close');
+  const copyBtn = trialModal.querySelector('[data-copy-code]');
+  const codeEl = trialModal.querySelector('#trialCode');
+
+  const openModal = () => {
+    trialModal.classList.add('is-open');
+    trialModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Focus close button for keyboard users
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closeModal = () => {
+    trialModal.classList.remove('is-open');
+    trialModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (copyBtn) copyBtn.textContent = 'Copy';
+  };
+
+  openers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && trialModal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  if (copyBtn && codeEl) {
+    copyBtn.addEventListener('click', async () => {
+      const code = (codeEl.textContent || '').trim();
+      if (!code) return;
+
+      try {
+        await navigator.clipboard.writeText(code);
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
+      } catch (err) {
+        // Fallback
+        const range = document.createRange();
+        range.selectNodeContents(codeEl);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try {
+          document.execCommand('copy');
+          copyBtn.textContent = 'Copied';
+          setTimeout(() => (copyBtn.textContent = 'Copy'), 1600);
+        } finally {
+          sel.removeAllRanges();
+        }
+      }
+    });
+  }
+})();
+
+
+/* Cursor-reactive glow for primary CTAs (desktop pointers) */
+(() => {
+  const btns = Array.from(document.querySelectorAll('.btn--primary[data-glow]'));
+  if (!btns.length) return;
+
+  const finePointer =
+    window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  if (!finePointer) return;
+
+  // Glow tuning: lower peak brightness, longer reach, more responsive ramp.
+  const RIM_MIN = 0.045;
+  const RIM_MAX = 0.14;
+  const CENTER_MAX = 0.065;
+
+  const DIST_FACTOR = 6.2;      // larger = glow starts farther away
+  const POWER = 1.05;           // closer to 1 = more visible at mid distances
+  const OUTSIDE_CENTER = 0.32;  // faint inner bloom even before hover
+
+  let raf = 0;
+  let lastEvt = null;
+
+  function paint(e){
+    for (const btn of btns){
+      const rect = btn.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+
+      const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+      const maxDist = Math.hypot(rect.width, rect.height) * DIST_FACTOR;
+      const raw = Math.max(0, 1 - dist / maxDist);
+      const proximity = Math.pow(raw, POWER);
+
+      const rim = RIM_MIN + (RIM_MAX - RIM_MIN) * proximity;
+      btn.style.setProperty('--edgeGlow', rim.toFixed(3));
+
+      const inside =
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top  && e.clientY <= rect.bottom;
+
+      // Clamp pointer to the nearest point on the button so the glow feels “pulled”
+      // toward the cursor even before hover.
+      const px = Math.min(rect.right, Math.max(rect.left, e.clientX));
+      const py = Math.min(rect.bottom, Math.max(rect.top, e.clientY));
+      btn.style.setProperty('--x', `${((px - rect.left) / rect.width) * 100}%`);
+      btn.style.setProperty('--y', `${((py - rect.top) / rect.height) * 100}%`);
+
+      const centerFactor = inside ? 1 : OUTSIDE_CENTER;
+      btn.style.setProperty(
+        '--centerGlow',
+        (CENTER_MAX * proximity * centerFactor).toFixed(3)
+      );
+    }
+  }
+
+  function onMove(e){
+    lastEvt = e;
+    if (raf) return;
+    raf = window.requestAnimationFrame(() => {
+      raf = 0;
+      if (lastEvt) paint(lastEvt);
+    });
+  }
+
+  const reset = () => {
+    for (const btn of btns){
+      btn.style.setProperty('--edgeGlow', RIM_MIN);
+      btn.style.setProperty('--centerGlow', '0');
+    }
+  };
+
+  window.addEventListener('pointermove', onMove, { passive: true });
+  window.addEventListener('pointerleave', reset);
+  window.addEventListener('blur', reset);
+  document.addEventListener('mouseleave', reset);
+})();
+
+
+
+/* Label example modal (About page) */
+(() => {
+  const modal = document.getElementById('labelModal');
+  if (!modal) return;
+
+  const video = modal.querySelector('video');
+  const titleEl = modal.querySelector('[data-label-title]');
+  const descEl = modal.querySelector('[data-label-desc]');
+  const openers = Array.from(document.querySelectorAll('[data-label-open]'));
+  const closers = Array.from(modal.querySelectorAll('[data-modal-close]'));
+
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (video) {
+      try { video.pause(); } catch (_) {}
+      video.removeAttribute('src');
+      video.load();
+    }
+  }
+
+  function open(btn) {
+    // Prefer explicit attributes to avoid layout-coupled parsing
+    const explicitTitle = btn.getAttribute('data-title');
+    const explicitDesc = btn.getAttribute('data-desc');
+    const src = btn.getAttribute('data-video');
+
+    const container = btn.closest('.label-card') || btn.closest('details') || btn.closest('[data-label-container]');
+    const title =
+      explicitTitle ||
+      (container && (container.querySelector('.label-name') || container.querySelector('h3,h4') || container.querySelector('summary'))?.textContent.trim()) ||
+      'Example';
+
+    const desc =
+      explicitDesc ||
+      (container && (container.querySelector('[data-label-text]') || container.querySelector('p'))?.textContent.trim()) ||
+      '';
+
+    if (titleEl) titleEl.textContent = title;
+    if (descEl) descEl.textContent = desc;
+
+    if (video && src) {
+      video.src = src;
+      video.muted = true;
+      video.loop = true;
+      video.load();
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    const closeBtn = modal.querySelector('.modal__close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  for (const btn of openers) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(btn);
+    });
+  }
+
+  for (const el of closers) {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      close();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
