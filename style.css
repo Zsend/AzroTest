@@ -546,6 +546,15 @@ a:hover{ text-decoration-color: rgba(76,141,255,1); }
   color: rgba(181,195,237,.75);
 }
 
+.meta-line{
+  color: rgba(235,242,255,.74);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 0.92rem;
+  margin: 0 0 14px;
+}
+
+
 
 /* Headings */
 h1, h2, h3{
@@ -1134,6 +1143,14 @@ footer .x-icon{ width: 18px; height: 18px; fill: currentColor; }
   height: 100%;
   display:block;
   object-fit: contain;
+}
+
+.video-controls{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 .modal__head{ display:flex; flex-direction:column; gap: 6px; }
 .modal__foot{ margin-top: 14px; }

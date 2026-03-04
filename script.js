@@ -223,15 +223,68 @@
   const openers = Array.from(document.querySelectorAll('[data-label-open]'));
   const closers = Array.from(modal.querySelectorAll('[data-modal-close]'));
 
+  const videoReplayBtn = modal.querySelector('[data-video-replay]');
+  const videoMuteBtn = modal.querySelector('[data-video-mute]');
+  const videoControls = modal.querySelector('.video-controls');
+
+  let currentVideoMode = 'clip';
+
+  const syncVideoControls = () => {
+    if (!video) return;
+    if (videoMuteBtn) {
+      videoMuteBtn.textContent = video.muted ? 'Unmute' : 'Mute';
+      // Only show sound toggle for the main demo; label clips are silent by default.
+      videoMuteBtn.style.display = currentVideoMode === 'demo' ? '' : 'none';
+    }
+    if (videoControls) {
+      videoControls.style.display = 'flex';
+    }
+  };
+
+  // On-brand interaction: tap video to pause/resume (no native controls overlay).
+  if (video && !video.dataset.azroTapBound) {
+    video.dataset.azroTapBound = '1';
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }
+
+  if (videoReplayBtn && !videoReplayBtn.dataset.azroBound) {
+    videoReplayBtn.dataset.azroBound = '1';
+    videoReplayBtn.addEventListener('click', () => {
+      if (!video) return;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    });
+  }
+
+  if (videoMuteBtn && !videoMuteBtn.dataset.azroBound) {
+    videoMuteBtn.dataset.azroBound = '1';
+    videoMuteBtn.addEventListener('click', () => {
+      if (!video) return;
+      video.muted = !video.muted;
+      syncVideoControls();
+    });
+  }
+
   function close() {
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
-
     if (video) {
       try { video.pause(); } catch (_) {}
+      video.currentTime = 0;
+      video.muted = true;
+      video.loop = false;
+      video.controls = false;
+      video.removeAttribute('controls');
       video.removeAttribute('src');
       video.load();
+      if (typeof syncVideoControls === 'function') syncVideoControls();
     }
   }
 
@@ -241,6 +294,7 @@
     const explicitDesc = btn.getAttribute('data-desc');
     const src = btn.getAttribute('data-video');
 		const videoMode = (btn.getAttribute('data-video-mode') || 'clip').toLowerCase();
+		currentVideoMode = videoMode;
 
     const container = btn.closest('.label-card') || btn.closest('details') || btn.closest('[data-label-container]');
     const title =
@@ -258,24 +312,23 @@
 
 		if (video && src) {
 			video.src = src;
+			// Keep the player chrome clean (avoid native controls overlay).
+			video.controls = false;
+			video.removeAttribute('controls');
 
 			// UX defaults:
 			// - Short illustrative clips: muted + loop.
-			// - Long demo overview: audio on + no loop.
-			if (videoMode === 'demo') {
-				video.muted = false;
-				video.loop = false;
-			} else {
-				video.muted = true;
-				video.loop = true;
-			}
+			// - Long demo overview: start muted for instant playback (user can unmute), no loop.
+			video.muted = true;
+			video.loop = videoMode !== 'demo';
+			if (typeof syncVideoControls === 'function') syncVideoControls();
 
 			video.load();
 			const p = video.play();
 			if (p && typeof p.catch === 'function') {
 				p.catch(() => {
-					// Fallback: if autoplay-with-audio is blocked, try muted playback.
 					video.muted = true;
+					if (typeof syncVideoControls === 'function') syncVideoControls();
 					video.play().catch(() => {});
 				});
 			}
