@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="BTC Engine placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111b33"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4c8dff"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- subtle grid -->
+  <g opacity="0.18" stroke="#b5c3ed" stroke-width="1">
+    <path d="M0 100 H1200"/>
+    <path d="M0 200 H1200"/>
+    <path d="M0 300 H1200"/>
+    <path d="M0 400 H1200"/>
+    <path d="M0 500 H1200"/>
+    <path d="M0 600 H1200"/>
+
+    <path d="M120 0 V675"/>
+    <path d="M240 0 V675"/>
+    <path d="M360 0 V675"/>
+    <path d="M480 0 V675"/>
+    <path d="M600 0 V675"/>
+    <path d="M720 0 V675"/>
+    <path d="M840 0 V675"/>
+    <path d="M960 0 V675"/>
+    <path d="M1080 0 V675"/>
+  </g>
+
+  <!-- mock chart line -->
+  <path d="M80 520 C 210 480, 260 560, 360 520 S 520 460, 600 420 S 720 460, 820 340 S 980 300, 1120 220" fill="none" stroke="url(#accent)" stroke-width="6" stroke-linecap="round" filter="url(#glow)" opacity="0.9"/>
+
+  <!-- headline -->
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" fill="#eef4ff">
+    <text x="80" y="120" font-size="44" font-weight="700">AZRO Systems</text>
+    <text x="80" y="172" font-size="56" font-weight="800">BTC Engine</text>
+    <text x="80" y="220" font-size="22" opacity="0.86">Dashboard-first BTC DCA + cycle risk tools</text>
+
+    <g opacity="0.7">
+      <text x="80" y="290" font-size="18">Placeholder image — screenshots + demo video coming soon.</text>
+    </g>
+
+    <g opacity="0.82" font-size="16">
+      <text x="80" y="360">• Weekly action + suggested amount</text>
+      <text x="80" y="394">• Optional trims in overheated zones</text>
+      <text x="80" y="428">• Proof vs auto-buy (BTC-equivalent)</text>
+    </g>
+  </g>
+
+  <!-- bottom pill -->
+  <g>
+    <rect x="80" y="560" rx="18" ry="18" width="520" height="54" fill="rgba(76,141,255,0.10)" stroke="rgba(181,195,237,0.22)"/>
+    <text x="106" y="595" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="16" fill="#eef4ff" opacity="0.9">Works with free TradingView accounts • Invite-only access</text>
+  </g>
+</svg>
