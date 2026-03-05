@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>About — AZRO Systems</title>
-  <meta name="description" content="Learn how AZRO Systems builds proof-first TradingView indicators for cycle decisions — including the XRP Top/Bottom Detector and BTC Engine." />
+  <meta name="description" content="Learn how AZRO Systems builds proof-first TradingView indicators for cycle decisions — including the BTC Engine and the XRP Top/Bottom Detector." />
   <meta name="theme-color" content="#070B16" />
   <link rel="icon" type="image/png" href="favicon-32.png" />
 
@@ -66,11 +66,11 @@
           <ul class="checklist" style="margin-top: 16px;">
             <li>
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>
-              <span><strong>XRP Top/Bottom Detector</strong> — cycle confirmation labels + optional context overlays for XRP.</span>
+              <span><strong>BTC Engine</strong> — a weekly BTC dashboard that guides action + sizing for systematic DCA.</span>
             </li>
             <li>
               <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>
-              <span><strong>BTC Engine</strong> — a weekly BTC dashboard that guides action + sizing for systematic DCA.</span>
+              <span><strong>XRP Top/Bottom Detector</strong> — cycle confirmation labels + optional context overlays for XRP.</span>
             </li>
           </ul>
 
@@ -84,26 +84,27 @@
 
         <div class="hero-media">
           <figure class="media-frame media-frame--figure preview-card" data-preview>
-            <div class="preview-tabs" role="tablist" aria-label="Preview selector">
-              <button class="preview-tab is-active" type="button" role="tab" aria-selected="true" data-preview-tab="xrp">XRP Detector</button>
-              <button class="preview-tab" type="button" role="tab" aria-selected="false" data-preview-tab="btc">BTC Engine</button>
-            </div>
+            <div class="preview-tabs" role="tablist" aria-label="Product preview">
+  <button data-preview-tab="btc" class="preview-tab is-active" role="tab" aria-selected="true">BTC Engine</button>
+  <button data-preview-tab="xrp" class="preview-tab" role="tab" aria-selected="false">XRP Detector</button>
+</div>
 
-            <div class="preview-panels">
-              <div class="preview-panel is-active" role="tabpanel" data-preview-panel="xrp">
+        <div class="preview-panels">
+              <div class="preview-panel is-active" role="tabpanel" data-preview-panel="btc">
+                <img src="btc-engine-placeholder.svg" loading="lazy" decoding="async" alt="BTC Engine dashboard preview" />
+              </div>
+
+          <div class="preview-panel" role="tabpanel" data-preview-panel="xrp" hidden>
                 <picture>
                   <source srcset="newchart.webp" type="image/webp" />
                   <img src="newchart.png" loading="eager" decoding="async" alt="XRP Top/Bottom Detector screenshot" />
                 </picture>
               </div>
-              <div class="preview-panel" role="tabpanel" data-preview-panel="btc" hidden>
-                <img src="btc-engine-placeholder.svg" loading="lazy" decoding="async" alt="BTC Engine dashboard preview" />
-              </div>
-            </div>
+        </div>
 
             <figcaption class="chart-note">
-              <span data-preview-note="xrp">XRP Top/Bottom Detector in TradingView (XRPUSD, 1W).</span>
-              <span data-preview-note="btc" hidden>BTC Engine in TradingView (BTCUSD, 1W).</span>
+              <span data-preview-note="btc">BTC Engine in TradingView (BTCUSD, 1W).</span>
+          <span data-preview-note="xrp" hidden>XRP Top/Bottom Detector in TradingView (XRPUSD, 1W).</span>
             </figcaption>
           </figure>
         </div>
@@ -119,23 +120,6 @@
 
         <div class="grid-2" style="margin-top: 18px;">
           <article class="card card-pad">
-            <h3>XRP Top/Bottom Detector walkthrough</h3>
-            <p class="small" style="margin-top: 8px;">See how confirmations and optional context are used in a weekly-close process.</p>
-            <div class="btn-row mt-18">
-              <button class="btn btn--primary" type="button"
-                data-label-open
-                data-label-title="XRP Top/Bottom Detector — walkthrough"
-                data-label-desc="A fast overview of the XRP workflow, labels, and alert setup."
-                data-video="main_h264.mp4"
-                data-loop="false"
-                data-poster="newchart.png">
-                Watch XRP demo
-              </button>
-              <a class="btn btn--ghost" href="features.html#xrp">XRP features</a>
-            </div>
-          </article>
-
-          <article class="card card-pad">
             <h3>BTC Engine walkthrough</h3>
             <p class="small" style="margin-top: 8px;">A dashboard-first view of weekly action + sizing designed for systematic DCA.</p>
             <div class="btn-row mt-18">
@@ -149,6 +133,23 @@
                 Watch BTC demo
               </button>
               <a class="btn btn--ghost" href="features.html#btc">BTC features</a>
+            </div>
+          </article>
+
+        <article class="card card-pad">
+            <h3>XRP Top/Bottom Detector walkthrough</h3>
+            <p class="small" style="margin-top: 8px;">See how confirmations and optional context are used in a weekly-close process.</p>
+            <div class="btn-row mt-18">
+              <button class="btn btn--primary" type="button"
+                data-label-open
+                data-label-title="XRP Top/Bottom Detector — walkthrough"
+                data-label-desc="A fast overview of the XRP workflow, labels, and alert setup."
+                data-video="main_h264.mp4"
+                data-loop="false"
+                data-poster="newchart.png">
+                Watch XRP demo
+              </button>
+              <a class="btn btn--ghost" href="features.html#xrp">XRP features</a>
             </div>
           </article>
         </div>
@@ -187,7 +188,7 @@
         <div class="grid-3" style="margin-top: 18px;">
           <div class="card card-pad">
             <h3>1) Purchase</h3>
-            <p class="small" style="margin-top: 8px;">Choose XRP, BTC, or the bundle on Gumroad (lifetime or subscription).</p>
+            <p class="small" style="margin-top: 8px;">Choose BTC, XRP, or the bundle on Gumroad (lifetime or subscription).</p>
           </div>
           <div class="card card-pad">
             <h3>2) Add your TradingView username</h3>
@@ -207,7 +208,37 @@
       </div>
     </section>
 
-    <section class="section" id="labels">
+    <section class="section" id="btc-glossary">
+      <div class="container">
+        <div class="section-head">
+          <h2>BTC Engine glossary</h2>
+          <p class="section-sub">A quick map of the dashboard language.</p>
+        </div>
+
+        <div class="card card-pad card--narrow">
+          <div class="accordion">
+            <details class="qa">
+              <summary><span class="q">Weekly action (BUY / HOLD / TRIM)</span></summary>
+              <div class="a"><p>The BTC Engine outputs a weekly action based on its regime logic. It’s designed to support a consistent process, not to predict price.</p></div>
+            </details>
+            <details class="qa">
+              <summary><span class="q">Suggested amount</span></summary>
+              <div class="a"><p>A sizing suggestion derived from the selected mode + risk profile. Treat it as a framework to calibrate your plan, not a mandate.</p></div>
+            </details>
+            <details class="qa">
+              <summary><span class="q">Modes (Stack / Adaptive / Event / Performance)</span></summary>
+              <div class="a"><p>Execution modes control how buys scale and how trims behave. Modes are built to match different risk tolerances and objectives.</p></div>
+            </details>
+            <details class="qa">
+              <summary><span class="q">BTC-eq (proof vs auto-buy)</span></summary>
+              <div class="a"><p>A comparative metric that simulates how a rules-based plan would have performed against simple auto-buy behavior over the selected period.</p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section" id="labels">
       <div class="container">
         <div class="section-head">
           <h2>Label glossary (XRP)</h2>
@@ -316,41 +347,11 @@
       </div>
     </section>
 
-<section class="section" id="btc-glossary">
-      <div class="container">
-        <div class="section-head">
-          <h2>BTC Engine glossary</h2>
-          <p class="section-sub">A quick map of the dashboard language.</p>
-        </div>
-
-        <div class="card card-pad card--narrow">
-          <div class="accordion">
-            <details class="qa">
-              <summary><span class="q">Weekly action (BUY / HOLD / TRIM)</span></summary>
-              <div class="a"><p>The BTC Engine outputs a weekly action based on its regime logic. It’s designed to support a consistent process, not to predict price.</p></div>
-            </details>
-            <details class="qa">
-              <summary><span class="q">Suggested amount</span></summary>
-              <div class="a"><p>A sizing suggestion derived from the selected mode + risk profile. Treat it as a framework to calibrate your plan, not a mandate.</p></div>
-            </details>
-            <details class="qa">
-              <summary><span class="q">Modes (Stack / Adaptive / Event / Performance)</span></summary>
-              <div class="a"><p>Execution modes control how buys scale and how trims behave. Modes are built to match different risk tolerances and objectives.</p></div>
-            </details>
-            <details class="qa">
-              <summary><span class="q">BTC-eq (proof vs auto-buy)</span></summary>
-              <div class="a"><p>A comparative metric that simulates how a rules-based plan would have performed against simple auto-buy behavior over the selected period.</p></div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section section--tight">
       <div class="container">
         <div class="card card-pad card--narrow center stack">
           <h2 class="section-title" style="margin:0;">Ready to choose a plan?</h2>
-          <p class="section-sub" style="margin:0;">Get XRP, BTC, or bundle both. Invite-only access via TradingView.</p>
+          <p class="section-sub" style="margin:0;">Get BTC, XRP, or bundle both. Invite-only access via TradingView.</p>
           <div class="btn-row btn-row--center btn-row--stack-sm" style="margin-top: 6px;">
             <a class="btn btn--primary" data-glow="1" href="pricing.html">View pricing</a>
             <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
