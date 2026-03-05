@@ -1,206 +1,259 @@
-/*
-  AZRO Systems — site interactions
-  - Link hydration from config.js
-  - Mobile nav toggle
-  - Auto-year
-  - Accordions (single-open)
-  - Free trial modal
-  - Video modal
-*/
+/* AZRO Systems — minimal site JS */
 
-(function () {
-  const CONFIG = window.AZRO_CONFIG || {};
-  const LINKS = (CONFIG && CONFIG.links) ? CONFIG.links : {};
-
-  // --- Link hydration (single source of truth) ---
-  document.querySelectorAll('a[data-link]').forEach((a) => {
-    const key = a.getAttribute('data-link');
-    if (!key) return;
-    const href = LINKS[key];
-    if (href && typeof href === 'string') {
-      a.setAttribute('href', href);
-      if (/^https?:\/\//i.test(href)) {
-        a.setAttribute('rel', 'noopener noreferrer');
-        if (a.hasAttribute('data-external')) a.setAttribute('target', '_blank');
-      }
-    }
-  });
-
-  // --- Footer year ---
-  const yearEl = document.querySelector('[data-year]');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-  // --- Mobile nav ---
-  const header = document.querySelector('.site-header');
+// Mobile nav
+(() => {
   const navToggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.nav');
+  const nav = document.querySelector('#site-nav');
 
-  function closeNav() {
-    if (!header || !navToggle) return;
-    header.classList.remove('nav-open');
-    document.body.classList.remove('nav-open');
+  if (!navToggle || !nav) return;
+
+  const closeNav = () => {
+    nav.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.setAttribute('aria-label', 'Open menu');
-  }
+  };
 
-  function openNav() {
-    if (!header || !navToggle) return;
-    header.classList.add('nav-open');
-    document.body.classList.add('nav-open');
-    navToggle.setAttribute('aria-expanded', 'true');
-    navToggle.setAttribute('aria-label', 'Close menu');
-  }
-
-  if (navToggle && header) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = header.classList.contains('nav-open');
-      if (isOpen) closeNav();
-      else openNav();
-    });
-
-    // Click outside to close
-    document.addEventListener('click', (e) => {
-      if (!header.classList.contains('nav-open')) return;
-      const target = e.target;
-      if (!target) return;
-      const clickedInsideNav = nav && nav.contains(target);
-      const clickedToggle = navToggle.contains(target);
-      if (!clickedInsideNav && !clickedToggle) closeNav();
-    });
-
-    // Close after clicking a nav link
-    if (nav) {
-      nav.querySelectorAll('a').forEach((a) => {
-        a.addEventListener('click', () => closeNav());
-      });
-    }
-  }
-
-  // --- Accordions: allow only one open per group ---
-  document.querySelectorAll('details[data-accordion]').forEach((details) => {
-    details.addEventListener('toggle', () => {
-      if (!details.open) return;
-      const group = details.getAttribute('data-accordion');
-      if (!group) return;
-      document
-        .querySelectorAll(`details[data-accordion="${group}"]`)
-        .forEach((other) => {
-          if (other !== details) other.open = false;
-        });
-    });
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // --- Free trial modal ---
-  const trialModal = document.getElementById('trialModal');
-  const trialOpenButtons = document.querySelectorAll('[data-open-trial]');
-  const trialCloseButtons = trialModal ? trialModal.querySelectorAll('[data-close-modal]') : [];
-
-  function openTrialModal() {
-    if (!trialModal) return;
-    trialModal.classList.add('is-open');
-    trialModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('is-open')) return;
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (nav.contains(target) || navToggle.contains(target)) return;
     closeNav();
-  }
+  });
 
-  function closeTrialModal() {
-    if (!trialModal) return;
-    trialModal.classList.remove('is-open');
-    trialModal.setAttribute('aria-hidden', 'true');
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+  });
+
+  // Close after selecting a link (mobile UX)
+  nav.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => closeNav());
+  });
+})();
+
+// Trial modal
+(() => {
+  const modal = document.getElementById('trialModal');
+  if (!modal) return;
+
+  const openers = Array.from(document.querySelectorAll('[data-trial-open]'));
+  const closers = Array.from(modal.querySelectorAll('[data-modal-close]'));
+  const copyBtn = modal.querySelector('[data-copy-code]');
+  const codeEl = modal.querySelector('#trialCode');
+
+  const open = () => {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    const closeBtn = modal.querySelector('.modal__close');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
-  }
+  };
 
-  trialOpenButtons.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openTrialModal();
-    });
+  openers.forEach((btn) => btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    open();
+  }));
+
+  closers.forEach((btn) => btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    close();
+  }));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
   });
 
-  if (trialModal) {
-    trialModal.addEventListener('click', (e) => {
-      if (e.target === trialModal) closeTrialModal();
-    });
-  }
-
-  Array.from(trialCloseButtons).forEach((btn) => {
-    btn.addEventListener('click', () => closeTrialModal());
-  });
-
-  // --- Video modal ---
-  const videoModal = document.getElementById('videoModal');
-  const videoEl = videoModal ? videoModal.querySelector('video') : null;
-  const videoSource = videoEl ? videoEl.querySelector('source') : null;
-  const videoCloseButtons = videoModal ? videoModal.querySelectorAll('[data-close-modal]') : [];
-
-  function openVideoModal(src, startSeconds) {
-    if (!videoModal || !videoEl || !videoSource) return;
-
-    videoEl.pause();
-    videoEl.currentTime = 0;
-
-    videoSource.setAttribute('src', src);
-    videoEl.load();
-
-    const start = Number.isFinite(startSeconds) ? startSeconds : 0;
-
-    const onLoaded = () => {
+  if (copyBtn && codeEl) {
+    copyBtn.addEventListener('click', async () => {
       try {
-        if (start > 0 && videoEl.duration && start < videoEl.duration) {
-          videoEl.currentTime = start;
-        }
-      } catch (_) {}
+        await navigator.clipboard.writeText(codeEl.textContent.trim());
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => (copyBtn.textContent = 'Copy'), 1400);
+      } catch (_err) {
+        // Fallback: select text
+        const range = document.createRange();
+        range.selectNodeContents(codeEl);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+  }
+})();
 
-      // Muted autoplay is more reliable, but the videos are silent.
-      videoEl.muted = true;
-      videoEl.play().catch(() => {});
+// Preview tabs (Home/About hero)
+(() => {
+  const cards = Array.from(document.querySelectorAll('[data-preview]'));
+  if (!cards.length) return;
+
+  cards.forEach((card) => {
+    const tabs = Array.from(card.querySelectorAll('[data-preview-tab]'));
+    const panels = Array.from(card.querySelectorAll('[data-preview-panel]'));
+    const notes = Array.from(card.querySelectorAll('[data-preview-note]'));
+
+    if (!tabs.length || !panels.length) return;
+
+    const setActive = (key) => {
+      tabs.forEach((t) => {
+        const isActive = t.getAttribute('data-preview-tab') === key;
+        t.classList.toggle('is-active', isActive);
+        t.setAttribute('aria-selected', String(isActive));
+      });
+
+      panels.forEach((p) => {
+        const isActive = p.getAttribute('data-preview-panel') === key;
+        p.classList.toggle('is-active', isActive);
+        if (isActive) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+
+      notes.forEach((n) => {
+        const isActive = n.getAttribute('data-preview-note') === key;
+        if (isActive) n.removeAttribute('hidden');
+        else n.setAttribute('hidden', '');
+      });
     };
 
-    videoEl.addEventListener('loadedmetadata', onLoaded, { once: true });
+    tabs.forEach((t) => {
+      t.addEventListener('click', () => {
+        const key = t.getAttribute('data-preview-tab');
+        if (!key) return;
+        setActive(key);
+      });
+    });
+  });
+})();
 
-    videoModal.classList.add('is-open');
-    videoModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    closeNav();
-  }
+// Accordion: keep only one <details> open at a time (per accordion)
+(() => {
+  const accordions = Array.from(document.querySelectorAll('.accordion'));
+  if (!accordions.length) return;
 
-  function closeVideoModal() {
-    if (!videoModal || !videoEl || !videoSource) return;
-    videoEl.pause();
-    videoSource.setAttribute('src', '');
-    videoEl.load();
+  accordions.forEach((acc) => {
+    const items = Array.from(acc.querySelectorAll('details'));
+    if (items.length <= 1) return;
 
-    videoModal.classList.remove('is-open');
-    videoModal.setAttribute('aria-hidden', 'true');
+    items.forEach((item) => {
+      item.addEventListener('toggle', () => {
+        if (!item.open) return;
+        items.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+      });
+    });
+  });
+})();
+
+// Label / video modal (About page)
+(() => {
+  const modal = document.getElementById('labelModal');
+  if (!modal) return;
+
+  const video = modal.querySelector('video');
+  const titleEl = modal.querySelector('[data-label-title]');
+  const descEl = modal.querySelector('[data-label-desc]');
+  const openers = Array.from(document.querySelectorAll('[data-label-open]'));
+  const closers = Array.from(modal.querySelectorAll('[data-modal-close]'));
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
-  }
 
-  document.querySelectorAll('[data-video]').forEach((btn) => {
+    if (video) {
+      try { video.pause(); } catch (_) {}
+      video.removeAttribute('src');
+      video.removeAttribute('poster');
+      video.load();
+    }
+  };
+
+  const open = (btn) => {
+    const explicitTitle = btn.getAttribute('data-title') || btn.getAttribute('data-label-title');
+    const explicitDesc = btn.getAttribute('data-desc') || btn.getAttribute('data-label-desc');
+    const src = btn.getAttribute('data-video');
+    const poster = btn.getAttribute('data-poster');
+    const loopAttr = btn.getAttribute('data-loop');
+    const loop = loopAttr == null ? true : !(loopAttr === 'false' || loopAttr === '0');
+
+    const container = btn.closest('.label-card') || btn.closest('details') || btn.closest('[data-label-container]');
+    const fallbackTitle =
+      (container && (container.querySelector('.label-name') || container.querySelector('h3,h4') || container.querySelector('summary'))?.textContent.trim()) ||
+      'Example';
+
+    const fallbackDesc =
+      (container && (container.querySelector('[data-label-text]') || container.querySelector('p'))?.textContent.trim()) ||
+      '';
+
+    const title = explicitTitle || fallbackTitle;
+    const desc = explicitDesc || fallbackDesc;
+
+    if (titleEl) titleEl.textContent = title;
+    if (descEl) descEl.textContent = desc;
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    if (video && src) {
+      // Reset + load
+      try { video.pause(); } catch (_) {}
+      video.loop = loop;
+      video.muted = true;
+      if (poster) video.poster = poster;
+      else video.removeAttribute('poster');
+
+      video.src = src;
+      video.load();
+
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      };
+
+      // Try immediately (most browsers allow because this is in a user gesture)
+      tryPlay();
+
+      // Try again once ready (helps reduce “paused frame” feel)
+      const onCanPlay = () => {
+        tryPlay();
+        video.removeEventListener('canplay', onCanPlay);
+      };
+      video.addEventListener('canplay', onCanPlay);
+    }
+
+    const closeBtn = modal.querySelector('.modal__close');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  openers.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const src = btn.getAttribute('data-video');
-      if (!src) return;
-      const start = parseFloat(btn.getAttribute('data-start') || '0');
-      openVideoModal(src, Number.isFinite(start) ? start : 0);
+      open(btn);
     });
   });
 
-  if (videoModal) {
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) closeVideoModal();
+  closers.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      close();
     });
-  }
-
-  Array.from(videoCloseButtons).forEach((btn) => {
-    btn.addEventListener('click', () => closeVideoModal());
   });
 
-  // Global escape handler
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeTrialModal();
-      closeVideoModal();
-      closeNav();
-    }
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
   });
 })();
