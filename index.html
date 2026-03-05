@@ -1,213 +1,317 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>AZRO Systems — Invite-only TradingView indicators</title>
-<meta content="Invite-only TradingView indicators for cycle-level decisions: the XRP Top/Bottom Detector and the BTC Engine (coming soon)." name="description"/>
-<link href="https://azrosystems.com/" rel="canonical"/>
-<meta content="#070B16" name="theme-color"/>
-<link href="favicon-32.png" rel="icon" type="image/png"/>
-<!-- Open Graph / Twitter -->
-<meta content="AZRO Systems — TradingView indicators" property="og:title"/>
-<meta content="Two products: XRP Top/Bottom Detector + BTC Engine (coming soon). Invite-only access, clear workflow, and disciplined execution." property="og:description"/>
-<meta content="og-card.png" property="og:image"/>
-<meta content="website" property="og:type"/>
-<meta content="https://azrosystems.com/" property="og:url"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="style.css" rel="stylesheet"/>
-<script defer="" src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>AZRO Systems — TradingView Indicators for Cycle-Level Decisions</title>
+  <meta name="description" content="AZRO Systems builds invite-only TradingView tools designed for cycle-level decision making: the XRP Top/Bottom Detector and the BTC Engine. Free trial available. Works with free TradingView accounts." />
+
+  <meta property="og:title" content="AZRO Systems — TradingView Indicators" />
+  <meta property="og:description" content="Two invite-only TradingView tools built to reduce noise: XRP Top/Bottom Detector + BTC Engine." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
-<body class="home">
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-<div class="container header-inner">
-<a aria-label="AZRO Systems home" class="brand" href="index.html">
-          <span aria-hidden="true" class="brand-mark">
-            <img alt="" aria-hidden="true" decoding="async" loading="eager" src="logo-mark.png" width="44" height="44"/>
-          </span>
-          <span class="brand-name">AZRO Systems</span>
-        </a>
-<button aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" class="nav-toggle" type="button">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24">
-<path d="M4 7h16"></path>
-<path d="M4 12h16"></path>
-<path d="M4 17h16"></path>
-</svg>
-</button>
-<nav aria-label="Primary navigation" class="nav" id="site-nav">
-<a aria-current="page" href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="features.html">Features</a>
-<a href="pricing.html">Pricing</a>
-<a href="resources.html">Resources</a>
-</nav>
-<div class="header-actions">
-<button class="btn btn--sm btn--ghost" data-trial-open="" type="button">Free trial</button>
-<a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy on Gumroad</a>
-</div>
-</div>
-</header>
-<main id="main">
-    <section class="hero hero--split">
-<div class="container hero-inner">
-<div class="hero-text">
-        <div class="meta-row">
-          <span class="meta-item">Precision over noise</span>
-          <span class="meta-item">Discipline over hype</span>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="AZRO Systems home">
+        <img src="logo.webp" alt="AZRO Systems" width="34" height="34" />
+        <span>AZRO Systems</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="resources.html">Resources</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--ghost" href="pricing.html#plans">View pricing</a>
+        <button class="btn btn--primary" data-open-trial>Free trial</button>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="meta-row">
+            <span class="meta-item">Invite-only on TradingView</span>
+            <span class="meta-item">Works with free accounts</span>
+            <span class="meta-item">Free trial available</span>
+          </div>
+
+          <h1>Map the cycle. Cut the noise.</h1>
+          <p class="subhead">
+            AZRO Systems builds cycle-focused indicators and execution tools for TradingView.
+            Choose the workflow that matches what you actually do in the market.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="pricing.html#plans">View pricing</a>
+            <button class="btn btn--ghost" data-open-trial>Free trial</button>
+          </div>
+          <p class="muted" style="margin-top: 12px;">
+            <strong>Access:</strong> Enter your TradingView username and you’ll receive an invite to the indicator(s).
+          </p>
         </div>
-        <h1>Spot market tops and bottoms with confidence.</h1>
-<p class="lede">
-        The <strong>AZRO Systems XRP Top/Bottom Detector</strong> is an invite-only TradingView indicator designed to help confirm cycle-level
-        bottoms, tops, and risk conditions on XRP — using clear on-chart labels + alerts.
-      </p>
-<ul class="checklist">
-<li><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span><strong>Confirm decisions near extremes</strong> with cycle-oriented labels (not noise).</span></li>
-<li><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span><strong>Reduce screen-watching</strong> with TradingView alerts (push/email/webhook*).</span></li>
-<li><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span><strong>Stay systematic</strong> with optional context overlays you can toggle on/off.</span></li>
-</ul>
-<div class="hero-cta">
-<a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy on Gumroad</a>
-<button class="btn btn--ghost" data-trial-open="" type="button">Free trial</button>
-</div>
-        <p class="legal-note">Invite-only access. Most invites go out within <strong>24 business hours</strong>.</p>
-</div>
-<div class="hero-media">
-<figure class="media-frame media-frame--figure">
-<picture>
-<source srcset="chart.avif" type="image/avif"/>
-<source srcset="chart.webp" type="image/webp"/>
-<img alt="Example chart with AZRO Systems labels" decoding="async" loading="eager" src="chart.png"/>
-</picture>
-        <figcaption class="chart-note">Example chart (illustrative). Confirmations evaluate on the weekly close; intraday price action can diverge.</figcaption>
-</figure>
-</div>
-</div>
-</section>
 
-<section class="section section--tight" id="btc-engine">
-<div class="container">
-<div class="grid-2">
-<div class="card card-pad">
-<div class="pill">BTC Engine</div>
-<h2 style="margin-top: 12px;">A weekly BTC operating system.</h2>
-<p class="section-sub">Dashboard-first DCA + cycle-risk tools designed for long-term allocators.</p>
+        <div class="hero-media" aria-label="Indicator previews">
+          <div class="grid-2" style="gap:14px;">
+            <div class="media-frame">
+              <img src="newchart.webp" alt="XRP Top/Bottom Detector labels on a TradingView chart" loading="lazy" />
+            </div>
+            <div class="media-frame">
+              <img src="btc-engine-placeholder.svg" alt="BTC Engine dashboard preview (placeholder)" loading="lazy" />
+            </div>
+          </div>
+          <p class="media-caption">Previews shown on TradingView. Visuals vary by symbol and timeframe.</p>
+        </div>
+      </div>
+    </section>
 
-<ul class="checklist" style="margin-top: 14px;">
-  <li>Weekly action + suggested amount (BUY / HOLD / TRIM optional)</li>
-  <li>Cash-buffer aware execution modes (Stack / Adaptive / Event / Performance)</li>
-  <li>Proof vs auto-buy (BTC-equivalent) built into the dashboard</li>
-</ul>
+    <!-- PRODUCTS -->
+    <section class="section" id="products">
+      <div class="container">
+        <h2 class="section-title">Two tools. Two different jobs.</h2>
+        <p class="section-subtitle">Signal cycle extremes on XRP, or run a weekly DCA engine for Bitcoin.</p>
 
-<div class="btn-row mt-24">
-  <a class="btn btn--primary" href="features.html#btc-engine">Preview BTC Engine</a>
-  <a class="btn btn--ghost" href="mailto:support@azrosystems.com?subject=BTC%20Engine%20early%20access">Request early access</a>
-</div>
+        <div class="grid-2" style="margin-top: 26px;">
+          <article class="card">
+            <div class="meta-row">
+              <span class="meta-item">XRP</span>
+              <span class="meta-item">Cycle signals</span>
+              <span class="meta-item">Alerts included</span>
+            </div>
+            <h3 style="margin-top:10px;">XRP Top/Bottom Detector</h3>
+            <p class="muted" style="margin-top:8px;">
+              Built for traders who want high-signal cycle labels instead of constant chart-watching.
+              Designed around weekly confirmations to reduce intraday noise.
+            </p>
 
-<p class="small muted mt-12">Placeholder screenshots today. We’ll swap in live charts + a demo video before launch.</p>
-</div>
+            <ul class="checklist" aria-label="XRP Top/Bottom Detector highlights">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Clear hierarchy of labels (radar, major, warnings, extreme lows)</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Alert-ready so you can show up only when it matters</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Works on free TradingView accounts (invite-only access)</span></li>
+            </ul>
 
-<div class="card card-pad">
-  <div class="media-frame">
-    <img src="btc-engine-placeholder.svg" alt="AZRO Systems BTC Engine placeholder image" loading="lazy" />
-    <div class="chart-note">BTC Engine dashboard preview (placeholder).</div>
-  </div>
-</div>
-</div>
-</div>
-</section>
-<section class="section section--tight" id="access">
-<div class="container">
-<h2 class="section-title">How access works</h2>
-<p class="section-sub">Our scripts are invite-only on TradingView. Buy on Gumroad and enter your TradingView username at checkout — we’ll add access.</p>
-<div class="grid-3" style="margin-top: 18px;">
-<div class="card card-pad">
-<h3>1) Purchase</h3>
-<p class="small" style="margin-top: 8px;">Buy lifetime access on Gumroad.</p>
-</div>
-<div class="card card-pad">
-<h3>2) Provide your TradingView username</h3>
-<p class="small" style="margin-top: 8px;">Gumroad asks for your TradingView handle at checkout. If you forgot, reply to your receipt email (or contact support) and we’ll add you.</p>
-</div>
-<div class="card card-pad">
-<h3>3) Get invited</h3>
-<p class="small" style="margin-top: 8px;">Access is typically granted within <strong>24 business hours</strong> (business days).</p>
-<p class="small" style="margin-top: 10px;"><a href="https://www.tradingview.com/script/4M3OWBpz-AZRO-Systems-XRP-Top-Bottom-Indicator-Invite-Only/" rel="noopener" target="_blank">XRP TradingView listing →</a></p>
-<p class="small muted" style="margin-top: 6px;">BTC Engine listing: coming soon.</p>
-</div>
-</div>
+            <p class="muted" style="margin-top:14px;">
+              <strong>$200</strong> lifetime · <strong>$29/mo</strong> subscription
+            </p>
 
-<div style="margin-top: 18px;">
-  <span class="small">Questions? <a href="resources.html#support">Email support →</a></span>
-</div>
-</div>
-</section>
+            <div class="btn-row btn-row--stack-sm" style="margin-top:16px;">
+              <a class="btn btn--ghost" href="about.html#xrp">Learn more</a>
+              <a class="btn btn--primary" href="pricing.html#xrp">Get access</a>
+            </div>
+          </article>
 
-<section class="section section--tight" id="docs">
-<div class="container">
-<div class="card card-pad card--narrow center stack">
-<h2 class="section-title" style="margin:0;">Docs + setup videos</h2>
-<p class="section-sub" style="margin:0;">Short videos explain each label, plus quick-start and alert-trigger guides so you can install and set alerts correctly. BTC Engine docs ship with launch.</p>
-<div class="btn-row btn-row--center btn-row--stack-sm" style="margin-top: 4px;">
-<a class="btn btn--sm btn--ghost" href="about.html#labels">Label glossary + videos</a>
-<a class="btn btn--sm btn--ghost" href="resources.html#downloads">Quick start + alert triggers</a>
-</div>
-</div>
-</div>
-</section>
-</main>
-<footer class="site-footer">
-<div class="container">
-<div class="footer-inner">
-<div class="footer-brand">
-<strong>AZRO Systems</strong>
-<div class="small">Proof-first crypto indicators and operating systems.<br/>Built for clarity, durability, and conservative execution.</div>
-<div class="footer-meta">© 2026 Azro Labs LLC. Educational only • not investment advice.</div>
-</div>
-<div aria-label="Footer links" class="footer-links">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="features.html">Features</a>
-<a href="pricing.html">Pricing</a>
-<a href="resources.html">Resources</a>
-<a href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">Risk disclosure</a>
-<a href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Gumroad</a>
-<a href="https://x.com/AzroSystems" rel="noopener" target="_blank">X</a>
-<a href="https://www.instagram.com/azrosystems/" rel="noopener" target="_blank">Instagram</a>
-</div>
-</div>
-</div>
-</footer>
-<div aria-hidden="true" class="modal modal--solid" id="trialModal">
-<div class="modal__backdrop" data-modal-close=""></div>
-<div aria-labelledby="trialTitle" aria-modal="true" class="modal__dialog" role="dialog">
-<button aria-label="Close" class="modal__close" data-modal-close="" type="button">✕</button>
-<h2 id="trialTitle">Free trial code</h2>
-<p>Use this code at Gumroad checkout to activate a free trial when available.</p>
-<div class="code-box">
-<code id="trialCode">AZRO-FREE-TRIAL</code>
-<button class="btn btn--sm btn--ghost" data-copy-code="" type="button">Copy</button>
-</div>
-<p class="small" style="margin-top:10px;">If the code doesn’t apply, the trial may be paused. Check updates on <a href="https://x.com/AzroSystems" rel="noopener" target="_blank">X</a> / <a href="https://www.instagram.com/azrosystems" rel="noopener" target="_blank">Instagram</a> or email <a href="mailto:support@azrosystems.com">support@azrosystems.com</a>.</p>
-<div class="modal__actions">
-<a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Open Gumroad</a>
-<a class="btn btn--sm btn--ghost" href="mailto:support@azrosystems.com?subject=Free%20trial%20request%20(XRP%20indicator)">Email support</a>
-</div>
-</div>
-</div>
+          <article class="card">
+            <div class="meta-row">
+              <span class="meta-item">BTC</span>
+              <span class="meta-item">Weekly execution</span>
+              <span class="meta-item">Dashboard-first</span>
+            </div>
+            <h3 style="margin-top:10px;">BTC Engine</h3>
+            <p class="muted" style="margin-top:8px;">
+              A weekly DCA engine that combines cycle context with a disciplined execution layer.
+              Built for long-term Bitcoin participants who want rules, not vibes.
+            </p>
 
-  <!-- Sticky mobile CTA -->
-  <div class="sticky-cta" role="region" aria-label="Quick actions">
+            <ul class="checklist" aria-label="BTC Engine highlights">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Dashboard tells you BUY / TRIM / HOLD + suggested amount</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Multiple modes (stack, adaptive, event, performance) + risk profiles</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Built-in simulation vs auto-buy (BTC-eq performance view)</span></li>
+            </ul>
+
+            <p class="muted" style="margin-top:14px;">
+              <strong>$2000</strong> lifetime · <strong>$149/mo</strong> subscription
+            </p>
+
+            <div class="btn-row btn-row--stack-sm" style="margin-top:16px;">
+              <a class="btn btn--ghost" href="about.html#btc">Learn more</a>
+              <a class="btn btn--primary" href="pricing.html#btc">Get access</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="card" style="margin-top: 16px;">
+          <div class="meta-row">
+            <span class="meta-item">Bundle</span>
+            <span class="meta-item">Best value</span>
+            <span class="meta-item">One invite, two tools</span>
+          </div>
+          <div class="grid-2" style="margin-top: 14px; align-items:center;">
+            <div>
+              <h3 style="margin:0;">Get both indicators</h3>
+              <p class="muted" style="margin-top:8px;">
+                The bundle is designed for cycle-aware investors who want both the XRP signal layer and the BTC execution engine.
+              </p>
+            </div>
+            <div style="text-align:right;">
+              <p class="muted" style="margin:0;"><strong>$1999</strong> lifetime · <strong>$169/mo</strong> subscription</p>
+              <div class="btn-row btn-row--end btn-row--stack-sm" style="margin-top: 12px;">
+                <a class="btn btn--ghost" href="pricing.html#bundle">View bundle</a>
+                <a class="btn btn--primary" href="pricing.html#plans">Compare plans</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACCESS -->
+    <section class="section" id="access">
+      <div class="container">
+        <h2 class="section-title">How access works</h2>
+        <p class="section-subtitle">Simple, fast, and designed around TradingView’s invite-only model.</p>
+
+        <div class="grid-3" style="margin-top: 26px;">
+          <div class="card">
+            <h3>1) Choose a plan</h3>
+            <p class="muted">Buy lifetime or subscribe. If you’re not ready, start with a free trial.</p>
+          </div>
+          <div class="card">
+            <h3>2) Enter your TradingView username</h3>
+            <p class="muted">We use that username to grant access to the private indicator(s).</p>
+          </div>
+          <div class="card">
+            <h3>3) You’ll receive an invite</h3>
+            <p class="muted">Accept the invite on TradingView, then add the indicator to your chart and set alerts.</p>
+          </div>
+        </div>
+
+        <div class="btn-row btn-row--center btn-row--stack-sm" style="margin-top: 22px;">
+          <a class="btn btn--primary" href="pricing.html#plans">View pricing</a>
+          <a class="btn btn--ghost" href="resources.html">Setup + resources</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand" style="gap:10px;">
+          <img src="logo-mark-256.png" width="28" height="28" alt="" aria-hidden="true" />
+          <span>AZRO Systems</span>
+        </div>
+        <p class="muted" style="margin-top:10px; max-width: 48ch;">
+          Invite-only TradingView indicators designed for cycle-level decision making.
+          Educational tools — not financial advice.
+        </p>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="about.html">About</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#support">Support</a>
+        <a href="resources.html#disclosure">Disclosure</a>
+      </div>
+
+      <div class="footer-meta">
+        <div class="footer-social">
+          <a class="icon-btn" data-link="x_url" data-external href="https://x.com/AzroSystems" aria-label="AZRO Systems on X">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4l16 16M20 4L4 20" />
+            </svg>
+          </a>
+          <a class="icon-btn" data-link="instagram_url" data-external href="https://www.instagram.com/azrosystems/" aria-label="AZRO Systems on Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" />
+            </svg>
+          </a>
+        </div>
+        <p class="muted" style="margin-top: 10px;">© <span data-year></span> AZRO Systems</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA (mobile) -->
+  <div class="sticky-cta" aria-hidden="false">
     <div class="container sticky-cta-inner">
-      <a class="btn btn--primary" data-glow href="https://azrosystems.gumroad.com/l/kuvbu">Buy on Gumroad</a>
-      <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
+      <a class="btn btn--primary" href="pricing.html#plans">View pricing</a>
+      <button class="btn btn--ghost" data-open-trial>Free trial</button>
     </div>
   </div>
 
+    <!-- Trial Modal -->
+  <div class="modal" id="trialModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Free trial">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="document">
+      <div class="modal__head">
+        <h3 style="margin:0;">Request a free trial invite</h3>
+        <button class="modal__close" type="button" aria-label="Close" data-close-modal>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="muted" style="margin-top:12px;">Trials are invite-only (TradingView requirement). No card required.</p>
+
+      <ol class="muted" style="margin-top: 12px; padding-left: 18px;">
+        <li>Copy your TradingView username (profile URL).</li>
+        <li>Send it to support with the product you want to trial.</li>
+        <li>Accept the TradingView invite and add the indicator to your chart.</li>
+      </ol>
+
+      <div class="modal__actions">
+        <a class="btn btn--primary" href="mailto:support@azrosystems.com?subject=XRP%20Trial%20Request&body=TradingView%20username%3A%20">Trial XRP</a>
+        <a class="btn btn--primary" href="mailto:support@azrosystems.com?subject=BTC%20Engine%20Trial%20Request&body=TradingView%20username%3A%20">Trial BTC</a>
+        <a class="btn btn--ghost" href="mailto:support@azrosystems.com?subject=AZRO%20Bundle%20Trial%20Request&body=TradingView%20username%3A%20">Trial both</a>
+      </div>
+
+      <div class="modal__foot">
+        <p class="muted" style="margin:0;">Support: <a href="mailto:support@azrosystems.com">support@azrosystems.com</a></p>
+        <button class="btn btn--ghost btn--sm" type="button" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="modal" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Video">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog modal__dialog--video" role="document">
+      <div class="modal__head">
+        <h3 style="margin:0;">Demo</h3>
+        <button class="modal__close" type="button" aria-label="Close" data-close-modal>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+
+      <video playsinline controls preload="metadata">
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 </body>
 </html>
