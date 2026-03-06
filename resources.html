@@ -20,9 +20,8 @@
 <link rel="stylesheet" href="style.css"/>
 <script defer src="script.js"></script>
 </head>
-<body>
+<body class="page page-resources">
 <a class="skip-link" href="#main">Skip to content</a>
-
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="index.html" aria-label="AZRO Systems home">
@@ -49,56 +48,40 @@
     </div>
   </div>
 </header>
-
 <main id="main">
+
   <section class="hero">
     <div class="container center measure">
       <div class="eyebrow">Resources</div>
       <h1>Documentation, walkthroughs, and support.</h1>
-      <p class="lede" style="margin-top:12px;">Start with the overview that matches your product, then use the PDFs and disclosures to validate the workflow.</p>
+      <p class="lede" style="margin-top:12px;">Start with the overview that matches your product, then use the walkthroughs, PDFs, and disclosures to validate the workflow.</p>
     </div>
   </section>
 
   <section class="section section--tight">
     <div class="container">
       <div class="card card-pad card--narrow">
-        <h2>Start here</h2>
-        <div class="resources-grid" style="margin-top:18px;">
-          <a class="resource-card" href="about.html#btc-engine">
-            <span>BTC Engine overview</span>
-          </a>
-          <button class="resource-card resource-card--button" type="button" data-video-open data-title="BTC Engine walkthrough" data-desc="A dashboard-first view of weekly action, amount, and proof vs auto-buy." data-video="btc-demo.mp4" data-start="1.2">
-            <span>BTC Engine walkthrough</span>
-          </button>
-          <a class="resource-card" href="about.html#xrp-detector">
-            <span>XRP Detector overview</span>
-          </a>
-          <button class="resource-card resource-card--button" type="button" data-video-open data-title="XRP Detector walkthrough" data-desc="A short walkthrough of confirmations, context layers, and the weekly-close workflow." data-video="videos/xrp-demo.mp4" data-start="1.2">
-            <span>XRP walkthrough</span>
-          </button>
-          <a class="resource-card" href="pricing.html">
-            <span>Pricing + access</span>
-          </a>
-          <a class="resource-card" href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">
-            <span>Risk disclosure</span>
-          </a>
+        <h2>Walkthroughs</h2>
+        <div class="resources-grid resources-grid--three" style="margin-top:18px;">
+          <button class="resource-card resource-card--button" type="button" data-video-open data-title="BTC Engine walkthrough" data-desc="A dashboard-first walkthrough of weekly action, sizing, and proof vs auto-buy." data-video="btc-demo.mp4" data-poster="btc-engine-preview.png" data-start="1.5"><span>Watch BTC walkthrough</span></button>
+          <button class="resource-card resource-card--button" type="button" data-video-open data-title="XRP Detector walkthrough" data-desc="A short walkthrough of confirmations, context layers, and the weekly-close workflow." data-video="videos/xrp-demo.mp4" data-poster="newchart.png" data-start="1.5"><span>Watch XRP walkthrough</span></button>
+          <a class="resource-card" href="about.html"><span>About both workflows</span></a>
         </div>
 
-        <h2 class="section-title" id="downloads" style="margin-top:34px;">PDF downloads</h2>
-        <div class="resources-grid" style="margin-top:18px;">
+        <h2 class="section-title" id="documents" style="margin-top:34px;">Documents + disclosures</h2>
+        <div class="resources-grid resources-grid--three" style="margin-top:18px;">
+          <a class="resource-card" href="pdfs/quick-start-guide.pdf" rel="noopener" target="_blank"><span>Quick start guide</span></a>
           <a class="resource-card" href="pdfs/alert-trigger-guide.pdf" rel="noopener" target="_blank"><span>Alert Trigger Guide</span></a>
           <a class="resource-card" href="pdfs/methodology-overview.pdf" rel="noopener" target="_blank"><span>Methodology overview</span></a>
           <a class="resource-card" href="pdfs/faq.pdf" rel="noopener" target="_blank"><span>FAQ</span></a>
-          <a class="resource-card" href="pdfs/terms-of-service.pdf" rel="noopener" target="_blank"><span>Terms of service</span></a>
-          <a class="resource-card" href="pdfs/privacy-policy.pdf" rel="noopener" target="_blank"><span>Privacy policy</span></a>
           <a class="resource-card" href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank"><span>Risk disclosure</span></a>
+          <a class="resource-card" href="https://www.tradingview.com/support/solutions/43000555216-how-to-try-indicators-and-strategies-from-the-community-on-your-chart/" rel="noopener" target="_blank"><span>TradingView invite-only help</span></a>
         </div>
 
-        <h2 class="section-title" style="margin-top:34px;">Social updates</h2>
-        <div class="grid-2" style="margin-top:18px;">
+        <div class="grid-2" style="margin-top:34px;">
           <div class="card card-pad">
-            <h3>X + Instagram</h3>
-            <p class="small" style="margin-top:8px;">Follow for release notes, workflow tips, promotions, and new product announcements.</p>
+            <h3>Social updates</h3>
+            <p class="small" style="margin-top:8px;">Follow on X and Instagram for articles, workflow tips, release notes, promotions, and new product launches.</p>
             <div class="btn-row" style="margin-top:14px;">
               <a class="btn btn--sm btn--ghost" href="https://x.com/AzroSystems" rel="noopener" target="_blank">Follow on X</a>
               <a class="btn btn--sm btn--ghost" href="https://www.instagram.com/azrosystems/" rel="noopener" target="_blank">Follow on Instagram</a>
@@ -106,7 +89,7 @@
           </div>
           <div class="card card-pad" id="support">
             <h3>Support</h3>
-            <p class="small" style="margin-top:8px;">For the fastest support path, include your TradingView username and Gumroad receipt in your message.</p>
+            <p class="small" style="margin-top:8px;">Need help with access, setup, or your TradingView username? Use the email below and we’ll point you to the right next step.</p>
             <p class="small" style="margin-top:10px;"><a href="mailto:support@azrosystems.com?subject=AZRO%20Support">support@azrosystems.com</a><br/>Azro Labs LLC • UT Entity #14569235-0160</p>
             <div class="btn-row" style="margin-top:14px;">
               <a class="btn btn--sm btn--primary" data-glow href="mailto:support@azrosystems.com?subject=AZRO%20Support">Email support</a>
@@ -117,8 +100,8 @@
       </div>
     </div>
   </section>
-</main>
 
+</main>
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
@@ -152,7 +135,7 @@
       <code id="trialCode">AZRO-FREE-TRIAL</code>
       <button class="btn btn--sm btn--ghost" type="button" data-copy-code>Copy</button>
     </div>
-    <p class="small" style="margin-top:10px;">The trial code stays active. Invite-only access is added through TradingView after checkout.</p>
+    <p class="small" style="margin-top:10px;">The trial code stays active, includes all features, and works on free TradingView accounts.</p>
     <div class="modal__actions">
       <a class="btn btn--sm btn--primary" data-glow href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Open Gumroad</a>
       <a class="btn btn--sm btn--ghost" href="resources.html#support">Get support</a>
