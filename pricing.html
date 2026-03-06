@@ -1,258 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Pricing — AZRO Systems</title>
-  <meta name="description" content="Pricing for AZRO Systems: BTC Engine, XRP Top/Bottom Detector, or bundle both. Lifetime access and subscriptions via Gumroad." />
-  <link rel="canonical" href="https://azrosystems.com/pricing.html" />
-  <meta name="theme-color" content="#070B16" />
-  <link rel="icon" type="image/png" href="favicon-32.png" />
-
-  <meta property="og:title" content="Pricing — AZRO Systems" />
-  <meta property="og:description" content="Choose BTC, XRP, or bundle both. Invite-only access is delivered through TradingView after Gumroad checkout." />
-  <meta property="og:image" content="og-card.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://azrosystems.com/pricing.html" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pricing — AZRO Systems</title>
+<meta name="description" content="Pricing for BTC Engine, XRP Top/Bottom Detector, and the BTC + XRP bundle. Invite-only TradingView access delivered after Gumroad checkout."/>
+<link rel="canonical" href="https://azrosystems.com/pricing.html"/>
+<meta name="theme-color" content="#070B16"/>
+<link rel="icon" type="image/png" href="favicon-32.png"/>
+<meta property="og:title" content="Pricing — AZRO Systems"/>
+<meta property="og:description" content="Pricing for BTC Engine, XRP Top/Bottom Detector, and the BTC + XRP bundle. Invite-only TradingView access delivered after Gumroad checkout."/>
+<meta property="og:image" content="og-card.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://azrosystems.com/pricing.html"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<script defer src="script.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="AZRO Systems home">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="logo-mark.png" width="44" height="44" loading="eager" decoding="async" aria-hidden="true" alt="" />
-        </span>
-        <span class="brand-name">AZRO Systems</span>
-      </a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="AZRO Systems home">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="logo-mark.png" width="44" height="44" alt="" loading="eager" decoding="async"/>
+      </span>
+      <span class="brand-name">AZRO Systems</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path>
+      </svg>
+    </button>
+    <nav id="site-nav" class="nav" aria-label="Primary navigation">
+      <a  href="index.html">Home</a>
+      <a  href="about.html">About</a>
+      <a  href="features.html">Features</a>
+      <a aria-current="page" href="pricing.html">Pricing</a>
+      <a  href="resources.html">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn--sm btn--ghost" type="button" data-trial-open>Free trial</button>
+      <a class="btn btn--sm btn--primary" data-glow href="pricing.html">View plans</a>
+    </div>
+  </div>
+</header>
 
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M4 7h16"></path>
-          <path d="M4 12h16"></path>
-          <path d="M4 17h16"></path>
-        </svg>
-      </button>
+<main id="main">
+  <section class="hero">
+    <div class="container center measure">
+      <div class="eyebrow">Pricing</div>
+      <h1>Choose BTC, XRP, or bundle both.</h1>
+      <p class="lede" style="margin-top:12px;">Invite-only access is delivered through TradingView after Gumroad checkout.</p>
+    </div>
+  </section>
 
-      <nav class="nav" id="site-nav" aria-label="Primary navigation">
+  <section class="section section--tight" id="plans">
+    <div class="container">
+      <div class="pricing-plans">
+        <article class="card pricing-plan" id="btc-plan">
+          <div class="small plan-label">BTC Engine</div>
+          <div class="price-big">$2,000</div>
+          <div class="small plan-subline">Lifetime access (one-time)</div>
+          <ul class="plan-bullets">
+            <li>Weekly action + suggested amount</li>
+            <li>Modes + risk profiles</li>
+            <li>Proof vs auto-buy (BTC-eq)</li>
+          </ul>
+          <div class="plan-subscription">Subscription <strong>$199/mo</strong></div>
+          <div class="cta-pair" style="margin-top:18px;">
+            <a class="btn btn--primary" data-glow href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Buy lifetime</a>
+            <a class="btn btn--ghost" href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Subscribe</a>
+          </div>
+          <p class="legal-note">Built for allocators who want a calmer, rules-first weekly routine.</p>
+        </article>
+
+        <article class="card pricing-plan pricing-plan--highlight" id="bundle-plan">
+          <div class="small plan-label">Bundle (BTC + XRP)</div>
+          <div class="price-big">$2,100</div>
+          <div class="small plan-subline">Lifetime access (one-time)</div>
+          <ul class="plan-bullets">
+            <li>BTC Engine + XRP Detector together</li>
+            <li>Single workflow across both markets</li>
+            <li>Saves $100 vs buying separately</li>
+          </ul>
+          <div class="plan-subscription">Subscription <strong>$219/mo</strong></div>
+          <div class="cta-pair" style="margin-top:18px;">
+            <a class="btn btn--primary" data-glow href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Buy bundle</a>
+            <a class="btn btn--ghost" href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Subscribe</a>
+          </div>
+          <p class="legal-note">Best for users who want both markets covered with one rules-first mindset.</p>
+        </article>
+
+        <article class="card pricing-plan" id="xrp-plan">
+          <div class="small plan-label">XRP Top/Bottom Detector</div>
+          <div class="price-big">$200</div>
+          <div class="small plan-subline">Lifetime access (one-time)</div>
+          <ul class="plan-bullets">
+            <li>Weekly-close confirmation labels</li>
+            <li>Optional context overlays</li>
+            <li>TradingView alerts + walkthroughs</li>
+          </ul>
+          <div class="plan-subscription">Subscription <strong>$25/mo</strong></div>
+          <div class="cta-pair" style="margin-top:18px;">
+            <a class="btn btn--primary" data-glow href="https://azrosystems.gumroad.com/l/kuvbu" rel="noopener" target="_blank">Buy lifetime</a>
+            <a class="btn btn--ghost" href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Subscribe</a>
+          </div>
+          <p class="legal-note">An accessible entry point if your focus is cycle confirmation on XRP.</p>
+        </article>
+      </div>
+
+      <div class="card card-pad note-card" role="note" style="margin-top:18px;">
+        <div class="small note-card__title">Important</div>
+        <p class="small muted note-card__text">AZRO products are educational tools — not investment advice. Use them with a written process, risk limits, and position sizing rules.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="card card-pad card--narrow card--center">
+        <h2>How access works</h2>
+        <p class="section-sub">Both products are private (invite-only) scripts on TradingView.</p>
+        <div class="grid-3" style="margin-top:22px;">
+          <div class="card card-pad card--flat">
+            <h3>1) Purchase</h3>
+            <p class="small">Choose BTC, XRP, or the bundle on Gumroad — lifetime or subscription.</p>
+          </div>
+          <div class="card card-pad card--flat">
+            <h3>2) Add your TradingView username</h3>
+            <p class="small">Enter your TradingView handle at checkout so we can grant access to the private script(s).</p>
+          </div>
+          <div class="card card-pad card--flat">
+            <h3>3) Get invited</h3>
+            <p class="small">We invite your account to the script and you load it directly on TradingView. Subscriptions stay active while your plan is active.</p>
+          </div>
+        </div>
+        <div class="btn-row btn-row--center" style="margin-top:22px;">
+          <a class="btn btn--primary" data-glow href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Open Gumroad</a>
+          <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>AZRO Systems</strong>
+        <div class="small">Proof-first crypto indicators and operating systems.<br/>Built for clarity, durability, and conservative execution.</div>
+        <div class="footer-meta">© 2026 Azro Labs LLC. Educational only • not investment advice.</div>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="features.html">Features</a>
-        <a href="pricing.html" aria-current="page">Pricing</a>
+        <a href="pricing.html">Pricing</a>
         <a href="resources.html">Resources</a>
-      </nav>
-
-      <div class="header-actions">
-        <button class="btn btn--sm btn--ghost" type="button" data-trial-open>Free trial</button>
-        <a class="btn btn--sm btn--primary" data-glow="1" href="#plans">View plans</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero hero--center">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Pricing</h1>
-          <p class="lede">Choose <strong>BTC</strong>, <strong>XRP</strong>, or bundle both. Invite-only access is delivered through TradingView after Gumroad checkout.</p>
-          <div class="hero-cta">
-            <a class="btn btn--primary" data-glow="1" href="#plans">Compare plans</a>
-            <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
-          </div>
-          <p class="legal-note">Educational tools only — not investment advice.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="plans">
-      <div class="container">
-        <div class="pricing-grid pricing-grid--3">
-                    <!-- BTC -->
-          <article class="card pricing-card" id="btc">
-            <div class="small" style="letter-spacing:.08em; text-transform:uppercase;">BTC Engine</div>
-            <h2 class="price-big" style="margin-top: 10px;">$2,000</h2>
-            <div class="small muted">Lifetime access (one-time)</div>
-
-            <ul class="checklist" style="margin-top: 14px;">
-              <li>Weekly dashboard: action + suggested amount</li>
-              <li>Modes + risk profiles</li>
-              <li>Built-in proof vs auto-buy metric (BTC-eq)</li>
-            </ul>
-
-            <div class="cta-pair" style="margin-top: 18px;">
-              <!-- TODO: replace with your BTC lifetime Gumroad link -->
-              <a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Buy lifetime</a>
-              <!-- TODO: replace with your BTC subscription Gumroad link -->
-              <a class="btn btn--ghost" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Subscribe ($199/mo)</a>
-            </div>
-
-            <p class="legal-note" style="margin-top: 10px;">Built for systematic allocators who want a rules-first weekly routine.</p>
-          </article>
-
-          <!-- XRP -->
-          <article class="card pricing-card" id="xrp">
-            <div class="small" style="letter-spacing:.08em; text-transform:uppercase;">XRP Top/Bottom Detector</div>
-            <h2 class="price-big" style="margin-top: 10px;">$200</h2>
-            <div class="small muted">Lifetime access (one-time)</div>
-
-            <ul class="checklist" style="margin-top: 14px;">
-              <li>Core confirmations + optional context overlays</li>
-              <li>Alert-ready weekly workflow</li>
-              <li>Invite-only TradingView access</li>
-            </ul>
-
-            <div class="cta-pair" style="margin-top: 18px;">
-              <!-- TODO: replace with your XRP lifetime Gumroad link -->
-              <a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Buy lifetime</a>
-              <!-- TODO: replace with your XRP subscription Gumroad link (if different) -->
-              <a class="btn btn--ghost" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Subscribe ($25/mo)</a>
-            </div>
-
-            <p class="legal-note" style="margin-top: 10px;">If you plan to use it long-term, lifetime is usually the best value.</p>
-          </article>
-
-          <!-- Bundle -->
-          <article class="card pricing-card" id="bundle">
-            <div class="small" style="letter-spacing:.08em; text-transform:uppercase;">Bundle (BTC + XRP)</div>
-            <h2 class="price-big" style="margin-top: 10px;">$2,100</h2>
-            <div class="small muted">Lifetime access (one-time)</div>
-
-            <ul class="checklist" style="margin-top: 14px;">
-              <li>Full access to both products</li>
-              <li>Single workflow across BTC + XRP</li>
-              <li>Saves $100 vs buying lifetime separately</li>
-            </ul>
-
-            <div class="cta-pair" style="margin-top: 18px;">
-              <!-- TODO: replace with your Bundle lifetime Gumroad link -->
-              <a class="btn btn--primary" data-glow="1" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Buy bundle</a>
-              <!-- TODO: replace with your Bundle subscription Gumroad link -->
-              <a class="btn btn--ghost" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Subscribe ($219/mo)</a>
-            </div>
-
-            <p class="legal-note" style="margin-top: 10px;">Best for users who want both markets covered with one system mindset.</p>
-          </article>
-        </div>
-
-        <div class="card card-pad note-card" role="note" style="margin-top: 16px;">
-          <div class="small note-card__title">Important</div>
-          <p class="small muted note-card__text">This is not investment advice. These tools are for research and disciplined execution. Always use your own risk rules.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--tight" id="access">
-      <div class="container">
-        <h2 class="section-title">How access works</h2>
-        <p class="section-sub">AZRO indicators are invite-only TradingView scripts. You’ll need a TradingView username.</p>
-
-        <div class="grid-3" style="margin-top: 18px;">
-          <div class="card card-pad">
-            <h3>1) Purchase on Gumroad</h3>
-            <p class="small" style="margin-top: 8px;">Choose BTC, XRP, or bundle — lifetime or subscription.</p>
-          </div>
-          <div class="card card-pad">
-            <h3>2) Enter your TradingView username</h3>
-            <p class="small" style="margin-top: 8px;">Gumroad collects your TradingView handle at checkout so we can grant access.</p>
-          </div>
-          <div class="card card-pad">
-            <h3>3) Get invited</h3>
-            <p class="small" style="margin-top: 8px;">We add your account to the private invite list(s). Typical turnaround: <strong>24 business hours</strong>.</p>
-            <p class="small muted" style="margin-top: 8px;">For subscriptions, access remains active while your plan is active.</p>
-          </div>
-        </div>
-
-        <div class="cta-group" style="margin-top: 18px;">
-          <a class="btn btn--primary" data-glow="1" href="#plans">Back to plans</a>
-          <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
-          <a class="btn btn--ghost" href="resources.html#support">Email support</a>
-        </div>
-
-        <p class="legal-note" style="margin-top: 10px;">Purchasing implies acceptance of the <a href="pdfs/terms-of-service.pdf" target="_blank" rel="noopener">terms</a> and <a href="pdfs/risk-disclosure.pdf" target="_blank" rel="noopener">risk disclosure</a>.</p>
-      </div>
-    </section>
-
-    <section class="section section--tight">
-      <div class="container">
-        <div class="card card-pad card--narrow center stack">
-          <h2 class="section-title" style="margin:0;">Not sure yet?</h2>
-          <p class="section-sub" style="margin:0;">Start with a free trial to review the workflow.</p>
-          <div class="btn-row btn-row--center btn-row--stack-sm" style="margin-top: 6px;">
-            <button class="btn btn--primary" data-glow="1" type="button" data-trial-open>Get the trial code</button>
-            <a class="btn btn--ghost" href="about.html#videos">Watch demos</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <strong>AZRO Systems</strong>
-          <div class="small">Proof-first crypto indicators and operating systems.<br />Built for clarity, durability, and conservative execution.</div>
-          <div class="footer-meta">© 2026 Azro Labs LLC. Educational only • not investment advice.</div>
-        </div>
-
-        <div class="footer-links" aria-label="Footer links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="features.html">Features</a>
-          <a href="pricing.html" aria-current="page">Pricing</a>
-          <a href="resources.html">Resources</a>
-          <a href="pdfs/risk-disclosure.pdf" target="_blank" rel="noopener">Risk disclosure</a>
-          <a href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
-          <a href="https://x.com/AzroSystems" target="_blank" rel="noopener">X</a>
-          <a href="https://www.instagram.com/azrosystems/" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Trial modal -->
-  <div class="modal modal--solid" id="trialModal" aria-hidden="true">
-    <div class="modal__backdrop" data-modal-close></div>
-    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
-      <button class="modal__close" type="button" aria-label="Close" data-modal-close>✕</button>
-      <h2 id="trialTitle">Free trial code</h2>
-      <p>Use this code at Gumroad checkout to activate a free trial (no credit card required).</p>
-
-      <div class="code-box">
-        <code id="trialCode">AZRO-FREE-TRIAL</code>
-        <button class="btn btn--sm btn--ghost" type="button" data-copy-code>Copy</button>
-      </div>
-
-      <p class="small" style="margin-top:10px;">
-        If you run into issues, email <a href="mailto:support@azrosystems.com">support@azrosystems.com</a>.
-        Updates are posted on <a href="https://x.com/AzroSystems" target="_blank" rel="noopener">X</a> and
-        <a href="https://www.instagram.com/azrosystems/" target="_blank" rel="noopener">Instagram</a>.
-      </p>
-
-      <div class="modal__actions">
-        <a class="btn btn--sm btn--primary" data-glow="1" href="https://azrosystems.gumroad.com" target="_blank" rel="noopener">Open Gumroad</a>
-        <a class="btn btn--sm btn--ghost" href="mailto:support@azrosystems.com?subject=Free%20trial%20help">Email support</a>
+        <a href="pdfs/risk-disclosure.pdf" rel="noopener" target="_blank">Risk disclosure</a>
+        <a href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Gumroad</a>
+        <a href="https://x.com/AzroSystems" rel="noopener" target="_blank">X</a>
+        <a href="https://www.instagram.com/azrosystems/" rel="noopener" target="_blank">Instagram</a>
       </div>
     </div>
   </div>
+</footer>
 
-  <!-- Sticky mobile CTA -->
-  <div class="sticky-cta" role="region" aria-label="Quick actions">
-    <div class="container sticky-cta-inner">
-      <a class="btn btn--primary" data-glow href="#plans">Plans</a>
-      <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
+<div class="modal modal--solid" id="trialModal" aria-hidden="true">
+  <div class="modal__backdrop" data-modal-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
+    <button class="modal__close" type="button" data-modal-close aria-label="Close">✕</button>
+    <h2 id="trialTitle">Free trial (all features included)</h2>
+    <p>Use the code below at Gumroad checkout. The trial works with a free TradingView account, requires no card, and unlocks the full indicator.</p>
+    <div class="code-box">
+      <code id="trialCode">AZRO-FREE-TRIAL</code>
+      <button class="btn btn--sm btn--ghost" type="button" data-copy-code>Copy</button>
+    </div>
+    <p class="small" style="margin-top:10px;">The trial code stays active. Invite-only access is added through TradingView after checkout.</p>
+    <div class="modal__actions">
+      <a class="btn btn--sm btn--primary" data-glow href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Open Gumroad</a>
+      <a class="btn btn--sm btn--ghost" href="resources.html#support">Get support</a>
     </div>
   </div>
-</body>
-</html>
+</div>
+
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+  <div class="container sticky-cta-inner">
+    <a class="btn btn--primary" data-glow href="pricing.html">View plans</a>
+    <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
+  </div>
+</div>
+</body></html>
