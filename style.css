@@ -1859,3 +1859,68 @@ body.page{ min-height:100svh; }
 .page-features .section-sub,
 .page-pricing .section-sub,
 .page-resources .section-sub{ margin-top: 10px; }
+
+
+/* === FINAL WORLD-CLASS CONSISTENCY PASS === */
+p, .section-sub, .lede, .small, .hero-note, .hero-trust { text-wrap: pretty; }
+.hero .eyebrow{ margin-bottom:12px; }
+.hero-cta.cta-pair, .hero-media-cta.cta-pair, .plan-cta.btn-row, .product-actions.btn-row{ width:min(560px,100%); margin-left:auto; margin-right:auto; justify-content:center; }
+.hero-cta.cta-pair .btn, .hero-media-cta.cta-pair .btn, .plan-cta .btn{ width:100%; min-width:0; }
+@media (max-width:640px){ .hero-cta.cta-pair, .hero-media-cta.cta-pair{ grid-template-columns:1fr; } }
+.product-split, .feature-product__head{ align-items:center; }
+.product-copy h2, .feature-product__head h2{ max-width: 18ch; margin-left:auto; margin-right:auto; }
+.product-copy .product-list, .feature-product .features-grid{ margin-top:18px; }
+.product-copy .hero-cta{ margin-top:18px; }
+.plan-card .plan-cta .btn{ font-size:.96rem; padding-inline:16px; }
+.plan-card .legal-note{ max-width:34ch; }
+.term-grid .plan-card .plan-cta .btn{ font-size:.92rem; }
+.resources-grid.resources-grid--three{ align-items:stretch; }
+.resources-grid.resources-grid--three .resource-card{ justify-content:flex-start; min-height:66px; }
+.site-footer .footer-brand .small{ max-width: 34ch; }
+@media (max-width:980px){ .site-footer .footer-inner{ flex-direction:column; align-items:center; text-align:center; } .site-footer .footer-brand{ align-items:center; } .site-footer .footer-links{ justify-content:center; } }
+.preview-switch{ margin-left:auto; margin-right:auto; }
+.chart-note{ max-width: 52ch; margin-left:auto; margin-right:auto; }
+.card--center .section-sub{ max-width: 64ch; margin-left:auto; margin-right:auto; }
+.info-note{ max-width: 72ch; margin-left:auto; margin-right:auto; }
+.modal__actions .btn{ min-width:180px; }
+@media (max-width:560px){ .modal__actions .btn{ width:100%; min-width:0; } }
+.section--tight + .section--tight{ padding-top: clamp(16px, 2vw, 28px); }
+.page-home .hero-media .media-frame, .page-about .product-media .media-frame, .page-features .feature-product__head .media-frame{ max-width: 720px; }
+.page-pricing .plan-grid .plan-card{ min-height: 100%; }
+.page-pricing .price-big{ letter-spacing:-.02em; }
+.page-pricing .plan-subline{ margin-top: 6px; }
+.page-pricing .plan-bullets li, .page-home .product-list li, .page-about .product-list li, .page-features .feature-card p{ line-height:1.55; }
+.page-home .preview-switch__btn{ min-width: 132px; }
+.page-home .hero-text h1, .page-about .product-copy h2, .page-features .feature-product__head h2{ text-wrap: balance; }
+.btn-row.btn-row--center{ justify-content:center; }
+.page-about .fit-list{ max-width: 760px; }
+.page-about .fit-list dd{ max-width: 46ch; }
+@media (max-width:720px){ .page-about .fit-list{ max-width: 100%; } .page-about .fit-list dd{ max-width: none; } }
+
+.hero-media--stacked{ gap:16px; }
+.hero-media--stacked .media-frame{ max-width: 720px; }
+.page-home .hero-media--stacked{ max-width: 760px; margin-inline:auto; }
+.page-home .hero-media--stacked .chart-note{ padding-inline: 18px; }
+.page-home .hero--suite .hero-text{ max-width: 660px; }
+.page-home .hero--suite .hero-cta{ width:min(500px,100%); }
+.page-home .hero--suite .hero-cta .btn{ min-width:0; }
+.page-home .hero--suite .hero-note,
+.page-home .hero--suite .hero-trust{ max-width: 46ch; }
+.page-home .hero--suite .hero-media{ align-items:center; }
+.page-home .hero--suite .product-list{ max-width: 46ch; }
+.page-pricing .plan-cta{ width:100%; }
+.page-pricing .plan-cta .btn{ width:100%; }
+.page-pricing .term-grid .plan-cta .btn{ font-size:.88rem; }
+.page-pricing .term-grid .plan-card .plan-subline{ margin-bottom: 4px; }
+.page-pricing .legal-note a{ white-space:nowrap; }
+.page-home .hero-note, .page-home .hero-trust, .page-about .hero-note{ text-align:center; margin-left:auto; margin-right:auto; }
+.page-resources .btn-row{ align-items:center; }
+.page-resources .btn-row .btn{ min-width: 170px; }
+.page-about .product-split .hero-cta,
+.page-features .feature-product .btn-row{ width:min(520px,100%); }
+.page-about .product-split .hero-cta .btn,
+.page-features .feature-product .btn-row .btn{ width:100%; }
+@media (max-width:720px){
+  .page-home .hero--suite .hero-inner{ gap:28px; }
+  .page-home .hero-media--stacked{ gap:14px; }
+}
