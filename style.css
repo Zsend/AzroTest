@@ -2150,3 +2150,121 @@ body{ text-wrap: pretty; }
   .showcase-copy h3{ font-size: clamp(1.45rem, 7vw, 2rem); }
   .product-card .product-actions .btn{ width:100%; }
 }
+
+
+/* === V5 WORLD-CLASS CONSISTENCY REFINEMENT === */
+.page-home .hero--suite .hero-text h1{ max-width: 14ch; }
+.page-home .hero--suite .hero-media .media-frame{ max-width: 760px; }
+.page-home .hero--suite .hero-media .chart-note{ max-width: 44ch; }
+.page-home .product-card h3{ max-width: 18ch; }
+.page-home .product-card .small,
+.page-home .product-card .product-list li{ color: var(--text-sub); }
+.page-home .product-card .product-actions{ width:min(460px,100%); }
+.page-home .product-card .product-actions .btn{ min-width: 0; }
+.page-home .hero-trust{ max-width: 44ch; }
+.page-home .hero--suite .hero-inner{ align-items: start; }
+.page-home .hero--suite .hero-media{ padding-top: 8px; }
+.page-home .card--narrow > h2,
+.page-home .card--narrow > .section-sub{ max-width: 64ch; margin-left:auto; margin-right:auto; }
+
+/* Product split cards: keep text / image rhythm identical across pages */
+.product-split.card{ padding: clamp(20px, 3vw, 28px); }
+.product-split .product-media .media-frame{ max-width: 720px; }
+.product-split .product-copy{ max-width: 38ch; }
+.product-split .product-copy h2{ max-width: 15ch; }
+.product-split .product-copy .product-list{ max-width: 34ch; }
+.product-split .product-copy .hero-cta{ width:min(460px,100%); }
+@media (max-width: 980px){
+  .product-split .product-copy,
+  .product-split .product-copy h2,
+  .product-split .product-copy .product-list{ max-width: none; }
+}
+
+/* Story gallery for BTC feature screens */
+.story-gallery{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+.story-card{
+  display:flex;
+  flex-direction:column;
+  border-radius: 22px;
+  overflow:hidden;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(181,195,237,.15);
+  box-shadow: var(--shadow-sm);
+}
+.story-card .story-image{
+  width:100%;
+  display:block;
+}
+.story-card .story-copy{
+  padding: 16px 18px 18px;
+}
+.story-card .story-copy strong{
+  display:block;
+  color: var(--text-head);
+  font-family: var(--font-head);
+  font-size: 1.08rem;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.story-card .story-copy p{
+  margin:0;
+  color: var(--text-sub);
+}
+.story-card--wide{ grid-column: 1 / -1; }
+.story-card .chart-note{
+  padding: 12px 16px 16px;
+  margin: 0;
+  max-width: none;
+  background: rgba(2,6,23,.42);
+  border-top: 1px solid rgba(181,195,237,.12);
+}
+@media (max-width: 980px){
+  .story-gallery{ grid-template-columns: 1fr; }
+  .story-card--wide{ grid-column: auto; }
+}
+
+/* Pricing refinement */
+.page-pricing .hero .hero-cta,
+.page-pricing .hero .hero-trust{ display:none; }
+.page-pricing .plan-label.product-pill{
+  font-size: .74rem;
+  padding: 8px 12px;
+  letter-spacing: .08em;
+}
+.page-pricing .plan-card{ padding: 22px; }
+.page-pricing .plan-card .plan-bullets{ gap: 10px; }
+.page-pricing .plan-card .plan-bullets li{ line-height: 1.48; }
+.page-pricing .plan-card .plan-cta{ width: 100%; }
+.page-pricing .plan-card .plan-cta .btn{ max-width: 190px; }
+.page-pricing .term-grid .plan-card .plan-cta .btn{ max-width: 175px; font-size: .84rem; }
+.page-pricing .legal-note{ max-width: 34ch; margin-left:auto; margin-right:auto; }
+.page-pricing .info-note{ max-width: 78ch; }
+@media (max-width: 1120px){
+  .page-pricing .plan-card .plan-cta .btn,
+  .page-pricing .term-grid .plan-card .plan-cta .btn{ max-width: 220px; }
+}
+
+/* Resources refinement */
+.page-resources .card--narrow{ max-width: 980px; }
+.page-resources .resources-grid--three .resource-card{ min-height: 64px; }
+.page-resources .grid-2{ align-items: stretch; }
+.page-resources .grid-2 .card{ display:flex; flex-direction:column; }
+.page-resources .grid-2 .btn-row{ margin-top:auto; }
+
+/* Feature sections should feel less bulky */
+.page-features .section-intro{ max-width: 74ch; }
+.page-features .feature-product .feature-product__head{ margin-bottom: 8px; }
+.page-features .feature-product .features-grid{ margin-top: 20px; }
+.page-features .feature-product .features-grid .feature-card{ min-height: 0; }
+
+/* Footer consistency */
+.site-footer .footer-links a{ font-size: .9rem; }
+.site-footer .footer-meta{ line-height: 1.45; }
+
+/* Modal polish */
+.modal__dialog--video .modal__actions .btn{ min-width: 160px; }
