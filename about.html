@@ -4,12 +4,12 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>About — AZRO Systems</title>
-<meta name="description" content="About AZRO Systems, BTC Operating System, and the XRP Top/Bottom Detector."/>
+<meta name="description" content="About AZRO Systems, the BTC Engine, and the XRP Top/Bottom Detector — proof-first TradingView workflows for disciplined weekly decisions."/>
 <link rel="canonical" href="https://azrosystems.com/about.html"/>
 <meta name="theme-color" content="#070B16"/>
 <link rel="icon" type="image/png" href="favicon-32.png"/>
 <meta property="og:title" content="About — AZRO Systems"/>
-<meta property="og:description" content="About AZRO Systems, BTC Operating System, and the XRP Top/Bottom Detector."/>
+<meta property="og:description" content="About AZRO Systems, the BTC Engine, and the XRP Top/Bottom Detector — proof-first TradingView workflows for disciplined weekly decisions."/>
 <meta property="og:image" content="og-card.png"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://azrosystems.com/about.html"/>
@@ -20,8 +20,9 @@
 <link rel="stylesheet" href="style.css"/>
 <script defer src="script.js"></script>
 </head>
-<body class="page page-about">
+<body>
 <a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="index.html" aria-label="AZRO Systems home">
@@ -48,45 +49,49 @@
     </div>
   </div>
 </header>
-<main id="main">
 
-  <section class="hero">
-    <div class="container center measure">
-      <div class="eyebrow">About AZRO Systems</div>
-      <h1>Two systems. One rules-first mindset.</h1>
-      <p class="lede" style="margin-top:12px;">AZRO Systems builds proof-first TradingView workflows that reduce noise, support a written plan, and keep weekly decisions calm enough to follow.</p>
+<main id="main">
+  <section class="hero hero--split">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow">About AZRO Systems</div>
+        <h1>Two products. One rules-first mindset.</h1>
+        <p class="lede">AZRO Systems builds proof-first TradingView tools for a calmer weekly process: <strong>BTC Engine</strong> for dashboard-led Bitcoin allocation, and the <strong>XRP Top/Bottom Detector</strong> for cycle confirmation with clean on-chart labels.</p>
+      </div>
+      <div class="hero-media">
+        <div class="card card-pad card--center">
+          <h3>Built for clarity, durability, and conservative execution.</h3>
+          <p class="small" style="margin-top:12px;">Both products are designed to reduce noise, support a written plan, and keep decisions anchored to a weekly process instead of emotional chart-watching.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section section--tight" id="btc">
+  <section class="section section--tight" id="btc-engine">
     <div class="container">
       <div class="product-split card card-pad">
         <div class="product-copy">
-          <div class="product-pill">BTC Operating System</div>
-          <h2>A cycle-aware Bitcoin allocation process.</h2>
-          <p class="section-sub">A cycle-aware Bitcoin allocation framework engineered as a fault-tolerant policy stack — with clear actions, sizing, alerts, and on-chart accountability.</p>
-          <div class="badge-row" style="margin-top:18px;">
-            <span class="info-badge">Dashboard-first</span>
-            <span class="info-badge">Non-custodial</span>
-            <span class="info-badge">Proof vs auto-buy</span>
-          </div>
+          <div class="product-pill">BTC Engine</div>
+          <h2>A weekly Bitcoin operating system.</h2>
+          <p class="section-sub">BTC Engine is built for long-term allocators who want a calmer routine: one weekly action, one suggested amount, and proof-first tracking against a simple auto-buy baseline.</p>
           <ul class="product-list">
-            <li>One clear weekly output: BUY / TRIM (optional) / HOLD + amount</li>
-            <li>Multiple policies and risk profiles for different operator styles</li>
-            <li>Invite-only access on TradingView with no exchange connection</li>
+            <li>Weekly action + suggested amount</li>
+            <li>Modes + risk profiles for different operating styles</li>
+            <li>Cash-buffer-aware sizing</li>
+            <li>Built-in proof vs auto-buy (BTC-eq, extra sats, accretion)</li>
           </ul>
-          <div class="hero-cta cta-pair" style="margin-top:18px;">
-            <button class="btn btn--primary" data-glow data-video-open data-title="BTC Operating System walkthrough" data-desc="A dashboard-first walkthrough of weekly action, sizing, and proof versus auto-buy." data-video="btc-demo.mp4" data-poster="01_cover.png" data-start="1.5" type="button">Watch BTC walkthrough</button>
-            <a class="btn btn--ghost" href="pricing.html#btc-lifetime">BTC pricing</a>
+          <div class="btn-row btn-row--center product-actions">
+            <button class="btn btn--primary" data-glow data-video-open data-title="BTC Engine walkthrough" data-desc="A dashboard-first view of weekly action, amount, and proof vs auto-buy." data-video="btc-demo.mp4" data-start="1.2" type="button">Watch BTC demo</button>
+            <a class="btn btn--ghost" href="pricing.html#btc-plan">BTC pricing</a>
           </div>
         </div>
         <div class="product-media">
           <figure class="media-frame media-frame--figure">
             <picture>
-              <source srcset="01_cover.webp" type="image/webp"/>
-              <img src="01_cover.png" width="1600" height="900" loading="lazy" decoding="async" alt="BTC Operating System dashboard preview on TradingView"/>
+              <source srcset="btc-engine-preview.webp" type="image/webp"/>
+              <img src="btc-engine-preview.png" width="1280" height="800" loading="lazy" decoding="async" alt="BTC Engine dashboard preview"/>
             </picture>
-            <figcaption class="chart-note">BTC Operating System dashboard preview on TradingView.</figcaption>
+            <figcaption class="chart-note">BTC Engine dashboard preview.</figcaption>
           </figure>
         </div>
       </div>
@@ -96,63 +101,59 @@
   <section class="section section--tight" id="btc-glossary">
     <div class="container">
       <div class="card card-pad card--narrow">
-        <h2>BTC Operating System glossary</h2>
-        <p class="section-sub">What the dashboard means, and how it fits into a repeatable Bitcoin allocation process.</p>
+        <h2>BTC Engine glossary</h2>
+        <p class="section-sub">The dashboard is designed to answer the most important weekly question first: what action does the engine suggest, and why?</p>
         <div class="accordion" style="margin-top:18px;">
           <details>
-            <summary><span class="label-title"><span class="label-name">Action + suggested amount</span><span class="label-meta">One clear weekly output: BUY / TRIM (optional) / HOLD plus a matching amount.</span></span></summary>
-            <div class="label-body"><p>Use this as the anchor for the week. The goal is to remove negotiation when volatility spikes and make the process easier to follow.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="BTC Operating System — action + amount" data-desc="How the dashboard turns cycle context into a clear weekly action and suggested amount." data-video="btc-demo.mp4" data-poster="02_dashboard_first.png" data-start="1.5" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">Weekly action + amount</span><span class="label-meta">The engine suggests BUY, HOLD, or TRIM and a matching weekly amount.</span></span></summary>
+            <div class="label-body"><p>Use this as a workflow anchor for the week. It turns the dashboard into an execution routine instead of a constant monitoring habit.</p></div>
           </details>
           <details>
-            <summary><span class="label-title"><span class="label-name">Market context</span><span class="label-meta">High-level orientation designed for decisions, not noise.</span></span></summary>
-            <div class="label-body"><p>Context tells you whether conditions look calmer, richer, or riskier without pretending to predict every move.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="BTC Operating System — market context" data-desc="How the dashboard frames accumulation, neutral, and risk conditions." data-video="btc-demo.mp4" data-poster="02_dashboard_first.png" data-start="1.5" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">Market state</span><span class="label-meta">High-level context such as accumulation, neutral, or risk.</span></span></summary>
+            <div class="label-body"><p>Market state helps frame the environment without pretending to predict every move. It is there to support weekly decisions, not intraday reaction.</p></div>
           </details>
           <details>
-            <summary><span class="label-title"><span class="label-name">Modes + risk profiles</span><span class="label-meta">Choose the policy that matches your philosophy, risk tolerance, and time horizon.</span></span></summary>
-            <div class="label-body"><p>Stack, Adaptive, Event, and Performance handle optional trims differently. Conservative, Balanced, and Aggressive shape pacing and buffer behavior.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="BTC Operating System — modes + profiles" data-desc="How the four policies and three risk profiles change the weekly workflow." data-video="btc-demo.mp4" data-poster="04_policies.png" data-start="1.5" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">Modes + risk profiles</span><span class="label-meta">Different ways to run the engine, from straightforward stacking to more adaptive behavior.</span></span></summary>
+            <div class="label-body"><p>Modes define how optional trims are used. Profiles shape how much cash the engine tends to preserve versus deploy.</p></div>
           </details>
           <details>
-            <summary><span class="label-title"><span class="label-name">Proof vs auto-buy</span><span class="label-meta">BTC-eq, extra sats, and accretion keep the process accountable.</span></span></summary>
-            <div class="label-body"><p>These proof metrics compare the workflow to a simple auto-buy baseline so you can audit whether the process is actually adding value over time.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="BTC Operating System — proof vs auto-buy" data-desc="How BTC-eq, extra sats, and accretion are used to audit the workflow." data-video="btc-demo.mp4" data-poster="03_proof_vs_autobuy.png" data-start="1.5" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">Proof vs auto-buy</span><span class="label-meta">BTC-eq, extra sats, and accretion compare the engine to a simple baseline.</span></span></summary>
+            <div class="label-body"><p>These are proof metrics, not promises. They keep the process honest by showing whether the workflow is actually adding value versus a simpler default.</p></div>
           </details>
           <details>
-            <summary><span class="label-title"><span class="label-name">Alerts (optional)</span><span class="label-meta">Weekly reminders plus rare high-attention prompts.</span></span></summary>
-            <div class="label-body"><p>Alerts support the routine. They surface attention only when it matters instead of turning the workflow into noise.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="BTC Operating System — alerts" data-desc="How optional alerts fit into the weekly routine without becoming noise." data-video="btc-demo.mp4" data-poster="02_dashboard_first.png" data-start="1.5" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">Cash buffer</span><span class="label-meta">Sizing is built around a dedicated cash reserve.</span></span></summary>
+            <div class="label-body"><p>The engine is designed to respect a cash buffer first, then become more aggressive only in stronger value conditions according to the selected mode and profile.</p></div>
           </details>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--tight" id="xrp">
+  <section class="section section--tight" id="xrp-detector">
     <div class="container">
       <div class="product-split card card-pad">
         <div class="product-copy">
           <div class="product-pill">XRP Top/Bottom Detector</div>
           <h2>Cycle confirmation labels for XRP.</h2>
-          <p class="section-sub">A proof-first weekly workflow built around readable confirmations, optional context, and alert-ready structure.</p>
-          <div class="badge-row" style="margin-top:18px;">
-            <span class="info-badge">Weekly-close</span>
-            <span class="info-badge">Labels + alerts</span>
-            <span class="info-badge">Free TradingView</span>
-          </div>
+          <p class="section-sub">The XRP Top/Bottom Detector is built around weekly confirmations, optional context layers, and TradingView alerts that help you validate cycle conditions without staring at the chart all day.</p>
           <ul class="product-list">
             <li>MAJOR / RADAR / LIGHT / EARLY label workflow</li>
-            <li>Optional context overlays and risk markers</li>
-            <li>Built for disciplined weekly-close decision-making</li>
+            <li>Optional context overlays + risk markers</li>
+            <li>Alert-ready weekly routine</li>
+            <li>Clear docs and walkthrough videos</li>
           </ul>
-          <div class="hero-cta cta-pair" style="margin-top:18px;">
-            <button class="btn btn--primary" data-glow data-video-open data-title="XRP Detector walkthrough" data-desc="A short walkthrough of confirmations, context layers, and the weekly-close workflow." data-video="videos/xrp-demo.mp4" data-poster="newchart.png" data-start="1.5" type="button">Watch XRP walkthrough</button>
-            <a class="btn btn--ghost" href="pricing.html#xrp-lifetime">XRP pricing</a>
+          <div class="btn-row btn-row--center product-actions">
+            <button class="btn btn--primary" data-glow data-video-open data-title="XRP Detector walkthrough" data-desc="A short walkthrough of confirmations, context layers, and the weekly-close workflow." data-video="videos/xrp-demo.mp4" data-start="1.2" type="button">Watch XRP demo</button>
+            <a class="btn btn--ghost" href="pricing.html#xrp-plan">XRP pricing</a>
           </div>
         </div>
         <div class="product-media">
           <figure class="media-frame media-frame--figure">
             <picture>
               <source srcset="newchart.webp" type="image/webp"/>
-              <img src="newchart.png" width="1280" height="720" loading="lazy" decoding="async" alt="XRP Top/Bottom Detector preview on TradingView"/>
+              <img src="newchart.png" width="1280" height="720" loading="lazy" decoding="async" alt="XRP Top/Bottom Detector chart with labels"/>
             </picture>
-            <figcaption class="chart-note">XRP Top/Bottom Detector preview on TradingView.</figcaption>
+            <figcaption class="chart-note">TradingView chart with AZRO XRP labels.</figcaption>
           </figure>
         </div>
       </div>
@@ -163,27 +164,28 @@
     <div class="container">
       <div class="card card-pad card--narrow">
         <h2>Label glossary (XRP)</h2>
-        <p class="section-sub">What each label means, and how it fits into a weekly-close workflow.</p>
-        <div class="accordion" style="margin-top:18px;">
+        <p class="section-sub">The XRP Detector is built around a weekly-close workflow. EARLY labels can appear during the week; MAJOR and RADAR confirmations are designed to matter at the weekly close.</p>
+        <h3 style="margin-top:12px;">Core confirmations</h3>
+        <div class="accordion" style="margin-top:12px;">
           <details>
-            <summary><span class="label-title"><span class="label-name">MAJOR TOP / MAJOR BOTTOM</span><span class="label-meta">Cycle-level confirmations designed to anchor the biggest decisions.</span></span></summary>
-            <div class="label-body"><p>These are the clearest cycle confirmation labels in the system. They are designed to slow you down and frame the biggest decisions, not create noise.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="XRP — MAJOR labels" data-desc="How MAJOR labels are used to anchor bigger cycle decisions." data-video="videos/major.mp4" data-poster="newchart.png" data-start="0" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">MAJOR TOP / MAJOR BOTTOM</span><span class="label-meta">Cycle-level confirmations designed to anchor major decisions.</span></span></summary>
+            <div class="label-body"><p>Use MAJOR labels as decision points — not predictions. They’re built for the moments when you want your plan to be clearest.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="MAJOR TOP / MAJOR BOTTOM" data-desc="Cycle-level confirmations designed to anchor major decisions." data-video="videos/major.mp4" type="button">Watch example</button></div></div>
           </details>
           <details>
             <summary><span class="label-title"><span class="label-name">RADAR TOP / RADAR BOTTOM</span><span class="label-meta">A secondary confirmation track that complements MAJOR labels.</span></span></summary>
-            <div class="label-body"><p>RADAR labels help you frame important swings earlier without pretending to replace the higher-confidence MAJOR labels.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="XRP — RADAR labels" data-desc="How RADAR labels fit into the weekly-close process." data-video="videos/radar.mp4" data-poster="newchart.png" data-start="0" type="button">Watch example</button></div></div>
+            <div class="label-body"><p>RADAR adds structure around the bigger turns. It’s there to sharpen a weekly process, not create urgency.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="RADAR TOP / RADAR BOTTOM" data-desc="A secondary confirmation track that complements MAJOR labels." data-video="videos/radar.mp4" type="button">Watch example</button></div></div>
           </details>
           <details>
             <summary><span class="label-title"><span class="label-name">LIGHT TOP / LIGHT BOTTOM</span><span class="label-meta">Heads-up labels for timing and awareness.</span></span></summary>
-            <div class="label-body"><p>LIGHT labels are designed to surface context and attention without overwhelming the chart or forcing constant activity.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="XRP — LIGHT labels" data-desc="How LIGHT labels add timing awareness without dominating the workflow." data-video="videos/light.mp4" data-poster="newchart.png" data-start="0" type="button">Watch example</button></div></div>
+            <div class="label-body"><p>LIGHT labels are optional context. Leave them on if you want more texture between major turns; turn them off if you prefer a cleaner confirmation-only chart.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="LIGHT TOP / LIGHT BOTTOM" data-desc="Heads-up labels for timing and awareness." data-video="videos/light.mp4" type="button">Watch example</button></div></div>
           </details>
           <details>
             <summary><span class="label-title"><span class="label-name">EARLY TOP / EARLY BOTTOM</span><span class="label-meta">Intra-week staging cues that can appear and disappear.</span></span></summary>
-            <div class="label-body"><p>EARLY labels are lower-confidence cues. They help you stay aware, but they are not the weekly-close confirmation you should structure the workflow around.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="XRP — EARLY labels" data-desc="How EARLY labels differ from confirmed weekly-close labels." data-video="videos/early.mp4" data-poster="newchart.png" data-start="0" type="button">Watch example</button></div></div>
+            <div class="label-body"><p>EARLY is there for awareness during the week. Use it as context, not as a replacement for weekly-close confirmations.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="EARLY TOP / EARLY BOTTOM" data-desc="Intra-week staging cues that can appear and disappear." data-video="videos/early.mp4" type="button">Watch example</button></div></div>
           </details>
           <details>
-            <summary><span class="label-title"><span class="label-name">Risk triangles + context overlays</span><span class="label-meta">Optional layers that add regime context without clutter.</span></span></summary>
-            <div class="label-body"><p>Risk triangles, EMA Cloud, RSI zones, MACD, and ROI pop-ups provide additional context. They do not replace the confirmation labels.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="XRP — risk markers + overlays" data-desc="How optional context layers fit around the core label workflow." data-video="videos/risk.mp4" data-poster="newchart.png" data-start="0" type="button">Watch example</button></div></div>
+            <summary><span class="label-title"><span class="label-name">Risk triangles + context overlays</span><span class="label-meta">Optional layers that add regime context.</span></span></summary>
+            <div class="label-body"><p>Risk triangles, price coloring, and context overlays are there to frame the environment without turning the chart into noise.</p><div class="label-actions"><button class="btn btn--sm btn--ghost" data-video-open data-title="Risk context overlays" data-desc="Optional context layers that add regime information." data-video="videos/risk.mp4" type="button">Watch example</button></div></div>
           </details>
         </div>
       </div>
@@ -192,24 +194,24 @@
 
   <section class="section section--tight">
     <div class="container">
-      <div class="card card-pad card--narrow card--center">
-        <h2>Walkthroughs + docs</h2>
-        <p class="section-sub">Start with the workflow that matches your market, then open the docs when you want the deeper detail.</p>
-        <div class="resources-grid resources-grid--three" style="margin-top:18px;">
-          <button class="resource-card resource-card--button" type="button" data-video-open data-title="BTC Operating System walkthrough" data-desc="A dashboard-first walkthrough of weekly action, sizing, and proof versus auto-buy." data-video="btc-demo.mp4" data-poster="01_cover.png" data-start="1.5"><span>Watch BTC walkthrough</span></button>
-          <button class="resource-card resource-card--button" type="button" data-video-open data-title="XRP Detector walkthrough" data-desc="A short walkthrough of confirmations, context layers, and the weekly-close workflow." data-video="videos/xrp-demo.mp4" data-poster="newchart.png" data-start="1.5"><span>Watch XRP walkthrough</span></button>
-          <a class="resource-card" href="resources.html#documents"><span>Docs + disclosures</span></a>
+      <div class="card card-pad card--center card--narrow">
+        <h2>Ready to compare the workflows?</h2>
+        <p class="section-sub">Start with the product that matches your market and process — or compare both side-by-side on the pricing page.</p>
+        <div class="btn-row btn-row--center" style="margin-top:18px;">
+          <a class="btn btn--primary" data-glow href="pricing.html">View pricing</a>
+          <button class="btn btn--ghost" type="button" data-trial-open>Free trial</button>
         </div>
       </div>
     </div>
   </section>
 </main>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
         <strong>AZRO Systems</strong>
-        <div class="small">Proof-first TradingView indicators and operating systems.<br/>Built for clarity, durability, and conservative execution.</div>
+        <div class="small">Proof-first crypto indicators and operating systems.<br/>Built for clarity, durability, and conservative execution.</div>
         <div class="footer-meta">© 2026 Azro Labs LLC. Educational only • not investment advice.</div>
       </div>
       <div class="footer-links" aria-label="Footer links">
@@ -231,13 +233,13 @@
   <div class="modal__backdrop" data-modal-close></div>
   <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
     <button class="modal__close" type="button" data-modal-close aria-label="Close">✕</button>
-    <h2 id="trialTitle">Free trial (full access)</h2>
-    <p>Use the code below at Gumroad checkout. It works with a free TradingView account, requires no card, and unlocks the full workflow.</p>
+    <h2 id="trialTitle">Free trial (all features included)</h2>
+    <p>Use the code below at Gumroad checkout. The trial works with a free TradingView account, requires no card, and unlocks the full indicator.</p>
     <div class="code-box">
       <code id="trialCode">AZRO-FREE-TRIAL</code>
       <button class="btn btn--sm btn--ghost" type="button" data-copy-code>Copy</button>
     </div>
-    <p class="small" style="margin-top:10px;">The trial code stays active, works on free TradingView accounts, and includes the full indicator.</p>
+    <p class="small" style="margin-top:10px;">The trial code stays active. Invite-only access is added through TradingView after checkout.</p>
     <div class="modal__actions">
       <a class="btn btn--sm btn--primary" data-glow href="https://azrosystems.gumroad.com/" rel="noopener" target="_blank">Open Gumroad</a>
       <a class="btn btn--sm btn--ghost" href="resources.html#support">Get support</a>
@@ -258,7 +260,7 @@
     </div>
     <div class="modal__actions">
       <button class="btn btn--sm btn--ghost" type="button" data-video-replay>Replay</button>
-      <a class="btn btn--sm btn--ghost" href="pricing.html">View plans</a>
+      <a class="btn btn--sm btn--ghost" href="pricing.html">View pricing</a>
     </div>
   </div>
 </div>

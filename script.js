@@ -126,26 +126,28 @@
       if (video) {
         try { video.pause(); } catch (_) {}
         video.removeAttribute('src');
-        video.removeAttribute('poster');
         video.load();
       }
     };
 
-    const setStartAndPlay = async () => {
+    const playVideo = async () => {
       if (!video) return;
       try {
         if (startTime > 0.05) {
-          try { video.currentTime = startTime; } catch (_) {}
+          const setStart = () => {
+            try { video.currentTime = startTime; } catch (_) {}
+            video.removeEventListener('loadedmetadata', setStart);
+          };
+          video.addEventListener('loadedmetadata', setStart);
         }
         await video.play();
       } catch (_) {
-        // autoplay may be blocked; replay button remains available
+        // muted autoplay should usually work; if it doesn't, user can replay
       }
     };
 
     const openVideo = (btn) => {
       const src = btn.getAttribute('data-video');
-      const poster = btn.getAttribute('data-poster') || 'newchart.png';
       titleEl.textContent = btn.getAttribute('data-title') || 'Walkthrough';
       descEl.textContent = btn.getAttribute('data-desc') || '';
       startTime = parseFloat(btn.getAttribute('data-start') || '0') || 0;
@@ -153,25 +155,12 @@
       videoModal.classList.add('is-open');
       videoModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      video.pause();
       video.src = src;
-      video.poster = poster;
       video.muted = true;
       video.loop = false;
       video.playsInline = true;
       video.setAttribute('playsinline', '');
-      video.load();
-
-      const onReady = () => {
-        video.removeEventListener('loadedmetadata', onReady);
-        setStartAndPlay();
-      };
-
-      if (video.readyState >= 1) {
-        setStartAndPlay();
-      } else {
-        video.addEventListener('loadedmetadata', onReady, { once: true });
-      }
+      playVideo();
     };
 
     openers.forEach((btn) => btn.addEventListener('click', (e) => {
