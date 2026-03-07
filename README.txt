@@ -1,1 +1,0 @@
-Static site for AZRO Systems BTC Engine. Open index.html or serve the folder with any static host.
