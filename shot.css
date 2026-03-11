@@ -1,4 +1,0 @@
-
-html,body{margin:0;height:100%;background:#060A14;color:#fff;font-family:Inter,system-ui,sans-serif;overflow:hidden}
-.viewer{position:fixed;inset:0;display:grid;place-items:center;padding:12px;background:#060A14}
-.viewer img{display:block;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);width:auto;height:auto}
