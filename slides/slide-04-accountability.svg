@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img">
+
+    <defs>
+      <linearGradient id="bgOverlay" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#08112A" stop-opacity="0.55"/>
+        <stop offset="52%" stop-color="#060B18" stop-opacity="0.36"/>
+        <stop offset="100%" stop-color="#140B25" stop-opacity="0.48"/>
+      </linearGradient>
+      <radialGradient id="blueGlow" cx="0.22" cy="0.18" r="0.55">
+        <stop offset="0%" stop-color="#3E7DFF" stop-opacity="0.36"/>
+        <stop offset="58%" stop-color="#3E7DFF" stop-opacity="0.10"/>
+        <stop offset="100%" stop-color="#3E7DFF" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="purpleGlow" cx="0.84" cy="0.12" r="0.48">
+        <stop offset="0%" stop-color="#7D53FF" stop-opacity="0.30"/>
+        <stop offset="58%" stop-color="#7D53FF" stop-opacity="0.08"/>
+        <stop offset="100%" stop-color="#7D53FF" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="150%">
+        <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.28"/>
+      </filter>
+      <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(22,31,58,.58)"/>
+        <stop offset="100%" stop-color="rgba(10,15,32,.74)"/>
+      </linearGradient>
+      <linearGradient id="cardFillLite" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="rgba(27,39,72,.56)"/>
+        <stop offset="100%" stop-color="rgba(12,17,34,.70)"/>
+      </linearGradient>
+      <linearGradient id="buyChip" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5CC15C"/>
+        <stop offset="100%" stop-color="#51B652"/>
+      </linearGradient>
+      <linearGradient id="holdChip" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2A3C6B"/>
+        <stop offset="100%" stop-color="#203055"/>
+      </linearGradient>
+      <linearGradient id="trimChip" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#C8922E"/>
+        <stop offset="100%" stop-color="#B98324"/>
+      </linearGradient>
+    </defs>
+    
+
+    <g id="background">
+      <image href="assets/coolback.jpg" x="0" y="0" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"/>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bgOverlay)"/>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#blueGlow)"/>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#purpleGlow)"/>
+      <g><line x1="180" y1="140" x2="310" y2="190" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="310" y1="190" x2="520" y2="150" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="520" y1="150" x2="760" y2="300" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="760" y1="300" x2="1040" y2="260" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1040" y1="260" x2="1320" y2="150" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1320" y1="150" x2="1660" y2="220" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="310" y1="190" x2="240" y2="460" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="240" y1="460" x2="510" y2="520" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="510" y1="520" x2="830" y2="480" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="830" y1="480" x2="1150" y2="560" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1150" y1="560" x2="1480" y2="470" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1480" y1="470" x2="1700" y2="620" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="240" y1="460" x2="130" y2="760" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="130" y1="760" x2="420" y2="830" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="420" y1="830" x2="760" y2="770" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="760" y1="770" x2="1100" y2="860" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1100" y1="860" x2="1480" y2="790" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1480" y1="790" x2="1750" y2="880" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="760" y1="770" x2="620" y2="980" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1100" y1="860" x2="1360" y2="980" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="520" y1="150" x2="510" y2="520" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1040" y1="260" x2="830" y2="480" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1320" y1="150" x2="1150" y2="560" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1660" y1="220" x2="1480" y2="470" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="510" y1="520" x2="420" y2="830" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="830" y1="480" x2="760" y2="770" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1150" y1="560" x2="1100" y2="860" stroke="rgba(110,135,199,.08)" stroke-width="2"/><line x1="1480" y1="470" x2="1480" y2="790" stroke="rgba(110,135,199,.08)" stroke-width="2"/><circle cx="180" cy="140" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="180" cy="140" r="14" fill="rgba(110,135,199,.03)"/><circle cx="310" cy="190" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="310" cy="190" r="14" fill="rgba(110,135,199,.03)"/><circle cx="520" cy="150" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="520" cy="150" r="14" fill="rgba(110,135,199,.03)"/><circle cx="760" cy="300" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="760" cy="300" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1040" cy="260" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1040" cy="260" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1320" cy="150" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1320" cy="150" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1660" cy="220" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1660" cy="220" r="14" fill="rgba(110,135,199,.03)"/><circle cx="240" cy="460" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="240" cy="460" r="14" fill="rgba(110,135,199,.03)"/><circle cx="510" cy="520" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="510" cy="520" r="14" fill="rgba(110,135,199,.03)"/><circle cx="830" cy="480" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="830" cy="480" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1150" cy="560" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1150" cy="560" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1480" cy="470" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1480" cy="470" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1700" cy="620" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1700" cy="620" r="14" fill="rgba(110,135,199,.03)"/><circle cx="130" cy="760" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="130" cy="760" r="14" fill="rgba(110,135,199,.03)"/><circle cx="420" cy="830" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="420" cy="830" r="14" fill="rgba(110,135,199,.03)"/><circle cx="760" cy="770" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="760" cy="770" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1100" cy="860" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1100" cy="860" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1480" cy="790" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1480" cy="790" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1750" cy="880" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1750" cy="880" r="14" fill="rgba(110,135,199,.03)"/><circle cx="620" cy="980" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="620" cy="980" r="14" fill="rgba(110,135,199,.03)"/><circle cx="1360" cy="980" r="4.5" fill="rgba(110,135,199,.12)"/><circle cx="1360" cy="980" r="14" fill="rgba(110,135,199,.03)"/></g>
+    </g>
+    
+<g>
+
+    <g id="brand-bar">
+      <rect x="58" y="44" width="72" height="72" rx="20" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.12)" />
+      <image href="assets/logo-mark.png" x="76" y="62" width="36" height="36" />
+      <text x="146" y="78" fill="#F4F7FF" font-family="'Exo 2','Noto Sans Display','Inter Display','Inter',sans-serif" font-size="28" font-weight="800">AZRO Systems</text>
+      <text x="146" y="107" fill="rgba(244,247,255,.65)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="15" font-weight="700" letter-spacing="6">BTC OPERATING SYSTEM</text>
+      <rect x="1408" y="42" width="452" height="64" rx="32" fill="rgba(255,255,255,.05)" stroke="rgba(195,205,238,.20)" />
+      <text x="1634" y="83" fill="#F1F5FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="16" font-weight="700" letter-spacing="3" text-anchor="middle">MAP THE CYCLE. CUT THE NOISE.</text>
+    </g>
+    
+<text x="60" y="162.0" fill="#71DDFF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="800" text-anchor="start" letter-spacing="3.2">GOVERNANCE-FRIENDLY PROOF</text>
+<text x="60" y="256.0" fill="#F5F7FF" font-family="'Exo 2','Noto Sans Display','Inter Display','Inter',sans-serif" font-size="86" font-weight="800" text-anchor="start" letter-spacing="0">Built-in accountability</text>
+<text x="60" y="333.4" fill="#F5F7FF" font-family="'Exo 2','Noto Sans Display','Inter Display','Inter',sans-serif" font-size="86" font-weight="800" text-anchor="start" letter-spacing="0">vs auto-buy.</text>
+<text x="60" y="420.0" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="24" font-weight="500" text-anchor="start" letter-spacing="0">Audit BTC-equivalent progress, x versus auto-buy, and extra sats</text>
+<text x="60" y="450.0" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="24" font-weight="500" text-anchor="start" letter-spacing="0">directly on chart. The product does not ask you to trust the process</text>
+<text x="60" y="480.0" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="24" font-weight="500" text-anchor="start" letter-spacing="0">blindly — it shows its work.</text>
+<rect x="60" y="526" width="300" height="212" rx="28" fill="url(#cardFill)" stroke="rgba(184,197,237,.18)" stroke-width="2" filter="url(#cardShadow)" />
+<rect x="90" y="550" width="72" height="6" rx="3" fill="#71DDFF"/>
+<text x="90" y="598.0" fill="rgba(244,247,255,.68)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="13" font-weight="800" text-anchor="start" letter-spacing="4">AZRO BTC-EQ</text>
+<text x="90" y="664.0" fill="#F5F7FF" font-family="'Exo 2','Noto Sans Display','Inter Display','Inter',sans-serif" font-size="76" font-weight="800" text-anchor="start" letter-spacing="0">46.507</text>
+<text x="90" y="762.2" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="500" text-anchor="start" letter-spacing="0">Standardized example</text>
+<text x="90" y="787.0400000000001" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="500" text-anchor="start" letter-spacing="0">snapshot</text>
+<rect x="384" y="526" width="300" height="212" rx="28" fill="url(#cardFill)" stroke="rgba(184,197,237,.18)" stroke-width="2" filter="url(#cardShadow)" />
+<rect x="414" y="550" width="72" height="6" rx="3" fill="#5F8FFF"/>
+<text x="414" y="598.0" fill="rgba(244,247,255,.68)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="13" font-weight="800" text-anchor="start" letter-spacing="4">VS AUTO-BUY</text>
+<text x="414" y="664.0" fill="#F5F7FF" font-family="'Exo 2','Noto Sans Display','Inter Display','Inter',sans-serif" font-size="76" font-weight="800" text-anchor="start" letter-spacing="0">×12.39</text>
+<text x="414" y="762.2" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="500" text-anchor="start" letter-spacing="0">Relative BTC-eq progress</text>
+<rect x="60" y="762" width="624" height="186" rx="28" fill="url(#cardFill)" stroke="rgba(184,197,237,.18)" stroke-width="2" filter="url(#cardShadow)" />
+<rect x="90" y="786" width="72" height="6" rx="3" fill="#71DDFF"/>
+<text x="90" y="834.0" fill="rgba(244,247,255,.68)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="13" font-weight="800" text-anchor="start" letter-spacing="4">GOVERNANCE</text>
+<text x="90" y="900.0" fill="#F5F7FF" font-family="'Exo 2','Noto Sans Display','Inter Display','Inter',sans-serif" font-size="28" font-weight="800" text-anchor="start" letter-spacing="0">A baseline you can audit</text>
+<text x="90" y="952.6" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="500" text-anchor="start" letter-spacing="0">Most products sell confidence. This system shows its work against a</text>
+<text x="90" y="977.44" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="500" text-anchor="start" letter-spacing="0">simple auto-buy benchmark so you can verify whether the process is</text>
+<text x="90" y="1002.28" fill="rgba(244,247,255,.86)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="18" font-weight="500" text-anchor="start" letter-spacing="0">actually helping.</text>
+<rect x="748" y="468" width="1112" height="446" rx="34" fill="rgba(255,255,255,.05)" stroke="rgba(184,197,237,.18)" stroke-width="2" filter="url(#cardShadow)" />
+<g class="dashboard" transform="translate(780,500)">
+<rect x="0" y="0" width="1048" height="382" rx="17.735714285714288" fill="rgba(18,22,34,.98)" stroke="rgba(115,121,145,.34)" stroke-width="0.955"/>
+<text x="12.278571428571428" y="19.1" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0.8185714285714286">ACTION</text>
+<text x="12.278571428571428" y="42.292857142857144" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0.8185714285714286">MODE</text>
+<rect x="270.1857142857143" y="6.821428571428571" width="224.66857142857145" height="28.650000000000002" rx="5.457142857142857" fill="#D4D7DE"/>
+<text x="382.52000000000004" y="27.285714285714285" fill="#23262E" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="14.325000000000001" font-weight="600" text-anchor="middle">HOLD</text>
+<text x="644.52" y="42.292857142857144" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="13.642857142857142" font-weight="500" text-anchor="middle" letter-spacing="0">Performance</text>
+<text x="770.0014285714285" y="19.1" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0.8185714285714286">MARKET</text>
+<text x="770.0014285714285" y="42.292857142857144" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0.8185714285714286">PROFILE</text>
+<rect x="689.3857142857144" y="6.821428571428571" width="350.42857142857144" height="28.650000000000002" rx="5.457142857142857" fill="#D4D7DE"/>
+<text x="864.6000000000001" y="27.285714285714285" fill="#23262E" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="14.325000000000001" font-weight="600" text-anchor="middle">NEUTRAL</text>
+<text x="864.6000000000001" y="42.292857142857144" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="13.642857142857142" font-weight="500" text-anchor="middle" letter-spacing="0">Managed preset</text>
+<rect x="0" y="76.4" width="1048" height="36.83571428571429" fill="#6B6C76"/>
+<text x="12.278571428571428" y="101.44828571428573" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0">THIS WEEK</text>
+<text x="1035.7214285714285" y="101.44828571428573" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="end" letter-spacing="0">TF: 1W</text>
+<rect x="0" y="113.2357142857143" width="1048" height="34.10714285714286" fill="rgba(18,22,33,.9)"/>
+<text x="12.278571428571428" y="136.42857142857144" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Base</text>
+<rect x="234.24357142857144" y="118.69285714285715" width="286.0728571428572" height="23.192857142857147" rx="4.092857142857143" fill="rgba(24,67,31,.84)"/>
+<text x="377.28000000000003" y="136.42857142857144" fill="#F7FFF5" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="middle" letter-spacing="0">HOLD.</text>
+<text x="536.2785714285715" y="136.42857142857144" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Sim</text>
+<text x="703.9585714285715" y="136.42857142857144" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">none</text>
+<rect x="0" y="147.34285714285716" width="1048" height="35.471428571428575" fill="#6B6C76"/>
+<text x="12.278571428571428" y="171.46342857142858" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0">ENGINE SNAPSHOT</text>
+<rect x="0" y="182.81428571428575" width="1048" height="34.10714285714286" fill="rgba(18,22,33,.88)"/>
+<text x="12.278571428571428" y="206.0071428571429" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Deposited</text>
+<text x="511.7214285714286" y="206.0071428571429" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">$25,900</text>
+<text x="536.2785714285715" y="206.0071428571429" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Cash</text>
+<text x="1035.7214285714285" y="206.0071428571429" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">$3.28M</text>
+<rect x="0" y="216.9214285714286" width="1048" height="34.10714285714286" fill="rgba(21,26,38,.94)"/>
+<text x="12.278571428571428" y="240.11428571428576" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">BTC</text>
+<text x="511.7214285714286" y="240.11428571428576" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">0</text>
+<text x="536.2785714285715" y="240.11428571428576" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Avg cost</text>
+<text x="1035.7214285714285" y="240.11428571428576" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">$0</text>
+<rect x="0" y="251.02857142857147" width="1048" height="34.10714285714286" fill="rgba(18,22,33,.88)"/>
+<text x="12.278571428571428" y="274.2214285714286" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Cash BTC-eq</text>
+<text x="511.7214285714286" y="274.2214285714286" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">46.51</text>
+<text x="536.2785714285715" y="274.2214285714286" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Buffer</text>
+<text x="1035.7214285714285" y="274.2214285714286" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">$1,000</text>
+<rect x="0" y="285.13571428571436" width="1048" height="35.471428571428575" fill="#6B6C76"/>
+<text x="12.278571428571428" y="309.2562857142858" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="10.914285714285715" font-weight="600" text-anchor="start" letter-spacing="0">PROOF VS AUTO-BUY</text>
+<rect x="0" y="320.60714285714295" width="1048" height="34.10714285714286" fill="rgba(18,22,33,.88)"/>
+<text x="12.278571428571428" y="343.80000000000007" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">AZRO BTC-eq</text>
+<text x="511.7214285714286" y="343.80000000000007" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">46.507</text>
+<text x="536.2785714285715" y="343.80000000000007" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Auto BTC-eq</text>
+<text x="1035.7214285714285" y="343.80000000000007" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">3.754</text>
+<rect x="0" y="354.7142857142858" width="1048" height="34.10714285714286" fill="rgba(21,26,38,.94)"/>
+<text x="12.278571428571428" y="377.9071428571429" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">x vs Auto</text>
+<text x="511.7214285714286" y="377.9071428571429" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">×12.39</text>
+<text x="536.2785714285715" y="377.9071428571429" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Extra sats</text>
+<text x="1035.7214285714285" y="377.9071428571429" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">4.28B</text>
+<rect x="0" y="388.82142857142867" width="1048" height="34.10714285714286" fill="rgba(18,22,33,.88)"/>
+<text x="12.278571428571428" y="412.0142857142858" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0">Accretion</text>
+<text x="511.7214285714286" y="412.0142857142858" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0">31.67%/yr</text>
+<text x="536.2785714285715" y="412.0142857142858" fill="#C7CBD6" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="start" letter-spacing="0"></text>
+<text x="1035.7214285714285" y="412.0142857142858" fill="#F4F7FF" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="11.596428571428572" font-weight="500" text-anchor="end" letter-spacing="0"></text>
+</g>
+<rect x="60" y="964" width="1800" height="78" rx="22" fill="rgba(255,255,255,.045)" stroke="rgba(184,197,237,.18)" stroke-width="2" />
+<text x="90" y="1000.0" fill="rgba(244,247,255,.68)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="13" font-weight="800" text-anchor="start" letter-spacing="4">STANDARDIZED EXAMPLE SNAPSHOT</text>
+<text x="90" y="1034.0" fill="rgba(244,247,255,.82)" font-family="'Inter Display','Inter','Noto Sans Display',sans-serif" font-size="17" font-weight="500" text-anchor="start" letter-spacing="0">BTCUSD 1W • Jan 2017–Mar 2026 • $50/week contributions • $1,000 cash buffer • 0.10% fees • pre-tax. Backtests are hypothetical, sensitive to assumptions, and do not guarantee future performance.</text>
+</g>
+</svg>
