@@ -6588,3 +6588,324 @@ body.modal-open .sticky-cta{ z-index: 0 !important; }
     max-width: 100% !important;
   }
 }
+
+
+/* ===== Final publish lock v8: exact guide centering, bullet consistency, compact feature cards, and matched disclosure tiles ===== */
+
+/* Resources: make the core-disclosure tiles use the same square-ish rhythm as the setup tiles. */
+.resources-page .core-doc-grid{
+  max-width: 760px !important;
+  margin: 16px auto 0 !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+.resources-page .product-docs-card .resource-card--doc,
+.resources-page .core-doc-grid .resource-card--doc{
+  min-height: 112px !important;
+  padding: 16px 16px 14px !important;
+  gap: 10px !important;
+}
+
+.resources-page .product-docs-card .resource-card__title,
+.resources-page .core-doc-grid .resource-card__title{
+  max-width: 12ch !important;
+  font-size: clamp(1rem, .98vw, 1.08rem) !important;
+  line-height: 1.14 !important;
+}
+
+/* Pricing: keep the bullet rhythm centered as a block, but readable line-by-line. */
+.pricing-page .plan-card .compact-bullets{
+  width: min(100%, 30rem) !important;
+  max-width: 30rem !important;
+  margin: 16px auto 10px !important;
+  padding: 0 !important;
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.pricing-page .plan-card .compact-bullets li{
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 16px minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  line-height: 1.42 !important;
+}
+
+.pricing-page .plan-card .compact-bullets li::before{
+  margin-top: .58em !important;
+}
+
+.pricing-page .plan-card,
+.pricing-page .plan-card--compact{
+  padding: 22px 22px 18px !important;
+}
+
+.pricing-page .plan-card--compact{
+  padding: 20px 22px 16px !important;
+}
+
+.pricing-page .plan-fit{
+  max-width: 22ch !important;
+}
+
+/* About + Features guide sections: centered block, consistent bullets, and balanced spacing next to the media. */
+.about-page .product-showcase,
+.features-page .product-showcase{
+  display: grid !important;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr) !important;
+  gap: clamp(30px, 3.4vw, 44px) !important;
+  align-items: center !important;
+}
+
+.about-page .product-showcase__text,
+.features-page .product-showcase__text{
+  width: min(100%, 34rem) !important;
+  max-width: 34rem !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: center !important;
+  row-gap: 0 !important;
+  text-align: center !important;
+}
+
+.about-page .product-showcase__text > h3,
+.features-page .product-showcase__text > h3{
+  max-width: 18ch !important;
+  margin: 0 auto !important;
+  line-height: 1.06 !important;
+  text-wrap: balance !important;
+}
+
+.about-page .product-showcase__text > .small,
+.features-page .product-showcase__text > .small{
+  width: min(100%, 34rem) !important;
+  max-width: 34rem !important;
+  margin: 10px auto 0 !important;
+  line-height: 1.58 !important;
+  text-align: center !important;
+  text-wrap: pretty !important;
+}
+
+.about-page .product-showcase__text .compact-bullets,
+.features-page .product-showcase__text .compact-bullets{
+  width: min(100%, 32rem) !important;
+  max-width: 32rem !important;
+  margin: 16px auto 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  gap: 12px !important;
+  justify-items: stretch !important;
+}
+
+.about-page .product-showcase__text .compact-bullets li,
+.features-page .product-showcase__text .compact-bullets li{
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 16px minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  line-height: 1.5 !important;
+}
+
+.about-page .product-showcase__text .compact-bullets li::before,
+.features-page .product-showcase__text .compact-bullets li::before{
+  flex: none !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin-top: .56em !important;
+}
+
+.about-page .product-showcase__text .btn-row,
+.features-page .product-showcase__text .btn-row{
+  width: 100% !important;
+  justify-content: center !important;
+  margin-top: 18px !important;
+}
+
+.about-page .product-showcase__media-col,
+.features-page .product-showcase__media-col{
+  width: min(100%, 740px) !important;
+  max-width: 740px !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: center !important;
+  gap: 10px !important;
+}
+
+.about-page .product-showcase__meta,
+.features-page .product-showcase__meta{
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 2px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.about-page .product-showcase__media.product-shot-frame,
+.features-page .product-showcase__media.product-shot-frame{
+  width: 100% !important;
+}
+
+.about-page .product-showcase__media.product-shot-frame .chart-note,
+.features-page .product-showcase__media.product-shot-frame .chart-note{
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-top: 10px !important;
+  text-align: center !important;
+}
+
+/* About guide media group: lift slightly so it sits between the copy block and CTA baseline. */
+.about-page .product-showcase__media-col{
+  transform: translateY(-6px) !important;
+}
+
+/* Features mini-cards: reduce dead space and normalize the grid. */
+.features-page .feature-mini-grid--full{
+  gap: 14px !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-rows: 1fr !important;
+}
+
+.features-page .feature-mini-grid--full .feature-card{
+  min-height: 138px !important;
+  padding: 18px 18px 16px !important;
+}
+
+.features-page .feature-mini-grid--full .feature-card h3{
+  margin: 0 0 8px !important;
+  line-height: 1.08 !important;
+}
+
+.features-page .feature-mini-grid--full .feature-card p{
+  max-width: 22ch !important;
+  line-height: 1.42 !important;
+}
+
+/* Home hero: center the note exactly to the media width and lower the group slightly. */
+.home .hero-media{
+  width: min(100%, 860px) !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: center !important;
+  gap: 10px !important;
+  padding-top: clamp(40px, 4.4vw, 62px) !important;
+}
+
+.home .hero-media-note--above{
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 0 4px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.home .hero-promo-frame{
+  width: 100% !important;
+}
+
+/* About hero: center the note to the media width and raise the group slightly. */
+.about-page .hero-media{
+  width: min(100%, 860px) !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: center !important;
+  gap: 10px !important;
+  padding-top: clamp(10px, 1.2vw, 16px) !important;
+}
+
+.about-page .hero-media-note--below{
+  width: 100% !important;
+  max-width: 34rem !important;
+  margin: 8px auto 0 !important;
+  text-align: center !important;
+}
+
+.about-page .hero-promo-frame{
+  width: 100% !important;
+}
+
+@media (max-width: 1180px){
+  .resources-page .core-doc-grid{
+    max-width: 720px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .features-page .feature-mini-grid--full{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 980px){
+  .about-page .product-showcase,
+  .features-page .product-showcase{
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-page .product-showcase__text,
+  .features-page .product-showcase__text{
+    width: min(100%, 36rem) !important;
+    max-width: 36rem !important;
+  }
+
+  .about-page .product-showcase__media-col{
+    transform: none !important;
+  }
+
+  .home .hero-media,
+  .about-page .hero-media{
+    width: 100% !important;
+    padding-top: 0 !important;
+  }
+
+  .home .hero-media-note--above,
+  .about-page .hero-media-note--below,
+  .about-page .product-showcase__meta,
+  .features-page .product-showcase__meta{
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 720px){
+  .resources-page .core-doc-grid{
+    max-width: 360px !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .features-page .feature-mini-grid--full{
+    grid-template-columns: 1fr !important;
+  }
+
+  .features-page .feature-mini-grid--full .feature-card{
+    min-height: 0 !important;
+  }
+
+  .pricing-page .plan-card .compact-bullets,
+  .about-page .product-showcase__text .compact-bullets,
+  .features-page .product-showcase__text .compact-bullets{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ===== Final publish lock v8.1: bullet pseudo reset so centered guide/pricing lists render correctly ===== */
+.about-page .product-showcase__text .compact-bullets li::before,
+.features-page .product-showcase__text .compact-bullets li::before,
+.pricing-page .plan-card .compact-bullets li::before{
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  display: block !important;
+  justify-self: center !important;
+}
