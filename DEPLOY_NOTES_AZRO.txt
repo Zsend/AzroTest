@@ -1,0 +1,32 @@
+AZRO ready-to-publish site notes
+
+1) Email capture is live on:
+   - Home page
+   - Resources page
+   - Footer link points to Resources signup
+
+2) Current form backend:
+   - FormSubmit
+   - Destination inbox: support@azrosystems.com
+   - Success page: https://azrosystems.com/thanks.html
+
+3) Important:
+   - FormSubmit requires a one-time destination email confirmation on the first submission before signups begin forwarding normally.
+   - After that, submissions route to the destination inbox.
+
+4) Updated handbook link:
+   - resources.html now points to pdfs/azro-btc-operating-system-handbook-v1.0.3.pdf
+
+5) Trial copy:
+   - "No card required" was removed until checkout fully matches that claim.
+   - Trial modal now points users to the current Gumroad pages and tells them terms are shown there.
+
+6) Subscription credit:
+   - Pricing page now states that paid subscription months can be credited toward lifetime for the same product.
+   - Coordinate final mechanics on Gumroad to match site copy.
+
+7) Final pre-publish checks:
+   - Confirm FormSubmit destination email
+   - Confirm Gumroad product/trial links
+   - Confirm any guarantee/refund language on Gumroad matches the handbooks and site
+   - Upload the new BTC handbook PDF if replacing an older live file
