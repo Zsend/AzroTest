@@ -1,0 +1,353 @@
+
+/* AZRO Systems — reserve-first refresh */
+:root{
+  --section-gap: clamp(18px, 2.5vw, 28px);
+}
+.meta-line{
+  color: rgba(235,242,255,.78);
+  font-weight: 700;
+  letter-spacing: .02em;
+  font-size: .95rem;
+  margin: 0 0 14px;
+}
+.hero-support,
+.page-note{
+  margin: 0 0 14px;
+  color: rgba(244,247,255,.72);
+  font-weight: 600;
+  letter-spacing: .01em;
+  font-size: .95rem;
+}
+.hero-support strong,
+.page-note strong,
+.framework-note strong{
+  color: var(--text-head);
+}
+.pill-row{
+  margin-bottom: 22px;
+}
+.pill{
+  padding: 11px 18px;
+  font-weight: 700;
+  font-size: .88rem;
+  letter-spacing: .01em;
+  color: rgba(244,247,255,.78);
+  background: rgba(255,255,255,.068);
+  border-color: rgba(181,195,237,.22);
+}
+.step-card,
+.product-card,
+.plan-card,
+.feature-card,
+.product-docs-card,
+.utility-card,
+.insight-card,
+.framework-card,
+.principle-card,
+.product-choice-card,
+.resource-highlight-card{
+  min-height: 100%;
+}
+.step-card,
+.product-card,
+.plan-card,
+.feature-card,
+.insight-card,
+.framework-card,
+.principle-card,
+.product-choice-card,
+.resource-highlight-card{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.step-card .pill-row + h3,
+.product-card .pill-row + h3,
+.feature-card .pill-row + h3,
+.insight-card .pill-row + h3,
+.framework-card .pill-row + h3,
+.principle-card .pill-row + h3,
+.product-choice-card .pill-row + h3,
+.resource-highlight-card .pill-row + h3{
+  margin-top: 0 !important;
+}
+.step-card h3,
+.product-card h3,
+.feature-card h3,
+.insight-card h3,
+.framework-card h3,
+.principle-card h3,
+.product-choice-card h3,
+.resource-highlight-card h3{
+  margin: 0 0 12px !important;
+}
+.step-card p,
+.product-card p,
+.feature-card p,
+.insight-card p,
+.framework-card p,
+.principle-card p,
+.product-choice-card p,
+.resource-highlight-card p{
+  margin: 0;
+}
+.card.card--narrow{
+  overflow: hidden;
+}
+.hero-panel{
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,.055) 0%, rgba(255,255,255,.03) 100%);
+  border: 1px solid rgba(181,195,237,.18);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(20px, 3vw, 30px);
+}
+.hero-panel .point + .point{
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(181,195,237,.12);
+}
+.hero-panel h3{ margin: 0 0 8px; }
+.hero-panel p{ margin: 0; color: var(--text-dim); }
+.callout-card{
+  background: linear-gradient(180deg, rgba(118,152,255,.09) 0%, rgba(255,255,255,.03) 100%);
+  border-color: rgba(118,152,255,.22);
+}
+.callout-card h3{ margin: 0 0 10px; }
+.callout-card p{ margin: 0; color: var(--text-body); }
+.insight-grid,
+.framework-grid,
+.principle-grid,
+.product-choice-grid,
+.mix-grid{
+  display: grid;
+  gap: 18px;
+}
+.insight-grid,
+.product-choice-grid,
+.mix-grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.framework-grid,
+.principle-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 1080px){
+  .insight-grid,
+  .product-choice-grid,
+  .mix-grid,
+  .framework-grid,
+  .principle-grid{
+    grid-template-columns: 1fr;
+  }
+}
+.framework-card .ratio{
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
+  color: var(--text-head);
+  letter-spacing: -.03em;
+  margin: 0 0 8px;
+}
+.framework-card .tagline{
+  margin: 0 0 10px;
+  color: var(--text-sub);
+  font-weight: 600;
+}
+.framework-note{
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(181,195,237,.14);
+  color: var(--text-sub);
+}
+.framework-note h3{ margin: 0 0 10px; }
+.framework-note .compact-bullets{ margin: 0; }
+.principle-card .compact-bullets,
+.product-choice-card .compact-bullets,
+.product-card .compact-bullets,
+.product-showcase__text .compact-bullets,
+.pricing-page .plan-card .compact-bullets{
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+.principle-card .compact-bullets li,
+.product-choice-card .compact-bullets li,
+.product-card .compact-bullets li,
+.product-showcase__text .compact-bullets li,
+.pricing-page .plan-card .compact-bullets li{
+  position: relative;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.principle-card .compact-bullets li::before,
+.product-choice-card .compact-bullets li::before,
+.product-card .compact-bullets li::before,
+.product-showcase__text .compact-bullets li::before,
+.pricing-page .plan-card .compact-bullets li::before{
+  content: "";
+  position: absolute;
+  top: .72em;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(118,152,255,.88);
+  box-shadow: 0 0 0 4px rgba(118,152,255,.14);
+}
+.product-choice-card .btn-row .btn,
+.product-card .btn-row .btn,
+.resource-highlight-card .btn-row .btn{ min-width: 0; }
+.pricing-page .plan-card,
+.pricing-page .plan-card--compact{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+}
+.pricing-page .plan-card .pill-row,
+.pricing-page .plan-card .plan-price-row,
+.pricing-page .plan-card .plan-copy,
+.pricing-page .plan-card .plan-fit,
+.pricing-page .plan-card .btn-row,
+.pricing-page .plan-card .price-big,
+.pricing-page .plan-card .plan-price-meta{
+  text-align: left !important;
+  justify-content: flex-start !important;
+  max-width: none !important;
+}
+.pricing-page .plan-card .price-big,
+.pricing-page .plan-card .plan-price-meta{ margin-top: 0 !important; }
+.pricing-page .plan-price-row{
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  margin-bottom: 14px;
+}
+.pricing-page .plan-copy{ min-height: 72px; }
+.pricing-page .plan-card .compact-bullets{ flex: 1 1 auto; }
+.pricing-page .plan-card .btn-row{
+  margin-top: auto;
+  padding-top: 20px;
+  width: 100%;
+}
+.pricing-page .plan-card .btn-row::before{ display:none !important; }
+.pricing-page .plan-card .btn-row .btn{
+  width:100%;
+  min-width: 0 !important;
+}
+.pricing-page .plan-fit{
+  margin-top: 12px;
+  color: var(--text-sub);
+}
+.pricing-page .pricing-section-shell .section-sub{
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.philosophy-page .hero--split .hero-inner,
+.products-page .hero--split .hero-inner{ align-items: stretch; }
+.philosophy-page .hero-panel,
+.products-page .hero-panel{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.footer-brand .small{ max-width: 48ch; }
+.redirect-page .redirect-shell{
+  max-width: 760px;
+  margin-inline: auto;
+}
+@media (max-width: 640px){
+  .hero-support,
+  .page-note,
+  .meta-line{ font-size: .9rem; }
+  .pill-row{ margin-bottom: 18px; }
+  .framework-note{ padding: 16px 16px; }
+}
+
+
+/* Final polish pass — home hero note, philosophy hero balance, and philosophy accordions */
+.home .hero-media-note--above{
+  width: min(100%, 32rem) !important;
+  max-width: 32rem !important;
+  margin: 0 auto 6px !important;
+  text-align: center !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+}
+
+.philosophy-page .hero--split .hero-inner{
+  grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr) !important;
+  gap: clamp(34px, 4.8vw, 64px) !important;
+  align-items: center !important;
+}
+
+.philosophy-page .hero-media{
+  width: min(100%, 860px) !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: center !important;
+  gap: 10px !important;
+  padding-top: clamp(6px, .9vw, 14px) !important;
+}
+
+.philosophy-page .hero-panel{
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  padding: clamp(22px, 2.8vw, 30px) !important;
+}
+
+.philosophy-page .hero-panel .point + .point{
+  margin-top: 16px !important;
+  padding-top: 16px !important;
+}
+
+.philosophy-page .hero-panel h3{
+  margin: 0 0 8px !important;
+}
+
+.philosophy-page .hero-panel p{
+  margin: 0 !important;
+}
+
+.philosophy-page .philosophy-hero-note{
+  width: min(100%, 34rem) !important;
+  max-width: 34rem !important;
+  margin: 6px auto 0 !important;
+  text-align: center !important;
+}
+
+.philosophy-page .product-guide{
+  position: relative;
+  z-index: 0;
+}
+
+.philosophy-page .product-guide + .product-guide{
+  z-index: 1;
+}
+
+.philosophy-page .product-guide__summary h2{
+  letter-spacing: -0.02em;
+}
+
+.philosophy-page .product-guide__body{
+  padding-top: 18px;
+}
+
+.philosophy-page .product-guide .callout-card,
+.philosophy-page .product-guide .framework-note{
+  margin-top: 18px;
+}
+
+@media (max-width: 980px){
+  .philosophy-page .hero-media{
+    width: 100% !important;
+    padding-top: 0 !important;
+  }
+}
