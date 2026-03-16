@@ -1,0 +1,8 @@
+AZRO final publish notes
+
+1. The email signup forms post to FormSubmit using support@azrosystems.com and redirect to https://azrosystems.com/thanks.html.
+2. If you prefer a different email platform later, replace the form action and keep the same fields and styling.
+3. The updated BTC handbook is linked as /pdfs/azro-btc-operating-system-handbook-v1.0.3.pdf.
+4. The updated XRP handbook is linked as /pdfs/azro-xrp-top-bottom-indicator-handbook-v1.1.1.pdf.
+5. The trial modal keeps the existing free-trial code flow and avoids the old no-card claim mismatch.
+6. Paid subscription months are described as creditable toward lifetime for the same product, per founder instruction.

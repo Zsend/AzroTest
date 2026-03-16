@@ -1,0 +1,132 @@
+:root{
+  --input-bg: rgba(8, 12, 24, .94);
+  --input-border: rgba(181,195,237,.22);
+}
+
+.proof-strip{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.proof-chip{
+  display:grid;
+  gap:6px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(181,195,237,.18);
+  background: rgba(255,255,255,.035);
+  text-align:left;
+}
+.proof-chip strong{
+  color: var(--text-head);
+  font-size: .98rem;
+}
+.proof-chip span{
+  color: var(--text-sub);
+  font-size: .93rem;
+  line-height: 1.45;
+}
+
+.quick-qa-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.faq-card,
+.utility-card--updates,
+.product-note-card{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.faq-card h3{
+  margin:0 0 10px;
+}
+.faq-card p{ margin:0; }
+
+.signup-card{
+  background: linear-gradient(180deg, rgba(118,152,255,.09) 0%, rgba(255,255,255,.03) 100%);
+  border-color: rgba(118,152,255,.22);
+}
+.signup-form{
+  width: min(100%, 720px);
+  margin: 0 auto;
+  display:grid;
+  gap: 12px;
+}
+.signup-form--left{
+  width: 100%;
+  margin: 0;
+}
+.signup-form__label{
+  color: var(--text-head);
+  font-weight: 700;
+  text-align:left;
+}
+.signup-form__row{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  width:100%;
+}
+.signup-form__input{
+  width:100%;
+  height:52px;
+  padding: 0 16px;
+  border-radius: 16px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-head);
+  outline:none;
+  font: inherit;
+}
+.signup-form__input::placeholder{ color: rgba(235,242,255,.46); }
+.signup-form__input:focus{
+  border-color: rgba(118,152,255,.6);
+  box-shadow: 0 0 0 4px rgba(118,152,255,.12);
+}
+.signup-form__row .btn{
+  min-width: 150px;
+  justify-content:center;
+}
+.signup-form__note{
+  margin:0;
+  text-align:left;
+  color: var(--text-sub);
+}
+
+.resources-page .utility-card--updates .section-sub,
+.resources-page .utility-card--support .section-sub{
+  max-width: 48ch;
+}
+
+.resources-page .utility-card--updates,
+.resources-page .utility-card--support{
+  min-height: 100%;
+}
+
+.site-footer .footer-links{
+  grid-template-columns: repeat(4, max-content) !important;
+}
+@media (max-width: 1180px){
+  .site-footer .footer-links{ grid-template-columns: repeat(3, max-content) !important; }
+}
+@media (max-width: 640px){
+  .site-footer .footer-links{ grid-template-columns: repeat(2, max-content) !important; }
+}
+
+@media (max-width: 960px){
+  .proof-strip,
+  .quick-qa-grid{
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px){
+  .signup-form__row{
+    grid-template-columns: 1fr;
+  }
+  .signup-form__row .btn{
+    width: 100%;
+  }
+}
