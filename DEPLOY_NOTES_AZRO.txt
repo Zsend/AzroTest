@@ -1,0 +1,23 @@
+AZRO deploy notes — final world-class build
+
+1) Email capture
+- The site now includes a live "Get AZRO updates" form on Home and Resources.
+- Test the form on the live domain before launch and confirm delivery to support@azrosystems.com.
+- The form redirects to /thanks.html after submission.
+- If you later want automations, segments, or campaigns, swap the form endpoint for your email platform embed.
+
+2) Trial language
+- Sitewide CTA now says "Start trial" instead of promising "free" everywhere.
+- Keep Gumroad trial terms aligned with the site language.
+
+3) Subscription credit
+- Pricing copy now states that paid subscription months can be credited toward lifetime for the same product.
+- Make sure the Gumroad product pages and support workflow match that policy.
+
+4) BTC handbook link
+- Resources now points to pdfs/azro-btc-operating-system-handbook-v1.0.3.pdf
+- Confirm the file opens after deploy.
+
+5) Final QA
+- Test header nav, sticky CTA, trial modal, label modal, videos, handbook links, and email form.
+- Check Home, Philosophy, Products, Features, Pricing, Resources, About, Thanks, and 404 on desktop and mobile.
