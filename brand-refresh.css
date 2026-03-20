@@ -7541,3 +7541,218 @@ body{
     max-width: 100% !important;
   }
 }
+
+/* ===== Final publish lock v38: exact products/features showcase parity ===== */
+:root{
+  --azro-showcase-copy-max-v38: 41rem;
+  --azro-showcase-list-max-v38: 35rem;
+  --azro-showcase-media-max-v38: 760px;
+  --azro-bridge-max-v38: 72rem;
+}
+
+.products-page .section-intro-bridge,
+.features-page .section-intro-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .section-intro-bridge{
+  width: min(100%, var(--azro-bridge-max-v38)) !important;
+  max-width: var(--azro-bridge-max-v38) !important;
+  margin: 0 auto 20px !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+
+.products-page .product-guide__body .product-showcase,
+.features-page .product-guide__body .product-showcase{
+  display: grid !important;
+  grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr) !important;
+  gap: clamp(28px, 3vw, 40px) !important;
+  align-items: center !important;
+}
+
+.products-page .product-guide__body .product-showcase__text,
+.features-page .product-guide__body .product-showcase__text{
+  width: min(100%, var(--azro-showcase-copy-max-v38)) !important;
+  max-width: var(--azro-showcase-copy-max-v38) !important;
+  margin-inline: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy,
+.features-page .product-guide__body .product-showcase__copy{
+  width: 100% !important;
+  max-width: var(--azro-showcase-copy-max-v38) !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  align-content: center !important;
+  justify-items: center !important;
+  gap: 16px !important;
+  text-align: center !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy > h3,
+.features-page .product-guide__body .product-showcase__copy > h3{
+  width: min(100%, 32ch) !important;
+  max-width: 32ch !important;
+  margin: 0 auto !important;
+  font-size: clamp(1.72rem, 2.08vw, 2.12rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.03em !important;
+  text-wrap: balance !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy > .small,
+.features-page .product-guide__body .product-showcase__copy > .small{
+  width: min(100%, 38rem) !important;
+  max-width: 38rem !important;
+  margin: 0 auto !important;
+  line-height: 1.56 !important;
+  text-wrap: pretty !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy .compact-bullets,
+.features-page .product-guide__body .product-showcase__copy .compact-bullets{
+  width: min(100%, var(--azro-showcase-list-max-v38)) !important;
+  max-width: var(--azro-showcase-list-max-v38) !important;
+  margin: 2px auto 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: grid !important;
+  gap: 14px !important;
+  justify-items: stretch !important;
+  text-align: left !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy .compact-bullets li,
+.features-page .product-guide__body .product-showcase__copy .compact-bullets li{
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 18px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+  position: static !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy .compact-bullets li::before,
+.features-page .product-guide__body .product-showcase__copy .compact-bullets li::before{
+  content: '' !important;
+  position: relative !important;
+  display: block !important;
+  left: auto !important;
+  top: auto !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin-top: .62em !important;
+  border-radius: 999px !important;
+  background: rgba(118,152,255,.88) !important;
+  box-shadow: 0 0 0 4px rgba(118,152,255,.14) !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy .btn-row,
+.features-page .product-guide__body .product-showcase__copy .btn-row{
+  width: min(100%, var(--azro-showcase-list-max-v38)) !important;
+  max-width: var(--azro-showcase-list-max-v38) !important;
+  margin: 2px auto 0 !important;
+  justify-content: center !important;
+  gap: 14px !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy .btn-row .btn,
+.features-page .product-guide__body .product-showcase__copy .btn-row .btn{
+  min-width: 10.9rem !important;
+}
+
+.products-page .product-guide__body .product-showcase__media-col,
+.features-page .product-guide__body .product-showcase__media-col{
+  width: min(100%, var(--azro-showcase-media-max-v38)) !important;
+  max-width: var(--azro-showcase-media-max-v38) !important;
+  margin-inline: auto !important;
+  display: grid !important;
+  justify-items: center !important;
+  align-content: center !important;
+  gap: 12px !important;
+  transform: translateX(-12px) !important;
+}
+
+.products-page .product-guide__body .product-showcase__meta,
+.features-page .product-guide__body .product-showcase__meta,
+.products-page .product-guide__body .product-showcase__media.product-shot-frame,
+.features-page .product-guide__body .product-showcase__media.product-shot-frame,
+.products-page .product-guide__body .product-showcase__media.product-shot-frame .chart-note,
+.features-page .product-guide__body .product-showcase__media.product-shot-frame .chart-note{
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.products-page .product-guide__body .product-showcase__meta,
+.features-page .product-guide__body .product-showcase__meta{
+  margin: 0 0 12px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.products-page .product-guide__body .product-showcase__media.product-shot-frame .chart-note,
+.features-page .product-guide__body .product-showcase__media.product-shot-frame .chart-note{
+  max-width: 36rem !important;
+  padding-top: 10px !important;
+}
+
+@media (min-width: 1181px){
+  .products-page .product-guide__body .product-showcase__copy > h3,
+  .features-page .product-guide__body .product-showcase__copy > h3{
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 1180px){
+  .products-page .product-guide__body .product-showcase,
+  .features-page .product-guide__body .product-showcase{
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .products-page .product-guide__body .product-showcase__text,
+  .features-page .product-guide__body .product-showcase__text,
+  .products-page .product-guide__body .product-showcase__copy,
+  .features-page .product-guide__body .product-showcase__copy,
+  .products-page .product-guide__body .product-showcase__media-col,
+  .features-page .product-guide__body .product-showcase__media-col{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .products-page .product-guide__body .product-showcase__media-col,
+  .features-page .product-guide__body .product-showcase__media-col{
+    transform: none !important;
+  }
+
+  .products-page .product-guide__body .product-showcase__meta,
+  .features-page .product-guide__body .product-showcase__meta{
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+}
+
+@media (max-width: 720px){
+  .products-page .product-guide__body .product-showcase__copy > h3,
+  .features-page .product-guide__body .product-showcase__copy > h3,
+  .products-page .product-guide__body .product-showcase__copy > .small,
+  .features-page .product-guide__body .product-showcase__copy > .small,
+  .products-page .product-guide__body .product-showcase__copy .compact-bullets,
+  .features-page .product-guide__body .product-showcase__copy .compact-bullets,
+  .products-page .product-guide__body .product-showcase__copy .btn-row,
+  .features-page .product-guide__body .product-showcase__copy .btn-row{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
