@@ -7884,3 +7884,97 @@ body{
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* ===== Final publish lock v40: center the left text column so Products + Features mirror the media side ===== */
+:root{
+  --azro-showcase-copy-max-v40: 30.75rem;
+}
+
+.products-page .product-guide__body .product-showcase,
+.features-page .product-guide__body .product-showcase{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:clamp(30px, 3.1vw, 42px) !important;
+  align-items:center !important;
+}
+
+.products-page .product-guide__body .product-showcase__text,
+.features-page .product-guide__body .product-showcase__text{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  display:flex !important;
+  justify-content:flex-end !important;
+  align-items:center !important;
+  text-align:center !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy,
+.features-page .product-guide__body .product-showcase__copy{
+  width:min(100%, var(--azro-showcase-copy-max-v40)) !important;
+  max-width:var(--azro-showcase-copy-max-v40) !important;
+  margin-left:auto !important;
+  margin-right:0 !important;
+  display:grid !important;
+  gap:16px !important;
+  justify-items:center !important;
+  align-content:center !important;
+  text-align:center !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy > h3,
+.features-page .product-guide__body .product-showcase__copy > h3,
+.products-page .product-guide__body .product-showcase__copy > .small,
+.features-page .product-guide__body .product-showcase__copy > .small,
+.products-page .product-guide__body .product-showcase__copy .compact-bullets,
+.features-page .product-guide__body .product-showcase__copy .compact-bullets,
+.products-page .product-guide__body .product-showcase__copy .btn-row,
+.features-page .product-guide__body .product-showcase__copy .btn-row{
+  width:100% !important;
+  max-width:100% !important;
+}
+
+.products-page .product-guide__body .product-showcase__copy .compact-bullets,
+.features-page .product-guide__body .product-showcase__copy .compact-bullets,
+.products-page .product-guide__body .product-showcase__copy .btn-row,
+.features-page .product-guide__body .product-showcase__copy .btn-row{
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+@media (max-width: 980px){
+  .products-page .product-guide__body .product-showcase,
+  .features-page .product-guide__body .product-showcase{
+    grid-template-columns:1fr !important;
+  }
+
+  .products-page .product-guide__body .product-showcase__text,
+  .features-page .product-guide__body .product-showcase__text{
+    justify-content:center !important;
+  }
+
+  .products-page .product-guide__body .product-showcase__copy,
+  .features-page .product-guide__body .product-showcase__copy{
+    width:min(100%, 34rem) !important;
+    max-width:34rem !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+}
+
+@media (max-width: 720px){
+  .products-page .product-guide__body .product-showcase__copy,
+  .features-page .product-guide__body .product-showcase__copy,
+  .products-page .product-guide__body .product-showcase__copy > h3,
+  .features-page .product-guide__body .product-showcase__copy > h3,
+  .products-page .product-guide__body .product-showcase__copy > .small,
+  .features-page .product-guide__body .product-showcase__copy > .small,
+  .products-page .product-guide__body .product-showcase__copy .compact-bullets,
+  .features-page .product-guide__body .product-showcase__copy .compact-bullets,
+  .products-page .product-guide__body .product-showcase__copy .btn-row,
+  .features-page .product-guide__body .product-showcase__copy .btn-row{
+    width:100% !important;
+    max-width:100% !important;
+  }
+}
