@@ -7978,3 +7978,130 @@ body{
     max-width:100% !important;
   }
 }
+
+
+/* ===== Final publish lock v41: copy refresh + balance ===== */
+.home .hero-copy-stack,
+.products-page .hero-copy-stack{
+  display:grid !important;
+  gap:14px !important;
+  margin:18px auto 0 !important;
+  width:min(100%, 60ch) !important;
+  max-width:60ch !important;
+}
+.home .hero-copy-stack .lede,
+.products-page .hero-copy-stack .lede,
+.home .hero-copy-note,
+.philosophy-page .hero-copy-note,
+.products-page .hero-product-item p{
+  margin:0 !important;
+  color:var(--text-sub) !important;
+  line-height:1.62 !important;
+}
+.home .hero-copy-note,
+.philosophy-page .hero-copy-note,
+.products-page .hero-product-item p{
+  font-size:1rem !important;
+}
+.products-page .hero-product-item{
+  display:grid !important;
+  gap:6px !important;
+}
+.products-page .hero-product-item strong{
+  display:block !important;
+  font-size:1rem !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+  color:var(--text-main) !important;
+}
+.home .hero .hero-text h1{
+  max-width: 12.8ch !important;
+}
+.home .hero-media-note--above{
+  max-width:min(100%, 44ch) !important;
+  margin:0 auto 12px !important;
+  white-space:normal !important;
+  text-wrap:balance !important;
+  line-height:1.45 !important;
+  font-size:clamp(.82rem, .9vw, .96rem) !important;
+}
+.products-page .hero .hero-text h1{
+  max-width: 18ch !important;
+}
+.products-page .hero-copy-stack--products{
+  width:min(100%, 56ch) !important;
+  max-width:56ch !important;
+}
+.philosophy-page .hero .hero-text h1{
+  max-width: 12ch !important;
+}
+.philosophy-page .hero .lede{
+  max-width: 26ch !important;
+}
+.philosophy-page .hero-copy-note{
+  max-width: 56ch !important;
+  margin: 0 auto !important;
+}
+.site-footer .footer-upper{
+  align-items:stretch !important;
+}
+.site-footer .footer-panel{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+}
+.site-footer .footer-brand-panel strong{
+  display:block !important;
+}
+.site-footer .footer-signup h3{
+  max-width:none !important;
+  white-space:nowrap !important;
+  font-size:clamp(1.45rem, 2vw, 1.95rem) !important;
+  line-height:1.08 !important;
+}
+.site-footer .footer-brand-copy,
+.site-footer .footer-signup > p.small{
+  max-width: 40ch !important;
+}
+.pricing-page .crypto-pay-actions{
+  margin-top:16px !important;
+}
+.pricing-page .crypto-pay-actions .btn{
+  min-width: 220px !important;
+}
+.products-page #btc-guide .product-showcase__copy > h3,
+.products-page #xrp-guide .product-showcase__copy > h3{
+  max-width: none !important;
+}
+@media (min-width: 1180px){
+  .products-page #btc-guide .product-showcase__copy > h3,
+  .products-page #xrp-guide .product-showcase__copy > h3{
+    white-space: nowrap !important;
+    font-size: clamp(1.42rem, 1.8vw, 1.9rem) !important;
+    letter-spacing: -.02em !important;
+  }
+}
+@media (max-width: 980px){
+  .site-footer .footer-signup h3{
+    white-space:normal !important;
+  }
+  .pricing-page .crypto-pay-actions .btn{
+    min-width:0 !important;
+  }
+}
+
+
+/* ===== Final publish lock v41b: one-line product section titles with shared measure ===== */
+@media (min-width: 1180px){
+  .products-page .product-guide__body .product-showcase__copy,
+  .features-page .product-guide__body .product-showcase__copy{
+    width:min(100%, 34rem) !important;
+    max-width:34rem !important;
+  }
+  .products-page #btc-guide .product-showcase__copy > h3,
+  .products-page #xrp-guide .product-showcase__copy > h3{
+    white-space:nowrap !important;
+    font-size:1.62rem !important;
+    letter-spacing:-.02em !important;
+  }
+}
