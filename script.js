@@ -778,7 +778,10 @@ ${email}`);
           <button class="media-gallery__nav media-gallery__nav--next" data-gallery-lightbox-next type="button" aria-label="Next item">›</button>
         </div>
         <div class="gallery-lightbox__footer">
-          <p class="gallery-lightbox__note" data-gallery-lightbox-note hidden></p>
+          <div class="gallery-lightbox__meta">
+            <p class="gallery-lightbox__caption" data-gallery-lightbox-caption></p>
+            <p class="gallery-lightbox__note" data-gallery-lightbox-note></p>
+          </div>
           <div class="media-gallery__dots" data-gallery-lightbox-dots></div>
         </div>
       </div>`;
@@ -788,6 +791,7 @@ ${email}`);
   const lbViewport = lightbox.querySelector('[data-gallery-lightbox-viewport]');
   const lbStage = lightbox.querySelector('[data-gallery-lightbox-stage]');
   const lbDots = lightbox.querySelector('[data-gallery-lightbox-dots]');
+  const lbCaption = lightbox.querySelector('[data-gallery-lightbox-caption]');
   const lbNote = lightbox.querySelector('[data-gallery-lightbox-note]');
   const lbDialog = lightbox.querySelector('.modal__dialog--gallery');
   const lbPrev = lightbox.querySelector('[data-gallery-lightbox-prev]');
@@ -814,7 +818,8 @@ ${email}`);
     document.body.classList.remove('modal-open');
     lbStage.innerHTML = '';
     lbDots.innerHTML = '';
-    if (lbNote) { lbNote.textContent = ''; lbNote.hidden = true; }
+    if (lbCaption) lbCaption.textContent = '';
+    if (lbNote) lbNote.textContent = '';
     activeController = null;
     activeSet = 'image';
     if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
@@ -840,10 +845,11 @@ ${email}`);
     const currentIndex = getCurrentIndex(activeController, activeSet);
     const current = items[currentIndex];
     const ratio = activeController.root.style.getPropertyValue('--gallery-ratio') || '16 / 9';
-    const noteText = current.note || current.label || activeController.data.caption || activeController.data.title || '';
-    if (lbNote) { lbNote.textContent = noteText; lbNote.hidden = !noteText; }
+
     lbViewport.style.setProperty('--lightbox-ratio', ratio);
     if (lbDialog) lbDialog.setAttribute('aria-label', activeController.data.title || 'TradingView preview gallery');
+    if (lbCaption) lbCaption.textContent = current.label || activeController.data.title || 'TradingView preview';
+    if (lbNote) lbNote.textContent = current.note || activeController.data.note || activeController.data.caption || 'Preview inside TradingView.';
 
     pauseActiveLightboxVideo();
     lbStage.innerHTML = '';
