@@ -12373,49 +12373,24 @@ body{
   }
 }
 
-
-/* ===== Final polish v63: hero top-fit and consistent first-row loading ===== */
+/* ===== Final polish v64: restore Home hero behavior and lock Products/Philosophy first-row alignment ===== */
 @media (min-width: 1200px){
-  .home .hero,
   .products-page .hero,
   .philosophy-page .hero{
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-  }
-
-  .home .hero--split .hero-inner{
-    gap: 18px 34px !important;
-    align-items: start !important;
+    padding-top: 22px !important;
+    padding-bottom: 16px !important;
   }
 
   .products-page .hero-inner--wide-title,
   .philosophy-page .hero-inner--wide-title{
-    gap: 2px 34px !important;
+    gap: 0 clamp(30px, 3.4vw, 42px) !important;
     align-items: start !important;
   }
 
   .products-page .hero-inner--wide-title > .hero-wide-title,
   .philosophy-page .hero-inner--wide-title > .hero-wide-title{
     transform: none !important;
-    margin: 4px auto -8px !important;
-  }
-
-  .home .hero .hero-text,
-  .products-page .hero .hero-text,
-  .philosophy-page .hero .hero-text{
-    justify-content: flex-start !important;
-    align-self: start !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  .home .hero-media,
-  .products-page .hero-media,
-  .philosophy-page .hero-media{
-    justify-content: flex-start !important;
-    align-self: start !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    margin: 6px auto -16px !important;
   }
 
   .products-page .hero-inner--wide-title > .hero-text,
@@ -12428,20 +12403,49 @@ body{
     transform: none !important;
   }
 
-  .home .hero .hero-text h1{
+  .products-page .hero-copy-stack--products,
+  .philosophy-page .hero-copy-stack--philosophy{
+    gap: 10px !important;
     margin-top: 0 !important;
+  }
+
+  .products-page .hero .hero-cta,
+  .philosophy-page .hero .hero-cta{
+    margin-top: 12px !important;
+  }
+
+  .products-page .hero-media,
+  .philosophy-page .hero-media{
+    display: grid !important;
+    align-content: start !important;
+    justify-items: center !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .products-page .hero-media .media-gallery,
+  .philosophy-page .philosophy-hero-panel{
+    margin-top: 0 !important;
+  }
+
+  .products-page .hero-media-note--above{
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .products-page .hero-media-note--below,
+  .products-page .hero-media-note--trust{
+    margin-top: 10px !important;
   }
 }
 
 @media (min-width: 1200px) and (max-height: 940px){
-  .home .hero,
   .products-page .hero,
   .philosophy-page .hero{
-    padding-top: 12px !important;
+    padding-top: 18px !important;
     padding-bottom: 12px !important;
   }
 
-  .home .hero--split .hero-inner,
   .products-page .hero-inner--wide-title,
   .philosophy-page .hero-inner--wide-title{
     gap: 0 30px !important;
@@ -12449,6 +12453,11 @@ body{
 
   .products-page .hero-inner--wide-title > .hero-wide-title,
   .philosophy-page .hero-inner--wide-title > .hero-wide-title{
-    margin: 0 auto -10px !important;
+    margin: 2px auto -18px !important;
+  }
+
+  .products-page .hero .hero-cta,
+  .philosophy-page .hero .hero-cta{
+    margin-top: 10px !important;
   }
 }
