@@ -15026,3 +15026,177 @@ body{
     text-align: center;
   }
 }
+
+/* ===== Final polish v97: accent restraint, centered summary shells, philosophy hero lock ===== */
+
+/* Keep the accent bars on the main decision-driving cards, not every supporting surface. */
+:where(
+  .insight-card,
+  .principle-card,
+  .framework-card,
+  .callout-card,
+  .feature-card,
+  .contact-band-card,
+  .footer-panel,
+  .trial-option
+) > :is(.pill-row:first-child, h2:first-child, h3:first-child, .section-title:first-child)::before{
+  content: none !important;
+  display: none !important;
+}
+
+/* Accordion headers should feel optically centered inside the shell, not pinned to the top edge. */
+.home .home-guide .product-guide__summary,
+.philosophy-page .philosophy-guide .product-guide__summary,
+.pricing-page .pricing-section-shell .product-guide__summary,
+.products-page .product-guide__summary,
+.features-page .product-guide__summary{
+  padding: 0 !important;
+  min-height: clamp(128px, 10.8vw, 168px) !important;
+  align-items: center !important;
+}
+
+.home .home-guide .product-guide__summary > div,
+.philosophy-page .philosophy-guide .product-guide__summary > div,
+.pricing-page .pricing-section-shell .product-guide__summary > div,
+.products-page .product-guide__summary > div,
+.features-page .product-guide__summary > div{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: clamp(128px, 10.8vw, 168px) !important;
+  padding-right: clamp(18px, 3.8vw, 34px) !important;
+}
+
+.home .home-guide .product-guide__summary > div::before,
+.philosophy-page .philosophy-guide .product-guide__summary > div::before,
+.pricing-page .pricing-section-shell .product-guide__summary > div::before,
+.products-page .product-guide__summary > div::before,
+.features-page .product-guide__summary > div::before{
+  margin: 0 0 18px !important;
+}
+
+.home .home-guide .product-guide__summary::after,
+.philosophy-page .philosophy-guide .product-guide__summary::after,
+.pricing-page .pricing-section-shell .product-guide__summary::after,
+.products-page .product-guide__summary::after,
+.features-page .product-guide__summary::after{
+  margin-top: 0 !important;
+  align-self: center !important;
+}
+
+@media (max-width: 980px){
+  .home .home-guide .product-guide__summary,
+  .philosophy-page .philosophy-guide .product-guide__summary,
+  .pricing-page .pricing-section-shell .product-guide__summary,
+  .products-page .product-guide__summary,
+  .features-page .product-guide__summary{
+    min-height: clamp(112px, 26vw, 144px) !important;
+  }
+
+  .home .home-guide .product-guide__summary > div,
+  .philosophy-page .philosophy-guide .product-guide__summary > div,
+  .pricing-page .pricing-section-shell .product-guide__summary > div,
+  .products-page .product-guide__summary > div,
+  .features-page .product-guide__summary > div{
+    min-height: clamp(112px, 26vw, 144px) !important;
+  }
+}
+
+/* Philosophy hero: make the statement feel intentional and keep the left column in one visual system. */
+.philosophy-page .philosophy-hero-statement{
+  display: grid !important;
+  gap: .24em !important;
+  font-family: var(--font-head) !important;
+  font-size: clamp(1.42rem, 1.58vw, 1.84rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -.03em !important;
+  color: var(--text-head) !important;
+  text-wrap: balance !important;
+}
+
+.philosophy-page .philosophy-hero-statement span{
+  display: block !important;
+}
+
+@media (min-width: 981px){
+  .philosophy-page .hero .hero-text{
+    text-align: left !important;
+  }
+
+  .philosophy-page .hero .hero-cta{
+    justify-content: flex-start !important;
+  }
+
+  .philosophy-page .hero-copy-stack--philosophy{
+    width: min(100%, 50ch) !important;
+    max-width: 50ch !important;
+    margin: clamp(18px, 1.8vw, 22px) 0 0 !important;
+    align-items: flex-start !important;
+  }
+
+  .philosophy-page .hero-copy-stack--philosophy .philosophy-hero-statement,
+  .philosophy-page .hero-copy-stack--philosophy .hero-copy-note,
+  .philosophy-page .hero-copy-stack--philosophy .hero-copy-bullets--value{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .philosophy-page .hero-copy-stack--philosophy .philosophy-hero-statement{
+    max-width: 15.5ch !important;
+    text-align: left !important;
+  }
+
+  .philosophy-page .hero-copy-stack--philosophy .hero-copy-note,
+  .philosophy-page .hero-copy-stack--philosophy .hero-copy-bullets--value{
+    width: min(100%, 47ch) !important;
+    max-width: 47ch !important;
+    text-align: left !important;
+  }
+
+  .philosophy-page .hero-media{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-self: center !important;
+    width: min(100%, 48rem) !important;
+    gap: 12px !important;
+    padding-top: 0 !important;
+  }
+
+  .philosophy-page .hero-panel{
+    width: min(100%, 46rem) !important;
+    margin-inline: auto !important;
+  }
+
+  .philosophy-page .philosophy-hero-note,
+  .philosophy-page .philosophy-hero-tail{
+    width: min(100%, 38rem) !important;
+    max-width: 38rem !important;
+  }
+}
+
+@media (max-width: 980px){
+  .philosophy-page .hero-copy-stack--philosophy{
+    width: min(100%, 36rem) !important;
+    max-width: 36rem !important;
+    align-items: center !important;
+  }
+
+  .philosophy-page .philosophy-hero-statement{
+    max-width: 18ch !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    font-size: clamp(1.3rem, 4.7vw, 1.66rem) !important;
+  }
+
+  .philosophy-page .hero-copy-note,
+  .philosophy-page .hero-copy-bullets--value{
+    width: min(100%, 31rem) !important;
+    max-width: 31rem !important;
+  }
+
+  .philosophy-page .hero-copy-note{
+    text-align: left !important;
+    margin-inline: auto !important;
+  }
+}
