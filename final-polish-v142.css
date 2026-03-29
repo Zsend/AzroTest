@@ -1,7 +1,0 @@
-/* Final publish v142: align Products detail-section paragraph tone with the rest of the Products page copy system. */
-
-.products-page #product-overviews .product-signature__lede,
-.products-page #product-overviews .product-signature__card p,
-.products-page #product-overviews .product-signature__band-card p{
-  color: var(--azro-copy-color, rgba(236,242,255,.84)) !important;
-}
