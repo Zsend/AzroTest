@@ -1,0 +1,209 @@
+/* Final publish v126: proof/pricing polish, accent carryover, and hero signoff balance. */
+
+:root{
+  --azro-final-divider: linear-gradient(90deg,
+    rgba(188,204,244,.08) 0%,
+    rgba(188,204,244,.34) 50%,
+    rgba(188,204,244,.08) 100%);
+}
+
+/* Carry the restrained blue supporting-text language into the home proof cards and pricing detail surfaces. */
+.home #proof .proof-card-intro,
+.pricing-page .plan-price-meta,
+.pricing-page .plan-fit,
+.pricing-page .section-intro-bridge{
+  color: var(--azro-accent-text-subtle) !important;
+}
+
+/* Home proof cards: tighter rhythm, clearer divider between the intro copy and the published bullet points. */
+.home #proof .product-card{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.home #proof .proof-card-intro{
+  width: min(100%, 31ch) !important;
+  margin: 10px auto 0 !important;
+  line-height: 1.54 !important;
+  text-wrap: pretty !important;
+}
+
+.home #proof .product-card .compact-bullets{
+  width: min(100%, 32ch) !important;
+  margin: 18px auto 0 !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(188,204,244,.14) !important;
+}
+
+.home #proof .product-card .compact-bullets li{
+  margin: 0 0 14px !important;
+}
+
+.home #proof .product-card .compact-bullets li:last-child{
+  margin-bottom: 0 !important;
+}
+
+.home #proof .product-card .btn-row{
+  margin-top: auto !important;
+  padding-top: 20px !important;
+}
+
+/* Products hero signoff: lower it slightly so the card / signoff block breathes more cleanly below the media frame. */
+.products-page .products-hero-echo{
+  display: block !important;
+  width: fit-content !important;
+  max-width: min(100%, 24ch) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (min-width: 981px){
+  .products-page .products-hero-echo{
+    margin-top: 30px !important;
+    padding-top: 20px !important;
+  }
+
+  .products-page .hero-media-note--trust{
+    margin-top: 14px !important;
+  }
+}
+
+@media (max-width: 980px){
+  .products-page .products-hero-echo{
+    margin-top: 22px !important;
+    padding-top: 18px !important;
+  }
+
+  .products-page .hero-media-note--trust{
+    margin-top: 12px !important;
+  }
+}
+
+/* Philosophy hero: visually center the right-side panel group against the left copy + CTA stack. */
+@media (min-width: 1200px){
+  .philosophy-page .hero-media{
+    transform: translateY(-8px) !important;
+  }
+
+  .philosophy-page .philosophy-hero-panel{
+    margin-top: 2px !important;
+  }
+
+  .philosophy-page .philosophy-hero-note{
+    margin-top: 14px !important;
+  }
+
+  .philosophy-page .philosophy-hero-tail{
+    margin-top: 4px !important;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1199px){
+  .philosophy-page .hero-media{
+    transform: translateY(-4px) !important;
+  }
+
+  .philosophy-page .philosophy-hero-note{
+    margin-top: 14px !important;
+  }
+}
+
+/* Pricing cards: lock the internal rhythm, align the CTA zone, and keep the fit note on one line on desktop. */
+.pricing-page .pricing-2up{
+  align-items: stretch !important;
+}
+
+.pricing-page .plan-card,
+.pricing-page .plan-card--compact{
+  display: grid !important;
+  grid-template-rows: auto auto auto 1fr auto auto !important;
+  align-content: start !important;
+  justify-items: center !important;
+  gap: 0 !important;
+  padding: 28px 28px 24px !important;
+}
+
+.pricing-page .plan-card .pill-row,
+.pricing-page .plan-card--compact .pill-row{
+  min-height: 56px !important;
+  margin: 0 auto 14px !important;
+  align-content: start !important;
+}
+
+.pricing-page .plan-price-row{
+  min-height: 86px !important;
+  align-items: flex-end !important;
+  gap: 12px !important;
+  margin: 0 auto 14px !important;
+}
+
+.pricing-page .plan-card .price-big,
+.pricing-page .plan-card--compact .price-big{
+  line-height: .9 !important;
+}
+
+.pricing-page .plan-card .plan-price-meta,
+.pricing-page .plan-card--compact .plan-price-meta{
+  margin-bottom: .34em !important;
+}
+
+.pricing-page .plan-copy{
+  max-width: 31ch !important;
+  min-height: 5.6em !important;
+  margin: 0 auto !important;
+}
+
+.pricing-page .plan-card .compact-bullets,
+.pricing-page .plan-card--compact .compact-bullets{
+  width: min(100%, 32ch) !important;
+  margin: 18px auto 0 !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(188,204,244,.14) !important;
+  display: grid !important;
+  gap: 14px !important;
+}
+
+.pricing-page .plan-card .compact-bullets li,
+.pricing-page .plan-card--compact .compact-bullets li{
+  margin: 0 !important;
+}
+
+.pricing-page .plan-card .btn-row,
+.pricing-page .plan-card--compact .btn-row{
+  width: 100% !important;
+  margin-top: auto !important;
+  padding-top: 22px !important;
+  justify-content: center !important;
+}
+
+.pricing-page .plan-card .btn-row .btn,
+.pricing-page .plan-card--compact .btn-row .btn{
+  width: min(100%, 238px) !important;
+}
+
+.pricing-page .plan-fit{
+  width: auto !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 14px auto 0 !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  font-size: clamp(.98rem, .45vw + .9rem, 1.05rem) !important;
+  line-height: 1.38 !important;
+  text-wrap: nowrap !important;
+}
+
+@media (max-width: 1100px){
+  .pricing-page .plan-fit{
+    width: min(100%, 25ch) !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+
+  .pricing-page .plan-card,
+  .pricing-page .plan-card--compact{
+    padding: 24px 22px 22px !important;
+  }
+}
