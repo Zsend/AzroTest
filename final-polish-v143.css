@@ -1,0 +1,44 @@
+/* Final publish v143: restore neutral body-copy balance across non-product sections.
+   The Products detail sections already set the right pattern: blue for small labels and signposts,
+   neutral white copy for the paragraphs that do the real explanatory work. This file carries that
+   same ratio across the rest of the site without changing layout, spacing, or interaction. */
+
+:root{
+  --azro-v143-section-copy: rgba(244,247,255,.78);
+  --azro-v143-section-copy-strong: rgba(244,247,255,.84);
+}
+
+/* Neutral body copy inside the section systems that had drifted too blue. */
+.home .product-guide__body p.small:not(.accent-blue):not(.accent-blue-soft),
+.home .product-guide__body .proof-card-intro:not(.accent-blue):not(.accent-blue-soft),
+.home .product-choice-card p:not(.accent-blue):not(.accent-blue-soft),
+.philosophy-page .product-guide__body p.small:not(.accent-blue):not(.accent-blue-soft),
+.features-page .product-showcase__copy > p.small:not(.accent-blue):not(.accent-blue-soft),
+.features-page .guide-shell > p.small:not(.accent-blue):not(.accent-blue-soft),
+.features-page .feature-mini-grid .feature-card p:not(.accent-blue):not(.accent-blue-soft),
+.products-page .product-choice-card p:not(.accent-blue):not(.accent-blue-soft),
+.pricing-page .product-choice-card p.small:not(.accent-blue):not(.accent-blue-soft),
+.pricing-page .step-card p.small:not(.accent-blue):not(.accent-blue-soft),
+.pricing-page .plan-fit:not(.accent-blue):not(.accent-blue-soft),
+.pricing-page .crypto-pay-card > p.small:not(.accent-blue):not(.accent-blue-soft),
+.pricing-page .crypto-pay-surface > p.small:not(.accent-blue):not(.accent-blue-soft),
+.pricing-page .crypto-pay-note:not(.accent-blue):not(.accent-blue-soft),
+.support-page .resource-utility-card > p.small:not(.accent-blue):not(.accent-blue-soft),
+.contact-page .contact-card p.small:not(.accent-blue):not(.accent-blue-soft),
+.contact-page .contact-band-card p.small:not(.accent-blue):not(.accent-blue-soft),
+#trialModal .trial-option__copy:not(.accent-blue):not(.accent-blue-soft),
+#trialModal .trial-note:not(.accent-blue):not(.accent-blue-soft){
+  color: var(--azro-v143-section-copy) !important;
+  font-weight: 400 !important;
+}
+
+/* Larger explanatory lines inside non-hero section shells should read as body copy, not accent copy. */
+.home .callout-card .section-sub,
+.home #product-mix .section-sub,
+.resources-page .product-docs-intro,
+.resources-page .core-disclosures-card .section-sub,
+.support-page .product-docs-intro,
+.support-page .core-disclosures-card .section-sub{
+  color: var(--azro-v143-section-copy-strong) !important;
+  font-weight: 400 !important;
+}
