@@ -1,0 +1,15 @@
+AZRO final publish notes
+========================
+
+This build locks the current site layout and updates only the requested copy surfaces.
+
+Home page
+- Balanced the BTC focus panel headline wrap and spacing for a cleaner final presentation.
+- Kept the headline as "Stack more BTC with less cash" and refined the supporting copy only.
+- Updated the home XRP copy to reflect the disciplined weekly cycle system / proof-on-chart positioning.
+
+XRP messaging
+- Removed "is now a" language.
+- Updated the main XRP product copy to the final disciplined weekly system positioning.
+- Added on-chart proof language across product, features, pricing, proof, and trial surfaces.
+- Kept the existing layout, assets, and video wiring intact.

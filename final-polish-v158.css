@@ -1,0 +1,8 @@
+/* Final publish v158: home hero media vertical alignment lock.
+   Scope: index hero only. */
+
+@media (min-width: 981px){
+  .home .hero-inner--wide-title-home > .hero-media{
+    margin-top: clamp(88px, 7vw, 120px) !important;
+  }
+}
