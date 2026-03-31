@@ -1,0 +1,286 @@
+/* Final publish v131: visible accent carryover, pricing card lock, checkout rhythm, and product-overview cleanup. */
+
+:root{
+  --azro-v131-blue: rgba(164, 194, 255, 0.96);
+}
+
+/* Visible blue supporting text outside Products so the accent language carries across the site. */
+.home .hero-copy-note,
+.home .hero-copy-tail,
+.home .product-guide__summary .small,
+.philosophy-page .hero-copy-note,
+.philosophy-page .philosophy-hero-note,
+.philosophy-page .philosophy-hero-tail,
+.philosophy-page .product-guide__summary .small,
+.features-page .meta-line,
+.features-page .section-intro-bridge,
+.features-page .product-guide__summary .small,
+.resources-page .meta-line,
+.resources-page .product-guide__summary .small,
+.support-page .meta-line,
+.support-page .product-guide__summary .small,
+.contact-page .meta-line,
+.pricing-page .pricing-section-shell > .section-sub,
+.pricing-page .product-guide__summary .small,
+.pricing-page .crypto-address-label,
+.pricing-page .crypto-address-help,
+.pricing-page .crypto-pay-note,
+.pricing-page .plan-fit{
+  color: var(--azro-v131-blue) !important;
+}
+
+.features-page .meta-line,
+.resources-page .meta-line,
+.support-page .meta-line,
+.contact-page .meta-line{
+  font-family: var(--font-head) !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+
+.home .product-guide__summary .small,
+.philosophy-page .product-guide__summary .small,
+.features-page .product-guide__summary .small,
+.resources-page .product-guide__summary .small,
+.support-page .product-guide__summary .small,
+.pricing-page .product-guide__summary .small,
+.pricing-page .pricing-section-shell > .section-sub,
+.pricing-page .crypto-address-help,
+.pricing-page .crypto-pay-note,
+.pricing-page .plan-fit{
+  text-wrap: pretty !important;
+}
+
+/* Products overview cards: tighten the top rhythm so the labels do not feel stranded. */
+.products-page #product-overviews .product-signature__grid{
+  gap: 14px !important;
+}
+
+.products-page #product-overviews .product-signature__card{
+  padding: 20px 22px 22px !important;
+  gap: 8px !important;
+}
+
+.products-page #product-overviews .product-signature__card-label{
+  margin-top: 0 !important;
+}
+
+/* Pricing cards: make the price block, CTA block, and notes lock to a cleaner internal rhythm. */
+.pricing-page .pricing-2up{
+  gap: 16px !important;
+  align-items: stretch !important;
+}
+
+.pricing-page .plan-card,
+.pricing-page .plan-card--compact{
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto auto !important;
+  align-content: start !important;
+  align-items: start !important;
+  justify-items: stretch !important;
+  min-height: 100% !important;
+  padding: 20px 22px 18px !important;
+}
+
+.pricing-page .plan-card .pill-row,
+.pricing-page .plan-card--compact .pill-row{
+  grid-row: 1 !important;
+  margin: 0 0 10px !important;
+  justify-content: center !important;
+}
+
+.pricing-page .plan-price-row,
+.pricing-page .plan-card--compact .plan-price-row{
+  grid-row: 2 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  gap: 10px !important;
+  margin: 0 0 12px !important;
+}
+
+.pricing-page .plan-card .price-big,
+.pricing-page .plan-card--compact .price-big{
+  margin: 0 !important;
+  line-height: .92 !important;
+}
+
+.pricing-page .plan-card .plan-price-meta,
+.pricing-page .plan-card--compact .plan-price-meta{
+  margin: 0 0 .18em !important;
+}
+
+.pricing-page .plan-copy,
+.pricing-page .plan-card--compact .plan-copy{
+  grid-row: 3 !important;
+  max-width: 30ch !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  line-height: 1.42 !important;
+}
+
+.pricing-page .plan-card--compact .plan-copy{
+  max-width: 28ch !important;
+}
+
+.pricing-page .plan-card .compact-bullets,
+.pricing-page .plan-card--compact .compact-bullets{
+  grid-row: 4 !important;
+  width: min(100%, 31ch) !important;
+  max-width: 31ch !important;
+  margin: 14px auto 0 !important;
+  padding-top: 14px !important;
+  display: grid !important;
+  align-content: start !important;
+  gap: 10px !important;
+}
+
+.pricing-page .plan-card--compact .compact-bullets{
+  width: min(100%, 29ch) !important;
+  max-width: 29ch !important;
+}
+
+.pricing-page .plan-card .compact-bullets li,
+.pricing-page .plan-card--compact .compact-bullets li{
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.pricing-page .plan-card .btn-row,
+.pricing-page .plan-card--compact .btn-row{
+  grid-row: 5 !important;
+  width: 100% !important;
+  margin: 12px 0 0 !important;
+  padding-top: 12px !important;
+  justify-content: center !important;
+}
+
+.pricing-page .plan-card .btn-row .btn,
+.pricing-page .plan-card--compact .btn-row .btn{
+  width: min(100%, 250px) !important;
+  min-width: 0 !important;
+}
+
+.pricing-page .plan-fit{
+  grid-row: 6 !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 8px auto 0 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+  line-height: 1.12 !important;
+  letter-spacing: -.01em !important;
+  font-size: clamp(.82rem, .76rem + .12vw, .90rem) !important;
+}
+
+.pricing-page .plan-card--compact{
+  padding-bottom: 16px !important;
+}
+
+.pricing-page .plan-card--compact .plan-fit{
+  margin-top: 8px !important;
+}
+
+/* Direct crypto checkout: keep both cards on the same rhythm and keep the copy buttons off the floor. */
+.pricing-page .crypto-address-grid{
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+}
+
+.pricing-page .crypto-address-card--live{
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto auto auto auto auto auto !important;
+  align-content: start !important;
+  justify-items: center !important;
+  gap: 0 !important;
+  min-height: 100% !important;
+  padding: 22px 22px 30px !important;
+  text-align: center !important;
+}
+
+.pricing-page .crypto-address-card--live .pill-row{
+  grid-row: 1 !important;
+  margin: 0 0 14px !important;
+}
+
+.pricing-page .crypto-address-qr-wrap{
+  grid-row: 2 !important;
+  margin: 0 0 14px !important;
+}
+
+.pricing-page .crypto-address-label{
+  grid-row: 3 !important;
+  margin: 0 0 12px !important;
+  font-family: var(--font-head) !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+.pricing-page .crypto-address-card--live .crypto-address{
+  grid-row: 4 !important;
+  display: block !important;
+  width: min(100%, 40ch) !important;
+  margin: 0 auto 14px !important;
+  padding: 14px 16px !important;
+  font-size: .80rem !important;
+  line-height: 1.42 !important;
+  letter-spacing: 0 !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.pricing-page .crypto-address-help{
+  grid-row: 5 !important;
+  width: min(100%, 29ch) !important;
+  min-height: 4.3em !important;
+  margin: 0 auto 16px !important;
+  text-align: center !important;
+  line-height: 1.42 !important;
+  font-size: clamp(.94rem, .9rem + .12vw, 1rem) !important;
+}
+
+.pricing-page .crypto-address-card--live .btn{
+  grid-row: 6 !important;
+  margin-top: 0 !important;
+  align-self: start !important;
+}
+
+/* Responsive guardrails: only allow note wrapping when the cards are genuinely narrow. */
+@media (max-width: 900px){
+  .pricing-page .pricing-2up,
+  .pricing-page .crypto-address-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  .pricing-page .plan-card,
+  .pricing-page .plan-card--compact{
+    padding: 20px 20px 18px !important;
+  }
+
+  .pricing-page .crypto-address-card--live{
+    padding: 20px 20px 26px !important;
+  }
+}
+
+@media (max-width: 760px){
+  .pricing-page .plan-fit{
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+
+  .pricing-page .crypto-address-card--live .crypto-address{
+    width: min(100%, 34ch) !important;
+  }
+
+  .pricing-page .crypto-address-help{
+    min-height: 0 !important;
+    width: min(100%, 31ch) !important;
+  }
+}
