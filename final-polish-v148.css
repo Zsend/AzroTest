@@ -1,0 +1,86 @@
+/* Final publish v148: cool-grey bridge tone, centered feature dividers,
+   balanced philosophy hero lift, and gallery-control color polish. */
+
+:root{
+  --azro-v148-cool-grey: rgba(197, 204, 220, 0.86);
+  --azro-v148-divider: linear-gradient(90deg,
+    rgba(194,202,223,0) 0%,
+    rgba(194,202,223,.12) 12%,
+    rgba(194,202,223,.30) 50%,
+    rgba(194,202,223,.12) 88%,
+    rgba(194,202,223,0) 100%);
+}
+
+/* Keep the pricing TXID follow-up line white. */
+.pricing-page #crypto-pay .crypto-pay-note,
+.pricing-page #crypto-pay .crypto-pay-note a{
+  color: var(--text-head) !important;
+}
+
+/* Use one restrained cool-grey across the first-section bridge lines. */
+.features-page .section-intro-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  color: var(--azro-v148-cool-grey) !important;
+}
+
+/* Gallery controls: same cool-grey for the hero mode toggles and Play CTA. */
+.media-gallery[data-gallery-root] .media-gallery__mode,
+.gallery-lightbox__switch .media-gallery__mode,
+.media-gallery[data-gallery-root] .media-gallery__launch-cta,
+.media-gallery[data-gallery-root] .media-gallery__launch-cta *{
+  color: var(--azro-v148-cool-grey) !important;
+}
+
+/* Features page: center the showcase divider on the full section, not the left text column. */
+.features-page .product-guide__body .product-showcase{
+  position: relative !important;
+  padding-top: clamp(32px, 3vw, 40px) !important;
+}
+
+.features-page .product-guide__body .product-showcase::before{
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: min(calc(100% - 32px), 54rem) !important;
+  height: 1px !important;
+  margin: 0 !important;
+  background: var(--azro-v148-divider) !important;
+}
+
+.features-page .product-guide__body .product-showcase__text::before{
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 980px){
+  .features-page .product-guide__body .product-showcase{
+    padding-top: 28px !important;
+  }
+
+  .features-page .product-guide__body .product-showcase::before{
+    width: min(calc(100% - 20px), 34rem) !important;
+  }
+}
+
+/* Philosophy hero: lift the card + note block slightly more so it centers against the left copy/button stack. */
+@media (min-width: 1200px){
+  .philosophy-page .hero-inner--wide-title > .hero-media{
+    transform: translateY(-30px) !important;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1199px){
+  .philosophy-page .hero-inner--wide-title > .hero-media{
+    transform: translateY(-24px) !important;
+  }
+}
+
+/* Preserve the requested home blue support line. */
+.home .hero-copy-stack--home .hero-copy-tail,
+.home .hero-copy-tail{
+  color: rgba(140, 182, 255, 0.94) !important;
+}
