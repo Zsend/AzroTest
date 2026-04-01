@@ -1,0 +1,47 @@
+/* Final publish v175: lock the home / pricing / proof / support section bridges
+   into one consistent uppercase system and width rhythm. */
+
+:root{
+  --azro-v175-bridge-max: min(100%, 54rem);
+  --azro-v175-bridge-color: rgba(188, 210, 255, 0.84);
+}
+
+.suite-bridge-lock{
+  width: var(--azro-v175-bridge-max) !important;
+  max-width: var(--azro-v175-bridge-max) !important;
+  margin: 0 auto 18px !important;
+  color: var(--azro-v175-bridge-color) !important;
+  font-family: var(--font-head) !important;
+  font-size: clamp(1rem, 1.08vw, 1.14rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.58 !important;
+  letter-spacing: .082em !important;
+  text-transform: uppercase !important;
+  text-wrap: balance !important;
+}
+
+.home .home-suite-bridge.suite-bridge-lock{
+  margin-bottom: 18px !important;
+}
+
+@media (max-width: 980px){
+  :root{
+    --azro-v175-bridge-max: min(100%, 34rem);
+  }
+
+  .suite-bridge-lock{
+    font-size: clamp(.95rem, 3.15vw, 1.05rem) !important;
+    line-height: 1.54 !important;
+    letter-spacing: .072em !important;
+  }
+}
+
+@media (max-width: 640px){
+  :root{
+    --azro-v175-bridge-max: min(100%, 32rem);
+  }
+
+  .suite-bridge-lock{
+    margin-bottom: 16px !important;
+  }
+}
