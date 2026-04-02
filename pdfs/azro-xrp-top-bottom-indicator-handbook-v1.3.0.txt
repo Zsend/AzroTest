@@ -1,0 +1,2840 @@
+AZRO Systems XRP Top/Bottom Indicator
+Customer Handbook
+Version v1.3.0 • Updated 2026-03-31
+Invite-only TradingView indicator • Weekly Strategy Tracker included • Live workflow + packaged public diligence appendix
+
+TradingView name: AZRO Systems — XRP Top/Bottom Indicator (Invite-Only)
+Access: Invite-only access is granted after purchase to the TradingView username you provide
+Support: support@azrosystems.com
+Official product links: TradingView script page • Gumroad access page
+Customer documentation for the AZRO Systems XRP Top/Bottom Indicator. This v1.3.0 handbook documents the
+current live cycle workflow, the shipped Weekly Plan dashboard, the included Weekly Strategy Tracker, and the
+carried packaged public diligence appendix without disclosing internal logic or reverse-engineering-friendly detail.
+Read the ladder. Respect the weekly close. Follow the weekly plan, then execute with discipline.
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Table of contents
+Read these sections in order on your first pass. The included Weekly Strategy Tracker is the live continuity
+workbook, and the carried packaged public-cut Customer Audit Workbook remains the historical diligence appendix
+for this release.
+SECTION
+
+PAGE
+
+1.
+
+How the indicator works — Cycle
+engine, Weekly Plan, and proof
+surface
+
+3
+
+2.
+
+Quick-start and beginner safety —
+First setup, weekly plan, and firstweek workflow
+
+7
+
+3.
+
+Installation and first-chart setup —
+Access, TradingView setup, and
+chart standards
+
+11
+
+4.
+
+Signals, weekly plan, and rules —
+Outputs, dashboard, and
+interpretation
+
+12
+
+5.
+
+Alert setup — Confirmed labels,
+weekly-plan pings, and common
+mistakes
+
+14
+
+6.
+
+Playbooks — Investor, hybrid, and
+Weekly Plan default paths
+
+16
+
+7.
+
+Risk management and discipline —
+Positioning, routing, and weekly
+process
+
+21
+
+8.
+
+Settings — Recommended
+defaults and workflow choices
+
+24
+
+9.
+
+Troubleshooting and FAQ —
+Access, budget changes, and
+support
+
+24
+
+10.
+
+Validation, tracker, and diligence
+— Live workflow, carried public
+cut, and limits
+
+26
+
+11.
+
+Resources, support, and legal —
+Links, risk, privacy, and notices
+
+33
+
+Document control
+The official AZRO release for this version is the bundled handbook PDF, the included Weekly Strategy Tracker, and the carried packaged
+public-cut Customer Audit Workbook. Extracted text, screenshots, OCR, copied passages, or AI-generated reformats can omit workflow
+scope, host rules, settings, warnings, execution assumptions, or version-boundary notes. Where any restatement differs, the official
+bundled release documents control.
+
+support@azrosystems.com • 2 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+1. How the indicator works - Cycle engine, weekly plan, and proof
+surface
+The AZRO Systems XRP Top/Bottom Indicator is a weekly-cycle operating tool for XRP. It combines close-confirmed
+cycle labels, a shipped Weekly Plan dashboard, and workbook-backed continuity so customers can act on the 1week chart without depending on constant lower-timeframe monitoring or improvised sizing decisions.
+• Primary use-case: organizing major XRP cycle bottoms, top-side defense, and recurring weekly-budget
+deployment on the weekly chart.
+• Primary users: long-term investors, hybrid users running a BTC-first core plus an XRP cycle sleeve, and weekly
+operators who want a lower-discretion plan instead of constant chart interpretation.
+• What it is not: an intraday signal generator, a promise of exact tops or bottoms, or a substitute for position sizing,
+taxes, execution discipline, and personal risk planning.
+• Operating principle: the pack explains how to use the cycle labels, the Weekly Plan dashboard, and the included
+workbooks clearly and consistently on live weekly charts without exposing internal scoring logic.
+Who this indicator is for
+Approach
+
+Practical profile
+
+Trade-off
+
+Buy and hold
+
+Maximum simplicity; zero timing
+workload.
+
+Can tolerate very deep drawdowns
+and long underwater periods.
+
+Pure discretionary cycle trading
+
+Depends entirely on personal
+judgment.
+
+Easy to overfit, overreact to news,
+and change rules mid-cycle.
+
+AZRO MAJOR-Only
+
+Simple ruleset with a clear weekly
+confirmation cadence.
+
+Still gives back more near tops than
+an active trim ladder.
+
+AZRO Core + Trim Ladder
+
+Adds structured de-risking while
+preserving the weekly framework.
+
+Requires written trim discipline and
+patience around weekly closes.
+
+AZRO Performance Weekly Plan
+
+Lower-discretion recurring-budget
+path that stays usable before and
+after bottoms.
+
+Requires following DO NOW and
+keeping one-time cash in the tracker
+instead of constantly editing plan
+inputs.
+
+support@azrosystems.com • 3 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Output stack
+Output
+MAJOR TOP / MAJOR
+BOTTOM
+
+RADAR TOP / RADAR
+BOTTOM
+
+EARLY TOP / EARLY
+BOTTOM
+
+LIGHT TOP / LIGHT
+BOTTOM
+
+RISK / HIGH RISK triangles
+
+Risk-colored XRP price line
+
+Weekly Plan dashboard +
+markers
+
+Health banner / 1W
+reminder
+
+Where
+
+Timing
+
+How to think about it
+
+Weekly close
+
+Core weekly decision
+labels and highest-priority
+anchors.
+
+XRP only
+
+Weekly close
+
+Important companion
+track. Keep RADAR TOP
+active for top calls; use
+RADAR BOTTOM only if
+your written plan allows it.
+
+XRP only
+
+Heads-up staging layer.
+Useful for advanced users
+Intra-week / can disappear
+who intentionally want
+by close
+earlier but less stable
+information.
+
+XRP only
+
+Weekly close
+
+Optional weekly context
+cues only. Not required for
+core playbooks and OFF by
+default.
+
+Weekly close
+
+Serious top-side caution
+and active-management
+layer. In some conditions it
+can mark the actual top or
+sit very near it. Treat every
+print with full respect.
+
+Weekly close context
+
+Optional visual regime
+overlay for the XRP price
+line. No labels and no
+alerts; purely visual
+context.
+
+XRP 1W only
+
+Weekly close / next-week
+execution framing
+
+Dashboard-first recurringbudget plan with DO NOW
+actions, optional plan
+markers, and proof versus
+weekly auto-buy.
+
+Visual-only
+
+Live view
+
+XRP only
+
+XRP and optional on nonXRP
+
+XRP 1W only
+
+support@azrosystems.com • 4 • © AZRO Systems
+
+Operational aids. They do
+not create signals; they
+warn about timeframe
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Output
+
+Where
+
+Timing
+
+How to think about it
+mistakes, chart-basis
+problems, or degraded
+data states.
+
+Trust architecture
+Why users trust the workflow
+
+What that means operationally
+
+Weekly-close architecture
+
+The system is intentionally designed around weekly
+closes so users make fewer, higher-quality decisions
+and are less exposed to intrabar noise.
+
+Dashboard-first weekly plan
+
+The shipped Weekly Plan translates the cycle engine
+into a calmer recurring-budget workflow for users who
+want lower decision count and a clearer default path.
+
+Packaged public diligence cut
+
+The customer pack includes a carried packaged publiccut audit workbook so buyers can inspect row-level
+event structure, friction overlays, venue basis, and
+forward-audit framing without being asked to trust
+screenshots alone.
+
+Live continuity workbook
+
+The included Weekly Strategy Tracker keeps real
+funding, trims, reserve use, BTC rotation, and tax
+holdback separate from the on-chart proof model.
+
+Invite-only distribution
+
+Customers receive a locked, invite-only TradingView
+script. This keeps customer operation simple and the
+distribution controlled: use the outputs, not hidden
+knobs.
+
+Alertable workflow
+
+The outputs and the Weekly Plan can be set up as
+named TradingView alerts so users do not need to
+watch the chart constantly.
+
+Tear-sheet summary
+Operating pillar
+
+Customer takeaway
+
+Weekly-close cycle engine
+
+Use the indicator on the 1W chart and make
+confirmation decisions on the weekly close.
+
+support@azrosystems.com • 5 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Weekly Plan dashboard
+
+Performance mode plus a realistic recurring Weekly
+budget is now the cleanest shipped default for most
+customers who want a lower-discretion XRP sleeve.
+
+Top-side stack
+
+Keep MAJOR TOP and RADAR TOP active together.
+Treat either confirmed print as a serious top-side event
+and follow the written exit ladder.
+
+Bottom-side stack
+
+MAJOR BOTTOM is the clean anchor. RADAR BOTTOM
+remains optional and should use only cash that was
+reserved before the signal.
+
+Strategy Tracker continuity
+
+Use the included Weekly Strategy Tracker for one-off
+cash, manual top-ups, realized trims, reserve tracking,
+BTC rotation, and tax holdback instead of constantly
+changing live chart inputs.
+
+Packaged public diligence cut
+
+The historical diligence appendix remains a customersafe carried packaged public cut until a refreshed
+canonical appendix is published.
+
+Boundary discipline
+
+This handbook explains the XRP sleeve. It does not
+automatically rotate XRP into BTC without a separate
+written portfolio policy.
+
+Why copied summaries and AI reformats don’t replace the release pack
+Copied text, screenshots, OCR extracts, and AI rewrites can restate the workflow without carrying the exact host
+rules, settings, version scope, alert discipline, or workbook boundaries that make the live release usable.
+• The product is a chart-native, versioned weekly workflow — not a loose idea. The official release pack is the
+bundled PDF plus the included workbooks for that release.
+• Rewritten summaries can omit critical boundaries such as canonical host policy, alert-trigger rules, weekly-close
+timing, and what the public diligence cut does and does not prove.
+• Dependability requires maintenance — documented updates, stable defaults, release control, and clear workbook
+scope keep the workflow usable as conditions evolve.
+• Use the official bundled release documents as the operating source. Treat copied passages, screenshots, OCR, and
+AI-generated restatements as secondary commentary only.
+
+Known limitations
+• All confirmation logic is designed for the 1-week chart. Lower timeframes are off-label usage.
+• A weekly-close model and Weekly Plan are not designed to catch the exact top tick or bottom tick. Their job is to
+identify high-value cycle windows with less noise and less emotional churn.
+• TradingView data, reference series, and alert infrastructure are third-party dependencies. Delays, gaps, or feed
+changes can affect what the user sees.
+support@azrosystems.com • 6 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+• Changing workflow-related settings — including plan mode or recurring Weekly budget — can change what you
+see historically. Review history using the same setup you intend to use live.
+• Any performance snapshot must be treated as hypothetical and implementation-sensitive. Fees, delayed
+execution, venue choice, and user behavior matter.
+• Even a strong indicator is still not financial advice. Risk management, taxes, jurisdiction, and suitability remain the
+user's responsibility.
+
+support@azrosystems.com • 7 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+2. Quick-start, weekly plan, and beginner safety brief
+Quick lens
+• This product is built for weekly cycle decisions, not fast-trading noise.
+• Most customers should start with confirmed MAJOR and RADAR outputs plus the shipped Weekly Plan default,
+not with EARLY or LIGHT.
+• For tops, keep XRP RISK, MAJOR TOP, and RADAR TOP alerts active together. Treat all three with equal respect.
+• For bottoms, MAJOR BOTTOM is the cleanest anchor. RADAR BOTTOM can be used tactically only if reserve
+cash was written in advance.
+• BITSTAMP:XRPUSD on 1W is the canonical host. Other venues are for monitoring only, not for replacing the
+supported workflow.
+This section is the shortest reliable path from first open to usable live setup. Start with the confirmed weekly
+workflow, then add the Weekly Plan and tracker continuity only after the basic signal stack is understood.
+
+Mind-Set & Beginner Safety Brief
+• Emotions are the real opponent. Decide your size, risk, and exit ladder before clicking Buy. If a normal loss would
+disrupt your sleep, finances, or relationships, the position is too large or the plan is wrong.
+• News is not an edge. By the time a headline feels obvious, the market often already priced in most of the move.
+• Most first-year traders underestimate drawdowns, overestimate their emotional control, and trade too large. The
+result is usually unnecessary stress and avoidable damage.
+• Avoid building your financial future around influencer calls, guru channels, or chat-room conviction. Sustainable edge
+comes from your own written process, not borrowed confidence.
+• Do not treat trading as a rescue plan for today's bills. Education, savings, and low-stress compounding usually create
+much better long-run outcomes than pressure trading.
+• Strategy overload is a hidden risk. Too many systems, too many symbols, and too many opinions create fatigue and
+mistakes. Master one ruleset before layering more complexity.
+• If markets ever leave you feeling trapped, hopeless, or mentally overwhelmed, step away immediately and talk to
+someone you trust or a qualified professional. Money can be rebuilt; you cannot.
+• Everything in trading is a building block. Past mistakes are tuition only if you stop repeating them.
+
+Beginner lane: the cleanest way to start
+• Use BITSTAMP:XRPUSD on the 1W chart.
+• Leave defaults alone for at least one full learning cycle.
+• Create the essential alerts first: XRP RISK, MAJOR TOP, RADAR TOP, MAJOR BOTTOM, and one weekly-plan
+alert.
+• Keep Performance as the shipped default mode unless you have a written reason to choose differently.
+• Use the tracker for one-time cash, manual top-ups, realized trims, BTC rotation, reserve tracking, and tax
+holdback.
+• If you do not want to customize trims, use the handbook default ladder before the next signal arrives.
+
+support@azrosystems.com • 8 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+TradingView plan cheat-sheet
+Question
+
+Practical answer
+
+Can every TradingView user load the script?
+
+Invite-only access is granted by the author, not by the
+TradingView plan itself. Any account with permission can load
+the script on chart.
+
+When do higher plans matter?
+
+Higher plans matter mainly if you want more active alerts,
+longer-running alerts, or automation/webhook-heavy workflows.
+
+When do webhooks matter?
+
+If you want automated order-routing through a bridge or
+execution stack, confirm that your current TradingView plan
+supports the webhook workflow you intend to use.
+
+Best advice
+
+Choose the smallest TradingView plan that supports your actual
+alert workload. Do not over-buy a subscription before your
+workflow is stable.
+
+Plan names, alert limits, and webhook availability can change over time. Treat this section as practical guidance and confirm current
+TradingView plan details before buying a subscription solely for automation.
+
+Five-minute setup
+1. Purchase access on the access page, provide the correct TradingView username, and wait for invite-only access
+to be granted.
+2. Open TradingView and confirm that the script appears under Invite-only scripts on the account that received
+access.
+3. Load BITSTAMP:XRPUSD on the 1W chart whenever possible. It is the supported operating standard because of
+its long, clean history and the canonical validation basis used in the bundled diligence pack.
+4. Use regular candles. Avoid Heikin-Ashi, Renko, or synthetic chart types for signal interpretation.
+5. Keep defaults, set a realistic recurring Weekly budget, and leave Performance mode in place unless you already
+know why a different mode better fits your written plan.
+6. Create the alerts that match your chosen workflow before worrying about visual tuning. For most customers
+that means the top-side stack, MAJOR BOTTOM, and one weekly-plan alert.
+
+Official operating model
+This is the default operating workflow on BITSTAMP:XRPUSD on the 1W chart and the cleanest starting point for
+most users: build from confirmed bottoms, manage risk as the cycle matures, and complete the managed exit only
+after the top-side sequence has fully played out.
+1. MAJOR BOTTOM
+
+2. RADAR BOTTOM
+
+Core entry or full cyclesleeve build.
+
+Serious top-side
+Add only if cash was
+warning; in some
+reserved and the written conditions this can mark
+playbook allows it.
+the actual top or sit very
+near it.
+
+(optional)
+
+3. RISK / HIGH RISK
+
+4. RADAR TOP
+
+5. MAJOR TOP
+
+Confirmed top-side derisk event; treat with full
+respect inside the exit
+ladder.
+
+Complete the managed
+exit; reset for the next
+bottom regime.
+
+support@azrosystems.com • 9 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Build on MAJOR BOTTOM, optionally add on RADAR BOTTOM, manage on RISK / HIGH RISK, distribute on RADAR TOP, and finish on
+MAJOR TOP.
+Figure: Default operating model for the managed cycle sleeve.
+
+Weekly operating rhythm
+A calm weekly rhythm is one of the biggest practical edges customers gain from the indicator. Keep the alerts live,
+review only on the weekly close, follow the written ladder, then log the action and reset for the next week.
+1. Keep alerts live
+XRP RISK, MAJOR TOP,
+RADAR TOP, MAJOR
+BOTTOM, and one weeklyplan alert are the clean
+default stack. Add RADAR
+BOTTOM only if your
+written plan uses it.
+
+2. Review on the weekly
+close
+Open BITSTAMP:XRPUSD
+on 1W, confirm the signal
+and DO NOW state, then
+decide the following
+week's action after the bar
+is closed.
+
+3. Follow the written
+ladder
+Use MAJOR / RADAR / RISK
+for the cycle sleeve, use
+DO NOW for the recurring
+Weekly Plan, and keep
+one-time exceptions inside
+the tracker.
+
+4. Log and reset
+Screenshot the chart,
+record funding or trims in
+the tracker, and leave the
+next week's alert stack
+ready before you close the
+session.
+
+Normal vs. problem
+Normal: long quiet periods, no new labels for weeks, EARLY changing intra-bar, and optional layers staying silent.
+Problem: wrong timeframe, wrong alert trigger, synthetic candles, missing invite access, or a live health-banner warning of
+degraded data.
+Figure: The intended weekly operating rhythm for day-to-day weekly use.
+
+First-day checklist
+• Do I understand that the indicator is weekly by design?
+• Do I know which outputs are confirmations, which belong to the Weekly Plan, and which are only context?
+• Do I have the top-side alerts and one weekly-plan alert live before the next serious week arrives?
+• Do I have a written exposure ladder for trims, reserve use, exits, and BTC rotation?
+• Am I using spot-size risk and a recurring Weekly budget that I can tolerate emotionally and financially?
+
+support@azrosystems.com • 10 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+3. Installation and first-chart setup
+This section turns the first open into a clean live chart. The goal is not to optimize every setting. The goal is to leave
+with the correct host, the correct alerts, the correct Weekly Plan default, and a tracker-ready workflow.
+
+Recommended chart standard
+• Symbol: BITSTAMP:XRPUSD (canonical XRP signal host).
+• Timeframe: 1W.
+• Chart type: regular candles.
+• Scale: log scale is recommended for long-cycle visual inspection, but the indicator's outputs remain tied to the signal
+logic rather than the visual axis.
+
+Practical setup sequence
+1. Log in to the TradingView account that received invite-only access.
+2. Open BITSTAMP:XRPUSD and switch to 1W.
+3. Add the indicator from Invite-only scripts.
+4. Leave the defaults intact, keep the Weekly Plan ON, and start with Performance mode unless you already know
+why you want a different behavior.
+5. Create alerts before you worry about visual tuning. The alerts and the written ladder matter more than the
+colors.
+6. Save the chart layout once everything is live, then set up the Weekly Strategy Tracker so one-off cash and
+manual overrides stay off the chart.
+
+What good first-time behavior looks like
+A good first-time customer setup is boring in the best way: 1W chart, default settings, Performance mode, core
+alerts live, one weekly-plan alert, and a tracker ready for one-time cash and manual exceptions.
+The point is not to touch every setting. The point is to be ready before the next major cycle event.
+
+What not to do on day one
+• Do not start by optimizing a dozen settings against history.
+• Do not expect the indicator to become a lower-timeframe scalp system by changing visuals.
+• Do not turn every optional output on and then treat them all as equally important.
+• Do not wait until a euphoric move to set the top alerts.
+
+support@azrosystems.com • 11 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+4. Signals, weekly plan dashboard, and operating rules
+Start with scope. This section explains the outputs and the Weekly Plan at an operating level so alerts, actions, and
+expectations stay aligned without requiring any knowledge of the internal model.
+Signal / output
+
+Scope
+
+Timing
+
+Typical use
+
+MAJOR TOP
+
+XRP only
+
+Weekly close
+
+Core top-side decision
+label and primary exit
+anchor.
+
+Weekly close
+
+Important top-side
+companion label. Keep it
+ON alongside MAJOR TOP
+and follow the written
+ladder when either
+confirms.
+
+Weekly close
+
+Core bottom anchor and
+default full cycle-sleeve
+build / restore event.
+
+XRP only
+
+Weekly close
+
+Optional bottom
+confirmation path. Use
+only if reserve cash was
+already planned before
+the signal.
+
+XRP only
+
+Optional heads-up layer
+Intra-week / can disappear for advanced users who
+by close
+accept provisional
+information.
+
+RADAR TOP
+
+MAJOR BOTTOM
+
+RADAR BOTTOM
+
+EARLY TOP / EARLY
+BOTTOM
+
+LIGHT TOP / LIGHT
+BOTTOM
+
+RISK / HIGH RISK
+
+XRP only
+
+XRP only
+
+XRP only
+
+XRP plus optional non-XRP
+context
+
+Weekly close
+
+Optional context layer for
+local exhaustion / meanreversion. OFF by default.
+
+Weekly close
+
+Serious top-side caution
+and trim / tighten
+prompts. Treat with full
+respect.
+
+support@azrosystems.com • 12 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Signal / output
+
+Weekly Plan dashboard +
+markers
+
+Health banner / 1W
+reminder
+
+Scope
+
+Timing
+
+Typical use
+
+XRP 1W only
+
+Weekly close for
+instructions / next-week
+execution framing
+
+Recurring-budget layer
+with DO NOW actions,
+plan phases, optional
+markers, and proof versus
+weekly auto-buy.
+
+Live view
+
+Operational warning layer
+for wrong basis, wrong
+timeframe, or degraded
+data.
+
+Visual-only
+
+Scope reminder
+XRP is the only chart type that prints the full top/bottom workflow and Weekly Plan dashboard. Non-XRP charts
+are context-only via optional RISK / HIGH RISK triangles.
+Treat non-XRP RISK as broad market caution, not as an asset-specific top/bottom engine.
+
+Operating rules
+• Timeframe: 1W. Use confirmed weekly closes for decisions.
+• EARLY labels are provisional heads-ups. Historical charts retain final weekly outputs, not every temporary intraweek stage.
+• LIGHT is a context layer. On XRP, treat RISK / HIGH RISK, RADAR TOP, and MAJOR TOP with equal respect inside
+the top-side ladder. Different cycles can emphasize different prints.
+• The Weekly Plan complements the cycle engine. It does not replace MAJOR / RADAR confirmations; it turns the
+workflow into a calmer recurring-budget process.
+• One-time extra cash belongs in the tracker. Only change the recurring Weekly budget when your real recurring
+amount changes.
+• Visual settings such as palette, tint, label distance, dashboard position, and text size do not change the signal
+engine.
+• The health banner and 1W reminder are operational aids that can flag timeframe, chart-basis, or degraded-data
+issues. On non-XRP charts, the workflow is context-only: optional RISK triangles, no XRP-style top/bottom
+confirmations.
+
+Signals at a glance - default use order
+Layer
+
+Priority
+
+Customer role
+
+Best fit
+
+MAJOR
+
+Highest
+
+Core weekly anchor
+
+Investors and
+confirmation-first users.
+
+support@azrosystems.com • 13 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Layer
+
+Priority
+
+Customer role
+
+Best fit
+
+RADAR
+
+High
+
+Companion label
+
+Users running the full
+ladder.
+
+Active-defense layer
+
+Users who want earlier derisk discipline before the
+final top is fully resolved.
+
+RISK
+
+High
+
+Weekly Plan
+
+High for recurring-budget
+users
+
+DO NOW budget engine
+
+Customers using the
+shipped Performance
+default or another written
+plan mode.
+
+LIGHT / EARLY / visual aids
+
+Optional
+
+Context and staging
+
+Advanced users only; not
+required for the core
+workflow.
+
+support@azrosystems.com • 14 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+5. Alert setup guide
+Must-read alert rule
+Create alerts on the 1W chart and use the script's named conditions. The signal type determines the correct
+trigger frequency, and the Weekly Plan exact-message route should use one Any alert() function call alert if you
+want only one weekly-plan ping.
+Good alerts make the weekly system easier to follow. Bad alerts make a good workflow feel broken. This section
+maps each named condition to the correct TradingView trigger and adds the new weekly-plan alert paths so
+customers can choose between a simple reminder or one exact-message plan ping.
+
+Alert trigger guide
+Condition
+
+Use this trigger
+
+Why
+
+MAJOR TOP
+
+Once Per Bar Close
+
+Confirmed weekly close signal.
+
+RADAR TOP
+
+Once Per Bar Close
+
+Confirmed weekly close signal. Keep
+active alongside MAJOR TOP.
+
+MAJOR BOTTOM
+
+Once Per Bar Close
+
+Confirmed weekly close signal.
+
+RADAR BOTTOM
+
+Once Per Bar Close
+
+Confirmed weekly close signal.
+
+EARLY TOP / EARLY BOTTOM
+
+Once Per Bar
+
+For heads-up behavior during the
+week. Once Per Minute is optional
+only if you want repeated pings.
+
+LIGHT TOP / LIGHT BOTTOM
+
+Once Per Bar Close
+
+Weekly-close context cue.
+
+RISK (XRP) / RISK (non-XRP)
+
+Once Per Bar Close
+
+Weekly-close XRP top-side risk
+layer; non-XRP macro caution layer.
+
+WEEKLY PLAN ACTION (XRP)
+
+Once Per Bar Close
+
+Simplest one-alert version for the
+Weekly Plan.
+
+Any alert() function call
+
+Once Per Bar Close
+
+Use one alert of this type if you
+want the exact weekly-plan
+message with the action amount on
+action weeks only.
+
+Recommended alert set by default
+• Set alerts on the 1W chart. This is the single most important setup rule.
+• Create the full top-side stack together: XRP RISK, MAJOR TOP, and RADAR TOP. Treat all three with equal respect at the
+weekly close; different cycles can emphasize different prints.
+
+support@azrosystems.com • 15 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+• Create MAJOR BOTTOM as the bottom-side anchor. Add RADAR BOTTOM only if your playbook includes optional adds
+or earlier tactical re-risking.
+• Use EARLY only if you deliberately want a faster, less-stable heads-up layer. Beginners do not need it.
+• Use LIGHT only if you want extra context around local exhaustion or base formation. It is OFF by default for a cleaner
+base workflow.
+• Use non-XRP RISK only as macro context when scanning other crypto charts. Do not treat it like a standalone entry/exit
+system.
+
+Alert naming convention
+• Keep names literal and consistent: XRP MAJOR TOP 1W, XRP RADAR TOP 1W, XRP MAJOR BOTTOM 1W, XRP RISK 1W.
+• If you automate, include symbol and timeframe in every alert name.
+• If you run multiple playbooks, add the sleeve or strategy name to the alert name.
+
+Common alert mistakes
+• Wrong timeframe: if the chart is not 1W, the workflow is off-label.
+Recommended alert set for most customers
+Keep MAJOR TOP, RADAR TOP, RISK (XRP), and MAJOR BOTTOM live together. Add RADAR BOTTOM only if your
+written plan includes reserve adds. For the Weekly Plan, use either WEEKLY PLAN ACTION or one Any alert()
+function call alert, not both, if you want a single plan ping.
+Common configuration mistakes
+• Creating alerts on the wrong symbol or timeframe.
+• Using Once Per Bar instead of Once Per Bar Close for confirmed weekly signals.
+• Changing plan mode or recurring Weekly budget materially, then assuming old alerts or old proof rows still
+describe the current live setup.
+• Running both WEEKLY PLAN ACTION and Any alert() function call when you only wanted one weekly-plan
+notification path.
+• Treating webhook bridges as if they remove the need for sizing limits, kill switches, or manual review.
+• Ignoring the health banner when degraded data conditions are flagged.
+• Ignoring or downplaying XRP RISK. On XRP it can mark the actual top or sit very near it, so de-risk first and follow
+the written ladder. Do not treat a RISK triangle as market top now; de-risk, tighten, and wait for confirmation
+discipline.
+
+Manual versus automation
+Execution path
+
+Pros
+
+Trade-offs
+
+Manual execution
+
+Maximum discretion, no external bridge
+risk, simplest for beginners.
+
+Requires attention, slower response, and
+more emotional discipline.
+
+support@azrosystems.com • 16 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Execution path
+
+Pros
+
+Trade-offs
+
+Webhook bridge / auto-routing
+
+Fast and repeatable once mapped
+correctly. Useful for users managing many
+alerts or wanting 24/7 routing.
+
+Requires testing, fail-safes, and careful
+handling of third-party bridge risk, latency,
+and mapping errors.
+
+Webhook safety
+• Paper trade or sandbox the full route before sending live orders.
+• Use explicit max-exposure limits, order-size caps, and a manual kill switch.
+• Do not place passwords, logins, or other sensitive credentials inside alert messages or URLs.
+• Monitor for duplicate, delayed, or failed bridge events. Automation lowers emotion but adds operational risk.
+Practical note: keep XRP RISK, MAJOR TOP, and RADAR TOP active together. For most users, that top-side stack is
+the most important alert group in the entire workflow.
+
+support@azrosystems.com • 17 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+6. Playbooks for investors, hybrid users, and the shipped Weekly
+Plan default
+Most mistakes happen after a signal appears: the label is visible, but the action is undefined. This section turns each
+important output into a written exposure decision so the indicator can be used consistently instead of emotionally.
+It also makes the shipped Performance Weekly Plan explicit so the cleanest default path is visible at first look.
+Playbook
+
+Best for
+
+Core rule
+
+Typical trade-off
+
+Lowest-maintenance longterm users
+
+MAJOR BOTTOM in,
+MAJOR TOP out; keep
+RADAR / RISK visible as
+serious awareness.
+
+Simplest workflow, but
+more give-back near tops.
+
+Most customers
+
+MAJOR BOTTOM anchor;
+optional RADAR BOTTOM
+adds; de-risk with RISK,
+distribute with RADAR
+TOP, finish at MAJOR TOP.
+
+Best balance of
+participation and
+downside control; the
+handbook provides a clean
+default ladder if you do
+not want to customize.
+
+Users who want adds but
+still dislike EARLY noise
+
+MAJOR BOTTOM anchor
+plus selective RADAR
+BOTTOM adds if still
+under-allocated; keep
+MAJOR and RADAR TOP
+active together.
+
+More decisions than
+MAJOR-Only, but still
+strongly confirmation-led.
+
+Profit-Protection /
+Defensive Trader
+
+Users who care most
+about drawdown and
+preserving gains
+
+Use RISK as the earliest
+trim layer and treat
+RADAR TOP as a strong
+exit cue even if MAJOR
+TOP has not printed yet.
+
+May leave upside on the
+table if the market
+extends after a trim.
+
+Performance Weekly Plan
+(shipped default)
+
+Keep Weekly Plan ON, use
+Performance mode, follow
+Customers who want a
+DO NOW after the weekly
+lower-discretion recurringclose, and keep one-time
+budget path
+cash / routing events in
+the tracker.
+
+MAJOR-Only Cycle
+Investor
+
+Core + Trim Ladder
+(recommended)
+
+Confirmation-First Hybrid
+
+support@azrosystems.com • 18 • © AZRO Systems
+
+Cleaner for most users,
+but only if recurring
+budget stays honest and
+one-off exceptions stay off
+the chart.
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Action matrix by signal type
+Signal
+
+Investor
+
+Hybrid strategy
+
+Trader / defensive
+
+MAJOR BOTTOM
+
+Build or restore full planned
+cycle allocation.
+
+Build or restore core / swing
+allocation.
+
+Bias flips risk-on; larger swing
+entries allowed.
+
+RADAR BOTTOM
+
+Usually ignore or treat as
+optional add only if underallocated.
+
+Optional add or tactical re-risk
+if the base plan allows it.
+
+Can be used as tactical add or
+earlier confirmation inside a
+broader long bias.
+
+RISK / HIGH RISK
+
+Serious top-side warning; note
+it or take the small trim your
+plan allows.
+
+Trim a defined portion, tighten
+rules, reduce leverage to zero,
+stop oversizing new adds.
+
+Active de-risk layer. Cut size
+faster and refuse low-quality
+fresh longs.
+
+RADAR TOP
+
+Reduce give-back if desired;
+otherwise treat it as serious
+confirmation and wait for
+MAJOR TOP.
+
+Primary trim zone. Many users
+cut to a partial position here.
+
+Often a practical exit signal,
+especially in defensive or
+tactical workflows.
+
+MAJOR TOP
+
+Primary full exit for the cycle
+sleeve.
+
+Finish distribution or reduce to
+only the intentionally
+untouched long-term core.
+
+Hard confirmation that the
+weekly cycle sleeve should be
+de-risked or flat.
+
+EARLY / LIGHT
+
+Not needed for the base
+investor workflow.
+
+Optional planning aids only.
+
+Useful only if the user already
+knows how to handle earlier,
+less final information.
+
+Playbook A - MAJOR-Only Cycle Investor
+Goal: Lowest maintenance and lowest decision count.
+• Use BITSTAMP:XRPUSD on the 1W chart.
+• On MAJOR BOTTOM: build to your full planned cycle allocation.
+• Ignore RADAR BOTTOM unless you consciously decide to use it later as an optional add path.
+• Hold through normal noise.
+• On MAJOR TOP: exit the cycle allocation in full, or reduce back to only a separately designated long-term core.
+Best for: Investors who want a clean long-term process and do not care about squeezing every last percentage point.
+Watch-out: You will usually give back more near tops than users who actively use RISK and RADAR TOP.
+
+Playbook B - Core + Trim Ladder (recommended)
+Goal: Best overall balance for most customers.
+• Define a cycle sleeve that this playbook will manage. Keep any true long-term untouched core separate if desired.
+• On MAJOR BOTTOM: build or restore the cycle sleeve to full planned size.
+• If RADAR BOTTOM prints later and you are still under-allocated, add only cash that was reserved before the
+signal.
+support@azrosystems.com • 19 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+• On the first RISK or HIGH RISK print: trim the handbook default 25% of the cycle sleeve into the tactical reserve, or
+use your prewritten custom amount if it is already documented.
+• On RADAR TOP: distribute a larger portion, such as cutting the remaining cycle sleeve to roughly 25% to 50%.
+• On MAJOR TOP: complete the cycle exit for the managed sleeve.
+• Default capital routing if you do not customize: keep realized trim proceeds in cash inside the tactical reserve. Do
+not automatically rotate them into BTC or another asset inside this handbook; the default full re-entry is still a later
+MAJOR BOTTOM. If you run BTC and XRP together, write the transfer rule separately.
+Best for: Most users, because it protects gains earlier without abandoning the structure of the weekly confirmation
+system.
+
+Watch-out: The ladder must be written in advance. If you do not want to customize it, use the handbook default:
+trim 25% of the cycle sleeve at the first RISK / HIGH RISK, cut the remaining cycle sleeve to roughly 25% to 50% on
+RADAR TOP, and finish at MAJOR TOP.
+
+Playbook C - Confirmation-First Hybrid
+Goal: Let confirmed bottoms do the heavy lifting while still using the extra bottom path when it genuinely helps.
+• Use MAJOR BOTTOM as the main buy anchor.
+• Turn RADAR BOTTOM ON and use it only when you intentionally missed size, still have cash allocated to the cycle
+sleeve, or want an additional confirmation path for a developing bottom.
+• Keep RISK, RADAR TOP, and MAJOR TOP active for the distribution ladder.
+• Ignore EARLY and LIGHT unless you are already comfortable with the base system.
+Best for: Users who want confirmed bottoms to do most of the heavy lifting while keeping RADAR BOTTOM
+available as an intentional add path.
+Watch-out: Do not turn RADAR BOTTOM into an excuse for over-trading every wobble.
+
+Playbook D - Profit Protection / Defensive Trader
+Goal: Prioritize drawdown control and preservation of large cycle gains.
+• Use MAJOR BOTTOM or MAJOR BOTTOM plus selective RADAR BOTTOM adds for entries.
+• Treat the first RISK / HIGH RISK print as an active management event, not background decoration.
+• Trim sooner and more aggressively than the balanced playbook.
+• Treat RADAR TOP as a strong exit cue rather than just a partial trim if your style values downside control over full
+upside capture.
+• Use MAJOR TOP as the final confirmation if you still hold any tactical size.
+Best for: Users who care more about keeping large gains than about catching every final extension.
+Watch-out: This profile can underperform in runaway blow-off phases because it sells earlier by design.
+
+Playbook E - Performance Weekly Plan (shipped default)
+Goal: Use the built-in Weekly Plan as the clean recurring-budget path while keeping the cycle engine, tracker, and
+routing rules honest.
+support@azrosystems.com • 20 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+• Keep the Weekly Plan ON and leave Performance as the default mode unless you have a written reason to choose
+a different mode.
+• Set a realistic recurring Weekly budget and follow DO NOW after each confirmed weekly close.
+• Use the tracker for one-off extra cash, optional confirmed-bottom or RADAR-bottom top-ups, realized trims,
+reserve accounting, BTC rotation, and tax holdback.
+• SAVE CASH means save cash. Do not force deployment just because capital is available.
+Best for: Most customers who want a lower-discretion XRP sleeve that still respects the confirmed weekly cycle
+engine.
+Watch-out: Constantly changing the recurring Weekly budget can make proof rows look different from what you
+actually funded. Keep recurring budget clean and put one-time exceptions in the tracker.
+
+What is the best overall strategy for most users?
+• For most users, the Core + Trim Ladder is the best default: disciplined enough for investors, active enough for
+hybrid strategies, easier to follow than a discretionary cycle process, and already equipped with a clean default
+ladder.
+• For pure long-term investors who want the fewest decisions, MAJOR-Only is the cleanest operating model.
+• If you hate large give-back after massive rallies, the defensive profile that treats XRP RISK and RADAR TOP more
+aggressively is the better fit. Keep RADAR BOTTOM optional and use it only when a written plan allows it.
+
+Positioning sleeves
+The cleanest way to reduce emotional over-trading is to separate capital by role. A true long-term core can stay
+untouched, the cycle sleeve follows the indicator's playbooks, and any tactical reserve or BTC rotation bucket should
+only exist if its rules were written before the signal arrives.
+
+Long-term core
+
+Cycle sleeve
+
+Tactical reserve
+
+Untouched investment sleeve for
+investors who never want to fully
+flatten long-term exposure.
+
+The main sleeve managed by MAJOR
+BOTTOM, RISK / HIGH RISK, RADAR
+TOP, and MAJOR TOP.
+
+Cash or dry powder reserved for
+RADAR BOTTOM adds, defensive reentry, or future cycle resets.
+
+Not managed by every signal. Keep it
+psychologically separate from the tactical
+cycle sleeve.
+
+This is the sleeve the written playbooks
+are designed to manage.
+
+Useful only if the amount and conditions
+were written in advance.
+
+Optional bucket
+
+Recommended default
+
+Optional reserve
+
+Keep the sleeves psychologically separate: the long-term core stays untouched, the cycle sleeve follows the written
+playbook, and any tactical reserve exists only if its add rules were decided in advance.
+
+Figure: A simple sleeve structure that keeps long-term holdings, the managed cycle sleeve, and any optional reserve from bleeding
+into one another.
+Portfolio boundary: this handbook does not automatically rotate trimmed XRP into BTC or another asset. If you run BTC and XRP
+together, write inter-sleeve transfer, max-allocation, and rebalance rules in a separate portfolio policy.
+
+support@azrosystems.com • 21 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Plan modes at a glance
+Plan mode
+
+How to think about it
+
+Accumulator
+
+Buy-only posture for users who want maximum
+simplicity and minimal top-side management.
+
+Balanced
+
+Middle path for customers who want participation with
+a calmer risk profile than the more aggressive paths.
+
+Aggressive
+
+More offense and less cash protection. Best only for
+users who knowingly want a hotter profile.
+
+Performance
+
+Shipped default. Best overall balance for most
+customers who want a lower-discretion recurringbudget XRP sleeve.
+
+Safety
+
+Cash-sooner path for users who want the plan to
+protect capital earlier. Safety cash pace then lets you
+choose Standard, Fast cash, or Faster cash.
+
+Single-sentence playbook
+Build at MAJOR BOTTOM, optionally add at RADAR BOTTOM if still under-allocated, reduce on RISK / HIGH RISK,
+distribute on RADAR TOP, finish the cycle sleeve on MAJOR TOP, and let the Weekly Plan's DO NOW row manage
+recurring-budget flow between those major cycle events.
+
+support@azrosystems.com • 22 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+7. Risk management and workflow discipline
+The indicator does not remove the need for discipline. It reduces guesswork only if the user keeps capital roles
+separate, writes the ladder in advance, and treats workflow breakdown as a signal to simplify rather than a reason
+to improvise harder.
+
+Layered positioning
+Bucket
+
+Role
+
+Long-term core
+
+Optional bucket that is intentionally not managed by every
+tactical signal. Use this only if you consciously want permanent
+exposure.
+
+Cycle sleeve
+
+The main allocation managed by this documentation's playbooks.
+This is where MAJOR BOTTOM, RADAR BOTTOM, RISK, RADAR
+TOP, and MAJOR TOP do their work.
+
+Active / trader sleeve
+
+Optional smaller bucket for users who already run a separate
+execution strategy and only want the indicator as a macro filter.
+
+DCA first, stops optional - with nuance
+Weekly-cycle trading often benefits more from staged spot positioning than from extremely tight hard stops. XRP
+can produce violent wicks that eject tight stops even when the higher-timeframe regime is unchanged. That does
+not mean stops are wrong. It means the stop logic must match the timeframe, size, and purpose of the trade. For
+many users, a well-defined position size, staged adds, and a written trim ladder matter more than ultra-tight
+mechanical stops inside a weekly-cycle system.
+
+Risk management principles
+Principle
+
+Implementation
+
+Segregate capital
+
+Separate a true long-term core from the cycle sleeve if
+you want to keep both. Do not blur them in the heat of
+the moment.
+
+Pre-map adds and trims
+
+Public default if you do not customize: trim 25% at first
+RISK / HIGH RISK, cut the remaining cycle sleeve to
+roughly 25% to 50% on RADAR TOP, keep trim proceeds
+in the tactical reserve, let RADAR BOTTOM use only
+cash reserved before the signal, and wait for a new
+MAJOR BOTTOM before default full re-entry.
+
+support@azrosystems.com • 23 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Principle
+
+Implementation
+
+Journal the decision
+
+Record the signal, size, funding source, trim routing,
+and note. The tracker is where one-time cash, manual
+top-ups, realized trims, BTC rotation, reserve
+accounting, and tax holdback stay honest.
+
+Cap emotional risk
+
+If the position or recurring Weekly budget is large
+enough to distort your thinking, it is too large.
+
+Reduce complexity
+
+Use spot before leverage, one process before ten, and
+repeatable rules before hot takes. If the workflow starts
+feeling stressful, simplify the plan or stand aside.
+
+Pre-trade checklist
+☐ Am I on the 1W timeframe, and is the signal type being used correctly?
+☐ Do I understand whether this is a confirmation, a heads-up, or a context-only marker?
+☐ Is the size inside my pre-set exposure cap for this sleeve?
+☐ Do I already know what I will do if price extends, stalls, or reverses?
+☐ Have I accounted for fees, slippage, taxes, and venue differences?
+☐ Is my stress level low enough that I can follow the written plan without improvising?
+
+High-risk trading to avoid
+Behavior
+
+Why it hurts
+
+Safer path
+
+High leverage / margin
+
+Magnifies both timing errors and
+emotional errors. Late-cycle volatility can
+erase an account faster than a good signal
+can save it.
+
+Spot positions sized for realistic weekly
+drawdowns.
+
+Shorting blow-off crypto conditions
+
+Losses are theoretically unlimited and
+squeezes are vicious.
+
+Use top-side confirmations to distribute or
+go flat rather than trying to short every
+spike.
+
+Options or exotic derivatives before
+mastering the base system
+
+Time decay, hidden leverage, and complex
+Greeks can overwhelm the signal edge.
+
+Master the spot workflow first.
+
+Strategy overload
+
+Too many systems lead to fatigue,
+contradiction, and poor execution.
+
+Run one primary playbook well.
+
+Revenge sizing after a big win or loss
+
+Emotion contaminates position size faster
+than it contaminates chart reading.
+
+Keep fixed risk buckets and preapproved
+ladders.
+
+support@azrosystems.com • 24 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Hidden costs and the spot-first discipline
+• Commissions, spreads, and slippage.
+• Funding, margin interest, and liquidation penalties if you use derivatives.
+• Withdrawal, transfer, and FX friction between venues.
+• Taxes and record-keeping burden.
+• Opportunity cost from impulsive chasing after missing a signal.
+For many users, a spot-first workflow is the cleanest way to let a weekly edge matter. Hidden carrying costs can ruin
+good timing. If you start ignoring the health banner, stop reviewing weekly closes, or override the written ladder
+after the signal appears, simplify to MAJOR-Only or stand aside until the basis and routine are clean again.
+
+Directional-filter workflow
+1. Identify the current weekly regime on XRP: bottom-side confirmed, top-side caution, or top-side confirmed.
+2. Set the macro stance for the cycle sleeve: build, hold, trim, or stand aside.
+3. If you also trade lower timeframes, only take trades that agree with that weekly stance.
+4. If non-XRP RISK is elevated, reduce the size and aggressiveness of fresh alt exposure.
+5. Return to the written ladder. The weekly signal defines the bias; your process defines the exact implementation.
+
+Weekly operating rhythm
+• Weekly review: check whether any new MAJOR, RADAR, RISK, LIGHT, or Weekly Plan action confirmed at the
+close.
+• Bias log: write the current weekly stance in one sentence.
+• Plan update: confirm your next add, trim, reserve-use, and exit levels before the next week begins.
+• Tracker update: record one-time cash, manual top-ups, realized trims, BTC rotation, reserve movement, and tax
+holdback.
+• Execution: only change exposure for reasons that already exist in the written playbook.
+• Post-action note: capture screenshots and the reason for every size change.
+
+support@azrosystems.com • 25 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+8. Settings guide - Recommended setup and defaults
+The indicator is designed to be usable with defaults. The safest first-use approach is to keep the base workflow
+simple, keep the Weekly Plan ON, use the shipped default mode, and judge the indicator on confirmed weekly
+closes rather than on intra-week noise or constant setting changes.
+
+Recommended first-use defaults
+
+
+
+
+
+Use BITSTAMP:XRPUSD on the 1W chart with regular candles.
+Keep the default core workflow intact on first use: Soft-confirm ON, RADAR Top ON, RADAR Bottom ON, XRP
+Risk active, Weekly Plan ON, Performance mode, Dashboard view = Full, Dashboard text size = Large.
+Keep the core top-side alert pair plus one weekly-plan alert active, and add optional bottom or heads-up layers
+only if your written playbook calls for them.
+Leave purely visual settings for later. Alerts, DO NOW, and tracker continuity matter more than cosmetics.
+
+What affects your weekly workflow
+
+
+
+
+Workflow-related toggles, plan mode, recurring Weekly budget, and Plan start date can affect what appears on
+the chart and which alerts are relevant to your playbook.
+Visual settings change presentation, not the underlying weekly operating model.
+If you review history under a different setup than the one you plan to use live, expect the chart view and proof
+rows to differ.
+
+How to change settings safely
+
+
+
+
+Change one thing at a time.
+Judge changes over multiple weekly closes, not one emotional week.
+If you materially change the workflow, move to a newly published script version, or change the real recurring
+Weekly budget, recreate the relevant alerts and make sure the tracker reflects the new live policy.
+
+9. Troubleshooting and FAQ
+Fast troubleshooting
+• If alerts are not firing, confirm that you created the alert on BITSTAMP:XRPUSD on the 1W chart, using the
+indicator's named condition and the correct trigger frequency for that signal type.
+• If the Invite-only scripts tab is missing, confirm that access has been granted to the exact TradingView username
+you are using.
+• If labels or DO NOW look odd, confirm BITSTAMP:XRPUSD, regular candles, default workflow settings, and the
+intended recurring Weekly budget / Plan start date.
+• If you see the health banner, treat it as an operational pause or caution state, not as a hidden signal.
+• If a signal class appears missing from history, confirm that its toggle is enabled and that your current settings
+match the settings you think you are reviewing.
+
+Platform banners and expected behavior
+• The generic TradingView caution banners around log scale or repainting are platform notices, not proof that the
+confirmed weekly outputs are broken.
+• EARLY is allowed to change until the weekly close by design. Confirmed weekly-close outputs are the stable record.
+support@azrosystems.com • 26 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+• TradingView alerts are server-side. That means they can continue working even when your browser or app is not open,
+provided the alert is live on their servers.
+
+Frequently asked questions
+I only day-trade. Why should I care about a weekly signal?
+Because the weekly signal defines the tide. It helps you avoid fighting the larger cycle, reduces over-trading, and
+can improve selectivity even if your actual entries happen on lower timeframes.
+Does the indicator repaint?
+Confirmed weekly-close labels are anchored to the weekly close. EARLY is the exception by design: it is a headsup layer that can disappear if weekly conditions do not confirm.
+Do I need anything beyond the labels, alerts, written playbook, and tracker?
+No. For most customers, the product is meant to be used through its labels, alerts, Weekly Plan default, and tracker
+continuity rather than through a complicated workflow.
+Can I use it on lower timeframes?
+No. The indicator is designed around the 1-week chart, and canonical XRP signals should be run on
+BITSTAMP:XRPUSD. Lower-timeframe use is off-label and other XRP venues are not the canonical signal host.
+I received extra cash. Should I change the recurring Weekly budget?
+Usually no. One-time extra cash belongs in the tracker. Change the recurring Weekly budget only when your real
+normal weekly amount has changed, and then move Plan start date if you want proof rows to match the new
+baseline.
+What is the difference between MAJOR, RADAR, and the Weekly Plan?
+MAJOR and RADAR are close-confirmed weekly cycle labels. The Weekly Plan is the recurring-budget layer that
+translates that cycle engine into DO NOW actions between major turns. Keep both top-side alerts active, use
+MAJOR BOTTOM as the clean bottom anchor, and use RADAR BOTTOM only if your plan includes it.
+Should using this workflow feel stressful?
+No. If it does, your size is probably too large, your recurring Weekly budget is too aggressive, or you are using the
+wrong playbook for your temperament.
+Where do billing, updates, refunds, and fulfillment terms live?
+Review the official product/access page for the live billing, update, fulfillment, and refund terms that apply to
+your purchase.
+How long does access usually take?
+Invite-only access is manually granted to the TradingView account that receives permission. If access takes
+materially longer than expected, contact support with the exact TradingView username used for purchase.
+Can I share the script?
+No. Access is personal, invite-only, and tied to the TradingView account that received permission.
+Where do I get help?
+
+support@azrosystems.com • 27 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Email support@azrosystems.com and include your TradingView username, chart symbol, timeframe, settings
+screenshot, dashboard screenshot if relevant, and a description of the issue.
+
+support@azrosystems.com • 28 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+10. Validation, tracker, and customer diligence answers
+This section is designed to answer the practical diligence questions a serious customer should ask before trusting
+the workflow: what chart basis was used, how execution dates are handled, what the published tables do and do
+not prove, how the new live workflow differs from the carried packaged public diligence cut, and how the included
+workbooks split live continuity from historical appendix evidence.
+
+Customer diligence answers at a glance
+
+
+
+
+
+Canonical validation host: BITSTAMP:XRPUSD on the 1W chart using regular candles. The customer tear-sheet
+remains anchored to the canonical host rather than alternate venues.
+Execution assumptions used in this handbook: signal-week close for forward-return studies; next-week open for
+the closed-cycle workflow ledgers and packaged appendix row horizons. Weekly Plan proof is the recurringbudget layer documented for the live workflow; one-time cash belongs in the tracker.
+Signal stability policy: MAJOR, RADAR, LIGHT, and RISK / HIGH RISK are close-confirmed weekly outputs and are
+fixed after the weekly close. EARLY is the only intentionally provisional layer and can change until the close.
+
+What the customer pack validates
+
+
+
+
+
+
+
+
+Operating clarity on the canonical chart: what printed, what followed, how labeled weeks map to executable
+weeks, how the live Weekly Plan should be used, and how the main long-only workflow behaved across
+completed cycles in the carried packaged public cut.
+Benchmark choice: the public trust benchmark for the cycle tear-sheet remains buy and hold over the same
+closed window. The live Weekly Plan adds a recurring-budget proof panel on chart, but this handbook does not
+invent a fresh full-history appendix rerun that was not supplied.
+Feed policy: the trust sheet is built on BITSTAMP:XRPUSD. Other venues can differ because of history, liquidity,
+and data composition, so non-canonical venues are for monitoring only, not for replacing the canonical
+validation basis.
+Audit scope policy: the customer pack publishes output-level counts, forward profiles, closed-cycle ledgers,
+date-mapped examples, the new live continuity tracker, and the carried packaged public-cut audit workbook. It
+intentionally does not publish raw proprietary all-history event exports, internal change maps, or reverseengineering-friendly design detail.
+
+Practical limits and version scope
+
+
+
+
+
+All examples are hypothetical and implementation-sensitive. Real results depend on fills, fees, slippage, taxes,
+venue choice, infrastructure, and user discipline.
+This handbook documents the live v1.3.0 workflow. No fresh canonical appendix rerun was supplied with this
+update, so the quantitative diligence appendix remains the carried packaged public cut from v1.2.0 until a
+refreshed appendix is published.
+The included Weekly Strategy Tracker is the live continuity workbook. It records what the customer actually
+funded, bought, trimmed, reserved, rotated, or held back for taxes; it is not a retroactive historical proof archive
+of every past script output.
+
+In practice, that means a serious buyer should judge seven things: canonical-host stability, date-mapping clarity,
+row-level appendix quality, workflow usefulness, recurring-budget usability, friction realism, and whether the
+playbooks are discipline-improving rather than discretion-expanding.
+
+support@azrosystems.com • 29 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Validated test frame and customer diligence basis
+The tables below answer what a serious user should know before trusting the workflow: what printed, what
+followed, how the main long-only cycle models behaved, how weekly label dates map to executable dates, and
+what the carried packaged public cut does and does not prove.
+Item
+
+Value
+
+Canonical host and timeframe
+
+BITSTAMP:XRPUSD on the 1W chart.
+
+Current live workflow documented here
+
+v1.3.0 live publish build: audited cycle engine preserved,
+all five Weekly Plan modes preserved, Weekly Plan
+dashboard shipped in the full bottom-right view by
+default, and a simple dashboard text-size control added.
+
+Current packaged public diligence cut
+
+Carried forward from v1.2.0 until a refreshed canonical
+appendix is published.
+
+Current live continuity workbook
+
+Weekly Strategy Tracker v1.3.0. It records real funding
+and execution continuity; it is not a retroactive historical
+proof appendix.
+
+Chart coverage used in the carried cut
+
+2013-07-29 to 2026-03-09 (last confirmed weekly close
+in the carried packaged public cut).
+
+Stable signal window used for summary counts
+
+2016-07-18 to 2026-03-09, once the full weekly history
+needed for stable confirmations is available on the
+canonical host.
+
+Dating convention used in the trade tables
+
+Signal week = the date stamped on the labeled weekly
+bar. Execution week = the next weekly open after a
+close-confirmed signal.
+
+Defaults represented in the carried cut
+
+Soft-confirm ON, RADAR Top ON, RADAR Bottom ON,
+LIGHT OFF, XRP Risk active, weekly-close workflow.
+
+What is measured here
+
+Output coverage, forward close outcomes, 26-week
+excursion behavior, closed-cycle workflow models, topside sequencing, reserve-add studies, and workbookbacked diligence structure.
+
+What is not measured here
+
+Leverage, derivatives, taxes, fees, slippage,
+discretionary overrides, unpublished internal design
+logic, or a fresh v1.3.0 appendix rerun that was not
+supplied.
+
+support@azrosystems.com • 30 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Signal-week dating vs next-open execution
+Weekly labels are stamped on the weekly bar's opening date, but confirmation occurs at that week's close. The
+trade tables therefore show two dates whenever execution matters: the signal week that appears on the chart and
+the next weekly open where a disciplined user could first act after confirmation.
+
+Historical output coverage (carried packaged public cut)
+Coverage below uses the canonical weekly host only. LIGHT remains outside the primary trust-sheet because it is
+OFF by default and designed as a local timing/context aid, not the core confirmation family.
+Count
+
+First print
+
+Most recent print
+
+Any confirmed bottom
+
+Output family
+
+14
+
+2016-12-05
+
+2026-02-16
+
+MAJOR BOTTOM
+
+4
+
+2016-12-05
+
+2026-02-02
+
+RADAR BOTTOM
+
+10
+
+2017-01-02
+
+2026-02-16
+
+Any confirmed top
+
+3
+
+2018-01-01
+
+2025-07-14
+
+MAJOR TOP
+
+2
+
+2018-01-01
+
+2021-05-03
+
+RADAR TOP
+
+1
+
+2025-07-14
+
+2025-07-14
+
+XRP RISK
+
+4
+
+2017-12-18
+
+2025-07-14
+
+Forward outcome profile (carried packaged public cut)
+Forward outcomes are measured from the signal-week close to future weekly closes. Medians are used instead of
+simple averages because XRP is fat-tailed and a few explosive regimes can dominate means. Hit rates are directionaware: for bottoms the expected direction is up; for tops and XRP RISK the expected direction is down. Handbook
+forward medians therefore use a signal-close basis, while workbook appendix row horizons use a next-open
+executable basis; small differences are expected if a reader recomputes values from the workbook.
+Signal family
+
+Signals
+
+Median 4W
+
+Median 13W
+
+Median 26W
+
+Median 52W
+
+26W / 52W hit
+
+Any confirmed
+bottom
+
+14
+
++13.3%
+
++37.2%
+
++404.1%
+
++249.8%
+
+92% / 91%
+
+MAJOR BOTTOM
+
+4
+
++0.8%
+
++3.6%
+
++66.9%
+
++249.8%
+
+100% / 100%
+
+RADAR BOTTOM
+
+10
+
++24.4%
+
++81.7%
+
++471.7%
+
++318.8%
+
+89% / 88%
+
+Signal family
+
+Signals
+
+Median 4W
+
+Median 13W
+
+Median 26W
+
+Median 52W
+
+26W / 52W hit
+
+Any confirmed top
+
+3
+
+-38.3%
+
+-49.2%
+
+-42.4%
+
+-74.9%
+
+100% / 100%
+
+MAJOR TOP
+
+2
+
+-54.3%
+
+-65.6%
+
+-51.6%
+
+-74.9%
+
+100% / 100%
+
+RADAR TOP
+
+1
+
+-10.6%
+
+-30.8%
+
+-42.4%
+
+—
+
+100% / —
+
+XRP RISK
+
+4
+
++2.9%
+
+-34.2%
+
+-29.2%
+
+-44.1%
+
+100% / 100%
+
+26-week excursion profile (carried packaged public cut)
+Excursion statistics answer a different question than forward returns: not just whether the signal was directionally
+useful, but how much room XRP still had to move against the signal before the larger move developed. That is the
+practical reality customers need for sizing, patience, and expectations.
+Signals
+
+Median best 26W move
+
+Median 26W move against
+signal
+
+Worst 26W move against
+signal
+
+Any confirmed bottom
+
+14
+
++575.6%
+
+-10.6%
+
+-55.5%
+
+MAJOR BOTTOM
+
+4
+
++92.8%
+
+-13.7%
+
+-55.5%
+
+Signal family
+
+support@azrosystems.com • 31 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+Signals
+
+Median best 26W move
+
+Median 26W move against
+signal
+
+Worst 26W move against
+signal
+
+RADAR BOTTOM
+
+10
+
++593.5%
+
+-9.4%
+
+-50.0%
+
+Any confirmed top
+
+3
+
++201.3%
+
++5.6%
+
++11.0%
+
+XRP RISK
+
+4
+
++124.7%
+
++38.1%
+
++226.8%
+
+Signal family
+
+Main workflow backtests (carried packaged public cut)
+The primary long-only workflows below use the canonical weekly host, signal-week dating, and next-open
+execution. No leverage, no fees, no taxes, and no slippage are assumed. The base models deploy at MAJOR
+BOTTOM only. The live v1.3.0 Weekly Plan is a separate recurring-budget layer and should not be confused with a
+fresh rerun of these closed-cycle studies.
+Model
+
+Gross multiple
+
+CAGR
+
+Max drawdown
+
+Exposure
+
+Closed swings
+
+Win rate
+
+Median swing
+multiple
+
+All-in MAJOR
+BOTTOM -> first
+confirmed top
+
+42,859.5x
+
++245.4%
+
+-63.8%
+
+61.5%
+
+3
+
+100.0%
+
+10.4x
+
+All-in MAJOR
+BOTTOM -> first
+serious top-side
+alert
+
+10,445.5x
+
++193.1%
+
+-63.8%
+
+53.0%
+
+3
+
+100.0%
+
+9.2x
+
+All-in MAJOR
+BOTTOM -> trim
+25% at first RISK,
+exit balance at
+first confirmed
+top
+
+32,841.3x
+
++234.9%
+
+-63.8%
+
+61.5%
+
+3
+
+100.0%
+
+10.1x
+
+Buy & hold
+benchmark
+(same closed
+window)
+
+512.1x
+
++106.5%
+
+-94.6%
+
+100.0%
+
+—
+
+—
+
+—
+
+In this carried historical cut, the strongest closed-window gross-return and CAGR result came from the cleanest
+workflow: all-in at MAJOR BOTTOM and full exit at the first confirmed top-side label (MAJOR TOP or RADAR TOP).
+The study remains useful as a proof surface, but it is still a sparse sample and not a claim that extra complexity
+always wins.
+
+Closed-cycle trade ledger for the main capture model
+The ledger below is for the main capture model because it is the cleanest reference study and it resolves the dating
+question directly: signal weeks are the labeled bars; execution weeks are the next weekly opens.
+Entry signal week
+
+Entry next open
+
+First RISK signal
+→ next open
+
+Final top signal →
+next open
+
+Exit trigger
+
+Gross return
+
+Weeks
+
+Max interim DD
+
+2016-12-05
+
+2016-12-12
+
+2017-12-18 →
+2017-12-25
+
+2018-01-01 →
+2018-01-08
+
+MAJOR TOP
+
++40798.7%
+
+55w
+
+-55.5%
+
+2020-03-16
+
+2020-03-23
+
+2021-04-05 →
+2021-04-12
+
+2021-05-03 →
+2021-05-10
+
+MAJOR TOP
+
++941.9%
+
+59w
+
+-1.7%
+
+2022-06-06
+
+2022-06-13
+
+2024-12-02 →
+2024-12-09
+
+2025-07-14 →
+2025-07-21
+
+RADAR TOP
+
++905.8%
+
+162w
+
+-16.4%
+
+support@azrosystems.com • 32 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Top-side sequencing: how early RISK appeared before the final confirmed top (carried packaged
+public cut)
+RISK deserves full respect as a serious top-side alert, but the historical spacing between the first RISK week and the
+final confirmed top varied materially across cycles. That is why the handbook treats RISK as a serious trim / tighten
+prompt rather than a promise of the exact final tick.
+Cycle start
+
+First RISK week
+
+Final top week
+
+Weeks between
+
+Move from RISK open to
+final-top open
+
+2016-12-05
+
+2017-12-18
+
+2018-01-01
+
+2w
+
++171.9%
+
+2020-03-16
+
+2021-04-05
+
+2021-05-03
+
+4w
+
++13.7%
+
+2022-06-06
+
+2024-12-02
+
+2025-07-14
+
+32w
+
++32.7%
+
+Optional RADAR-bottom add study (separate reserve capital, carried packaged public cut)
+Because the main workflow is all-in at MAJOR BOTTOM, any RADAR-bottom add study requires separate reserve
+capital. The table below tests simple reserve overlays on the same closed window. In this carried historical cut,
+reserve adds improved drawdown somewhat but did not beat the no-add baseline on total-capital gross multiple or
+CAGR.
+Reserve-add model
+
+Reserve kept aside
+
+Gross multiple
+
+CAGR
+
+Max drawdown
+
+Exposure
+
+Avg adds used
+
+No reserve add
+baseline
+
+0%
+
+42,859.5x
+
++245.4%
+
+-63.8%
+
+61.5%
+
+0.0
+
++25% reserve, max
+1 RADAR add
+
+25.0%
+
+36,867.4x
+
++239.4%
+
+-61.4%
+
+61.5%
+
+1.0
+
++25% reserve, max
+2 RADAR adds
+
+50.0%
+
+30,413.3x
+
++231.9%
+
+-58.1%
+
+61.5%
+
+1.7
+
+How to read the diligence tables correctly
+
+
+
+
+
+
+
+
+Signal week and next-open execution week are intentionally shown separately. The 2025 RADAR TOP example is
+labeled on the 2025-07-14 weekly bar and becomes executable at the 2025-07-21 weekly open.
+The primary comparison focuses on closed cycles through the 2025 RADAR TOP exit. A new MAJOR BOTTOM
+printed on 2026-02-02; next-open entry 2026-02-09; mark-to-cut through the 2026-03-09 confirmed weekly
+close was -4.2% while the new cycle remained open in this packaged public cut.
+The 'MAJOR BOTTOM -> MAJOR TOP only' model is not the primary trust anchor because the latest completed
+cycle resolved on a confirmed top-side companion print rather than on the final MAJOR TOP confirmation.
+RISK can be the actual top week, but historically it also appeared before the final confirmed top and should be
+understood as a serious action prompt rather than a promise of the exact final tick.
+Optional RADAR-bottom adds were mixed on deployed-capital efficiency; the MAJOR BOTTOM entry remained
+the primary performance engine in this cut.
+This section intentionally stays output-level so customers can judge behavior, discipline, date-mapping, and
+limits without being given internal thresholds or logic design.
+
+Included supporting workbooks
+The v1.3.0 customer pack includes two different workbook roles. The Weekly Strategy Tracker is the live continuity
+workbook for real funding and execution. The Customer Audit Workbook remains the carried packaged public-cut
+appendix layer for historical row-level diligence until a refreshed appendix is published.
+Workbook surface
+
+What it contains
+
+Why it matters before purchase
+
+support@azrosystems.com • 33 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+Weekly Strategy Tracker — Start
+Here + Controls
+
+Live workflow notes, plan inputs,
+budget rules, routing controls, and
+one-time cash policy
+
+Fastest way to see how the live
+v1.3.0 workflow expects recurring
+budget, reserve use, BTC rotation,
+and tracker continuity to be
+handled.
+
+Weekly Strategy Tracker — Weekly
+Plan + Results
+
+Recurring-budget execution record,
+DO NOW alignment, and calm
+weekly review surface
+
+Shows how the shipped Weekly
+Plan becomes a real operating
+process instead of just a chart
+widget.
+
+Weekly Strategy Tracker — BTC
+Weekly Plan + Capital Ledger
+
+Optional BTC continuity, one-time
+extra cash, and manual capital
+events
+
+Helps customers run the full stack
+without distorting the on-chart XRP
+proof model.
+
+Customer Audit Workbook — Event
+Appendix
+
+Every confirmed event in the
+current carried packaged public cut
+on BITSTAMP:XRPUSD, including
+MAJOR BOTTOM, RADAR BOTTOM,
+XRP RISK, RADAR TOP, and MAJOR
+TOP
+
+Lets a customer inspect sparseevent behavior row by row rather
+than relying only on medians.
+
+Customer Audit Workbook —
+Friction / Venue / Forward Audit
+
+The same closed-window cycle
+models rerun under simple drag
+overlays, venue-basis checks, and a
+forward accountability log
+
+Shows whether the edge
+compresses or survives under
+simple execution drag and keeps
+future live accountability visible.
+
+Execution-friction sensitivity
+The gross workflow tables earlier in this section are not enough on their own. The carried audit workbook reruns
+the same closed-window cycle models under simple, transparent execution overlays. The public summary below
+shows that the headline edge compresses under drag but does not disappear under the simple overlays published
+here.
+Workflow model
+MAJOR BOTTOM ->
+first confirmed top
+
+Next-open baseline
+
++10 bps
+
++25 bps
+
++50 bps
+
+42,859.5x
+
+42,603.1x
+
+42,221.4x
+
+41,592.8x
+
+10,445.5x
+
+10,383.0x
+
+10,290.0x
+
+10,136.8x
+
+32,841.3x
+
+32,644.9x
+
+32,352.4x
+
+31,870.7x
+
+MAJOR BOTTOM ->
+first serious top-side
+alert
+MAJOR BOTTOM ->
+trim 25% at first RISK,
+exit rest at first
+confirmed top
+
+Timing convention check
+Workflow model
+
+Signal-close baseline
+
+Next-open baseline
+
+support@azrosystems.com • 34 • © AZRO Systems
+
+Next-open +1 week delay
++25 bps
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+MAJOR BOTTOM -> first
+confirmed top
+MAJOR BOTTOM -> first
+serious top-side alert
+
+42,761.8x
+
+42,859.5x
+
+23,514.6x
+
+10,455.3x
+
+10,445.5x
+
+18,648.6x
+
+32,777.6x
+
+32,841.3x
+
+22,361.0x
+
+MAJOR BOTTOM -> trim
+25% at first RISK, exit rest
+at first confirmed top
+
+These overlays are intentionally simple and public: no hidden broker assumptions, no taxes, no leverage, and no
+discretionary overrides. They do not attempt to simulate partial fills, missed alerts, operator hesitation, or every
+venue-specific friction case.
+
+Cross-venue execution basis
+The full top/bottom workflow is officially supported on BITSTAMP:XRPUSD. The matrix below does not claim
+unsupported non-canonical signal generation. It measures practical execution-basis drift on common venues on the
+same canonical event weeks, which is useful for monitoring but not for replacing the supported host.
+Venue
+BITSTAMP:XRPUS
+
+Event weeks
+
+Median abs
+
+Max abs signal-
+
+Median abs next-
+
+Max abs next-
+
+available / 21
+
+signal-close drift
+
+close drift
+
+open drift
+
+open drift
+
+21/21
+
+0.0%
+
+0.0%
+
+0.0%
+
+0.0%
+
+9/21
+
+0.0%
+
+0.1%
+
+0.0%
+
+0.1%
+
+KRAKEN:XRPUSD
+
+18/21
+
+0.0%
+
+2.9%
+
+0.1%
+
+2.4%
+
+BITFINEX:XRPUSD
+
+18/21
+
+0.2%
+
+4.6%
+
+0.1%
+
+4.7%
+
+14/21
+
+0.1%
+
+0.3%
+
+0.0%
+
+0.3%
+
+D
+COINBASE:XRPUS
+D
+
+BINANCE:XRPUSD
+T
+
+Operational reliability and version scope
+
+
+
+
+
+
+
+
+
+
+Canonical host policy — BITSTAMP:XRPUSD on the 1W chart remains the official top/bottom workflow host for
+this customer pack.
+Weekly-close policy — confirmed MAJOR, RADAR, RISK, and LIGHT outputs are treated as fixed after the weekly
+close; EARLY remains provisional until the close by design. The Weekly Plan updates on the weekly close and
+frames next-week execution.
+Alert policy — confirmed workflow alerts should be created on the 1W chart and treated as Once Per Bar Close.
+After published script updates, recreate alerts on the updated indicator so the live setup matches the active
+release.
+Health-state policy — if chart basis is wrong or data is degraded, the script surfaces customer-facing health
+warnings instead of pretending conditions are normal.
+Version scope — this handbook documents the live v1.3.0 workflow. That live scope now includes the shipped
+Weekly Plan dashboard in the full bottom-right view by default, a customer-facing dashboard text-size control,
+and the included Weekly Strategy Tracker. The quantitative diligence appendix remains the carried packaged
+public cut from v1.2.0 until a refreshed appendix is published.
+Cross-version archive note — the customer pack does not publish a raw historical version-diff label archive
+because that would materially narrow the reverse-engineering search space. The included forward audit log
+remains the public accountability layer from the week a customer begins monitoring live outputs.
+support@azrosystems.com • 35 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+What is intentionally not public
+
+
+
+
+
+Hidden formula weights, thresholds, or internal scoring logic.
+A raw reverse-engineering-friendly version-by-version label archive.
+Unsupported non-canonical top/bottom output claims on venues outside the recommended host.
+Internal operations ticket history, private support records, or unpublished appendix reruns.
+
+The included workbooks are the full customer-safe support layer for this release. The handbook remains the
+operating guide; the carried audit workbook remains the historical diligence appendix.
+
+support@azrosystems.com • 36 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+11. Resources, support, and TradingView help
+Use the live links below for access, support, and TradingView help articles that matter most to real customers.
+Resource
+
+Link
+
+Indicator page
+
+https://www.tradingview.com/script/4M3OWBpzAZRO-Systems-XRP-Top-Bottom-Indicator-Invite-Only/
+
+Product / access page
+
+https://azrosystems.gumroad.com/l/kuvbu
+
+TradingView alerts overview
+
+https://www.tradingview.com/support/solutions/
+43000520149-introduction-to-tradingview-alerts/
+
+How to set up alerts
+
+https://www.tradingview.com/support/solutions/
+43000595315-how-to-set-up-alerts/
+
+Webhook alerts
+
+https://www.tradingview.com/support/solutions/
+43000529348-how-to-configure-webhook-alerts/
+
+Private invite-only scripts
+
+https://www.tradingview.com/support/solutions/
+43000615189-private-invite-only-scripts/
+
+Will alerts work if TradingView is closed?
+
+https://www.tradingview.com/support/solutions/
+43000548327-will-alerts-work-if-tradingview-is-notopen-on-the-computer/
+
+Support request checklist
+• Your TradingView username.
+• The exact symbol and timeframe.
+• A screenshot of the chart and settings.
+• A screenshot of the dashboard or relevant tracker row if the issue involves the Weekly Plan or workbook
+continuity.
+• The name of the alert condition that did or did not fire.
+• A short description of what you expected to happen.
+
+support@azrosystems.com • 37 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+12. Risk disclosure statement
+• Digital-asset markets are volatile and can move with extreme speed. You can lose all or substantially all of your capital.
+• Past performance, examples, historical behavior, or backtest snapshots do not guarantee future results.
+• Backtests and hypothetical comparisons do not fully capture liquidity, slippage, taxes, psychology, infrastructure
+failure, or user configuration error.
+• Leverage and derivatives can magnify losses. Many users are better served by spot-only implementation while learning.
+• Trading rules, data sources, and platform behavior can be affected by outages, exchange disruptions, regulatory
+actions, or structural market shifts.
+• Nothing in this pack, the indicator, or related communications is personalized financial, investment, legal, or tax advice.
+
+support@azrosystems.com • 38 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+13. Privacy policy
+AZRO Systems may need limited customer information to fulfill access and support, such as name, email,
+TradingView username, and payment confirmation data supplied through the payment processor.
+The purpose of collection is straightforward: fulfill access, maintain invite-only permissions, provide support,
+communicate material indicator updates, and comply with legal or payment obligations.
+AZRO Systems does not take custody of exchange funds, does not trade customer accounts, and does not need
+access to balances or API keys in order to grant indicator access.
+Customer information should not be sold. Third-party processors may handle payment, product delivery, chart
+access, or email delivery as part of normal operations.
+If you contact support, the submitted screenshots, emails, and issue descriptions may be retained as needed to
+resolve the issue, maintain service records, and enforce agreements.
+Customers should review the current product page and payment processor terms for the latest billing and privacy
+details.
+
+Privacy contact
+For privacy questions or customer-support issues, contact support@azrosystems.com.
+
+support@azrosystems.com • 39 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+14. Terms of service summary
+• Access is provided as an invite-only TradingView script tied to the TradingView account that receives permission.
+• The customer receives a personal, non-transferable, revocable license to use the indicator for their own charting and
+analysis.
+• You may not resell, sublicense, redistribute, or publish the script or documentation without permission.
+• Access is personal and tied to the approved TradingView account. Sharing or reposting paid materials is not
+allowed.
+• Billing, updates, refunds, and access fulfillment are governed by the current product/access page and the payment
+processor's policies. Review them carefully before purchase.
+• Violation of the license terms can result in access revocation.
+
+Practical note
+The live product/access page and payment processor remain the right place to confirm the current billing, updates,
+refund, and fulfillment terms before purchase.
+
+support@azrosystems.com • 40 • © AZRO Systems
+
+AZRO Systems • XRP Top/Bottom Indicator (v1.3.0)
+
+15. Master disclaimer and notices
+Educational use only
+The indicator, documentation, examples, and communications are provided for informational and educational use
+only. They are not recommendations, solicitations, or a promise of results.
+
+No personalized advice
+Nothing in the pack accounts for your objectives, financial situation, tax position, or legal constraints. You are
+responsible for suitability and for obtaining qualified professional advice where needed.
+
+No custody and no trade execution
+AZRO Systems provides software and documentation. It does not take custody of customer funds, direct customer
+accounts, or guarantee the behavior of any third-party bridge, broker, exchange, or charting platform.
+
+Third-party platform risk
+Signals, alerts, data, and automation may depend on TradingView, exchanges, webhooks, bridges, email delivery,
+mobile notification services, or other external services that can fail, change, or delay.
+
+Hypothetical performance warning
+Any example returns, charts, or strategy comparisons are hypothetical. They do not reflect actual customer
+accounts, and they may understate real-world friction or implementation error.
+
+Warranty and liability
+The indicator is provided as-is and as-available. To the maximum extent permitted by law, AZRO Systems is not
+liable for trading losses, missed trades, delayed alerts, opportunity costs, or damages resulting from platform issues,
+data issues, user configuration, or market events.
+
+Intellectual property
+The indicator, documentation, and brand materials remain the property of AZRO Systems. All rights not expressly
+granted are reserved.
+End of pack.
+
+support@azrosystems.com • 41 • © AZRO Systems
+
+
