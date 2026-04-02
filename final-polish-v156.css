@@ -1,0 +1,114 @@
+/* Final publish v156: home hero title/copy/button band parity lock.
+   Scope: index hero only. */
+
+@media (min-width: 981px){
+  .home .hero{
+    padding-top: 20px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .home .hero-inner--wide-title-home{
+    grid-template-columns: minmax(0,.96fr) minmax(0,1.04fr) !important;
+    grid-template-areas:
+      "headline media"
+      "copy media" !important;
+    gap: 14px 34px !important;
+    align-items: start !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-wide-title{
+    grid-area: headline !important;
+    width: min(100%, 40.5rem) !important;
+    max-width: 40.5rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    margin: 0 auto 6px !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-wide-title h1{
+    width: min(100%, 40.5rem) !important;
+    max-width: 40.5rem !important;
+    margin: 0 auto !important;
+    font-size: var(--azro-secondary-hero-title-size, clamp(3.55rem, 4vw, 4.25rem)) !important;
+    line-height: .94 !important;
+    letter-spacing: -0.042em !important;
+    text-align: center !important;
+    text-wrap: balance !important;
+    white-space: normal !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-text{
+    grid-area: copy !important;
+    max-width: 40.5rem !important;
+    min-height: 0 !important;
+    display: block !important;
+    margin-inline: auto !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-media{
+    grid-area: media !important;
+    width: min(100%, 680px) !important;
+    margin-inline: auto !important;
+    align-self: start !important;
+  }
+
+  .home .hero-copy-stack--home,
+  .home .hero-copy-stack--home .lede,
+  .home .hero-copy-stack--home .hero-copy-note,
+  .home .hero-copy-stack--home .hero-copy-tail,
+  .home .hero-copy-bullets--value,
+  .home .hero .hero-cta{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  .home .hero-copy-stack--home{
+    gap: 10px !important;
+  }
+
+  .home .hero .hero-cta{
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-top: 14px !important;
+    padding-top: 0 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 980px){
+  .home .hero-inner--wide-title-home{
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "headline"
+      "copy"
+      "media" !important;
+    gap: 24px !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-wide-title{
+    width: min(100%, 34rem) !important;
+    max-width: 34rem !important;
+    margin: 0 auto 6px !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-wide-title h1{
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(2.9rem, 8.2vw, 3.95rem) !important;
+    line-height: .92 !important;
+    letter-spacing: -0.04em !important;
+    text-align: center !important;
+    text-wrap: balance !important;
+  }
+
+  .home .hero-inner--wide-title-home > .hero-text{
+    min-height: 0 !important;
+  }
+
+  .home .hero .hero-cta{
+    margin-top: 12px !important;
+    padding-top: 0 !important;
+  }
+}
