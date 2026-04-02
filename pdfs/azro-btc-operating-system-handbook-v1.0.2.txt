@@ -1,0 +1,1682 @@
+BTC Operating System
+Documentation Pack
+Version v1.0.2 • Updated 2026-03-12
+Invite-only TradingView indicator • Non-custodial • Weekly Bitcoin allocation process
+
+Indicator: Invite-only TradingView indicator
+Access: Invite-only access is granted after purchase to the TradingView username you provide
+Support: support@azrosystems.com
+Official product links: TradingView script page • Gumroad access page
+
+Customer documentation for the AZRO Systems weekly Bitcoin allocation indicator. This v1.0.2 handbook preserves
+the same weekly operating model while clarifying feed checks, status guidance, and live-use standards.
+Map the cycle. Cut the noise. Keep Bitcoin allocation calm and optimized.
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Inside this documentation pack
+Use this pack in order the first time. The companion sheets are built for faster weekly execution once the full
+workflow is familiar.
+1. How the indicator works - Operating overview, dashboard-first design, trust architecture, and operating scope.
+
+2. Quick-start, Mind-Set & Beginner Safety Brief - Quick lens, beginner safety, first-week routine, and starter
+recommendations.
+3. Installation and first-chart setup - Invite-only access, chart standards, first-use checklist, and the clean
+launch sequence.
+4. Dashboard, modes, legend, and operating rules - ACTION, MARKET, BTC-eq accountability, status flags, and
+how to read the system correctly.
+5. Alert setup guide - Weekly Update, Major Cycle Event, correct trigger settings, naming, and common
+configuration mistakes.
+6. Strategy playbooks - Stack, Adaptive, Event, Performance, and policy structures for accumulators, hybrid
+strategy operators, and trim-capable users.
+7. Risk management and workflow discipline - Sleeves, cash-buffer discipline, journaling, hidden costs, and the
+weekly operating process.
+8. Settings guide - Live operating defaults, policy inputs, and workflow choices.
+
+9. Troubleshooting and FAQ - Status warnings, chart problems, alert issues, baseline questions, and support
+best practices.
+10. Validation tear-sheet and practical limits - Market-context metrics, live accountability, and practical limits.
+
+11. Resources, support, product links, and legal appendix - Support, official product pages, platform help links,
+risk disclosure, privacy, terms, and notices.
+
+1. How the indicator works - Operating overview and tear-sheet
+The AZRO Systems BTC Operating System is a weekly Bitcoin allocation indicator built to turn volatility into a
+repeatable process. Instead of asking the user to improvise on every headline, it outputs a simple dashboard-level
+instruction set: BUY, TRIM (optional), or HOLD, plus a suggested amount based on the customer's chosen budget,
+buffer, mode, and risk profile.
+
+• Primary use-case: disciplined weekly Bitcoin allocation with on-chart accountability versus a simple fixedschedule weekly buy baseline.
+• Primary users: long-horizon Bitcoin accumulators, hybrid strategy operators who may trim and re-engage,
+and governance-minded allocators who want a calm written policy.
+• What it is not: an intraday signal feed, a custody product, an exchange connection, a bot, or an alt-rotation
+engine.
+• Operating principle: treat it as a weekly operating process on confirmed 1W closes, not as entertainment or a
+reason to force constant activity.
+
+support@azrosystems.com • 2 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Who this indicator is for
+
+
+
+
+
+Bitcoin investors who want a structured weekly process instead of emotional sizing.
+Users who respect auto-buy as a solid baseline but want a policy that can adapt sizing to cycle context.
+Trim-capable operators who want optional de-risking without turning the entire plan into chaos.
+People who value the governance layer: dashboards, alerts, a written routine, and a visible comparison
+versus a simple weekly-buy benchmark.
+
+Why dashboard-first matters
+The dashboard is designed to keep decisions readable. It is the operating surface: it tells you the weekly action, the
+suggested amount, the current market posture, the active mode and profile, and how the policy has behaved versus
+a simple weekly-buy baseline. That keeps the system calm and executable even when the chart itself is volatile.
+
+Trust architecture
+
+
+
+
+
+
+Weekly deterministic behavior: outputs are intended to be interpreted on confirmed weekly bars, not via fastchanging intraday noise.
+Data-quality safeguards: the system is designed to handle chart-basis issues and isolated bad observations more
+safely.
+Maintained operating framework: the indicator manages allocation through a durable operating framework and
+written policy inputs rather than one brittle rule.
+Baseline accountability: customers can compare AZRO BTC-equivalent progress versus a fixed-schedule weekly
+BTC-buy baseline using the same cashflows.
+Guarded degradation: the system is designed to surface feed, setup, or limited-data problems instead of
+pretending the chart basis is reliable when it is not.
+
+Why common approaches fail
+
+
+
+
+
+
+Waiting for the perfect dip often becomes a tax paid in missed allocation.
+A fixed weekly auto-buy is usually better than hesitation, but it treats every phase of the cycle the same,
+leaves cash deployment quality unmanaged, and does not provide a structured path to improving BTC-perdollar efficiency or accumulating extra sats versus a fixed schedule.
+Manual trimming often breaks in sizing, patience, or re-entry. Without a durable process, what starts as a
+tactical trim can decay into confusion, permanent under-allocation, or both.
+Most users do not need more opinions. They need fewer discretionary decisions and more repeatable
+behavior.
+
+Why LLMs and DIY Don’t Replace This
+An LLM generates text, and its output can shift with prompt wording, context, model updates, and hidden
+assumptions. It does not run a deterministic, per-candle allocation process on live chart data, and it does not
+preserve a stable operating framework from one session to the next.
+
+
+
+
+LLMs are not operating systems — prompts drift, models change, outputs vary, and none of that creates
+deterministic, versioned, bar-tested infrastructure with live chart context, native alerts, baseline accountability,
+or change control. The edge is not another opinion; it is a repeatable capital-allocation process.
+DIY frameworks often look robust until the regime shifts. Rules that seem sound in one market regime can
+break in another, especially when volatility structure, trend character, liquidity behavior, or drawdown
+dynamics change. The cost usually shows up later, when capital is actually on the line.
+support@azrosystems.com • 3 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+
+
+
+Dependability requires more than a clever rule set — conservative defaults, resilient data handling, buffer logic,
+cost-basis discipline, documented updates, and change control are what keep the process usable year after
+year.
+What you are buying — a maintained model and operating system, a head start measured in cycles, and a
+capital-allocation process built to remain dependable as regimes shift and market structure evolves.
+
+Built-in accountability versus auto-buy
+Most products sell confidence. This one also keeps score. The dashboard tracks AZRO BTC-equivalent progress, the
+fixed-schedule weekly-buy baseline, the multiple versus that baseline, and the extra sats delta. That does not
+promise outperformance. It gives the customer a governance-friendly way to audit whether the process is actually
+improving on a simple benchmark.
+
+Known limitations
+
+
+
+
+
+The intended workflow is the longest-history weekly BTC chart available, ideally INDEX:BTCUSD on 1W.
+Lower timeframes are off-label usage.
+All results are sensitive to execution quality, fees, taxes, spreads, and whether the user actually follows the
+written process.
+Trim-capable policies can finish a historical window partly or fully in cash if the end date lands after a highrisk exit and before the next re-engagement window.
+A strong policy stack still does not remove suitability, tax, legal, or behavioral risk.
+
+2. Quick-start, Mind-Set & Beginner Safety Brief
+This section exists to protect the first-time user from the most common failure mode: good software being used
+with bad expectations. The goal is not to make Bitcoin feel exciting. The goal is to make allocation feel calm,
+consistent, and reviewable.
+
+Mind-Set & Beginner Safety Brief
+
+
+
+
+
+
+
+Emotions are the real opponent. Decide your weekly budget, target cash buffer, and mode before the next
+volatile week tries to negotiate with you.
+Waiting for a perfect dip can become expensive. A written weekly policy is usually stronger than an
+emotional search for the one magical entry.
+Auto-buy is a respectable benchmark. If you choose a more adaptive policy, treat it like a disciplined
+operating system, not a reason to freestyle.
+Do not use trim-capable modes if you already know you will not re-engage with discipline. A bad trim that
+never gets undone can be worse than a simpler buy-only plan.
+Keep your size small enough that a normal Bitcoin drawdown does not force emotional decisions or lifepressure selling.
+If using the product ever makes you feel mentally overwhelmed, something in the sizing, mode, or
+workflow is off. Step away from the market, simplify, and talk to someone you trust. This operating system
+is meant to reduce pressure, not add to it. The market is never more important than your well-being.
+
+TradingView plan cheat-sheet
+Alert limits, webhook access, and subscription features can change over time. Treat this section as practical guidance and confirm live
+plan details on the official TradingView pricing and alert-help pages before building an automation-heavy workflow.
+
+support@azrosystems.com • 4 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Five-minute setup
+1. Open INDEX:BTCUSD on the 1W timeframe using regular candles. If it is unavailable, use the longest cleanhistory BTCUSD or XBTUSD chart you can access.
+2. Set Weekly budget, Target cash buffer, Execution mode, Risk profile, and Program start date.
+3. Optionally enter Existing BTC, Existing BTC average cost, fees, and any initial lump sum if you want the
+simulation to reflect your real starting state.
+4. Create the two built-in alerts: Weekly Update and Major Cycle Event.
+5. After each confirmed weekly close, read ACTION and the suggested amount on the dashboard, execute or
+hold, and record the decision in your log.
+
+Official operating model
+Step
+
+1
+
+2
+
+3
+
+4
+
+5
+
+Workflow layer
+
+Practical role
+
+Use it well
+
+Set the policy inputs
+
+Choose weekly budget,
+target cash buffer,
+execution mode, risk
+profile, and program start
+date on the
+recommended 1W BTC
+chart.
+
+Treat the setup as policy,
+not decoration. The
+dashboard is only as good
+as the plan it reflects.
+
+Review on the weekly
+close
+
+Wait for the confirmed
+weekly close, then read
+ACTION and the
+suggested amount on the
+dashboard.
+
+This is a weekly operating
+process. The value comes
+from confirmed routine,
+not constant screen-time.
+
+Execute or hold
+
+Buy, trim, or hold exactly
+as the dashboard and
+your chosen playbook
+imply.
+
+If you override the plan,
+write the reason down.
+Unwritten overrides
+become invisible drift.
+
+Check accountability
+
+Compare AZRO BTC-eq,
+Auto BTC-eq, and the
+extra sats delta to keep
+the process honest.
+
+A good policy should
+survive contact with a
+simple benchmark. The
+comparison is there for
+discipline, not ego.
+
+Repeat weekly
+
+Keep the alerts live, leave
+the chart on 1W, and let
+the process compound
+through time.
+
+Bitcoin allocation should
+feel boring in the best way:
+steady, explainable, and
+repeatable.
+
+support@azrosystems.com • 5 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+How to use it well
+Think in written policy, not in heroic one-off calls. The weekly close is the review point. The dashboard tells you
+the action and amount. Your job is to follow the plan, keep the buffer honest, and let accountability versus autobuy stay visible.
+
+Figure: Default operating model for the BTC weekly workflow.
+
+Weekly operating rhythm
+Step
+
+1
+
+2
+
+3
+
+4
+
+Do this
+
+Why it matters
+
+Keep alerts live.
+
+Weekly Update maintains your
+cadence; Major Cycle Event gets your
+attention on rare serious weeks that
+deserve deeper review for potential
+top or bottom conditions.
+
+Review only on the weekly close.
+
+This keeps the policy aligned with the
+chart design and prevents lowertimeframe noise from hijacking the
+process.
+
+Follow the dashboard and the
+playbook.
+
+ACTION plus amount is the operating
+surface. The written playbook decides
+how aggressive or conservative you
+are allowed to be.
+
+Log, compare, and reset.
+
+Screenshot the chart, record the
+action, and leave next week's alert
+stack ready so the process remains
+auditable.
+
+Normal vs problem
+Normal: quiet periods, long stretches of HOLD, and no dramatic action for weeks. Problem: wrong timeframe,
+wrong symbol family, CHECK FEED, future start date, limited data history, or alert settings that no longer match
+the live chart.
+
+3. Installation and first-chart setup
+The workflow is intentionally simple: purchase access, provide the correct TradingView username, wait for inviteonly approval, open the recommended 1W BTC chart, and configure the weekly operating inputs before you worry
+about anything cosmetic.
+
+support@azrosystems.com • 6 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Practical setup sequence
+Log in to the TradingView account that received invite-only access.
+Open the recommended 1W BTC chart. Prefer INDEX:BTCUSD for the longest clean history.
+Add the indicator from Invite-only scripts.
+Set Weekly budget, Target cash buffer, Execution mode, Risk profile, Program start date, and any optional
+starting-state inputs.
+10. Create alerts before adjusting dashboard position or display preferences.
+11. Save the chart layout once the live setup is correct.
+6.
+7.
+8.
+9.
+
+What not to do on day one
+
+
+
+
+
+Do not start with the Performance preset just because it is the most aggressive published preset.
+Do not keep changing the Program start date to make the benchmark look better or worse.
+Do not use synthetic candles or lower timeframes and then judge the system as if it were still being used
+on-policy.
+Do not treat the indicator like an auto-trader. It is a decision-support operating system, not custody or
+execution infrastructure.
+
+4. Dashboard, modes, legend, and operating rules
+The operating model is dashboard-first. What matters most is that the weekly action and the accountability fields
+stay readable and consistent. This section explains what the dashboard is saying, what each mode is trying to do,
+and what the status flags actually mean.
+
+Scope reminder
+This is a weekly Bitcoin allocation system. It is built for BTC on the 1W chart. It is not an alt-rotation engine, not
+an intraday execution model, and not an auto-trader. Keep the scope narrow and the policy gets stronger.
+
+Dashboard glossary
+Field
+
+What it means
+
+ACTION
+
+The current weekly instruction: BUY, TRIM (optional), or
+HOLD.
+
+MARKET
+
+High-level market posture designed for decisions rather
+than noise.
+
+MODE / PROFILE
+
+The active execution behavior and risk posture you
+selected.
+
+AZRO BTC-eq
+
+Total portfolio value expressed as BTC at the current
+price: BTC held plus cash divided by BTC price.
+
+support@azrosystems.com • 7 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+Field
+
+What it means
+
+Auto BTC-eq
+
+The fixed-schedule weekly BTC-buy baseline using the
+same modeled cashflows and cash-buffer logic.
+
+× vs Auto
+
+How much more or less BTC-equivalent the policy
+accumulated versus the baseline.
+
+Extra sats
+
+The BTC-equivalent delta versus the baseline expressed in
+satoshis.
+
+Accretion
+
+The annualized pace implied by the BTC-eq multiple
+versus the baseline.
+
+Cash BTC-eq / Buffer
+
+How much purchasing power remains in cash and how the
+reserve compares with the intended buffer.
+
+Status flags that need attention
+Status
+
+Meaning
+
+What to do
+
+SET TF: 1W
+
+The chart is not on the intended
+timeframe.
+
+Switch back to 1W before using
+ACTION or the simulated numbers.
+
+SET SYMBOL: BTC
+
+The chart basis is outside the
+intended Bitcoin chart family or
+history standard.
+
+Use INDEX:BTCUSD on 1W when
+available. Otherwise use the longest
+clean-history BTCUSD or XBTUSD
+chart you can access.
+
+CHECK FEED
+
+The active chart is drifting too far
+from the expected chart-basis
+guardrail for the intended
+workflow.
+
+Switch to INDEX:BTCUSD if
+available, or to the longest cleanhistory BTCUSD/XBTUSD spot feed
+you can access, then refresh the
+chart.
+
+START: FUTURE
+
+The Program start date is set in the
+future.
+
+Pick a past start date so the
+dashboard can compute meaningful
+history.
+
+DATA: LIMITED
+
+The chart does not yet have enough
+history for the intended workflow.
+
+Use INDEX:BTCUSD or another
+longer-history weekly BTC chart, or
+wait for more data.
+
+support@azrosystems.com • 8 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+Status
+
+Meaning
+
+What to do
+
+STATUS: SAFE
+
+The release has temporarily fallen
+back to a safer posture.
+
+Slow down, read the dashboard
+carefully, and use the support card
+if the status persists unexpectedly.
+
+Modes at a glance
+Mode
+
+Core behavior
+
+Best for
+
+Watch-out
+
+Stack
+
+Buy-only accumulation. No
+trims.
+
+Users who want the most
+conservative operating
+workflow.
+
+You may give back more
+late-cycle upside than trimcapable modes.
+
+Adaptive
+
+Default family. Adjusts
+weekly posture more
+smoothly and can trim in
+elevated-risk conditions.
+
+Most customers.
+
+Still requires discipline
+around trim and reengagement behavior.
+
+Event
+
+More reactive around rarer
+major cycle windows.
+
+Users who want policy
+changes concentrated
+around major regime shifts.
+
+Can feel quieter between
+event windows.
+
+Performance
+
+Managed preset focused
+on the most assertive BTCeq posture available in this
+release.
+
+Users who explicitly
+understand that alwayshold exposure is not the
+goal.
+
+Can move meaningfully
+into cash and is not built
+for strict never-sell
+preferences.
+
+Risk profiles
+Profile
+
+Practical interpretation
+
+Conservative
+
+Keeps more cash buffer, uses smoother posture shifts,
+and is the cleanest starting point for most first-time users.
+
+Balanced
+
+Middle ground between continuity and responsiveness.
+
+Aggressive (BTC-max)
+
+Pushes more capital toward BTC and may trim more
+assertively when the mode allows it.
+
+Operating rules
+
+
+Use the recommended 1W BTC chart. Prefer INDEX:BTCUSD for the longest clean history. Confirmed
+weekly closes are the intended decision point.
+support@azrosystems.com • 9 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+
+
+
+
+The dashboard is the operating surface. ACTION, amount, mode, profile, and baseline comparison matter
+more than decorative chart reading.
+Changing the setup inputs changes the simulation. That is expected because the dashboard reflects the
+current written policy.
+The baseline comparison is accountability, not a promise. A disciplined process can still have periods where
+a simpler baseline does better.
+The product is non-custodial. It does not place orders, touch wallets, or require exchange connections.
+
+support@azrosystems.com • 10 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+5. Alert setup guide
+The alert framework stays intentionally narrow. Most users need only a weekly cadence reminder and a rare highattention reminder. The point is to support calm routine, not to create a stream of noise.
+
+Alert trigger guide
+Alert
+
+Weekly Update
+
+Major Cycle Event
+
+Use this trigger
+
+Purpose
+
+Once Per Bar Close
+
+Routine weekly reminder to review
+ACTION and the suggested amount
+after the confirmed 1W close.
+
+Once Per Bar Close
+
+Rare serious review weeks that can
+align with major top or bottom
+conditions forming. Treat as a highpriority review alert.
+
+Recommended alert set
+
+
+
+
+Create Weekly Update first. That is the backbone of the routine.
+Create Major Cycle Event second if you want the extra attention layer for rare serious weeks where major
+top or bottom conditions may be forming.
+If you change settings that affect the dashboard behavior, recreate the live alerts so they match the active
+setup.
+
+Naming convention
+
+
+
+
+Keep names literal: BTC Weekly Update 1W and BTC Major Cycle Event 1W.
+If you maintain multiple policy sleeves or accounts, include the sleeve name in the alert title.
+If you automate, include the mode and risk profile in the alert title so later debugging is obvious.
+
+Common alert mistakes
+
+
+
+
+
+Creating the alert on a non-1W chart.
+Assuming the alert updates after you change indicator inputs; TradingView alerts continue using the
+settings that existed when the alert was created.
+Treating Major Cycle Event as an order instruction instead of a review instruction.
+Forgetting that the indicator is decision-support software, not auto-execution infrastructure.
+
+Manual versus automation
+The cleanest live workflow is manual: review on the weekly close, execute, record, repeat. If you later use webhooks
+or downstream automation, make sure you understand the risks, confirm that your TradingView plan supports the
+features you want, and sandbox the workflow before trusting it with real capital.
+
+support@azrosystems.com • 11 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+6. Strategy playbooks for accumulators, hybrid strategy operators,
+and trim-capable users
+The best mode is the one you can actually follow through a full cycle. This section turns the dashboard into concrete
+policy examples so customers can choose a clean operating style instead of improvising after the fact.
+
+Action matrix by mode
+Mode
+
+What it usually does
+
+Typical use
+
+Stack
+
+Accumulate weekly when the
+dashboard says BUY; hold otherwise.
+
+Set-and-review accumulators who do
+not want trims at all.
+
+Adaptive
+
+Accumulate, hold, and optionally trim
+with smoother posture changes.
+
+Recommended default for most
+users.
+
+Event
+
+Make fewer but more regime-aware
+posture changes.
+
+Users who prefer cleaner highattention weeks.
+
+Performance
+
+Uses the most assertive published
+preset for stronger BTC-eq-seeking
+behavior.
+
+Users who explicitly accept that
+temporary cash can be part of the
+policy.
+
+Playbook A - Stack accumulator
+Goal: keep the process as simple and durable as possible.
+
+
+
+
+
+Use Stack mode on the recommended 1W BTC chart.
+Set a realistic weekly budget and a cash buffer you can live with.
+Follow BUY and HOLD. Ignore optional trim thinking entirely.
+Use the baseline comparison as accountability, not as pressure to tinker.
+
+Playbook B - Adaptive default (recommended)
+Goal: use the strongest general-purpose operating workflow without turning the system into an overactive trade
+engine.
+
+
+
+
+
+Start with Adaptive / Conservative unless you already know why you want a more aggressive profile.
+Respect the cash buffer and let the suggested amounts do the sizing work.
+Treat TRIM as optional but real: if your policy says you trim in elevated-risk weeks, do it consistently.
+Use the weekly review plus the auto-buy comparison to keep yourself honest.
+
+Playbook C - Event-driven hybrid strategy
+Goal: concentrate attention around major inflection windows while staying calmer between them.
+
+
+
+Use Event mode if you prefer fewer posture changes and a stronger focus on serious major review weeks.
+Keep the routine alert live and treat Major Cycle Event as a serious review prompt for possible top or
+bottom conditions.
+support@azrosystems.com • 12 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+
+Write in advance how much you will trim, if at all, and how you will re-engage later.
+
+Playbook D - Performance preset
+Goal: the most assertive BTC-equivalent posture available in the published mode set.
+
+
+
+
+Use Performance only if you are comfortable with the idea that the policy can move meaningfully into cash
+near peak-risk periods.
+Judge it on BTC-equivalent behavior and the written policy, not on emotional comfort during every rally.
+Do not mix Performance thinking with a strict always-hold identity. It solves a different problem.
+
+Playbook E - Core + policy sleeve
+Goal: keep a true long-term Bitcoin core while letting the indicator manage only the policy sleeve.
+
+
+
+
+Separate a long-term core that is not actively managed by every signal.
+Let the indicator manage only the policy sleeve and any optional reserve cash.
+This reduces the emotional pressure to make every weekly decision feel all-or-nothing.
+
+Single-sentence playbook
+Run the system on the recommended 1W BTC chart, keep the weekly budget and cash buffer honest, follow the
+dashboard on confirmed weekly closes, compare the process against the fixed-schedule auto-buy baseline, and do
+not invent new rules mid-cycle.
+
+7. Risk management and workflow discipline
+A strong indicator does not replace discipline. It organizes it. This section covers the operating habits that keep the
+dashboard useful when the market becomes emotional or when the policy starts to outperform and confidence
+rises too fast.
+
+support@azrosystems.com • 13 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Positioning sleeves
+Sleeve
+
+Role
+
+Long-term core
+
+Untouched exposure for
+investors who never want
+the operating system to
+flatten all long-term
+holdings.
+
+Policy sleeve
+
+The main sleeve managed
+by the weekly dashboard,
+mode, profile, and any
+optional trim behavior.
+
+Tactical reserve
+
+Cash or dry powder
+reserved for deeper buys,
+optional re-engagement, or
+future resets.
+
+Use
+
+Discipline note
+
+OPTIONAL
+
+Keep it separate from the
+managed policy sleeve. Do
+not react to every
+dashboard action with the
+core.
+
+RECOMMENDED
+
+This is the sleeve the
+written policy is designed
+to manage. Keep the rules
+written before the cycle
+heats up.
+
+OPTIONAL
+
+Only useful if the size and
+conditions are written in
+advance. Otherwise it turns
+into emotional drift.
+
+Figure: A practical sleeve structure for long-term BTC users who still want a managed policy layer.
+
+Why sleeves matter
+Mixing every dollar into one mental bucket is how good software turns into bad behavior. A separate core keeps
+long-term investors calm, a dedicated policy sleeve lets the indicator do its job, and an optional reserve only
+exists if the rules are already written.
+
+DCA first, trims optional - with nuance
+For many Bitcoin users, the foundation is still disciplined accumulation. The optional trim-capable modes exist to
+improve risk posture and BTC-equivalent behavior where appropriate, not to force constant selling. If trims create
+stress, confusion, or permanent under-allocation, a simpler playbook is usually better.
+
+Risk management principles
+Principle
+
+Implementation
+
+Separate capital by role
+
+Keep the long-term core, the managed policy sleeve, and
+any reserve cash conceptually separate.
+
+Keep the buffer honest
+
+Do not quietly spend the entire reserve during a mild
+drawdown and then pretend the policy still has dry
+powder.
+
+support@azrosystems.com • 14 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+Principle
+
+Implementation
+
+Write trims and re-entry rules
+
+If your mode trims, the size and later re-engagement
+behavior should already be written.
+
+Journal the decision
+
+Record the signal state, action, reason, and emotion. This
+is how users see whether they are following the system or
+editing it on the fly.
+
+Respect real-world friction
+
+Fees, spreads, taxes, latency, and hesitation all matter.
+The cleaner the process, the easier it is to match the
+intended workflow.
+
+Hidden costs and behavior traps
+
+
+
+
+
+Trimming is only half the trade. Re-engagement discipline is where most users fail.
+Frequent setting changes can destroy comparability versus your own baseline.
+The benchmark matters. If the policy is not clearly better than a simple weekly-buy process for your needs,
+complexity is not automatically a virtue.
+Do not use leverage to compensate for impatience. Position size, time horizon, and written policy are
+stronger control systems.
+
+Weekly close discipline
+
+
+
+
+
+Review the chart only after the confirmed weekly close.
+Check the status header — including CHECK FEED if it appears — before trusting the numbers.
+Read ACTION, suggested amount, mode, profile, and the baseline comparison together.
+Execute, log, and reset. Then leave the chart alone until the next weekly review unless a major operational
+issue appears.
+
+8. Settings guide
+This handbook keeps most of the complexity behind the dashboard. For live use, the settings that matter most are
+the ones that define your written allocation policy. Everything else should stay simple.
+
+Recommended first-use setup
+
+
+
+
+
+Use the recommended 1W BTC chart with regular candles. Prefer INDEX:BTCUSD for the longest clean history.
+Start with the mode and risk profile that match your actual temperament. Use Stack only if you do not want
+trims, and use Performance only if you fully understand the trade-off.
+Set Weekly budget, Target cash buffer, and Program start date before judging the dashboard or the baseline
+comparison.
+Enter Existing BTC, average cost, fees, and any initial lump sum only if you want the simulation to reflect your
+real starting state.
+
+support@azrosystems.com • 15 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+What affects your weekly workflow
+
+
+
+
+Weekly budget, target cash buffer, execution mode, risk profile, starting-state inputs, modeled fees, and
+Program start date shape the dashboard, simulation, and accountability fields.
+Display choices such as dashboard visibility, text size, dashboard position, and the start-date marker are
+presentation-only.
+If you want a clean live record, make policy changes rarely and deliberately.
+
+How to change settings safely
+
+
+
+
+Change one policy variable at a time.
+Write down the reason before changing it.
+If you materially change the operating setup, recreate the live alerts so they match the current policy.
+
+9. Troubleshooting and FAQ
+Most support issues are setup issues. The good news is that they are usually easy to diagnose if you check the chart
+basis, timeframe, any CHECK FEED warning, program start date, and alert configuration before assuming the
+indicator is broken.
+Fastest way to solve most issues
+Before contacting support, check timeframe, chart type, access account, named alert conditions, the Program
+start date, the active feed basis, and whether a status warning such as CHECK FEED is visible. Most issues
+become obvious after those checks.
+
+Common issues
+Issue
+
+Likely cause
+
+What to do
+
+ACTION looks wrong or unavailable
+
+Wrong timeframe, wrong symbol
+family, or unsupported feed
+context.
+
+Use INDEX:BTCUSD on 1W with
+regular candles when available. If
+CHECK FEED appears on another
+chart, switch to the longest cleanhistory BTCUSD/XBTUSD spot feed
+and refresh.
+
+Dashboard says START: FUTURE
+
+Program start date is set in the
+future.
+
+Move the start date back to a real
+past date.
+
+Dashboard says DATA: LIMITED
+
+The chart does not have enough
+weekly history for the intended
+workflow.
+
+Use INDEX:BTCUSD or another
+longer-history weekly BTC chart, or
+wait for more data.
+
+support@azrosystems.com • 16 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+Issue
+
+Likely cause
+
+What to do
+
+Dashboard says CHECK FEED
+
+The active chart sits outside the
+expected chart-basis guardrail for
+the intended workflow.
+
+Switch to INDEX:BTCUSD if
+available, or to the longest cleanhistory BTCUSD/XBTUSD spot feed
+you can access, then refresh the
+chart.
+
+Alert did not fire
+
+Alert created on wrong chart,
+wrong trigger, or old settings.
+
+Recreate the alert on the correct
+1W chart using the indicator's
+named condition.
+
+The simulation changed after I
+edited settings
+
+The dashboard reflects the current
+policy inputs.
+
+Treat settings as policy. Freeze
+them once live tracking begins.
+
+Frequently asked questions
+
+
+What does CHECK FEED mean?
+
+It means the chart you are using sits outside the expected chart-basis guardrail for the intended workflow. Switch to
+INDEX:BTCUSD on the 1W chart if available, or to the longest clean-history BTCUSD/XBTUSD spot feed you can
+access, and confirm the warning clears before trusting the dashboard.
+
+
+
+
+
+
+Does it place orders automatically? No. It is non-custodial and does not connect to exchanges or wallets.
+Can I use it on lower timeframes? You can experiment, but the intended live workflow is weekly.
+Can I use it on altcoins? No. It is built for Bitcoin allocation behavior.
+What is the benchmark? A fixed-schedule weekly BTC buy using the same modeled cashflows while
+keeping the same target cash buffer.
+Why keep the benchmark visible? Because it is the simplest honest test of whether added complexity is
+actually helping.
+
+support@azrosystems.com • 17 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+10. Validation tear-sheet and practical limits
+This section shows the v1.0.2 validation layer on the recommended chart basis. It is intentionally output-level:
+customers can see how often the operating system has historically acted, how the published modes behaved on the
+script-default dashboard test, and how those results compared with the matched fixed-schedule baseline without
+exposing proprietary internals.
+
+Validation tear-sheet
+
+
+
+
+
+
+
+
+Recommended chart basis: INDEX:BTCUSD on 1W with regular candles whenever available; if not, use the
+longest clean-history BTCUSD or XBTUSD chart you can access.
+Reviewed signal-history window: 2012-09-17 through the last confirmed weekly close on 2026-03-02 (703
+completed weekly bars). The still-open 2026-03-09 week is excluded.
+Published mode/profile matrix: script-default dashboard inputs - $50 weekly budget, $1,000 target cash buffer,
+0.10% modeled one-way fee, no existing BTC, no extra deposits, zero-tax model, and a 2017-01-01 KPI start
+date.
+Benchmark: matched fixed-schedule weekly BTC accumulation using the same deposits, the same modeled fee,
+and the same cash-buffer target.
+Execution convention: the internal dashboard simulation acts on the confirmed weekly close of the signal week.
+Real-world fills can differ.
+Market context on the recommended chart: 55.3% positive weeks, approximately 79.7% annualized weekly
+volatility, and a worst completed weekly-close drawdown of about -83.3% in the reviewed history.
+
+Methodology note
+The scorecards below are built from the v1.0.2 code path on the recommended weekly chart export. They describe
+hypothetical output behavior under the stated assumptions. They are not promises about future results, and they do not
+capture every real-world fill, spread, tax, or behavior cost.
+
+support@azrosystems.com • 18 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Published mode/profile scorecard (default dashboard test)
+Mode
+
+Profile
+
+Final BTC-eq
+
+× vs auto-buy
+
+Extra sats
+
+MWR / yr
+
+Stack
+
+Conservative
+
+3.377
+
+×1.26
+
+69.4M
+
+43.6%
+
+Stack
+
+Balanced
+
+3.617
+
+×1.35
+
+93.3M
+
+45.0%
+
+Stack
+
+Aggressive
+(BTC-max)
+
+3.865
+
+×1.44
+
+118.2M
+
+46.3%
+
+Adaptive
+
+Conservative
+
+4.677
+
+×1.74
+
+199.3M
+
+50.2%
+
+Adaptive
+
+Balanced
+
+5.421
+
+×2.02
+
+273.8M
+
+53.3%
+
+Adaptive
+
+Aggressive
+(BTC-max)
+
+6.590
+
+×2.46
+
+390.7M
+
+57.4%
+
+Event
+
+Conservative
+
+4.639
+
+×1.73
+
+195.6M
+
+50.1%
+
+Event
+
+Balanced
+
+5.119
+
+×1.91
+
+243.6M
+
+52.1%
+
+Event
+
+Aggressive
+(BTC-max)
+
+5.877
+
+×2.19
+
+319.3M
+
+55.0%
+
+Performance
+
+Conservative
+
+31.549
+
+×11.76
+
+2.887B
+
+92.5%
+
+Matched baseline result in this same Jan 2017 - Mar 2026 default window: 2.683 BTC-eq on the same deposits, same modeled fee, and
+same $1,000 cash-buffer target.
+
+Risk, activity, and end-state profile
+Mode
+
+Profile
+
+Max DD
+
+Trades
+
+Final value
+
+End mix
+
+Stack
+
+Conservative
+
+-73.0%
+
+333
+
+$222.8k
+
+98% BTC / 2% cash
+
+Stack
+
+Balanced
+
+-73.9%
+
+301
+
+$238.6k
+
+99% BTC / 1% cash
+
+Stack
+
+Aggressive
+(BTC-max)
+
+-74.9%
+
+280
+
+$255.0k
+
+99% BTC / 1% cash
+
+Adaptive
+
+Conservative
+
+-70.3%
+
+415
+
+$308.6k
+
+97% BTC / 3% cash
+
+Adaptive
+
+Balanced
+
+-68.6%
+
+396
+
+$357.7k
+
+97% BTC / 3% cash
+
+Adaptive
+
+Aggressive
+(BTC-max)
+
+-66.9%
+
+389
+
+$434.8k
+
+96% BTC / 4% cash
+
+Event
+
+Conservative
+
+-70.6%
+
+410
+
+$306.1k
+
+97% BTC / 3% cash
+
+Event
+
+Balanced
+
+-70.4%
+
+378
+
+$337.8k
+
+97% BTC / 3% cash
+
+Event
+
+Aggressive
+(BTC-max)
+
+-69.5%
+
+358
+
+$387.7k
+
+97% BTC / 3% cash
+
+Performance
+
+Conservative
+
+-51.8%
+
+226
+
+$2.08M
+
+0% BTC / 100% cash
+
+What the scorecards say in plain English
+
+
+
+Every published mode/profile tested finished above the matched-buffer auto-buy baseline on final BTCequivalent in the default Jan 2017 - Mar 2026 dashboard window.
+Stack stayed closest to the simple baseline. Adaptive and Event added more policy activity but also produced
+stronger final BTC-equivalent results across every published profile in this window.
+support@azrosystems.com • 19 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+
+
+
+Performance produced the strongest BTC-equivalent result in the published matrix and remained the strongest
+preset in every Jan-vintage start test from 2017 through 2024. The trade-off is obvious in the end-state column:
+if the review window ends after a de-risking phase, Performance can finish heavily or fully in cash.
+Later-start robustness check: across Jan-vintage starts from 2017 through 2024, the weakest published result
+still finished about ×1.10 to ×1.27 above the matched-buffer baseline on final BTC-equivalent, while the
+strongest ranged from about ×1.50 to ×11.76 as the start year moved earlier into the full cycle window.
+
+Signal inventory on the recommended chart
+Signal
+
+Count
+
+Historical dates
+
+RADAR TOP
+
+6
+
+2017-10-30, 2018-02-19, 2021-01-04
+2022-02-07, 2024-11-25, 2025-07-07
+
+MAJOR TOP
+
+2
+
+2018-01-01, 2021-02-08
+
+FINAL WARNING
+
+1
+
+2021-05-03
+
+CYCLE PEAK
+
+6
+
+2017-12-04, 2017-12-18, 2021-03-08
+2021-05-17, 2021-12-06, 2025-10-13
+
+RADAR BOTTOM
+
+7
+
+2015-09-14, 2018-12-03, 2019-12-23
+2020-04-13, 2022-09-26, 2023-03-06
+2023-08-28
+
+MAJOR BOTTOM
+
+3
+
+2018-12-17, 2022-10-17, 2022-11-21
+
+EXTREME LOW
+
+3
+
+2015-09-21, 2018-12-03, 2022-11-07
+
+Forward outcome profile from the signal-week close
+Signal
+
+N
+
+13w median
+
+26w median
+
+52w median
+
+RADAR TOP
+
+6
+
+-3.2%
+
+-17.0%
+
+-13.0%
+
+MAJOR TOP
+
+2
+
+-30.5%
+
+-30.9%
+
+-44.3%
+
+FINAL WARNING
+
+1
+
+-24.8%
+
++8.6%
+
+-41.6%
+
+CYCLE PEAK
+
+6
+
+-29.2%
+
+-47.0%
+
+-65.9%
+
+RADAR BOTTOM
+
+7
+
++16.6%
+
++61.5%
+
++162.8%
+
+MAJOR BOTTOM
+
+3
+
++16.1%
+
++71.0%
+
++90.4%
+
+EXTREME LOW
+
+3
+
++33.6%
+
++83.1%
+
++127.3%
+
+Outcome convention: percentages above are simple price changes from the signal-week close to the later weekly close. Small-sample
+rows such as FINAL WARNING are descriptive only. These tables are intended to show the practical historical shape of the outputs, not
+to turn the handbook into a formula disclosure.
+
+How to judge it in live use
+
+
+
+
+
+Whether the weekly action and suggested amount remain readable and usable.
+Whether the process reduces emotional allocation decisions and improves discipline.
+Whether you can follow the written mode and risk-profile policy consistently.
+Whether the live accountability fields remain meaningful relative to the auto-buy baseline.
+
+support@azrosystems.com • 20 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+Validation limits
+
+
+
+
+Historical examples are hypothetical and sensitive to chart basis, fees, taxes, execution quality, timing, and user
+behavior.
+Trim-capable policies can finish a historical window partly or fully in cash if the end date lands after a de-risking
+phase. That is visible behavior, not a bookkeeping error.
+No historical example guarantees future outperformance, and no backtest captures every operational friction.
+
+11. Resources, support, product links, and TradingView help
+Use the live links below for support, official product pages, and the TradingView help articles that matter most in
+live use.
+
+Support: support@azrosystems.com
+Official product links: TradingView script page • Gumroad access page
+
+Helpful links: TradingView pricing • How to set up alerts • Pine alert FAQ
+
+12. Risk disclosure statement
+
+
+
+
+
+
+
+Bitcoin can experience deep drawdowns, violent volatility, and long recovery periods. Learn the asset first,
+want long-term exposure for its own sake, and size the plan so normal cycle stress does not destabilize
+your life or decisions.
+Past performance, examples, historical behavior, or backtest snapshots do not guarantee future results.
+Backtests and hypothetical comparisons do not fully capture liquidity, slippage, taxes, psychology,
+infrastructure failure, or user configuration error.
+A managed policy that trims or de-risks can underperform a simpler always-buy or always-hold approach
+over some windows.
+Nothing in this pack, the indicator, or related communications is personalized financial, investment, legal,
+or tax advice.
+
+13. Privacy policy
+AZRO Systems may need limited customer information to fulfill access and support, such as name, email,
+TradingView username, and payment confirmation data supplied through the payment processor.
+The purpose of collection is straightforward: fulfill access, maintain invite-only permissions, provide support,
+communicate material indicator updates, and comply with legal or payment obligations.
+AZRO Systems does not take custody of exchange funds, does not trade customer accounts, and does not need
+access to balances or API keys in order to grant indicator access.
+Customer information should not be sold. Third-party processors may handle payment, product delivery, chart
+access, or email delivery as part of normal operations.
+If you contact support, submitted screenshots, emails, and issue descriptions may be retained as needed to resolve
+the issue, maintain service records, and enforce agreements.
+
+support@azrosystems.com • 21 • © AZRO Systems
+
+AZRO Systems • BTC Operating System (v1.0.2)
+
+14. Terms of service summary
+
+
+
+
+
+
+Access is provided as an invite-only TradingView script tied to the TradingView account that receives
+permission.
+The customer receives a personal, non-transferable, revocable license to use the indicator for their own
+charting and analysis.
+You may not resell, sublicense, redistribute, or publish the script or documentation without permission.
+Access is personal and tied to the approved TradingView account. Sharing or reposting paid materials is
+not allowed.
+Billing, updates, refunds, and access fulfillment are governed by the current product/access page and the
+payment processor's policies.
+
+15. Master disclaimer and notices
+Educational use only
+The indicator, documentation, examples, and communications are provided for informational and educational use
+only. They are not recommendations, solicitations, or a promise of results.
+
+No personalized advice
+Nothing in the pack accounts for your objectives, financial situation, tax position, or legal constraints. You are
+responsible for suitability and for obtaining qualified professional advice where needed.
+
+No custody and no trade execution
+AZRO Systems provides software and documentation. It does not take custody of customer funds, direct customer
+accounts, or guarantee the behavior of any broker, exchange, charting service, or downstream automation bridge.
+
+Third-party platform risk
+Signals, alerts, data, and automation may depend on TradingView, exchanges, webhooks, bridges, email delivery, or
+mobile notification services that can fail, change, or delay.
+
+Hypothetical performance warning
+Any example returns, charts, or strategy comparisons are hypothetical. They do not reflect actual customer
+accounts, and they may understate real-world friction or implementation error.
+
+Warranty and liability
+The indicator is provided as-is and as-available. To the maximum extent permitted by law, AZRO Systems is not
+liable for trading losses, missed trades, delayed alerts, opportunity costs, or damages related to the use of the
+product.
+
+Intellectual property
+The indicator, documentation, and brand materials remain the property of AZRO Systems. All rights not expressly
+granted are reserved.
+
+support@azrosystems.com • 22 • © AZRO Systems
+
+
