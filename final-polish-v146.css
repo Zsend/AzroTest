@@ -1,0 +1,113 @@
+/* Final publish v146: requested blue/white locks, pricing-card spacing parity,
+   and centered features dividers. Scope intentionally isolated. */
+
+:root{
+  --azro-v146-product-blue: rgba(140, 182, 255, 0.94);
+}
+
+/* Home hero: lock the requested supporting line to the exact products-section blue. */
+.home .hero-copy-tail{
+  color: var(--azro-v146-product-blue) !important;
+}
+
+/* Pricing: keep pills and the three access-step headings on the exact same blue. */
+.pricing-page .pill,
+.pricing-page .pill.accent-blue,
+.pricing-page .pill.accent-blue-soft{
+  color: var(--azro-v146-product-blue) !important;
+}
+
+.pricing-page .step-card h3{
+  color: var(--azro-v146-product-blue) !important;
+}
+
+/* Pricing cards: bring the pill zone and the button/note zone into the same vertical rhythm
+   used by the proof cards so the top and bottom spacing feel balanced. */
+@media (min-width: 981px){
+  .pricing-page .plan-card,
+  .pricing-page .plan-card--compact{
+    padding: 30px 28px 16px !important;
+  }
+
+  .pricing-page .plan-card .pill-row,
+  .pricing-page .plan-card--compact .pill-row{
+    margin-bottom: 14px !important;
+  }
+
+  .pricing-page .plan-card .compact-bullets,
+  .pricing-page .plan-card--compact .compact-bullets{
+    margin: 15px auto 10px !important;
+  }
+
+  .pricing-page .plan-card .btn-row,
+  .pricing-page .plan-card--compact .btn-row{
+    padding-top: 15px !important;
+  }
+
+  .pricing-page .plan-fit,
+  .pricing-page .pricing-card .small.center{
+    margin-top: 6px !important;
+  }
+}
+
+@media (max-width: 980px){
+  .pricing-page .plan-card,
+  .pricing-page .plan-card--compact{
+    padding: 24px 20px 14px !important;
+  }
+
+  .pricing-page .plan-card .pill-row,
+  .pricing-page .plan-card--compact .pill-row{
+    margin-bottom: 12px !important;
+  }
+
+  .pricing-page .plan-card .compact-bullets,
+  .pricing-page .plan-card--compact .compact-bullets{
+    margin: 14px auto 9px !important;
+  }
+
+  .pricing-page .plan-card .btn-row,
+  .pricing-page .plan-card--compact .btn-row{
+    padding-top: 14px !important;
+  }
+
+  .pricing-page .plan-fit,
+  .pricing-page .pricing-card .small.center{
+    margin-top: 6px !important;
+  }
+}
+
+/* Proof + Support: restore the requested explanatory lines to white instead of blue. */
+.resources-page .hero .section-sub,
+.resources-page .product-docs-intro,
+.support-page .hero .section-sub,
+.support-page .product-docs-intro{
+  color: var(--text-head) !important;
+}
+
+/* Features: center the internal divider line to the same balanced geometry used on Products.
+   This only touches the feature showcase divider. */
+.features-page .product-guide__body .product-showcase__text::before{
+  content: "" !important;
+  display: block !important;
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  width: min(100%, 34rem) !important;
+  height: 1px !important;
+  margin: 12px auto 24px !important;
+  background: linear-gradient(90deg,
+    rgba(194,202,223,0) 0%,
+    rgba(194,202,223,.14) 12%,
+    rgba(194,202,223,.30) 50%,
+    rgba(194,202,223,.14) 88%,
+    rgba(194,202,223,0) 100%) !important;
+}
+
+@media (max-width: 980px){
+  .features-page .product-guide__body .product-showcase__text::before{
+    width: min(100%, 30rem) !important;
+    margin: 10px auto 22px !important;
+  }
+}
