@@ -1,0 +1,305 @@
+/* Final publish v134: visible accent carryover, hero-media balance, pricing shell lock, and feature media alignment. */
+
+:root{
+  --azro-v134-blue: rgba(164, 194, 255, .96);
+  --azro-v134-blue-soft: rgba(150, 182, 255, .9);
+}
+
+/* Visible blue supporting text across non-product pages and section subtitles. */
+.accent-blue{ color: var(--azro-v134-blue) !important; }
+.accent-blue-soft{ color: var(--azro-v134-blue-soft) !important; }
+
+.home .hero-copy-note,
+.home .hero-copy-tail,
+.home .hero-media-note--above,
+.products-page .hero-copy-stack--products > .lede,
+.products-page .hero-product-note,
+.products-page .hero-copy-note--micro,
+.products-page .hero-media-note--above,
+.philosophy-page .hero-copy-note,
+.features-page .section-sub,
+.features-page .section-intro-bridge,
+.features-page details.product-guide .product-guide__summary .small,
+.pricing-page .section-sub,
+.pricing-page .section-intro-bridge,
+.pricing-page .meta-line,
+.resources-page .section-sub,
+.resources-page .product-docs-intro,
+.resources-page .product-docs-card .section-sub,
+.support-page .section-sub,
+.support-page .product-docs-intro,
+.contact-page .section-sub,
+.home details.product-guide .product-guide__summary .small,
+.philosophy-page details.product-guide .product-guide__summary .small,
+.support-page details.product-guide .product-guide__summary .small,
+.resources-page details.product-guide .product-guide__summary .small,
+.pricing-page details.product-guide .product-guide__summary .small{
+  color: var(--azro-v134-blue-soft) !important;
+  font-weight: 500 !important;
+}
+
+
+.pricing-page .meta-line,
+.features-page .section-intro-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  letter-spacing: .04em !important;
+}
+
+/* Philosophy statement treatment: second sentence blue and slightly clearer spacing. */
+.philosophy-page .hero-copy-stack--philosophy .lede{
+  margin-bottom: 18px !important;
+}
+
+.philosophy-page .hero-copy-stack--philosophy .hero-copy-note{
+  margin-top: 0 !important;
+}
+
+/* Home / philosophy / products hero media groups: make top-note -> card -> signoff spacing feel related. */
+@media (min-width: 981px){
+  .home .hero .hero-media,
+  .philosophy-page .hero .hero-media,
+  .products-page .hero .hero-media{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:center !important;
+  }
+
+  .home .hero-media-note--above,
+  .products-page .hero-media-note--above{
+    margin-bottom: 16px !important;
+  }
+
+  .home .media-gallery--hero,
+  .products-page .media-gallery--hero,
+  .philosophy-page .philosophy-hero-panel{
+    margin-bottom: 0 !important;
+  }
+
+  .home .hero-media-note--trust{
+    margin-top: 16px !important;
+  }
+
+  .philosophy-page .philosophy-hero-note{
+    margin-top: 18px !important;
+  }
+
+  .philosophy-page .philosophy-hero-tail{
+    margin-top: 8px !important;
+  }
+
+  .philosophy-page .hero .hero-media{
+    transform: translateY(-8px) !important;
+  }
+
+  .products-page .products-hero-echo{
+    margin-top: 20px !important;
+    padding-top: 14px !important;
+    transform: translateY(-6px) !important;
+  }
+
+  .products-page .hero-media-note--below,
+  .products-page .hero-media-note--trust{
+    margin-top: 10px !important;
+  }
+}
+
+/* Pricing: enforce equal shell rhythm around pills, price blocks, CTAs, and notes. */
+.pricing-page .plan-card,
+.pricing-page .plan-card--compact{
+  display:grid !important;
+  grid-template-rows: auto auto auto 1fr auto auto !important;
+  align-content:start !important;
+  justify-items:center !important;
+  gap: 0 !important;
+  min-height: 100% !important;
+  padding: 32px 30px 32px !important;
+}
+
+.pricing-page .plan-card .pill-row,
+.pricing-page .plan-card--compact .pill-row{
+  width:100% !important;
+  justify-content:center !important;
+  min-height:0 !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+}
+
+.pricing-page .plan-price-row,
+.pricing-page .plan-card--compact .plan-price-row{
+  width:100% !important;
+  min-height:0 !important;
+  margin: 0 0 14px !important;
+  display:flex !important;
+  align-items:flex-end !important;
+  justify-content:center !important;
+  gap: 12px !important;
+}
+
+.pricing-page .plan-card .price-big,
+.pricing-page .plan-card--compact .price-big{
+  margin:0 !important;
+  line-height:.92 !important;
+}
+
+.pricing-page .plan-card .plan-price-meta,
+.pricing-page .plan-card--compact .plan-price-meta{
+  margin: 0 0 .18em !important;
+}
+
+.pricing-page .plan-copy,
+.pricing-page .plan-card--compact .plan-copy{
+  max-width: 28ch !important;
+  margin: 0 auto !important;
+  text-align:center !important;
+  line-height: 1.42 !important;
+}
+
+.pricing-page .plan-card .plan-copy{
+  min-height: 5.3em !important;
+}
+
+.pricing-page .plan-card--compact .plan-copy{
+  min-height: 4.4em !important;
+  max-width: 24ch !important;
+}
+
+.pricing-page .plan-card .compact-bullets,
+.pricing-page .plan-card--compact .compact-bullets{
+  width:min(100%, 31ch) !important;
+  max-width:31ch !important;
+  margin: 16px auto 0 !important;
+  padding-top: 16px !important;
+  gap: 12px !important;
+  align-self:start !important;
+}
+
+.pricing-page .plan-card--compact .compact-bullets{
+  width:min(100%, 26ch) !important;
+  max-width:26ch !important;
+}
+
+.pricing-page .plan-card .compact-bullets li,
+.pricing-page .plan-card--compact .compact-bullets li{
+  margin: 0 !important;
+  line-height: 1.42 !important;
+}
+
+.pricing-page .plan-card .btn-row,
+.pricing-page .plan-card--compact .btn-row{
+  width:100% !important;
+  margin: 18px 0 0 !important;
+  padding-top: 0 !important;
+  justify-content:center !important;
+}
+
+.pricing-page .plan-card .btn-row .btn,
+.pricing-page .plan-card--compact .btn-row .btn{
+  width:min(100%, 266px) !important;
+  min-width:0 !important;
+}
+
+.pricing-page .plan-fit,
+.pricing-page .pricing-card .small.center{
+  max-width: none !important;
+  width:auto !important;
+  min-height: 1.3em !important;
+  margin: 12px auto 0 !important;
+  text-align:center !important;
+  white-space: nowrap !important;
+  line-height: 1.2 !important;
+  font-size: clamp(.88rem, .85rem + .1vw, .95rem) !important;
+}
+
+/* Direct checkout cards: keep copy buttons away from edges and align shell height. */
+.pricing-page .crypto-address-card--live{
+  display:grid !important;
+  grid-template-rows: auto auto auto auto 1fr auto !important;
+  align-content:start !important;
+  justify-items:center !important;
+  min-height:100% !important;
+  padding: 30px 22px 30px !important;
+}
+
+.pricing-page .crypto-address-card--live .pill-row{ margin: 0 0 18px !important; }
+.pricing-page .crypto-address-qr-wrap{ margin: 0 0 18px !important; }
+.pricing-page .crypto-address-label{ margin: 0 0 14px !important; }
+.pricing-page .crypto-address-card--live .crypto-address{
+  width:min(100%, 34ch) !important;
+  margin: 0 auto 18px !important;
+  min-height: 4.2em !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
+}
+
+.pricing-page .crypto-address-help{
+  width:min(100%, 28ch) !important;
+  margin: 0 auto !important;
+  min-height: 4.8em !important;
+  text-align:center !important;
+  line-height: 1.42 !important;
+}
+
+.pricing-page .crypto-address-card--live .btn{
+  align-self:center !important;
+  margin-top: 18px !important;
+}
+
+/* Features product showcase: raise media cards a touch to line up with text/buttons. */
+@media (min-width: 981px){
+  .features-page .product-showcase{
+    align-items:center !important;
+  }
+
+  .features-page .product-showcase__media-col{
+    align-self:center !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+  }
+
+  .features-page .product-showcase__meta{
+    display:none !important;
+  }
+
+  .features-page .product-showcase__media.product-shot-frame{
+    transform: translateY(-10px) !important;
+    margin-inline:auto !important;
+  }
+}
+
+/* Products overview cards: a little more top breathing room so labels feel deliberate. */
+.products-page #product-overviews .product-signature__card{
+  padding: 26px 24px 24px !important;
+}
+
+.products-page #product-overviews .product-signature__card-label{
+  margin-top: 0 !important;
+}
+
+/* Keep accent lines and notes stable on smaller screens. */
+@media (max-width: 980px){
+  .pricing-page .plan-fit,
+  .pricing-page .pricing-card .small.center{
+    white-space: normal !important;
+  }
+
+  .pricing-page .plan-card,
+  .pricing-page .plan-card--compact{
+    padding: 28px 22px 26px !important;
+  }
+
+  .pricing-page .crypto-address-card--live{
+    padding: 26px 18px 26px !important;
+  }
+
+  .features-page .product-showcase__meta{
+    display:none !important;
+  }
+}
