@@ -1,7 +1,0 @@
-This is the main site. It has been updated to load the 6 fixed XRP videos from the xrp-videos/ folder.
-
-Important:
-1. Unzip this ZIP first into a new empty folder.
-2. Unzip the companion XRP video ZIP second into that same folder.
-3. There should be no folder-replace prompt because the second ZIP only adds xrp-videos/.
-4. Publish the final folder with index.html at the root.
