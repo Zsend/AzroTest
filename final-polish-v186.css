@@ -1,0 +1,182 @@
+/* Final publish v186: spacing lock, hero balance lock, and QR rhythm fix.
+   Scope intentionally limited to the pages and components adjusted in the final customer-ready pass. */
+
+/* Shared hero media centering lock for desktop without moving CTA rows. */
+@media (min-width: 981px){
+  .home .hero-inner,
+  .philosophy-page .hero-inner,
+  .products-page .hero-inner{
+    align-items: stretch !important;
+  }
+
+  .home .hero-media,
+  .philosophy-page .hero-media,
+  .products-page .hero-media{
+    align-self: stretch !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+}
+
+/* Home / Products / Philosophy: keep media block and companion notes centered as one unit. */
+.home .hero-media,
+.products-page .hero-media,
+.philosophy-page .hero-media{
+  gap: 16px !important;
+}
+
+.home .hero-media .hero-media-note--above,
+.home .hero-media .hero-media-note--below,
+.products-page .hero-media .legal-note,
+.products-page .hero-media .products-hero-echo,
+.philosophy-page .hero-media .page-note{
+  margin: 0 !important;
+}
+
+/* Philosophy hero panel rhythm */
+.philosophy-page .philosophy-hero-panel{
+  margin: 0 !important;
+}
+.philosophy-page .philosophy-hero-panel + .page-note{
+  margin-top: 0 !important;
+}
+.philosophy-page .philosophy-hero-note{
+  margin-bottom: 0 !important;
+}
+.philosophy-page .philosophy-hero-tail{
+  max-width: 34ch !important;
+  margin-inline: auto !important;
+  text-wrap: balance !important;
+}
+
+/* Products hero text rhythm: keep buttons fixed, just even out note rhythm. */
+.products-page .hero-copy-stack--products{
+  gap: 16px !important;
+}
+.products-page .hero-copy-stack--products .hero-product-item{
+  padding-block: 14px !important;
+}
+.products-page .hero-copy-stack--products .hero-product-item + .hero-product-item{
+  margin-top: 0 !important;
+}
+.products-page .hero-copy-stack--products .hero-product-note{
+  max-width: 55ch !important;
+  text-wrap: pretty !important;
+}
+
+/* Pricing plan cards: remove fake pill height, restore real card rhythm, keep buttons pinned. */
+.pricing-page .pricing-card.plan-card,
+.pricing-page .pricing-card.plan-card--compact{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  text-align: center !important;
+}
+
+.pricing-page .pricing-card.plan-card > *,
+.pricing-page .pricing-card.plan-card--compact > *{
+  width: 100% !important;
+}
+
+.pricing-page .pricing-card .pill-row{
+  min-height: 0 !important;
+  margin: 0 auto 18px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.pricing-page .pricing-card .plan-price-row{
+  min-height: 0 !important;
+  margin: 0 auto 18px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  gap: 12px !important;
+}
+
+.pricing-page .pricing-card .plan-copy{
+  width: min(100%, 31ch) !important;
+  max-width: 31ch !important;
+  margin: 0 auto !important;
+  line-height: 1.54 !important;
+  text-wrap: pretty !important;
+}
+
+.pricing-page .pricing-card .compact-bullets{
+  width: min(100%, 32ch) !important;
+  margin: 18px auto 0 !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(188,204,244,.14) !important;
+  display: grid !important;
+  gap: 14px !important;
+}
+
+.pricing-page .pricing-card .btn-row{
+  margin-top: auto !important;
+  padding-top: 22px !important;
+  justify-content: center !important;
+}
+
+.pricing-page .pricing-card .plan-fit{
+  width: min(100%, 25ch) !important;
+  max-width: 25ch !important;
+  margin: 14px auto 0 !important;
+  line-height: 1.44 !important;
+  text-wrap: balance !important;
+}
+
+/* Crypto checkout cards: create real separation between pill and QR, then keep all spacing consistent. */
+.pricing-page .crypto-address-card--live{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.pricing-page .crypto-address-card--live .pill-row{
+  min-height: 0 !important;
+  margin: 0 auto 18px !important;
+  justify-content: center !important;
+}
+
+.pricing-page .crypto-address-card--live .crypto-address-qr-wrap{
+  margin: 0 0 18px !important;
+}
+
+.pricing-page .crypto-address-card--live .crypto-address-label{
+  margin: 0 0 14px !important;
+}
+
+.pricing-page .crypto-address-card--live .crypto-address{
+  margin: 0 0 16px !important;
+}
+
+.pricing-page .crypto-address-card--live .crypto-address-help{
+  margin: 0 0 18px !important;
+}
+
+.pricing-page .crypto-address-card--live .btn{
+  margin-top: auto !important;
+}
+
+/* Small-screen guardrails */
+@media (max-width: 640px){
+  .pricing-page .pricing-card .pill-row,
+  .pricing-page .crypto-address-card--live .pill-row{
+    margin-bottom: 16px !important;
+  }
+
+  .pricing-page .pricing-card .plan-price-row{
+    margin-bottom: 16px !important;
+  }
+
+  .pricing-page .pricing-card .btn-row{
+    padding-top: 18px !important;
+  }
+}
