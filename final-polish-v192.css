@@ -1,0 +1,316 @@
+/* Final polish v192 — lock the final hero media groups and autoplay preview behavior
+   without moving the left-side CTA bands. */
+
+@media (min-width: 981px){
+  .home .hero-media,
+  .products-page .hero-media,
+  .philosophy-page .hero-media{
+    align-self: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .home .hero-media > .media-gallery,
+  .products-page .hero-media > .media-gallery,
+  .philosophy-page .hero-media > .philosophy-hero-panel{
+    width: min(100%, 680px) !important;
+    max-width: 680px !important;
+  }
+
+  .home .hero-media-note--above,
+  .home .hero-media-note--below,
+  .products-page .products-hero-echo,
+  .products-page .hero-media-note--below,
+  .philosophy-page .philosophy-hero-note,
+  .philosophy-page .philosophy-hero-tail{
+    width: min(100%, 680px) !important;
+    max-width: 680px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .home .hero-media{
+    gap: 12px !important;
+  }
+
+  .philosophy-page .hero-media{
+    gap: 0 !important;
+  }
+
+  .philosophy-page .philosophy-hero-note{
+    margin-top: 16px !important;
+  }
+
+  .philosophy-page .philosophy-hero-tail{
+    margin-top: 14px !important;
+  }
+
+  .products-page .hero-media{
+    gap: 0 !important;
+  }
+
+  .products-page .products-hero-echo{
+    margin-top: 30px !important;
+    padding-top: 16px !important;
+    transform: translateX(-10px) !important;
+  }
+
+  .products-page .hero-media-note--below,
+  .products-page .hero-media-note--trust{
+    margin-top: 10px !important;
+    transform: translateX(-10px) !important;
+  }
+}
+
+.media-gallery[data-preview-autoplay="true"] .media-gallery__overlay{
+  transition: opacity .24s ease !important;
+}
+
+.media-gallery[data-preview-autoplay="true"] .media-gallery__launch.is-preview-playing .media-gallery__overlay{
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.media-gallery[data-preview-autoplay="true"] .media-gallery__launch.is-preview-playing:hover .media-gallery__overlay,
+.media-gallery[data-preview-autoplay="true"] .media-gallery__launch.is-preview-playing:focus-visible .media-gallery__overlay{
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+/* Final controlled publish pass v193: philosophy hero centering and products under-card lock. */
+@media (min-width: 981px){
+  .philosophy-page .hero-inner--wide-title > .hero-media,
+  .philosophy-page .hero-media{
+    min-height: auto !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .products-page .products-hero-echo,
+  .products-page .hero-media-note--below,
+  .products-page .hero-media-note--trust{
+    transform: translateX(0) !important;
+  }
+}
+
+
+/* Final publish pass v194: keep the product hero buttons fixed while correcting
+   the second product card border-to-title spacing on desktop. */
+@media (min-width: 981px){
+  .products-page .hero-copy-stack--products > .hero-product-item + .hero-product-item{
+    margin-top: 0 !important;
+    padding-top: 18px !important;
+  }
+}
+
+/* Final publish v195 — philosophy laptop/tablet centering parity and proof/support dropdown shells. */
+
+@media (min-width: 981px) and (max-width: 1299px){
+  .philosophy-page .hero{
+    padding-top: 30px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .philosophy-page .hero-inner--wide-title{
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  .philosophy-page .hero-inner--wide-title > .hero-wide-title{
+    width: min(100%, 980px) !important;
+    max-width: 980px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .philosophy-page .hero-inner--wide-title > .hero-wide-title h1{
+    max-width: min(100%, 9.4ch) !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
+    text-align: center !important;
+  }
+
+  .philosophy-page .hero-inner--wide-title > .hero-text{
+    display: block !important;
+    width: 100% !important;
+    max-width: 42rem !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    align-self: start !important;
+    transform: none !important;
+  }
+
+  .philosophy-page .hero-copy-stack--philosophy,
+  .philosophy-page .hero-copy-note,
+  .philosophy-page .hero-copy-bullets--philosophy,
+  .philosophy-page .hero .hero-cta{
+    width: min(100%, 40rem) !important;
+    max-width: 40rem !important;
+    margin-inline: auto !important;
+  }
+
+  .philosophy-page .hero-copy-stack--philosophy{
+    gap: 10px !important;
+    margin-top: 0 !important;
+  }
+
+  .philosophy-page .hero-copy-bullets--philosophy{
+    gap: 10px !important;
+  }
+
+  .philosophy-page .hero .hero-cta{
+    margin-top: 12px !important;
+    padding-top: 0 !important;
+  }
+
+  .philosophy-page .hero-inner--wide-title > .hero-media,
+  .philosophy-page .hero-media{
+    width: min(100%, 700px) !important;
+    max-width: 700px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding-top: 0 !important;
+    align-self: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transform: none !important;
+    gap: 0 !important;
+  }
+
+  .philosophy-page .philosophy-hero-panel{
+    width: min(100%, 680px) !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+  }
+
+  .philosophy-page .philosophy-hero-note,
+  .philosophy-page .philosophy-hero-tail{
+    width: min(100%, 40rem) !important;
+    max-width: 40rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .philosophy-page .philosophy-hero-note{
+    margin-top: 14px !important;
+  }
+
+  .philosophy-page .philosophy-hero-tail{
+    margin-top: 6px !important;
+  }
+}
+
+.resources-page details.resource-guide,
+.support-page details.resource-guide{
+  padding-top: clamp(18px, 2vw, 24px) !important;
+  padding-bottom: clamp(16px, 1.8vw, 22px) !important;
+}
+
+.resources-page details.resource-guide .product-guide__summary,
+.support-page details.resource-guide .product-guide__summary{
+  background: transparent !important;
+  border-radius: 0 !important;
+  min-height: 0 !important;
+  padding: 2px 0 4px !important;
+  align-items: center !important;
+}
+
+.resources-page details.resource-guide .product-guide__summary > div,
+.support-page details.resource-guide .product-guide__summary > div{
+  min-height: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  padding: 0 clamp(88px, 8vw, 112px) 0 0 !important;
+}
+
+.resources-page details.resource-guide .product-guide__summary h2,
+.support-page details.resource-guide .product-guide__summary h2{
+  max-width: none !important;
+  margin-inline: 0 !important;
+  text-align: left !important;
+}
+
+.resources-page details.resource-guide .product-guide__summary .small,
+.support-page details.resource-guide .product-guide__summary .small{
+  width: min(100%, 50rem) !important;
+  max-width: 50rem !important;
+  margin: 8px 0 0 !important;
+  color: rgba(188, 210, 255, 0.82) !important;
+  line-height: 1.48 !important;
+  text-align: left !important;
+}
+
+.resources-page details.resource-guide .product-guide__summary::after,
+.support-page details.resource-guide .product-guide__summary::after{
+  width: clamp(54px, 4vw, 64px) !important;
+  height: clamp(54px, 4vw, 64px) !important;
+  margin-top: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(140, 170, 246, 0.28) !important;
+  background: radial-gradient(circle at 30% 30%, rgba(86, 129, 255, 0.16), rgba(9, 16, 38, 0.36) 72%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(7,14,32,0.18) !important;
+  font-size: clamp(1.75rem, 1.9vw, 2rem) !important;
+  line-height: 1 !important;
+}
+
+.resources-page details.resource-guide[open] .product-guide__summary::after,
+.support-page details.resource-guide[open] .product-guide__summary::after{
+  content: '–' !important;
+}
+
+.resources-page details.resource-guide .product-guide__body,
+.support-page details.resource-guide .product-guide__body{
+  padding-top: 16px !important;
+}
+
+.resources-page details.resource-guide .tile-grid,
+.support-page details.resource-guide .tile-grid{
+  margin-top: 0 !important;
+}
+
+.resources-page details.resource-guide .core-doc-grid,
+.support-page details.resource-guide .core-doc-grid{
+  max-width: none !important;
+  margin-inline: 0 !important;
+}
+
+.resources-page .resource-guide-stack,
+.support-page .resource-guide-stack{
+  width: 100% !important;
+}
+
+@media (max-width: 980px){
+  .resources-page details.resource-guide .product-guide__summary,
+  .support-page details.resource-guide .product-guide__summary{
+    gap: 12px !important;
+  }
+
+  .resources-page details.resource-guide .product-guide__summary > div,
+  .support-page details.resource-guide .product-guide__summary > div{
+    padding-right: clamp(72px, 14vw, 92px) !important;
+  }
+
+  .resources-page details.resource-guide .product-guide__summary::after,
+  .support-page details.resource-guide .product-guide__summary::after{
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 1.65rem !important;
+  }
+
+  .resources-page details.resource-guide .product-guide__body,
+  .support-page details.resource-guide .product-guide__body{
+    padding-top: 14px !important;
+  }
+}
