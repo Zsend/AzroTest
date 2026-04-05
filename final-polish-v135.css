@@ -1,0 +1,325 @@
+/* Final publish v135: true lock-in pass for blue accent carryover, hero media balance, pricing rhythm, and checkout alignment. */
+
+:root{
+  --azro-v135-blue: rgba(166, 196, 255, .96);
+  --azro-v135-blue-soft: rgba(150, 184, 255, .92);
+}
+
+/* Stronger, visible blue supporting text outside Products so the accent language reads as intentional site-wide. */
+.home .hero-copy-tail,
+.products-page .hero-copy-stack--products > .lede,
+.philosophy-page .hero-copy-stack--philosophy .accent-blue,
+.features-page .section-intro-bridge,
+.features-page .product-showcase__copy > p.small,
+.pricing-page .section-intro-bridge,
+.pricing-page .pricing-section-shell > .section-sub,
+.pricing-page .meta-line,
+.resources-page .section-sub,
+.resources-page .product-docs-intro,
+.resources-page .meta-line,
+.support-page .section-sub,
+.support-page .product-docs-intro,
+.support-page .meta-line,
+.contact-page .section-sub,
+.contact-page .meta-line,
+.about-page .section-sub,
+.about-page .meta-line{
+  color: var(--azro-v135-blue-soft) !important;
+}
+
+.features-page .section-intro-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro,
+.contact-page .meta-line,
+.support-page .meta-line,
+.resources-page .meta-line,
+.pricing-page .meta-line,
+.features-page .meta-line{
+  letter-spacing: .045em !important;
+}
+
+/* Home / philosophy / products hero media groups: keep the note -> card -> signoff rhythm related. */
+@media (min-width: 981px){
+  .home .hero .hero-media,
+  .philosophy-page .hero .hero-media,
+  .products-page .hero .hero-media{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:center !important;
+  }
+
+  .home .hero-media-note--above,
+  .products-page .hero-media-note--above{
+    margin-bottom: 16px !important;
+  }
+
+  .home .media-gallery--hero,
+  .products-page .media-gallery--hero,
+  .philosophy-page .philosophy-hero-panel{
+    margin-bottom: 0 !important;
+  }
+
+  .home .hero-copy-tail{
+    margin-top: 18px !important;
+  }
+
+  .home .hero .hero-media{
+    transform: translateY(-4px) !important;
+  }
+
+  .philosophy-page .hero .hero-media{
+    transform: translateY(-10px) !important;
+  }
+
+  .philosophy-page .philosophy-hero-note{
+    margin-top: 18px !important;
+  }
+
+  .philosophy-page .philosophy-hero-tail{
+    margin-top: 10px !important;
+  }
+
+  .products-page .hero .hero-media{
+    transform: translateY(-6px) !important;
+  }
+
+  .products-page .products-hero-echo{
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+  }
+
+  .products-page .hero-media-note--trust,
+  .products-page .hero-media-note--below{
+    margin-top: 10px !important;
+  }
+}
+
+/* Features showcase: remove the extra label above the media card and center the media more cleanly against the text/button stack. */
+.features-page .product-showcase__meta{
+  display:none !important;
+}
+
+@media (min-width: 981px){
+  .features-page .product-showcase{
+    align-items:center !important;
+  }
+
+  .features-page .product-showcase__media-col{
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    align-items:center !important;
+    align-self:center !important;
+    gap: 12px !important;
+    transform: translateY(-16px) !important;
+  }
+
+  .features-page .product-showcase__media.product-shot-frame{
+    margin-inline:auto !important;
+  }
+}
+
+/* Products overview cards: a touch more top air so the blue labels feel less stranded. */
+.products-page #product-overviews .product-signature__card{
+  padding: 30px 24px 24px !important;
+}
+
+.products-page #product-overviews .product-signature__card-label{
+  margin-top: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Pricing cards: equalize the top/bottom shell rhythm and tighten the price area. */
+.pricing-page .pricing-2up{
+  align-items:stretch !important;
+}
+
+.pricing-page .plan-card,
+.pricing-page .plan-card--compact{
+  display:grid !important;
+  grid-template-rows:auto auto auto 1fr auto auto !important;
+  align-content:start !important;
+  justify-items:center !important;
+  gap: 0 !important;
+  padding: 24px 28px 24px !important;
+  min-height: 100% !important;
+}
+
+.pricing-page .plan-card .pill-row,
+.pricing-page .plan-card--compact .pill-row{
+  width: 100% !important;
+  min-height: 46px !important;
+  justify-content:center !important;
+  align-content:start !important;
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+}
+
+.pricing-page .plan-price-row,
+.pricing-page .plan-card--compact .plan-price-row{
+  width:100% !important;
+  min-height: 0 !important;
+  display:flex !important;
+  align-items:flex-end !important;
+  justify-content:center !important;
+  gap: 12px !important;
+  margin: 0 0 12px !important;
+}
+
+.pricing-page .plan-card .price-big,
+.pricing-page .plan-card--compact .price-big{
+  margin:0 !important;
+  line-height:.92 !important;
+}
+
+.pricing-page .plan-card .plan-price-meta,
+.pricing-page .plan-card--compact .plan-price-meta{
+  margin: 0 0 .22em !important;
+}
+
+.pricing-page .plan-copy,
+.pricing-page .plan-card--compact .plan-copy{
+  margin: 0 auto !important;
+  text-align:center !important;
+  line-height:1.42 !important;
+  max-width: 28ch !important;
+}
+
+.pricing-page .plan-card .plan-copy{
+  min-height: 4.9em !important;
+}
+
+.pricing-page .plan-card--compact .plan-copy{
+  min-height: 4.2em !important;
+  max-width: 24ch !important;
+}
+
+.pricing-page .plan-card .compact-bullets,
+.pricing-page .plan-card--compact .compact-bullets{
+  width: min(100%, 30ch) !important;
+  max-width: 30ch !important;
+  margin: 16px auto 0 !important;
+  padding-top: 16px !important;
+  gap: 12px !important;
+  align-self:start !important;
+}
+
+.pricing-page .plan-card--compact .compact-bullets{
+  width: min(100%, 24ch) !important;
+  max-width: 24ch !important;
+}
+
+.pricing-page .plan-card .compact-bullets li,
+.pricing-page .plan-card--compact .compact-bullets li{
+  margin: 0 !important;
+  line-height:1.42 !important;
+}
+
+.pricing-page .plan-card .btn-row,
+.pricing-page .plan-card--compact .btn-row{
+  width:100% !important;
+  margin: 18px 0 0 !important;
+  padding-top: 0 !important;
+  justify-content:center !important;
+}
+
+.pricing-page .plan-card .btn-row .btn,
+.pricing-page .plan-card--compact .btn-row .btn{
+  width:min(100%, 252px) !important;
+  min-width:0 !important;
+}
+
+.pricing-page .plan-fit,
+.pricing-page .pricing-card .small.center{
+  width:auto !important;
+  max-width:none !important;
+  min-height:1.25em !important;
+  margin: 12px auto 0 !important;
+  text-align:center !important;
+  line-height:1.25 !important;
+  font-size: clamp(.9rem, .86rem + .1vw, .98rem) !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+}
+
+/* Direct checkout cards: keep top/bottom shell spacing matched and buttons away from the edge. */
+.pricing-page .crypto-address-grid{
+  align-items: stretch !important;
+}
+
+.pricing-page .crypto-address-card--live{
+  display:grid !important;
+  grid-template-rows:auto auto auto auto 1fr auto !important;
+  align-content:start !important;
+  justify-items:center !important;
+  min-height:100% !important;
+  padding: 28px 22px !important;
+}
+
+.pricing-page .crypto-address-card--live .pill-row{
+  width:100% !important;
+  justify-content:center !important;
+  min-height: 44px !important;
+  margin: 0 0 18px !important;
+}
+
+.pricing-page .crypto-address-qr-wrap{ margin: 0 0 18px !important; }
+.pricing-page .crypto-address-label{ margin: 0 0 14px !important; }
+
+.pricing-page .crypto-address-card--live .crypto-address{
+  width:min(100%, 34ch) !important;
+  margin: 0 auto 18px !important;
+  min-height: 0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  font-size: .92rem !important;
+  overflow-wrap:anywhere !important;
+  word-break: break-word !important;
+}
+
+.pricing-page .crypto-address-help{
+  width:min(100%, 28ch) !important;
+  margin: 0 auto 18px !important;
+  min-height: 0 !important;
+  text-align:center !important;
+  line-height:1.42 !important;
+}
+
+.pricing-page .crypto-address-card--live .btn{
+  align-self:center !important;
+  margin-top: 0 !important;
+}
+
+/* Keep pricing and address notes from wrapping too early on desktop. */
+@media (min-width: 1101px){
+  .pricing-page .plan-fit,
+  .pricing-page .pricing-card .small.center{
+    white-space: nowrap !important;
+  }
+}
+
+@media (max-width: 1100px){
+  .pricing-page .plan-fit,
+  .pricing-page .pricing-card .small.center{
+    width:min(100%, 22ch) !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+
+  .pricing-page .plan-card,
+  .pricing-page .plan-card--compact{
+    padding: 22px 22px 22px !important;
+  }
+
+  .pricing-page .crypto-address-card--live{
+    padding: 24px 18px !important;
+  }
+
+  .features-page .product-showcase__media-col{
+    transform:none !important;
+  }
+}
