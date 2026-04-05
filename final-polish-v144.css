@@ -1,0 +1,14 @@
+/* Final publish v144: restore Proof/Support to the stable pre-v143 shells,
+   and lock pill text to the exact blue used by the Products detail-section accents. */
+
+:root{
+  --azro-v144-product-section-blue: rgba(140,182,255,.94);
+}
+
+/* Match the pill text everywhere to the Products section accent blue.
+   Text color only: no layout, spacing, border, or background changes. */
+.pill,
+.pill.accent-blue,
+.pill.accent-blue-soft{
+  color: var(--azro-v144-product-section-blue) !important;
+}
