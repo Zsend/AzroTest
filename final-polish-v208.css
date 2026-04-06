@@ -1,0 +1,6 @@
+/* Final polish v208 — remove the short blue accent line from the single requested features hero card only. */
+
+.features-page .features-hero-card-no-accent::after{
+  content: none !important;
+  display: none !important;
+}

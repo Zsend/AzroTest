@@ -1,0 +1,7 @@
+/* Final polish v205 — philosophy desktop hero final raise. */
+
+@media (min-width: 1441px){
+  .philosophy-page .hero-media{
+    transform: translateY(-468px) !important;
+  }
+}
