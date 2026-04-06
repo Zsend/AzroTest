@@ -1,0 +1,80 @@
+/* Final polish v208 — locked hero/button positions and final copy-safe layout guards. */
+
+/* Keep the three critical above-the-fold sections visually locked when copy is polished. */
+@media (min-width: 981px){
+  .home .hero--split .hero-inner,
+  .products-page .hero--split .hero-inner,
+  .philosophy-page .hero--split .hero-inner{
+    align-items: stretch !important;
+  }
+
+  .home .hero .hero-text,
+  .products-page .hero .hero-text,
+  .philosophy-page .hero .hero-text{
+    display: flex !important;
+    flex-direction: column !important;
+    align-self: stretch !important;
+    min-width: 0 !important;
+    height: 100% !important;
+  }
+
+  .home .hero .hero-copy-stack,
+  .products-page .hero .hero-copy-stack,
+  .philosophy-page .hero .hero-copy-stack{
+    flex: 1 1 auto !important;
+  }
+
+  .home .hero .hero-cta,
+  .products-page .hero .hero-cta,
+  .philosophy-page .hero .hero-cta{
+    margin-top: auto !important;
+    padding-top: 22px !important;
+  }
+
+  .home .hero .hero-media,
+  .products-page .hero .hero-media,
+  .philosophy-page .hero .hero-media{
+    align-self: stretch !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  /* Guard rails for the copy blocks that control CTA position on desktop. */
+  .home .hero-copy-stack--home{ min-height: 33.5rem !important; }
+  .products-page .hero-copy-stack--products{ min-height: 29.75rem !important; }
+  .philosophy-page .hero-copy-stack--philosophy{ min-height: 28.5rem !important; }
+}
+
+@media (max-width: 980px){
+  .home .hero .hero-text,
+  .products-page .hero .hero-text,
+  .philosophy-page .hero .hero-text{
+    display: block !important;
+    height: auto !important;
+  }
+}
+
+/* Keep the home and products choice-card buttons anchored, even if copy is tuned later. */
+.home .product-choice-card,
+.products-page .product-choice-card{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+.home .product-choice-card > *,
+.products-page .product-choice-card > *{
+  width: 100% !important;
+}
+
+.home .product-choice-card .compact-bullets,
+.products-page .product-choice-card .compact-bullets{
+  flex: 1 1 auto !important;
+}
+
+.home .product-choice-card .btn-row,
+.products-page .product-choice-card .btn-row{
+  margin-top: auto !important;
+  padding-top: 18px !important;
+}
