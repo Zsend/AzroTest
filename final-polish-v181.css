@@ -1,0 +1,34 @@
+/* Final polish v181 — load stability and media preview consistency */
+html{
+  scrollbar-gutter: stable;
+}
+
+@supports not (scrollbar-gutter: stable){
+  html{
+    overflow-y: scroll;
+  }
+}
+
+.media-gallery[data-gallery-root] .media-gallery__stage > .media-gallery__launch,
+.media-gallery[data-gallery-root] .media-gallery__stage > .media-gallery__launch--video,
+.media-gallery[data-gallery-root] .media-gallery__stage > .media-gallery__launch--image{
+  width: 100%;
+  height: 100%;
+}
+
+.media-gallery[data-gallery-root] .media-gallery__stage .media-gallery__poster--fallback,
+.media-gallery[data-gallery-root] .media-gallery__stage .media-gallery__image{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: rgba(5,8,18,.98);
+}
+
+.media-gallery[data-gallery-root] .media-gallery__stage .media-gallery__overlay{
+  pointer-events: none;
+}
+
+.products-page .product-focus-band__lane--xrp .product-focus-band__title{
+  text-wrap: balance;
+}
