@@ -1,0 +1,37 @@
+/* Final polish v209 — products hero load-screen lock.
+   Scope intentionally limited to the Products hero copy stack so the CTA row
+   lands in the same visual band as Home and Philosophy without changing the
+   headline, media rail, or any lower-page layout. */
+
+@media (min-width: 981px){
+  .products-page .hero-copy-stack--products{
+    gap: 11px !important;
+  }
+
+  .products-page .hero-copy-stack--products .lede{
+    line-height: 1.46 !important;
+    letter-spacing: -0.010em !important;
+  }
+
+  .products-page .hero-product-item{
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+    gap: 8px !important;
+  }
+
+  .products-page .hero-copy-stack--products .hero-product-item + .hero-product-item{
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+  }
+
+  .products-page .hero-product-note{
+    line-height: 1.54 !important;
+    letter-spacing: -0.006em !important;
+  }
+
+  .products-page .hero-copy-note--micro{
+    margin-top: 0 !important;
+    line-height: 1.50 !important;
+    letter-spacing: -0.008em !important;
+  }
+}
