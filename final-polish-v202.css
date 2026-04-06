@@ -1,0 +1,39 @@
+/* Final polish v202 — proof/support collapsed-card rhythm parity. */
+
+/* Keep proof/support summary cards on the same interior rhythm. */
+.resources-page #core-docs,
+.support-page #support-links,
+.support-page details.resource-utility-guide{
+  padding: 24px 22px !important;
+}
+
+.resources-page #core-docs .product-guide__summary,
+.support-page #support-links .product-guide__summary,
+.support-page details.resource-utility-guide .product-guide__summary{
+  padding: 0 !important;
+  align-items: flex-start !important;
+}
+
+.resources-page #core-docs .product-guide__summary > div,
+.support-page #support-links .product-guide__summary > div,
+.support-page details.resource-utility-guide .product-guide__summary > div{
+  width: 100% !important;
+}
+
+.resources-page #core-docs .product-guide__summary h2,
+.support-page #support-links .product-guide__summary h2,
+.support-page details.resource-utility-guide .product-guide__summary h2{
+  margin: 0 !important;
+}
+
+.resources-page #core-docs .product-guide__summary p,
+.support-page #support-links .product-guide__summary p,
+.support-page details.resource-utility-guide .product-guide__summary p{
+  margin: 8px auto 0 !important;
+}
+
+/* Preserve the centered presentation of the support-only utility cards. */
+.support-page details.resource-utility-guide .product-guide__summary > div{
+  max-width: 30rem !important;
+  margin-inline: auto !important;
+}
