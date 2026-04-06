@@ -1,0 +1,5 @@
+/* Final publish v191: keep font stack stable, improve render quality only. */
+html, body, button, input, select, textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
