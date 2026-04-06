@@ -1,0 +1,50 @@
+/* Final publish v175: lock the home / pricing / proof / support intro bridges
+   to one uppercase system, one width system, and one spacing system. */
+
+:root{
+  --azro-v175-intro-lock-max: 61rem;
+  --azro-v175-intro-color: var(--azro-tertiary-grey, rgba(211, 219, 238, 0.84));
+}
+
+.home .home-suite-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  width: min(100%, var(--azro-v175-intro-lock-max)) !important;
+  max-width: var(--azro-v175-intro-lock-max) !important;
+  margin-inline: auto !important;
+  color: var(--azro-v175-intro-color) !important;
+  font-family: "Exo 2", Inter, sans-serif !important;
+  font-size: clamp(1rem, 1.08vw, 1.14rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.58 !important;
+  letter-spacing: .082em !important;
+  text-transform: uppercase !important;
+  text-wrap: balance !important;
+  text-align: center !important;
+}
+
+.home .home-suite-bridge{
+  margin: 18px auto 18px !important;
+}
+
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  margin: 0 auto 18px !important;
+}
+
+@media (max-width: 980px){
+  .home .home-suite-bridge,
+  .pricing-page .section-intro-bridge,
+  .resources-page .product-docs-intro,
+  .support-page .product-docs-intro{
+    font-size: clamp(.95rem, 3.15vw, 1.05rem) !important;
+    line-height: 1.54 !important;
+    letter-spacing: .072em !important;
+  }
+
+  .home .home-suite-bridge{
+    margin: 16px auto 18px !important;
+  }
+}
