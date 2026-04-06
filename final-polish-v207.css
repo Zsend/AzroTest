@@ -1,6 +1,0 @@
-/* Final polish v207 — remove the accent line only from the Features hero card. */
-
-.features-page .hero .card.card--narrow.center.stack::after{
-  content: none !important;
-  display: none !important;
-}
