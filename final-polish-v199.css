@@ -1,8 +1,0 @@
-/* Final polish v199 — products hero bullet-card spacing balance lock. */
-
-@media (min-width: 981px){
-  .products-page .hero-copy-stack--products .hero-product-item + .hero-product-item{
-    padding-top: 18px !important;
-    padding-bottom: 18px !important;
-  }
-}
