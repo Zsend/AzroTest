@@ -1,0 +1,93 @@
+{
+  "index.html": {
+    "hero_cta": {
+      "x": 132.5,
+      "y": 721.609375,
+      "width": 518.125,
+      "height": 61.78125
+    },
+    "home_mix": [
+      {
+        "x": 296.5,
+        "y": 3604.078125,
+        "width": 229.328125,
+        "height": 64.8125
+      },
+      {
+        "x": 597.828125,
+        "y": 3604.078125,
+        "width": 229.328125,
+        "height": 64.8125
+      },
+      {
+        "x": 899.15625,
+        "y": 3604.078125,
+        "width": 229.34375,
+        "height": 64.8125
+      }
+    ],
+    "prod_choose": [],
+    "screenshot": "/mnt/data/index-qa-v208.png"
+  },
+  "philosophy.html": {
+    "hero_cta": {
+      "x": 394.5,
+      "y": 782.28125,
+      "width": 636,
+      "height": 61.78125
+    },
+    "home_mix": [],
+    "prod_choose": [],
+    "screenshot": "/mnt/data/philosophy-qa-v208.png"
+  },
+  "products.html": {
+    "hero_cta": {
+      "x": 132.5,
+      "y": 782.296875,
+      "width": 529.140625,
+      "height": 61.78125
+    },
+    "home_mix": [],
+    "prod_choose": [
+      {
+        "x": 296.5,
+        "y": 2394.421875,
+        "width": 229.328125,
+        "height": 64.8125
+      },
+      {
+        "x": 597.828125,
+        "y": 2394.421875,
+        "width": 229.328125,
+        "height": 64.8125
+      },
+      {
+        "x": 899.15625,
+        "y": 2394.421875,
+        "width": 229.34375,
+        "height": 64.8125
+      }
+    ],
+    "screenshot": "/mnt/data/products-qa-v208.png"
+  },
+  "features.html": {
+    "hero_cta": null,
+    "home_mix": [],
+    "prod_choose": [],
+    "hero_card_after": {
+      "content": "none",
+      "display": "none",
+      "width": "56px",
+      "height": "2px",
+      "opacity": "0.96"
+    },
+    "feature_card_after": {
+      "content": "none",
+      "display": "block",
+      "width": "auto",
+      "height": "auto",
+      "opacity": "0.72"
+    },
+    "screenshot": "/mnt/data/features-qa-v208.png"
+  }
+}
