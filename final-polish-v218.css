@@ -1,0 +1,215 @@
+/* Final polish v218 — support/proof section-card system lock
+   Scope only: support/resources accordion shell rhythm, header alignment,
+   title/copy measure, toggle column, and responsive parity. */
+
+body.resources-page,
+body.support-page{
+  --azro-pr-card-pad-x: clamp(20px, 2.1vw, 24px);
+  --azro-pr-card-pad-top: clamp(34px, 2.8vw, 40px);
+  --azro-pr-card-pad-bottom: clamp(18px, 1.8vw, 24px);
+  --azro-pr-line-top: 18px;
+  --azro-pr-line-left: clamp(20px, 2vw, 24px);
+  --azro-pr-line-width: 68px;
+  --azro-pr-toggle-size: clamp(54px, 4vw, 60px);
+  --azro-pr-copy-gap: 10px;
+  --azro-pr-title-size: clamp(1.66rem, 1.55vw, 2rem);
+  --azro-pr-title-line: 1.03;
+  --azro-pr-title-track: -.03em;
+  --azro-pr-body-size: clamp(1rem, .16vw + .95rem, 1.05rem);
+  --azro-pr-body-line: 1.46;
+  --azro-pr-title-max: 16ch;
+  --azro-pr-body-max: 36ch;
+  --azro-pr-wide-title-max: 17ch;
+  --azro-pr-wide-body-max: 42ch;
+  --azro-pr-row-min: clamp(152px, 13.5vw, 184px);
+}
+
+body.resources-page .product-docs-grid--proof,
+body.support-page .product-docs-grid--proof,
+body.support-page .product-docs-grid--support,
+body.support-page .resource-utilities-grid--support{
+  align-items: stretch !important;
+}
+
+body.resources-page .product-docs-grid--proof > details,
+body.support-page .product-docs-grid--proof > details,
+body.support-page .product-docs-grid--support > details,
+body.support-page .resource-utilities-grid--support > details{
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+body.resources-page details.product-guide:is(.product-docs-card, .core-disclosures-card),
+body.support-page details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card){
+  padding: var(--azro-pr-card-pad-top) var(--azro-pr-card-pad-x) var(--azro-pr-card-pad-bottom) !important;
+  overflow: hidden !important;
+}
+
+body.resources-page details.product-guide:is(.product-docs-card, .core-disclosures-card)::after,
+body.support-page details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card)::after{
+  content: "" !important;
+  position: absolute !important;
+  top: var(--azro-pr-line-top) !important;
+  left: var(--azro-pr-line-left) !important;
+  width: var(--azro-pr-line-width) !important;
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: var(--azro-accent-line-short) !important;
+  box-shadow: 0 0 18px rgba(112,152,255,.18) !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+body.resources-page details.product-guide > summary.product-guide__summary,
+body.support-page details.product-guide > summary.product-guide__summary{
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) var(--azro-pr-toggle-size) !important;
+  column-gap: clamp(18px, 2vw, 24px) !important;
+  align-items: center !important;
+  justify-content: initial !important;
+  gap: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body.resources-page details.product-guide > summary.product-guide__summary > div,
+body.support-page details.product-guide > summary.product-guide__summary > div{
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: var(--azro-pr-copy-gap) !important;
+  align-content: start !important;
+  justify-items: start !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  text-align: left !important;
+}
+
+body.resources-page details.product-guide > summary.product-guide__summary::after,
+body.support-page details.product-guide > summary.product-guide__summary::after{
+  position: static !important;
+  right: auto !important;
+  top: auto !important;
+  width: var(--azro-pr-toggle-size) !important;
+  height: var(--azro-pr-toggle-size) !important;
+  margin: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  transform: none !important;
+  justify-self: end !important;
+  align-self: center !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.03) !important;
+  border: 1px solid rgba(146,165,244,.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 0 0 1px rgba(124,170,255,.05) !important;
+}
+
+body.resources-page details.product-guide > summary.product-guide__summary :is(h2, .section-title),
+body.support-page details.product-guide > summary.product-guide__summary :is(h2, .section-title){
+  display: block !important;
+  width: min(100%, var(--azro-pr-title-max)) !important;
+  max-width: var(--azro-pr-title-max) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: var(--azro-pr-title-size) !important;
+  line-height: var(--azro-pr-title-line) !important;
+  letter-spacing: var(--azro-pr-title-track) !important;
+  text-align: left !important;
+  text-wrap: balance !important;
+  white-space: normal !important;
+}
+
+body.resources-page details.product-guide > summary.product-guide__summary :is(.small, .section-sub),
+body.support-page details.product-guide > summary.product-guide__summary :is(.small, .section-sub){
+  display: block !important;
+  width: min(100%, var(--azro-pr-body-max)) !important;
+  max-width: var(--azro-pr-body-max) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: var(--azro-pr-body-size) !important;
+  line-height: var(--azro-pr-body-line) !important;
+  text-align: left !important;
+  text-wrap: pretty !important;
+  white-space: normal !important;
+}
+
+body.resources-page details.product-guide > summary.product-guide__summary :is(.center),
+body.support-page details.product-guide > summary.product-guide__summary :is(.center){
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body.resources-page #core-docs > summary.product-guide__summary :is(h2, .section-title),
+body.support-page #support-links > summary.product-guide__summary :is(h2, .section-title){
+  width: min(100%, var(--azro-pr-wide-title-max)) !important;
+  max-width: var(--azro-pr-wide-title-max) !important;
+}
+
+body.resources-page #core-docs > summary.product-guide__summary :is(.small, .section-sub),
+body.support-page #support-links > summary.product-guide__summary :is(.small, .section-sub){
+  width: min(100%, var(--azro-pr-wide-body-max)) !important;
+  max-width: var(--azro-pr-wide-body-max) !important;
+}
+
+body.resources-page details.product-guide > .product-guide__body,
+body.support-page details.product-guide > .product-guide__body{
+  padding-top: clamp(16px, 1.6vw, 20px) !important;
+}
+
+@media (min-width: 981px){
+  body.resources-page .product-docs-grid--proof > details.product-guide,
+  body.support-page .product-docs-grid--proof > details.product-guide,
+  body.support-page .product-docs-grid--support > details.product-guide,
+  body.support-page .resource-utilities-grid--support > details.product-guide{
+    min-height: var(--azro-pr-row-min) !important;
+  }
+}
+
+@media (max-width: 980px){
+  body.resources-page,
+  body.support-page{
+    --azro-pr-card-pad-x: 20px;
+    --azro-pr-card-pad-top: 36px;
+    --azro-pr-card-pad-bottom: 18px;
+    --azro-pr-line-top: 18px;
+    --azro-pr-line-left: 20px;
+    --azro-pr-line-width: 68px;
+    --azro-pr-toggle-size: 52px;
+    --azro-pr-copy-gap: 8px;
+    --azro-pr-title-size: clamp(1.56rem, 7.9vw, 2.02rem);
+    --azro-pr-body-size: 1rem;
+    --azro-pr-title-max: 11.8ch;
+    --azro-pr-body-max: 21ch;
+    --azro-pr-wide-title-max: 12.6ch;
+    --azro-pr-wide-body-max: 23ch;
+  }
+
+  body.resources-page details.product-guide:is(.product-docs-card, .core-disclosures-card)::after,
+  body.support-page details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card)::after{
+    height: 3px !important;
+  }
+
+  body.resources-page details.product-guide > summary.product-guide__summary,
+  body.support-page details.product-guide > summary.product-guide__summary{
+    align-items: start !important;
+    column-gap: 16px !important;
+  }
+
+  body.resources-page details.product-guide > summary.product-guide__summary::after,
+  body.support-page details.product-guide > summary.product-guide__summary::after{
+    align-self: start !important;
+  }
+}
