@@ -1,0 +1,144 @@
+/* Final polish v214 — final edge-spacing + support/proof accent + mobile CTA safety
+   Scope: support/proof accent-line consistency, mobile support/proof toggle clearance,
+   sticky CTA overlap reduction, products/philosophy edge spacing, and safe type rendering polish.
+   Layout lock: no structural HTML changes. */
+
+/* Safer page-edge breathing room on the remaining tighter pages. */
+body.products-page,
+body.philosophy-page{
+  --gutter: clamp(18px, 4.8vw, 34px);
+}
+
+@media (max-width: 980px){
+  body.products-page,
+  body.philosophy-page{
+    --gutter: clamp(20px, 6vw, 30px);
+  }
+}
+
+/* Keep support / proof shell accent lines visually matched to the main card system. */
+@media (min-width: 981px){
+  .support-page .product-docs-card::after,
+  .support-page .resource-utility-card::after,
+  .support-page .core-disclosures-card::after,
+  .resources-page .product-docs-card::after,
+  .resources-page .core-disclosures-card::after{
+    top: 24px !important;
+    left: 28px !important;
+    width: 84px !important;
+    height: 3px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, rgba(164,208,255,.98) 0%, rgba(118,158,255,.95) 54%, rgba(129,95,255,.82) 100%) !important;
+    box-shadow: 0 0 20px rgba(112,152,255,.18) !important;
+  }
+
+  .support-page .product-guide__summary,
+  .resources-page .product-guide__summary{
+    padding-top: 12px !important;
+    padding-bottom: 10px !important;
+  }
+}
+
+@media (max-width: 980px){
+  /* Give the shell accent line equal breathing room on mobile too. */
+  .support-page .product-docs-card,
+  .support-page .resource-utility-card,
+  .support-page .core-disclosures-card,
+  .resources-page .product-docs-card,
+  .resources-page .core-disclosures-card{
+    padding-top: 38px !important;
+  }
+
+  .support-page .product-docs-card::after,
+  .support-page .resource-utility-card::after,
+  .support-page .core-disclosures-card::after,
+  .resources-page .product-docs-card::after,
+  .resources-page .core-disclosures-card::after{
+    top: 20px !important;
+    left: 22px !important;
+    width: 74px !important;
+    height: 3px !important;
+    border-radius: 999px !important;
+  }
+
+  /* Reserve a true control column so the expand button never sits on top of the title/subtitle. */
+  .support-page .product-guide__summary,
+  .resources-page .product-guide__summary{
+    min-height: 0 !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 14px 94px 8px 18px !important;
+    text-align: center !important;
+  }
+
+  .support-page .product-guide__summary > div,
+  .resources-page .product-guide__summary > div{
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+
+  .support-page .product-guide__summary::after,
+  .resources-page .product-guide__summary::after{
+    top: 50% !important;
+    right: 16px !important;
+    width: 54px !important;
+    height: 54px !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+  }
+
+  .support-page .product-guide__summary h2,
+  .resources-page .product-guide__summary h2{
+    width: min(100%, 12.6ch) !important;
+    max-width: 12.6ch !important;
+    margin: 0 auto !important;
+    font-size: clamp(1.76rem, 8vw, 2.3rem) !important;
+    line-height: 1 !important;
+    text-wrap: balance !important;
+  }
+
+  .support-page .product-guide__summary .small,
+  .resources-page .product-guide__summary .small,
+  .support-page .core-disclosures-card .product-guide__summary .section-sub,
+  .resources-page .core-disclosures-card .product-guide__summary .section-sub{
+    width: min(100%, 18ch) !important;
+    max-width: 18ch !important;
+    margin: 10px auto 0 !important;
+    font-size: 1rem !important;
+    line-height: 1.42 !important;
+    text-wrap: pretty !important;
+  }
+
+  /* Keep the persistent CTA from sitting too heavily on top of lower-section copy. */
+  .sticky-cta{
+    padding: 10px var(--gutter) calc(10px + var(--safe-bottom)) !important;
+    background: rgba(7,11,22,.88) !important;
+  }
+
+  .sticky-cta-inner{
+    gap: 8px !important;
+  }
+
+  .sticky-cta .btn{
+    min-height: 46px !important;
+    padding: 11px 16px !important;
+    font-size: 1rem !important;
+  }
+
+  body{
+    padding-bottom: calc(var(--sticky-h, 0px) + 18px) !important;
+  }
+
+  .support-page .support-next-band{
+    margin-top: calc(var(--sticky-h, 0px) + 18px) !important;
+  }
+
+  .resources-page #downloads{
+    padding-bottom: calc(var(--sticky-h, 0px) + 26px) !important;
+  }
+}
