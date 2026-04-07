@@ -1,0 +1,159 @@
+/* Final polish v219 — proof/support shell parity lock
+   Scope only: proof + support cards on desktop and mobile.
+   Goal: make accent-line clearance, title/body spacing, alignment, and card rhythm
+   match the rest of the section-card system without touching any other page. */
+
+:where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card){
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+:where(.resources-page, .support-page) .product-docs-grid--proof,
+.support-page .product-docs-grid--support,
+.support-page .resource-utilities-grid--support{
+  align-items: stretch !important;
+}
+
+:where(.resources-page, .support-page) .product-docs-grid--proof > details.product-guide,
+.support-page .product-docs-grid--support > details.product-guide,
+.support-page .resource-utilities-grid--support > details.product-guide{
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  height: 100% !important;
+}
+
+:where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary{
+  position: relative !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  min-height: 0 !important;
+  text-align: left !important;
+}
+
+:where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary > div{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+:where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary::after{
+  position: absolute !important;
+  margin: 0 !important;
+  align-self: auto !important;
+}
+
+:where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary h2{
+  width: min(100%, 12.4ch) !important;
+  max-width: 12.4ch !important;
+  margin: 0 !important;
+  font-size: clamp(1.72rem, 1.86vw, 1.94rem) !important;
+  line-height: 1.03 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+  text-wrap: balance !important;
+}
+
+:where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary :is(.small, .section-sub){
+  width: min(100%, 28ch) !important;
+  max-width: 28ch !important;
+  margin: 12px 0 0 !important;
+  font-size: clamp(1rem, 1.02vw, 1.08rem) !important;
+  line-height: 1.44 !important;
+  text-align: left !important;
+  text-wrap: pretty !important;
+}
+
+@media (min-width: 981px){
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card){
+    padding: 38px 30px 30px !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card)::after{
+    top: 26px !important;
+    left: 30px !important;
+    width: 68px !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary{
+    padding: 26px 96px 8px 0 !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary > div{
+    padding: 0 !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary::after{
+    top: 50% !important;
+    right: 0 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .resources-page .product-docs-grid--proof > details.product-guide,
+  .support-page .product-docs-grid--support > details.product-guide{
+    min-height: 252px !important;
+  }
+
+  .support-page .resource-utilities-grid--support > details.product-guide{
+    min-height: 208px !important;
+  }
+
+  :where(.resources-page, .support-page) :is(#core-docs, #support-links){
+    min-height: 228px !important;
+  }
+}
+
+@media (max-width: 980px){
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card){
+    padding: 36px 20px 26px !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card)::after{
+    top: 20px !important;
+    left: 22px !important;
+    width: 68px !important;
+    height: 3px !important;
+    border-radius: 999px !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary{
+    padding: 18px 84px 4px 0 !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary > div{
+    padding: 0 !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary::after{
+    top: 18px !important;
+    right: 2px !important;
+    transform: none !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary h2{
+    width: min(100%, 11.2ch) !important;
+    max-width: 11.2ch !important;
+    font-size: clamp(1.92rem, 8.2vw, 2.3rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  :where(.resources-page, .support-page) details.product-guide:is(.product-docs-card, .resource-utility-card, .core-disclosures-card) > summary.product-guide__summary :is(.small, .section-sub){
+    width: min(100%, 19.5ch) !important;
+    max-width: 19.5ch !important;
+    margin-top: 14px !important;
+    font-size: 1rem !important;
+    line-height: 1.44 !important;
+  }
+}

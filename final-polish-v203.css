@@ -1,0 +1,8 @@
+
+/* Final polish v203 — philosophy desktop vertical centering lock. */
+
+@media (min-width: 1441px){
+  .philosophy-page .hero-media{
+    transform: translateY(-332px) !important;
+  }
+}
