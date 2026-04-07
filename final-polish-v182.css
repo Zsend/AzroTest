@@ -1,0 +1,154 @@
+
+/* Final polish v182 — products/support balance cleanup and support modal refinement */
+@media (min-width: 981px){
+  .products-page .hero-inner--wide-title > .hero-media{
+    transform: translateY(-18px) !important;
+  }
+
+  .products-page .products-hero-echo{
+    margin-top: 14px !important;
+  }
+
+  .products-page .hero-media-note--below{
+    margin-top: 8px !important;
+  }
+}
+
+.support-page .resource-utilities-grid{
+  align-items: stretch !important;
+}
+
+.support-page .resource-utility-card{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: center !important;
+}
+
+.support-page .resource-utility-card > h2,
+.support-page .resource-utility-card > p.small,
+.support-page .resource-utility-card > .utility-channel-list,
+.support-page .resource-utility-card > .card-action-row{
+  width: min(100%, 560px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.support-page .resource-utility-card > p.small{
+  max-width: 33ch !important;
+}
+
+.support-page .resource-utility-card .utility-channel-list{
+  display: grid !important;
+  gap: 12px !important;
+  flex: 1 1 auto !important;
+  align-content: start !important;
+  margin-top: 16px !important;
+}
+
+.support-page .resource-utility-card .utility-channel-row{
+  width: 100% !important;
+  grid-template-columns: minmax(118px, auto) 1fr !important;
+  gap: 14px !important;
+  align-items: center !important;
+  justify-content: stretch !important;
+  text-align: left !important;
+}
+
+.support-page .resource-utility-card .card-action-row{
+  width: min(100%, 460px) !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  justify-content: center !important;
+  margin-top: auto !important;
+  padding-top: 18px !important;
+}
+
+.support-page .resource-utility-card .card-action-row .btn{
+  width: 100% !important;
+}
+
+.modal__dialog--support{
+  width: min(720px, calc(100vw - 32px));
+  max-width: min(720px, calc(100vw - 32px));
+}
+
+.support-modal__lead{
+  text-wrap: balance;
+}
+
+.support-modal__rows{
+  gap: 12px !important;
+}
+
+.support-modal__row{
+  grid-template-columns: 160px minmax(0, 1fr) !important;
+  gap: 18px !important;
+  align-items: center !important;
+}
+
+.support-modal__row strong{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.support-modal__email{
+  width: min(100%, 540px) !important;
+  margin: 20px auto 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+}
+
+.support-modal__email code{
+  text-align: center !important;
+}
+
+.support-modal__actions{
+  width: min(100%, 420px) !important;
+  margin: 18px auto 0 !important;
+}
+
+.support-modal__actions .btn{
+  flex: 1 1 0 !important;
+}
+
+@media (max-width: 760px){
+  .support-page .resource-utility-card .utility-channel-row{
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+
+  .support-page .resource-utility-card .card-action-row{
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px){
+  .modal__dialog--support{
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+
+  .support-modal__row{
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  .support-modal__row strong{
+    justify-content: center !important;
+  }
+
+  .support-modal__email{
+    grid-template-columns: 1fr !important;
+  }
+
+  .support-modal__actions{
+    width: 100% !important;
+  }
+}
