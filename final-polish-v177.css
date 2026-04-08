@@ -1,0 +1,62 @@
+/* Final publish v177: unify the home / pricing / proof / support bridge text
+   to one shared width, one shared spacing rhythm, and a wider, less stacked wrap. */
+
+:root{
+  --azro-v177-bridge-max: 1040px;
+  --azro-v177-bridge-gap: 24px;
+  --azro-v177-bridge-color: var(--azro-tertiary-grey, rgba(211, 219, 238, 0.84));
+  --azro-v177-bridge-size: clamp(0.96rem, 0.52vw + 0.64rem, 1.04rem);
+  --azro-v177-bridge-line: 1.46;
+  --azro-v177-bridge-letter: 0.068em;
+}
+
+.home .home-suite-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  display: block !important;
+  width: min(100%, var(--azro-v177-bridge-max)) !important;
+  max-width: var(--azro-v177-bridge-max) !important;
+  margin-inline: auto !important;
+  color: var(--azro-v177-bridge-color) !important;
+  font-family: "Inter Tight", Inter, sans-serif !important;
+  font-size: var(--azro-v177-bridge-size) !important;
+  font-weight: 700 !important;
+  line-height: var(--azro-v177-bridge-line) !important;
+  letter-spacing: var(--azro-v177-bridge-letter) !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  text-wrap: pretty !important;
+  overflow-wrap: normal !important;
+}
+
+.home .home-suite-bridge{
+  margin: 18px auto var(--azro-v177-bridge-gap) !important;
+}
+
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  margin: 0 auto var(--azro-v177-bridge-gap) !important;
+}
+
+@media (max-width: 980px){
+  :root{
+    --azro-v177-bridge-gap: 20px;
+    --azro-v177-bridge-size: clamp(0.93rem, 3vw, 1rem);
+    --azro-v177-bridge-line: 1.5;
+    --azro-v177-bridge-letter: 0.064em;
+  }
+
+  .home .home-suite-bridge,
+  .pricing-page .section-intro-bridge,
+  .resources-page .product-docs-intro,
+  .support-page .product-docs-intro{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home .home-suite-bridge{
+    margin-top: 16px !important;
+  }
+}
