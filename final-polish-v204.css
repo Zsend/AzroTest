@@ -1,0 +1,8 @@
+
+/* Final polish v204 — final philosophy desktop centering lift. */
+
+@media (min-width: 1441px){
+  .philosophy-page .hero-media{
+    transform: translateY(-396px) !important;
+  }
+}
