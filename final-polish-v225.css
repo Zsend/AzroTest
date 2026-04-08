@@ -1,0 +1,129 @@
+/* Final publish v225: unify View controls across media previews and give static-image lightboxes
+   the same fullscreen treatment as gallery video/image lightboxes. Scope is intentionally narrow. */
+
+:root{
+  --azro-view-pill-min: clamp(96px, 8vw, 112px);
+  --azro-view-pill-height: 40px;
+  --azro-view-pill-pad-x: 16px;
+}
+
+/* Feature-section image figures: use the same View pill language as the gallery cards. */
+.media-fullscreen-btn{
+  display: inline-flex !important;
+  position: absolute !important;
+  inset: 14px 14px auto auto !important;
+  z-index: 4 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: var(--azro-view-pill-min) !important;
+  height: var(--azro-view-pill-height) !important;
+  padding: 0 var(--azro-view-pill-pad-x) !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(194, 203, 227, .16) !important;
+  background: rgba(8, 14, 30, .90) !important;
+  color: rgba(244, 247, 255, .96) !important;
+  font: 700 .92rem/1 var(--font-sans) !important;
+  letter-spacing: -.01em !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.05) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.media-fullscreen-btn::before{
+  content: none !important;
+}
+
+.media-fullscreen-btn:hover,
+.media-fullscreen-btn:focus-visible{
+  transform: translateY(-1px) !important;
+  border-color: rgba(205, 213, 236, .20) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+.media-fullscreen-btn:focus-visible,
+.image-lightbox__fullscreen:focus-visible{
+  outline: 2px solid rgba(148,177,255,.34) !important;
+  outline-offset: 2px !important;
+}
+
+@media (max-width: 980px){
+  /* Mobile gallery videos should keep the same visible View CTA that image mode uses. */
+  .media-gallery[data-preview-autoplay="true"] .media-gallery__launch.is-preview-playing .media-gallery__overlay{
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .media-fullscreen-btn{
+    inset: 12px 12px auto auto !important;
+    min-width: 92px !important;
+    height: 38px !important;
+    padding: 0 14px !important;
+    font-size: .9rem !important;
+  }
+}
+
+/* Static image lightbox: same top-right fullscreen control language as the gallery modal. */
+.image-lightbox .modal__dialog{
+  position: relative !important;
+  padding-top: clamp(76px, 7vw, 88px) !important;
+}
+
+.image-lightbox__fullscreen{
+  display: grid !important;
+}
+
+.image-lightbox.is-image-fullscreen{
+  padding: 0 !important;
+}
+
+.image-lightbox.is-image-fullscreen .modal__dialog{
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100svh !important;
+  height: 100dvh !important;
+  max-height: 100svh !important;
+  max-height: 100dvh !important;
+  min-height: 100svh !important;
+  min-height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.image-lightbox.is-image-fullscreen .image-lightbox__figure{
+  height: 100% !important;
+  gap: 0 !important;
+  align-content: stretch !important;
+}
+
+.image-lightbox.is-image-fullscreen .image-lightbox__figure img{
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+
+.image-lightbox.is-image-fullscreen .image-lightbox__caption{
+  display: none !important;
+}
+
+.image-lightbox.is-image-fullscreen .modal__close{
+  top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+  right: 12px !important;
+  z-index: 8 !important;
+}
+
+.image-lightbox.is-image-fullscreen .image-lightbox__fullscreen{
+  top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+  right: 76px !important;
+  z-index: 8 !important;
+}
+
+@media (max-width: 720px){
+  .image-lightbox .modal__dialog{
+    padding-top: 74px !important;
+  }
+}

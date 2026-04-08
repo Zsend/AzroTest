@@ -1,0 +1,72 @@
+/* Final publish v178: unify the sentence-case bridge copy system across
+   home, pricing, proof, support, and the features manifesto without changing
+   the surrounding layout or card structure. */
+
+:root{
+  --azro-v178-bridge-color: rgba(218, 226, 242, 0.82);
+  --azro-v178-bridge-size: clamp(1rem, 0.32vw + 0.96rem, 1.09rem);
+  --azro-v178-bridge-line: 1.66;
+  --azro-v178-bridge-letter: -0.004em;
+  --azro-v178-bridge-gap: 24px;
+}
+
+.home .section-bridge-copy,
+.pricing-page .section-bridge-copy,
+.resources-page .section-bridge-copy,
+.support-page .section-bridge-copy,
+.features-page .section-bridge-copy{
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  margin-inline: auto !important;
+  color: var(--azro-v178-bridge-color) !important;
+  font-family: Inter, "Inter Tight", sans-serif !important;
+  font-size: var(--azro-v178-bridge-size) !important;
+  font-weight: 500 !important;
+  line-height: var(--azro-v178-bridge-line) !important;
+  letter-spacing: var(--azro-v178-bridge-letter) !important;
+  text-transform: none !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+  text-wrap: balance !important;
+}
+
+.home .home-suite-bridge.section-bridge-copy{
+  margin: 18px auto var(--azro-v178-bridge-gap) !important;
+}
+
+.pricing-page .section-intro-bridge.section-bridge-copy,
+.resources-page .product-docs-intro.section-bridge-copy,
+.support-page .product-docs-intro.section-bridge-copy,
+.features-page .features-manifesto-bridge.section-bridge-copy{
+  margin: 0 auto var(--azro-v178-bridge-gap) !important;
+}
+
+.features-page .features-manifesto-bridge.section-bridge-copy{
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 980px){
+  :root{
+    --azro-v178-bridge-size: clamp(0.98rem, 2.2vw, 1.04rem);
+    --azro-v178-bridge-line: 1.62;
+    --azro-v178-bridge-gap: 22px;
+  }
+
+  .home .home-suite-bridge.section-bridge-copy{
+    margin-top: 16px !important;
+  }
+}
+
+@media (max-width: 640px){
+  :root{
+    --azro-v178-bridge-size: 0.99rem;
+    --azro-v178-bridge-line: 1.6;
+    --azro-v178-bridge-gap: 20px;
+  }
+}

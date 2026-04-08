@@ -1,0 +1,151 @@
+/* Final publish v185: products-hero copy balance + pricing-card rhythm lock.
+   Scope intentionally limited to the Products hero copy stack and Pricing plan cards. */
+
+/* --- Products hero: preserve the locked title / CTA / media geometry,
+   but rebalance the editorial copy measure inside the left-hand cards. --- */
+.products-page .hero-copy-stack--products .lede,
+.products-page .hero-copy-stack--products .hero-copy-note--micro{
+  text-wrap: balance !important;
+}
+
+.products-page .hero-copy-stack--products .hero-product-note{
+  text-wrap: pretty !important;
+}
+
+@media (min-width: 981px){
+  .products-page .hero-copy-stack--products .hero-product-note{
+    width: min(100%, 53ch) !important;
+    max-width: 53ch !important;
+    margin-right: auto !important;
+  }
+}
+
+/* --- Pricing plan cards: use the proof-card top/bottom spacing standard,
+   keep the pill and footer zones locked, and clean up internal text rhythm. --- */
+.pricing-page .pricing-card.plan-card,
+.pricing-page .pricing-card.plan-card--compact{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  text-align: center !important;
+}
+
+.pricing-page .pricing-card.plan-card > *,
+.pricing-page .pricing-card.plan-card--compact > *{
+  width: 100% !important;
+}
+
+.pricing-page .pricing-card .pill-row{
+  min-height: 56px !important;
+  margin: 0 auto 16px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.pricing-page .pricing-card .plan-price-row{
+  min-height: 86px !important;
+  margin: 0 auto 12px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  gap: 12px !important;
+}
+
+.pricing-page .pricing-card .plan-price-meta{
+  margin-bottom: .3em !important;
+}
+
+.pricing-page .pricing-card .plan-copy{
+  width: min(100%, 31ch) !important;
+  max-width: 31ch !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  line-height: 1.54 !important;
+  text-wrap: pretty !important;
+}
+
+.pricing-page .pricing-card .compact-bullets{
+  width: min(100%, 32ch) !important;
+  margin: 18px auto 0 !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(188,204,244,.14) !important;
+  display: grid !important;
+  gap: 14px !important;
+}
+
+.pricing-page .pricing-card .compact-bullets li{
+  margin: 0 !important;
+  line-height: 1.44 !important;
+  text-wrap: pretty !important;
+}
+
+.pricing-page .pricing-card .btn-row{
+  width: 100% !important;
+  margin-top: auto !important;
+  padding-top: 22px !important;
+  justify-content: center !important;
+}
+
+.pricing-page .pricing-card .plan-fit{
+  width: min(100%, 25ch) !important;
+  max-width: 25ch !important;
+  min-height: 0 !important;
+  margin: 14px auto 0 !important;
+  text-align: center !important;
+  line-height: 1.44 !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+}
+
+@media (min-width: 981px){
+  .pricing-page .pricing-card.plan-card,
+  .pricing-page .pricing-card.plan-card--compact{
+    padding: 34px 28px 34px !important;
+  }
+}
+
+@media (max-width: 980px){
+  .pricing-page .pricing-card.plan-card,
+  .pricing-page .pricing-card.plan-card--compact{
+    padding: 30px 22px 30px !important;
+  }
+
+  .pricing-page .pricing-card .plan-copy{
+    width: min(100%, 29ch) !important;
+    max-width: 29ch !important;
+  }
+
+  .pricing-page .pricing-card .plan-fit{
+    width: min(100%, 23ch) !important;
+    max-width: 23ch !important;
+  }
+}
+
+@media (max-width: 640px){
+  .pricing-page .pricing-card.plan-card,
+  .pricing-page .pricing-card.plan-card--compact{
+    padding: 26px 18px 26px !important;
+  }
+
+  .pricing-page .pricing-card .pill-row{
+    margin-bottom: 14px !important;
+  }
+
+  .pricing-page .pricing-card .plan-price-row{
+    min-height: 0 !important;
+  }
+
+  .pricing-page .pricing-card .compact-bullets,
+  .pricing-page .pricing-card .btn-row{
+    padding-top: 16px !important;
+  }
+
+  .pricing-page .pricing-card .plan-fit{
+    margin-top: 12px !important;
+  }
+}
