@@ -1,0 +1,54 @@
+/* Final polish v207 — locked copy-support styles only.
+   Scope intentionally limited to the single requested Features hero card,
+   the added footer legal line, and the Products hero desktop text fit.
+   No card-button anchoring or layout-wide movement rules. */
+
+.features-page .features-hero-card-no-accent::after{
+  content: none !important;
+  display: none !important;
+}
+
+.site-footer .footer-meta--subtle{
+  margin-top: 6px !important;
+  font-size: 0.8rem !important;
+  line-height: 1.6 !important;
+  color: var(--azro-accent-text-subtle) !important;
+}
+
+.site-footer .footer-meta--subtle a{
+  color: inherit !important;
+  text-decoration-color: rgba(185,198,255,.32) !important;
+}
+
+@media (min-width: 981px){
+  .products-page .hero-copy-stack--products{
+    gap: 10.25px !important;
+  }
+
+  .products-page .hero-copy-stack--products .lede{
+    line-height: 1.45 !important;
+    letter-spacing: -0.011em !important;
+  }
+
+  .products-page .hero-product-item{
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+    gap: 8px !important;
+  }
+
+  .products-page .hero-copy-stack--products .hero-product-item + .hero-product-item{
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+  }
+
+  .products-page .hero-product-note{
+    line-height: 1.51 !important;
+    letter-spacing: -0.009em !important;
+  }
+
+  .products-page .hero-copy-note--micro{
+    margin-top: 0 !important;
+    line-height: 1.47 !important;
+    letter-spacing: -0.009em !important;
+  }
+}

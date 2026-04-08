@@ -1,0 +1,201 @@
+/* Final polish v224 — premium font lock + visible gallery fullscreen control.
+   Scope: keep Sora + Inter locked, make the mobile/touch gallery fullscreen control unmistakable,
+   and keep the rest of the layout unchanged. */
+
+:root{
+  --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-head: "Sora", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-display: "Sora", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea{
+  font-optical-sizing: auto;
+}
+
+.features-page .features-hero-body--caps,
+.features-page .feature-mini-grid--full .feature-card__label,
+.home .home-suite-bridge,
+.pricing-page .section-intro-bridge,
+.resources-page .product-docs-intro,
+.support-page .product-docs-intro{
+  font-family: var(--font-head) !important;
+}
+
+.gallery-lightbox__fullscreen{
+  position: absolute !important;
+  top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+  left: 12px !important;
+  right: auto !important;
+  width: 52px !important;
+  min-width: 52px !important;
+  height: 52px !important;
+  padding: 0 !important;
+  display: none !important;
+  place-items: center !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(156,174,255,.28) !important;
+  background: linear-gradient(180deg, rgba(18,24,43,.94), rgba(10,14,27,.94)) !important;
+  color: var(--text-head, #f2f6ff) !important;
+  box-shadow: 0 16px 32px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  touch-action: manipulation;
+  z-index: 6 !important;
+}
+
+@media (pointer: coarse), (max-width: 1280px){
+  .gallery-lightbox__fullscreen:not([hidden]){
+    display: inline-grid !important;
+  }
+}
+
+.gallery-lightbox__fullscreen:hover,
+.gallery-lightbox__fullscreen:focus-visible{
+  transform: translateY(-1px);
+  box-shadow: 0 20px 36px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+.gallery-lightbox__fullscreen.is-active{
+  background: linear-gradient(180deg, rgba(28,40,76,.96), rgba(12,18,36,.96)) !important;
+}
+
+.gallery-lightbox__fullscreen svg{
+  width: 18px;
+  height: 18px;
+  display: block;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+  pointer-events: none;
+}
+
+.gallery-lightbox.is-immersive{
+  padding: 0 !important;
+  background: rgba(2,6,17,.985) !important;
+  overscroll-behavior: contain;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen,
+.gallery-lightbox.is-immersive .modal__dialog--gallery{
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100svh !important;
+  max-height: 100svh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 76px)
+    max(12px, env(safe-area-inset-right, 0px))
+    calc(env(safe-area-inset-bottom, 0px) + 12px)
+    max(12px, env(safe-area-inset-left, 0px)) !important;
+  gap: 12px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #020611 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen::backdrop{
+  background: rgba(2,6,17,.985) !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__footer,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__footer,
+.gallery-lightbox.is-immersive .gallery-lightbox__footer{
+  display: none !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__viewport,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__viewport,
+.gallery-lightbox.is-immersive .gallery-lightbox__viewport{
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 18px !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__stage,
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__video-wrap,
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__video,
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__stage img,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__stage,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__video-wrap,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__video,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__stage img,
+.gallery-lightbox.is-immersive .gallery-lightbox__stage,
+.gallery-lightbox.is-immersive .gallery-lightbox__video-wrap,
+.gallery-lightbox.is-immersive .gallery-lightbox__video,
+.gallery-lightbox.is-immersive .gallery-lightbox__stage img{
+  height: 100% !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__switch,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__switch,
+.gallery-lightbox.is-immersive .gallery-lightbox__switch{
+  top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .modal__close,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .modal__close,
+.gallery-lightbox.is-immersive .modal__close{
+  top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+  right: 12px !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__fullscreen,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__fullscreen,
+.gallery-lightbox.is-immersive .gallery-lightbox__fullscreen{
+  top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+  left: 12px !important;
+  right: auto !important;
+}
+
+.gallery-lightbox .modal__dialog--gallery:fullscreen .media-gallery__nav,
+.gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .media-gallery__nav,
+.gallery-lightbox.is-immersive .media-gallery__nav{
+  top: 50% !important;
+  margin-top: -23px !important;
+}
+
+@media (max-width: 980px){
+  .gallery-lightbox__switch{
+    width: min(70vw, 296px) !important;
+    max-width: calc(100% - 184px) !important;
+  }
+}
+
+@media (max-width: 640px){
+  .gallery-lightbox__fullscreen{
+    top: calc(env(safe-area-inset-top, 0px) + 10px) !important;
+    left: 10px !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    border-radius: 15px !important;
+  }
+
+  .gallery-lightbox__switch{
+    width: min(68vw, 284px) !important;
+    max-width: calc(100% - 154px) !important;
+  }
+
+  .gallery-lightbox .modal__dialog--gallery:fullscreen,
+  .gallery-lightbox .modal__dialog--gallery:-webkit-full-screen,
+  .gallery-lightbox.is-immersive .modal__dialog--gallery{
+    padding-top: calc(env(safe-area-inset-top, 0px) + 78px) !important;
+  }
+
+  .gallery-lightbox .modal__dialog--gallery:fullscreen .gallery-lightbox__viewport,
+  .gallery-lightbox .modal__dialog--gallery:-webkit-full-screen .gallery-lightbox__viewport,
+  .gallery-lightbox.is-immersive .gallery-lightbox__viewport{
+    border-radius: 16px !important;
+  }
+}
