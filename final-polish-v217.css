@@ -1,0 +1,220 @@
+/* Final polish v217 — proof/support card consistency lock
+   Scope only: support/resources card shell spacing, title/subtitle measure,
+   toggle clearance, and equal-height grid parity. */
+
+@media (min-width: 981px){
+  .resources-page,
+  .support-page{
+    --azro-proof-shell-pad-top: 38px;
+    --azro-proof-line-top: 18px;
+    --azro-proof-line-left: 22px;
+    --azro-proof-line-width: 68px;
+    --azro-proof-toggle-size: 56px;
+    --azro-proof-toggle-gutter: 96px;
+    --azro-proof-title-measure: 17.5ch;
+    --azro-proof-copy-measure: 36ch;
+  }
+
+  .resources-page .product-docs-grid--proof,
+  .support-page .product-docs-grid--proof,
+  .support-page .product-docs-grid--support,
+  .support-page .resource-utilities-grid--support{
+    align-items: stretch !important;
+  }
+
+  .resources-page .product-docs-grid--proof > details,
+  .support-page .product-docs-grid--proof > details,
+  .support-page .product-docs-grid--support > details,
+  .support-page .resource-utilities-grid--support > details{
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  .resources-page :is(.product-docs-card, .core-disclosures-card),
+  .support-page :is(.product-docs-card, .resource-utility-card, .core-disclosures-card){
+    padding-top: var(--azro-proof-shell-pad-top) !important;
+  }
+
+  .resources-page :is(.product-docs-card, .core-disclosures-card)::after,
+  .support-page :is(.product-docs-card, .resource-utility-card, .core-disclosures-card)::after{
+    top: var(--azro-proof-line-top) !important;
+    left: var(--azro-proof-line-left) !important;
+    width: var(--azro-proof-line-width) !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary,
+  .support-page details.product-guide > summary.product-guide__summary{
+    position: relative !important;
+    min-height: 0 !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    padding: 12px var(--azro-proof-toggle-gutter) 8px 0 !important;
+    text-align: left !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary > div,
+  .support-page details.product-guide > summary.product-guide__summary > div{
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary::after,
+  .support-page details.product-guide > summary.product-guide__summary::after{
+    position: absolute !important;
+    top: 50% !important;
+    right: 0 !important;
+    width: var(--azro-proof-toggle-size) !important;
+    height: var(--azro-proof-toggle-size) !important;
+    margin: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    transform: translateY(-50%) !important;
+    align-self: auto !important;
+    border-radius: 999px !important;
+    background: rgba(255,255,255,.03) !important;
+    border: 1px solid rgba(146,165,244,.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04) !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary :is(h2, .section-title),
+  .support-page details.product-guide > summary.product-guide__summary :is(h2, .section-title){
+    width: min(100%, var(--azro-proof-title-measure)) !important;
+    max-width: var(--azro-proof-title-measure) !important;
+    margin: 0 !important;
+    font-size: clamp(1.62rem, 1.5vw, 2rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.028em !important;
+    text-align: left !important;
+    text-wrap: balance !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary :is(.small, .section-sub),
+  .support-page details.product-guide > summary.product-guide__summary :is(.small, .section-sub){
+    width: min(100%, var(--azro-proof-copy-measure)) !important;
+    max-width: var(--azro-proof-copy-measure) !important;
+    margin: 10px 0 0 !important;
+    font-size: clamp(1rem, .18vw + .95rem, 1.06rem) !important;
+    line-height: 1.46 !important;
+    text-align: left !important;
+    text-wrap: pretty !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary :is(.center),
+  .support-page details.product-guide > summary.product-guide__summary :is(.center){
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 980px){
+  .resources-page,
+  .support-page{
+    --azro-proof-shell-pad-top: 36px;
+    --azro-proof-line-top: 18px;
+    --azro-proof-line-left: 22px;
+    --azro-proof-line-width: 68px;
+    --azro-proof-toggle-size: 52px;
+    --azro-proof-toggle-gutter: 86px;
+    --azro-proof-title-measure: 12.8ch;
+    --azro-proof-copy-measure: 23ch;
+  }
+
+  .resources-page :is(.product-docs-card, .core-disclosures-card),
+  .support-page :is(.product-docs-card, .resource-utility-card, .core-disclosures-card){
+    padding-top: var(--azro-proof-shell-pad-top) !important;
+  }
+
+  .resources-page :is(.product-docs-card, .core-disclosures-card)::after,
+  .support-page :is(.product-docs-card, .resource-utility-card, .core-disclosures-card)::after{
+    top: var(--azro-proof-line-top) !important;
+    left: var(--azro-proof-line-left) !important;
+    width: var(--azro-proof-line-width) !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary,
+  .support-page details.product-guide > summary.product-guide__summary{
+    position: relative !important;
+    min-height: 0 !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    padding: 10px var(--azro-proof-toggle-gutter) 6px 0 !important;
+    text-align: left !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary > div,
+  .support-page details.product-guide > summary.product-guide__summary > div{
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary::after,
+  .support-page details.product-guide > summary.product-guide__summary::after{
+    position: absolute !important;
+    top: 8px !important;
+    right: 0 !important;
+    width: var(--azro-proof-toggle-size) !important;
+    height: var(--azro-proof-toggle-size) !important;
+    margin: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    transform: none !important;
+    align-self: auto !important;
+    border-radius: 999px !important;
+    background: rgba(255,255,255,.03) !important;
+    border: 1px solid rgba(146,165,244,.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04) !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary :is(h2, .section-title),
+  .support-page details.product-guide > summary.product-guide__summary :is(h2, .section-title){
+    width: min(100%, var(--azro-proof-title-measure)) !important;
+    max-width: var(--azro-proof-title-measure) !important;
+    margin: 0 !important;
+    font-size: clamp(1.72rem, 8.15vw, 2.24rem) !important;
+    line-height: 1.01 !important;
+    letter-spacing: -.036em !important;
+    text-align: left !important;
+    text-wrap: balance !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary :is(.small, .section-sub),
+  .support-page details.product-guide > summary.product-guide__summary :is(.small, .section-sub){
+    width: min(100%, var(--azro-proof-copy-measure)) !important;
+    max-width: var(--azro-proof-copy-measure) !important;
+    margin: 8px 0 0 !important;
+    font-size: 1rem !important;
+    line-height: 1.42 !important;
+    text-align: left !important;
+    text-wrap: pretty !important;
+  }
+
+  .resources-page details.product-guide > summary.product-guide__summary :is(.center),
+  .support-page details.product-guide > summary.product-guide__summary :is(.center){
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
