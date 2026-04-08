@@ -1,0 +1,188 @@
+/* Final polish v222 — mobile image fullscreen completion + font quality lock
+   Scope: lock premium typography without shifting the body/UI system,
+   make static image fullscreen behavior feel intentional on mobile,
+   and extend fullscreen support to pricing QR images.
+   No desktop layout changes by design. */
+
+:root{
+  --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-head: "Sora", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-display: "Sora", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea{
+  font-kerning: normal;
+}
+
+.features-page .features-hero-body--caps,
+.features-page .feature-mini-grid--full .feature-card__label,
+.features-page .features-hero-body--editorial,
+.home .home-story-bridge,
+.home-story-bridge-block .home-story-bridge{
+  font-family: var(--font-head) !important;
+}
+
+.pricing-page .crypto-address-qr{
+  cursor: zoom-in;
+  touch-action: manipulation;
+}
+
+.pricing-page .crypto-address-qr-wrap{
+  position: relative !important;
+  isolation: isolate;
+}
+
+.image-lightbox__figure img[data-qr-fullscreen="1"]{
+  width: min(88vw, 460px) !important;
+  max-width: min(88vw, 460px) !important;
+  max-height: min(88vw, 460px) !important;
+  height: auto !important;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 22px;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(0,0,0,.05) !important;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+@media (max-width: 980px){
+  .image-lightbox{
+    padding: 0 !important;
+    overscroll-behavior: contain;
+  }
+
+  .image-lightbox .modal__dialog{
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100svh !important;
+    max-height: 100svh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding:
+      calc(14px + env(safe-area-inset-top, 0px))
+      max(14px, env(safe-area-inset-right, 0px))
+      calc(14px + env(safe-area-inset-bottom, 0px))
+      max(14px, env(safe-area-inset-left, 0px)) !important;
+    border-radius: 0 !important;
+    display: grid !important;
+    align-content: center !important;
+  }
+
+  .image-lightbox__figure{
+    gap: 12px !important;
+    min-height: 100% !important;
+    align-content: center !important;
+  }
+
+  .image-lightbox__figure img{
+    max-height: calc(100svh - 132px) !important;
+    max-height: calc(100dvh - 132px) !important;
+  }
+
+  .image-lightbox__caption{
+    width: min(100%, 42rem) !important;
+    margin-inline: auto !important;
+    font-size: .94rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .media-frame--figure .media-fullscreen-btn,
+  .pricing-page .crypto-address-qr-wrap .media-fullscreen-btn{
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid rgba(165,183,255,.32) !important;
+    background: linear-gradient(180deg, rgba(18,24,43,.94), rgba(10,14,27,.92)) !important;
+    color: var(--text-head) !important;
+    box-shadow:
+      0 16px 32px rgba(0,0,0,.28),
+      inset 0 1px 0 rgba(255,255,255,.06) !important;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    transition:
+      transform .18s ease,
+      box-shadow .18s ease,
+      background .18s ease;
+  }
+
+  .media-frame--figure .media-fullscreen-btn:hover,
+  .media-frame--figure .media-fullscreen-btn:focus-visible,
+  .pricing-page .crypto-address-qr-wrap .media-fullscreen-btn:hover,
+  .pricing-page .crypto-address-qr-wrap .media-fullscreen-btn:focus-visible{
+    transform: translateY(-1px);
+    box-shadow:
+      0 20px 36px rgba(0,0,0,.32),
+      inset 0 1px 0 rgba(255,255,255,.08) !important;
+  }
+
+  .media-frame--figure .media-fullscreen-btn{
+    top: 14px !important;
+    right: 14px !important;
+    width: auto !important;
+    min-width: 118px !important;
+    height: 42px !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+    font-family: var(--font-body) !important;
+    font-size: .75rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: .012em !important;
+    text-transform: none !important;
+  }
+
+  .pricing-page .crypto-address-qr-wrap .media-fullscreen-btn{
+    top: 8px !important;
+    right: 8px !important;
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    border-radius: 12px !important;
+    font-family: var(--font-body) !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+}
+
+@media (max-width: 640px){
+  .media-frame--figure .media-fullscreen-btn{
+    top: 10px !important;
+    right: 10px !important;
+    min-width: 112px !important;
+    height: 40px !important;
+    padding: 0 12px !important;
+    font-size: .72rem !important;
+  }
+
+  .pricing-page .crypto-address-qr-wrap .media-fullscreen-btn{
+    top: 7px !important;
+    right: 7px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    border-radius: 11px !important;
+    font-size: .96rem !important;
+  }
+
+  .image-lightbox__figure img[data-qr-fullscreen="1"]{
+    width: min(86vw, 400px) !important;
+    max-width: min(86vw, 400px) !important;
+    max-height: min(86vw, 400px) !important;
+  }
+
+  .image-lightbox__caption{
+    font-size: .9rem !important;
+  }
+}
