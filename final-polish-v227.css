@@ -1,0 +1,181 @@
+/* Final publish v227: lock the richer shell accent line, keep every media View CTA
+   bottom-left, and make mobile image fullscreen/lightbox behavior match the cleaner
+   video fullscreen experience without touching unrelated layout. */
+
+:root{
+  --azro-accent-line-short: linear-gradient(90deg,
+    rgba(166, 210, 255, .98) 0%,
+    rgba(119, 161, 255, .95) 46%,
+    rgba(128, 96, 255, .78) 82%,
+    rgba(128, 96, 255, .14) 100%);
+  --azro-view-pill-left: clamp(16px, 1.4vw, 20px);
+  --azro-view-pill-bottom: clamp(16px, 1.4vw, 20px);
+}
+
+:where(
+  .home .home-guide,
+  .philosophy-page .philosophy-guide,
+  .pricing-page .pricing-section-shell,
+  .pricing-page .plan-card,
+  .pricing-page .product-guide,
+  .products-page .product-card,
+  .products-page .product-guide,
+  .features-page .product-guide,
+  .resources-page .product-docs-card,
+  .resources-page .resource-utility-card,
+  .resources-page .core-disclosures-card,
+  .support-page .product-docs-card,
+  .support-page .resource-utility-card,
+  .support-page .core-disclosures-card,
+  .contact-page .contact-card,
+  .contact-page .contact-band-card,
+  .hero .card.card--narrow.center.stack,
+  .modal__dialog--trial .trial-option,
+  .site-footer .footer-signup
+)::after,
+.site-footer .footer-signup__accent{
+  background: var(--azro-accent-line-short) !important;
+}
+
+.media-gallery[data-gallery-root] .media-gallery__overlay{
+  justify-content: flex-start !important;
+  align-items: flex-end !important;
+  padding: clamp(14px, 1.15vw, 18px) !important;
+}
+
+.media-gallery[data-gallery-root] .media-gallery__launch-cta,
+.media-frame--figure .media-fullscreen-btn{
+  min-width: 96px !important;
+  height: 40px !important;
+  padding: 0 18px !important;
+  font: 700 .92rem/1 var(--font-sans) !important;
+  letter-spacing: -.01em !important;
+  white-space: nowrap !important;
+}
+
+.media-frame--figure .media-fullscreen-btn{
+  inset: auto auto var(--azro-view-pill-bottom) var(--azro-view-pill-left) !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: var(--azro-view-pill-bottom) !important;
+  left: var(--azro-view-pill-left) !important;
+  transform: none !important;
+}
+
+.image-lightbox.is-image-fullscreen .modal__close,
+.image-lightbox.is-image-fullscreen .image-lightbox__fullscreen,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .gallery-lightbox__switch,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .gallery-lightbox__fullscreen,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .modal__close,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .media-gallery__nav,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .gallery-lightbox__footer{
+  display: none !important;
+}
+
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .gallery-lightbox__viewport,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .gallery-lightbox__stage,
+.gallery-lightbox.is-gallery-fullscreen.is-image-mode .gallery-lightbox__stage img{
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 980px){
+  .media-gallery[data-gallery-root] .media-gallery__overlay{
+    padding: 12px !important;
+  }
+
+  .media-gallery[data-gallery-root] .media-gallery__launch-cta,
+  .media-frame--figure .media-fullscreen-btn{
+    min-width: 92px !important;
+    height: 38px !important;
+    padding: 0 16px !important;
+    font-size: .9rem !important;
+  }
+
+  .media-frame--figure .media-fullscreen-btn{
+    inset: auto auto 14px 14px !important;
+    bottom: 14px !important;
+    left: 14px !important;
+    top: auto !important;
+    right: auto !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox .modal__close,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .modal__close{
+    top: calc(env(safe-area-inset-top, 0px) + 12px) !important;
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 16px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen{
+    right: 64px !important;
+  }
+
+  .gallery-lightbox .modal__close,
+  .gallery-lightbox.is-gallery-fullscreen .modal__close{
+    right: 10px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch{
+    top: calc(env(safe-area-inset-top, 0px) + 66px) !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    justify-content: stretch !important;
+    padding: 4px !important;
+    gap: 4px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch .media-gallery__mode,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch .media-gallery__mode{
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 40px !important;
+    padding: 0 10px !important;
+    font-size: .92rem !important;
+  }
+}
+
+@media (max-width: 640px){
+  .media-gallery[data-gallery-root] .media-gallery__launch-cta,
+  .media-frame--figure .media-fullscreen-btn{
+    min-width: 84px !important;
+    height: 36px !important;
+    padding: 0 15px !important;
+    font-size: .88rem !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox .modal__close,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .modal__close{
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 15px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen{
+    right: 60px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch{
+    top: calc(env(safe-area-inset-top, 0px) + 62px) !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch .media-gallery__mode,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch .media-gallery__mode{
+    height: 38px !important;
+    font-size: .9rem !important;
+  }
+}

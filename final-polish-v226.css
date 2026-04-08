@@ -1,0 +1,153 @@
+/* Final publish v226: align media View controls, remove mobile control overlap,
+   and lock feature/gallery image actions to the site-wide control rhythm. */
+
+:root{
+  --azro-view-pill-left: clamp(16px, 1.4vw, 20px);
+  --azro-view-pill-bottom: clamp(16px, 1.4vw, 20px);
+}
+
+/* Gallery preview cards: keep the View CTA bottom-left on desktop and mobile so the whole site reads as one system. */
+.media-gallery[data-gallery-root] .media-gallery__overlay{
+  justify-content: flex-start !important;
+  align-items: flex-end !important;
+  padding: clamp(14px, 1.15vw, 18px) !important;
+}
+
+.media-gallery[data-gallery-root] .media-gallery__launch-cta{
+  min-width: 96px !important;
+  height: 40px !important;
+  padding: 0 18px !important;
+  border-radius: 999px !important;
+  font: 700 .92rem/1 var(--font-sans) !important;
+  letter-spacing: -.01em !important;
+  white-space: nowrap !important;
+}
+
+/* Static feature/page figures: same lower-left View CTA language as the gallery cards. */
+.media-fullscreen-btn{
+  display: inline-flex !important;
+  position: absolute !important;
+  inset: auto auto var(--azro-view-pill-bottom) var(--azro-view-pill-left) !important;
+  z-index: 4 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 96px !important;
+  height: 40px !important;
+  padding: 0 18px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(194, 203, 227, .18) !important;
+  background: rgba(8, 14, 30, .90) !important;
+  color: rgba(244, 247, 255, .96) !important;
+  font: 700 .92rem/1 var(--font-sans) !important;
+  letter-spacing: -.01em !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.05) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.media-fullscreen-btn::before{
+  content: none !important;
+}
+
+.media-fullscreen-btn:hover,
+.media-fullscreen-btn:focus-visible,
+.media-gallery[data-gallery-root] .media-gallery__launch:hover .media-gallery__launch-cta,
+.media-gallery[data-gallery-root] .media-gallery__launch:focus-visible .media-gallery__launch-cta{
+  transform: translateY(-1px) !important;
+  border-color: rgba(205, 213, 236, .22) !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+/* Mobile gallery/lightbox controls: reserve dedicated space for fullscreen + close so nothing overlaps. */
+@media (max-width: 980px){
+  .media-gallery[data-gallery-root] .media-gallery__overlay{
+    padding: 12px !important;
+  }
+
+  .media-gallery[data-gallery-root] .media-gallery__launch-cta,
+  .media-fullscreen-btn{
+    min-width: 92px !important;
+    height: 38px !important;
+    padding: 0 16px !important;
+    font-size: .9rem !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch{
+    left: 12px !important;
+    right: 136px !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    justify-content: stretch !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch .media-gallery__mode,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch .media-gallery__mode{
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 0 12px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen{
+    right: 74px !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 17px !important;
+  }
+
+  .gallery-lightbox .modal__close,
+  .gallery-lightbox.is-gallery-fullscreen .modal__close{
+    right: 12px !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 17px !important;
+  }
+}
+
+@media (max-width: 640px){
+  .media-gallery[data-gallery-root] .media-gallery__launch-cta,
+  .media-fullscreen-btn{
+    min-width: 84px !important;
+    height: 36px !important;
+    padding: 0 15px !important;
+    font-size: .88rem !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch{
+    left: 10px !important;
+    right: 118px !important;
+    padding: 4px !important;
+    gap: 4px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__switch .media-gallery__mode,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__switch .media-gallery__mode{
+    height: 40px !important;
+    padding: 0 10px !important;
+    font-size: .92rem !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen,
+  .gallery-lightbox .modal__close,
+  .gallery-lightbox.is-gallery-fullscreen .modal__close{
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 16px !important;
+  }
+
+  .gallery-lightbox .gallery-lightbox__fullscreen,
+  .gallery-lightbox.is-gallery-fullscreen .gallery-lightbox__fullscreen{
+    right: 64px !important;
+  }
+
+  .gallery-lightbox .modal__close,
+  .gallery-lightbox.is-gallery-fullscreen .modal__close{
+    right: 10px !important;
+  }
+}
