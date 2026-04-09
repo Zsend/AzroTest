@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Letters from inside | A Right For All</title>
+  <meta name="description" content="Featured typed excerpts and the full archive of original letters from inside the Idaho system." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://arightforall.com/letters.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="letters">
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="A Right For All home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>A Right For All</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#why">Why</a>
+        <a href="index.html#vision">Vision</a>
+        <a href="index.html#plan">Plan</a>
+        <a href="index.html#get-involved">Get involved</a>
+      </nav>
+      <a class="nav-cta" href="index.html#get-involved" data-intent="Join the movement">Join</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Original letters from inside</p>
+          <h1 class="display" style="font-size:clamp(2.8rem,6vw,5rem);max-width:12ch">21 letters that came back from inside the system.</h1>
+          <p class="section-copy">These letters came back after the idea was shared in Idaho. They do not speak for every person inside. They do show that the need is real, the desire to learn is real, and the demand for a better baseline is not theoretical.</p>
+        </div>
+        <div class="notice">Featured letters below include typed excerpts for readability. The full archive is also linked as original handwritten PDFs.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Featured excerpts</p>
+          <h2 class="display">Readable, paired with the originals.</h2>
+        </div>
+        <div id="featured-letters" class="letter-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Full archive</p>
+          <h2 class="display">Every original letter included.</h2>
+          <p class="section-copy">If you want to see the archive exactly as it was written, start here.</p>
+        </div>
+        <div id="archive-letters" class="archive-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="get-involved">
+      <div class="container">
+        <div class="join">
+          <div class="join-grid">
+            <div>
+              <p class="section-label" style="color:rgba(255,255,255,.68);margin-bottom:.5rem">What now</p>
+              <h2 class="display">If these letters make the case feel obvious, help make it unavoidable.</h2>
+              <p>The next phase needs signal, allies, expertise, and funding. If you want to help move this from testimony to infrastructure, say so.</p>
+            </div>
+            <div class="form-card">
+              <form id="get-involved-form" data-email="hello@arightforall.com">
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" />
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+                  </div>
+                  <div class="field">
+                    <label for="organization">Organization</label>
+                    <input id="organization" name="organization" type="text" autocomplete="organization" placeholder="Optional" />
+                  </div>
+                  <div class="field">
+                    <label for="interest-type">I’m here to…</label>
+                    <select id="interest-type" name="intent">
+                      <option>Join the movement</option>
+                      <option>Share a story</option>
+                      <option>Partner or advise</option>
+                      <option>Support the first phase</option>
+                    </select>
+                  </div>
+                  <div class="field field-full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us what you want to contribute, ask, or support."></textarea>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button class="btn btn-primary" type="submit">Open draft email</button>
+                  <a class="btn btn-secondary" href="mailto:hello@arightforall.com">Email directly</a>
+                </div>
+                <p class="form-note" id="form-status">This first version uses email so conversations arrive with context and no submissions disappear into a generic inbox.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="letter-dialog" class="dialog" aria-labelledby="letter-dialog-title">
+      <div class="dialog-shell">
+        <div class="dialog-media">
+          <img data-letter-image src="" alt="" />
+        </div>
+        <div class="dialog-body">
+          <div class="dialog-top">
+            <div>
+              <h3 id="letter-dialog-title" class="display" data-letter-title></h3>
+              <p class="dialog-kicker" data-letter-kicker></p>
+            </div>
+            <button class="dialog-close" type="button" aria-label="Close letter" data-close-letter>×</button>
+          </div>
+          <div class="dialog-quote" data-letter-quote></div>
+          <div class="dialog-copy" data-letter-summary></div>
+          <div data-letter-transcript></div>
+          <div class="dialog-actions">
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener" data-letter-pdf>Open original PDF</a>
+            <a class="btn btn-secondary" href="index.html#get-involved">Join the movement</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> A Right For All</div>
+        <div><a href="index.html">Back to the homepage</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/letters-data.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
