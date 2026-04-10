@@ -1,0 +1,268 @@
+/* v244 support/proof section-card consistency lock */
+
+:root {
+  --azro-support-proof-grid-gap: 16px;
+}
+
+/* Match the standard section-card grid rhythm used elsewhere on the site */
+body.support-page .product-docs-grid--support,
+body.support-page .resource-utilities-grid--support,
+body.resources-page:not(.support-page) .product-docs-grid--proof {
+  gap: var(--azro-support-proof-grid-gap) !important;
+  align-items: stretch !important;
+}
+
+body.support-page .resource-utilities-grid--support {
+  margin-top: var(--azro-support-proof-grid-gap) !important;
+  padding-top: 0 !important;
+}
+
+/* Make support/proof cards use the exact same section-card summary system */
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide {
+  --azro-card-shell-y: clamp(16px, 3.4vw, 26px);
+  --azro-summary-layout-y: clamp(9px, 0.82vw, 11px);
+  --azro-summary-optical-lift: 4px;
+  padding: clamp(16px, 3.4vw, 26px) !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary {
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  text-align: left !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-wrap: balance !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary > div,
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary > .product-guide__summary-copy {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  justify-content: start !important;
+  justify-items: start !important;
+  align-content: center !important;
+  flex: 1 1 auto !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding-top: var(--azro-summary-layout-y) !important;
+  padding-bottom: var(--azro-summary-layout-y) !important;
+  padding-right: clamp(84px, 8vw, 108px) !important;
+  gap: var(--azro-section-card-copy-gap) !important;
+  transform: translateY(calc(-1 * var(--azro-summary-optical-lift))) !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary h2,
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary .section-title {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  margin-inline: 0 !important;
+  padding: 0 !important;
+  justify-self: stretch !important;
+  font-size: var(--azro-section-card-title-size) !important;
+  line-height: var(--azro-section-card-title-line) !important;
+  letter-spacing: var(--azro-section-card-title-track) !important;
+  text-align: left !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary .small,
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary p {
+  display: block !important;
+  width: min(100%, var(--azro-section-card-body-max)) !important;
+  max-width: var(--azro-section-card-body-max) !important;
+  margin: 0 !important;
+  margin-inline: 0 !important;
+  padding: 0 !important;
+  justify-self: start !important;
+  font-family: Inter, var(--font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.42 !important;
+  color: var(--azro-accent-text-subtle) !important;
+  text-align: left !important;
+  white-space: normal !important;
+  text-wrap: pretty !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary::after {
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  justify-self: auto !important;
+  margin: 0 !important;
+  font-size: 1.35rem !important;
+  line-height: 1 !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__body {
+  padding-top: 14px !important;
+  text-align: left !important;
+}
+
+/* Closed-card bottom spacing should mirror the other dropdown-card pages */
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide:not([open]) {
+  padding-bottom: clamp(10px, 2.1vw, 16px) !important;
+}
+
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide:not([open]) .product-guide__summary > div,
+:is(body.support-page, body.resources-page:not(.support-page)) details.product-guide:not([open]) .product-guide__summary > .product-guide__summary-copy {
+  padding-bottom: clamp(5px, 0.62vw, 8px) !important;
+}
+
+/* Keep the lower utility cards centered at single-card width on desktop */
+body.support-page #support-links,
+body.resources-page:not(.support-page) #core-docs {
+  width: calc((100% - var(--azro-support-proof-grid-gap)) / 2) !important;
+  max-width: calc((100% - var(--azro-support-proof-grid-gap)) / 2) !important;
+  margin: var(--azro-support-proof-grid-gap) auto 0 !important;
+}
+
+body.support-page #support-links[open],
+body.resources-page:not(.support-page) #core-docs[open] {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.support-page #support-links .core-doc-grid,
+body.resources-page:not(.support-page) #core-docs .core-doc-grid {
+  width: 100% !important;
+  max-width: none !important;
+  gap: 14px !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+body.support-page #support-links[open] .core-doc-grid,
+body.resources-page:not(.support-page) #core-docs[open] .core-doc-grid {
+  max-width: 1040px !important;
+  margin-inline: auto !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+@media (max-width: 1100px) {
+  body.support-page #support-links[open] .core-doc-grid,
+  body.resources-page:not(.support-page) #core-docs[open] .core-doc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide {
+    --azro-summary-layout-y: clamp(8px, 2.2vw, 10px);
+    --azro-summary-optical-lift: 3px;
+  }
+
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary {
+    gap: 12px !important;
+  }
+
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary > div,
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide .product-guide__summary > .product-guide__summary-copy {
+    padding-right: clamp(72px, 14vw, 96px) !important;
+  }
+
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide:not([open]) {
+    padding-bottom: clamp(10px, 2.9vw, 14px) !important;
+  }
+
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide:not([open]) .product-guide__summary > div,
+  :is(body.support-page, body.resources-page:not(.support-page)) details.product-guide:not([open]) .product-guide__summary > .product-guide__summary-copy {
+    padding-bottom: clamp(5px, 1.2vw, 7px) !important;
+  }
+
+  body.support-page #support-links,
+  body.resources-page:not(.support-page) #core-docs {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body.support-page #support-links .core-doc-grid,
+  body.resources-page:not(.support-page) #core-docs .core-doc-grid,
+  body.support-page #support-links[open] .core-doc-grid,
+  body.resources-page:not(.support-page) #core-docs[open] .core-doc-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v245 final support/proof dropdown-card parity */
+body.support-page #product-support .product-docs-grid--support > details.product-guide,
+body.support-page #product-support .resource-utilities-grid--support > details.product-guide,
+body.resources-page:not(.support-page) #downloads .product-docs-grid--proof > details.product-guide {
+  align-self: stretch !important;
+  justify-self: stretch !important;
+  height: 100% !important;
+}
+
+body.support-page #support-links > summary.product-guide__summary > .product-guide__summary-copy,
+body.resources-page:not(.support-page) #core-docs > summary.product-guide__summary > .product-guide__summary-copy {
+  padding-top: var(--azro-summary-layout-y) !important;
+  padding-right: clamp(84px, 8vw, 108px) !important;
+  padding-bottom: clamp(5px, 0.62vw, 8px) !important;
+  transform: translateY(calc(-1 * var(--azro-summary-optical-lift))) !important;
+}
+
+body.support-page #support-links > summary.product-guide__summary h2,
+body.support-page #support-links > summary.product-guide__summary .section-title,
+body.resources-page:not(.support-page) #core-docs > summary.product-guide__summary h2,
+body.resources-page:not(.support-page) #core-docs > summary.product-guide__summary .section-title {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  font-size: var(--azro-section-card-title-size) !important;
+  line-height: var(--azro-section-card-title-line) !important;
+  letter-spacing: var(--azro-section-card-title-track) !important;
+  text-align: left !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+}
+
+body.support-page #support-links > summary.product-guide__summary p.small,
+body.resources-page:not(.support-page) #core-docs > summary.product-guide__summary p.small {
+  width: min(100%, var(--azro-section-card-body-max)) !important;
+  max-width: var(--azro-section-card-body-max) !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+@media (max-width: 980px) {
+  body.support-page #support-links > summary.product-guide__summary > .product-guide__summary-copy,
+  body.resources-page:not(.support-page) #core-docs > summary.product-guide__summary > .product-guide__summary-copy {
+    padding-right: clamp(72px, 14vw, 96px) !important;
+    padding-bottom: clamp(5px, 1.2vw, 7px) !important;
+  }
+}
+
+
+/* v245 support spacing parity */
+body.support-page .resource-utilities-grid--support {
+  margin-top: 24px !important;
+}
+
+body.support-page #support-links {
+  margin-top: 24px !important;
+}
+
+@media (max-width: 980px) {
+  body.support-page .resource-utilities-grid--support {
+    margin-top: 20px !important;
+  }
+
+  body.support-page #support-links {
+    margin-top: 20px !important;
+  }
+}
