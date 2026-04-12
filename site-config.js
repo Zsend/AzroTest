@@ -1,1 +1,0 @@
-window.RS_CONFIG = { reviewEmail: 'review@reservestandard.com', treasuryEmail: 'treasury@reservestandard.com' };
