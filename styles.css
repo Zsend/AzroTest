@@ -1,0 +1,183 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background-color: #F8F4E2;  /* Soft Light Beige Background */
+    color: #333333; /* Dark Gray Text */
+    font-size: 16px;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 120px 0;
+    background: linear-gradient(145deg, #4B7F7E, #A8E6CF); /* Muted Teal and Soft Mint Green */
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeInHeader 1s ease-in-out;
+}
+
+@keyframes fadeInHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    animation: typewriter 3s steps(30) 1s forwards;
+}
+
+header p {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+/* Section Styles */
+.section {
+    padding: 100px 0;
+    position: relative;
+    opacity: 1;
+    animation: fadeInSection 1s ease-out 1s forwards;
+    transition: background-color 0.5s ease;
+    min-height: 100vh; /* Ensure sections fill screen */
+}
+
+/* About Section */
+#about {
+    background-color: #A8E6CF; /* Soft Mint Green */
+    color: #333;
+}
+
+#about .second-background {
+    background-color: #F4E1D2; /* Light Beige (second background) */
+}
+
+/* Other Sections */
+#mission {
+    background-color: #4B7F7E; /* Muted Teal */
+    color: #fff;
+}
+
+#why-it-matters {
+    background-color: #A0C4FF; /* Soft Blue */
+    color: #333;
+}
+
+#get-involved {
+    background-color: #FFB4A2; /* Soft Peach (updated) */
+    color: #333;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #4B7F7E; /* Muted Teal */
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer p {
+    color: #fff;
+}
+
+/* Section Title Styling */
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    opacity: 1;
+    animation: slideIn 1s ease-out forwards;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333; /* Dark Text for readability */
+    opacity: 1;
+    animation: fadeInText 1s ease-out 0.5s forwards;
+}
+
+/* Hover Effects */
+a {
+    color: #4B7F7E; /* Muted Teal for Links */
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+}
+
+a:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #4B7F7E;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    header {
+        padding: 80px 0;
+    }
+
+    footer {
+        padding: 20px 0;
+    }
+
+    p {
+        font-size: 1rem; /* Adjust font size for better readability */
+    }
+}
