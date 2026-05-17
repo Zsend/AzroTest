@@ -1466,3 +1466,68 @@ body.is-scrolled .site-header{
     transform:none !important;
   }
 }
+
+/* =====================================================================
+   Brand Canon v1.1 — copy-pass v2 refinements (added 2026-05-17)
+   Fixes per founder review of v1 stealth-gate test deploy:
+   - Big serif H2 line-height (descenders were touching ascenders below)
+   - Proof-table header (the washed-out grey box on dark surface)
+   - Stack-card and band-card serif headings (same tight-leading issue)
+   ===================================================================== */
+
+/* H2 line-height — give big serif headlines breathing room.
+   Original was .94, which works for shorter copy but breaks visually
+   when the H2 wraps to 4+ lines (founder feedback: lines touching). */
+.section-intro h2,
+.page-title {
+  line-height: 1.05;
+}
+
+/* Hero ledger card title — slightly tighter but still readable */
+.ledger-title {
+  line-height: 1.0;
+}
+
+/* Stack-card serif titles — same fix, scaled */
+.stack-card h3,
+.band-card h3 {
+  line-height: 1.1;
+}
+
+/* Outcome card value display — keep punchy but legible */
+.outcome-card .value {
+  line-height: 1.04;
+}
+
+/* Hero title — give the H1 same breathing room when it wraps */
+.hero-title {
+  line-height: 1.04;
+}
+
+/* Final-CTA title and review-launch title — same family */
+.final-cta-title,
+.review-launch-title {
+  line-height: 1.08;
+}
+
+/* PROOF TABLE HEADER on dark surface — replace washed-grey block
+   with a clean Reserve-green underline + transparent background.
+   Original `background:rgba(255,255,255,.55)` reads as a flat grey box
+   over the dark proof-shell. The matrix-table on light surfaces keeps
+   the original treatment. */
+.proof-shell .proof-table thead th {
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  padding-bottom: 14px;
+  letter-spacing: 2.5px;
+}
+.proof-shell .proof-table th {
+  color: #a2afc2;
+}
+/* Add small Reserve-green accent under the entire thead row */
+.proof-shell .proof-table thead tr {
+  position: relative;
+}
+.proof-shell .proof-table thead {
+  border-bottom: 2px solid rgba(10, 138, 123, 0.55);
+}

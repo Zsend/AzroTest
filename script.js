@@ -306,12 +306,15 @@
       }
 
       if (section.id === 'process') {
-        const processProgress = ramp(progress, 0.02, 0.54);
-        const processSweep = ramp(progress, 0.04, 0.48);
+        // v2 timing fix: animation must complete before user scrolls past.
+        // Cards now stagger faster (0.08 vs 0.13) with tighter span (0.20 vs 0.28)
+        // so card 4 finishes around section progress 0.46 instead of 0.71.
+        const processProgress = ramp(progress, 0.01, 0.36);
+        const processSweep = ramp(progress, 0.02, 0.32);
         section.style.setProperty('--process-progress', processProgress.toFixed(3));
         if (processGrid) processGrid.style.setProperty('--process-sweep', processSweep.toFixed(3));
         processCards.forEach((card, idx) => {
-          const stepProgress = ramp(progress, idx * 0.13 + 0.04, 0.28);
+          const stepProgress = ramp(progress, idx * 0.08 + 0.02, 0.20);
           card.style.setProperty('--process-card-progress', stepProgress.toFixed(3));
         });
       }
