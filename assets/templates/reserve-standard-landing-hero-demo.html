@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reserve Standard — landing hero demo</title>
+<link rel="stylesheet" href="../..//tokens/reserve-standard-design-tokens.css">
+<style>
+html,body{margin:0;padding:0;background:#F4F1E8;color:#0C1A33;font-family:var(--rs-ui-font);}
+*{box-sizing:border-box}
+.shell{max-width:1480px;margin:0 auto;padding:28px 28px 64px}
+.header{display:flex;justify-content:space-between;align-items:center;padding:8px 0 28px}
+.header img.wordmark{height:20px;width:auto}
+.header .nav{display:flex;gap:24px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#71829C;align-items:center}
+.header .nav img{width:42px;height:42px}
+.hero{display:grid;grid-template-columns:1.1fr .82fr;gap:28px;align-items:start}
+.panel{position:relative;min-height:760px;border-radius:34px;overflow:hidden;background:linear-gradient(180deg,#091A33,#061328);box-shadow:var(--rs-shadow-panel);padding:40px}
+.panel::before{content:"";position:absolute;inset:0;background:
+linear-gradient(to right, rgba(36,65,96,.34) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(36,65,96,.28) 1px, transparent 1px);
+background-size:88px 100%,100% 80px;pointer-events:none}
+.glow{position:absolute;right:120px;bottom:120px;width:360px;height:360px;background:rgba(10,138,123,.13);filter:blur(78px)}
+.kicker{position:relative;z-index:1;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#A6B3C8}
+.rule{position:relative;z-index:1;margin:16px 0;width:44px;height:4px;border-radius:2px;background:#0A8A7B}
+.stack img{position:relative;z-index:1;width:640px;max-width:100%;height:auto;display:block;margin-top:90px}
+.lead{position:relative;z-index:1;max-width:640px;color:#D3DCE8;font-size:20px;line-height:1.6;margin-top:28px}
+.sidecard{background:#FCFBF7;border:1px solid #D7CFBF;border-radius:28px;padding:34px;box-shadow:0 12px 40px rgba(6,19,40,.05)}
+.sidecard h2{font-size:24px;margin:0 0 14px;color:#061328}
+.sidecard p{margin:0;color:#68788F;font-size:16px;line-height:1.7}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
+.tile{border:1px solid #D7CFBF;border-radius:20px;padding:18px;background:#FFFEFB}
+.tile strong{display:block;margin-bottom:8px;color:#061328}
+.tile span{color:#708199;font-size:14px;line-height:1.55}
+@media (max-width:1100px){.hero{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="header">
+    <img class="wordmark" src="../logos/png/reserve-standard-wordmark-horizontal-navy-1200.png" alt="Reserve Standard">
+    <div class="nav">
+      <span>Platform</span><span>Method</span><span>Security</span>
+      <img src="../logos/png/reserve-standard-monogram-tile-dark-128.png" alt="">
+    </div>
+  </header>
+  <section class="hero">
+    <div class="panel">
+      <div class="glow"></div>
+      <div class="kicker">Bitcoin treasury system for owner-led businesses</div>
+      <div class="rule"></div>
+      <div class="stack"><img src="../logos/png/reserve-standard-wordmark-stacked-bone@4x.png" alt="Reserve Standard"></div>
+      <div class="lead">Protect operations, preserve liquidity, and build Bitcoin reserve exposure with a calmer treasury system.</div>
+    </div>
+    <div class="sidecard">
+      <h2>Reserve Standard is a treasury discipline brand.</h2>
+      <p>The brand is built around one idea: short-term cash and long-run reserve are different jobs. Reserve Standard exists to help owner-led businesses think and act accordingly.</p>
+      <div class="grid">
+        <div class="tile"><strong>Hard reserve</strong><span>Lead with reserve quality, not excitement.</span></div>
+        <div class="tile"><strong>Policy over prediction</strong><span>Stay system-led. Avoid hype and trading language.</span></div>
+        <div class="tile"><strong>Liquidity preserved</strong><span>Protect operating cash before reserve growth.</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
