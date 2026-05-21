@@ -1,0 +1,4837 @@
+:root{
+  --font-sans:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-display:"Iowan Old Style","Iowan Old Style BT","New York","Source Serif 4","Source Serif Pro","Palatino Linotype","Book Antiqua",Georgia,serif;
+  --navy-950:#061328;
+  --navy-900:#081a33;
+  --navy-875:#0b203d;
+  --navy-850:#102749;
+  --ink:#0b1a32;
+  --ink-soft:#314564;
+  --slate:#60748f;
+  --slate-soft:#8fa0b7;
+  --paper:#f4f1e8;
+  --paper-elevated:#faf7f1;
+  --paper-soft:#f8f5ee;
+  --stroke:#d7cfbf;
+  --stroke-soft:rgba(11,26,50,.10);
+  --stroke-strong:rgba(11,26,50,.16);
+  --green:#0a8a7b;
+  --green-soft:rgba(10,138,123,.10);
+  --success:#0f8c76;
+  --shadow-xs:0 2px 8px rgba(6,19,40,.05);
+  --shadow-sm:0 12px 30px rgba(6,19,40,.08);
+  --shadow-md:0 24px 60px rgba(6,19,40,.10);
+  --shadow-dark:0 28px 80px rgba(3,10,24,.28);
+
+  --container-max:1460px;
+  --container-pad:clamp(20px,2.8vw,44px);
+  --container-narrow:980px;
+
+  --space-2xs:0.5rem;
+  --space-xs:0.75rem;
+  --space-sm:1rem;
+  --space-md:1.5rem;
+  --space-lg:2rem;
+  --space-xl:3rem;
+  --space-2xl:4rem;
+  --space-3xl:5.5rem;
+  --space-4xl:7rem;
+
+  --section-pad:clamp(78px,8vw,136px);
+  --surface-radius:28px;
+  --surface-radius-sm:20px;
+  --surface-pad:clamp(28px,3vw,42px);
+  --surface-pad-lg:clamp(34px,3.4vw,54px);
+  --grid-gap:clamp(18px,2vw,28px);
+  --grid-gap-lg:clamp(22px,2.4vw,36px);
+  --header-height:92px;
+  --page-progress:0;
+  --hero-progress:0;
+}
+
+main section[id]{scroll-margin-top:calc(var(--header-height) + 34px)}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  background:linear-gradient(180deg,#f8f6ef 0%, #f3f0e8 100%);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.has-menu-open{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+::selection{background:rgba(10,138,123,.18)}
+
+.container{width:min(100%, calc(var(--container-max) + var(--container-pad) * 2));margin-inline:auto;padding-inline:var(--container-pad)}
+.container-narrow{width:min(100%, calc(var(--container-narrow) + var(--container-pad) * 2));margin-inline:auto;padding-inline:var(--container-pad)}
+
+.skip-link{
+  position:absolute;
+  left:16px;
+  top:-56px;
+  z-index:999;
+  padding:12px 16px;
+  border-radius:14px;
+  background:var(--ink);
+  color:var(--paper);
+}
+.skip-link:focus{top:16px}
+
+h1,h2,h3,h4{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:600;
+  letter-spacing:-.053em;
+  text-wrap:balance;
+  color:var(--ink);
+  font-variant-ligatures: common-ligatures discretionary-ligatures;
+  font-feature-settings:"liga" 1, "kern" 1, "ss01" 1;
+}
+p{margin:0;color:var(--ink-soft);line-height:1.74}
+strong{font-weight:700}
+
+
+.display-serif,
+.hero-title,
+.section-intro h2,
+.page-title,
+.review-form-title,
+.doc-copy h3,
+.review-launch-title,
+.final-cta-title,
+.side-card-title,
+.stack-card h3,
+.band-card h3,
+.process-card h3,
+.ledger-title,
+.outcome-card .value,
+.metric .value,
+.article h2{
+  font-family:var(--font-display);
+  font-optical-sizing:auto;
+  font-style:normal;
+  font-kerning:normal;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  font-variant-ligatures:common-ligatures discretionary-ligatures;
+  font-feature-settings:"liga" 1, "kern" 1, "dlig" 1;
+}
+
+.lead,
+.lead-strong,
+.page-sub,
+.final-cta-copy,
+.review-form-copy,
+.review-launch-copy,
+.doc-copy p,
+.copy-block .lead,
+.article p{max-width:unset}
+
+.lead{font-size:clamp(1.01rem,1.15vw,1.16rem);line-height:1.78}
+.lead-strong{font-size:clamp(1.08rem,1.18vw,1.32rem);line-height:1.76}
+
+.eyebrow,
+.kicker,
+.subrail,
+.mini,
+.label,
+.step,
+.num,
+.label-text,
+.matrix-table th,
+.proof-table th,
+.trust-strip .cell,
+.site-nav a,
+.footer-column h3,
+.brand-lockline{
+  font-family:var(--font-sans);
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.eyebrow{font-size:10px;color:var(--green)}
+.eyebrow-light{color:#9fb8d6}
+.kicker{font-size:10px;color:var(--slate-soft)}
+.subrail{font-size:12px;color:#d8e0eb;line-height:1.7;max-width:34rem}
+.masthead-line{display:flex;align-items:center;gap:14px}
+.masthead-line::after{content:"";flex:1;height:1px;background:rgba(11,26,50,.10)}
+.rule{width:72px;height:1px;background:linear-gradient(90deg,var(--green) 0%, rgba(10,138,123,0) 100%);margin-block:14px 18px}
+.surface-dark .rule{background:linear-gradient(90deg,#37c6b5 0%, rgba(55,198,181,0) 100%)}
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:saturate(160%) blur(18px);
+  background:rgba(248,246,239,.84);
+  border-bottom:1px solid rgba(11,26,50,.06);
+  transition:background-color .26s ease, border-color .26s ease, box-shadow .26s ease;
+}
+.site-header::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:2px;
+  background:linear-gradient(90deg, rgba(10,138,123,.98) 0%, rgba(159,184,214,.74) 100%);
+  transform:scaleX(var(--page-progress));
+  transform-origin:left center;
+  opacity:.88;
+  pointer-events:none;
+}
+body.is-scrolled .site-header{
+  background:rgba(248,246,239,.94);
+  border-bottom-color:rgba(11,26,50,.08);
+  box-shadow:0 12px 32px rgba(6,19,40,.05);
+}
+.header-inner{
+  position:relative;
+  min-height:var(--header-height);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:clamp(16px,2vw,28px);
+}
+.brand{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  min-width:0;
+}
+.brand .mark{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  flex:0 0 38px;
+}
+.wordmark{
+  width:194px;
+  max-width:100%;
+  height:auto;
+}
+.brand-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+.brand-name{font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.brand-lockline{font-size:9px;color:var(--slate)}
+
+.site-nav{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  min-width:0;
+}
+.site-nav a{
+  font-size:10.5px;
+  line-height:1.2;
+  color:var(--slate);
+  white-space:nowrap;
+}
+.site-nav a:hover{color:var(--ink)}
+.site-nav .nav-brief-link,
+.site-nav .nav-cta-link{display:none}
+.nav-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid rgba(11,26,50,.10);
+  background:rgba(255,255,255,.65);
+  color:var(--ink);
+  box-shadow:var(--shadow-xs);
+}
+
+.chapter-rail{
+  position:fixed;
+  top:50%;
+  right:clamp(12px,1.8vw,22px);
+  z-index:70;
+  transform:translateY(-50%);
+  display:grid;
+  gap:14px;
+  padding:18px 16px 18px 14px;
+  border-radius:24px;
+  background:rgba(248,246,239,.74);
+  border:1px solid rgba(11,26,50,.08);
+  box-shadow:0 22px 56px rgba(6,19,40,.11);
+  backdrop-filter:saturate(180%) blur(18px);
+}
+.chapter-rail::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:16px;
+  bottom:16px;
+  width:1px;
+  background:rgba(11,26,50,.10);
+}
+.chapter-rail a{
+  position:relative;
+  display:grid;
+  grid-template-columns:10px auto;
+  align-items:center;
+  gap:14px;
+  min-height:18px;
+  color:rgba(11,26,50,.42);
+  font-family:var(--font-sans);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  transition:color .24s ease, transform .24s ease;
+}
+.chapter-rail .dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:rgba(11,26,50,.18);
+  box-shadow:0 0 0 5px rgba(255,255,255,.74);
+  transition:transform .24s ease, background-color .24s ease, box-shadow .24s ease;
+}
+.chapter-rail .rail-label{
+  white-space:nowrap;
+  opacity:.42;
+  transform:translateX(0);
+  transition:opacity .24s ease, color .24s ease;
+}
+.chapter-rail a:hover,
+.chapter-rail a.is-active{color:var(--ink)}
+.chapter-rail a:hover .rail-label,
+.chapter-rail a.is-active .rail-label{opacity:1}
+.chapter-rail a:hover .dot,
+.chapter-rail a.is-active .dot{
+  background:var(--green);
+  transform:scale(1.26);
+  box-shadow:0 0 0 6px rgba(10,138,123,.14), 0 0 0 1px rgba(255,255,255,.84);
+}
+
+.btn,
+.cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:auto;
+  padding:15px 20px;
+  border-radius:14px;
+  border:1px solid transparent;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:visible;
+  transition:transform .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.btn:hover,
+.cta:hover{transform:translateY(-1px)}
+.btn-primary,
+.cta-primary{
+  background:linear-gradient(180deg,#102748 0%, #081a33 100%);
+  color:var(--paper);
+  border-color:rgba(255,255,255,.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 18px 42px rgba(6,19,40,.16);
+}
+.btn-primary:hover,
+.cta-primary:hover{background:linear-gradient(180deg,#153055 0%, #0a203d 100%)}
+.btn-secondary,
+.cta-secondary{
+  background:rgba(255,255,255,.7);
+  color:var(--ink);
+  border-color:rgba(11,26,50,.12);
+}
+.btn-secondary:hover,
+.cta-secondary:hover{background:#fff;border-color:rgba(11,26,50,.18)}
+.btn-light,
+.cta-light{
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  border-color:rgba(255,255,255,.14);
+}
+.btn-light:hover,
+.cta-light:hover{background:rgba(255,255,255,.08)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.14)}
+.header-inner > .cta-primary{justify-self:end}
+
+.hero-wrap{padding-top:clamp(22px,4vw,40px)}
+.surface-dark,
+.hero,
+.review-hero,
+.article-hero,
+.review-side,
+.proof-shell{
+  position:relative;
+  border-radius:clamp(28px,3vw,38px);
+  background:linear-gradient(145deg,#11284b 0%, #081a33 42%, #061328 100%);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow-dark);
+  color:#fff;
+}
+.surface-dark > *,
+.hero > *,
+.review-hero > *,
+.article-hero > *,
+.review-side > *,
+.proof-shell > *{position:relative;z-index:1}
+.hero::before,
+.review-hero::before,
+.article-hero::before,
+.proof-shell::before,
+.review-side::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,0) 26%),
+    linear-gradient(90deg, rgba(255,255,255,.045) 0, rgba(255,255,255,.045) 1px, transparent 1px, transparent 112px),
+    linear-gradient(180deg, rgba(255,255,255,.04) 0, rgba(255,255,255,.04) 1px, transparent 1px, transparent 96px);
+  background-position:0 0, calc(var(--hero-progress) * -28px) 0, 0 calc(var(--hero-progress) * -22px);
+  opacity:calc(.18 + var(--hero-progress) * .09);
+  pointer-events:none;
+}
+.hero::after,
+.review-hero::after,
+.article-hero::after,
+.proof-shell::after,
+.review-side::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at 82% 14%, rgba(60,197,181,.14) 0%, rgba(60,197,181,0) 34%), radial-gradient(circle at 18% 86%, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 38%);
+  opacity:calc(.22 + var(--hero-progress) * .08);
+  transform:translate3d(0, calc(var(--hero-progress) * -10px), 0);
+  pointer-events:none;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:minmax(0,1.04fr) minmax(390px,.96fr);
+  gap:clamp(34px,3.4vw,56px);
+  padding:clamp(46px,4.4vw,68px);
+}
+.hero-copy{display:flex;flex-direction:column;align-self:start;min-width:0;transform:translate3d(0, calc(var(--hero-progress) * -16px), 0); will-change:transform}
+.hero-title{
+  margin-top:clamp(20px,2.1vw,30px);
+  max-width:7.35ch;
+  font-size:clamp(4.45rem,7.15vw,8.45rem);
+  line-height:.855;
+  color:#fff;
+  letter-spacing:-.06em;
+  font-weight:700;
+  font-variation-settings:"opsz" 60, "wght" 650;
+}
+.hero-sub{margin-top:clamp(24px,2.1vw,34px);max-width:37rem;color:#d7deeb;line-height:1.74}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:clamp(28px,2.3vw,38px)}
+.hero-actions .btn{min-width:min(100%, 270px)}
+.hero-stack{display:grid;gap:20px;align-self:start;transform:translate3d(0, calc(var(--hero-progress) * 14px), 0); will-change:transform}
+.trust-strip{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:34px;
+}
+.trust-strip .cell{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:56px;
+  padding:12px 16px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  color:#e8eef8;
+  font-size:10px;
+}
+.ledger-frame,
+.outcome-frame,
+.proof-panel,
+.proof-sidebar,
+.review-side{
+  padding:clamp(26px,2.4vw,34px);
+  border-radius:24px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.09);
+}
+.ledger-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(220px,.92fr);
+  gap:24px;
+  align-items:start;
+}
+.ledger-title{font-size:clamp(2.08rem,2.55vw,3.35rem);line-height:.92;color:#fff;max-width:10ch;letter-spacing:-.045em;font-variation-settings:"opsz" 40, "wght" 600}
+.ledger-sub{font-size:15px;line-height:1.76;color:#cad4e1;max-width:33ch}
+.ledger-grid{margin-top:22px;border-top:1px solid rgba(255,255,255,.10)}
+.ledger-row{
+  display:grid;
+  grid-template-columns:176px 1fr;
+  gap:20px;
+  padding:20px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.ledger-row .label{font-size:11px;color:#eef5fb}
+.ledger-row p{color:#d0dae7;font-size:15px;line-height:1.72}
+.outcome-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}
+.outcome-card{
+  padding:20px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.09);
+}
+.outcome-card .mini{font-size:10px;color:#9fb0c8}
+.outcome-card .value{margin-top:12px;font-size:2.02rem;line-height:.95;color:#fff;font-family:var(--font-display);font-weight:700;letter-spacing:-.054em;max-width:10ch;text-wrap:balance;font-variation-settings:"opsz" 26, "wght" 650}
+.outcome-card p{margin-top:14px;font-size:14px;line-height:1.72;color:#c9d4e0}
+.outcome-call{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:14px;line-height:1.74;color:#eef5fb;font-weight:700}
+
+.section{padding-block:var(--section-pad);position:relative;--section-focus:0}
+.section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 0%, rgba(10,138,123,.08) 0%, rgba(10,138,123,0) 36%);
+  opacity:calc(.06 + var(--section-focus) * .20);
+}
+.section > .container{position:relative;z-index:1}
+.section.is-active .rule{width:90px}
+.section-intro{transition:transform .35s ease}
+.section.is-active .section-intro{transform:translate3d(0,-4px,0)}
+.section-intro{max-width:920px;margin-bottom:clamp(32px,4.2vw,52px)}
+.section-intro h2{font-size:clamp(2.65rem,4.15vw,4.7rem);line-height:.94;max-width:12.6ch;letter-spacing:-.048em;font-variation-settings:"opsz" 48, "wght" 600}
+.section-intro .lead{margin-top:18px;max-width:47rem}
+.two-col,
+.download-grid,
+.review-grid,
+.article-grid,
+.proof-grid{display:grid;gap:var(--grid-gap-lg);align-items:start}
+.two-col{grid-template-columns:minmax(0,1.04fr) minmax(320px,.96fr)}
+.copy-block,
+.article,
+.doc-showcase,
+.review-form-shell,
+.final-cta,
+.legal-wrap,
+.side-card,
+.stack-card,
+.band-card,
+.process-card,
+.review-launch-card{
+  padding:var(--surface-pad-lg);
+  border-radius:var(--surface-radius);
+}
+.surface-paper{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--stroke);
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(8px);
+}
+.surface-paper-quiet{
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(11,26,50,.09);
+  box-shadow:var(--shadow-xs);
+  backdrop-filter:blur(6px);
+}
+.copy-block .lead{max-width:34ch}
+.copy-block p + p{margin-top:18px}
+.stack-list{display:grid;gap:14px}
+.stack-card .num{font-size:10px;color:var(--green)}
+.stack-card h3{margin-top:16px;font-size:2.16rem;line-height:.95;max-width:13ch;letter-spacing:-.044em;font-variation-settings:"opsz" 28, "wght" 600}
+.stack-card p{margin-top:12px}
+
+.matrix-shell{overflow:hidden;border-radius:30px}
+.matrix-table,
+.proof-table{width:100%;border-collapse:collapse}
+.matrix-table th,
+.matrix-table td,
+.proof-table th,
+.proof-table td{
+  padding:20px 18px;
+  border-top:1px solid var(--stroke-soft);
+  vertical-align:top;
+  text-align:left;
+}
+.matrix-table thead th,
+.proof-table thead th{background:rgba(255,255,255,.55)}
+.matrix-table th,
+.proof-table th{font-size:10px;color:var(--slate)}
+.matrix-table td strong,
+.proof-table td strong{display:block;color:var(--ink);font-size:15px;line-height:1.42;font-family:"Inter",system-ui,sans-serif;letter-spacing:-.01em}
+.proof-shell .proof-table td strong{color:#fff}
+.matrix-table td span,
+.proof-table td span{display:block;margin-top:8px;font-size:14px;line-height:1.68;color:var(--ink-soft)}
+.proof-table td span{color:#cad4e1}
+.matrix-table tr.featured td{background:rgba(10,138,123,.05)}
+.matrix-table tr.featured td strong{color:var(--green)}
+
+.band-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.band-card h3{font-size:2.06rem;line-height:.95;max-width:13ch;letter-spacing:-.044em;font-variation-settings:"opsz" 28, "wght" 600}
+.band-card p{margin-top:12px}
+
+.proof-shell{padding:var(--surface-pad-lg)}
+.proof-shell h2,
+.proof-shell .lead,
+.proof-shell p,
+.proof-shell .eyebrow,
+.proof-shell .masthead-line::after{color:#fff}
+.proof-shell .lead,
+.proof-shell p{color:#d2dbe7}
+.proof-shell .section-intro h2{color:#fff}
+.proof-grid{grid-template-columns:minmax(0,1.06fr) minmax(320px,.94fr);margin-top:28px}
+.proof-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.proof-metrics-single{grid-template-columns:1fr}
+.metric{
+  padding:20px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.09);
+}
+.metric .mini{font-size:10px;color:#9fb0c8}
+.metric .value{margin-top:12px;font-size:1.86rem;line-height:.95;color:#fff;font-family:var(--font-display);font-weight:700;letter-spacing:-.054em;text-wrap:balance;font-variation-settings:"opsz" 24, "wght" 650}
+.metric p{margin-top:12px;font-size:13px;line-height:1.7;color:#cad4e1}
+.path-chart{margin-top:22px;padding:24px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+.path-chart svg{width:100%;height:auto;display:block}
+.path-chart .caption{margin-top:12px;font-size:13px;line-height:1.66;color:#cad4e1}
+
+.process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+.process-card .step{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;padding:0 12px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:10px}
+.process-card h3{margin-top:18px;font-size:1.96rem;line-height:.95;max-width:12ch;letter-spacing:-.044em;font-variation-settings:"opsz" 26, "wght" 600}
+.process-card p{margin-top:12px}
+
+.download-grid{grid-template-columns:minmax(0,1.06fr) minmax(320px,.94fr);margin-top:30px}
+.doc-showcase{display:grid;grid-template-columns:minmax(230px,260px) minmax(0,1fr);gap:clamp(24px,2.2vw,34px);align-items:start}
+.cover,
+.cover-frame{overflow:hidden;border-radius:22px;border:1px solid rgba(11,26,50,.10);box-shadow:var(--shadow-sm);background:#fff}
+.doc-copy h3,
+.review-launch-title,
+.final-cta-title,
+.side-card-title{font-size:clamp(2.08rem,2.5vw,2.95rem);line-height:.92;max-width:15ch;letter-spacing:-.046em;font-variation-settings:"opsz" 34, "wght" 600}
+.doc-copy p{margin-top:16px;max-width:44ch}
+.doc-actions,
+.side-actions,
+.review-launch-actions,
+.form-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.review-launch-card{display:flex;flex-direction:column;justify-content:space-between;min-height:100%}
+.review-launch-copy{margin-top:16px}
+.final-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start;margin-top:32px}
+.final-cta-copy{margin-top:18px;max-width:52rem}
+
+.site-footer{
+  margin-top:clamp(52px,6vw,88px);
+  padding:58px 0 32px;
+  border-top:1px solid rgba(11,26,50,.08);
+  background:rgba(255,255,255,.34);
+}
+.footer-grid{display:grid;grid-template-columns:1.15fr .8fr .8fr;gap:clamp(24px,2.4vw,40px)}
+.footer-brand p{margin-top:18px;max-width:56ch;font-size:15px;line-height:1.78}
+.footer-column h3{font-size:10px;color:var(--slate)}
+.footer-column ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.footer-column a{font-size:14px;color:var(--ink-soft)}
+.footer-column a:hover{color:var(--ink)}
+.footer-base{display:flex;justify-content:space-between;gap:18px;margin-top:30px;padding-top:18px;border-top:1px solid rgba(11,26,50,.08);font-size:12px;line-height:1.65;color:var(--slate)}
+
+.page-shell{padding:clamp(34px,4vw,58px) 0 clamp(84px,9vw,120px)}
+.review-hero,
+.article-hero{padding:var(--surface-pad-lg)}
+.page-title{font-size:clamp(3.28rem,5.2vw,5.8rem);line-height:.855;color:#fff;max-width:11.5ch;letter-spacing:-.06em;font-variation-settings:"opsz" 56, "wght" 600}
+.page-sub{margin-top:16px;max-width:54rem;color:#d6ddea}
+.review-grid{grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);margin-top:28px}
+.review-list{display:grid;gap:16px;margin-top:20px}
+.review-list.review-list-tight{gap:12px}
+.review-list .item{display:flex;gap:12px;align-items:flex-start}
+.review-list .item .dot{width:7px;height:7px;border-radius:50%;background:#3cc5b5;flex:0 0 7px;margin-top:9px}
+.review-list .item span{font-size:15px;line-height:1.72;color:#cad4e1}
+.review-separator{margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.review-email{margin-top:12px}
+.review-email a{font-size:15px;color:#fff}
+.review-form-shell{min-width:0}
+.review-form-title{font-size:clamp(2.28rem,3.12vw,3.36rem);line-height:.89;max-width:13.5ch;letter-spacing:-.052em;font-weight:700;font-variation-settings:"opsz" 30, "wght" 650}
+.review-form-copy{margin-top:16px;max-width:46rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.field,
+.field-full{display:flex;flex-direction:column;gap:8px}
+.field-full{grid-column:1 / -1}
+.label-text{font-size:10px;color:var(--slate)}
+.input,
+.select,
+.textarea{
+  width:100%;
+  border:1px solid rgba(11,26,50,.12);
+  border-radius:16px;
+  background:rgba(255,255,255,.82);
+  color:var(--ink);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+  transition:border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+.input,
+.select{min-height:54px;padding:14px 16px}
+.textarea{min-height:162px;padding:16px;resize:vertical}
+.input:focus,
+.select:focus,
+.textarea:focus{outline:none;border-color:rgba(10,138,123,.45);box-shadow:0 0 0 4px rgba(10,138,123,.10)}
+.form-status{min-height:1.4em;margin-top:16px;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.form-note{margin-top:10px;font-size:13px;line-height:1.64;color:var(--slate)}
+
+.article-grid{grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:var(--grid-gap-lg);margin-top:28px}
+.article h2{margin-top:30px;font-size:clamp(1.94rem,2.72vw,2.7rem);line-height:.94;max-width:14ch;letter-spacing:-.044em;font-variation-settings:"opsz" 30, "wght" 600}
+.article h2:first-of-type{margin-top:0}
+.article p + p{margin-top:16px}
+.article-side{display:grid;gap:14px}
+.side-card p{margin-top:14px}
+.side-actions .btn{flex:1 1 220px}
+
+.legal-wrap{padding:var(--surface-pad-lg)}
+.legal-wrap h1{font-size:clamp(2.5rem,4vw,4rem);line-height:.96;max-width:12ch}
+.legal-wrap h2{margin-top:32px;font-size:1.7rem;line-height:1.04}
+.legal-wrap p{margin-top:12px}
+
+.review-hero .page-title,
+.article-hero .page-title,
+.proof-shell h2{color:#fff}
+
+
+.display-serif{font-family:var(--font-display);font-weight:700;letter-spacing:-.058em;font-variation-settings:"opsz" 44, "wght" 650}
+@media (min-width: 1180px){
+  .review-side{position:sticky;top:calc(var(--header-height) + 28px)}
+  .article-side{position:sticky;top:calc(var(--header-height) + 28px)}
+  .proof-sidebar{position:sticky;top:calc(var(--header-height) + 28px)}
+}
+
+@media (min-width: 1201px){
+  .page-title-review{max-width:10.5ch}
+}
+
+@media (max-width: 1500px){
+  .site-nav{gap:18px}
+  .site-nav a{font-size:10px}
+  .header-inner > .cta-primary{display:none}
+  .site-nav .nav-cta-link{display:none}
+}
+
+@media (max-width: 1320px){
+  :root{--header-height:82px}
+  .chapter-rail{display:none}
+  .hero-copy,.hero-stack{transform:none !important}
+  .header-inner{grid-template-columns:auto auto;justify-content:space-between}
+  .nav-toggle{display:inline-flex}
+  .site-nav{
+    display:none;
+    position:absolute;
+    top:calc(100% + 14px);
+    left:0;
+    right:0;
+    z-index:30;
+    padding:14px;
+    border-radius:22px;
+    background:rgba(250,247,241,.98);
+    border:1px solid rgba(11,26,50,.10);
+    box-shadow:var(--shadow-md);
+    flex-direction:column;
+    align-items:stretch;
+    gap:4px;
+  }
+  .site-nav.is-open{display:flex}
+  .site-nav a{
+    width:100%;
+    padding:14px 12px;
+    border-radius:14px;
+    color:var(--ink);
+    background:transparent;
+    white-space:normal;
+    text-align:left;
+  }
+  .site-nav a:hover{background:rgba(11,26,50,.04)}
+  .site-nav .nav-brief-link{display:block}
+  .site-nav .nav-cta-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px 18px;
+    margin-top:8px;
+    text-align:center;
+    background:linear-gradient(180deg,#102748 0%, #081a33 100%);
+    color:var(--paper);
+    border:1px solid rgba(255,255,255,.06);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 18px 42px rgba(6,19,40,.16);
+  }
+}
+
+@media (max-width: 1200px){
+  .hero-inner,
+  .proof-grid,
+  .download-grid,
+  .review-grid,
+  .article-grid,
+  .two-col{grid-template-columns:1fr}
+  #why-now .copy-rail{
+    height:auto !important;
+  }
+  #why-now .copy-rail > .copy-block{
+    position:relative;
+    top:auto;
+  }
+  .hero-title{max-width:8.2ch}
+  .ledger-head{grid-template-columns:1fr}
+  .doc-showcase{grid-template-columns:220px 1fr}
+  .process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .band-grid{grid-template-columns:1fr}
+}
+
+@media (max-width: 900px){
+  :root{--section-pad:74px}
+  .chapter-rail{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1 / -1}
+  .proof-metrics{grid-template-columns:1fr}
+  .outcome-grid{grid-template-columns:1fr}
+  .ledger-row{grid-template-columns:1fr}
+  .matrix-table,
+  .proof-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+@media (max-width: 760px){
+  :root{--container-pad:22px; --section-pad:68px}
+  .wordmark{width:min(162px,48vw)}
+  .hero-inner,
+  .review-hero,
+  .article-hero,
+  .proof-shell,
+  .copy-block,
+  .article,
+  .review-side,
+  .review-form-shell,
+  .doc-showcase,
+  .final-cta,
+  .legal-wrap,
+  .side-card,
+  .stack-card,
+  .band-card,
+  .process-card,
+  .review-launch-card{padding:30px 24px}
+  .hero-title{font-size:clamp(3.45rem,16vw,5.1rem);line-height:.91;max-width:8.4ch}
+  .hero-actions,
+  .doc-actions,
+  .side-actions,
+  .review-launch-actions,
+  .form-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn,
+  .doc-actions .btn,
+  .side-actions .btn,
+  .review-launch-actions .btn,
+  .form-actions .btn{min-width:0;width:100%;white-space:normal}
+  .trust-strip{grid-template-columns:1fr;gap:10px}
+  .process-grid{grid-template-columns:1fr}
+  .doc-showcase{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .field-full{grid-column:auto}
+  .final-cta{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-base{flex-direction:column}
+}
+
+@media (max-width: 560px){
+  :root{--container-pad:18px; --header-height:74px}
+  .site-nav{top:calc(100% + 10px)}
+  .hero-wrap{padding-top:16px}
+  .hero-inner,
+  .review-hero,
+  .article-hero,
+  .proof-shell,
+  .copy-block,
+  .article,
+  .review-side,
+  .review-form-shell,
+  .doc-showcase,
+  .final-cta,
+  .legal-wrap,
+  .side-card,
+  .stack-card,
+  .band-card,
+  .process-card,
+  .review-launch-card{padding:26px 20px}
+  .hero-title{font-size:clamp(3rem,18vw,4.45rem)}
+  .page-title{font-size:clamp(2.55rem,12vw,3.6rem)}
+  .section-intro h2{font-size:clamp(2.25rem,12vw,3.08rem)}
+  .stack-card h3,
+  .doc-copy h3,
+  .review-launch-title,
+  .final-cta-title,
+  .side-card-title,
+  .ledger-title{font-size:clamp(1.95rem,10vw,2.56rem)}
+  .btn,
+  .cta{padding:14px 16px;font-size:11px;letter-spacing:.10em}
+}
+
+[data-reveal]{
+  opacity:0;
+  transform:translate3d(0,22px,0) scale(.985);
+  filter:blur(10px);
+  transition:
+    opacity .82s cubic-bezier(.21,1,.18,1),
+    transform .82s cubic-bezier(.21,1,.18,1),
+    filter .82s cubic-bezier(.21,1,.18,1);
+  transition-delay:var(--reveal-delay,0ms);
+  will-change:transform,opacity,filter;
+}
+[data-reveal].is-visible{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+.hero-copy > [data-reveal].is-visible,
+.hero-stack > [data-reveal].is-visible{transition-duration:.95s}
+
+/* ===== Reserve Standard V9.1 — headline control and micro-polish ===== */
+.hero-title,.page-title{overflow-wrap:normal;word-break:normal;hyphens:none}
+.page-title .line{display:block}
+.page-title .line + .line{margin-top:-0.06em}
+.masthead-line{gap:14px}
+.masthead-line::after{opacity:.8}
+.review-list .item{gap:14px}
+.review-list .item .dot{margin-top:9px}
+.form-status{margin-top:18px}
+.form-note{margin-top:16px}
+@media (max-width: 760px){
+  .page-title .line + .line{margin-top:-0.02em}
+}
+
+
+/* Exact editorial serif restore v12. */
+.hero-title,.page-title,.review-form-title,.section-intro h2,.doc-copy h3,.article h2,.final-cta-title,.review-launch-title,.side-card-title,.stack-card h3,.band-card h3,.process-card h3,.ledger-title{
+  font-family:var(--font-display);
+  font-weight:700;
+  letter-spacing:-0.058em;
+}
+.hero-title em,.page-title em,.review-form-title em{font-style:normal}
+@media (max-width: 900px){
+  .hero-title{line-height:.88;letter-spacing:-0.056em}
+  .page-title{line-height:.875;letter-spacing:-0.054em}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .chapter-rail{display:none !important}
+  .site-header,.hero-copy,.hero-stack,.section-intro{transition:none !important}
+  [data-reveal]{opacity:1 !important;transform:none !important;filter:none !important;transition:none !important}
+  .hero::before,.review-hero::before,.article-hero::before,.proof-shell::before,.review-side::before,.hero::after,.review-hero::after,.article-hero::after,.proof-shell::after,.review-side::after{background-position:0 0 !important;transform:none !important;opacity:.22 !important}
+}
+
+
+/* ===== Reserve Standard V16 — scroll system refinement ===== */
+.chapter-rail{
+  --rail-progress:0;
+}
+.chapter-rail::after{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:16px;
+  width:1px;
+  height:calc((100% - 32px) * var(--rail-progress));
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(10,138,123,.18) 0%, rgba(10,138,123,.96) 40%, rgba(159,184,214,.96) 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12);
+  opacity:.96;
+  pointer-events:none;
+}
+.chapter-rail a.is-past{color:rgba(11,26,50,.68)}
+.chapter-rail a.is-past .rail-label{opacity:.74}
+.chapter-rail a.is-past .dot{
+  background:rgba(10,138,123,.54);
+  box-shadow:0 0 0 5px rgba(255,255,255,.66);
+}
+.chapter-rail a.is-active .dot{
+  box-shadow:0 0 0 6px rgba(10,138,123,.14), 0 0 0 1px rgba(255,255,255,.84), 0 0 0 12px rgba(10,138,123,.05);
+}
+
+.site-nav a.is-active{color:var(--ink)}
+.site-nav a.is-active::after{
+  content:"";
+  display:block;
+  width:100%;
+  height:1px;
+  margin-top:8px;
+  background:linear-gradient(90deg,var(--green) 0%, rgba(10,138,123,0) 100%);
+}
+
+.hero{
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero::after,
+.review-hero::after,
+.article-hero::after,
+.proof-shell::after,
+.review-side::after{
+  transform:translate3d(0, calc(var(--hero-progress) * -12px), 0) scale(calc(1 + var(--hero-progress) * .012));
+}
+.hero-copy{
+  transform:translate3d(0, calc(var(--hero-progress) * -18px), 0);
+}
+.hero-stack{
+  transform:translate3d(0, calc(var(--hero-progress) * 16px), 0);
+}
+
+.section{
+  --section-progress:0;
+  --section-surface-y:0px;
+  --section-surface-scale:1;
+  --section-shadow-alpha:.08;
+  --section-border-alpha:.10;
+}
+.section::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.26) 0%, rgba(255,255,255,0) 44%);
+  opacity:calc(var(--section-focus) * .12);
+}
+.section .section-intro{
+  opacity:calc(.78 + var(--section-focus) * .22);
+  transform:translate3d(0, calc((1 - var(--section-focus)) * 10px - var(--section-focus) * 4px), 0);
+}
+.section.is-active .rule{
+  width:calc(72px + var(--section-focus) * 18px);
+}
+
+@media (min-width: 1024px){
+  .section .surface-paper[data-reveal].is-visible,
+  .section .surface-paper-quiet[data-reveal].is-visible,
+  .section .proof-panel[data-reveal].is-visible,
+  .section .proof-sidebar[data-reveal].is-visible,
+  .section .doc-showcase[data-reveal].is-visible,
+  .section .review-launch-card[data-reveal].is-visible,
+  .section .stack-card[data-reveal].is-visible,
+  .section .band-card[data-reveal].is-visible,
+  .section .process-card[data-reveal].is-visible,
+  .section .copy-block[data-reveal].is-visible{
+    transform:translate3d(0, var(--section-surface-y), 0) scale(var(--section-surface-scale));
+    box-shadow:0 18px 44px rgba(6,19,40,var(--section-shadow-alpha));
+    border-color:rgba(11,26,50,var(--section-border-alpha));
+  }
+
+  .section .stack-list,
+  .section .band-grid,
+  .section .process-grid,
+  .section .proof-grid,
+  .section .download-grid{
+    transform:translate3d(0, calc((1 - var(--section-focus)) * 8px), 0);
+    transition:transform .42s cubic-bezier(.22,1,.22,1);
+  }
+}
+
+.path-chart{
+  position:relative;
+  overflow:hidden;
+}
+.path-chart::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at 12% 18%, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 34%);
+  pointer-events:none;
+}
+.path-chart::after{
+  content:"";
+  position:absolute;
+  inset:-10% auto -10% -22%;
+  width:32%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.12) 48%, rgba(255,255,255,0) 100%);
+  transform:translate3d(calc(-130% + var(--chart-sweep, 0) * 260%), 0, 0) skewX(-18deg);
+  opacity:calc(var(--chart-ready, 0) * .92);
+  pointer-events:none;
+  filter:blur(12px);
+  transition:transform 1.35s cubic-bezier(.18,1,.18,1), opacity .7s ease;
+}
+.path-chart svg [data-line]{
+  stroke-dasharray:var(--line-length, 1);
+  stroke-dashoffset:calc((1 - var(--chart-ready, 0)) * var(--line-length, 1));
+  transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.22,1);
+}
+.path-chart svg [data-endpoint]{
+  transform-origin:center;
+  transform:scale(calc(.72 + var(--chart-ready, 0) * .28));
+  opacity:calc(.12 + var(--chart-ready, 0) * .88);
+  transition:transform .65s cubic-bezier(.22,1,.22,1), opacity .65s ease;
+}
+.path-chart.is-animated{
+  --chart-ready:1;
+  --chart-sweep:1;
+}
+
+@media (max-width: 1320px){
+  .site-nav a.is-active::after{display:none}
+}
+
+@media (max-width: 1023px){
+  .section .section-intro{
+    opacity:1;
+    transform:none;
+  }
+}
+
+
+/* ===== Reserve Standard V21 — ledger seam handoff (homepage only) ===== */
+.section[data-motion-section]{
+  --copy-progress:0;
+  --stack-sweep:0;
+  --matrix-progress:0;
+  --matrix-sweep:0;
+  --process-progress:0;
+  --process-sweep:0;
+}
+
+.chapter-seam{
+  display:grid;
+  grid-template-columns:minmax(180px, 240px) minmax(0,1fr);
+  align-items:center;
+  gap:clamp(18px,2vw,26px);
+  margin:0 0 clamp(28px,3.2vw,40px);
+  padding-block:6px 2px;
+}
+.chapter-seam-meta{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  min-width:0;
+}
+.chapter-seam .chapter-num{
+  font-family:var(--font-display);
+  font-size:clamp(1.55rem,2.05vw,2rem);
+  line-height:.95;
+  letter-spacing:-.05em;
+  color:rgba(11,26,50,.86);
+  opacity:calc(.28 + var(--section-focus) * .72);
+  transform:translate3d(0, calc((1 - var(--section-progress)) * 8px - var(--section-focus) * 2px), 0);
+  transition:opacity .36s ease, transform .42s cubic-bezier(.22,1,.22,1), color .36s ease;
+}
+.chapter-seam .chapter-name{
+  font-family:var(--font-sans);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(49,69,100,.84);
+  opacity:calc(.58 + var(--section-focus) * .42);
+  transition:opacity .36s ease, color .36s ease;
+}
+.chapter-seam-line{
+  position:relative;
+  height:1px;
+  overflow:hidden;
+  background:rgba(11,26,50,.08);
+  border-radius:999px;
+}
+.chapter-seam-fill,
+.chapter-seam-beam{
+  position:absolute;
+  inset:0 auto 0 0;
+  pointer-events:none;
+}
+.chapter-seam-fill{
+  width:100%;
+  transform-origin:left center;
+  transform:scaleX(calc(.14 + var(--section-progress) * .86));
+  background:linear-gradient(90deg, rgba(10,138,123,.32) 0%, rgba(10,138,123,.86) 34%, rgba(122,139,166,.82) 100%);
+  transition:transform .42s cubic-bezier(.22,1,.22,1);
+}
+.chapter-seam-beam{
+  top:-12px;
+  bottom:-12px;
+  width:24%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.82) 48%, rgba(255,255,255,0) 100%);
+  filter:blur(10px);
+  opacity:calc(.08 + var(--section-focus) * .62);
+  transform:translate3d(calc((-120% + var(--section-progress) * 220%)),0,0) skewX(-18deg);
+  transition:opacity .36s ease, transform .42s cubic-bezier(.22,1,.22,1);
+}
+.chapter-seam-light .chapter-num,
+.chapter-seam-light .chapter-name{color:#fff}
+.chapter-seam-light .chapter-name{color:rgba(232,238,248,.78)}
+.chapter-seam-light .chapter-seam-line{background:rgba(255,255,255,.12)}
+.chapter-seam-light .chapter-seam-fill{background:linear-gradient(90deg, rgba(55,198,181,.34) 0%, rgba(55,198,181,.98) 36%, rgba(159,184,214,.92) 100%)}
+.chapter-seam-light .chapter-seam-beam{background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.58) 48%, rgba(255,255,255,0) 100%)}
+
+
+#why-now .copy-block{
+  position:relative;
+  overflow:hidden;
+}
+
+#why-now .copy-rail{
+  position:relative;
+}
+#why-now .copy-rail > .copy-block{
+  position:sticky;
+  top:calc(var(--header-height) + 28px);
+}
+#why-now .copy-block::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at 12% 18%, rgba(10,138,123,.10) 0%, rgba(10,138,123,0) 42%);
+  opacity:calc(.08 + var(--copy-progress) * .22);
+  pointer-events:none;
+}
+#why-now .copy-block::after{
+  content:"";
+  position:absolute;
+  inset:-12% auto -12% -18%;
+  width:34%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.72) 50%, rgba(255,255,255,0) 100%);
+  filter:blur(14px);
+  transform:translate3d(calc(-135% + var(--copy-progress) * 248%),0,0) skewX(-18deg);
+  opacity:calc(var(--copy-progress) * .42);
+  pointer-events:none;
+}
+#why-now .copy-block p{
+  transition:opacity .38s ease, transform .42s cubic-bezier(.22,1,.22,1);
+  transform:translate3d(0, calc((1 - var(--copy-progress)) * 8px), 0);
+  opacity:calc(.82 + var(--copy-progress) * .18);
+}
+
+.stack-sequence{
+  position:relative;
+}
+.stack-sequence::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  top:14px;
+  bottom:14px;
+  width:1px;
+  border-radius:999px;
+  background:rgba(10,138,123,.12);
+  transform-origin:top center;
+  transform:scaleY(calc(.12 + var(--section-progress) * .88));
+  opacity:calc(.32 + var(--section-focus) * .48);
+}
+.stack-sequence::after{
+  content:"";
+  position:absolute;
+  inset:-10% auto -10% -18%;
+  width:30%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.68) 50%, rgba(255,255,255,0) 100%);
+  filter:blur(14px);
+  transform:translate3d(calc(-135% + var(--stack-sweep) * 248%),0,0) skewX(-18deg);
+  opacity:calc(var(--stack-sweep) * .34);
+  pointer-events:none;
+}
+.stack-card{
+  position:relative;
+  overflow:hidden;
+  --card-progress:0;
+  box-shadow:0 14px 34px rgba(6,19,40, calc(.04 + var(--card-progress) * .05));
+}
+.stack-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:3px;
+  background:linear-gradient(180deg, rgba(10,138,123,.16) 0%, rgba(10,138,123,.95) 100%);
+  transform-origin:top center;
+  transform:scaleY(calc(.18 + var(--card-progress) * .82));
+  opacity:calc(.14 + var(--card-progress) * .86);
+}
+.stack-card::after{
+  content:"";
+  position:absolute;
+  inset:-14% auto -14% -22%;
+  width:34%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.62) 50%, rgba(255,255,255,0) 100%);
+  filter:blur(12px);
+  transform:translate3d(calc(-130% + var(--card-progress) * 250%),0,0) skewX(-18deg);
+  opacity:calc(var(--card-progress) * .34);
+  pointer-events:none;
+}
+.stack-card h3,
+.stack-card p,
+.stack-card .num{
+  transition:opacity .38s ease, transform .42s cubic-bezier(.22,1,.22,1), color .32s ease;
+}
+.stack-card h3,
+.stack-card p{
+  transform:translate3d(0, calc((1 - var(--card-progress)) * 8px), 0);
+  opacity:calc(.74 + var(--card-progress) * .26);
+}
+.stack-card .num{
+  opacity:calc(.4 + var(--card-progress) * .6);
+  transform:translate3d(calc((1 - var(--card-progress)) * -5px),0,0);
+}
+
+.matrix-shell-animated{
+  position:relative;
+  overflow:hidden;
+}
+.matrix-shell-animated::before{
+  content:"";
+  position:absolute;
+  inset:-12% auto -12% -18%;
+  width:28%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.74) 50%, rgba(255,255,255,0) 100%);
+  filter:blur(14px);
+  transform:translate3d(calc(-138% + var(--matrix-sweep) * 252%),0,0) skewX(-16deg);
+  opacity:calc(var(--matrix-sweep) * .3);
+  pointer-events:none;
+}
+.matrix-shell-animated::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:76px;
+  background:linear-gradient(180deg, rgba(10,138,123,0) 0%, rgba(10,138,123,.08) 38%, rgba(10,138,123,0) 100%);
+  transform:translate3d(0, calc(-86px + var(--matrix-progress) * 108%), 0);
+  opacity:calc(.16 + var(--section-focus) * .44);
+  pointer-events:none;
+}
+.matrix-shell-animated tr{
+  --row-progress:0;
+}
+.matrix-shell-animated tbody td,
+.matrix-shell-animated thead th{
+  transition:background-color .32s ease, color .32s ease, transform .42s cubic-bezier(.22,1,.22,1), opacity .36s ease;
+}
+.matrix-shell-animated tbody tr td{
+  transform:translate3d(0, calc((1 - var(--row-progress)) * 8px), 0);
+  opacity:calc(.72 + var(--row-progress) * .28);
+  background-image:linear-gradient(90deg, rgba(10,138,123,.09) 0%, rgba(10,138,123,.03) 72%, rgba(10,138,123,0) 100%);
+  background-repeat:no-repeat;
+  background-size:calc(18% + var(--row-progress) * 82%) 100%;
+  background-position:0 0;
+  box-shadow:inset 2px 0 0 rgba(10,138,123, calc(.12 + var(--row-progress) * .38));
+}
+.matrix-shell-animated tbody tr.featured td{
+  background-image:linear-gradient(90deg, rgba(10,138,123,.15) 0%, rgba(10,138,123,.06) 74%, rgba(10,138,123,0) 100%);
+}
+.band-card{
+  position:relative;
+  overflow:hidden;
+  --band-progress:0;
+}
+.band-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:3px;
+  background:linear-gradient(180deg, rgba(10,138,123,.18) 0%, rgba(10,138,123,.96) 100%);
+  transform-origin:top center;
+  transform:scaleY(calc(.18 + var(--band-progress) * .82));
+  opacity:calc(.16 + var(--band-progress) * .84);
+}
+.band-card::after{
+  content:"";
+  position:absolute;
+  inset:-10% auto -10% -18%;
+  width:30%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.64) 50%, rgba(255,255,255,0) 100%);
+  filter:blur(14px);
+  transform:translate3d(calc(-135% + var(--band-progress) * 250%),0,0) skewX(-18deg);
+  opacity:calc(var(--band-progress) * .28);
+  pointer-events:none;
+}
+.band-card h3,
+.band-card p{
+  transform:translate3d(0, calc((1 - var(--band-progress)) * 8px), 0);
+  opacity:calc(.78 + var(--band-progress) * .22);
+  transition:opacity .38s ease, transform .42s cubic-bezier(.22,1,.22,1);
+}
+
+.process-grid-animated{
+  position:relative;
+}
+.process-grid-animated::before,
+.process-grid-animated::after{
+  content:"";
+  position:absolute;
+  left:calc(12.5% + 18px);
+  right:calc(12.5% + 18px);
+  top:38px;
+  height:1px;
+  border-radius:999px;
+  pointer-events:none;
+}
+.process-grid-animated::before{
+  background:rgba(11,26,50,.08);
+}
+.process-grid-animated::after{
+  width:calc((100% - (25% + 36px)) * var(--process-progress));
+  right:auto;
+  background:linear-gradient(90deg, rgba(10,138,123,.26) 0%, rgba(10,138,123,.92) 58%, rgba(255,255,255,.95) 78%, rgba(122,139,166,.92) 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.3), 0 0 18px rgba(10,138,123,.18);
+}
+.process-grid-animated .process-card{
+  box-shadow:0 14px 34px rgba(6,19,40, calc(.04 + var(--process-card-progress) * .05));
+}
+.process-card{
+  position:relative;
+  overflow:hidden;
+  --process-card-progress:0;
+}
+.process-card::before{
+  content:"";
+  position:absolute;
+  top:29px;
+  left:28px;
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  background:rgba(255,255,255,.95);
+  border:1px solid rgba(10,138,123,.32);
+  box-shadow:0 0 0 calc(2px + var(--process-card-progress) * 4px) rgba(10,138,123, calc(var(--process-card-progress) * .14));
+  transform:scale(calc(.86 + var(--process-card-progress) * .14));
+  z-index:2;
+}
+.process-card::after{
+  content:"";
+  position:absolute;
+  inset:-12% auto -12% -16%;
+  width:30%;
+  background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.56) 50%, rgba(255,255,255,0) 100%);
+  filter:blur(12px);
+  transform:translate3d(calc(-135% + var(--process-card-progress) * 250%),0,0) skewX(-18deg);
+  opacity:calc(var(--process-card-progress) * .28);
+  pointer-events:none;
+}
+.process-card .step,
+.process-card h3,
+.process-card p{
+  transform:translate3d(0, calc((1 - var(--process-card-progress)) * 8px), 0);
+  opacity:calc(.74 + var(--process-card-progress) * .26);
+  transition:opacity .36s ease, transform .42s cubic-bezier(.22,1,.22,1);
+}
+
+@media (max-width: 1023px){
+  #why-now .copy-block::after,
+  .stack-sequence::after,
+  .matrix-shell-animated::before,
+  .band-card::after{display:none}
+  .chapter-seam{
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-bottom:24px;
+  }
+  .chapter-seam .chapter-num{font-size:1.4rem}
+  .stack-sequence::before,
+  .process-grid-animated::before,
+  .process-grid-animated::after{display:none}
+  .process-card::before{
+    top:22px;
+    left:auto;
+    right:22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .chapter-seam .chapter-num,
+  .chapter-seam .chapter-name,
+  .chapter-seam-fill,
+  .chapter-seam-beam,
+  #why-now .copy-block::before,
+  #why-now .copy-block::after,
+  #why-now .copy-block p,
+  .stack-sequence::before,
+  .stack-sequence::after,
+  .stack-card::before,
+  .stack-card::after,
+  .matrix-shell-animated::before,
+  .matrix-shell-animated::after,
+  .band-card::before,
+  .band-card::after,
+  .band-card h3,
+  .band-card p,
+  .process-grid-animated::after,
+  .process-card::before,
+  .process-card::after,
+  .stack-card h3,
+  .stack-card p,
+  .stack-card .num,
+  .matrix-shell-animated tbody tr td,
+  .process-card .step,
+  .process-card h3,
+  .process-card p{
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+/* =====================================================================
+   Brand Canon v1.1 — copy-pass v2 refinements (added 2026-05-17)
+   Fixes per founder review of v1 stealth-gate test deploy:
+   - Big serif H2 line-height (descenders were touching ascenders below)
+   - Proof-table header (the washed-out grey box on dark surface)
+   - Stack-card and band-card serif headings (same tight-leading issue)
+   ===================================================================== */
+
+/* H2 line-height — give big serif headlines breathing room.
+   Original was .94, which works for shorter copy but breaks visually
+   when the H2 wraps to 4+ lines (founder feedback: lines touching). */
+.section-intro h2,
+.page-title {
+  line-height: 1.05;
+}
+
+/* Hero ledger card title — slightly tighter but still readable */
+.ledger-title {
+  line-height: 1.0;
+}
+
+/* Stack-card serif titles — same fix, scaled */
+.stack-card h3,
+.band-card h3 {
+  line-height: 1.1;
+}
+
+/* Outcome card value display — keep punchy but legible */
+.outcome-card .value {
+  line-height: 1.04;
+}
+
+/* Hero title — give the H1 same breathing room when it wraps */
+.hero-title {
+  line-height: 1.04;
+}
+
+/* Final-CTA title and review-launch title — same family */
+.final-cta-title,
+.review-launch-title {
+  line-height: 1.08;
+}
+
+/* PROOF TABLE HEADER on dark surface — replace washed-grey block
+   with a clean Reserve-green underline + transparent background.
+   Original `background:rgba(255,255,255,.55)` reads as a flat grey box
+   over the dark proof-shell. The matrix-table on light surfaces keeps
+   the original treatment. */
+.proof-shell .proof-table thead th {
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  padding-bottom: 14px;
+  letter-spacing: 2.5px;
+}
+.proof-shell .proof-table th {
+  color: #a2afc2;
+}
+/* Add small Reserve-green accent under the entire thead row */
+.proof-shell .proof-table thead tr {
+  position: relative;
+}
+.proof-shell .proof-table thead {
+  border-bottom: 2px solid rgba(10, 138, 123, 0.55);
+}
+
+/* =====================================================================
+   Brand Canon v1.1 — quality polish layer (added 2026-05-17, v3 zip)
+   Small refinements per founder feedback "make every little thing
+   look even higher quality without breaking the site."
+   ===================================================================== */
+
+/* Featured Bitcoin row in matrix table — subtle Reserve-green
+   left accent + faint background tint. Signals "the right answer"
+   without breaking the table's institutional restraint. */
+.matrix-table tr.featured {
+  position: relative;
+}
+.matrix-table tr.featured td {
+  background: rgba(10, 138, 123, 0.028);
+}
+.matrix-table tr.featured td:first-child {
+  position: relative;
+}
+.matrix-table tr.featured td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  background: var(--green, #0A8A7B);
+  border-radius: 2px;
+}
+
+/* Primary CTAs — subtle tactile hover lift. The brand is calm,
+   so motion is minimal: a single pixel up + soft shadow. */
+.btn-primary,
+.cta-primary {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+.btn-primary:hover,
+.cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px -10px rgba(6, 19, 40, 0.38);
+}
+
+/* Secondary buttons — quieter hover (no lift, just color shift) */
+.btn-secondary,
+.btn-light {
+  transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+/* Footer column headings — thin Reserve-green underline accent
+   for institutional rhythm. Currently the H3s sit flat. */
+.site-footer .footer-column h3 {
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+.site-footer .footer-column h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 1px;
+  background: rgba(10, 138, 123, 0.55);
+}
+
+/* Chapter rail active dot — slightly more confident treatment
+   when the section is active. Reserve-green ring instead of just fill. */
+.chapter-rail a.is-active .dot {
+  box-shadow: 0 0 0 3px rgba(10, 138, 123, 0.18);
+}
+
+/* Trust strip — subtle dividers between the three cells
+   so they read as a deliberate institutional triad, not floating words. */
+.hero .trust-strip {
+  align-items: center;
+}
+.hero .trust-strip .cell + .cell {
+  position: relative;
+}
+.hero .trust-strip .cell + .cell::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* =====================================================================
+   v4 final-polish layer (added 2026-05-17)
+   - Smooth scroll on nav anchor clicks (instead of jump)
+   - Honor user prefers-reduced-motion (auto-fallback to jump)
+   ===================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* =====================================================================
+   v5 — typography rebalance + logo bump + responsive tuning
+   Founder feedback: smallest text too small + biggest text too big;
+   logo needs to be bigger; gate flash; final-cta redundancy removed.
+   ===================================================================== */
+
+/* Small metadata labels — bump 10px → 12px for readability */
+.eyebrow,
+.eyebrow-light,
+.kicker,
+.outcome-card .mini,
+.metric .mini {
+  font-size: 12px;
+}
+
+/* Hero title — pull back max (was clamp(...,5.1rem) on some breakpoints) */
+.hero-title {
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+/* Section H2 — pull back max from 4.7rem → 3.6rem */
+.section-intro h2 {
+  font-size: clamp(2.1rem, 3.5vw, 3.5rem);
+  line-height: 1.06;
+}
+
+/* Brief/Review page H1 — pull back max from 5.8rem → 4.2rem */
+.page-title {
+  font-size: clamp(2.5rem, 4.2vw, 4.2rem);
+  line-height: 1.02;
+}
+
+/* Card serif headings */
+.stack-card h3,
+.band-card h3 {
+  font-size: clamp(1.5rem, 1.75vw, 1.95rem);
+  line-height: 1.1;
+}
+
+/* Hero ledger card title */
+.ledger-title {
+  font-size: clamp(1.55rem, 2vw, 2.3rem);
+  line-height: 1.05;
+}
+
+/* Outcome card display value */
+.outcome-card .value {
+  font-size: clamp(1.45rem, 1.7vw, 1.85rem);
+  line-height: 1.06;
+}
+
+/* Final-CTA + review-launch titles (kept in canon for future surfaces) */
+.final-cta-title,
+.review-launch-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+  line-height: 1.1;
+}
+
+/* Mobile (≤ 820px) — even more conservative big text */
+@media (max-width: 820px) {
+  .hero-title {
+    font-size: clamp(1.85rem, 7vw, 2.6rem);
+    line-height: 1.08;
+  }
+  .section-intro h2 {
+    font-size: clamp(1.7rem, 6vw, 2.3rem);
+    line-height: 1.08;
+  }
+  .page-title {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    line-height: 1.04;
+  }
+  .stack-card h3,
+  .band-card h3 {
+    font-size: clamp(1.35rem, 4.8vw, 1.7rem);
+  }
+}
+
+/* Body text bumps for readability on dark surfaces */
+.ledger-row p {
+  font-size: 16px;
+  line-height: 1.72;
+}
+.ledger-sub {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.outcome-card p {
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+/* Logo bumped for more visual presence in header */
+.site-header .brand .mark {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+}
+.site-header .wordmark {
+  width: 216px;
+}
+@media (max-width: 820px) {
+  .site-header .brand .mark {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+  .site-header .wordmark {
+    width: 178px;
+  }
+}
+
+/* =====================================================================
+   v6 — aggressive fixes per founder feedback:
+   - Hero H1 was stacking 6-7 lines because base CSS has max-width: 7.35ch
+     (designed for the original 5-word "Preserve more of what your business earns")
+   - Logo was still too small at 216px wordmark / 42px mark
+   - Smallest text still too small at 12px
+   - All overrides use !important because they need to win over base + media-query rules
+   ===================================================================== */
+
+/* Hero H1 — break the artificial max-width constraint so the longer canon
+   H1 ("Build a stronger business with an optimized Bitcoin treasury.")
+   wraps to 3-4 lines naturally instead of stacking 6-7 narrow lines */
+.hero-title {
+  font-size: clamp(2rem, 3vw, 2.85rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.035em !important;
+  max-width: 100% !important;
+  font-variation-settings: "opsz" 40, "wght" 600 !important;
+}
+
+@media (max-width: 1180px) {
+  .hero-title {
+    max-width: 100% !important;
+    font-size: clamp(1.85rem, 3.8vw, 2.5rem) !important;
+  }
+}
+
+@media (max-width: 820px) {
+  .hero-title {
+    font-size: clamp(1.7rem, 6vw, 2.2rem) !important;
+    line-height: 1.1 !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(1.55rem, 7vw, 2rem) !important;
+  }
+}
+
+/* Hero sub — match hero-title rhythm */
+.hero-sub {
+  max-width: 38rem !important;
+  font-size: clamp(1rem, 1.12vw, 1.18rem) !important;
+}
+
+/* Section H2 — keep tight too, more readable on long phrases */
+.section-intro h2 {
+  font-size: clamp(1.95rem, 3vw, 2.95rem) !important;
+  line-height: 1.08 !important;
+  max-width: 22ch !important;
+  font-variation-settings: "opsz" 40, "wght" 600 !important;
+}
+
+@media (max-width: 820px) {
+  .section-intro h2 {
+    font-size: clamp(1.65rem, 5.5vw, 2.2rem) !important;
+    line-height: 1.1 !important;
+    max-width: none !important;
+  }
+}
+
+/* Brief/Review page H1 (page-title) — pull back from huge 5.8rem max */
+.page-title {
+  font-size: clamp(2.3rem, 3.8vw, 3.6rem) !important;
+  line-height: 1.04 !important;
+}
+
+@media (max-width: 820px) {
+  .page-title {
+    font-size: clamp(1.8rem, 6.5vw, 2.5rem) !important;
+  }
+}
+
+/* Card serif headings */
+.stack-card h3,
+.band-card h3 {
+  font-size: clamp(1.35rem, 1.6vw, 1.7rem) !important;
+  line-height: 1.12 !important;
+}
+
+/* Hero ledger card title */
+.ledger-title {
+  font-size: clamp(1.4rem, 1.8vw, 1.95rem) !important;
+  line-height: 1.06 !important;
+}
+
+/* Outcome card display value */
+.outcome-card .value {
+  font-size: clamp(1.35rem, 1.55vw, 1.7rem) !important;
+  line-height: 1.06 !important;
+}
+
+/* Review-launch title */
+.review-launch-title {
+  font-size: clamp(1.65rem, 2vw, 2.3rem) !important;
+  line-height: 1.12 !important;
+}
+
+/* ===== LOGO — significantly bigger now ===== */
+.site-header .brand .mark {
+  width: 56px !important;
+  height: 56px !important;
+  flex: 0 0 56px !important;
+  border-radius: 14px !important;
+}
+.site-header .wordmark {
+  width: 308px !important;
+  height: auto !important;
+}
+.site-header .brand {
+  gap: 16px !important;
+}
+@media (max-width: 820px) {
+  .site-header .brand .mark {
+    width: 42px !important;
+    height: 42px !important;
+    flex: 0 0 42px !important;
+  }
+  .site-header .wordmark {
+    width: 218px !important;
+  }
+}
+@media (max-width: 480px) {
+  .site-header .brand .mark {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px !important;
+  }
+  .site-header .wordmark {
+    width: 180px !important;
+  }
+}
+
+/* Header padding — give the bigger logo breathing room */
+.site-header {
+  padding-block: clamp(18px, 1.6vw, 26px) !important;
+}
+
+/* ===== SMALL TEXT — bump 12px → 14px (founder said still too small) ===== */
+.eyebrow,
+.eyebrow-light,
+.kicker,
+.outcome-card .mini,
+.metric .mini {
+  font-size: 13.5px !important;
+  letter-spacing: 2px !important;
+}
+
+/* Caption text */
+.path-chart .caption {
+  font-size: 14.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* Matrix + proof table cell body text */
+.matrix-table td span,
+.proof-table td span {
+  font-size: 14.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* Body text on dark surfaces — bumped for readability */
+.ledger-row p {
+  font-size: 16px !important;
+  line-height: 1.72 !important;
+}
+.ledger-sub {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  max-width: 36ch !important;
+}
+.outcome-card p {
+  font-size: 15.5px !important;
+  line-height: 1.72 !important;
+}
+
+/* Trust strip cells slightly more legible */
+.trust-strip .cell {
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+}
+
+/* Footer compliance line + columns — bump small text */
+.footer-base {
+  font-size: 13px !important;
+}
+.footer-column h3 {
+  font-size: 14px !important;
+}
+.footer-column ul li,
+.footer-column ul li a {
+  font-size: 14.5px !important;
+  line-height: 1.85 !important;
+}
+.footer-brand p {
+  font-size: 14.5px !important;
+  line-height: 1.72 !important;
+}
+
+/* =====================================================================
+   v7 — Balanced consolidated layer (supersedes v3-v6 polish where they
+   conflict). Founder feedback: v6 over-corrected H1 size, leaving
+   blank space; small text still too small; customers won't trust the
+   site without precise visual balance.
+   ===================================================================== */
+
+/* ---- HERO H1 — back up to proper display size, no max-width constraint ---- */
+.hero-title {
+  font-size: clamp(2.5rem, 3.6vw, 3.2rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.035em !important;
+  max-width: 100% !important;
+  font-variation-settings: "opsz" 48, "wght" 600 !important;
+  margin-top: clamp(18px, 1.6vw, 24px) !important;
+}
+@media (max-width: 1180px) {
+  .hero-title {
+    font-size: clamp(2.2rem, 4.2vw, 2.8rem) !important;
+  }
+}
+@media (max-width: 820px) {
+  .hero-title {
+    font-size: clamp(1.9rem, 6vw, 2.4rem) !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* ---- HERO COPY column: vertically center within hero so no blank space ---- */
+.hero-copy {
+  align-self: stretch !important;
+  justify-content: center !important;
+}
+
+/* ---- HERO SUB — readable, doesn't compete with H1 ---- */
+.hero-sub {
+  max-width: 38rem !important;
+  font-size: clamp(1.05rem, 1.18vw, 1.22rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* ---- SECTION H2 — proportionate to H1 ---- */
+.section-intro h2 {
+  font-size: clamp(2.2rem, 3.3vw, 3.1rem) !important;
+  line-height: 1.06 !important;
+  max-width: 22ch !important;
+  font-variation-settings: "opsz" 44, "wght" 600 !important;
+}
+@media (max-width: 820px) {
+  .section-intro h2 {
+    font-size: clamp(1.75rem, 5.5vw, 2.2rem) !important;
+    max-width: none !important;
+  }
+}
+
+/* ---- BRIEF/REVIEW PAGE H1 ---- */
+.page-title {
+  font-size: clamp(2.5rem, 3.8vw, 3.5rem) !important;
+  line-height: 1.04 !important;
+}
+@media (max-width: 820px) {
+  .page-title {
+    font-size: clamp(1.9rem, 6.5vw, 2.5rem) !important;
+  }
+}
+
+/* ---- CARD SERIF HEADINGS ---- */
+.stack-card h3,
+.band-card h3 {
+  font-size: clamp(1.45rem, 1.7vw, 1.85rem) !important;
+  line-height: 1.12 !important;
+}
+
+/* ---- HERO LEDGER + OUTCOME ---- */
+.ledger-title {
+  font-size: clamp(1.55rem, 1.95vw, 2.15rem) !important;
+  line-height: 1.06 !important;
+}
+.outcome-card .value {
+  font-size: clamp(1.4rem, 1.65vw, 1.78rem) !important;
+  line-height: 1.06 !important;
+}
+
+/* ---- REVIEW-LAUNCH TITLE ---- */
+.review-launch-title {
+  font-size: clamp(1.7rem, 2.1vw, 2.4rem) !important;
+  line-height: 1.1 !important;
+}
+
+/* ---- LOGO — keep v6 size but slightly more refined gap ---- */
+.site-header .brand .mark {
+  width: 52px !important;
+  height: 52px !important;
+  flex: 0 0 52px !important;
+  border-radius: 13px !important;
+}
+.site-header .wordmark {
+  width: 286px !important;
+  height: auto !important;
+}
+.site-header .brand {
+  gap: 14px !important;
+}
+@media (max-width: 820px) {
+  .site-header .brand .mark {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+  }
+  .site-header .wordmark {
+    width: 210px !important;
+  }
+}
+@media (max-width: 480px) {
+  .site-header .brand .mark {
+    width: 36px !important;
+    height: 36px !important;
+    flex: 0 0 36px !important;
+  }
+  .site-header .wordmark {
+    width: 170px !important;
+  }
+}
+.site-header {
+  padding-block: clamp(20px, 1.8vw, 28px) !important;
+}
+
+/* ---- SMALL TEXT — pushed harder. Eyebrows now 15px. ---- */
+.eyebrow,
+.eyebrow-light,
+.kicker {
+  font-size: 14px !important;
+  letter-spacing: 2.3px !important;
+  font-weight: 600 !important;
+}
+.outcome-card .mini,
+.metric .mini {
+  font-size: 13.5px !important;
+  letter-spacing: 2px !important;
+  font-weight: 600 !important;
+}
+
+/* ---- CAPTIONS + TABLE BODY ---- */
+.path-chart .caption {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+.matrix-table td span,
+.proof-table td span {
+  font-size: 14.5px !important;
+  line-height: 1.7 !important;
+}
+.matrix-table td strong,
+.proof-table td strong {
+  font-size: 15.5px !important;
+}
+
+/* ---- BODY TEXT bumps on dark surfaces ---- */
+.ledger-row p {
+  font-size: 16px !important;
+  line-height: 1.72 !important;
+}
+.ledger-sub {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  max-width: 36ch !important;
+}
+.outcome-card p {
+  font-size: 15.5px !important;
+  line-height: 1.72 !important;
+}
+
+/* ---- TRUST STRIP ---- */
+.trust-strip .cell {
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+  font-weight: 600 !important;
+}
+
+/* ---- FOOTER — significantly more readable ---- */
+.footer-base {
+  font-size: 14px !important;
+}
+.footer-column h3 {
+  font-size: 15px !important;
+  letter-spacing: 1.8px !important;
+}
+.footer-column ul li,
+.footer-column ul li a {
+  font-size: 15.5px !important;
+  line-height: 1.95 !important;
+}
+.footer-brand p {
+  font-size: 15.5px !important;
+  line-height: 1.74 !important;
+}
+
+/* ---- SUBRAIL in hero ---- */
+.subrail {
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.3px !important;
+}
+
+/* =====================================================================
+   v8 — Reverts v7's center-align (which created blank space at top)
+   and pushes small text MUCH harder for true modern-web readability.
+   Founder feedback: "the small text is too small! everything has to
+   be balanced and readable and world class."
+   ===================================================================== */
+
+/* ---- REVERT hero-copy back to top-aligned (v7 caused the blank gap) ---- */
+.hero-copy {
+  align-self: start !important;
+  justify-content: flex-start !important;
+}
+
+/* ---- HERO H1 stays at v7 size (3-line wrap is correct) ---- */
+
+/* ---- SUBRAIL ("THE MAINTAINED BITCOIN TREASURY...") much bigger ---- */
+.subrail {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 1.4px !important;
+  font-weight: 500 !important;
+  color: #d8e0eb !important;
+  max-width: 32rem !important;
+}
+
+/* ---- EYEBROWS — pushed to 15px, weight 600, slightly looser letter-spacing ---- */
+.eyebrow,
+.eyebrow-light {
+  font-size: 15px !important;
+  letter-spacing: 2.4px !important;
+  font-weight: 600 !important;
+}
+
+/* ---- KICKERS ("TREASURY LOGIC", "WHAT RESERVE STANDARD CHANGES") ---- */
+.kicker {
+  font-size: 14px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+
+/* ---- ROW LABELS ("OPERATING CASH", "SAFETY CASH", etc) ---- */
+.ledger-row .label {
+  font-size: 14px !important;
+  letter-spacing: 2px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+}
+
+/* ---- LEDGER ROW BODY — push to 17px ---- */
+.ledger-row p {
+  font-size: 16.5px !important;
+  line-height: 1.68 !important;
+}
+
+/* ---- LEDGER SUB ("Most businesses blur the buckets...") ---- */
+.ledger-sub {
+  font-size: 16.5px !important;
+  line-height: 1.65 !important;
+  max-width: 38ch !important;
+  margin-top: 14px !important;
+}
+
+/* ---- OUTCOME CARD mini ("TREASURY OUTCOME", "OPERATING REALITY") ---- */
+.outcome-card .mini,
+.metric .mini {
+  font-size: 14px !important;
+  letter-spacing: 2px !important;
+  font-weight: 700 !important;
+}
+
+/* ---- OUTCOME CARD body — bigger ---- */
+.outcome-card p {
+  font-size: 16px !important;
+  line-height: 1.68 !important;
+}
+
+/* ---- OUTCOME CARD value display ---- */
+.outcome-card .value {
+  font-size: clamp(1.45rem, 1.7vw, 1.85rem) !important;
+  line-height: 1.08 !important;
+  margin-top: 14px !important;
+}
+
+/* ---- OUTCOME CALL (the closing line under outcome cards) ---- */
+.outcome-call {
+  font-size: 15.5px !important;
+  line-height: 1.62 !important;
+  font-weight: 600 !important;
+  padding-top: 22px !important;
+  margin-top: 22px !important;
+}
+
+/* ---- LEAD paragraphs (body in sections) — bump to 17-18px ---- */
+.lead {
+  font-size: clamp(1.08rem, 1.18vw, 1.22rem) !important;
+  line-height: 1.78 !important;
+}
+.lead-strong {
+  font-size: clamp(1.15rem, 1.3vw, 1.38rem) !important;
+  line-height: 1.72 !important;
+}
+.hero-sub {
+  font-size: clamp(1.08rem, 1.2vw, 1.25rem) !important;
+  line-height: 1.72 !important;
+}
+
+/* ---- TRUST STRIP pill cells ---- */
+.trust-strip .cell {
+  font-size: 13px !important;
+  letter-spacing: 1.8px !important;
+  font-weight: 600 !important;
+  padding: 13px 14px !important;
+}
+
+/* ---- BUTTONS — bigger, more present ---- */
+.btn,
+.btn-primary,
+.btn-light,
+.btn-secondary {
+  font-size: 14px !important;
+  letter-spacing: 1.4px !important;
+  font-weight: 600 !important;
+  padding: 14px 22px !important;
+}
+
+/* ---- CARD H3 bodies (stack card + band card text after H3) ---- */
+.stack-card p,
+.band-card p,
+.process-card p,
+.metric p {
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* ---- MATRIX + PROOF TABLE — push cell body harder ---- */
+.matrix-table td span,
+.proof-table td span {
+  font-size: 15px !important;
+  line-height: 1.68 !important;
+}
+.matrix-table td strong,
+.proof-table td strong {
+  font-size: 16px !important;
+}
+
+/* ---- PROOF CHART CAPTION ---- */
+.path-chart .caption {
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* ---- FOOTER — pushed harder still ---- */
+.footer-base {
+  font-size: 14.5px !important;
+}
+.footer-column h3 {
+  font-size: 15px !important;
+  letter-spacing: 1.8px !important;
+  font-weight: 700 !important;
+}
+.footer-column ul li,
+.footer-column ul li a {
+  font-size: 16px !important;
+  line-height: 2 !important;
+}
+.footer-brand p {
+  font-size: 16px !important;
+  line-height: 1.74 !important;
+}
+
+/* ---- NAV link text in header ---- */
+.site-nav a {
+  font-size: 14.5px !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 500 !important;
+}
+.cta-primary {
+  font-size: 14px !important;
+  letter-spacing: 1.3px !important;
+  font-weight: 600 !important;
+  padding: 14px 22px !important;
+}
+
+/* ---- REVIEW FORM labels, inputs ---- */
+.field .label-text {
+  font-size: 13.5px !important;
+  letter-spacing: 1.4px !important;
+  font-weight: 600 !important;
+}
+.input,
+.select,
+.textarea {
+  font-size: 15px !important;
+}
+.review-list .item span {
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+.form-note {
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* =====================================================================
+   v9 — Real fix for hero left-column dead space + truly modern small-text
+   sizes. Founder feedback: small text still too small; first section
+   awkward and not balanced.
+
+   STRATEGY:
+   - Stretch hero-copy column to match hero-stack height
+   - Push trust-strip to bottom of column via margin-top:auto
+   - Header content (eyebrow → H1 → sub → CTAs) groups at top
+   - Trust strip anchors at bottom — intentional distribution, no gap
+   - All small text bumped to modern editorial scale (16-18px body, 15-16px labels)
+   ===================================================================== */
+
+/* ---- Hero left column: stretch + push trust-strip to bottom ---- */
+.hero-copy {
+  align-self: stretch !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  min-height: 100% !important;
+}
+.hero-copy .hero-actions {
+  margin-top: clamp(28px, 2.2vw, 38px) !important;
+}
+.hero-copy .trust-strip {
+  margin-top: auto !important;
+  padding-top: clamp(40px, 4vw, 64px) !important;
+}
+
+/* ---- EYEBROWS — push to 16px, real weight + spacing ---- */
+.eyebrow,
+.eyebrow-light {
+  font-size: 16px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+}
+
+/* ---- SUBRAIL ("THE MAINTAINED...") — 16px / 500 ---- */
+.subrail {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 1.4px !important;
+  font-weight: 500 !important;
+  color: #d8e0eb !important;
+  max-width: 36rem !important;
+}
+
+/* ---- KICKERS ("TREASURY LOGIC", "WHAT RESERVE STANDARD CHANGES") ---- */
+.kicker {
+  font-size: 15px !important;
+  letter-spacing: 2.4px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+/* ---- ROW LABELS ("OPERATING CASH", "SAFETY CASH" etc) — 15px / 700 ---- */
+.ledger-row .label {
+  font-size: 15px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-bottom: 8px !important;
+  color: #d8e0eb !important;
+}
+
+/* ---- LEDGER ROW BODY — 17px for true readability ---- */
+.ledger-row p {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+}
+
+/* ---- LEDGER SUB ("Most businesses blur the buckets...") — 17px ---- */
+.ledger-sub {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  max-width: 38ch !important;
+  margin-top: 14px !important;
+}
+
+/* ---- OUTCOME CARD mini labels ("TREASURY OUTCOME", "OPERATING REALITY") ---- */
+.outcome-card .mini,
+.metric .mini {
+  font-size: 15px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  color: #d8e0eb !important;
+}
+
+/* ---- OUTCOME CARD body text — 16-17px ---- */
+.outcome-card p {
+  font-size: 16.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* ---- OUTCOME CALL (closing line under outcome cards) ---- */
+.outcome-call {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  font-weight: 600 !important;
+  padding-top: 24px !important;
+  margin-top: 24px !important;
+}
+
+/* ---- LEAD paragraphs throughout site ---- */
+.lead {
+  font-size: clamp(1.12rem, 1.22vw, 1.28rem) !important;
+  line-height: 1.78 !important;
+}
+.lead-strong {
+  font-size: clamp(1.18rem, 1.34vw, 1.42rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* ---- HERO SUB paragraph — 17px max ---- */
+.hero-sub {
+  font-size: clamp(1.12rem, 1.25vw, 1.3rem) !important;
+  line-height: 1.7 !important;
+  max-width: 36rem !important;
+}
+
+/* ---- TRUST STRIP pill cells ---- */
+.trust-strip .cell {
+  font-size: 14px !important;
+  letter-spacing: 1.8px !important;
+  font-weight: 700 !important;
+  padding: 14px 16px !important;
+}
+
+/* ---- BUTTONS — substantial + readable ---- */
+.btn,
+.btn-primary,
+.btn-light,
+.btn-secondary {
+  font-size: 14.5px !important;
+  letter-spacing: 1.6px !important;
+  font-weight: 700 !important;
+  padding: 15px 24px !important;
+}
+.cta-primary {
+  font-size: 14.5px !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 700 !important;
+  padding: 14px 22px !important;
+}
+
+/* ---- CARD H3 paragraphs ---- */
+.stack-card p,
+.band-card p,
+.process-card p,
+.metric p {
+  font-size: 16.5px !important;
+  line-height: 1.68 !important;
+}
+
+/* ---- MATRIX + PROOF TABLE cell text ---- */
+.matrix-table td span,
+.proof-table td span {
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+.matrix-table td strong,
+.proof-table td strong {
+  font-size: 16.5px !important;
+}
+
+/* ---- CHART CAPTION ---- */
+.path-chart .caption {
+  font-size: 16px !important;
+  line-height: 1.68 !important;
+}
+
+/* ---- NAV header links ---- */
+.site-nav a {
+  font-size: 15px !important;
+  letter-spacing: 0.4px !important;
+  font-weight: 500 !important;
+}
+
+/* ---- FOOTER — biggest yet, truly scannable ---- */
+.footer-base {
+  font-size: 15px !important;
+}
+.footer-column h3 {
+  font-size: 16px !important;
+  letter-spacing: 1.8px !important;
+  font-weight: 700 !important;
+}
+.footer-column ul li,
+.footer-column ul li a {
+  font-size: 16.5px !important;
+  line-height: 2 !important;
+}
+.footer-brand p {
+  font-size: 16.5px !important;
+  line-height: 1.72 !important;
+}
+
+/* ---- REVIEW FORM ---- */
+.field .label-text {
+  font-size: 14px !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 700 !important;
+}
+.input,
+.select,
+.textarea {
+  font-size: 15.5px !important;
+}
+.review-list .item span {
+  font-size: 16.5px !important;
+  line-height: 1.7 !important;
+}
+.form-note {
+  font-size: 14.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* ---- CHAPTER SEAM ("01 PRESSURE BUILDING" etc) ---- */
+.chapter-seam-meta .chapter-num {
+  font-size: 1.4rem !important;
+}
+.chapter-seam-meta .chapter-name {
+  font-size: 14px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+}
+
+/* =====================================================================
+   v10 — STRUCTURAL: outcome card removed from hero (was causing the
+   right-column-twice-as-tall imbalance). Plus labels pushed harder
+   with stronger contrast colors for true visibility.
+
+   Modern editorial reality: small text at 15-16px in slate-light color
+   on bone background reads as "small" because of LOW CONTRAST, not just
+   size. Pushing both size AND contrast.
+   ===================================================================== */
+
+/* HERO labels — bigger AND brighter for high contrast on dark navy */
+.hero .eyebrow,
+.hero .eyebrow-light {
+  font-size: 17px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+  color: #5CD6BB !important;  /* brighter Reserve green for contrast */
+}
+.hero .subrail {
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  letter-spacing: 1.2px !important;
+  font-weight: 600 !important;
+  color: #EEF5FB !important;  /* near-white for high contrast on navy */
+  max-width: 38rem !important;
+}
+.hero .kicker {
+  font-size: 16px !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 700 !important;
+  color: #5CD6BB !important;
+}
+.hero .ledger-row .label {
+  font-size: 16px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;  /* pure white labels on dark navy = max contrast */
+  margin-bottom: 10px !important;
+}
+.hero .ledger-row p {
+  font-size: 17px !important;
+  line-height: 1.62 !important;
+  color: #DDE5F0 !important;  /* brighter body text */
+}
+.hero .ledger-sub {
+  font-size: 17px !important;
+  line-height: 1.58 !important;
+  max-width: 36ch !important;
+  color: #DDE5F0 !important;
+}
+.hero .ledger-title {
+  font-size: clamp(1.6rem, 2vw, 2.25rem) !important;
+  line-height: 1.06 !important;
+  font-variation-settings: "opsz" 40, "wght" 600 !important;
+}
+
+/* SECTION eyebrows + chapter seams on light surfaces — bigger + DARKER */
+.section-intro .eyebrow {
+  font-size: 16px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+  color: #0A8A7B !important;  /* Reserve green for emphasis */
+}
+
+/* CHAPTER SEAM ("04 MAINTAINED OPERATING SYSTEM") — push hard */
+.chapter-seam-meta .chapter-num {
+  font-size: 2rem !important;
+  font-weight: 500 !important;
+  color: #7A8BA6 !important;  /* slate but readable */
+  font-family: 'Source Serif 4', Georgia, serif !important;
+}
+.chapter-seam-meta .chapter-name {
+  font-size: 15px !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 700 !important;
+  color: #4A5A75 !important;  /* darker slate for real contrast */
+}
+
+/* MATRIX + PROOF TABLE headers — proper column headers, not whispered labels */
+.matrix-table thead th,
+.proof-table thead th {
+  font-size: 14px !important;
+  letter-spacing: 2.4px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  padding: 16px 14px !important;
+}
+.matrix-table thead th {
+  color: #4A5A75 !important;  /* darker slate on bone for readability */
+}
+.proof-shell .proof-table thead th {
+  color: #C4CEDA !important;  /* lighter for dark surface */
+}
+
+/* MATRIX + PROOF TABLE cell strong (column 1 label) — bigger */
+.matrix-table td strong,
+.proof-table td strong {
+  font-size: 17px !important;
+  line-height: 1.3 !important;
+}
+.matrix-table td span,
+.proof-table td span {
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* PROOF eyebrow on dark surface — brighter */
+.proof-shell .eyebrow-light {
+  color: #5CD6BB !important;
+}
+
+/* HERO COPY column — natural alignment now that imbalance is reduced */
+.hero-copy {
+  align-self: start !important;
+  justify-content: flex-start !important;
+}
+
+/* All small text bumps to 17px where it appears on light surfaces */
+.stack-card .num,
+.process-card .step {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #0A8A7B !important;
+}
+
+/* =====================================================================
+   v11 — STRUCTURAL: ledger card moved out of hero into its own band.
+   Hero is now single-column (just left-copy). New treasury-logic-band
+   sits immediately after the hero on the same dark navy surface, so
+   the visual flows continuously.
+
+   Founder direction: "why dont you just move the Treasury logic /
+   Not every dollar card under the first section and make everything
+   balanced and consistent."
+   ===================================================================== */
+
+/* HERO is now single-column — hero-stack removed entirely */
+.hero .hero-inner {
+  grid-template-columns: 1fr !important;
+}
+.hero .hero-copy {
+  max-width: 760px !important;  /* keep readable line length even in full-width */
+  align-self: start !important;
+}
+
+/* Hero H1 can be slightly larger now that it has full width */
+.hero .hero-title {
+  font-size: clamp(2.6rem, 4vw, 3.8rem) !important;
+  line-height: 1.04 !important;
+  max-width: 18ch !important;
+}
+@media (max-width: 820px) {
+  .hero .hero-title {
+    font-size: clamp(2rem, 6.5vw, 2.7rem) !important;
+    max-width: none !important;
+  }
+}
+
+/* ===== NEW TREASURY-LOGIC-BAND — own section right after the hero ===== */
+.treasury-logic-band {
+  position: relative;
+  padding-block: clamp(40px, 4vw, 70px) clamp(60px, 7vw, 110px) !important;
+  background: #061328 !important;  /* same Navy as hero — seamless transition */
+  color: #F4F1E8 !important;
+}
+
+/* Ledger frame becomes a centerpiece card */
+.ledger-frame.ledger-frame-band {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(40px, 4.5vw, 64px) clamp(32px, 4vw, 56px);
+  background: rgba(255, 255, 255, 0.018);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.5);
+}
+
+/* Ledger head — title + sub side by side on the band */
+.ledger-frame-band .ledger-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 4vw, 56px);
+  margin-bottom: clamp(40px, 4vw, 56px);
+  padding-bottom: clamp(32px, 3.4vw, 44px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+@media (max-width: 820px) {
+  .ledger-frame-band .ledger-head {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.ledger-frame-band .kicker {
+  font-size: 14px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+  color: #5CD6BB !important;
+  margin-bottom: 14px !important;
+  text-transform: uppercase !important;
+}
+.ledger-frame-band .ledger-title {
+  font-size: clamp(1.8rem, 2.6vw, 2.8rem) !important;
+  line-height: 1.06 !important;
+  color: #FFFFFF !important;
+  max-width: 18ch !important;
+  letter-spacing: -0.02em !important;
+  font-variation-settings: "opsz" 44, "wght" 600 !important;
+}
+.ledger-frame-band .ledger-sub {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  color: #C4CEDA !important;
+  max-width: 42ch !important;
+  margin-top: 4px !important;
+  align-self: center;
+}
+
+/* Ledger grid: 4 rows displayed as a 2-column grid (label | description) */
+.ledger-frame-band .ledger-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 2.4vw, 32px);
+}
+.ledger-frame-band .ledger-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: clamp(20px, 2.4vw, 40px);
+  padding-bottom: clamp(20px, 2vw, 28px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.ledger-frame-band .ledger-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+@media (max-width: 640px) {
+  .ledger-frame-band .ledger-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.ledger-frame-band .ledger-row .label {
+  font-size: 15px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  align-self: start;
+  margin: 0 !important;
+}
+.ledger-frame-band .ledger-row p {
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  color: #DDE5F0 !important;
+  margin: 0 !important;
+}
+
+/* Hero block now sits more naturally — give it taller minimum height
+   so the H1 group has presence on its own */
+.hero {
+  min-height: clamp(420px, 56vh, 620px);
+}
+
+
+/* =====================================================================
+   v12 — RESTORE. Reverts v11 structural single-column hero change.
+   Ledger card moved back into the hero-stack where it was originally.
+   Hero is 2-column again, matching the design that took weeks to build.
+   The standalone treasury-logic-band has been removed from HTML.
+
+   Founder direction: "this sucks you are breaking my site after weeks
+   of work!! fix it please" — restoring the original 2-column hero.
+   ===================================================================== */
+
+/* DESKTOP HERO LAYOUT — only force 2-column at desktop sizes.
+   At <=1200px the base CSS at line 768 collapses .hero-inner to 1fr.
+   v25 fix: my v12 !important rule was forcing 2-col at ALL sizes,
+   which broke mobile/tablet (caused overlapping columns). */
+@media (min-width: 1201px) {
+  .hero .hero-inner {
+    grid-template-columns: minmax(0, 1.04fr) minmax(390px, .96fr) !important;
+  }
+  .hero .hero-copy {
+    max-width: none !important;
+    align-self: start !important;
+  }
+  /* Hero H1 sized to fit the 50% column width on desktop */
+  .hero .hero-title {
+    font-size: clamp(2.2rem, 3.4vw, 3.2rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.035em !important;
+    max-width: 14ch !important;
+    font-variation-settings: "opsz" 48, "wght" 600 !important;
+  }
+}
+
+/* TABLET / NARROW DESKTOP (821-1200px): single-column hero, larger H1
+   no max-width constraint so it can flow naturally. */
+@media (max-width: 1200px) and (min-width: 821px) {
+  .hero .hero-inner {
+    grid-template-columns: 1fr !important;
+  }
+  .hero .hero-copy {
+    max-width: 720px !important;
+    align-self: start !important;
+  }
+  .hero .hero-title {
+    font-size: clamp(2.4rem, 5vw, 3.4rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.038em !important;
+    max-width: 18ch !important;
+  }
+}
+
+/* MOBILE (<=820px): single-column, smaller H1, no max-width — natural flow */
+@media (max-width: 820px) {
+  .hero .hero-inner {
+    grid-template-columns: 1fr !important;
+  }
+  .hero .hero-copy {
+    max-width: none !important;
+    align-self: start !important;
+  }
+  .hero .hero-title {
+    font-size: clamp(1.85rem, 7vw, 2.6rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.035em !important;
+    max-width: none !important;
+  }
+}
+
+/* Hero min-height — natural, no forced minimum that creates blank */
+.hero {
+  min-height: 0 !important;
+}
+
+/* =====================================================================
+   v13 — "What Reserve Standard changes" outcome card restored as a
+   dark navy contrast band at the end of Section 01 (Why now).
+   Creates a "moment of payoff" between problem statement and Framework
+   section. Reuses the original outcome-frame brand styling.
+
+   Founder direction: "what about the what reserve standard changes
+   card? add it under A business is judged by what it keeps."
+   ===================================================================== */
+
+.changes-summary {
+  margin-top: clamp(60px, 6vw, 100px);
+}
+
+/* v14: when the outcome card sits directly under the section H2 instead
+   of at the end of Section 01, use tighter top spacing and add bottom
+   breathing room before the chapter-seam below. */
+.changes-summary.changes-summary-top {
+  margin-top: clamp(28px, 3.2vw, 48px);
+  margin-bottom: clamp(40px, 4.4vw, 64px);
+}
+
+.outcome-frame.outcome-frame-band {
+  background: linear-gradient(180deg, #061328 0%, #08182f 100%);
+  border-radius: 18px;
+  padding: clamp(40px, 4.5vw, 64px);
+  color: #F4F1E8;
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.outcome-frame.outcome-frame-band .kicker {
+  font-size: 14px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+  color: #5CD6BB !important;
+  text-transform: uppercase !important;
+  margin-bottom: clamp(28px, 3vw, 40px) !important;
+  display: block;
+}
+
+.outcome-frame.outcome-frame-band .outcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 2.6vw, 40px);
+}
+@media (max-width: 820px) {
+  .outcome-frame.outcome-frame-band .outcome-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.outcome-frame.outcome-frame-band .outcome-card {
+  padding: clamp(28px, 3vw, 36px);
+  background: rgba(255, 255, 255, 0.022);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.outcome-frame.outcome-frame-band .outcome-card .mini {
+  font-size: 13.5px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  color: #C4CEDA !important;
+  text-transform: uppercase !important;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.outcome-frame.outcome-frame-band .outcome-card .value {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(1.6rem, 2.1vw, 2.2rem) !important;
+  line-height: 1.06 !important;
+  color: #FFFFFF !important;
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 40, "wght" 600;
+}
+
+.outcome-frame.outcome-frame-band .outcome-card p {
+  font-size: 16px !important;
+  line-height: 1.68 !important;
+  color: #DDE5F0 !important;
+  margin: 0;
+}
+
+.outcome-frame.outcome-frame-band .outcome-call {
+  margin-top: clamp(32px, 3.4vw, 44px);
+  padding-top: clamp(28px, 2.8vw, 36px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  font-weight: 600 !important;
+  color: #EEF5FB !important;
+  text-align: center;
+}
+
+/* =====================================================================
+   v15 — Polish pass.
+   • Hero pills (Institutional/Sovereign/Standard-setting) replaced with
+     a quieter hero-meta label/value strip — cleaner, more professional,
+     reads consistently with the rest of the site.
+   • Operator materials doc-showcase loses the image cover entirely so
+     the card is single-column, balanced, calmer.
+   • The under-H2 outcome card gets a much softer visual treatment so it
+     stops visually "bleeding into" the Cash keeps buying… copy below.
+     Removed the heavy downward box-shadow, dropped border radius
+     emphasis, and added a clearer bottom seam before the chapter-seam.
+   • Review-page dark sidebar list items get higher contrast text so
+     "What this review is for" is properly readable.
+   ===================================================================== */
+
+/* =====================================================================
+   v16 polish overrides (replaces v15 hero-meta block — hero-meta HTML
+   removed entirely; hero is clean: eyebrow + tagline + H1 + sub + CTAs).
+   ===================================================================== */
+
+/* Doc-showcase without the cover image — collapse to single column,
+   stretch to match the Next-step card's height. */
+.doc-showcase.doc-showcase-no-cover {
+  grid-template-columns: 1fr !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 100% !important;
+}
+.doc-showcase.doc-showcase-no-cover .doc-copy {
+  max-width: 56rem;
+}
+
+/* Equalize the Operator materials + Next step cards — both stretch to
+   the tallest of the pair so the row reads as a balanced 2-up. */
+.download-grid {
+  align-items: stretch !important;
+}
+.download-grid > article {
+  height: 100%;
+}
+
+/* "What Reserve Standard changes" card now lives at the end of
+   Section 01 as the payoff after the problem statement. Keep the
+   established dark-navy treatment but trim the heavy box-shadow that
+   was creating the visual bleed into the next section. */
+.changes-summary {
+  margin-top: clamp(48px, 5vw, 84px);
+  margin-bottom: clamp(8px, 1vw, 16px);
+}
+.outcome-frame.outcome-frame-band {
+  box-shadow: 0 12px 32px -20px rgba(6, 19, 40, 0.32) !important;
+}
+
+/* ---------------------------------------------------------------------
+   DARK-SURFACE TEXT TOKENS — applied uniformly site-wide so the review
+   page sidebar, hero ledger, outcome card, and proof shell all share
+   the same dark-on-navy hierarchy. No bespoke colors per surface.
+
+   Hierarchy (consistent across every surface-dark / dark context):
+   • kicker / eyebrow-light       #5CD6BB   bright Reserve green
+   • label / column header        #FFFFFF   pure white
+   • body text                    #DDE5F0   site-standard body on navy
+   • secondary / meta             #C4CEDA   site-standard secondary
+   • call / lead-strong           #EEF5FB   site-standard near-white
+   --------------------------------------------------------------------- */
+
+.review-side .kicker,
+.review-side .review-separator .kicker {
+  color: #5CD6BB !important;
+  font-size: 13px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+}
+.review-side .review-list .item span,
+.review-list .item span {
+  color: #DDE5F0 !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
+}
+.review-side .review-list .item .dot {
+  background: #5CD6BB !important;
+}
+.review-side .review-email a {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+/* Make sure no parent opacity rule washes out the sidebar. */
+.review-side,
+.review-side > * {
+  opacity: 1 !important;
+}
+
+/* =====================================================================
+   v17 — Real fixes.
+   • REVIEW-SIDE was rendering as a transparent (rgba(255,255,255,.035))
+     card on the bone page because the late .ledger-frame/.outcome-frame/
+     .review-side group rule at line 462 wipes out the navy gradient that
+     .surface-dark sets. That's the actual reason the "What this review
+     is for" text reads faded — it's dark-surface text bleeding through
+     to the light page underneath. Restore the navy explicitly.
+   • Operator materials PDF buttons rebalanced to a 2×2 grid so they
+     read as a clean professional matrix instead of 3-up + 1-orphan.
+   • Hero H1 sized larger so the left column extends down and the CTA
+     buttons sit aligned with the bottom of the ledger card on the right.
+   • Chapter-seam given far more breathing room below it and the green
+     fill set to its final width on mount so the line doesn't visually
+     stop inside the card column below it.
+   ===================================================================== */
+
+/* RESTORE: review-side must render on the dark navy gradient.
+   Overrides the transparent .ledger-frame/.outcome-frame/.review-side
+   group rule that strips the surface-dark background. */
+.review-side {
+  background: linear-gradient(145deg, #11284b 0%, #081a33 42%, #061328 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: var(--shadow-dark) !important;
+  color: #fff !important;
+}
+
+/* Operator materials — 4 PDF buttons as a balanced 2×2 grid */
+.doc-showcase.doc-showcase-no-cover .doc-actions {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: clamp(24px, 2.4vw, 32px);
+}
+.doc-showcase.doc-showcase-no-cover .doc-actions .btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .doc-showcase.doc-showcase-no-cover .doc-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* v17 hero polish — only on full desktop (>=1201px) where the 2-col
+   hero layout is active. At smaller sizes the responsive blocks above
+   handle hero-title sizing without forcing align-stretch on hero-copy
+   (which would create empty whitespace in a single-column hero). */
+@media (min-width: 1201px) {
+  .hero .hero-title {
+    font-size: clamp(2.85rem, 4.6vw, 4.4rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.042em !important;
+    max-width: 14ch !important;
+  }
+  .hero .hero-copy {
+    align-self: stretch !important;
+    justify-content: flex-start !important;
+  }
+  .hero .hero-actions {
+    margin-top: auto !important;
+    padding-top: clamp(32px, 3vw, 44px);
+  }
+}
+
+/* Chapter-seam — clear, generous vertical space so the line sits ABOVE
+   the cards below, never visually inside them. Also set the green fill
+   to its full width by default so the line doesn't visually "stop" at
+   ~14% inside the left column on initial section view. */
+.chapter-seam {
+  margin: clamp(20px, 2.4vw, 32px) 0 clamp(48px, 5.2vw, 76px) !important;
+}
+.chapter-seam-fill {
+  transform: scaleX(1) !important;
+}
+.chapter-seam-beam {
+  /* keep the beam sweep but tone its visible travel so it doesn't read
+     as "the line is moving" — it now just adds a soft highlight pass. */
+  opacity: calc(.04 + var(--section-focus, 0) * .18) !important;
+}
+
+/* =====================================================================
+   v18 — REAL fix for #why-now two-column alignment.
+   The base rule at .two-col was `align-items: start` so the left copy
+   card stayed its natural height and the right stack column ran taller,
+   leaving the two columns un-level at the bottom. Override to stretch
+   on desktop so both columns share top AND bottom edges. Left card
+   grows to fill its cell with natural editorial breathing room.
+   Mobile keeps the existing single-column collapse — unchanged.
+   ===================================================================== */
+
+/* =====================================================================
+   v22 — Sticky-scroll for the why-now two-column section (final fix).
+
+   What you asked for: when scrolling the section, the LEFT card stops
+   ABOVE the card row position (sticks to the top of the viewport just
+   below the sticky site-header) while the RIGHT column of cards
+   scrolls past it. When the right column finishes scrolling, the
+   left card unsticks and the section exits normally.
+
+   The actual blocker — script.js (lines 179–185) wraps the
+   #why-now .copy-block in a JS-inserted <div class="copy-rail"> on
+   page load, then sets the rail's height to the distance from its
+   top to the bottom of the 3rd stack-card (so sticky has a real
+   scroll range to live inside). The base CSS at line 1174 fires the
+   sticky rule on `.copy-rail > .copy-block`.
+
+   My earlier overrides (v18/v19/v21) used the selector
+   `#why-now .two-col > .copy-block` — which never matched because
+   after JS runs, .copy-block is NOT a direct child of .two-col;
+   it's a direct child of .copy-rail. So the sticky never fired and
+   my "fixes" did nothing.
+
+   v22 fix:
+   • Drop the `.two-col > .copy-block` selectors entirely.
+   • Match `#why-now .copy-block` directly (works whether or not the
+     JS rail wrapper has run). On the same selector, force
+     `position: sticky` + sticky-top + `align-self: start` +
+     `transform: none`.
+   • Keep `align-items: stretch` on `.two-col` so the right-column
+     cell's bottom defines the row's bottom edge and the rail can
+     have a meaningful sticky range (it already gets a JS-set height
+     based on the 3rd card's bottom, but stretch is the safety net).
+   • Remove the decorative parallax transform on `.stack-list` in
+     this section so the right column's first card top stays locked
+     to the left card's top at section entry.
+
+   Disabled on mobile/tablet (≤1023px) where the two-col collapses
+   to one column — sticky would be meaningless there, and the
+   existing base CSS already sets `position: relative` for that
+   breakpoint.
+   ===================================================================== */
+
+/* On narrow viewports (<=1200px) the .two-col collapses to single column,
+   so the sticky-scroll storytelling pattern doesn't make sense. The base
+   CSS mobile @media at line 774 tries to disable sticky there but lacks
+   !important, so the base sticky declaration at line 1174 wins. Override
+   it explicitly with !important. Also disable any JS-set rail height
+   that would create a weird tall sticky range below the copy-block. */
+@media (max-width: 1200px) {
+  #why-now .copy-block,
+  #why-now .copy-rail > .copy-block {
+    position: relative !important;
+    top: auto !important;
+    align-self: auto !important;
+  }
+  #why-now .copy-rail {
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: start !important;
+  }
+}
+
+/* Sticky scoped to >=1201px to match the .two-col 2-column breakpoint
+   (base CSS at line 767 collapses .two-col to single column at <=1200).
+   At smaller sizes the section flows naturally — no sticky behavior. */
+@media (min-width: 1201px) {
+  #why-now .two-col {
+    align-items: stretch !important;
+  }
+
+  /* The JS-inserted .copy-rail (wraps .copy-block on page load) must
+     fill its grid cell so sticky has scroll range to live inside.
+     Explicit align-self: stretch overrides anything inherited from
+     elsewhere and forces the rail to take the full row height (which
+     is driven by the taller right column of 3 stack-cards). */
+  #why-now .copy-rail {
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 100% !important;
+  }
+
+  /* Copy-block sticks at its NATURAL viewport position when the section
+     first scrolls into view. Sticky-top is set so the space above the
+     stuck card matches the horizontal gap between the left and right
+     cards — a visually consistent rhythm where the same "white space
+     unit" surrounds the card on all four edges (top of card to bottom
+     of header ≈ gap between left and right card columns).
+
+     Measured: header is 145px, grid gap is 35px → sticky-top = 180px.
+     Card stops at y=180 with 35px of breathing room above and beside,
+     matching the editorial grid rhythm.
+
+     Matches BOTH the wrapped DOM structure (post-JS .copy-rail) and the
+     pre-wrap fallback. */
+  #why-now .copy-block,
+  #why-now .copy-rail > .copy-block {
+    position: sticky !important;
+    top: 180px !important;
+    align-self: start !important;
+    transform: none !important;
+  }
+
+  /* Right column — no decorative parallax shift relative to the left
+     sticky card. */
+  #why-now .stack-list {
+    transform: none !important;
+  }
+}
+
+/* =====================================================================
+   v20 — Site-header progress-bar fix.
+   The sticky site-header has a ::after pseudo-element that's a 2px
+   teal-to-blue line at the header's bottom edge, with
+   `transform: scaleX(var(--page-progress))` driven by total page scroll.
+   Earlier in the page, --page-progress is ~0.3-0.4, so the line ends
+   ~30-40% across the viewport — and that endpoint visually lands
+   INSIDE the left copy-block card while the right column scrolls past
+   it. Make the line always full-width so the endpoint is past both
+   cards on the right edge of the viewport — clean horizontal accent
+   below the sticky header, not a partial progress stub.
+   ===================================================================== */
+.site-header::after {
+  transform: scaleX(1) !important;
+}
+
+/* =====================================================================
+   v28 — Dedicated slide-in animation for the Framework Asset / Problem /
+   System band-cards. Uses its own JS observer (script.js v28 block)
+   and its own attribute (data-slide-in) so it runs INDEPENDENTLY of
+   the global data-reveal pipeline — which means it fires even when
+   the user's OS has prefers-reduced-motion enabled. This is requested
+   motion (founder direction: "world-class fintech motion graphics").
+
+   Motion spec:
+     • initial: translateX(140px), opacity 0, blur(10px), scale(.96)
+     • final:   translateX(0),     opacity 1, blur(0),    scale(1)
+     • duration: 900ms
+     • easing:  cubic-bezier(.22, 1, .36, 1) — snappy fintech entrance
+     • stagger: 0ms / 180ms / 360ms (set per-card via --slide-delay)
+
+   The JS adds .has-slid-in when each card is 22% intersecting the
+   viewport, with a -10% bottom rootMargin so the trigger fires when
+   the card is well into the visible area, not at the bleeding edge.
+   ===================================================================== */
+
+/* NOTE: v28 — the slide-in for Asset/Problem/System band-cards now uses
+   the Web Animations API in script.js, not CSS. This is because Chrome
+   pauses CSS transitions when prefers-reduced-motion is set at the OS
+   level, which prevented the animation from playing for some users.
+   WAAPI is developer-initiated and runs regardless. No CSS rules
+   needed here — initial state is set via inline JS styles, animation
+   plays via card.animate(), final state is the card's natural style. */
+
+/* =====================================================================
+   v26 — Responsive matrix + proof tables.
+
+   The Framework matrix-table and Proof matrix-table have 4 columns and
+   become awkward on narrow viewports. Base CSS at line 796 sets them
+   to horizontal scroll (display:block; overflow-x:auto) which works
+   but means the user has to scroll inside the table to see all columns.
+   That's a poor experience.
+
+   Transform them into stacked CARDS on mobile/tablet — each row becomes
+   a card with label/value pairs. World-class responsive pattern,
+   common in editorial sites with comparison tables.
+   ===================================================================== */
+
+@media (max-width: 760px) {
+  .matrix-table,
+  .proof-table {
+    display: block !important;
+    overflow-x: visible !important;
+    border-collapse: separate;
+  }
+  .matrix-table thead,
+  .proof-table thead {
+    display: none; /* hide table headers — labels go inline per cell */
+  }
+  .matrix-table tbody,
+  .proof-table tbody {
+    display: block;
+  }
+  .matrix-table tr,
+  .proof-table tr {
+    display: block;
+    padding: clamp(20px, 4vw, 28px);
+    margin-bottom: 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(11, 26, 50, 0.08);
+    box-shadow: 0 6px 18px rgba(6, 19, 40, 0.04);
+  }
+  .matrix-table td,
+  .proof-table td {
+    display: block;
+    padding: 8px 0;
+    border: none !important;
+    text-align: left;
+  }
+  .matrix-table td:first-child,
+  .proof-table td:first-child {
+    border-bottom: 1px solid rgba(11, 26, 50, 0.08) !important;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+  .matrix-table td strong,
+  .proof-table td strong {
+    font-size: 16px !important;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .matrix-table td span,
+  .proof-table td span {
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+    color: var(--ink-soft, #4A5A75);
+    display: block;
+  }
+  /* For non-first cells, prepend the column name as a small label */
+  .matrix-table td:nth-child(2)::before { content: "What it helps"; }
+  .matrix-table td:nth-child(3)::before { content: "Where it breaks"; }
+  .matrix-table td:nth-child(4)::before { content: "Long-run treasury fit"; }
+  .matrix-table td:nth-child(n+2)::before {
+    display: block;
+    font-size: 10.5px !important;
+    letter-spacing: 2px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    color: var(--green, #0A8A7B);
+    margin-bottom: 6px;
+    margin-top: 12px;
+  }
+  /* Dark-surface proof-table on the dark proof-shell — use brighter
+     colors on the per-cell labels so they're readable on navy. */
+  .proof-shell .proof-table tr {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+  .proof-shell .proof-table td:first-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  .proof-shell .proof-table td strong {
+    color: #FFFFFF !important;
+  }
+  .proof-shell .proof-table td span {
+    color: #DDE5F0 !important;
+  }
+  .proof-shell .proof-table td:nth-child(n+2)::before {
+    color: #5CD6BB !important;
+  }
+}
+
+/* =====================================================================
+   v32 — Path chart redesign (proof section).
+
+   Replaces the old SVG that had cryptic Y-axis labels (START/MID/LATE/
+   END) and SVG-embedded legend text that overlapped the gray line.
+   The new chart pattern:
+   • Proper chart head with eyebrow + clean two-row legend ABOVE the
+     SVG — no more text inside the plot area
+   • Smooth dual-line plot with subtle gradient AREA fills underneath
+     (premium fintech feel)
+   • Soft glow halo behind the Reserve Standard endpoint dot
+   • Clean axis labels on the X-axis (START OF PERIOD / END OF PERIOD)
+     so the direction of time is obvious — no confusing Y labels
+   • All on-brand colors: Reserve green primary, slate secondary,
+     navy background
+   ===================================================================== */
+
+.path-chart-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(16px, 2vw, 28px);
+  margin-bottom: clamp(20px, 2.4vw, 32px);
+  padding: 0 clamp(0px, 1vw, 14px);
+}
+
+.path-chart-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 2.6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #5CD6BB;
+}
+
+.path-chart-legend {
+  display: flex;
+  gap: clamp(20px, 2.4vw, 32px);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.path-chart-legend .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.path-chart-legend .legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.path-chart-legend .legend-dot-secondary {
+  background: linear-gradient(135deg, #7a8ba6 0%, #a8b5c8 100%);
+  box-shadow: 0 0 0 1px rgba(168, 181, 200, 0.3);
+}
+
+.path-chart-legend .legend-dot-primary {
+  background: linear-gradient(135deg, #0a8a7b 0%, #37c6b5 100%);
+  box-shadow:
+    0 0 0 1px rgba(55, 198, 181, 0.4),
+    0 0 14px rgba(55, 198, 181, 0.45);
+}
+
+.path-chart-legend .legend-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  color: #DDE5F0;
+}
+
+.path-chart-legend .legend-item-primary .legend-label {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.path-chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+}
+
+.path-chart .caption {
+  margin-top: clamp(18px, 2vw, 28px);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #C4CEDA;
+  max-width: 64ch;
+}
+
+/* Animate the lines as the user scrolls into view — uses the existing
+   .path-chart.is-animated class set by the IntersectionObserver in
+   script.js (line ~229). The stroke-dasharray pattern already on
+   [data-line] gives the draw-on effect; we just ensure smooth curves. */
+.path-chart-svg path[stroke^="url("] {
+  stroke-linejoin: round;
+}
+
+/* Mobile/tablet — keep the chart head readable, allow legend to wrap */
+@media (max-width: 760px) {
+  .path-chart-head {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .path-chart-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2.4px;
+  }
+  .path-chart-legend {
+    gap: 18px;
+  }
+  .path-chart-legend .legend-label {
+    font-size: 12.5px;
+  }
+}
+
+/* =====================================================================
+   v33 — Polish pass.
+   • Subtler radial highlight inside the proof-shell so the chart
+     background stops competing visually with the data.
+   • Nav active state no longer "raises" the active link — the green
+     underline is now absolute-positioned so it doesn't add layout
+     height. All three links share the same baseline.
+   • BTC matrix-table accent now runs full-height of the row (no
+     gap at top and bottom) so it reads as a clean editorial mark.
+   • Footer restructured: logo + "Reserve Standard © 2026" anchored
+     bottom-right next to the disclaimer; matches site-header logo
+     scale; no LLC suffix.
+   ===================================================================== */
+
+/* ---- Subtler chart background ----
+   The proof-shell pseudo-elements have a radial highlight (white .08
+   alpha) that was creating a noticeable streak through the chart.
+   Halve the opacity of those overlays on the proof-shell so the chart
+   reads as the focal point. */
+.proof-shell::before {
+  opacity: calc(.06 + var(--hero-progress, 0) * .04) !important;
+}
+.proof-shell::after {
+  background:
+    radial-gradient(circle at 86% 8%, rgba(60,197,181,.07) 0%, rgba(60,197,181,0) 32%),
+    radial-gradient(circle at 14% 92%, rgba(255,255,255,.025) 0%, rgba(255,255,255,0) 38%) !important;
+  opacity: calc(.10 + var(--hero-progress, 0) * .04) !important;
+}
+
+/* ---- Nav active state — no baseline raise ----
+   The previous .is-active::after declaration used `display:block`
+   with `margin-top:8px`, which made the active link's bounding box
+   taller than the inactive ones — pushing its baseline up. The fix:
+   position the underline absolutely so it doesn't add layout height,
+   and give the parent enough bottom padding to reserve space for it
+   uniformly across all three links. */
+.site-nav a {
+  position: relative;
+  padding-bottom: 10px;
+}
+.site-nav a.is-active {
+  color: var(--ink) !important;
+}
+.site-nav a.is-active::after {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0 !important;
+  width: 28px !important;
+  height: 2px !important;
+  background: var(--green, #0A8A7B) !important;
+  border-radius: 2px !important;
+  content: '' !important;
+  display: block !important;
+}
+
+/* ---- Matrix featured row (Bitcoin) — accent fills the row ---- */
+.matrix-table tr.featured td:first-child::before {
+  top: 0 !important;
+  bottom: 0 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg,
+    rgba(10, 138, 123, 0.4) 0%,
+    var(--green, #0A8A7B) 35%,
+    var(--green, #0A8A7B) 65%,
+    rgba(10, 138, 123, 0.4) 100%) !important;
+}
+
+/* ---- Footer restructure ----
+   Hide the now-orphaned .footer-brand .brand block (logo moved out
+   of the brand column, now lives in the footer-base bottom row). */
+.footer-brand .brand {
+  display: none;
+}
+
+/* footer-grid: brand column is now just the description paragraph */
+.footer-brand {
+  padding-right: clamp(0px, 2vw, 32px);
+}
+.footer-brand p {
+  margin-top: 0 !important;
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--slate);
+  max-width: 56ch;
+}
+
+/* footer-base: disclaimer left, logo+name right */
+.footer-base {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2vw, 28px) !important;
+  margin-top: clamp(28px, 3vw, 40px) !important;
+  padding-top: clamp(20px, 2.2vw, 28px) !important;
+  border-top: 1px solid rgba(11, 26, 50, 0.08) !important;
+}
+.footer-disclaimer {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--slate);
+  letter-spacing: 0.2px;
+  max-width: 44ch;
+}
+.footer-brand-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: opacity .2s ease;
+}
+.footer-brand-line:hover {
+  opacity: 0.85;
+}
+.footer-brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(11, 26, 50, 0.08);
+  padding: 4px;
+}
+.footer-brand-name {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.footer-brand-name .footer-copyright {
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: none;
+  color: var(--slate);
+  margin-left: 6px;
+}
+
+@media (max-width: 640px) {
+  .footer-base {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left;
+  }
+}
+
+/* ---- Site-wide spacing rhythm — consistency pass ----
+   Section intros, paragraph margins, and stack-card gaps use the
+   same scale (clamp(N, vw, M)) throughout. Audit confirmed the
+   existing rhythm is consistent; this is a defensive normalize for
+   the cards inside band-grid, stack-list, and process-grid so they
+   share a common gap value at every viewport. */
+.band-grid,
+.stack-list,
+.process-grid {
+  gap: clamp(18px, 1.8vw, 24px);
+}
+
+/* =====================================================================
+   v34 — Polish pass 2.
+   • Chart card now has a near-opaque dark navy background — blocks the
+     proof-shell's radial highlights bleeding through (the vertical
+     streak you saw). Chart reads as a discrete contained surface,
+     not a hole in the parent.
+   • Hero ledger-frame: added consistent kicker→title spacing to match
+     the section-intro eyebrow→H2 rhythm site-wide (~16px between
+     them now, same as elsewhere on the site).
+   • Outcome card mini→value, brief side-card eyebrow→title, and
+     final-CTA eyebrow→title all normalized to the same 16px rhythm.
+   ===================================================================== */
+
+/* ---- Chart background: solid surface that blocks bleed-through ---- */
+.path-chart {
+  background: linear-gradient(180deg, #0a1a33 0%, #07152c 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 12px 36px -22px rgba(0, 0, 0, 0.55);
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- Hero ledger-frame: kicker → ledger-title spacing ---- */
+.ledger-head .kicker,
+.ledger-frame .kicker {
+  display: block;
+  margin-bottom: clamp(12px, 1.2vw, 16px) !important;
+}
+
+/* ---- Same rhythm applied to outcome-card, side-card, doc-copy,
+   review-form, and final-cta — every eyebrow/kicker → adjacent title
+   pair gets the same 12–16px breathing room so the spacing reads
+   consistent site-wide. ---- */
+.outcome-card .mini {
+  margin-bottom: clamp(12px, 1.2vw, 16px) !important;
+}
+.outcome-card .value {
+  margin-bottom: clamp(12px, 1.2vw, 16px) !important;
+}
+.doc-copy .eyebrow,
+.review-launch-card .eyebrow,
+.side-card .eyebrow,
+.final-cta .eyebrow {
+  margin-bottom: 0;
+}
+.doc-copy .rule,
+.review-launch-card .rule,
+.side-card .rule,
+.final-cta .rule {
+  margin-block: clamp(10px, 1vw, 14px) clamp(14px, 1.4vw, 18px) !important;
+}
+
+/* ---- Section-intro h2 → lead paragraph spacing ---- */
+.section-intro .lead {
+  margin-top: clamp(18px, 1.8vw, 26px) !important;
+}
+
+/* ---- Stack-cards and process-cards: heading → paragraph spacing
+   consistent at every viewport ---- */
+.stack-card h3 + p,
+.process-card h3 + p,
+.band-card h3 + p {
+  margin-top: clamp(12px, 1.2vw, 16px) !important;
+}
+
+/* ---- Hero subrail and hero-sub uniform vertical rhythm ---- */
+.hero .subrail {
+  margin-bottom: clamp(20px, 2vw, 28px) !important;
+}
+
+/* =====================================================================
+   v35 — Final polish — chart highlight nuked + spacing consistency.
+
+   1. CHART: kill the proof-shell pseudo-element overlays from the
+      chart's stacking context completely. Use a SOLID navy fill
+      (no transparency) at high z-index. SVG area gradients
+      dramatically reduced (teal 22% → 10%, gray 12% → 5%).
+   2. CHART padding now uses the same --surface-pad-lg token as every
+      other surface card on the site (was hardcoded 24px).
+   3. CHART caption typography normalized to match the site rhythm.
+   ===================================================================== */
+
+/* Solid navy chart background — no transparency, blocks ALL bleed. */
+.path-chart {
+  background: #07182f !important;
+  padding: var(--surface-pad-lg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 20px 50px -28px rgba(0, 0, 0, 0.7) !important;
+  position: relative !important;
+  z-index: 4 !important;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* The chart card creates its own stacking context (via isolation +
+   z-index) so the proof-shell's ::before grid pattern and ::after
+   radial highlight cannot bleed through, regardless of their own
+   z-index or opacity. The chart is a sealed surface. */
+
+/* Chart caption rhythm — match section body text scale */
+.path-chart .caption {
+  margin-top: clamp(20px, 2.2vw, 30px);
+  font-size: 15px;
+  line-height: 1.7;
+  color: #C4CEDA;
+  max-width: 64ch;
+  letter-spacing: 0.1px;
+}
+
+/* Tighten chart-head bottom spacing so it sits cleanly above the SVG */
+.path-chart .path-chart-head {
+  margin-bottom: clamp(18px, 2vw, 26px);
+}
+
+
+/* =====================================================================
+   v36 — KILL the chart's own sweeping-bar pseudo-element.
+
+   The .path-chart::after rule at line 1044 was a leftover from the
+   original chart design: a 32%-wide white-gradient bar that animates
+   across the chart once when .is-animated is added. The MATH is buggy
+   — at --chart-sweep=1 the translate parks the bar at 19.6%–51.6%
+   across the chart (DEAD CENTER) at opacity 0.92.
+
+   That's the bright vertical streak the founder kept reporting.
+   It's not parent bleed-through, it's the chart's own animation
+   stuck mid-frame. Remove it entirely.
+   ===================================================================== */
+.path-chart::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Also kill any decorative pseudo-element on .path-chart::before in
+   case there's similar legacy code — be defensive. */
+.path-chart::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* =====================================================================
+   v38 — Chart internal alignment fix.
+
+   Before v38: chart had three different left edges inside the same card:
+     • Eyebrow:    14px from content edge (path-chart-head padding)
+     • Chart lines: ~12px from content edge (SVG paths started at x=20)
+     • X-axis labels: ~9px from content edge (text at x=16)
+     • Caption:    0px from content edge (flush)
+
+   Now (v38): ALL FOUR elements share the same left edge — content
+   edge of the chart card (after the card's 49px outer padding).
+     • Eyebrow:    0px ✓ (removed path-chart-head padding)
+     • Chart lines: 0px ✓ (paths start at viewBox x=0)
+     • X-axis labels: 0px ✓ (text at viewBox x=0)
+     • Caption:    0px ✓ (unchanged)
+
+   Endpoint glow circles placed at x=786 (not 800) to keep the 14px
+   bloom inside the viewBox without clipping.
+   ===================================================================== */
+
+.path-chart-head {
+  padding: 0 !important;
+}
+
+/* =====================================================================
+   v39 — Eyebrow / label typography normalized site-wide.
+
+   Before v39: eyebrows ranged from 12px (chart) to 17px (hero) — that
+   inconsistency made the chart look "different" from every other card
+   on the site. Now every CARD-LEVEL eyebrow renders at 16px with 2.6px
+   letter-spacing and 700 weight, regardless of surface.
+
+   Color still varies by surface (green on light, bright-green on dark)
+   per brand canon, but every typographic property is unified.
+
+   Sub-labels (chapter-seam meta, footer copyright, outcome-card mini)
+   stay smaller — they're a different hierarchy tier.
+   ===================================================================== */
+
+/* Card-level eyebrows — UNIFIED at 16px / 2.6px / 700 */
+.hero .eyebrow,
+.hero .eyebrow-light,
+.hero .kicker,
+.section-intro .eyebrow,
+.doc-copy .eyebrow,
+.review-launch-card .eyebrow,
+.side-card .eyebrow,
+.final-cta .eyebrow,
+.path-chart-eyebrow,
+.outcome-frame .kicker,
+.ledger-frame .kicker {
+  font-size: 16px !important;
+  letter-spacing: 2.6px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+}
+
+/* Sub-tier labels — consistent at 13px (one tier smaller than eyebrows) */
+.outcome-card .mini,
+.chapter-seam-meta .chapter-name {
+  font-size: 13px !important;
+  letter-spacing: 2.4px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+/* Legend labels match the chart's data-label scale (not an eyebrow) */
+.path-chart-legend .legend-label {
+  font-size: 13.5px !important;
+  letter-spacing: 0.4px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+}
+
+/* Chart eyebrow may wrap to 2 lines at narrow viewports — tighten
+   line-height so it reads as one label, not two sentences */
+.path-chart-eyebrow {
+  line-height: 1.3 !important;
+  max-width: 22ch;
+}
+
+/* Final pass: chart head stacking on narrower viewports for cleaner
+   single-column composition under 900px viewport */
+@media (max-width: 900px) {
+  .path-chart-head {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .path-chart-legend {
+    justify-content: flex-start !important;
+  }
+}
+
+/* Outcome-frame band kicker — promote to the same 16px tier as all
+   other major card eyebrows (was 14px from v13 override). */
+.outcome-frame.outcome-frame-band .kicker {
+  font-size: 16px !important;
+  letter-spacing: 2.6px !important;
+}
+
+/* =====================================================================
+   v40 — Text-width / fill-ratio fix + chart head layout fix.
+
+   PROBLEM 1: Cash card (.copy-block .lead) had max-width: 34ch,
+   restricting text to 384px inside a 583px content area — text
+   filled only 66% of the card, leaving a huge blank right strip.
+   World-class editorial sets line lengths at 50–75ch for readability;
+   34ch is below that range AND wastes the card's footprint.
+
+   PROBLEM 2: Path-chart-head used a 2-column grid (eyebrow | legend),
+   which gave the eyebrow only ~132px of horizontal space — forcing
+   the text to wrap to 5 lines. Header was top-heavy and unbalanced.
+
+   Fixes:
+   • .copy-block .lead → max-width: 58ch (in the readable sweet spot,
+     and fills ~94% of the card's content area on desktop)
+   • .path-chart-head → vertical stack (eyebrow on top, legend below),
+     both flush-left, eyebrow now renders on ONE line
+   • Other text-fill ratios across the site also audited and bumped
+     where they were under-filling their containers
+   ===================================================================== */
+
+/* Cash card and any copy-block — text now fills the card properly */
+#why-now .copy-block .lead {
+  max-width: 58ch !important;
+}
+
+/* Same readability sweet-spot applied to .lead paragraphs elsewhere
+   that don't already have a max-width override */
+.section-intro .lead {
+  max-width: 58ch !important;
+}
+
+/* Chart head — stack vertically, eyebrow gets full width and stays on
+   one line. Legend sits below the eyebrow, also flush-left. */
+.path-chart-head {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: clamp(14px, 1.6vw, 22px) !important;
+}
+.path-chart-eyebrow {
+  max-width: none !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+}
+.path-chart-legend {
+  justify-content: flex-start !important;
+}
+
+/* On very narrow viewports the eyebrow text may need to wrap (it's
+   33 chars at 16px which is ~330px — fits on most modern phones in
+   landscape, may wrap to 2 lines on small portrait. Allow wrap. */
+@media (max-width: 380px) {
+  .path-chart-eyebrow {
+    white-space: normal !important;
+  }
+}
+
+/* =====================================================================
+   v41 — Chart centered + footer disclaimer one-line + review-side
+   sticky-top raised to match the why-now editorial pattern.
+
+   1. CHART CONTENT centered horizontally inside the chart card
+      (eyebrow, legend, and caption). X-axis labels stay at left/right
+      edges because they anchor the time axis — moving them would
+      destroy the chart's semantic meaning.
+
+   2. FOOTER DISCLAIMER on review.html (and any other page using the
+      shared footer) now sits on ONE line — removed the 44ch max-width
+      constraint and added white-space: nowrap with a fallback to
+      smaller font on narrow viewports.
+
+   3. REVIEW-SIDE sticky-top raised from 120px to 180px so the sticky
+      card stops above the form area, not cutting into it. Same fix
+      pattern as v25 for the why-now copy-block.
+   ===================================================================== */
+
+/* ---- CHART centered content ---- */
+.path-chart-head {
+  align-items: center !important;
+  text-align: center;
+}
+.path-chart-eyebrow {
+  text-align: center !important;
+  margin-inline: auto;
+}
+.path-chart-legend {
+  justify-content: center !important;
+}
+.path-chart .caption {
+  text-align: center !important;
+  margin-inline: auto;
+  max-width: 60ch;
+}
+
+/* ---- FOOTER disclaimer one-line ---- */
+.footer-disclaimer {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--slate);
+  letter-spacing: 0.2px;
+  max-width: none !important;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .footer-disclaimer {
+    white-space: normal;
+    font-size: 11.5px;
+  }
+}
+
+/* ---- REVIEW-SIDE sticky-top raised to match the why-now pattern ---- */
+@media (min-width: 1180px) {
+  .review-side {
+    top: 180px !important;
+  }
+  .article-side {
+    top: 180px !important;
+  }
+  .proof-sidebar {
+    top: 180px !important;
+  }
+}
+
+/* =====================================================================
+   v43 — Footer redesign + gate disclaimer removal.
+
+   PROBLEM: The footer had three columns with asymmetric headers — the
+   brand column had no header (just a paragraph), while PAGES and
+   CONTACT columns had small h3 labels with a green underline accent
+   that wasn't used anywhere else on the site. The visual rhythm
+   between columns was off.
+
+   FIX: All three columns now share the same heading treatment —
+   uppercase 11px eyebrow with brand-canon green color, followed by
+   a consistent 1px slate underline (more institutional, less marketing
+   than the green tint), then content below at uniform spacing.
+
+   Trademark symbols: NOT added. World-class fintech sites (Stripe,
+   Linear, Vercel, Klarna) do not use ™/® in their visual marketing.
+   Trademark notation belongs in legal disclosures, not brand display.
+   ===================================================================== */
+
+/* All three footer column headings: consistent uppercase eyebrow */
+.site-footer .footer-column h3,
+.site-footer .footer-brand h3 {
+  font-size: 11px !important;
+  letter-spacing: 2.4px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: var(--green, #0A8A7B) !important;
+  margin: 0 0 14px 0 !important;
+  padding: 0 0 12px 0 !important;
+  position: relative;
+  line-height: 1.3 !important;
+}
+
+/* Single consistent underline rule under EVERY column heading */
+.site-footer .footer-column h3::after,
+.site-footer .footer-brand h3::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 36px !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    var(--green, #0A8A7B) 0%,
+    rgba(10, 138, 123, 0) 100%
+  ) !important;
+}
+
+/* Brand paragraph: tighter top spacing now that there's a header above */
+.footer-brand p {
+  margin-top: 0 !important;
+  font-size: 14.5px !important;
+  line-height: 1.75 !important;
+  color: var(--slate, #4A5A75) !important;
+  max-width: 42ch !important;
+}
+
+/* Link items inside footer columns — consistent vertical rhythm */
+.footer-column ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: grid !important;
+  gap: 11px !important;
+}
+.footer-column a {
+  font-size: 14px !important;
+  color: var(--ink, #061328) !important;
+  font-weight: 500 !important;
+  transition: color 0.18s ease;
+}
+.footer-column a:hover {
+  color: var(--green, #0A8A7B) !important;
+}
+
+/* Footer grid: more balanced column proportions */
+.footer-grid {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr) minmax(0, 0.85fr) !important;
+  gap: clamp(40px, 4vw, 72px) !important;
+  align-items: start;
+}
+
+/* Mobile: stack cleanly */
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* =====================================================================
+   v44 — Footer: revert typography to the original style the founder
+   preferred (10px slate, subtle green accent), focus the fix on
+   ALIGNMENT and SPACING — which was the actual issue.
+
+   The previous v43 changed the column-heading font to 11px green —
+   founder feedback: "i liked the other font better." Revert.
+
+   Real issues with the original layout: column-to-column vertical
+   rhythm was off because the brand paragraph and the link items
+   used different line-heights, so columns ended at different Y.
+   And column widths were unbalanced. Fix both, keep the original
+   typography.
+   ===================================================================== */
+
+/* Revert column heading typography to the original 10px slate style */
+.site-footer .footer-column h3,
+.site-footer .footer-brand h3 {
+  font-size: 10px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: var(--slate, #4A5A75) !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 0 12px 0 !important;
+  line-height: 1.4 !important;
+  position: relative;
+}
+
+/* Subtle green underline accent — the original treatment */
+.site-footer .footer-column h3::after,
+.site-footer .footer-brand h3::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 28px !important;
+  height: 1px !important;
+  background: rgba(10, 138, 123, 0.55) !important;
+}
+
+/* Brand column paragraph: match the VERTICAL RHYTHM of the link items
+   below their headings — 14px font, 1.7 line-height — so the columns
+   feel like they share the same baseline grid. */
+.footer-brand p {
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: var(--ink-soft, #4A5A75) !important;
+  max-width: 36ch !important;
+}
+
+/* Link items: match the brand paragraph's line-height for cross-column
+   vertical rhythm — items now feel like they're on the same grid */
+.footer-column ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: grid !important;
+  gap: 12px !important;
+}
+.footer-column a {
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: var(--ink-soft, #4A5A75) !important;
+  font-weight: 500 !important;
+  transition: color 0.18s ease;
+}
+.footer-column a:hover {
+  color: var(--green, #0A8A7B) !important;
+}
+
+/* Balanced column proportions — equal width links columns, slightly
+   wider brand column for the longer paragraph */
+.footer-grid {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: clamp(40px, 4vw, 72px) !important;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* v44 follow-up: more specific selector to override v8's
+   .footer-column ul li a rule (16.5px) which was winning over our v44
+   .footer-column a rule. Now we match its specificity exactly with
+   our own override to take it. */
+.site-footer .footer-column ul,
+.site-footer .footer-brand {
+  /* nothing here — just providing nesting context */
+}
+.site-footer .footer-column ul li,
+.site-footer .footer-column ul li a {
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: var(--ink-soft, #4A5A75) !important;
+}
+.site-footer .footer-column ul li a {
+  font-weight: 500 !important;
+}
+.site-footer .footer-column ul li a:hover {
+  color: var(--green, #0A8A7B) !important;
+}
+.site-footer .footer-brand p {
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: var(--ink-soft, #4A5A75) !important;
+  margin: 0 !important;
+  max-width: 36ch !important;
+}
+
+/* =====================================================================
+   v45 — Footer ALIGNMENT (the actual issue founder was reporting).
+
+   Measured the live page: download-grid card EDGES are at X=40
+   (container padding), but the doc-copy CONTENT inside the cards
+   is at X=90 (40 + 49px card padding). The footer brand H3 was
+   at X=40 — aligned with card EDGES, not card CONTENT. That's why
+   it read as "shifted left" relative to the cards above.
+
+   Fix: add `padding-inline: var(--surface-pad-lg)` to .footer-grid
+   and .footer-base so the footer content sits at the SAME X as the
+   card content. Now the eye reads one consistent vertical grid line
+   running from the cards down through the footer.
+
+   Also restored the v43 typography (11px green eyebrow with gradient
+   underline) — founder said "I liked how you changed the footer font,
+   bring it back."
+   ===================================================================== */
+
+/* Footer columns: typography back to v43 — 11px green eyebrow */
+.site-footer .footer-column h3,
+.site-footer .footer-brand h3 {
+  font-size: 11px !important;
+  letter-spacing: 2.4px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: var(--green, #0A8A7B) !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 0 12px 0 !important;
+  line-height: 1.3 !important;
+  position: relative;
+}
+
+/* Gradient underline accent — consistent green-fade pattern site-wide */
+.site-footer .footer-column h3::after,
+.site-footer .footer-brand h3::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 36px !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    var(--green, #0A8A7B) 0%,
+    rgba(10, 138, 123, 0) 100%
+  ) !important;
+}
+
+/* THE KEY FIX: footer content aligns with card content (not card edge) */
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: var(--surface-pad-lg) !important;
+}
+
+/* Brand paragraph: clean rhythm matching link items */
+.site-footer .footer-brand p {
+  font-size: 14.5px !important;
+  line-height: 1.75 !important;
+  color: var(--ink-soft, #4A5A75) !important;
+  margin: 0 !important;
+  max-width: 38ch !important;
+}
+
+/* Link items unified to the same baseline grid */
+.site-footer .footer-column ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: grid !important;
+  gap: 11px !important;
+}
+.site-footer .footer-column ul li,
+.site-footer .footer-column ul li a {
+  font-size: 14.5px !important;
+  line-height: 1.75 !important;
+  color: var(--ink, #061328) !important;
+}
+.site-footer .footer-column ul li a {
+  font-weight: 500 !important;
+  transition: color 0.18s ease;
+}
+.site-footer .footer-column ul li a:hover {
+  color: var(--green, #0A8A7B) !important;
+}
+
+/* Balanced column proportions */
+.footer-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: clamp(40px, 4vw, 72px) !important;
+  align-items: start;
+}
+
+/* Mobile: stack columns, reduce padding so the footer doesn't feel
+   over-indented on small screens */
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .site-footer .footer-grid,
+  .site-footer .footer-base {
+    padding-inline: 0 !important;
+  }
+}
+
+/* v45 follow-up — fix padding to be ADDITIVE.
+   .footer-grid IS .container (both classes on same element), so
+   setting padding-inline on the grid REPLACES the container's
+   padding-inline rather than adding to it. Use calc() to combine
+   both — container-pad PLUS surface-pad-lg — so footer content
+   sits at the same X as card content above. */
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: calc(var(--container-pad) + var(--surface-pad-lg)) !important;
+}
+
+@media (max-width: 760px) {
+  .site-footer .footer-grid,
+  .site-footer .footer-base {
+    padding-inline: var(--container-pad) !important;
+  }
+}
+
+/* =====================================================================
+   v46 — Footer balance pass.
+
+   v45 fixed the left-edge alignment (footer content now at X=89,
+   matching card content X=90). But measurement showed the three
+   columns have uneven heights — brand column 144px vs PAGES/CONTACT
+   at 177px. Different bottoms = unbalanced footer.
+
+   Fix: `align-items: stretch` on the grid so all three columns share
+   the same height (driven by the tallest, the link columns). Brand
+   column's paragraph stays top-aligned; the extra column height sits
+   below as breathing space, but the COLUMN BOTTOMS align.
+
+   Also: clear vertical separation between the 3-column grid and the
+   bottom disclaimer/brand row — a subtle hairline border-top on the
+   base row plus extra padding-top so the two rows read as distinct
+   tiers (the brand block tier above, the legal/copyright tier below).
+   ===================================================================== */
+
+/* Equal column heights — fixes the brand-shorter-than-others issue */
+.footer-grid {
+  align-items: stretch !important;
+}
+.footer-brand,
+.footer-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Clean vertical separation: grid tier above, base tier below */
+.site-footer .footer-base {
+  border-top: 1px solid rgba(11, 26, 50, 0.08) !important;
+  margin-top: clamp(36px, 4vw, 56px) !important;
+  padding-top: clamp(24px, 2.4vw, 32px) !important;
+  padding-bottom: clamp(20px, 2vw, 28px) !important;
+}
+
+/* Footer overall padding-top for more institutional breathing */
+.site-footer {
+  padding-top: clamp(64px, 6vw, 96px) !important;
+}
+
+/* =====================================================================
+   v47 — Revert font + correct alignment direction.
+
+   Founder feedback (verbatim): "you still have the font i never asked
+   for and you didnt fix the alignment of everything iin the footer to
+   be in line with the cards and the site"
+
+   1. FONT — revert column headings to the original 10px slate style.
+      The v43→v45 11px green change was NEVER what the founder asked
+      for. Original style was: 10px / 2.2px letter-spacing / slate
+      color / subtle green underline accent. Restore.
+
+   2. ALIGNMENT — footer content needs to line up with the CONTAINER
+      content area (where the cards sit), not be inset inside the
+      card padding. Remove the calc(container-pad + surface-pad-lg)
+      override from v45 and let the standard .container padding-inline
+      govern footer positioning, same as every other section on the
+      site.
+   ===================================================================== */
+
+/* Revert font: 10px slate, subtle green underline */
+.site-footer .footer-column h3,
+.site-footer .footer-brand h3 {
+  font-size: 10px !important;
+  letter-spacing: 2.2px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: var(--slate, #4A5A75) !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 0 12px 0 !important;
+  line-height: 1.4 !important;
+  position: relative;
+}
+
+.site-footer .footer-column h3::after,
+.site-footer .footer-brand h3::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 28px !important;
+  height: 1px !important;
+  background: rgba(10, 138, 123, 0.55) !important;
+}
+
+/* Revert padding: footer content sits at the standard container edge,
+   the same X position as every other section's content on the site —
+   not inset extra inside the card padding. */
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: var(--container-pad) !important;
+}
+
+@media (max-width: 760px) {
+  .site-footer .footer-grid,
+  .site-footer .footer-base {
+    padding-inline: var(--container-pad) !important;
+  }
+}
+
+/* =====================================================================
+   v48 — Footer brand-anchor block.
+
+   Founder feedback indicated the footer still didn't feel professional
+   despite v47's font + alignment fixes. Looking at world-class fintech
+   footers (Stripe, Linear, Vercel), they ALL have a clear brand
+   anchor at the top of the brand column — logo + brand name as a
+   visual anchor — not just a paragraph.
+
+   v48 replaces the "RESERVE STANDARD" eyebrow with a proper logo+name
+   block at the top of the brand column. This gives the brand column
+   real visual weight that matches the PAGES and CONTACT columns
+   visually, and matches premium fintech footer conventions.
+
+   The brand-line copyright in the footer-base bottom row stays — that's
+   the legal/copyright anchor, separate from the brand anchor at the top.
+   ===================================================================== */
+
+.footer-brand-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink, #061328);
+  margin-bottom: clamp(18px, 1.8vw, 24px);
+  transition: opacity 0.18s ease;
+}
+.footer-brand-anchor:hover {
+  opacity: 0.85;
+}
+
+.footer-brand-anchor-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(11, 26, 50, 0.08);
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.footer-brand-anchor-name {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ink, #061328);
+  line-height: 1;
+}
+
+/* Hide the OLD H3 eyebrow on brand column since we replaced it */
+.footer-brand h3 {
+  display: none !important;
+}
+
+/* =====================================================================
+   v49 — REMOVE the unrequested logo block + align footer with CARD
+   INNER CONTENT (not card outer edge).
+
+   Founder feedback (verbatim): "what are you doing?? I never asked you
+   to add this logo to the footer! ... just make the footer like it
+   was before you started doing things i never asked for. and then all
+   you have to do it make the text so it is lined up under the last
+   to cards! right now everything looks shifted to the left."
+
+   1. REMOVED the logo + brand-anchor block I added in v48. Reverted
+      to simple "RESERVE STANDARD" H3 heading + paragraph in brand
+      column.
+   2. REALIGNED footer content to match the INNER CONTENT of the
+      cards above (X=90 with surface-pad inset), not the card OUTER
+      edges (X=40). This is the v45-style alignment that puts the
+      footer text directly under the card content lines.
+   ===================================================================== */
+
+/* Hide any leftover anchor block (defensive) */
+.footer-brand-anchor {
+  display: none !important;
+}
+
+/* Restore the H3 visibility (it was hidden in v48) */
+.footer-brand h3 {
+  display: block !important;
+}
+
+/* CORRECT alignment: footer content under card INNER content.
+   At desktop 1440px: container-pad ~40px + surface-pad-lg ~49px = 89px.
+   Card content is at X=90; footer content will now be at X=89.
+   Mobile (≤760px) drops back to just container-pad so the footer
+   doesn't feel over-indented on a phone-width screen. */
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: calc(var(--container-pad) + var(--surface-pad-lg)) !important;
+}
+
+@media (max-width: 760px) {
+  .site-footer .footer-grid,
+  .site-footer .footer-base {
+    padding-inline: var(--container-pad) !important;
+  }
+}
+
+/* =====================================================================
+   v50 — Footer alignment: revert to standard container-edge.
+
+   The site's vertical grid line for every section is at X=40 (the
+   .container content edge after the 40px container-pad). That's where
+   the header logo sits, where every section-intro sits, where every
+   card OUTER edge sits, and where the "rest of the site" anchors.
+
+   v49 had pushed the footer to X=89 (matching card INNER content),
+   which made the footer stick out to the right of every other site
+   element. That's why it looked wrong — the footer was the only
+   element NOT on the site's main vertical grid line.
+
+   v50: footer back to X=40, on the same grid line as the header,
+   the section intros, and the card outer edges.
+   ===================================================================== */
+
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: var(--container-pad) !important;
+}
+
+@media (max-width: 760px) {
+  .site-footer .footer-grid,
+  .site-footer .footer-base {
+    padding-inline: var(--container-pad) !important;
+  }
+}
+
+/* =====================================================================
+   v51 — Remove the unrequested H3 heading + align with card content.
+
+   Founder feedback (verbatim): "i never asked you to for the current
+   Reserve Standard font in the footer! ... fix the alignment of
+   everything so it is lined up with the two cards above it!
+   everything is currently shifted to the left it doesn't look
+   professional!"
+
+   1. The H3 "Reserve Standard" heading I added to the brand column
+      in v43 was never requested. Removed from index.html. Brand
+      column is now just the paragraph (no heading).
+   2. Alignment: footer content now lines up with the CONTENT of the
+      cards above (X=90), not the card outer edges (X=40). The user's
+      eye reads the card buttons / text positions as the page's
+      vertical grid line, and footer text shifted LEFT of that line
+      looked wrong.
+   ===================================================================== */
+
+/* Align footer content with card INNER content position */
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: calc(var(--container-pad) + var(--surface-pad-lg)) !important;
+}
+
+@media (max-width: 760px) {
+  .site-footer .footer-grid,
+  .site-footer .footer-base {
+    padding-inline: var(--container-pad) !important;
+  }
+}
+
+/* Defensive: hide any vestigial H3 in brand column in case CSS specificity
+   from earlier overrides keeps it. Brand column is paragraph-only now. */
+.site-footer .footer-brand h3 {
+  display: none !important;
+}
+
+/* =====================================================================
+   v52 — Equal margins on the footer, contact-column right-aligned.
+
+   Founder feedback (verbatim): "look the footer is still shifted to
+   the left! see how there isn't equal space on the sides that is not
+   professional web design it should be centered under the card above
+   it"
+
+   The real issue (finally understood after measuring the live page):
+     • Footer LEFT margin = padding-inline (~89px in v51 OR 40px in v50)
+     • Footer RIGHT margin = padding-inline + UNFILLED column space
+       The CONTACT column's text items ("review@…", "Risk disclosure"
+       etc.) are short. They don't reach the column's right edge.
+       So the VISIBLE content ends ~95px earlier than the column
+       boundary, making the right side feel ~95px more empty.
+
+   Fix: two things together.
+     1. Footer aligned with card OUTER edges (X=40 on both sides).
+        Same vertical grid line as the page's other content.
+     2. CONTACT column text right-aligned, so the rightmost visible
+        text reaches the column's right edge (X=1457 on a 1497vw),
+        matching the card outer right edge above.
+
+   Result: left margin = 40px, right margin = 40px. EQUAL space on
+   both sides. Footer content frames at the SAME vertical lines as
+   the two cards above it.
+   ===================================================================== */
+
+/* Footer padding back to standard container-edge (X=40 on both sides) */
+.site-footer .footer-grid,
+.site-footer .footer-base {
+  padding-inline: var(--container-pad) !important;
+}
+
+/* CONTACT column right-aligned so its content reaches the right edge */
+.site-footer .footer-column:last-child {
+  text-align: right !important;
+}
+
+/* The heading underline should sit on the right side too when the
+   column is right-aligned (otherwise it floats orphaned to the left) */
+.site-footer .footer-column:last-child h3 {
+  display: inline-block;
+}
+.site-footer .footer-column:last-child h3::after {
+  left: auto !important;
+  right: 0 !important;
+}
+
+@media (max-width: 760px) {
+  .site-footer .footer-column:last-child {
+    text-align: left !important;
+  }
+  .site-footer .footer-column:last-child h3::after {
+    left: 0 !important;
+    right: auto !important;
+  }
+}
+
+/* =====================================================================
+   v53 — Footer GRID MIRRORS the download-grid above.
+
+   The site's design logic: footer should align with the cards above
+   it. The cards above (the download-grid) are a TWO-COLUMN layout:
+   minmax(0, 1.06fr) | minmax(320px, .94fr) with the standard
+   --grid-gap-lg between them.
+
+   The footer was a THREE-column grid (brand / pages / contact) — so
+   the column lines didn't match the card column lines above. That's
+   the inconsistency.
+
+   v53 makes the footer use the SAME two-column grid as the cards.
+   Column 1 holds the brand paragraph. Column 2 holds a nested
+   two-column sub-grid for Pages and Contact. The footer's column
+   boundaries now align EXACTLY with the cards' column boundaries.
+
+   ===================================================================== */
+
+/* Footer grid mirrors download-grid template exactly */
+.footer-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr) !important;
+  gap: var(--grid-gap-lg) !important;
+  align-items: start !important;
+}
+
+/* Right-side group: Pages + Contact in a sub-grid */
+.footer-columns-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 2.4vw, 40px);
+  align-items: start;
+}
+
+/* Undo v52: contact column no longer needs to be right-aligned because
+   its column now ends at the same X as card 2 outer right edge */
+.site-footer .footer-column:last-child {
+  text-align: left !important;
+}
+.site-footer .footer-column:last-child h3::after {
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Mobile: stack into single column (matches base mobile pattern) */
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-columns-group {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 480px) {
+  .footer-columns-group {
+    grid-template-columns: 1fr;
+  }
+}
