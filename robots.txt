@@ -1,6 +1,0 @@
-# Reserve Standard — stealth founding release
-# All crawlers blocked while in private founding-cohort phase.
-# Per Brand Canon v1.1 §01 stealth posture; restore standard rules at public launch.
-
-User-agent: *
-Disallow: /
