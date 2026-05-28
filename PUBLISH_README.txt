@@ -1,1 +1,0 @@
-Reserve Standard v104 final publish package. Upload contents to hosting root, purge CDN/cache, then test the access gate, section navigation, web materials pages, PDFs, review form, robots.txt, and sitemap.xml.
