@@ -1,0 +1,5 @@
+# Reserve Standard — production crawl rules
+User-agent: *
+Allow: /
+
+Sitemap: https://reservestandard.com/sitemap.xml
