@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">CragLink basecamp power system render</title>
+<desc id="desc">A portable battery box, folding solar panel, and wireless signal over a mountain basecamp.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#083041"/><stop offset=".45" stop-color="#06131b"/><stop offset="1" stop-color="#07100d"/></linearGradient>
+  <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dfe9ee"/><stop offset="1" stop-color="#66747d"/></linearGradient>
+  <linearGradient id="battery" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#222d31"/><stop offset="1" stop-color="#080e12"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#18ded5"/><stop offset=".5" stop-color="#8de5c7"/><stop offset="1" stop-color="#d1b350"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".45"/></filter>
+</defs>
+<rect width="1200" height="780" rx="36" fill="url(#sky)"/>
+<path d="M0 384 C150 312 285 356 412 312 C581 253 660 302 804 252 C968 196 1053 220 1200 174 L1200 780 L0 780 Z" fill="#0d211c" opacity=".74"/>
+<path d="M0 448 C185 389 334 423 494 385 C652 347 811 379 980 328 C1087 296 1141 306 1200 286 L1200 780 L0 780 Z" fill="#163b2a" opacity=".56"/>
+<path d="M0 558 C190 498 339 554 504 500 C709 433 808 521 1006 472 C1095 451 1150 465 1200 443 L1200 780 L0 780 Z" fill="#1c2d1c" opacity=".8"/>
+<g opacity=".24" fill="none" stroke="#45f2e6" stroke-width="2"><path d="M715 118 C760 62 838 65 876 125"/><path d="M690 139 C759 48 861 52 910 146"/><path d="M668 162 C759 34 883 39 947 169"/></g>
+<g filter="url(#shadow)">
+  <g transform="translate(585 214)">
+    <path d="M0 0 L460 80 L397 170 L-65 86 Z" fill="url(#panel)"/>
+    <path d="M40 8 L414 75 L367 140 L-8 77 Z" fill="#9fb8c0" opacity=".35"/>
+    <path d="M198 128 L198 278" stroke="#505d63" stroke-width="20" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(378 430)">
+    <rect x="0" y="0" width="490" height="210" rx="25" fill="url(#battery)" stroke="#354c52" stroke-width="2"/>
+    <rect x="22" y="22" width="115" height="166" rx="16" fill="#0e171b" stroke="#263941"/>
+    <circle cx="62" cy="70" r="17" fill="#101b20" stroke="#44f4e8" stroke-width="2"/>
+    <circle cx="105" cy="70" r="17" fill="#101b20" stroke="#89e0be" stroke-width="2"/>
+    <rect x="154" y="44" width="200" height="10" rx="5" fill="url(#accent)"/>
+    <rect x="154" y="72" width="130" height="7" rx="3.5" fill="#e8f1ef" opacity=".8"/>
+    <rect x="154" y="96" width="168" height="7" rx="3.5" fill="#9eb2b4" opacity=".55"/>
+    <text x="154" y="148" font-family="Inter,Arial" font-size="22" font-weight="800" fill="#edf7f5" letter-spacing="4">CRAGLINK</text>
+    <text x="156" y="178" font-family="Inter,Arial" font-size="13" fill="#25d8d0" letter-spacing="6">POWER</text>
+    <rect x="390" y="45" width="54" height="92" rx="11" fill="#070c10" stroke="#294449"/>
+    <rect x="402" y="57" width="30" height="8" rx="4" fill="#26e6db"/>
+    <rect x="402" y="77" width="20" height="6" rx="3" fill="#e9f2ef" opacity=".9"/>
+    <rect x="402" y="94" width="31" height="6" rx="3" fill="#83969a" opacity=".8"/>
+  </g>
+</g>
+<g transform="translate(80 635)" fill="none" stroke-linecap="round"><path d="M0 0 H1040" stroke="#d1b350" opacity=".16"/><path d="M0 28 H960" stroke="#c9794a" opacity=".14"/></g>
+</svg>
