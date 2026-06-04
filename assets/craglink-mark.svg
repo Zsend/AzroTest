@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 250" role="img" aria-labelledby="title desc">
+  <title id="title">CragLink Power mark</title>
+  <desc id="desc">Mountain, signal, trail, and beacon symbol.</desc>
+  <defs>
+    <linearGradient id="mast" x1="75" y1="14" x2="75" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7FBF7"/>
+      <stop offset="0.46" stop-color="#DDF8F4"/>
+      <stop offset="1" stop-color="#19D9D0"/>
+    </linearGradient>
+    <linearGradient id="aqua" x1="34" y1="44" x2="168" y2="178" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#19D9D0"/>
+      <stop offset="0.58" stop-color="#77E7C4"/>
+      <stop offset="1" stop-color="#B7E65B"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="40" y1="150" x2="180" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#19D9D0"/>
+      <stop offset="0.64" stop-color="#7EE7BD"/>
+      <stop offset="1" stop-color="#B7E65B"/>
+    </linearGradient>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- clean white beacon with one intentional mast fade -->
+    <g filter="url(#glow)">
+      <line x1="75" y1="20" x2="75" y2="124" stroke="url(#mast)" stroke-width="6"/>
+      <g stroke="#F7FBF7" stroke-width="5">
+        <line x1="75" y1="40" x2="75" y2="70"/>
+        <line x1="60" y1="55" x2="90" y2="55"/>
+        <line x1="64" y1="44" x2="86" y2="66"/>
+        <line x1="86" y1="44" x2="64" y2="66"/>
+      </g>
+      <g fill="#F7FBF7" stroke="none">
+        <circle cx="75" cy="17" r="4.5"/>
+        <circle cx="75" cy="92" r="4.5"/>
+        <circle cx="37" cy="55" r="4.5"/>
+        <circle cx="113" cy="55" r="4.5"/>
+        <circle cx="48" cy="28" r="4"/>
+        <circle cx="102" cy="28" r="4"/>
+        <circle cx="48" cy="82" r="4"/>
+        <circle cx="102" cy="82" r="4"/>
+      </g>
+    </g>
+
+    <!-- orbit / sky signal -->
+    <path d="M75 109 C61 109 50 115 43 126 C34 140 31 159 32 181" stroke="url(#aqua)" stroke-width="7"/>
+    <path d="M75 95 C54 95 39 103 28 119 C15 139 12 165 15 198" stroke="url(#aqua)" stroke-width="7"/>
+
+    <!-- mountain / basecamp -->
+    <path d="M28 200 L74 154 L98 184 L172 104 L172 190 L55 190" stroke="#F7FBF7" stroke-width="7"/>
+    <path d="M55 190 H174" stroke="#F7FBF7" stroke-width="7"/>
+
+    <!-- lower trail and power lines -->
+    <path d="M28 200 L190 232" stroke="url(#trail)" stroke-width="7"/>
+    <path d="M31 202 L174 116" stroke="url(#aqua)" stroke-width="7" opacity=".42"/>
+    <path d="M56 211 H165" stroke="url(#trail)" stroke-width="6"/>
+    <path d="M74 229 H157" stroke="url(#trail)" stroke-width="6"/>
+    <path d="M99 246 H148" stroke="url(#trail)" stroke-width="6"/>
+  </g>
+  <g fill="#F7FBF7">
+    <circle cx="41" cy="218" r="4" fill="#BDEDEA"/>
+    <circle cx="55" cy="231" r="4" fill="#BDEDEA"/>
+    <circle cx="72" cy="244" r="4" fill="#BDEDEA"/>
+    <circle cx="95" cy="256" r="4" transform="translate(0 -12)" fill="#F7FBF7"/>
+    <circle cx="125" cy="258" r="4" transform="translate(0 -12)" fill="#F7FBF7"/>
+    <circle cx="155" cy="257" r="4" transform="translate(0 -12)" fill="#F7FBF7"/>
+  </g>
+</svg>
