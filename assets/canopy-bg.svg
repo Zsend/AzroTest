@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#06120f"/>
+      <stop offset=".38" stop-color="#102d1d"/>
+      <stop offset=".74" stop-color="#173318"/>
+      <stop offset="1" stop-color="#07130d"/>
+    </linearGradient>
+    <radialGradient id="mist" cx="55%" cy="30%" r="65%"><stop offset="0" stop-color="#9be8c2" stop-opacity=".18"/><stop offset=".6" stop-color="#1c4b2b" stop-opacity=".10"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="760" fill="url(#g)"/>
+  <rect width="1600" height="760" fill="url(#mist)"/>
+  <g opacity=".12" fill="none" stroke="#8de5c7" stroke-width="2">
+    <path d="M0 90h1600M0 190h1600M0 290h1600M0 390h1600M0 490h1600M0 590h1600"/>
+    <path d="M120 0v760M250 0v760M380 0v760M510 0v760M640 0v760M770 0v760M900 0v760M1030 0v760M1160 0v760M1290 0v760M1420 0v760"/>
+  </g>
+  <g fill="#83d9a8" opacity=".18">
+    <path d="M0 760V508c80-74 135-92 186-87-64 58-71 115-60 186 47-109 130-171 250-188-69 75-91 146-76 226 69-111 173-171 320-178-68 62-95 129-84 205 92-101 221-151 387-141-65 40-98 85-102 136 124-61 263-71 418-31-48 19-85 57-109 113H0z"/>
+  </g>
+  <g opacity=".12" fill="#ffffff"><circle cx="112" cy="190" r="2"/><circle cx="548" cy="115" r="2"/><circle cx="1060" cy="176" r="2"/><circle cx="1328" cy="92" r="2"/></g>
+</svg>
