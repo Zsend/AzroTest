@@ -1,0 +1,37 @@
+<svg width="900" height="540" viewBox="0 0 900 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="box" x1="216" y1="250" x2="640" y2="449" gradientUnits="userSpaceOnUse"><stop stop-color="#262D2D"/><stop offset="0.48" stop-color="#101718"/><stop offset="1" stop-color="#05080A"/></linearGradient>
+    <linearGradient id="edge" x1="197" y1="247" x2="675" y2="466" gradientUnits="userSpaceOnUse"><stop stop-color="#626D69"/><stop offset="0.5" stop-color="#263132"/><stop offset="1" stop-color="#080A0C"/></linearGradient>
+    <linearGradient id="panel" x1="280" y1="297" x2="402" y2="398" gradientUnits="userSpaceOnUse"><stop stop-color="#0D171A"/><stop offset="1" stop-color="#030708"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#28F4ED"/><stop offset="1" stop-color="#90EFC7"/></linearGradient>
+    <linearGradient id="dish" x1="438" y1="38" x2="795" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#F1F3F2"/><stop offset="0.5" stop-color="#8D9798"/><stop offset="1" stop-color="#434B4D"/></linearGradient>
+    <filter id="shadow" x="0" y="0" width="900" height="540" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="38" stdDeviation="24" flood-color="#000" flood-opacity=".55"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <!-- satellite dish -->
+    <path d="M442 157C542 73 662 34 806 31C750 82 642 139 470 190C443 197 424 173 442 157Z" fill="url(#dish)" stroke="#E9EAE7" stroke-width="4"/>
+    <path d="M438 160C542 174 674 141 802 32" stroke="#25292B" stroke-width="8" stroke-opacity=".35"/>
+    <path d="M544 187L604 187L630 310H512L544 187Z" fill="#0E1113" stroke="#343D3D" stroke-width="4"/>
+    <path d="M560 187L602 187" stroke="#A8AEAA" stroke-width="6" stroke-linecap="round"/>
+    <!-- battery box -->
+    <rect x="167" y="272" width="500" height="176" rx="20" fill="url(#edge)"/>
+    <rect x="184" y="288" width="466" height="144" rx="15" fill="url(#box)" stroke="#495250" stroke-width="2"/>
+    <rect x="205" y="306" width="168" height="110" rx="12" fill="url(#panel)" stroke="#273233"/>
+    <rect x="221" y="321" width="62" height="42" rx="6" fill="#050B0D" stroke="#364244"/>
+    <rect x="291" y="321" width="62" height="42" rx="6" fill="#050B0D" stroke="#364244"/>
+    <path d="M229 334H276M229 347H267" stroke="url(#cyan)" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+    <circle cx="304" cy="342" r="9" stroke="#E8EFEA" stroke-width="4"/><circle cx="336" cy="342" r="9" stroke="#E8EFEA" stroke-width="4"/>
+    <rect x="221" y="377" width="38" height="20" rx="6" fill="#111B1D" stroke="#3F4F4F"/><rect x="270" y="377" width="38" height="20" rx="6" fill="#111B1D" stroke="#3F4F4F"/><rect x="319" y="377" width="34" height="20" rx="6" fill="#111B1D" stroke="#3F4F4F"/>
+    <g transform="translate(425 318) scale(.48)" opacity=".9">
+      <path d="M72 22V104" stroke="#F5F8F5" stroke-width="7" stroke-linecap="round"/>
+      <path d="M43 151C31 101 48 72 87 59C123 47 155 57 177 82" stroke="#E9F4EF" stroke-width="9" stroke-linecap="round"/>
+      <path d="M36 167L72 127L100 154L159 88L188 88V156H62" stroke="#F9FAF5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M33 174L181 202" stroke="#C4EFC6" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <text x="510" y="371" fill="#EFF5F0" font-size="26" font-family="Inter, Arial" font-weight="800" letter-spacing="2.5">CRAGLINK</text>
+    <text x="516" y="398" fill="#5EE7DE" font-size="16" font-family="Inter, Arial" font-weight="700" letter-spacing="9">POWER</text>
+    <rect x="168" y="270" width="499" height="178" rx="20" stroke="#8EF2DF" stroke-opacity=".12" stroke-width="3"/>
+    <circle cx="193" cy="294" r="5" fill="#121B1D" stroke="#67706C"/><circle cx="642" cy="294" r="5" fill="#121B1D" stroke="#67706C"/><circle cx="193" cy="424" r="5" fill="#121B1D" stroke="#67706C"/><circle cx="642" cy="424" r="5" fill="#121B1D" stroke="#67706C"/>
+  </g>
+</svg>
