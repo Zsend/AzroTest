@@ -1,0 +1,10 @@
+{
+  "independent_review_status": "not_started",
+  "protocol": "AZRO-PROOF-SHIELD-v1",
+  "public_commitment_ledger_status": "starter-empty",
+  "public_reveal_ledger_status": "starter-empty",
+  "recommended_public_language": "Commitment-first accountability process; not financial advice or guarantee.",
+  "source_code_status": "not_public_private_hashes_pending",
+  "status": "genesis-ready-not-yet-live-until-first-real-weekly-commitment",
+  "updated_utc": "2026-06-04T16:30:00Z"
+}

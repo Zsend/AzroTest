@@ -1,0 +1,17 @@
+{
+  "current_release_manifest": {
+    "manifest_hash": "2d2f5c8d54c0c420781ef6cbe8dc84143fadccddd788a27868e6447a4a4efade",
+    "manifest_id": "AZRO-GENESIS-UPLOADED-RELEASE-MANIFEST-v0.2-2026-06-04",
+    "note": "Hashes uploaded site/customer packs plus nested ZIP entries; private source hashes pending.",
+    "path": "proof-ledger/releases/genesis-uploaded-release-manifest-v0_2.json"
+  },
+  "description": "Public index for AZRO Proof Shield. Public ledgers contain commitments, delayed reveals, and release manifests only. Private full records are not published.",
+  "private_records_policy": "Private full records retained outside public site for NDA procedural review.",
+  "protocol": "AZRO-PROOF-SHIELD-v1",
+  "public_commitment_ledger": "proof-ledger/commitments/public-ledger.csv",
+  "public_reveal_ledger": "proof-ledger/reveals/public-reveal-ledger.csv",
+  "review_status": "No independent procedural review has been completed yet.",
+  "status": "genesis-ready-not-yet-live-until-first-real-weekly-commitment",
+  "status_file": "proof-ledger/status.json",
+  "updated_utc": "2026-06-04T16:30:00Z"
+}
