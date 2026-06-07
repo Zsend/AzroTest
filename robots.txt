@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /
-
-# Preview build for AZRO Systems Trust System. Do not index.
