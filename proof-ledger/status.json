@@ -1,0 +1,10 @@
+{
+  "independent_review_status": "not_started",
+  "protocol": "AZRO-PUBLIC-PRODUCT-RECORD-v1",
+  "public_commitment_ledger_status": "starter-empty",
+  "public_reveal_ledger_status": "starter-empty",
+  "recommended_public_language": "Product proof, current release record, educational tools only, and no guarantee of future results.",
+  "release_record_status": "public-artifact-baseline-registered",
+  "status": "genesis-ready-not-yet-live-until-first-real-weekly-commitment",
+  "updated_utc": "2026-06-04T16:30:00Z"
+}
