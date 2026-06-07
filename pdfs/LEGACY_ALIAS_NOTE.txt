@@ -1,1 +1,0 @@
-Compatibility aliases map old release filenames to current BTC v1.1.1 / XRP v1.4.4 content to prevent stale external links from 404ing. Do not treat filename alias as historical source truth.
