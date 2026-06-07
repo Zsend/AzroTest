@@ -1,16 +1,22 @@
-# CragLink Final Publish-Ready Site
+# CragLink Power — Final Publish-Ready Site
 
-This package is the current production-ready static site.
+This is the final production-ready static site package.
 
-## Key updates
-- Uses the approved aurora/product hero as a true background.
-- Uses the green landscape-only background for the middle section.
-- Uses the selected close-up control-interface product image in the `CragLink Power System` card.
-- Softened/faded the `Built for the wild. Designed to connect.` divider so it does not create hard visual edges.
-- Maintains the intended color arc: Arctic cyan sky/signal → green nature/field system → alpine gold/copper basecamp footer.
+## What is included
+- `index.html` homepage
+- `field-team.html`, `legal.html`, `privacy.html`, `success.html`, `404.html`
+- `styles.css` and `script.js`
+- `/assets` folder with final background images, logo, favicon, OG image, and selected product-control card image
+- `robots.txt`, `sitemap.xml`, `_redirects`, `_headers`
 
-## Publish
-Upload the full folder contents to your hosting root. Do not upload only `index.html`; the site needs `styles.css`, `script.js`, and the `/assets` folder.
+## Final visual decisions
+- Hero background uses the aurora/basecamp product image and is shifted left so the architecture card does not sit heavily over the product.
+- Middle section uses the green landscape-only background so the page feels like field reliability, not a repeated product shot.
+- The center “CragLink Power System” card uses the selected close-up control-interface image and is set to show the full product without cutting it off.
+- The divider around “Built for the wild. Designed to connect.” uses soft gradient fades instead of hard edges.
+- Footer uses the alpine gold/copper image for warmth, basecamp, and expedition energy.
 
-## Before real traffic
-Replace `YOUR-DOMAIN.com` in `robots.txt`, `sitemap.xml`, and meta canonical tags after you choose the final domain.
+## Publishing
+Upload the full folder contents to your web host root. Do not upload only `index.html`.
+
+Before sending paid traffic, replace `YOUR-DOMAIN.com` in `index.html`, `robots.txt`, and `sitemap.xml`, and connect forms to your backend/CRM if not using Netlify Forms.

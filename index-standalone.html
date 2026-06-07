@@ -6,17 +6,21 @@
   <title>CragLink Power — DC-native Starlink Mini power systems</title>
   <meta name="description" content="CragLink Power is a DC-native Starlink Mini power system for remote basecamps, solar recovery, and vehicle-charge-ready field use.">
   <meta name="theme-color" content="#06131B">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="canonical" href="https://YOUR-DOMAIN.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="CragLink Power">
   <meta property="og:description" content="Stay online where the road ends.">
   <meta property="og:image" content="assets/og-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/bg-hero.webp" as="image">
+  <link rel="preload" href="assets/bg-system.webp" as="image">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <main class="shell" id="main">
-    <section class="hero" id="systems">
+    <section class="hero" id="systems" aria-label="CragLink Power hero">
       <header class="header">
         <a class="logo" href="#systems" aria-label="CragLink Power home"><img src="assets/logo-lockup.png" alt="CragLink Power"></a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -87,7 +91,10 @@
         <div class="build-map">
           <article class="feature card-a"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"></circle><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"></path></svg></span><p>Solar input</p><strong>300W+</strong><em>High-efficiency input for fast, reliable recharge.</em></article>
           <article class="feature card-b"><span><svg viewBox="0 0 24 24"><path d="M5 15h14l-1.6-5.2A2.2 2.2 0 0 0 15.3 8H8.7a2.2 2.2 0 0 0-2.1 1.8L5 15Z"></path><path d="M4 15v3h16v-3"></path><circle cx="8" cy="18" r="1.6"></circle><circle cx="16" cy="18" r="1.6"></circle></svg></span><p>Vehicle charge</p><strong>DC input</strong><em>Charge on the move. 12V / 24V compatible architecture.</em></article>
-          <article class="system-photo"><img src="assets/system-card.webp" alt="CragLink Power System"><div><strong>CragLink Power System</strong><span>DC-native power for Starlink Mini.</span></div></article>
+          <article class="system-photo">
+            <div class="media"><img src="assets/system-card.webp" alt="CragLink Power control interface close-up"></div>
+            <div class="caption"><strong>CragLink Power System</strong><span>DC-native power for Starlink Mini.</span></div>
+          </article>
           <article class="feature card-c"><span><svg viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 9-13h-6l0-7Z"></path></svg></span><p>Power output</p><strong>Starlink Mini</strong><em>Stable, clean DC power optimized for uptime.</em></article>
           <article class="feature card-d"><span><svg viewBox="0 0 24 24"><rect x="4" y="7" width="15" height="10" rx="2"></rect><path d="M19 10h2v4h-2"></path><path d="M8 12h6"></path></svg></span><p>Battery capacity</p><strong>100Ah LiFePO₄</strong><em>24-hour runtime target. Safe. Durable. Reliable.</em></article>
         </div>
@@ -109,7 +116,9 @@
       <p class="eyebrow gold">Built for explorers. Backed by experience.</p>
       <h2>Go further. Stay connected.</h2>
       <p>CragLink Power gives outdoor enthusiasts the freedom to explore without limits — with the power and connection you can count on.</p>
-      <form class="community-form" name="community" method="post" action="success.html">
+      <form class="community-form" name="community" method="post" action="success.html" data-netlify="true" netlify-honeypot="bot-field">
+        <p class="bot-field" aria-hidden="true"><label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="form-name" value="community">
         <label class="sr-only" for="email-main">Email</label>
         <input id="email-main" type="email" name="email" placeholder="Enter your email" required>
         <button type="submit">Join the community <span>→</span></button>
@@ -122,7 +131,7 @@
       <nav><h3>Explore</h3><a href="field-team.html">Stories</a><a href="field-team.html">Field notes</a><a href="field-team.html">Expeditions</a></nav>
       <nav><h3>Support</h3><a href="legal.html">Help center</a><a href="legal.html">Warranty</a><a href="legal.html">Shipping &amp; returns</a></nav>
       <nav><h3>Company</h3><a href="#about">About us</a><a href="legal.html">Compatibility</a><a href="privacy.html">Privacy</a></nav>
-      <div class="newsletter"><h3>Stay connected</h3><p>Get field stories, product updates, and exclusive offers.</p><form method="post" action="success.html"><label class="sr-only" for="footer-email">Email</label><input id="footer-email" type="email" name="email" placeholder="Enter your email" required><button aria-label="Join">→</button></form></div>
+      <div class="newsletter"><h3>Stay connected</h3><p>Get field stories, product updates, and exclusive offers.</p><form name="footer-community" method="post" action="success.html" data-netlify="true"><input type="hidden" name="form-name" value="footer-community"><label class="sr-only" for="footer-email">Email</label><input id="footer-email" type="email" name="email" placeholder="Enter your email" required><button aria-label="Join">→</button></form></div>
       <div class="fineprint"><span>© 2026 CragLink Power. All rights reserved.</span><span>Compatible with Starlink Mini. No official affiliation implied.</span></div>
     </footer>
   </main>
@@ -150,7 +159,8 @@
       <p class="eyebrow cyan" id="modal-eyebrow">Founder access</p>
       <h2 id="modal-title">Get early CragLink updates.</h2>
       <p id="modal-copy">Join the founder list for prototype updates, field testing, and first production availability.</p>
-      <form method="post" action="success.html">
+      <form name="founder-access" method="post" action="success.html" data-netlify="true">
+        <input type="hidden" name="form-name" value="founder-access">
         <label for="modal-email">Email</label>
         <input id="modal-email" type="email" name="email" placeholder="you@example.com" required>
         <button class="btn btn-primary" type="submit">Join founder list <span>→</span></button>
