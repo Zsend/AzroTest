@@ -1,0 +1,15 @@
+{
+  "system": "AZRO public forward record",
+  "status": "genesis-ready",
+  "public_status": "initialized; no live forward rows published yet",
+  "last_updated_utc": "2026-06-08T00:00:00Z",
+  "current_public_versions": {
+    "btc_operating_system": "v1.1.1",
+    "xrp_top_bottom_indicator": "v1.4.4",
+    "bundle": "BTC v1.1.1 + XRP v1.4.4"
+  },
+  "customer_start": "resources.html",
+  "release_record": "release-record.html",
+  "standards": "brand-standards.html",
+  "record_status": "ledger-status.html"
+}
