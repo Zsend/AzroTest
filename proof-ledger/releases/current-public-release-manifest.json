@@ -1,0 +1,16 @@
+{
+  "manifest": "AZRO public release manifest starter",
+  "status": "public-starter",
+  "site": "AzroTest preview",
+  "products": [
+    {
+      "name": "BTC Operating System",
+      "public_customer_pack_version": "v1.1.1"
+    },
+    {
+      "name": "XRP Top/Bottom Indicator",
+      "public_customer_pack_version": "v1.4.4"
+    }
+  ],
+  "exclusions": "Private source files, private ledgers, exact internal outputs, unrevealed salts, legal notes, and reviewer materials are excluded from public release files."
+}

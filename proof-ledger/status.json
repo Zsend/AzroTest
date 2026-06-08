@@ -1,0 +1,12 @@
+{
+  "protocol": "AZRO public ledger starter",
+  "status": "genesis-ready-not-yet-live",
+  "public_site": "AzroTest preview",
+  "current_public_versions": {
+    "btc_operating_system": "v1.1.1",
+    "xrp_top_bottom_indicator": "v1.4.4"
+  },
+  "public_commitments_started": false,
+  "first_live_weekly_commitment": "pending post-launch weekly process",
+  "public_note": "This public starter tracks release and future commitment/reveal status. Private records, source files, exact internal outputs, unrevealed salts, legal notes, and reviewer materials are not published here."
+}
