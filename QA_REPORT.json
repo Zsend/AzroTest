@@ -1,0 +1,23 @@
+{
+  "date": "2026-06-14",
+  "status": "pass",
+  "missing_internal_links": [],
+  "missing_required_pages": [],
+  "asset_links_remote": 119,
+  "html_files": [
+    "404.html",
+    "about.html",
+    "benchmark.html",
+    "contact.html",
+    "features.html",
+    "index.html",
+    "philosophy.html",
+    "pricing.html",
+    "products.html",
+    "proof-archive.html",
+    "proof.html",
+    "resources.html",
+    "support.html"
+  ],
+  "strict_claim_flags": []
+}
