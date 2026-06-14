@@ -1,0 +1,15 @@
+{
+  "site_package": "BaseRelay_Final_Prelaunch_Validation_Site_2026-06-14",
+  "status": "staging/internal prelaunch validation site, not public launch approval",
+  "pages": [
+    "index.html",
+    "product.html",
+    "validation.html",
+    "safety.html",
+    "faq.html",
+    "privacy.html",
+    "terms.html",
+    "404.html"
+  ],
+  "missing_links": []
+}
