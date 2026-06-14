@@ -1,0 +1,15 @@
+{
+  "title": "AZRO Proof Site Standalone Preview",
+  "date": "2026-06-14",
+  "status": "internal_founder_review_preview",
+  "files": [
+    "README.md",
+    "benchmark.html",
+    "index.html",
+    "preview.css",
+    "proof-archive.html",
+    "proof.html",
+    "review-checklist.html"
+  ],
+  "public_use_status": "not approved"
+}
