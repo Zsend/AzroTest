@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#050b2a"/>
+  <circle cx="1050" cy="80" r="260" fill="#183bff" opacity=".18"/>
+  <circle cx="120" cy="540" r="300" fill="#6f8dff" opacity=".14"/>
+  <text x="90" y="170" fill="#9fb4ff" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="5">AZRO SYSTEMS</text>
+  <text x="90" y="310" fill="#f8fbff" font-family="Arial, sans-serif" font-size="76" font-weight="800">Proof-first BTC</text>
+  <text x="90" y="400" fill="#f8fbff" font-family="Arial, sans-serif" font-size="76" font-weight="800">operating system.</text>
+  <text x="90" y="480" fill="#b8c7ff" font-family="Arial, sans-serif" font-size="32">Public accountability. Protected logic.</text>
+</svg>
