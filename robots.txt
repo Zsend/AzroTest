@@ -1,5 +1,0 @@
-# Reserve Standard — private access release
-# Direct-access customer site. Search indexing blocked until public launch.
-
-User-agent: *
-Disallow: /
