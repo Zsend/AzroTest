@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://baserelay.com/sitemap.xml
