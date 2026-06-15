@@ -1,9 +1,0 @@
-{
-  "name": "AZRO public forward record index",
-  "version": "v1.0-public-starter",
-  "status_file": "proof-ledger/status.json",
-  "commitments_csv": "proof-ledger/commitments/public-ledger.csv",
-  "reveals_csv": "proof-ledger/reveals/public-reveal-ledger.csv",
-  "current_public_release_manifest": "proof-ledger/releases/current-public-release-manifest.json",
-  "notes": "Public files are limited to customer-facing record status and future public rows. The customer proof library starts at resources.html."
-}
