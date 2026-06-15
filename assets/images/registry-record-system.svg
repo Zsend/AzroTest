@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1040" role="img" aria-labelledby="rt rd">
+<title id="rt">Proof Registry concept</title><desc id="rd">A controlled registry concept for CVA records, status, limits, version history, and public-private field separation.</desc>
+<defs>
+<linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#06101D"/><stop offset=".55" stop-color="#0B1830"/><stop offset="1" stop-color="#102B4B"/></linearGradient>
+<linearGradient id="panel" x1="0" x2="1"><stop offset="0" stop-color="#0B1628"/><stop offset="1" stop-color="#132946"/></linearGradient>
+<linearGradient id="blue" x1="0" x2="1"><stop offset="0" stop-color="#2D5BFF"/><stop offset="1" stop-color="#24C7E9"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="25" flood-color="#000" flood-opacity=".30"/></filter>
+</defs>
+<rect width="1800" height="1040" fill="url(#bg)"/>
+<circle cx="1520" cy="130" r="360" fill="#2D5BFF" opacity=".10"/><circle cx="220" cy="900" r="420" fill="#D7A64A" opacity=".07"/>
+<g opacity=".18" stroke="#6EA8FF" stroke-width="1" fill="none"><path d="M0 210C230 110 390 250 560 150S910 40 1120 170s450 90 680-50"/><path d="M0 260C260 150 380 300 590 205s330-160 560-20s440 130 650 10"/><path d="M0 840C320 720 570 860 850 720s520-80 950 40"/></g>
+<text x="90" y="122" fill="#fff" font-family="Inter,Arial" font-size="76" font-weight="850" letter-spacing="-2">Proof Registry</text>
+<text x="94" y="178" fill="#C7D4E7" font-family="Inter,Arial" font-size="28">System memory for CVA records, conditions, limits, and version history.</text>
+<g transform="translate(80 265)" filter="url(#shadow)">
+  <rect width="380" height="455" rx="34" fill="rgba(255,255,255,.05)" stroke="#31537F"/>
+  <text x="34" y="58" fill="#4EA5FF" font-family="Inter,Arial" font-size="18" font-weight="900" letter-spacing="3">INPUTS</text>
+  <g font-family="Inter,Arial" font-size="22" fill="#F8F4EA">
+    <text x="90" y="120">System configuration</text><text x="90" y="190">Test matrix version</text><text x="90" y="260">Conditions and limits</text><text x="90" y="330">Lab/report references</text><text x="90" y="400">Status history</text>
+  </g>
+  <g fill="none" stroke="url(#blue)" stroke-width="4"><circle cx="45" cy="112" r="18"/><circle cx="45" cy="182" r="18"/><circle cx="45" cy="252" r="18"/><circle cx="45" cy="322" r="18"/><circle cx="45" cy="392" r="18"/></g>
+</g>
+<g transform="translate(560 250)" filter="url(#shadow)">
+  <rect width="760" height="500" rx="42" fill="url(#panel)" stroke="#5B7FB3"/>
+  <text x="52" y="72" fill="#24C7E9" font-family="Inter,Arial" font-size="18" font-weight="900" letter-spacing="2">CVA RECORD</text>
+  <text x="52" y="123" fill="#fff" font-family="Inter,Arial" font-size="44" font-weight="850">CVA-DRAFT-0001</text>
+  <rect x="520" y="60" width="176" height="48" rx="24" fill="rgba(36,199,233,.12)" stroke="#24C7E9"/><text x="557" y="92" fill="#9FEFFF" font-family="Inter,Arial" font-size="18" font-weight="900">DRAFT</text>
+  <text x="52" y="178" fill="#C7D4E7" font-family="Inter,Arial" font-size="22">Defined system · defined test matrix · defined limitations.</text>
+  <g transform="translate(50 230)">
+    <rect width="660" height="110" rx="22" fill="rgba(255,255,255,.06)" stroke="#284669"/>
+    <text x="34" y="45" fill="#9FB4D6" font-size="17" font-family="Inter,Arial" font-weight="800">PUBLIC VIEW</text>
+    <text x="34" y="82" fill="#F8F4EA" font-size="22" font-family="Inter,Arial">ID, version, status vocabulary, limitations, and correction history.</text>
+  </g>
+  <g transform="translate(50 365)">
+    <rect width="660" height="86" rx="22" fill="rgba(215,166,74,.10)" stroke="#D7A64A"/>
+    <text x="34" y="36" fill="#D7A64A" font-size="17" font-family="Inter,Arial" font-weight="900">LOCKED UNTIL GATES SUPPORT RELEASE</text>
+    <text x="34" y="64" fill="#F8F4EA" font-size="19" font-family="Inter,Arial">Private fields, raw reports, and mechanism-linked detail.</text>
+  </g>
+</g>
+<g transform="translate(1390 265)" filter="url(#shadow)">
+  <rect width="330" height="455" rx="34" fill="rgba(255,255,255,.05)" stroke="#31537F"/>
+  <text x="32" y="58" fill="#D7A64A" font-family="Inter,Arial" font-size="18" font-weight="900" letter-spacing="3">VERSION LOG</text>
+  <g stroke="#5B7FB3" stroke-width="3"><path d="M70 105v285"/></g>
+  <g font-family="Inter,Arial"><circle cx="70" cy="125" r="14" fill="#24C7E9"/><text x="105" y="132" fill="#fff" font-size="22" font-weight="800">v0.5</text><text x="105" y="160" fill="#9FB4D6" font-size="16">PVS / CVA draft</text><circle cx="70" cy="215" r="14" fill="#D7A64A"/><text x="105" y="222" fill="#fff" font-size="22" font-weight="800">v0.4</text><text x="105" y="250" fill="#9FB4D6" font-size="16">field split</text><circle cx="70" cy="305" r="14" fill="#24C7E9"/><text x="105" y="312" fill="#fff" font-size="22" font-weight="800">v0.3</text><text x="105" y="340" fill="#9FB4D6" font-size="16">dummy record</text><circle cx="70" cy="395" r="14" fill="#D7A64A"/><text x="105" y="402" fill="#fff" font-size="22" font-weight="800">v0.1</text><text x="105" y="430" fill="#9FB4D6" font-size="16">concept seed</text></g>
+</g>
+<g transform="translate(270 830)">
+  <rect width="1260" height="94" rx="28" fill="rgba(255,255,255,.06)" stroke="#31537F"/>
+  <text x="52" y="58" fill="#F8F4EA" font-family="Inter,Arial" font-size="24">Registry is not a claim engine. It is structured memory: version, status, limits, corrections, expiry, and revocation.</text>
+</g>
+<g stroke="url(#blue)" stroke-width="5" fill="none"><path d="M460 492C505 492 515 500 560 500"/><path d="M1320 500C1355 500 1360 492 1390 492"/></g>
+</svg>
