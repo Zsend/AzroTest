@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1040" role="img" aria-labelledby="t d">
+<title id="t">Proof Labs system map</title><desc id="d">Visual map from oil COA to vapor path, Proof Vapor Standard, CVA record, registry, and QuartzPath hardware roadmap.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#07111f"/><stop offset=".55" stop-color="#0d1a2e"/><stop offset="1" stop-color="#112441"/></linearGradient>
+  <linearGradient id="paper" x1="0" x2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#efe3cd"/></linearGradient>
+  <linearGradient id="blue" x1="0" x2="1"><stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#20c7e8"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#000" flood-opacity=".28"/></filter>
+</defs>
+<rect width="1800" height="1040" rx="0" fill="url(#bg)"/>
+<circle cx="1500" cy="90" r="310" fill="#2d5bff" opacity=".12"/><circle cx="220" cy="820" r="360" fill="#d7a64a" opacity=".10"/>
+<text x="90" y="120" fill="#f8f4ea" font-size="70" font-family="Inter, Arial, sans-serif" font-weight="800" letter-spacing="-3">Oil COA is not enough.</text>
+<text x="90" y="182" fill="#d7a64a" font-size="34" font-family="Inter, Arial, sans-serif" font-weight="700" letter-spacing="3">SHOW THE VAPOR PATH</text>
+<g transform="translate(80 270)">
+  <rect x="0" y="0" width="260" height="360" rx="34" fill="url(#paper)" filter="url(#shadow)"/>
+  <text x="34" y="64" fill="#07111f" font-size="30" font-family="Inter, Arial" font-weight="800">Oil COA</text>
+  <text x="34" y="104" fill="#475467" font-size="20" font-family="Inter, Arial">Useful, but incomplete.</text>
+  <line x1="34" y1="154" x2="226" y2="154" stroke="#d7a64a" stroke-width="3"/>
+  <text x="34" y="205" fill="#182235" font-size="22" font-family="Inter, Arial" font-weight="700">Batch record</text>
+  <text x="34" y="244" fill="#182235" font-size="22" font-family="Inter, Arial" font-weight="700">Potency panel</text>
+  <text x="34" y="283" fill="#182235" font-size="22" font-family="Inter, Arial" font-weight="700">Contaminant panel</text>
+  <circle cx="204" cy="300" r="26" fill="#07111f"/><text x="195" y="309" fill="#fff" font-size="24" font-family="Inter, Arial" font-weight="800">?</text>
+</g>
+<g transform="translate(420 270)">
+  <rect x="0" y="0" width="300" height="360" rx="34" fill="#0b1628" stroke="#2b3e60" filter="url(#shadow)"/>
+  <text x="34" y="64" fill="#fff" font-size="30" font-family="Inter, Arial" font-weight="800">Vapor path</text>
+  <text x="34" y="104" fill="#9fb4d6" font-size="20" font-family="Inter, Arial">The missing system.</text>
+  <g fill="none" stroke-width="7" stroke-linecap="round">
+    <path d="M78 292 C80 190,140 235,150 140 C160 68,234 95,226 196" stroke="url(#blue)"/>
+    <path d="M118 305 C126 235,180 242,182 160" stroke="#d7a64a" opacity=".75"/>
+  </g>
+  <circle cx="82" cy="292" r="13" fill="#20c7e8"/><circle cx="150" cy="140" r="13" fill="#d7a64a"/><circle cx="226" cy="196" r="13" fill="#20c7e8"/>
+  <text x="34" y="343" fill="#f8f4ea" font-size="18" font-family="Inter, Arial">Material · heat · aerosol</text>
+</g>
+<g transform="translate(800 270)">
+  <rect x="0" y="0" width="330" height="360" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="34" y="64" fill="#07111f" font-size="30" font-family="Inter, Arial" font-weight="800">Proof Vapor Standard</text>
+  <text x="34" y="104" fill="#475467" font-size="20" font-family="Inter, Arial">Defines what to evaluate.</text>
+  <g transform="translate(36 150)" font-family="Inter, Arial" font-size="20" fill="#182235" font-weight="700">
+    <text y="0">1. Material path</text><text y="42">2. Storage/contact</text><text y="84">3. Aerosol after storage</text><text y="126">4. Thermal behavior</text><text y="168">5. CVA readiness</text>
+  </g>
+</g>
+<g transform="translate(1210 270)">
+  <rect x="0" y="0" width="250" height="360" rx="34" fill="url(#paper)" filter="url(#shadow)"/>
+  <text x="34" y="64" fill="#07111f" font-size="30" font-family="Inter, Arial" font-weight="800">CVA</text>
+  <text x="34" y="104" fill="#475467" font-size="20" font-family="Inter, Arial">Evidence record.</text>
+  <rect x="34" y="148" width="182" height="30" rx="8" fill="#07111f" opacity=".9"/><rect x="34" y="195" width="140" height="18" rx="6" fill="#d7a64a"/><rect x="34" y="230" width="166" height="18" rx="6" fill="#d7a64a" opacity=".7"/><rect x="34" y="265" width="118" height="18" rx="6" fill="#d7a64a" opacity=".5"/>
+  <text x="34" y="328" fill="#182235" font-size="18" font-family="Inter, Arial">Defined limits only</text>
+</g>
+<g transform="translate(1530 270)">
+  <rect x="0" y="0" width="210" height="360" rx="34" fill="#07111f" stroke="#d7a64a" filter="url(#shadow)"/>
+  <text x="30" y="64" fill="#fff" font-size="30" font-family="Inter, Arial" font-weight="800">Registry</text>
+  <text x="30" y="104" fill="#9fb4d6" font-size="20" font-family="Inter, Arial">System memory.</text>
+  <circle cx="105" cy="206" r="58" fill="none" stroke="#d7a64a" stroke-width="3"/><path d="M65 206h80M105 150c30 34 31 82 0 112M105 150c-30 34-31 82 0 112" stroke="#d7a64a" fill="none" stroke-width="3"/>
+  <text x="30" y="328" fill="#f8f4ea" font-size="18" font-family="Inter, Arial">Version · status · limits</text>
+</g>
+<g stroke="#d7a64a" stroke-width="4" stroke-linecap="round"><path d="M350 450h55"/><path d="M730 450h55"/><path d="M1140 450h55"/><path d="M1470 450h45"/></g>
+<g transform="translate(110 760)">
+  <rect width="1580" height="170" rx="34" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.16)"/>
+  <text x="46" y="58" fill="#f8f4ea" font-size="28" font-family="Inter, Arial" font-weight="800">First commercial path</text>
+  <text x="46" y="105" fill="#c7d4e7" font-size="23" font-family="Inter, Arial">Private operator call → Proof Vapor Audit → one-SKU pilot → CVA-ready record only if data and counsel support it.</text>
+  <text x="46" y="143" fill="#d7a64a" font-size="18" font-family="Inter, Arial" font-weight="700">No public claims · No safety guarantee · No Proof Verified mark · No mechanism disclosure before IP review</text>
+</g>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "status": "private_staging_noindex",
+  "not_public_launch": true,
+  "no_safety_claims": true,
+  "no_medical_claims": true,
+  "no_cannabis_sales": true,
+  "no_plant_touching_operations": true,
+  "no_mechanism_disclosure_before_ip_review": true,
+  "proof_verified_active": false
+}
