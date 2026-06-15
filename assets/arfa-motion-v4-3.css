@@ -1,0 +1,105 @@
+
+/* =====================================================================
+   ARFA v4.2 FINAL MOTION + SPACING SYSTEM
+   Built from the last stable visual baseline (v2.4). This layer replaces
+   the conflicting stacked reveal systems from v2.5-v3.5 with one explicit
+   motion system: .fx for the public site and .cx for Challenge.
+   ===================================================================== */
+:root{
+  --fx-ease: cubic-bezier(.16,.72,.18,1);
+  --fx-section-y: clamp(4.7rem, 7.4vw, 7.5rem);
+  --fx-section-y-tight: clamp(3.5rem, 5.7vw, 5.2rem);
+  --fx-gap: clamp(1rem, 2.1vw, 1.75rem);
+  --fx-card-pad: clamp(1.1rem, 2.15vw, 1.85rem);
+  --fx-panel-pad: clamp(1.45rem, 3vw, 2.7rem);
+  --fx-radius: clamp(22px, 2.4vw, 34px);
+}
+/* Old reveal layers stay visible; final motion uses .fx/.cx only. */
+.reveal,.reveal.is-visible,.challenge-reveal,.challenge-reveal.is-visible{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
+html{scroll-padding-top:96px;}
+.container{width:min(calc(100% - clamp(2rem,4vw,4rem)),var(--max));}
+section{padding-block:var(--fx-section-y);}
+.compact-section,.challenge-section{padding-block:var(--fx-section-y-tight);}
+.hero{padding:clamp(5.6rem,8.4vw,8.2rem) 0 clamp(5.3rem,8vw,7.8rem)!important;}
+.hero-grid{align-items:start!important;gap:clamp(2.3rem,5vw,4.4rem)!important;}
+.hero-copy{padding-top:clamp(.15rem,.5vw,.45rem);}
+.hero-side{align-self:start!important;justify-self:end!important;max-width:456px!important;padding-top:clamp(1.75rem,3.6vw,3.2rem)!important;}
+.hero-photo-card,.photo-card{margin-top:0!important;}
+.photo-card{overflow:visible!important;border-radius:var(--fx-radius)!important;}
+.photo-wrap{padding:clamp(1rem,1.75vw,1.35rem)!important;border-radius:var(--fx-radius) var(--fx-radius) 0 0!important;}
+.hero-photo-frame{position:relative;max-width:392px;margin:0 auto!important;padding:10px!important;border-radius:28px!important;background:linear-gradient(180deg,#fff,#f8fafc)!important;box-shadow:0 26px 58px rgba(15,23,42,.12),inset 0 1px 0 rgba(255,255,255,.9)!important;}
+.hero-photo-frame img{display:block;width:100%;height:auto!important;max-height:430px;object-fit:contain!important;border-radius:19px!important;}
+.photo-copy,.hero-photo-caption{padding:clamp(1.05rem,1.75vw,1.35rem)!important;display:grid!important;gap:.58rem!important;}
+.photo-copy h3,.hero-photo-caption h3{margin:0!important;line-height:1.08!important;text-wrap:balance;}
+.photo-copy p,.hero-photo-caption p{margin:0!important;line-height:1.62!important;}
+.evidence-footer{margin-top:clamp(1rem,1.6vw,1.3rem)!important;padding-top:clamp(1rem,1.5vw,1.2rem)!important;gap:.82rem!important;}
+.hero-side .thesis-card{margin-top:clamp(1.45rem,2.4vw,2.2rem)!important;}
+.hero-truths,.hero-proof,.cta-row{gap:clamp(.72rem,1.25vw,1.05rem)!important;}
+.hero-proof{margin-top:clamp(1.7rem,2.7vw,2.4rem)!important;}
+.proof-card,.card,.support-card,.minimum-card,.path-card,.source-card,.archive-card,.letter-card,.compare-card,.voice-card,.room-card,.panel.copy-panel,.copy-panel,.declaration-card,.challenge-card,.thesis-card,.form-shell,.side-card,.callout,.archive-link{box-sizing:border-box!important;min-width:0!important;overflow-wrap:break-word!important;border-radius:var(--fx-radius)!important;}
+.proof-card,.card,.support-card,.minimum-card,.path-card,.source-card,.archive-card,.letter-card,.compare-card,.voice-card,.room-card,.panel.copy-panel,.copy-panel,.declaration-card,.challenge-card,.thesis-card,.form-shell,.side-card,.callout{padding:var(--fx-card-pad)!important;}
+.room-grid,.compare-grid,.minimum-grid,.support-grid,.builders-grid,.path-grid,.sources-grid,.public-record-grid,.letter-grid,.archive-grid,.vision-grid,.evidence-grid,.hero-proof,.challenge-shell{gap:var(--fx-gap)!important;}
+.room-section{padding-block:clamp(5.6rem,8vw,8.4rem)!important;}
+.room-copy{top:112px!important;padding:clamp(1.35rem,2.3vw,1.95rem)!important;}
+.room-stack{gap:clamp(1rem,1.8vw,1.45rem)!important;}
+.immersive-quote{margin-top:clamp(1.8rem,3.4vw,3rem)!important;padding:clamp(1.35rem,2.4vw,2.1rem)!important;}
+.declaration-band{padding-top:clamp(.85rem,1.4vw,1.2rem)!important;}
+.declaration-card{padding:clamp(1.25rem,2.2vw,1.75rem)!important;}
+.letters-showcase,.archive-hero-grid{align-items:center!important;gap:clamp(2.6rem,5.6vw,5rem)!important;}
+.letters-showcase .letter-collage,.archive-hero-grid .letter-collage,.letters-showcase .large-collage{margin-left:clamp(1.25rem,3.8vw,3.4rem)!important;}
+.letters-quote{margin-bottom:clamp(1.45rem,2.6vw,2.2rem)!important;}
+.standard-clause .copy-panel,.funding-disclaimer .copy-panel,.sustainability-page .copy-panel,.standard-page .copy-panel,.copy-panel{padding:clamp(1.45rem,2.6vw,2.2rem)!important;line-height:1.74!important;max-width:100%;}
+.standard-clause .copy-panel p,.funding-disclaimer .copy-panel p,.copy-panel p{max-width:82ch;}
+.national-hero .hero-grid,.national-scale-page .hero-grid{align-items:center!important;}
+.national-hero .hero-side,.national-scale-page .hero-side{align-self:center!important;justify-self:center!important;padding-top:clamp(1.25rem,3.2vw,3.25rem)!important;}
+.national-hero .thesis-card,.national-scale-page .thesis-card{max-width:34rem;margin-inline:auto;}
+.join,.input-section{padding-block:clamp(5.4rem,8.2vw,8.2rem)!important;}
+.join-grid{gap:clamp(2.2rem,4.6vw,3.8rem)!important;align-items:start!important;}
+.join-step{padding-block:clamp(1rem,1.7vw,1.32rem)!important;gap:clamp(.85rem,1.4vw,1.12rem)!important;}
+.join .side-card{margin-bottom:clamp(.9rem,1.5vw,1.25rem)!important;}
+.challenge-section{padding-top:clamp(4.2rem,6.8vw,6.8rem)!important;padding-bottom:clamp(5.2rem,8vw,7.2rem)!important;}
+.challenge-shell{grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr)!important;align-items:start!important;padding:clamp(1.35rem,2.7vw,2.25rem)!important;}
+.challenge-card{height:auto!important;min-height:0!important;display:grid;align-content:start;gap:clamp(.82rem,1.3vw,1rem)!important;}
+.challenge-card p{line-height:1.64!important;}
+.challenge-mini-grid{display:grid;gap:clamp(.75rem,1.15vw,.95rem);margin-top:clamp(.92rem,1.45vw,1.2rem);}
+.challenge-mini{border:1px solid rgba(201,211,224,.75);border-radius:20px;background:rgba(255,255,255,.78);padding:clamp(.9rem,1.5vw,1.15rem);}
+.challenge-mini strong{display:block;line-height:1.2;margin-bottom:.25rem;}
+/* Final visible scroll/reveal system. */
+.fx{opacity:1;transform:none;filter:none;}
+.arfa-motion-ready .fx{opacity:0;--fx-x:0px;--fx-y:46px;--fx-scale:.985;--fx-blur:1.5px;--fx-drift:0px;transform:translate3d(var(--fx-x),calc(var(--fx-y) + var(--fx-drift)),0) scale(var(--fx-scale));filter:blur(var(--fx-blur));transition:opacity .9s var(--fx-ease) var(--fx-delay,0ms),transform .9s var(--fx-ease) var(--fx-delay,0ms),filter .9s var(--fx-ease) var(--fx-delay,0ms);will-change:opacity,transform,filter;backface-visibility:hidden;}
+.arfa-motion-ready .fx-left{--fx-x:-54px;--fx-y:14px;}
+.arfa-motion-ready .fx-right{--fx-x:54px;--fx-y:14px;}
+.arfa-motion-ready .fx-rise{--fx-y:58px;}
+.arfa-motion-ready .fx-soft{--fx-y:30px;--fx-blur:.8px;}
+.arfa-motion-ready .fx-pop{--fx-y:18px;--fx-scale:.955;--fx-blur:.5px;}
+.arfa-motion-ready .fx-deep{--fx-y:74px;--fx-blur:2.4px;}
+.arfa-motion-ready .fx.fx-in{opacity:1;transform:translate3d(0,var(--fx-drift),0) scale(1);filter:blur(0);}
+@supports (animation-timeline:view()){
+  .arfa-motion-ready .fx.fx-scroll{
+    animation-name: arfa-view-rise;
+    animation-duration: 1s;
+    animation-timing-function: var(--fx-ease);
+    animation-fill-mode: both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 38%;
+  }
+  .arfa-motion-ready .fx.fx-scroll.fx-left{animation-name:arfa-view-left;}
+  .arfa-motion-ready .fx.fx-scroll.fx-right{animation-name:arfa-view-right;}
+  .arfa-motion-ready .fx.fx-scroll.fx-pop{animation-name:arfa-view-pop;}
+  @keyframes arfa-view-rise{0%{opacity:0;transform:translate3d(0,70px,0) scale(.98);filter:blur(2.4px)}58%,100%{opacity:1;transform:translate3d(0,var(--fx-drift),0) scale(1);filter:blur(0)}}
+  @keyframes arfa-view-left{0%{opacity:0;transform:translate3d(-70px,18px,0) scale(.98);filter:blur(2.4px)}58%,100%{opacity:1;transform:translate3d(0,var(--fx-drift),0) scale(1);filter:blur(0)}}
+  @keyframes arfa-view-right{0%{opacity:0;transform:translate3d(70px,18px,0) scale(.98);filter:blur(2.4px)}58%,100%{opacity:1;transform:translate3d(0,var(--fx-drift),0) scale(1);filter:blur(0)}}
+  @keyframes arfa-view-pop{0%{opacity:0;transform:translate3d(0,34px,0) scale(.925);filter:blur(1.2px)}58%,100%{opacity:1;transform:translate3d(0,var(--fx-drift),0) scale(1);filter:blur(0)}}
+}
+@media (hover:hover){.fx-card-hover{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.fx-card-hover:hover{transform:translateY(-3px);box-shadow:0 26px 56px rgba(15,23,42,.115)!important;border-color:rgba(34,88,214,.18)!important;}}
+@media (max-width:1100px){.container{width:min(calc(100% - 2rem),920px)!important}.hero-grid,.archive-hero-grid,.letters-showcase,.join-grid{grid-template-columns:1fr!important;gap:clamp(1.75rem,5vw,2.7rem)!important}.hero-side{justify-self:stretch!important;max-width:none!important;padding-top:0!important}.letters-showcase .letter-collage,.archive-hero-grid .letter-collage,.letters-showcase .large-collage{margin-left:0!important}.challenge-shell{grid-template-columns:1fr!important}}
+@media (max-width:760px){section{padding-block:clamp(3.35rem,12vw,4.8rem)!important}.hero{padding-top:clamp(3.4rem,14vw,4.8rem)!important}.proof-card,.card,.support-card,.minimum-card,.path-card,.source-card,.archive-card,.letter-card,.compare-card,.voice-card,.room-card,.copy-panel,.declaration-card,.challenge-card,.thesis-card,.form-shell,.side-card,.callout,.archive-link{border-radius:22px!important;padding:clamp(1rem,5vw,1.25rem)!important}.cta-row{align-items:stretch!important}.cta-row .btn,.challenge-card .btn{width:100%;justify-content:center}.hero-photo-frame{max-width:none!important}.hero-photo-frame img{max-height:none!important}.nav-cta{width:auto!important}.photo-wrap{padding:clamp(.85rem,4vw,1rem)!important}}
+@media (prefers-reduced-motion:reduce){.arfa-motion-ready .fx,.arfa-motion-ready .cx{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;animation:none!important}}
+
+/* v4.3 stronger hero/load-leveling and page-wide rhythm */
+.hero .fx{animation-range: entry 0% cover 42%;}
+.hero-side{padding-top:clamp(2.15rem,4.2vw,3.65rem)!important;}
+.hero{padding-bottom:clamp(5.8rem,8.6vw,8.4rem)!important;}
+.photo-card{margin-bottom:clamp(1.2rem,2vw,1.8rem)!important;}
+.join .fx,.input-section .fx{animation-range: entry 0% cover 44%!important;}
+.dark-section .fx,.room-section .fx{animation-range: entry 0% cover 46%!important;}
