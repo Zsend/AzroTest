@@ -1,0 +1,21 @@
+{
+  "system": "AZRO public forward record",
+  "status": "genesis-ready",
+  "public_status": "initialized; no live forward benchmark rows published yet",
+  "last_updated_utc": "2026-06-14T00:00:00Z",
+  "current_public_versions": {
+    "btc_operating_system": "v1.1.1",
+    "xrp_top_bottom_indicator": "v1.4.4",
+    "bundle": "BTC v1.1.1 + XRP v1.4.4"
+  },
+  "public_pages": {
+    "proof_hub": "proof.html",
+    "btc_benchmark": "benchmark.html",
+    "versioned_ledger": "proof-archive.html",
+    "xrp_framework": "xrp-proof.html",
+    "customer_reserve_records": "reserve-records.html",
+    "release_record": "release-record.html",
+    "proof_shield": "proof-shield.html"
+  },
+  "protected_boundary": "Public records do not reveal Pine source, thresholds, formulas, trigger logic, exact timing recipes, raw chart exports, internal proof files, customer/private material, or enough examples to recreate the model."
+}
