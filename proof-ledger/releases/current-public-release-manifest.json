@@ -1,0 +1,100 @@
+{
+  "manifest": "AZRO current public release manifest",
+  "status": "public-starter-v3.6",
+  "created_utc": "2026-06-09T00:00:00Z",
+  "public_versions": {
+    "btc_operating_system": "v1.1.1",
+    "xrp_top_bottom_indicator": "v1.4.4",
+    "bundle": "BTC v1.1.1 + XRP v1.4.4"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "f086010629aff42ebd3801c5d3b74f526ef9553a4b26ab5b84cfaf07a1c90289"
+    },
+    {
+      "path": "philosophy.html",
+      "sha256": "ecbe9eab8b09008f4ddb5b6fc7df3a42c92d1931bf087a936aae14f88bfc946f"
+    },
+    {
+      "path": "products.html",
+      "sha256": "c4473a1756c5a8fd6caaf28525c4062340a52237eaaf8165dcbf4d4006f7498f"
+    },
+    {
+      "path": "features.html",
+      "sha256": "468db5a9276542f29528c4248c601775b45ec48ed14b4fcfcbce66b18280c057"
+    },
+    {
+      "path": "pricing.html",
+      "sha256": "da6f6653d141dc166c4bc81e7e142d883aa9d1cb65c131789042747a6f03f789"
+    },
+    {
+      "path": "resources.html",
+      "sha256": "6ae53f90c0f50d84b361e6d755bbfc3b705400535c6bedcd74827e8a90713381"
+    },
+    {
+      "path": "support.html",
+      "sha256": "a905b4226f7c24d61561e3ebd3e8b8e11fb734c45ca610ff3c8a8523223bbee5"
+    },
+    {
+      "path": "proof-shield.html",
+      "sha256": "1fefd72be8f8534fdf26f218b812608d302db894846be9f957a9445746ae6ab7"
+    },
+    {
+      "path": "brand-standards.html",
+      "sha256": "362e212c395295cc4fbd277a61bb5b9fca978a0dceeb8fedaf60d940ffcad26d"
+    },
+    {
+      "path": "release-record.html",
+      "sha256": "be775ef3c82444c509be0aca6ac22a519950e2374e80533a64fdc8ce231ef44d"
+    },
+    {
+      "path": "ledger-status.html",
+      "sha256": "5c0b7110f6b1fd485530c3f46d33ebd89b4cb821257a4721ff2a0f5527632a21"
+    },
+    {
+      "path": "pdfs/azro-btc-operating-system-customer-handbook-v1.1.1.pdf",
+      "sha256": "ba30bd822823b40ab4600176e0ffcf01dec68c42b6d10e756510608ba77a5af0"
+    },
+    {
+      "path": "pdfs/azro-btc-proof-brief-v1.1.1.pdf",
+      "sha256": "ec0f60aeca1d901a8440954726d4a2e4abc6c0b60f3e9b70037c21034c988971"
+    },
+    {
+      "path": "pdfs/azro-btc-operating-system-public-evidence-brief-v1.1.1.pdf",
+      "sha256": "781779fc8fa8cafdd092751ab3fecd38caf3bbf73cdfe656ef67a175664c31f2"
+    },
+    {
+      "path": "pdfs/azro-xrp-top-bottom-indicator-customer-handbook-v1.4.4.pdf",
+      "sha256": "cbb935ebcb51638068c204b1bb1cae2e163b9e382a9a3a2e705c3d85f6ec78a0"
+    },
+    {
+      "path": "pdfs/azro-xrp-proof-brief-v1.4.4.pdf",
+      "sha256": "fb135def438ea31cb9d5c1c2b32d14ba3c8fad3030f439159dbc0cf5874a6f88"
+    },
+    {
+      "path": "pdfs/azro-xrp-top-bottom-indicator-public-evidence-brief-v1.4.4.pdf",
+      "sha256": "e0276728fdc858d0579107af7ec9272063bc16e9ad47ccf30dfcd1e9a9ef8b6c"
+    },
+    {
+      "path": "pdfs/azro-buyer-decision-guide-btc-v1.1.1-xrp-v1.4.4.pdf",
+      "sha256": "e607686195dd34c9b5c91312e7c76076bde4362aef42f934e32940f7174dfdf0"
+    },
+    {
+      "path": "pdfs/azro-proof-and-value-guide-btc-v1.1.1-xrp-v1.4.4.pdf",
+      "sha256": "4eeac4989ba992824808fd6fac240b7ce0f5ec7ab7b7c78336f1dc7d86c26c77"
+    },
+    {
+      "path": "pdfs/risk-disclosure.pdf",
+      "sha256": "04ffa5c8ebbfb8e822f60c7c93de8f480071e13397a9fa5283481096df04f10e"
+    },
+    {
+      "path": "pdfs/terms-of-service.pdf",
+      "sha256": "65be582f36c6261265cb753f03211d76404357589af0410a95ee13e3e6c057ac"
+    },
+    {
+      "path": "pdfs/privacy-policy.pdf",
+      "sha256": "16350bb953776728e6e7ad9335430084e911145849d563d20f0826b6494ae69e"
+    }
+  ]
+}
