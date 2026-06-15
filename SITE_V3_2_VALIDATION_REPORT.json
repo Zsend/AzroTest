@@ -1,0 +1,19 @@
+{
+  "version": "v3.2",
+  "html_files_checked": 17,
+  "local_href_src_targets_checked": 564,
+  "missing_local_targets": [],
+  "internal_anchors_checked": 35,
+  "missing_internal_anchors": [],
+  "external_js_syntax_ok": true,
+  "external_js_errors": [],
+  "inline_challenge_script_errors": [],
+  "public_review_phrase_hits": [],
+  "evidence_counts": {
+    "original_pdfs": 21,
+    "previews": 21,
+    "excerpts": 9,
+    "tablet_assets": 5
+  },
+  "cache_busting": "site.css?v=3.2 and site.js?v=3.2 applied"
+}
