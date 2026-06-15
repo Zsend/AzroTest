@@ -1,0 +1,24 @@
+# Site v4.2 Validation Report
+
+```json
+{
+  "version": "4.2",
+  "html_files": 17,
+  "missing_local_count": 0,
+  "missing_local_targets": [],
+  "missing_anchor_count": 0,
+  "missing_anchors": [],
+  "js_syntax_failures": [],
+  "challenge_final_motion_scripts": 1,
+  "old_challenge_progress_scripts_remaining": 0,
+  "html_files_with_final_motion_css": 17,
+  "html_files_with_final_motion_js": 17,
+  "evidence": {
+    "pdfs": 21,
+    "previews": 21,
+    "excerpts": 9,
+    "tablet_assets": 5
+  },
+  "public_review_phrase_hits": []
+}
+```
