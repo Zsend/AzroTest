@@ -1,0 +1,15 @@
+{
+  "status": "private-customer-template-only",
+  "public_customer_records": false,
+  "fields_private": [
+    "customer_id_or_alias",
+    "report_period",
+    "starting_context",
+    "ending_context",
+    "product_versions",
+    "private_notes",
+    "btc_reserve_delta_if_customer_supplied_inputs",
+    "xrp_optional_amplifier_context_if_applicable"
+  ],
+  "public_boundary": "Customer Reserve Records are private customer deliverables and must not be published without explicit permission and review."
+}

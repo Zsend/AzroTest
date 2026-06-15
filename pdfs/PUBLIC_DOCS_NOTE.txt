@@ -1,0 +1,3 @@
+This public package keeps current customer-facing PDFs and legal/support PDFs.
+
+Legacy/intermediate version PDFs were removed from this customer-ready package to reduce version confusion and accidental public exposure surface.
