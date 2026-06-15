@@ -1,0 +1,1 @@
+document.querySelectorAll('[data-menu-toggle]').forEach(btn=>{btn.addEventListener('click',()=>document.querySelector('[data-header]').classList.toggle('open'))});
