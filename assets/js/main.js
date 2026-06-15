@@ -1,0 +1,1 @@
+(function(){const y=document.querySelectorAll('[data-year]');y.forEach(n=>n.textContent=new Date().getFullYear());})();
