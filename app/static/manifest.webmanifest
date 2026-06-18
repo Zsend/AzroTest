@@ -1,0 +1,10 @@
+{
+  "name": "Justice Grows",
+  "short_name": "Justice Grows",
+  "description": "Verified cannabis justice data and fair-chance career pathways.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F1E8",
+  "theme_color": "#0D1D17",
+  "icons": [{"src":"/assets/mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

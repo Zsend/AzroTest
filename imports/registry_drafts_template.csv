@@ -1,0 +1,2 @@
+id,display_name,jurisdiction,state,agency_identifier,custody_status,cannabis_classification,violence_screen_statement,confidence,source_count,last_verified_at,projected_release_date,release_date,profile_consent
+,Name or blank,Federal,,Register number,incarcerated,cannabis_only,"No violent offense was identified in the current commitment records reviewed as of YYYY-MM-DD.",confirmed,2,YYYY-MM-DDT00:00:00Z,,,false
