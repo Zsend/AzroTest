@@ -1,0 +1,416 @@
+[
+  {
+    "page": "index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "A Right For All | Human potential is not disposable.",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "letters/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "Letters from inside | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "standard/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "The Free Floor | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "minds-we-miss/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "The Minds We Miss | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "sustainability/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "How it stays free | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "national-scale/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "The long game | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "sources/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "Evidence | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "unusual-thinkers/index.html",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "metrics": {
+      "title": "Unusual Thinkers Challenge | A Right For All",
+      "scrollWidth": 1440,
+      "innerWidth": 1440,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 1
+    },
+    "console": []
+  },
+  {
+    "page": "index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "A Right For All | Human potential is not disposable.",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "letters/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "Letters from inside | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "standard/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "The Free Floor | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "minds-we-miss/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "The Minds We Miss | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "sustainability/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "How it stays free | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "national-scale/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "The long game | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "sources/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "Evidence | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "unusual-thinkers/index.html",
+    "viewport": [
+      1024,
+      768
+    ],
+    "metrics": {
+      "title": "Unusual Thinkers Challenge | A Right For All",
+      "scrollWidth": 1024,
+      "innerWidth": 1024,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "A Right For All | Human potential is not disposable.",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "letters/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "Letters from inside | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "standard/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "The Free Floor | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "minds-we-miss/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "The Minds We Miss | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "sustainability/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "How it stays free | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "national-scale/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "The long game | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "sources/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "Evidence | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "page": "unusual-thinkers/index.html",
+    "viewport": [
+      390,
+      844
+    ],
+    "metrics": {
+      "title": "Unusual Thinkers Challenge | A Right For All",
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "overflow": [],
+      "unlabeled": [],
+      "imgNoAlt": 0,
+      "buttons": 0
+    },
+    "console": []
+  },
+  {
+    "mobile_menu": {
+      "visible": true,
+      "aria": "true"
+    }
+  }
+]

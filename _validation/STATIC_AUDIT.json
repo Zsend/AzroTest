@@ -1,0 +1,16 @@
+{
+  "html_files": 18,
+  "missing_local_targets": [],
+  "missing_anchors": [],
+  "duplicate_ids": [],
+  "images_missing_alt": [],
+  "images_missing_dimensions": [],
+  "unlabeled_fields": [],
+  "target_blank_without_noopener": [],
+  "missing_canonical": [],
+  "missing_description": [],
+  "missing_viewport": [],
+  "missing_final_css": [],
+  "missing_final_js": [],
+  "pass": true
+}

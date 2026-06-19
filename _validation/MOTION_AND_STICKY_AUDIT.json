@@ -1,0 +1,55 @@
+{
+  "advisor_input_motion": {
+    "before": {
+      "visible": false,
+      "opacity": 0.255085
+    },
+    "after": {
+      "visible": true,
+      "opacity": 1
+    },
+    "cards": [
+      {
+        "visible": true,
+        "opacity": 1
+      },
+      {
+        "visible": true,
+        "opacity": 1
+      },
+      {
+        "visible": true,
+        "opacity": 1
+      },
+      {
+        "visible": true,
+        "opacity": 0.999969
+      }
+    ],
+    "errors": []
+  },
+  "challenge_two_phase_motion": {
+    "positions": [
+      {
+        "scroll_offset": 150,
+        "right_top": 162,
+        "first_left_top": 15,
+        "last_left_top": 1620
+      },
+      {
+        "scroll_offset": 750,
+        "right_top": 104,
+        "first_left_top": -433,
+        "last_left_top": 1112
+      },
+      {
+        "scroll_offset": 1400,
+        "right_top": 104,
+        "first_left_top": -741,
+        "last_left_top": 685
+      }
+    ],
+    "left_internal_overflow": "visible",
+    "errors": []
+  }
+}
