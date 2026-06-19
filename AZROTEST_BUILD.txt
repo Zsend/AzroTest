@@ -1,0 +1,4 @@
+A Right For All temporary GitHub Pages test build
+Target: https://zsend.github.io/AzroTest/
+Search indexing: blocked
+Production custom domain: not configured in this package
