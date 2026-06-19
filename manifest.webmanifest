@@ -1,0 +1,15 @@
+{
+  "name": "Justice Grows — Freedom. Work. Ownership.",
+  "short_name": "Justice Grows",
+  "description": "Verified cannabis justice data and candidate-controlled career mobility.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f1e8",
+  "theme_color": "#0d1d17",
+  "icons": [
+    {"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"},
+    {"src":"./assets/mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}
+  ]
+}
