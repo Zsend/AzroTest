@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /ops.html
-Disallow: /passport.html
-Sitemap: https://zsend.github.io/AzroTest/sitemap.xml
