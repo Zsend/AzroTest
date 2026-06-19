@@ -1,0 +1,206 @@
+/* Justice Grows product surfaces — shared readability and spacing pass */
+:root{
+  --jg-focus:0 0 0 4px rgba(199,245,106,.38);
+  --jg-ease:cubic-bezier(.2,.8,.2,1);
+}
+
+body{font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,a,input,select,textarea{transition:border-color .18s var(--jg-ease),background-color .18s var(--jg-ease),color .18s var(--jg-ease),box-shadow .18s var(--jg-ease),transform .18s var(--jg-ease)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:0;box-shadow:var(--jg-focus)}
+button,.btn{min-height:44px}
+
+/* Public talent profile */
+body.talent-page .topline{min-height:40px;height:auto;padding:9px 18px;font-size:12px;line-height:1.35;letter-spacing:.01em}
+body.talent-page .nav{height:78px}
+body.talent-page .brand{gap:12px;font-size:17px}
+body.talent-page .brand img{width:42px;height:42px}
+body.talent-page .brand small{font-size:10px;line-height:1.3;margin-top:3px}
+body.talent-page .btn{min-height:46px;padding-inline:19px;font-size:13px}
+body.talent-page main{padding:72px 0 104px}
+body.talent-page .profile-hero{padding:56px;border-radius:32px}
+body.talent-page .eyebrow{font-size:11px;line-height:1.4}
+body.talent-page h1{margin:20px 0 16px}
+body.talent-page .headline{font-size:20px;line-height:1.55}
+body.talent-page .meta{gap:10px;margin-top:28px}
+body.talent-page .pill{padding:8px 12px;font-size:12px;line-height:1.3}
+body.talent-page .hero-note{margin-top:36px;padding-top:20px;font-size:13px;line-height:1.6}
+body.talent-page .grid{gap:20px;margin-top:20px}
+body.talent-page .card{border-radius:24px;padding:32px}
+body.talent-page .card p{font-size:16px;line-height:1.68;margin:0}
+body.talent-page h2{font-size:38px;line-height:1.05;margin-bottom:18px}
+body.talent-page .chips{gap:9px}
+body.talent-page .chips span{padding:8px 11px;font-size:12px;line-height:1.3}
+body.talent-page .ambition p{font-size:17px}
+body.talent-page .links{gap:10px}
+body.talent-page .links a{padding:14px;font-size:13px}
+body.talent-page .trust{margin-top:20px;border-radius:24px;padding:34px;gap:32px}
+body.talent-page .trust h2{font-size:36px}
+body.talent-page .trust p{font-size:15px;line-height:1.65;margin:0}
+body.talent-page .empty-card p{font-size:16px;line-height:1.65}
+body.talent-page footer{padding:34px 0;font-size:12px}
+
+/* Candidate Mobility Passport */
+body.passport-page .shell{grid-template-columns:288px minmax(0,1fr)}
+body.passport-page .side{padding:30px 24px}
+body.passport-page .brand{gap:12px;font-size:17px}
+body.passport-page .brand img{width:44px;height:44px}
+body.passport-page .brand small{font-size:10px;line-height:1.35}
+body.passport-page .side-nav{gap:7px;margin-top:44px}
+body.passport-page .side-nav button{min-height:48px;padding:13px 14px;font-size:13.5px;line-height:1.35}
+body.passport-page .side-note{border-radius:18px;padding:17px;font-size:12.5px;line-height:1.55}
+body.passport-page .side-note strong{font-size:13px;margin-bottom:7px}
+body.passport-page .top{height:82px;padding:0 36px}
+body.passport-page .top h1{font-size:32px}
+body.passport-page .top .sub{font-size:13px;margin-top:3px}
+body.passport-page .btn{min-height:46px;padding-inline:18px;font-size:13px}
+body.passport-page .content{padding:36px;max-width:1360px}
+body.passport-page .hero{padding:42px;border-radius:28px;gap:42px}
+body.passport-page .eyebrow{font-size:11px;line-height:1.4}
+body.passport-page .hero h2{margin:17px 0 18px}
+body.passport-page .hero p{font-size:16px;line-height:1.65}
+body.passport-page .hero-actions{gap:10px;margin-top:26px}
+body.passport-page .progress-card{border-radius:22px;padding:24px}
+body.passport-page .progress-card p{font-size:13px;line-height:1.55}
+body.passport-page .status-chip{font-size:10.5px;padding:8px 11px}
+body.passport-page .grid3{gap:16px;margin-top:16px}
+body.passport-page .mini-card{border-radius:20px;padding:22px}
+body.passport-page .mini-card span{font-size:11px}
+body.passport-page .mini-card strong{font-size:28px;margin-top:8px}
+body.passport-page .mini-card p{font-size:13px;line-height:1.55;margin-top:8px}
+body.passport-page .section{border-radius:24px;margin-top:18px}
+body.passport-page .section-head{padding:24px 28px}
+body.passport-page .section-head h3{font-size:31px}
+body.passport-page .section-head p{font-size:14px;line-height:1.55;margin-top:6px}
+body.passport-page .section-body{padding:28px}
+body.passport-page .form-grid{gap:20px}
+body.passport-page .field{gap:8px}
+body.passport-page .field label{font-size:13px;line-height:1.4}
+body.passport-page .field small{font-size:12px;line-height:1.45}
+body.passport-page .field input,body.passport-page .field select{height:48px}
+body.passport-page .field input,body.passport-page .field textarea,body.passport-page .field select{border-radius:14px;padding:13px 14px;font-size:15px}
+body.passport-page .field textarea{min-height:124px}
+body.passport-page .char{font-size:11px}
+body.passport-page .choice-grid{gap:12px}
+body.passport-page .choice{border-radius:17px;padding:17px}
+body.passport-page .choice strong{font-size:14px;margin:8px 0 5px}
+body.passport-page .choice span{font-size:12.5px;line-height:1.5}
+body.passport-page .check{font-size:13px;line-height:1.5}
+body.passport-page .callout{border-radius:18px;padding:18px;font-size:13px;line-height:1.55}
+body.passport-page .savebar{bottom:20px;margin-top:24px;border-radius:19px;padding:14px 17px}
+body.passport-page .savebar span{font-size:12px;line-height:1.45}
+body.passport-page .matches{gap:14px}
+body.passport-page .match{border-radius:21px;padding:24px;gap:24px}
+body.passport-page .match h3{font-size:29px}
+body.passport-page .pill{font-size:11px;padding:7px 10px}
+body.passport-page .score span{font-size:10px}
+body.passport-page .match p{font-size:14px;line-height:1.6}
+body.passport-page .empty{padding:60px 28px}
+body.passport-page .empty p{font-size:14px;line-height:1.6}
+body.passport-page .privacy-card{border-radius:21px;padding:24px}
+body.passport-page .privacy-card p,body.passport-page .privacy-card li{font-size:14px;line-height:1.6}
+body.passport-page .gate-card{border-radius:30px;padding:40px}
+body.passport-page .gate-card p{font-size:15px;line-height:1.65}
+body.passport-page .gate-card label{font-size:13px!important;line-height:1.4}
+body.passport-page .gate-card input{height:50px;border-radius:14px;padding-inline:14px;font-size:15px}
+body.passport-page .gate-card p[style]{font-size:12px!important}
+body.passport-page .message{font-size:13px;line-height:1.5}
+body.passport-page .toast{font-size:13px}
+body.passport-page .mobile-menu-btn,body.passport-page .mobile-nav button{font-size:13px}
+
+/* Internal operations console. Dense, but never tiny. */
+body.ops-page .shell{grid-template-columns:260px minmax(0,1fr)}
+body.ops-page .side{padding:22px 18px}
+body.ops-page .brand{font-size:16px;gap:11px}
+body.ops-page .brand small{font-size:10px;line-height:1.35}
+body.ops-page .nav{gap:5px;margin-top:30px}
+body.ops-page .nav button,body.ops-page .nav a{min-height:42px;padding:11px 12px;font-size:12.5px;line-height:1.35}
+body.ops-page .health{padding:14px;font-size:11px;line-height:1.5}
+body.ops-page .top{height:80px;padding:0 32px}
+body.ops-page .top h1{font-size:30px}
+body.ops-page .btn{min-height:44px;padding-inline:16px;font-size:12px}
+body.ops-page .content{padding:30px;max-width:1600px;margin:auto}
+body.ops-page .auth-card{max-width:570px;margin:84px auto;border-radius:28px;padding:38px}
+body.ops-page .auth-card h2{font-size:42px;line-height:1.02;margin:22px 0 12px}
+body.ops-page .auth-card p{font-size:14px;line-height:1.6}
+body.ops-page .auth-card input{height:50px;border-radius:13px;padding-inline:14px;font-size:14px}
+body.ops-page .message{font-size:12px;line-height:1.5}
+body.ops-page .cards{gap:12px}
+body.ops-page .card{border-radius:18px;padding:19px}
+body.ops-page .card strong{font-size:34px}
+body.ops-page .card span{font-size:11.5px;line-height:1.4;margin-top:5px}
+body.ops-page .section{margin-top:20px;border-radius:21px}
+body.ops-page .section-head{padding:20px 22px}
+body.ops-page .section-head h2{font-size:18px}
+body.ops-page .section-head p{font-size:12px;line-height:1.5;margin-top:4px}
+body.ops-page .queue-tabs{gap:7px;padding:14px 20px}
+body.ops-page .queue-tabs button{min-height:36px;padding:8px 12px;font-size:11px}
+body.ops-page .row{min-height:58px;padding-inline:21px}
+body.ops-page .row.head{min-height:42px;font-size:10px}
+body.ops-page .row span{font-size:12px;line-height:1.4}
+body.ops-page .pill{font-size:9.5px;padding:6px 9px}
+body.ops-page .empty{padding:60px;font-size:14px}
+body.ops-page .detail-head{padding:22px 25px}
+body.ops-page .detail-head small{font-size:10px}
+body.ops-page .detail-head h2{font-size:33px}
+body.ops-page .detail-body{padding:22px 25px 76px}
+body.ops-page .field{padding:14px 0}
+body.ops-page .field b{font-size:10px;margin-bottom:6px}
+body.ops-page .field pre{font-size:13px;line-height:1.6}
+body.ops-page .action-panel{margin-top:20px;border-radius:17px;padding:18px;gap:11px}
+body.ops-page .action-panel h3{font-size:26px}
+body.ops-page .action-panel input,body.ops-page .action-panel select,body.ops-page .action-panel textarea{border-radius:11px;padding:11px;font-size:13px}
+body.ops-page .action-panel label[style]{font-size:12px!important}
+body.ops-page .checks{gap:9px}
+body.ops-page .checks label{font-size:12px;line-height:1.4}
+body.ops-page .modal{border-radius:26px}
+body.ops-page .modal-head{padding:22px 25px}
+body.ops-page .modal-head h2{font-size:32px}
+body.ops-page .modal-body{padding:24px}
+body.ops-page .form-grid{gap:14px}
+body.ops-page .form-field{gap:7px}
+body.ops-page .form-field label{font-size:12px}
+body.ops-page .form-field input,body.ops-page .form-field select,body.ops-page .form-field textarea{border-radius:12px;padding:11px;font-size:14px}
+body.ops-page .form-field input,body.ops-page .form-field select{height:46px}
+body.ops-page .toast{font-size:12px;line-height:1.5}
+
+@media(max-width:1000px){
+  body.passport-page .shell,body.ops-page .shell{grid-template-columns:1fr}
+  body.passport-page .content{padding:24px}
+  body.ops-page .content{padding:22px}
+}
+
+@media(max-width:760px){
+  body.talent-page .container{width:min(calc(100% - 32px),1100px)}
+  body.talent-page main{padding:32px 0 72px}
+  body.talent-page .profile-hero{padding:30px;border-radius:24px}
+  body.talent-page h1{font-size:clamp(44px,14vw,60px);line-height:.96}
+  body.talent-page .headline{font-size:18px}
+  body.talent-page .card{padding:24px}
+  body.talent-page h2{font-size:32px}
+  body.talent-page .trust{padding:26px}
+  body.talent-page .footer{gap:12px}
+}
+
+@media(max-width:680px){
+  body.passport-page .top{padding:14px 18px}
+  body.passport-page .top h1{font-size:25px}
+  body.passport-page .top .sub{font-size:12px}
+  body.passport-page .content{padding:18px}
+  body.passport-page .hero{padding:28px}
+  body.passport-page .hero h2{font-size:44px}
+  body.passport-page .section-head,body.passport-page .section-body{padding:20px}
+  body.passport-page .savebar{bottom:10px}
+  body.passport-page .gate-card{padding:28px}
+  body.passport-page .gate-card h1{font-size:40px}
+
+  body.ops-page .content{padding:14px}
+  body.ops-page .top{padding:14px 16px}
+  body.ops-page .top h1{font-size:25px}
+  body.ops-page .cards{gap:10px}
+  body.ops-page .card{padding:16px}
+  body.ops-page .card strong{font-size:29px}
+  body.ops-page .section-head{padding:18px}
+  body.ops-page .queue-tabs{padding:12px 16px}
+  body.ops-page .auth-card{margin:36px auto;padding:28px}
+  body.ops-page .auth-card h2{font-size:38px}
+}

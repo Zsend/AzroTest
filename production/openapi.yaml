@@ -1,0 +1,336 @@
+openapi: 3.1.0
+info:
+  title: Justice Grows API
+  version: 2026.06.19-proof-layer.6
+  description: Secure data plane for candidate-owned careers, employer proof, industry-claim review, and the cannabis-custody registry.
+servers:
+  - url: https://api.example.org
+security: []
+paths:
+  /api/health:
+    get:
+      operationId: health
+      responses:
+        '200': {description: Healthy, content: {application/json: {schema: {$ref: '#/components/schemas/Health'}}}}
+  /api/public/metrics:
+    get:
+      operationId: publicMetrics
+      responses:
+        '200': {description: Public actuals and separate targets, content: {application/json: {schema: {$ref: '#/components/schemas/Metrics'}}}}
+  /api/public/coverage:
+    get:
+      operationId: publicCoverage
+      responses:
+        '200': {description: Jurisdiction coverage, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}
+  /api/public/jobs:
+    get:
+      operationId: publicJobs
+      parameters:
+        - {name: state, in: query, schema: {type: string}}
+        - {name: pathway, in: query, schema: {type: string}}
+        - {name: remote, in: query, schema: {type: boolean}}
+      responses:
+        '200': {description: Verified live roles, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}
+  /api/public/talent:
+    get:
+      operationId: publicTalent
+      responses:
+        '200': {description: Candidate-approved snapshots, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}
+  /api/public/talent/{slug}:
+    get:
+      operationId: publicTalentProfile
+      parameters: [{name: slug, in: path, required: true, schema: {type: string}}]
+      responses:
+        '200': {description: Candidate-approved public profile, content: {application/json: {schema: {type: object}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /api/public/employers:
+    get:
+      operationId: publicEmployerLedger
+      responses:
+        '200': {description: Opt-in employer proof ledger, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}
+  /api/public/claims:
+    get:
+      operationId: publicClaimFindings
+      responses:
+        '200': {description: Completed neutral claim findings, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}
+  /api/public/registry:
+    get:
+      operationId: publicRegistry
+      parameters: [{name: state, in: query, schema: {type: string}}]
+      responses:
+        '200': {description: Minimized published registry records, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}
+  /api/public/talent-insights:
+    get:
+      operationId: publicTalentInsights
+      responses:
+        '200': {description: Privacy-thresholded aggregate insights, content: {application/json: {schema: {type: object}}}}
+
+  /api/intake/candidate:
+    post:
+      operationId: candidateIntake
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/CandidateIntake'}}}}
+      responses:
+        '201': {description: Private candidate intake created, content: {application/json: {schema: {$ref: '#/components/schemas/Created'}}}}
+        '422': {$ref: '#/components/responses/Validation'}
+  /api/intake/employer:
+    post:
+      operationId: employerIntake
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/EmployerIntake'}}}}
+      responses:
+        '201': {description: Employer application created, content: {application/json: {schema: {$ref: '#/components/schemas/Created'}}}}
+        '422': {$ref: '#/components/responses/Validation'}
+  /api/intake/job:
+    post:
+      operationId: jobIntake
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/JobIntake'}}}}
+      responses:
+        '201': {description: Role submitted for review, content: {application/json: {schema: {$ref: '#/components/schemas/Created'}}}}
+        '422': {$ref: '#/components/responses/Validation'}
+  /api/intake/claim:
+    post:
+      operationId: claimIntake
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ClaimIntake'}}}}
+      responses:
+        '201': {description: Private research lead created, content: {application/json: {schema: {$ref: '#/components/schemas/Created'}}}}
+        '422': {$ref: '#/components/responses/Validation'}
+  /api/intake/case:
+    post:
+      operationId: caseIntake
+      requestBody: {required: true, content: {application/json: {schema: {type: object}}}}
+      responses:
+        '201': {description: Private case referral created}
+  /api/intake/correction:
+    post:
+      operationId: correctionIntake
+      requestBody: {required: true, content: {application/json: {schema: {type: object}}}}
+      responses:
+        '201': {description: Correction request created}
+  /api/intake/partner:
+    post:
+      operationId: partnerIntake
+      requestBody: {required: true, content: {application/json: {schema: {type: object}}}}
+      responses:
+        '201': {description: Partner inquiry created}
+
+  /api/candidate/profile:
+    get:
+      operationId: candidateProfile
+      security: [candidateAuth: []]
+      responses: {'200': {description: Private profile, content: {application/json: {schema: {type: object}}}}}
+    put:
+      operationId: updateCandidateProfile
+      security: [candidateAuth: []]
+      requestBody: {required: true, content: {application/json: {schema: {type: object}}}}
+      responses: {'200': {description: Profile saved}, '422': {$ref: '#/components/responses/Validation'}}
+  /api/candidate/profile/submit:
+    post:
+      operationId: submitCandidateProfile
+      security: [candidateAuth: []]
+      responses: {'200': {description: Submitted for moderation}, '409': {$ref: '#/components/responses/Conflict'}}
+  /api/candidate/profile/hide:
+    post:
+      operationId: hideCandidateProfile
+      security: [candidateAuth: []]
+      responses: {'200': {description: Public snapshot removed immediately}}
+  /api/candidate/matches:
+    get:
+      operationId: candidateMatches
+      security: [candidateAuth: []]
+      responses: {'200': {description: Private matches, content: {application/json: {schema: {$ref: '#/components/schemas/ListResponse'}}}}}
+  /api/candidate/matches/{matchId}/decision:
+    post:
+      operationId: candidateMatchDecision
+      security: [candidateAuth: []]
+      parameters: [{name: matchId, in: path, required: true, schema: {type: string, format: uuid}}]
+      requestBody: {required: true, content: {application/json: {schema: {type: object, required: [decision], properties: {decision: {type: string, enum: [interested, pass]}}}}}}
+      responses: {'200': {description: Decision recorded}, '404': {$ref: '#/components/responses/NotFound'}}
+
+  /api/admin/overview:
+    get:
+      operationId: adminOverview
+      security: [operatorAuth: []]
+      responses: {'200': {description: Queues and metrics}}
+  /api/admin/submissions/{queue}:
+    get:
+      operationId: adminQueue
+      security: [operatorAuth: []]
+      parameters: [{name: queue, in: path, required: true, schema: {type: string, enum: [candidates, profiles, employers, jobs, cases, corrections, claims, partners, matches, registry]}}]
+      responses: {'200': {description: Authorized queue}}
+  /api/admin/profiles/{id}/moderate:
+    post:
+      operationId: moderateProfile
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      responses: {'200': {description: Moderation recorded}}
+  /api/admin/employers/{id}/verify:
+    post:
+      operationId: verifyEmployer
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      responses: {'200': {description: Employer status updated}}
+  /api/admin/jobs/{id}/publish:
+    post:
+      operationId: publishJob
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      responses: {'200': {description: Job published}, '409': {$ref: '#/components/responses/Conflict'}}
+  /api/admin/matches/{id}/outcomes:
+    post:
+      operationId: createOutcome
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/OutcomeInput'}}}}
+      responses: {'201': {description: Candidate-confirmed outcome recorded}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Validation'}}
+  /api/admin/claims/{id}/status:
+    post:
+      operationId: dispositionClaim
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      requestBody: {required: true, content: {application/json: {schema: {$ref: '#/components/schemas/ClaimDisposition'}}}}
+      responses: {'200': {description: Claim updated}, '409': {$ref: '#/components/responses/Conflict'}, '422': {$ref: '#/components/responses/Validation'}}
+  /api/admin/registry:
+    post:
+      operationId: createRegistryDraft
+      security: [operatorAuth: []]
+      responses: {'201': {description: Private registry draft created}}
+  /api/admin/registry/{id}/sources:
+    post:
+      operationId: addRegistrySource
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      responses: {'201': {description: Source added}}
+  /api/admin/registry/{id}/reviews:
+    post:
+      operationId: addRegistryReview
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      responses: {'201': {description: Independent review recorded}}
+  /api/admin/registry/{id}/publish:
+    post:
+      operationId: publishRegistryRecord
+      security: [operatorAuth: []]
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      responses: {'200': {description: Record published}, '409': {$ref: '#/components/responses/Conflict'}}
+
+components:
+  securitySchemes:
+    candidateAuth: {type: http, scheme: bearer, bearerFormat: short-lived capability or OIDC token}
+    operatorAuth: {type: openIdConnect, openIdConnectUrl: https://identity.example.org/.well-known/openid-configuration}
+  responses:
+    Validation: {description: Validation error, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Conflict: {description: Proof gate not satisfied, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    NotFound: {description: Not found, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  schemas:
+    Error:
+      type: object
+      required: [detail]
+      properties: {detail: {type: string}, request_id: {type: string}}
+    Health:
+      type: object
+      required: [status]
+      properties: {status: {type: string, enum: [ok]}, time: {type: string, format: date-time}}
+    Created:
+      type: object
+      required: [id, status]
+      properties: {id: {type: string}, status: {type: string}, message: {type: string}}
+    ListResponse:
+      type: object
+      required: [items, count]
+      properties:
+        items: {type: array, items: {type: object}}
+        count: {type: integer, minimum: 0}
+        updated_at: {type: string, format: date-time}
+        disclosure: {type: string}
+    Metrics:
+      type: object
+      required: [actual, targets_12_month, updated_at]
+      properties:
+        actual: {type: object, additionalProperties: {type: [integer, number, 'null']}}
+        targets_12_month: {type: object, additionalProperties: {type: [integer, number]}}
+        updated_at: {type: string, format: date-time}
+        disclosure: {type: string}
+    CandidateIntake:
+      type: object
+      required: [first_name, last_name, email, state, release_status, consent_contact, privacy_acknowledgment]
+      properties:
+        first_name: {type: string, maxLength: 80}
+        last_name: {type: string, maxLength: 80}
+        email: {type: string, format: email}
+        phone: {type: string}
+        state: {type: string, minLength: 2, maxLength: 2}
+        city: {type: string}
+        release_status: {type: string}
+        role_interests: {type: [string, array]}
+        skills: {type: [string, array]}
+        min_hourly_wage: {type: [number, 'null']}
+        remote_ok: {type: boolean}
+        relocation_ok: {type: boolean}
+        consent_matching: {type: boolean}
+        consent_contact: {type: boolean}
+        privacy_acknowledgment: {type: boolean}
+    EmployerIntake:
+      type: object
+      required: [org_name, state, first_name, last_name, title, email, wage_transparency, no_blanket_ban, fair_chance_process, outcome_reporting, candidate_privacy, story_rights, advancement_commitment]
+      properties:
+        org_name: {type: string}
+        state: {type: string}
+        first_name: {type: string}
+        last_name: {type: string}
+        title: {type: string}
+        email: {type: string, format: email}
+        wage_transparency: {type: boolean, const: true}
+        no_blanket_ban: {type: boolean, const: true}
+        fair_chance_process: {type: boolean, const: true}
+        outcome_reporting: {type: boolean, const: true}
+        candidate_privacy: {type: boolean, const: true}
+        story_rights: {type: boolean, const: true}
+        advancement_commitment: {type: boolean, const: true}
+        public_name_consent: {type: boolean}
+    JobIntake:
+      type: object
+      required: [org_name, contact_name, email, title, state, pathway, employment_type, wage_min, salary_period, description, background_process, compact_acknowledgment]
+      properties:
+        employer_id: {type: string}
+        org_name: {type: string}
+        contact_name: {type: string}
+        email: {type: string, format: email}
+        title: {type: string}
+        state: {type: string}
+        pathway: {type: string}
+        employment_type: {type: string}
+        wage_min: {type: number}
+        wage_max: {type: [number, 'null']}
+        salary_period: {type: string, enum: [hour, year, project]}
+        description: {type: string, minLength: 60}
+        background_process: {type: string, minLength: 20}
+        compact_acknowledgment: {type: boolean, const: true}
+    ClaimIntake:
+      type: object
+      required: [company_name, claim_url, claim_type, claim_summary, good_faith]
+      properties:
+        company_name: {type: string}
+        claim_url: {type: string, format: uri, pattern: '^https://'}
+        claim_type: {type: string}
+        observed_at: {type: string, format: date}
+        claim_summary: {type: string, minLength: 30}
+        outcome_evidence: {type: string}
+        good_faith: {type: boolean, const: true}
+    OutcomeInput:
+      type: object
+      required: [event_type, confirmed_by_candidate]
+      properties:
+        event_type: {type: string, enum: [started, retained_30, retained_90, retained_180, retained_365, raise, promotion, credential, equity, ownership, separation]}
+        occurred_at: {type: string, format: date}
+        wage: {type: number}
+        salary_period: {type: string}
+        note: {type: string}
+        confirmed_by_candidate: {type: boolean}
+        confirmed_by_employer: {type: boolean}
+    ClaimDisposition:
+      type: object
+      required: [status, public]
+      properties:
+        status: {type: string, enum: [research_lead, reviewing, right_of_reply, verified_role, verified_outcome, closed_no_evidence, closed_no_finding, closed_duplicate, withdrawn]}
+        note: {type: string}
+        right_of_reply_status: {type: string, enum: [not_started, sent, received, declined, expired, not_applicable]}
+        public: {type: boolean}
