@@ -1,0 +1,711 @@
+/* ========================================================================== 
+   A RIGHT FOR ALL v18 — FINAL OPTICAL RHYTHM + PRIVACY POLISH
+   Loaded after site.css. This layer only refines spacing, balance, hierarchy,
+   metadata rails, card symmetry, and responsive behavior.
+   ========================================================================== */
+:root{
+  --v18-label-size:clamp(.84rem,.28vw + .79rem,.94rem);
+  --v18-label-gap:clamp(.78rem,1.05vw,1.02rem);
+  --v18-heading-gap:clamp(.78rem,1.15vw,1.05rem);
+  --v18-card-pad:clamp(1.45rem,2.25vw,1.95rem);
+  --v18-card-pad-lg:clamp(1.8rem,3vw,2.55rem);
+  --v18-grid-gap:clamp(1.1rem,2vw,1.6rem);
+  --v18-rule:rgba(177,190,207,.72);
+  --v18-soft-rule:rgba(201,211,224,.72);
+}
+
+/* ---------- Global hierarchy and rhythm ---------- */
+body{font-size:17px;line-height:1.68}
+section{padding-block:clamp(5rem,7.6vw,7.5rem)}
+.section-tight{padding-block:clamp(3.9rem,5.9vw,5.45rem)}
+.section-head{margin-bottom:clamp(2.25rem,3.7vw,3.35rem)}
+
+.section-label,.kicker{
+  display:flex;
+  width:fit-content;
+  align-items:center;
+  margin:0 0 var(--v18-label-gap);
+  font-size:var(--v18-label-size);
+  line-height:1.3;
+  letter-spacing:.155em;
+  font-weight:900;
+}
+.section-label+h1,.section-label+h2,.section-label+h3,
+.kicker+h1,.kicker+h2,.kicker+h3{margin-top:0}
+
+h1,h2,h3{text-wrap:balance}
+h2+.section-copy,h2+.page-lead,h2+p,h3+p,
+.story-card h3+p,.help-card h3+p,.challenge-capacity h3+p,
+.evidence-copy h3+p,.source-card h3+p,.method-card h3+p,
+.mission-card h3+p,.problem-card h3+p,.horizon-card h3+p,
+.card h3+p,.micro-card strong+span{margin-top:var(--v18-heading-gap)!important}
+
+.section-copy,.page-lead,.lead{line-height:1.72}
+.section-dark .section-copy,.section-dark .story-card p,.section-dark .light-list li{color:rgba(255,255,255,.78)}
+.section-dark .story-card h3{line-height:1.16}
+.section-dark .story-card{padding:var(--v18-card-pad)}
+
+/* ---------- Unified card and grid geometry ---------- */
+.grid-2,.grid-3,.grid-4,.source-grid,.method-grid,.letter-grid,.archive-grid,
+.mission-pair,.coalition-grid,.micro-grid,.problem-grid,.track-grid,
+.phase-line,.bridge-continuum{gap:var(--v18-grid-gap)}
+
+.card,.source-card,.method-card,.mission-card,.help-card,.form-card,
+.challenge-section-card,.problem-card,.micro-card,.proof-card{
+  text-wrap:pretty;
+}
+.card,.source-card,.method-card,.mission-card,.help-card,.form-card,
+.challenge-section-card{padding:var(--v18-card-pad)}
+
+.source-card,.method-card,.problem-card,.micro-card,.proof-card,
+.pillar-card,.mission-card,.horizon-card,.coalition-pill{height:100%}
+.source-card{min-height:250px}
+.method-card{min-height:224px}
+.proof-card{min-height:152px}
+.pillar-card{min-height:248px}
+.mission-card{min-height:300px}
+.horizon-card{min-height:320px}
+
+/* ---------- Modern information rails: no button-like pills, no orphan cell ---------- */
+.info-rail{
+  display:grid!important;
+  gap:0!important;
+  margin-top:clamp(1.45rem,2.2vw,1.85rem)!important;
+  border:1px solid var(--v18-rule)!important;
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.58);
+  box-shadow:0 10px 26px rgba(12,23,43,.035);
+}
+.info-rail-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.info-rail-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.info-rail-auto{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important}
+.info-rail .chip{
+  display:flex!important;
+  align-items:center;
+  min-width:0;
+  min-height:64px;
+  padding:.92rem 1.05rem!important;
+  border:0!important;
+  border-right:1px solid var(--v18-rule)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--muted);
+  font-size:.94rem!important;
+  font-weight:780;
+  line-height:1.38;
+}
+.info-rail .chip::before{width:.44rem;height:.44rem;margin:0;flex:0 0 auto}
+.info-rail-3 .chip:nth-child(3n),.info-rail-4 .chip:nth-child(4n){border-right:0!important}
+.info-rail-4 .chip:nth-child(n+5){border-top:1px solid var(--v18-rule)!important}
+
+/* Evidence caption rail remains quiet and perfectly divided. */
+.evidence-meta{border-radius:14px;overflow:hidden;background:rgba(247,249,252,.72)}
+.evidence-meta span{justify-content:flex-start;min-height:54px;padding:.78rem .82rem;font-size:.78rem}
+
+/* ---------- Optical alignment for page heroes ---------- */
+.hero-grid,.page-hero-grid{column-gap:clamp(3.25rem,5.8vw,6.15rem)}
+.hero-media{align-self:start}
+.page-hero-grid{grid-template-columns:minmax(0,1fr) minmax(340px,.74fr)}
+.page-title{max-width:11.5ch}
+.page-bridge .page-title{max-width:12ch;font-size:clamp(3rem,5.25vw,5.35rem)}
+.page-hero-grid>:last-child,.mission-lock{align-self:center}
+.mission-lock{padding:var(--v18-card-pad-lg)}
+.mission-lock h3{font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.15}
+
+/* ---------- Home hero, declaration, and challenge gateway ---------- */
+.hero-proof{gap:1rem;margin-top:1.8rem}
+.proof-card{padding:1.2rem 1.25rem}
+.evidence-card{border-radius:30px}
+.evidence-copy{padding:1.48rem 1.52rem 1.62rem}
+.thesis-card{margin-top:1.25rem;padding:1.48rem 1.52rem}
+.declaration{padding-block:1.75rem clamp(4rem,5.8vw,5.25rem)}
+
+.challenge-preview{
+  grid-template-columns:minmax(0,1.04fr) minmax(340px,.76fr);
+  align-items:center!important;
+  gap:clamp(2.5rem,4.8vw,4.8rem);
+  padding:clamp(2.25rem,4vw,3.4rem);
+}
+.challenge-preview>div:first-child{align-self:center;padding-block:.35rem}
+.challenge-capacity{align-self:center;height:auto;min-height:0;padding:clamp(1.65rem,2.7vw,2.25rem)}
+.challenge-capacity .micro-grid{margin-top:1.2rem}
+.micro-card{min-height:118px;padding:1.05rem 1.1rem}
+
+/* ---------- Faded accent edges rather than hard bars ---------- */
+.coalition-pill{padding-left:1.65rem}
+.coalition-pill::before{
+  top:8px!important;
+  bottom:8px!important;
+  width:4px!important;
+  border-radius:999px!important;
+  background:linear-gradient(180deg,transparent 0%,rgba(36,94,232,.28) 12%,var(--blue) 34%,var(--blue) 66%,rgba(36,94,232,.28) 88%,transparent 100%)!important;
+  box-shadow:0 0 14px rgba(36,94,232,.18);
+}
+.challenge-left-card{border-top:1px solid var(--line)!important}
+.challenge-left-card::before{
+  content:"";
+  position:absolute;
+  inset:12px auto 12px 0;
+  width:4px;
+  border-radius:999px;
+  background:linear-gradient(180deg,transparent 0%,rgba(36,94,232,.25) 14%,var(--blue) 36%,var(--blue) 64%,rgba(36,94,232,.25) 86%,transparent 100%);
+}
+
+/* ---------- Missing grid definition fixed: wellness and supervision ---------- */
+.standard-wellness-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(340px,.72fr)!important;
+  align-items:center!important;
+  gap:clamp(3rem,5.5vw,5.75rem)!important;
+}
+.standard-wellness-grid>*{min-width:0;height:auto!important}
+.standard-wellness-grid>.card{padding:var(--v18-card-pad-lg)!important}
+.wellness-avoid-card,.supervision-list-card{align-self:center}
+.wellness-avoid-card .list-clean,.supervision-list-card .list-clean{gap:.95rem}
+.wellness-avoid-card .list-clean li,.supervision-list-card .list-clean li{font-size:1rem;line-height:1.55}
+
+/* ---------- Bridge resource rail: exact 4x2 desktop geometry ---------- */
+.page-bridge .info-rail-4{margin-top:1.75rem!important}
+.page-bridge .info-rail-4 .chip{min-height:68px}
+
+/* ---------- Challenge page: equal cards, cleaner hierarchy ---------- */
+.challenge-sequence{gap:clamp(2.75rem,5vw,5rem)}
+.challenge-left-flow{gap:clamp(1.5rem,2.8vw,2.1rem)}
+.challenge-left-card{padding:var(--v18-card-pad-lg);min-height:clamp(285px,37vh,372px);height:100%}
+.challenge-left-card .kicker{margin-bottom:.9rem}
+.challenge-left-card h2{font-size:clamp(2.05rem,3.05vw,3.05rem);line-height:1.02}
+.challenge-left-card p{margin-top:1rem!important;font-size:1.03rem;line-height:1.69}
+.challenge-right-lock{padding:clamp(2.45rem,4vw,3.65rem)}
+.challenge-right-lock h1{max-width:11ch}
+.challenge-work-grid{gap:clamp(2.7rem,4.8vw,4.4rem)}
+.challenge-section-card{padding:clamp(1.95rem,3.2vw,2.85rem)}
+.problem-grid,.track-grid{gap:1.1rem}
+.problem-card{min-height:205px;padding:1.35rem}
+.track-option label{min-height:198px;padding:1.3rem}
+
+/* ---------- Lines, lists, and text lengths ---------- */
+.list-clean{gap:.88rem}
+.list-clean li{line-height:1.58}
+.section-head h2{max-width:20ch}
+.section-head .section-copy{max-width:68ch}
+.page-bridge .section-head h2,.page-standard .section-head h2{max-width:18ch}
+.quote-band{margin-top:clamp(2.65rem,4.2vw,3.7rem)}
+
+/* ---------- Responsive systems ---------- */
+@media(max-width:1080px){
+  .page-hero-grid,.standard-wellness-grid{grid-template-columns:1fr!important}
+  .page-hero-grid>:last-child,.mission-lock{justify-self:start;width:min(100%,680px)}
+  .standard-wellness-grid>.card{width:min(100%,760px)}
+  .challenge-preview{grid-template-columns:1fr}
+  .challenge-capacity{width:100%}
+  .info-rail-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .info-rail-4 .chip{border-right:1px solid var(--v18-rule)!important;border-top:0!important}
+  .info-rail-4 .chip:nth-child(2n){border-right:0!important}
+  .info-rail-4 .chip:nth-child(n+3){border-top:1px solid var(--v18-rule)!important}
+  .info-rail-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .info-rail-3 .chip{border-right:1px solid var(--v18-rule)!important}
+  .info-rail-3 .chip:nth-child(2){border-right:0!important}
+  .info-rail-3 .chip:last-child{grid-column:1/-1;border-right:0!important;border-top:1px solid var(--v18-rule)!important;justify-content:center}
+}
+@media(max-width:780px){
+  body{font-size:16.5px}
+  section{padding-block:clamp(4rem,11vw,5.25rem)}
+  .section-tight{padding-block:clamp(3.3rem,9vw,4.4rem)}
+  .section-label,.kicker{font-size:clamp(.82rem,2.8vw,.9rem);margin-bottom:.75rem}
+  .card,.source-card,.method-card,.mission-card,.help-card,.form-card,.challenge-section-card{padding:1.35rem}
+  .source-card,.method-card,.proof-card,.pillar-card,.mission-card,.horizon-card{min-height:auto}
+  .challenge-left-card{min-height:auto;padding:1.45rem}
+  .challenge-right-lock{padding:1.6rem}
+  .problem-card,.track-option label{min-height:auto}
+  .challenge-preview{padding:1.55rem}
+}
+@media(max-width:580px){
+  .info-rail-3,.info-rail-4,.info-rail-auto{grid-template-columns:1fr!important}
+  .info-rail .chip,.info-rail-3 .chip,.info-rail-4 .chip{
+    grid-column:auto!important;
+    min-height:54px;
+    padding:.82rem .95rem!important;
+    border-right:0!important;
+    border-top:0!important;
+    border-bottom:1px solid var(--v18-rule)!important;
+    justify-content:flex-start!important;
+  }
+  .info-rail .chip:last-child{border-bottom:0!important}
+  .evidence-meta{grid-template-columns:1fr}
+  .evidence-meta span{border-right:0;border-bottom:1px solid var(--line)}
+  .evidence-meta span:last-child{border-bottom:0}
+  .page-title{max-width:12ch}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .coalition-pill::before,.challenge-left-card::before{box-shadow:none}
+}
+
+
+/* ========================================================================== 
+   A RIGHT FOR ALL v20 — FINAL DESIGN SYSTEM
+   One concluding layer for optical rhythm, balanced geometry, accessible type,
+   responsive evidence presentation, and privacy-safe letter handling.
+   ========================================================================== */
+:root{
+  --v19-label-size:clamp(.91rem,.22vw + .86rem,1.01rem);
+  --v19-label-gap:clamp(.95rem,1.25vw,1.18rem);
+  --v19-heading-body-gap:clamp(.95rem,1.35vw,1.2rem);
+  --v19-card-pad:clamp(1.55rem,2.35vw,2.05rem);
+  --v19-card-pad-lg:clamp(1.95rem,3.15vw,2.75rem);
+  --v19-grid-gap:clamp(1.05rem,1.85vw,1.55rem);
+  --v19-section-gap:clamp(4.75rem,7vw,7rem);
+  --v19-rule:rgba(183,195,211,.78);
+  --v19-soft-blue:rgba(36,94,232,.12);
+  --v19-copy:64ch;
+}
+
+/* ---------- Foundational rhythm ---------- */
+html{scroll-padding-top:96px}
+[id]{scroll-margin-top:104px}
+body{font-size:17px;line-height:1.68}
+section{padding-block:var(--v19-section-gap)}
+.section-tight{padding-block:clamp(3.8rem,5.6vw,5.25rem)}
+.section-head{max-width:850px;margin-bottom:clamp(2.35rem,3.65vw,3.3rem)}
+.section-head .section-copy{max-width:var(--v19-copy)}
+
+.section-label,.kicker{
+  display:flex;
+  width:fit-content;
+  align-items:center;
+  margin:0 0 var(--v19-label-gap)!important;
+  font-size:var(--v19-label-size)!important;
+  line-height:1.25;
+  letter-spacing:.145em;
+  font-weight:900;
+}
+.section-label+h1,.section-label+h2,.section-label+h3,
+.kicker+h1,.kicker+h2,.kicker+h3{margin-top:0!important}
+
+h1,h2,h3{text-wrap:balance}
+h1+.lead,h1+.page-lead,h1+p,
+h2+.section-copy,h2+.page-lead,h2+p,
+h3+p,h3+.muted,h3+.section-copy,
+.card h3+p,.source-card h3+p,.method-card h3+p,.problem-card h3+p,
+.story-card h3+p,.help-card h3+p,.mission-card h3+p,.horizon-card h3+p,
+.challenge-capacity h3+p,.evidence-copy h3+p,.micro-card strong+span{
+  margin-top:var(--v19-heading-body-gap)!important;
+}
+
+.lead,.page-lead,.section-copy{line-height:1.72}
+.page-lead,.lead{max-width:62ch}
+.section-copy{max-width:var(--v19-copy)}
+.card p,.source-card p,.method-card p,.mission-card p,.problem-card p,
+.horizon-card p,.micro-card span,.story-card p,.help-card p{line-height:1.62}
+
+/* ---------- Universal grid and card behavior ---------- */
+.grid-2,.grid-3,.grid-4,.source-grid,.method-grid,.letter-grid,.archive-grid,
+.mission-pair,.coalition-grid,.micro-grid,.problem-grid,.track-grid,
+.phase-line,.bridge-continuum,.horizon-grid{
+  gap:var(--v19-grid-gap)!important;
+  align-items:stretch;
+}
+.grid-2>*,.grid-3>*,.grid-4>*,.source-grid>*,.method-grid>*,.letter-grid>*,
+.archive-grid>*,.mission-pair>*,.coalition-grid>*,.micro-grid>*,.problem-grid>*,
+.track-grid>*,.phase-line>*,.bridge-continuum>*,.horizon-grid>*{min-width:0}
+
+.card,.source-card,.method-card,.mission-card,.help-card,.form-card,
+.challenge-section-card,.problem-card,.micro-card,.proof-card,.horizon-card{
+  padding:var(--v19-card-pad)!important;
+  text-wrap:pretty;
+}
+.card,.source-card,.method-card,.mission-card,.proof-card,.pillar-card,
+.problem-card,.micro-card,.coalition-pill,.phase-line>.card{
+  display:flex;
+  flex-direction:column;
+}
+
+/* Remove artificial height that created dead space; let each row define itself. */
+.source-card,.method-card,.proof-card,.pillar-card,.mission-card,.horizon-card,
+.problem-card,.micro-card,.coalition-pill,.phase-line>.card{
+  min-height:0!important;
+}
+.source-grid,.method-grid,.letter-grid,.archive-grid,.problem-grid,.track-grid,
+.hero-proof,.mission-pair,.coalition-grid,.micro-grid,.phase-line,.bridge-continuum{
+  grid-auto-rows:auto!important;
+}
+
+/* Equal-row cards use centered internal rhythm instead of empty bottoms. */
+.pillar-card,.method-card,.phase-line>.card,.proof-card{
+  justify-content:center;
+}
+.mission-card,.horizon-card{justify-content:flex-start}
+.source-card a,.archive-body .letter-actions,.horizon-card .text-link,
+.mission-card .cta-row{margin-top:auto}
+
+/* Number badges always breathe before the title. */
+.number{
+  width:2.15rem!important;
+  height:2.15rem!important;
+  margin:0 0 1.08rem!important;
+  flex:0 0 auto;
+}
+.number+h3{margin-top:0!important}
+
+/* ---------- Information rails: balanced rows, never 2+1 ---------- */
+.info-rail{
+  display:grid!important;
+  gap:0!important;
+  margin-top:clamp(1.5rem,2.2vw,1.95rem)!important;
+  overflow:hidden;
+  border:1px solid var(--v19-rule)!important;
+  border-radius:18px!important;
+  background:rgba(255,255,255,.64)!important;
+  box-shadow:0 12px 30px rgba(12,23,43,.045)!important;
+}
+.info-rail-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.info-rail-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.info-rail-auto{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.info-rail .chip{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  min-width:0;
+  min-height:72px!important;
+  padding:1rem 1.1rem!important;
+  border:0!important;
+  border-right:1px solid var(--v19-rule)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--muted)!important;
+  font-size:.97rem!important;
+  font-weight:800!important;
+  line-height:1.36!important;
+}
+.info-rail .chip::before{width:.44rem!important;height:.44rem!important;margin:0!important;flex:0 0 auto}
+.info-rail-3 .chip:nth-child(3n),.info-rail-4 .chip:nth-child(4n),
+.info-rail-auto .chip:nth-child(4n){border-right:0!important}
+.info-rail-4 .chip:nth-child(n+5),.info-rail-auto .chip:nth-child(n+5){border-top:1px solid var(--v19-rule)!important}
+
+/* ---------- Page heroes: optical centering ---------- */
+.hero-grid,.page-hero-grid{column-gap:clamp(3.4rem,5.9vw,6.2rem)!important}
+.page-hero-grid{grid-template-columns:minmax(0,1fr) minmax(340px,.76fr)!important;align-items:center!important}
+.page-hero-grid>:last-child,.mission-lock{align-self:center!important;justify-self:end}
+.page-title{max-width:11.5ch}
+.mission-lock{width:min(100%,570px);padding:var(--v19-card-pad-lg)!important}
+.mission-lock h3{font-size:clamp(1.35rem,1.9vw,1.7rem);line-height:1.16}
+
+/* ---------- Home hero ---------- */
+.hero-grid{align-items:start!important}
+.hero-media{align-self:start!important;width:min(100%,480px)}
+.hero-proof{gap:1rem!important;margin-top:1.85rem!important}
+.proof-card{padding:1.22rem 1.25rem!important}
+.evidence-card{border-radius:30px!important}
+.evidence-copy{padding:1.52rem 1.58rem 1.68rem!important}
+.thesis-card{margin-top:1.25rem!important;padding:1.5rem 1.58rem!important}
+.declaration{padding-block:1.8rem clamp(4rem,5.8vw,5.4rem)!important}
+
+/* ---------- Letter collage: human, intentional, fully contained ---------- */
+.letters-feature{
+  display:grid!important;
+  grid-template-columns:minmax(0,.86fr) minmax(430px,1.14fr)!important;
+  gap:clamp(3.1rem,5.7vw,6rem)!important;
+  align-items:center!important;
+}
+.letter-collage{
+  position:relative;
+  width:min(100%,700px);
+  min-height:clamp(490px,46vw,590px);
+  margin:0 auto;
+  isolation:isolate;
+}
+.letter-collage-sheet{
+  position:absolute;
+  display:block;
+  width:56%;
+  aspect-ratio:928/1200;
+  overflow:hidden;
+  border:1px solid var(--line-strong);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 24px 52px rgba(12,23,43,.16);
+  transform-origin:center;
+}
+.letter-collage-sheet picture,.letter-collage-sheet img{display:block;width:100%;height:100%}
+.letter-collage-sheet img{object-fit:cover;object-position:top center}
+.letter-collage .letter-sheet-a{left:2%;top:14%;transform:rotate(-5.2deg);z-index:1}
+.letter-collage .letter-sheet-b{left:25%;top:2%;transform:rotate(1.5deg);z-index:3}
+.letter-collage .letter-sheet-c{right:1%;top:17%;transform:rotate(5.3deg);z-index:2}
+.letter-collage figcaption{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  z-index:5;
+  width:min(92%,610px);
+  transform:translateX(-50%);
+  display:grid;
+  gap:.28rem;
+  padding:1rem 1.15rem;
+  border:1px solid rgba(201,211,224,.9);
+  border-radius:18px;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 18px 40px rgba(12,23,43,.11);
+  backdrop-filter:blur(12px);
+}
+.letter-collage figcaption strong{font-size:.98rem;line-height:1.3}
+.letter-collage figcaption span{color:var(--muted);font-size:.9rem;line-height:1.45}
+.letter-voices-wrap{margin-top:clamp(2.2rem,3.6vw,3.1rem)}
+.letter-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:var(--v19-grid-gap)!important}
+.voice-card{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:var(--v19-card-pad)!important}
+.voice-card cite{margin-top:1rem}
+
+/* Four featured letters should be a true 4-up grid, never 3+1. */
+.letter-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.letter-card{height:100%}
+.letter-actions{gap:1rem;align-items:center}
+
+/* Provenance uses space deliberately instead of one oversized text slab. */
+.provenance-panel{
+  display:grid;
+  grid-template-columns:minmax(270px,.7fr) minmax(0,1.3fr);
+  gap:clamp(2rem,4.2vw,4.5rem);
+  align-items:center;
+  padding:var(--v19-card-pad-lg)!important;
+}
+.provenance-heading,.provenance-copy{min-width:0}
+.provenance-panel h2{max-width:14ch!important;margin-top:0!important}
+.provenance-copy{display:grid;gap:1rem}
+.provenance-copy p{margin-top:0!important;max-width:62ch!important}
+.provenance-copy .cta-row{margin-top:.45rem}
+
+/* ---------- Challenge gateway and challenge page ---------- */
+.challenge-preview{
+  grid-template-columns:minmax(0,1.04fr) minmax(360px,.76fr)!important;
+  align-items:center!important;
+  gap:clamp(2.7rem,4.9vw,4.9rem)!important;
+  padding:clamp(2.35rem,4.1vw,3.55rem)!important;
+}
+.challenge-preview>div:first-child{align-self:center!important}
+.challenge-capacity{
+  align-self:center!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:clamp(1.75rem,2.8vw,2.35rem)!important;
+}
+.challenge-capacity .micro-grid{margin-top:1.25rem}
+.micro-card{min-height:0!important;padding:1.1rem 1.15rem!important;justify-content:center}
+
+.challenge-sequence{gap:clamp(2.9rem,5vw,5.2rem)!important}
+.challenge-left-flow{gap:clamp(1.45rem,2.7vw,2rem)!important}
+.challenge-left-card{
+  min-height:0!important;
+  height:auto!important;
+  padding:var(--v19-card-pad-lg)!important;
+  border-top:1px solid var(--line)!important;
+  justify-content:center!important;
+}
+.challenge-left-card .kicker{margin-bottom:1rem!important}
+.challenge-left-card h2{font-size:clamp(2.1rem,3.05vw,3.15rem)!important;line-height:1.01!important}
+.challenge-left-card p{margin-top:1.05rem!important;font-size:1.03rem;line-height:1.68}
+.challenge-right-lock{padding:clamp(2.5rem,4vw,3.75rem)!important}
+.challenge-right-lock h1{max-width:11ch}
+.challenge-work-grid{gap:clamp(2.8rem,4.8vw,4.5rem)!important}
+.challenge-section-card{padding:clamp(2rem,3.25vw,2.9rem)!important}
+.problem-grid,.track-grid{gap:1.15rem!important}
+.problem-card,.track-option label{min-height:0!important;padding:1.35rem!important}
+
+/* ---------- Faded, tapered edge accents ---------- */
+.coalition-pill,.challenge-left-card{position:relative}
+.coalition-pill{padding-left:1.7rem!important;justify-content:center;min-height:86px}
+.coalition-pill::before,.challenge-left-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10%;
+  bottom:10%;
+  width:4px;
+  border-radius:999px;
+  background:linear-gradient(180deg,transparent 0%,rgba(112,154,255,.48) 17%,var(--blue) 42%,var(--blue) 58%,rgba(112,154,255,.48) 83%,transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  filter:drop-shadow(0 0 7px rgba(36,94,232,.24));
+}
+
+/* ---------- Balanced split sections ---------- */
+.standard-wellness-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.04fr) minmax(360px,.76fr)!important;
+  align-items:center!important;
+  gap:clamp(3rem,5.4vw,5.7rem)!important;
+}
+.standard-wellness-grid>*{min-width:0;height:auto!important}
+.standard-wellness-grid>.card{align-self:center!important;height:auto!important;padding:var(--v19-card-pad-lg)!important}
+.wellness-avoid-card,.supervision-list-card{align-self:center!important}
+.wellness-avoid-card .list-clean,.supervision-list-card .list-clean{gap:1rem}
+.wellness-avoid-card .list-clean li,.supervision-list-card .list-clean li{font-size:1rem;line-height:1.55}
+
+/* Long policy language receives readable measure instead of stretching edge-to-edge. */
+.quote-band p,.notice{line-height:1.68}
+.quote-band p{max-width:78ch;margin-inline:auto}
+.section-dark .quote-band{padding:clamp(1.7rem,3vw,2.3rem)!important}
+
+/* ---------- Evidence and source cards ---------- */
+.source-card,.method-card{min-height:0!important}
+.source-card{padding:var(--v19-card-pad-lg)!important}
+.method-card{padding:var(--v19-card-pad-lg)!important;justify-content:center}
+.source-card p,.method-card p{max-width:42ch}
+.source-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.method-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+
+/* ---------- Footer refinement ---------- */
+.site-footer .brand-mark{background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.08)}
+.footer-grid{align-items:start}
+.footer-grid h2{font-size:1rem;letter-spacing:-.02em}
+
+/* ---------- Responsive geometry ---------- */
+@media(max-width:1120px){
+  .page-hero-grid,.standard-wellness-grid{grid-template-columns:1fr!important}
+  .page-hero-grid>:last-child,.mission-lock{justify-self:start;width:min(100%,690px)}
+  .standard-wellness-grid>.card{width:min(100%,760px)}
+  .challenge-preview{grid-template-columns:1fr!important}
+  .challenge-capacity{width:100%}
+  .letters-feature{grid-template-columns:1fr!important}
+  .letter-collage{width:min(100%,720px);margin-inline:auto}
+  .provenance-panel{grid-template-columns:1fr;align-items:start}
+  .provenance-panel h2{max-width:18ch!important}
+}
+
+@media(max-width:960px){
+  /* Three-item groups stay three across until they can no longer do so; then stack. */
+  .grid-3,.method-grid,.horizon-grid{grid-template-columns:1fr!important}
+  .letter-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .info-rail-4,.info-rail-auto{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .info-rail-4 .chip,.info-rail-auto .chip{border-right:1px solid var(--v19-rule)!important;border-top:0!important}
+  .info-rail-4 .chip:nth-child(2n),.info-rail-auto .chip:nth-child(2n){border-right:0!important}
+  .info-rail-4 .chip:nth-child(n+3),.info-rail-auto .chip:nth-child(n+3){border-top:1px solid var(--v19-rule)!important}
+  .info-rail-3{grid-template-columns:1fr!important}
+  .info-rail-3 .chip{border-right:0!important;border-top:0!important;border-bottom:1px solid var(--v19-rule)!important}
+  .info-rail-3 .chip:last-child{border-bottom:0!important}
+}
+
+@media(max-width:780px){
+  body{font-size:16.5px}
+  section{padding-block:clamp(4rem,10.5vw,5.25rem)}
+  .section-tight{padding-block:clamp(3.3rem,9vw,4.4rem)}
+  .section-label,.kicker{font-size:clamp(.86rem,2.9vw,.94rem)!important;margin-bottom:.9rem!important}
+  .card,.source-card,.method-card,.mission-card,.help-card,.form-card,.challenge-section-card{padding:1.38rem!important}
+  .page-title{max-width:12ch}
+  .letter-collage{min-height:470px}
+  .letter-collage-sheet{width:58%}
+  .letter-preview-grid{grid-template-columns:1fr!important}
+  .challenge-left-card{padding:1.5rem!important}
+  .challenge-right-lock{padding:1.65rem!important}
+  .challenge-preview{padding:1.6rem!important}
+}
+
+@media(max-width:620px){
+  .grid-4,.phase-line,.bridge-continuum,.letter-grid{grid-template-columns:1fr!important}
+  .info-rail-4,.info-rail-auto{grid-template-columns:1fr!important}
+  .info-rail .chip,.info-rail-4 .chip,.info-rail-auto .chip{
+    min-height:56px!important;
+    padding:.84rem .96rem!important;
+    border-right:0!important;
+    border-top:0!important;
+    border-bottom:1px solid var(--v19-rule)!important;
+  }
+  .info-rail .chip:last-child{border-bottom:0!important}
+  .letter-collage{min-height:400px}
+  .letter-collage-sheet{width:62%;border-radius:16px}
+  .letter-collage .letter-sheet-a{left:0;top:16%}
+  .letter-collage .letter-sheet-b{left:20%;top:4%}
+  .letter-collage .letter-sheet-c{right:0;top:18%}
+  .letter-collage figcaption{width:96%;padding:.85rem .95rem}
+  .provenance-panel{padding:1.45rem!important}
+}
+
+@media(max-width:480px){
+  :root{--v19-grid-gap:.9rem;--v19-section-gap:clamp(3.8rem,12vw,4.8rem)}
+  .container{width:min(calc(100% - 1rem),var(--max))}
+  .letter-collage{min-height:340px}
+  .letter-collage-sheet{width:65%}
+  .letter-collage figcaption span{font-size:.84rem}
+  .coalition-pill{min-height:auto;padding:1rem 1rem 1rem 1.45rem!important}
+  .page-hero-grid>:last-child,.mission-lock{width:100%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .coalition-pill::before,.challenge-left-card::before{filter:none}
+}
+
+
+/* ========================================================================== 
+   A RIGHT FOR ALL v20 — RELEASE LOCK
+   Final no-regression layer: overflow containment, optical centering, balanced
+   card composition, and predictable responsive behavior.
+   ========================================================================== */
+html,body{max-width:100%;overflow-x:clip}
+img,svg,video,canvas{max-width:100%}
+
+/* Preserve readable measure and optical balance in paired compositions. */
+.page-hero-grid,.standard-wellness-grid,.bridge-preview-grid,.coalition,
+.challenge-preview,.letters-feature{align-items:center!important}
+.page-hero-grid>*:last-child,.standard-wellness-grid>*:last-child,
+.bridge-preview-grid>*:last-child,.coalition>*:last-child,
+.challenge-preview>*:last-child{align-self:center!important}
+
+/* Cards use content-driven height; items within equal rows align intentionally. */
+.card,.source-card,.method-card,.mission-card,.proof-card,.pillar-card,
+.horizon-card,.problem-card,.micro-card,.letter-card,.voice-card{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+.source-card,.method-card,.letter-card,.voice-card{height:100%}
+.number{margin-bottom:1.1rem!important}
+
+/* Keep editorial labels legible and separated consistently. */
+.section-label,.kicker{font-size:var(--v19-label-size)!important;margin-bottom:var(--v19-label-gap)!important}
+.section-label + h1,.section-label + h2,.section-label + h3,
+.kicker + h1,.kicker + h2,.kicker + h3{margin-top:0!important}
+
+/* Prevent rotated evidence sheets from touching the viewport edge at compact desktop widths. */
+@media (min-width:1121px) and (max-width:1320px){
+  .page-letters .letter-collage{width:min(94%,640px)}
+}
+
+/* Buttons and rails keep a balanced, non-orphaned layout. */
+.cta-row{align-items:center}
+.info-rail .chip{overflow-wrap:normal;word-break:normal}
+
+/* Mobile reveal transforms must never create horizontal page movement. */
+@media(max-width:780px){
+  [data-reveal="left"],[data-reveal="right"]{--x:0px!important}
+  .container{margin-inline:auto}
+  .letter-collage{margin-inline:auto!important}
+  .page-hero-grid,.hero-grid,.letters-feature,.challenge-preview{overflow:visible}
+}
+
+/* Final paired-card optical centering. */
+.mission-pair .mission-card{justify-content:center!important}
+.mission-pair .mission-card .cta-row{margin-top:1.25rem!important}
+@media(max-width:780px){.mission-pair .mission-card{justify-content:flex-start!important}}
+
+
+/* ==========================================================================
+   A RIGHT FOR ALL v20.1 — FINAL RESPONSIVE SAFETY + NATURAL RHYTHM
+   ========================================================================== */
+.challenge-left-flow{grid-auto-rows:auto!important}
+.challenge-left-card{height:auto!important}
+
+@media(max-width:780px){
+  [data-reveal="left"]:not(.is-visible),[data-reveal="right"]:not(.is-visible){
+    transform:translate3d(0,18px,0);
+  }
+  .letter-collage{width:calc(100% - 8px);margin-inline:auto!important}
+  .letter-collage-sheet{width:59%!important}
+  .letter-collage .letter-sheet-a{left:3%!important}
+  .letter-collage .letter-sheet-b{left:20.5%!important}
+  .letter-collage .letter-sheet-c{right:3%!important}
+}
+@media(max-width:480px){
+  .letter-collage{width:calc(100% - 4px)}
+  .letter-collage-sheet{width:60%!important}
+  .letter-collage figcaption{width:94%!important}
+}
