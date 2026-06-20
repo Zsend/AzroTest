@@ -1,0 +1,344 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "checks": [
+    {
+      "page": "index.html",
+      "width": 320,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-3",
+          "rows": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "page": "standard/index.html",
+      "width": 320,
+      "rails": []
+    },
+    {
+      "page": "bridge/index.html",
+      "width": 320,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-8 is-visible",
+          "rows": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "page": "sources/index.html",
+      "width": 320,
+      "rails": []
+    },
+    {
+      "page": "unusual-thinkers/index.html",
+      "width": 320,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-4",
+          "rows": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "page": "letters/index.html",
+      "width": 320,
+      "rails": []
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-3",
+          "rows": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "page": "standard/index.html",
+      "width": 390,
+      "rails": []
+    },
+    {
+      "page": "bridge/index.html",
+      "width": 390,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-8 is-visible",
+          "rows": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "page": "sources/index.html",
+      "width": 390,
+      "rails": []
+    },
+    {
+      "page": "unusual-thinkers/index.html",
+      "width": 390,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-4",
+          "rows": [
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "page": "letters/index.html",
+      "width": 390,
+      "rails": []
+    },
+    {
+      "page": "index.html",
+      "width": 768,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-3",
+          "rows": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "page": "standard/index.html",
+      "width": 768,
+      "rails": []
+    },
+    {
+      "page": "bridge/index.html",
+      "width": 768,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-8 is-visible",
+          "rows": [
+            2,
+            2,
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "page": "sources/index.html",
+      "width": 768,
+      "rails": []
+    },
+    {
+      "page": "unusual-thinkers/index.html",
+      "width": 768,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-4",
+          "rows": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "page": "letters/index.html",
+      "width": 768,
+      "rails": []
+    },
+    {
+      "page": "index.html",
+      "width": 1024,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-3",
+          "rows": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "page": "standard/index.html",
+      "width": 1024,
+      "rails": []
+    },
+    {
+      "page": "bridge/index.html",
+      "width": 1024,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-8 is-visible",
+          "rows": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "page": "sources/index.html",
+      "width": 1024,
+      "rails": []
+    },
+    {
+      "page": "unusual-thinkers/index.html",
+      "width": 1024,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-4",
+          "rows": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "page": "letters/index.html",
+      "width": 1024,
+      "rails": []
+    },
+    {
+      "page": "index.html",
+      "width": 1440,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-3",
+          "rows": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "page": "standard/index.html",
+      "width": 1440,
+      "rails": []
+    },
+    {
+      "page": "bridge/index.html",
+      "width": 1440,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-8 is-visible",
+          "rows": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "page": "sources/index.html",
+      "width": 1440,
+      "rails": []
+    },
+    {
+      "page": "unusual-thinkers/index.html",
+      "width": 1440,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-4",
+          "rows": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "page": "letters/index.html",
+      "width": 1440,
+      "rails": []
+    },
+    {
+      "page": "index.html",
+      "width": 1920,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-3",
+          "rows": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "page": "standard/index.html",
+      "width": 1920,
+      "rails": []
+    },
+    {
+      "page": "bridge/index.html",
+      "width": 1920,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-8 is-visible",
+          "rows": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "page": "sources/index.html",
+      "width": 1920,
+      "rails": []
+    },
+    {
+      "page": "unusual-thinkers/index.html",
+      "width": 1920,
+      "rails": [
+        {
+          "cls": "chip-row chip-count-4",
+          "rows": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "page": "letters/index.html",
+      "width": 1920,
+      "rails": []
+    }
+  ]
+}
