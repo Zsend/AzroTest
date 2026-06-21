@@ -1,0 +1,27 @@
+
+(function(){
+ const prefix='arfa_challenge_v16_';
+ const memory=new Map();
+ const storage={
+  get(key){try{return localStorage.getItem(key)}catch(e){return memory.has(key)?memory.get(key):null}},
+  set(key,val){try{localStorage.setItem(key,val)}catch(e){memory.set(key,String(val))}}
+ };
+ const fields=[...document.querySelectorAll('[data-store]')].filter(el=>!el.matches('input[type=radio],input[type=checkbox]'));
+ const save=el=>storage.set(prefix+el.dataset.store,el.value);
+ fields.forEach(el=>{const v=storage.get(prefix+el.dataset.store);if(v!==null)el.value=v;el.addEventListener('input',()=>{save(el);updateCounts();refreshPreview();});el.addEventListener('change',()=>{save(el);updateTrack();refreshPreview();});});
+ document.querySelectorAll('input[type=radio][data-store]').forEach(el=>{const v=storage.get(prefix+el.dataset.store);if(v===el.value)el.checked=true;el.addEventListener('change',()=>{storage.set(prefix+el.dataset.store,el.value);updateTrack();refreshPreview();});});
+ function value(id){const el=document.getElementById(id);return el?el.value.trim():''}
+ function radio(name){const el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:''}
+ function words(s){return s.trim()?s.trim().split(/\s+/).length:0}
+ function updateCounts(){document.querySelectorAll('[data-count-for]').forEach(c=>{const el=document.getElementById(c.dataset.countFor);if(el)c.textContent=words(el.value)+' words';});}
+ const prompts={research:['Build the thinnest evidence plan for the bottleneck you chose. What do we need to know first, who should we ask, and what would count as strong evidence?','Turn that evidence plan into a one-page decision memo. What decision should it enable?'],product:['Sketch the thinnest useful product or service that advances the free floor without pretending the whole system is solved.','List the dependencies, risks, accessibility requirements, and what must be true before implementation.'],operations:['Map the first credible path to a facility, educator, vendor, agency, or funder conversation.','Write the first 90-day operating sequence with owner, dependency, and success condition.'],story:['Build a message architecture that can hold moral force, evidence discipline, and cross-partisan participation.','Draft a campaign moment that turns attention into one concrete next action.'],wildcard:['Show the strongest proof of value you can create for this mission. Explain why this is the right spike.','What would you build or test next if the first artifact earns trust?']};
+ function updateTrack(){const t=radio('track');const box=document.getElementById('track-prompts');if(!box)return;if(!t){box.innerHTML='<p class="muted">Choose a track to reveal the work-sample prompts.</p>';return;}const ps=prompts[t];box.innerHTML=ps.map((p,i)=>'<div class="question"><label for="track-answer-'+(i+1)+'">'+escapeHtml(p)+'</label><textarea id="track-answer-'+(i+1)+'" data-store="track_answer_'+(i+1)+'"></textarea><div class="wordcount" data-count-for="track-answer-'+(i+1)+'"></div></div>').join('');box.querySelectorAll('[data-store]').forEach(el=>{const v=storage.get(prefix+el.dataset.store);if(v!==null)el.value=v;el.addEventListener('input',()=>{save(el);updateCounts();refreshPreview();});});updateCounts();}
+ function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+ function packet(){const lines=['# A Right For All — Unusual Thinkers Challenge','','## Candidate','Name: '+value('candidate-name'),'Email: '+value('candidate-email'),'Location: '+value('candidate-location'),'Path: '+value('candidate-path'),'','','## Problem judgment','Top 3: '+value('top-problems'),'','Why this order:',''+value('why-order'),'','12-month bottleneck:',''+value('bottleneck'),'','90-day plan:',''+value('plan-90'),'','What would change my mind:',''+value('change-mind'),'','What not to do yet:',''+value('not-yet'),'','','## Track',''+radio('track'),'','Track response 1:',''+value('track-answer-1'),'','Track response 2:',''+value('track-answer-2'),'','','## Revision','Changed assumption: '+value('revision-assumption'),'','Plan update:',''+value('revision-plan'),'','Next week:',''+value('revision-next'),'','','## Tool use',''+value('candidate-tools'),'','## Additional note',''+value('candidate-note')];return lines.join('\n');}
+ function refreshPreview(){const p=document.getElementById('packet-preview');if(p)p.textContent=packet();}
+ function download(name,content,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+ document.getElementById('export-md')?.addEventListener('click',()=>download('arfa-unusual-thinkers-packet.md',packet(),'text/markdown'));
+ document.getElementById('export-json')?.addEventListener('click',()=>{const obj={};document.querySelectorAll('[data-store]').forEach(el=>obj[el.dataset.store]=el.value);obj.track=radio('track');download('arfa-unusual-thinkers-packet.json',JSON.stringify(obj,null,2),'application/json')});
+ document.getElementById('copy-packet')?.addEventListener('click',async e=>{try{await navigator.clipboard.writeText(packet());e.currentTarget.textContent='Copied';setTimeout(()=>e.currentTarget.textContent='Copy packet',1500)}catch(err){window.prompt('Copy your packet:',packet())}});
+ updateTrack();updateCounts();refreshPreview();
+})();
