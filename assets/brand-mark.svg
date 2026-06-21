@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Prohibition Careers mark</title>
+  <desc id="desc">An open circle connected by a rising path.</desc>
+  <path d="M49.2 17.4A23 23 0 1 0 53.6 40" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+  <path d="M16 39.5 27.2 28.3l8.1 7.2L49 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="49" cy="18" r="4" fill="currentColor"/>
+</svg>
