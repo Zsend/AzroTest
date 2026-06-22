@@ -1,0 +1,24 @@
+(() => {
+  "use strict";
+  const q=(s,r=document)=>r.querySelector(s); const qa=(s,r=document)=>[...r.querySelectorAll(s)];
+  const menu=q('[data-menu-toggle]'), nav=q('[data-site-nav]');
+  function closeMenu(){if(!menu||!nav)return;menu.setAttribute('aria-expanded','false');nav.classList.remove('open');document.body.classList.remove('menu-open');}
+  if(menu&&nav){menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);document.body.classList.toggle('menu-open',open)});qa('a',nav).forEach(a=>a.addEventListener('click',closeMenu));window.addEventListener('resize',()=>{if(innerWidth>980)closeMenu()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});}
+  qa('[data-year]').forEach(n=>n.textContent=String(new Date().getFullYear()));
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveal=qa('[data-reveal]');
+  if(!reduce&&'IntersectionObserver'in window){reveal.forEach(n=>n.classList.add('reveal-prep'));const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6%',threshold:.06});reveal.forEach(n=>io.observe(n));}else reveal.forEach(n=>n.classList.add('is-visible'));
+
+  const journeys=qa('[data-journey]');
+  function updateJourneys(){journeys.forEach(section=>{const rect=section.getBoundingClientRect();const start=innerHeight*.72;const distance=Math.max(rect.height-innerHeight*.35,1);const p=Math.max(0,Math.min(1,(start-rect.top)/distance));section.style.setProperty('--journey-progress',p.toFixed(3));qa('[data-step]',section).forEach((node,i)=>node.classList.toggle('is-passed',p>=i/3-.015));});}
+  if(journeys.length){let scheduled=false;const run=()=>{scheduled=false;updateJourneys()};addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(run)}},{passive:true});addEventListener('resize',run);updateJourneys();}
+
+  const tabs=qa('[data-tab]'), panels=qa('[data-panel]');
+  function activate(name,focus=false){if(!tabs.length)return;const valid=tabs.some(t=>t.dataset.tab===name)?name:'candidate';tabs.forEach(t=>{const on=t.dataset.tab===valid;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&focus)t.focus()});panels.forEach(p=>{const on=p.dataset.panel===valid;p.hidden=!on;p.classList.toggle('active',on)});history.replaceState(null,'',`${location.pathname}?path=${valid}`)}
+  if(tabs.length){const requested=new URLSearchParams(location.search).get('path')||'candidate';activate(requested);tabs.forEach((t,i)=>{t.addEventListener('click',()=>activate(t.dataset.tab));t.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();let next=i;if(e.key==='ArrowLeft')next=(i-1+tabs.length)%tabs.length;if(e.key==='ArrowRight')next=(i+1)%tabs.length;if(e.key==='Home')next=0;if(e.key==='End')next=tabs.length-1;activate(tabs[next].dataset.tab,true)})});}
+
+  const clean=v=>String(v||'').replace(/\r\n?/g,'\n').trim();
+  function formatForm(form){const path=form.dataset.path||'Network';const lines=[`PROHIBITION CAREERS — ${path.toUpperCase()}`,'','This message was prepared on prohibitioncareers.com.',''];qa('[data-label]',form).forEach(field=>{let value=field.type==='checkbox'?(field.checked?'Yes':'No'):clean(field.value);if(!value)return;lines.push(`${field.dataset.label}:`,value,'')});lines.push('I understand that joining the network does not guarantee contact, referral, an interview, or employment.');return{subject:`${path} — Prohibition Careers`,body:lines.join('\n')}}
+  qa('[data-email-form]').forEach(form=>{const panel=form.closest('[data-panel]');const preview=q('[data-message-preview]',panel);const text=q('[data-message-text]',preview);const mail=q('[data-mail-link]',preview);const copy=q('[data-copy-message]',preview);const status=q('[data-copy-status]',preview);let latest='';form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const msg=formatForm(form);latest=msg.body;text.textContent=msg.body;mail.href=`mailto:support@prohibitioncareers.com?subject=${encodeURIComponent(msg.subject)}&body=${encodeURIComponent(msg.body)}`;preview.classList.add('visible');preview.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(latest);status.textContent='Message copied.'}catch{const area=document.createElement('textarea');area.value=latest;document.body.append(area);area.select();document.execCommand('copy');area.remove();status.textContent='Message copied.'}});});
+})();
